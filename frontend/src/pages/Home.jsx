@@ -43,16 +43,16 @@ export default function Home() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/countries')
+    fetch('https://studyapp-backend-cal9.onrender.com/api/countries')
       .then(res => res.json()).then(setCountries)
       .catch(() => setError('Cannot connect to backend.'))
 
-    fetch('http://localhost:8080/api/profile')
+    fetch('https://studyapp-backend-cal9.onrender.com/api/profile')
       .then(r => r.json())
       .then(data => { if (Object.keys(data).length > 0) setProfile(data) })
       .catch(() => {})
 
-    fetch('http://localhost:8080/api/news')
+    fetch('https://studyapp-backend-cal9.onrender.com/api/news')
       .then(r => r.json())
       .then(data => {
         setNews(data && data.length > 3 ? data : FALLBACK_NEWS)
@@ -105,7 +105,7 @@ export default function Home() {
     setShowProfilePrompt(false)
     setLoading(true); setError('')
     try {
-      const res = await fetch('http://localhost:8080/api/search', {
+      const res = await fetch('https://studyapp-backend-cal9.onrender.com/api/search', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...form, profile: profile || {} })

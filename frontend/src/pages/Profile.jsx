@@ -10,7 +10,7 @@ export default function Profile() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch('http://localhost:8080/api/profile')
+    fetch('https://studyapp-backend-cal9.onrender.com/api/profile')
       .then(r => r.json())
       .then(data => { if (Object.keys(data).length) setProfile(data) })
       .catch(() => {})
@@ -23,7 +23,7 @@ export default function Profile() {
 
   const submit = async (e) => {
     e.preventDefault()
-    await fetch('http://localhost:8080/api/profile', {
+    await fetch('https://studyapp-backend-cal9.onrender.com/api/profile', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(profile)
