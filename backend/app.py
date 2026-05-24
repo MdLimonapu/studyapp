@@ -23,6 +23,33 @@ COUNTRIES = [
 
 PROFILE_FILE = "profile.json"
 
+FIELD_ALIASES = {
+    "electrical engineering": ["elektrotechnik", "electrical", "elektro", "power systems", "energy"],
+    "computer science": ["informatik", "computer", "computing", "softwaretechnik"],
+    "mechanical engineering": ["maschinenbau", "mechanical", "konstruktion"],
+    "data science": ["data", "datenwissenschaft", "analytics"],
+    "business administration": ["betriebswirtschaft", "bwl", "business", "management"],
+    "civil engineering": ["bauingenieur", "civil", "bau"],
+    "aerospace engineering": ["luft", "raumfahrt", "aerospace"],
+    "artificial intelligence": ["künstliche intelligenz", "ki", "ai", "artificial"],
+    "information technology": ["informationstechnik", "it", "information technology"],
+    "software engineering": ["software", "softwareentwicklung"],
+    "biomedical engineering": ["biomedizin", "medizintechnik", "biomedical"],
+    "robotics": ["robotik", "robotics", "automation"],
+}
+
+def field_matches(course_name, field):
+    field_lower = field.lower()
+    course_lower = course_name.lower()
+    if field_lower in course_lower:
+        return True
+    for key, aliases in FIELD_ALIASES.items():
+        if field_lower in key or key in field_lower:
+            for alias in aliases:
+                if alias in course_lower:
+                    return True
+    return False
+
 @app.route("/api/countries")
 def get_countries():
     return jsonify(COUNTRIES)
@@ -58,7 +85,7 @@ def search():
     if degree:
         results = [c for c in results if degree.lower() in c.get("degree", "").lower()]
     if field:
-        results = [c for c in results if field.lower() in c.get("course", "").lower()]
+        results = [c for c in results if field_matches(c.get("course", ""), field)]
 
     formatted = [{
         "country": c.get("country", ""),
