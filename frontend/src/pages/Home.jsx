@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { fetchCountries, fetchProfile, fetchNews, searchCourses } from '../api'
 
 const ALL_FIELDS = [
   "Electrical Engineering", "Computer Science", "Mechanical Engineering",
@@ -27,6 +28,8 @@ const FALLBACK_NEWS = [
   {title:"KTH Stockholm opens applications for 60+ English Master programs", source:"kth.se", date:"Jan 2026", summary:"KTH offers world-class engineering and technology programs in English.", country:"Sweden"},
 ]
 
+const GERMANY_ONLY_COUNTRIES = ["UK", "USA", "Canada", "Australia", "Netherlands", "Sweden", "France", "Switzerland", "Japan"]
+
 export default function Home() {
   const [countries, setCountries] = useState([])
   const [form, setForm] = useState({ country: '', degree: 'master', field: '' })
@@ -43,17 +46,15 @@ export default function Home() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch('https://studyapp-backend-cal9.onrender.com/api/countries')
-      .then(res => res.json()).then(setCountries)
+    fetchCountries()
+      .then(setCountries)
       .catch(() => setError('Cannot connect to backend.'))
 
-    fetch('https://studyapp-backend-cal9.onrender.com/api/profile')
-      .then(r => r.json())
+    fetchProfile()
       .then(data => { if (data && Object.keys(data).length > 0) setProfile(data) })
       .catch(() => {})
 
-    fetch('https://studyapp-backend-cal9.onrender.com/api/news')
-      .then(r => r.json())
+    fetchNews()
       .then(data => {
         setNews(data && data.length > 3 ? data : FALLBACK_NEWS)
         setNewsLoading(false)
@@ -91,17 +92,14 @@ export default function Home() {
 
   const isProfileComplete = (p) => p && p.fullName && p.fullName.trim() !== ''
 
+  const isGermanyOnly = form.country && GERMANY_ONLY_COUNTRIES.includes(form.country)
+
   const doSearch = async () => {
     setShowProfilePrompt(false)
     setLoading(true)
     setError('')
     try {
-      const res = await fetch('https://studyapp-backend-cal9.onrender.com/api/search', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, profile: profile || {} })
-      })
-      const data = await res.json()
+      const data = await searchCourses(form, profile)
       localStorage.setItem('searchResults', JSON.stringify(data))
       localStorage.setItem('searchForm', JSON.stringify(form))
       navigate('/university')
@@ -160,6 +158,9 @@ export default function Home() {
               <option value="">Select country</option>
               {countries.map(c => <option key={c.name} value={c.name}>{c.flag} {c.name}</option>)}
             </select>
+            {isGermanyOnly && (
+              <p className="data-notice">⚠️ Only Germany data is currently available. Results for other countries coming soon.</p>
+            )}
           </div>
           <div>
             <label>Degree level</label>

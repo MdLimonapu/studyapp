@@ -5,8 +5,12 @@ import json, os
 app = Flask(__name__)
 CORS(app)
 
-with open("data/germany.json") as f:
-    all_courses = json.load(f)
+try:
+    with open("data/germany.json") as f:
+        all_courses = json.load(f)
+except FileNotFoundError:
+    all_courses = []
+    print("Warning: data/germany.json not found. Search will return no results.")
 
 COUNTRIES = [
     {"name": "Germany", "flag": "🇩🇪"},
@@ -87,6 +91,7 @@ def search():
     if field:
         results = [c for c in results if field_matches(c.get("course", ""), field)]
 
+    total_count = len(results)
     formatted = [{
         "country": c.get("country", ""),
         "university": c.get("uni", ""),
@@ -100,7 +105,7 @@ def search():
 
     return jsonify({
         "results": formatted,
-        "total": len(formatted),
+        "total": total_count,
         "related_fields": []
     })
 

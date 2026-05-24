@@ -209,6 +209,13 @@ button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
 /* ERROR */
 .error-msg { color: #f87171; font-size: 14px; font-weight: 600; }
+.data-notice {
+  color: #fbbf24; font-size: 13px; font-weight: 600;
+  background: rgba(251,191,36,0.08);
+  border: 1px solid rgba(251,191,36,0.25);
+  border-radius: 10px; padding: 10px 14px;
+  margin-top: 6px;
+}
 
 /* SEARCH SUMMARY */
 .search-summary { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }

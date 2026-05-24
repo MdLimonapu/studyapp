@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { fetchProfile, saveProfile } from '../api'
 
 export default function Profile() {
   const [profile, setProfile] = useState({
@@ -12,8 +13,7 @@ export default function Profile() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    fetch('https://studyapp-backend-cal9.onrender.com/api/profile')
-      .then(r => r.json())
+    fetchProfile()
       .then(data => { if (Object.keys(data).length) setProfile(p => ({...p, ...data})) })
       .catch(() => {})
   }, [])
@@ -35,11 +35,7 @@ export default function Profile() {
   const submit = async (e) => {
     e.preventDefault()
     setSaving(true)
-    await fetch('https://studyapp-backend-cal9.onrender.com/api/profile', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(profile)
-    })
+    await saveProfile(profile)
     setSaving(false)
     setSaved(true)
   }
