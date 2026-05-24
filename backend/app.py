@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-import json
+import json, os
 
 app = Flask(__name__)
 CORS(app)
@@ -21,13 +21,25 @@ COUNTRIES = [
     {"name": "Japan", "flag": "🇯🇵"}
 ]
 
+PROFILE_FILE = "profile.json"
+
 @app.route("/api/countries")
 def get_countries():
     return jsonify(COUNTRIES)
 
-@app.route("/api/profile")
+@app.route("/api/profile", methods=["GET"])
 def get_profile():
+    if os.path.exists(PROFILE_FILE):
+        with open(PROFILE_FILE) as f:
+            return jsonify(json.load(f))
     return jsonify({})
+
+@app.route("/api/profile", methods=["POST"])
+def save_profile():
+    data = request.json
+    with open(PROFILE_FILE, "w") as f:
+        json.dump(data, f)
+    return jsonify({"status": "saved"})
 
 @app.route("/api/news")
 def get_news():

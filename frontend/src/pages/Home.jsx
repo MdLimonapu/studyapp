@@ -20,11 +20,11 @@ const FALLBACK_NEWS = [
   {title:"Sweden updates tuition fees for non-EU students — Autumn 2026", source:"universityadmissions.se", date:"Apr 2026", summary:"Swedish universities publish updated fee structures for non-EU students.", country:"Sweden"},
   {title:"DAAD scholarships for Master's and PhD — deadlines June 2026", source:"daad.de", date:"Mar 2026", summary:"Multiple DAAD funding programs open now. Deadline approaching fast.", country:"Germany"},
   {title:"Australia simplifies student visa process for 2026", source:"homeaffairs.gov.au", date:"Mar 2026", summary:"New streamlined process reduces student visa processing to 3-4 weeks.", country:"Australia"},
-  {title:"France Campus Bourses — new scholarships for international students", source:"campusfrance.org", date:"Mar 2026", summary:"France opens new scholarship round for Master's students worldwide.", country:"France"},
+  {title:"France Campus Bourses — new scholarships for international students", source:"campusfrance.org", date:"Mar 2026", summary:"France opens new scholarship round for Master students worldwide.", country:"France"},
   {title:"ETH Zurich and EPFL ranked top universities in Europe 2026", source:"timeshighereducation.com", date:"Feb 2026", summary:"Switzerland dominates European rankings with two universities in top 10.", country:"Switzerland"},
   {title:"Japan MEXT scholarship applications open for 2026-2027", source:"mext.go.jp", date:"Feb 2026", summary:"Japanese government scholarship covers tuition and living expenses.", country:"Japan"},
   {title:"USA F-1 student visa interview waiver extended through 2026", source:"state.gov", date:"Feb 2026", summary:"Eligible students can skip in-person interview for F-1 student visa.", country:"USA"},
-  {title:"KTH Stockholm opens applications for 60+ English Master's programs", source:"kth.se", date:"Jan 2026", summary:"KTH offers world-class engineering and technology programs in English.", country:"Sweden"},
+  {title:"KTH Stockholm opens applications for 60+ English Master programs", source:"kth.se", date:"Jan 2026", summary:"KTH offers world-class engineering and technology programs in English.", country:"Sweden"},
 ]
 
 export default function Home() {
@@ -49,7 +49,7 @@ export default function Home() {
 
     fetch('https://studyapp-backend-cal9.onrender.com/api/profile')
       .then(r => r.json())
-      .then(data => { if (Object.keys(data).length > 0) setProfile(data) })
+      .then(data => { if (data && Object.keys(data).length > 0) setProfile(data) })
       .catch(() => {})
 
     fetch('https://studyapp-backend-cal9.onrender.com/api/news')
@@ -61,15 +61,11 @@ export default function Home() {
       .catch(() => { setNews(FALLBACK_NEWS); setNewsLoading(false) })
   }, [])
 
-  // auto scroll
   useEffect(() => {
     if (!sliderRef.current || news.length === 0) return
     const slider = sliderRef.current
-    let scrollAmount = 0
-    const step = 1
     const interval = setInterval(() => {
-      scrollAmount += step
-      slider.scrollLeft += step
+      slider.scrollLeft += 1
       if (slider.scrollLeft >= slider.scrollWidth - slider.clientWidth) {
         slider.scrollLeft = 0
       }
@@ -93,17 +89,12 @@ export default function Home() {
     } else setShowSug(false)
   }
 
-  const isProfileComplete = (p) => p && p.fullName && p.currentDegree && p.currentField && p.grade
-
-  const submit = async (e) => {
-    e.preventDefault()
-    if (!isProfileComplete(profile)) { setShowProfilePrompt(true); return }
-    await doSearch()
-  }
+  const isProfileComplete = (p) => p && p.fullName && p.fullName.trim() !== ''
 
   const doSearch = async () => {
     setShowProfilePrompt(false)
-    setLoading(true); setError('')
+    setLoading(true)
+    setError('')
     try {
       const res = await fetch('https://studyapp-backend-cal9.onrender.com/api/search', {
         method: 'POST',
@@ -116,6 +107,12 @@ export default function Home() {
       navigate('/university')
     } catch { setError('Search failed. Please check your backend is running.') }
     finally { setLoading(false) }
+  }
+
+  const submit = async (e) => {
+    e.preventDefault()
+    if (!isProfileComplete(profile)) { setShowProfilePrompt(true); return }
+    await doSearch()
   }
 
   const COUNTRY_FLAG = {
@@ -151,7 +148,7 @@ export default function Home() {
             <div className="stat"><strong>Live</strong><span>Real Data</span></div>
             <div className="stat"><strong>Free</strong><span>To Use</span></div>
           </div>
-          {profile && isProfileComplete(profile) && (
+          {isProfileComplete(profile) && (
             <div className="profile-pill">✅ Searching as <strong>{profile.fullName}</strong></div>
           )}
         </div>
@@ -221,8 +218,6 @@ export default function Home() {
                   href={item.link || '#'}
                   target="_blank" rel="noreferrer"
                   className="news-card"
-                  onMouseEnter={() => sliderRef.current && (sliderRef.current._paused = true)}
-                  onMouseLeave={() => sliderRef.current && (sliderRef.current._paused = false)}
                 >
                   <div className="news-card-top">
                     <span className="news-flag">{COUNTRY_FLAG[item.country] || '🌍'}</span>
