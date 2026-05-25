@@ -19,17 +19,53 @@ except FileNotFoundError:
     print("Warning: data/germany.json not found. Fallback search unavailable.", flush=True)
 
 # ── Gemini AI setup ──────────────────────────────────────────────────────────
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
-gemini_client = None
-
-if GEMINI_API_KEY:
-    try:
-        gemini_client = genai.Client(api_key=GEMINI_API_KEY)
-        print("✅ Gemini AI client initialised with google-genai SDK.", flush=True)
-    except Exception as e:
-        print(f"⚠️  Gemini init failed: {e}", flush=True)
+API_KEYS = []
+keys_str = os.environ.get("GEMINI_API_KEYS", "")
+if keys_str:
+    # Try parsing comma-separated list of keys
+    API_KEYS = [k.strip() for k in keys_str.split(",") if k.strip()]
 else:
-    print("⚠️  GEMINI_API_KEY not set — falling back to static data.", flush=True)
+    # Fallback to single GEMINI_API_KEY
+    single_key = os.environ.get("GEMINI_API_KEY", "").strip()
+    if single_key:
+        API_KEYS = [single_key]
+
+if API_KEYS:
+    print(f"✅ Gemini AI key pool initialised with {len(API_KEYS)} key(s).", flush=True)
+else:
+    print("⚠️  No GEMINI_API_KEY or GEMINI_API_KEYS set — falling back to static data.", flush=True)
+
+
+def generate_content_with_rotation(contents, config=None, model="gemini-2.5-flash"):
+    global API_KEYS
+    if not API_KEYS:
+        raise Exception("No Gemini API keys configured.")
+
+    last_error = None
+    for i in range(len(API_KEYS)):
+        key = API_KEYS[i]
+        try:
+            client = genai.Client(api_key=key)
+            response = client.models.generate_content(
+                model=model,
+                contents=contents,
+                config=config
+            )
+            # Promote successful key to the front of the list
+            if i > 0:
+                API_KEYS.insert(0, API_KEYS.pop(i))
+            return response
+        except Exception as e:
+            err_msg = str(e)
+            print(f"⚠️ Gemini API Key {i+1}/{len(API_KEYS)} failed: {err_msg}", flush=True)
+            last_error = e
+            # Only rotate if the error is due to rate limits or invalid key
+            if "RESOURCE_EXHAUSTED" in err_msg or "quota" in err_msg.lower() or "API_KEY_INVALID" in err_msg or "key not valid" in err_msg.lower():
+                continue
+            else:
+                raise e
+
+    raise last_error
 
 # ── Caching ──────────────────────────────────────────────────────────────────
 NEWS_CACHE = {"data": None, "timestamp": None}
@@ -189,7 +225,7 @@ def get_news():
         print("Serving news from cache", flush=True)
         return jsonify(NEWS_CACHE["data"])
 
-    if not gemini_client:
+    if not API_KEYS:
         return jsonify([])
     try:
         today_date = now.strftime("%B %d, %Y")
@@ -202,7 +238,7 @@ Return EXACTLY a JSON array where each object has:
 - "country": related country (or 'Global')
 - "link": direct URL to the article
 Return ONLY the JSON array (no markdown fences)."""
-        response = gemini_client.models.generate_content(
+        response = generate_content_with_rotation(
             model="gemini-2.5-flash",
             contents=prompt,
             config=types.GenerateContentConfig(
@@ -241,10 +277,10 @@ def search():
         return jsonify(SEARCH_CACHE[cache_key])
 
     # ── Try Gemini AI first ──────────────────────────────────────────────────
-    if gemini_client and country and field:
+    if API_KEYS and country and field:
         try:
             prompt   = build_prompt(country, degree, field, profile)
-            response = gemini_client.models.generate_content(
+            response = generate_content_with_rotation(
                 model="gemini-2.5-flash",
                 contents=prompt,
                 config=types.GenerateContentConfig(
