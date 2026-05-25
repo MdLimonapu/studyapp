@@ -5,6 +5,14 @@ export async function fetchCountries() {
   return res.json();
 }
 
+export async function fetchFields(country) {
+  const url = country
+    ? `${BASE_URL}/api/fields?country=${encodeURIComponent(country)}`
+    : `${BASE_URL}/api/fields`;
+  const res = await fetch(url);
+  return res.json();
+}
+
 export async function fetchProfile() {
   const res = await fetch(`${BASE_URL}/api/profile`);
   return res.json();

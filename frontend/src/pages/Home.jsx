@@ -1,17 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { fetchCountries, fetchProfile, fetchNews, searchCourses } from '../api'
-
-const ALL_FIELDS = [
-  "Electrical Engineering", "Computer Science", "Mechanical Engineering",
-  "Data Science", "Business Administration", "Medicine", "Architecture",
-  "Civil Engineering", "Aerospace Engineering", "Biomedical Engineering",
-  "Information Technology", "Artificial Intelligence", "Robotics",
-  "Environmental Engineering", "Chemical Engineering", "Physics",
-  "Mathematics", "Economics", "Psychology", "Law", "Nursing",
-  "Embedded Systems", "Telecommunications", "Power Systems",
-  "Software Engineering", "Cybersecurity", "Finance", "Marketing"
-]
+import { fetchCountries, fetchFields, fetchProfile, fetchNews, searchCourses } from '../api'
 
 const FALLBACK_NEWS = [
   {title:"Germany extends student visa processing to 8 weeks for 2026 intake", source:"daad.de", date:"May 2026", summary:"DAAD reports increased demand. Apply early for German student visas.", country:"Germany", link: "https://www.daad.de"},
@@ -29,6 +18,11 @@ const FALLBACK_NEWS = [
 ]
 
 const GERMANY_ONLY_COUNTRIES = []
+const POPULAR_FIELDS = [
+  "Computer Science", "Electrical Engineering", "Mechanical Engineering",
+  "Data Science", "Business Administration", "Medicine", "Architecture",
+  "Artificial Intelligence", "Economics", "Physics", "Mathematics", "Law"
+]
 
 export default function Home() {
   const [countries, setCountries] = useState([])
@@ -36,6 +30,7 @@ export default function Home() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [suggestions, setSuggestions] = useState([])
+  const [allFields, setAllFields] = useState([])
   const [showSug, setShowSug] = useState(false)
   const [showProfilePrompt, setShowProfilePrompt] = useState(false)
   const [profile, setProfile] = useState(null)
@@ -50,6 +45,10 @@ export default function Home() {
       .then(setCountries)
       .catch(() => setError('Cannot connect to backend.'))
 
+    fetchFields()
+      .then(setAllFields)
+      .catch(() => setAllFields(POPULAR_FIELDS))
+
     fetchProfile()
       .then(data => { if (data && Object.keys(data).length > 0) setProfile(data) })
       .catch(() => {})
@@ -61,6 +60,13 @@ export default function Home() {
       })
       .catch(() => { setNews(FALLBACK_NEWS); setNewsLoading(false) })
   }, [])
+
+  // Re-fetch fields when country changes
+  useEffect(() => {
+    fetchFields(form.country)
+      .then(setAllFields)
+      .catch(() => {})
+  }, [form.country])
 
   useEffect(() => {
     if (!sliderRef.current || news.length === 0) return
@@ -85,7 +91,7 @@ export default function Home() {
   const handleFieldChange = (val) => {
     setForm({...form, field: val})
     if (val.length > 0) {
-      setSuggestions(ALL_FIELDS.filter(f => f.toLowerCase().includes(val.toLowerCase())).slice(0,6))
+      setSuggestions(allFields.filter(f => f.toLowerCase().includes(val.toLowerCase())).slice(0,10))
       setShowSug(true)
     } else setShowSug(false)
   }

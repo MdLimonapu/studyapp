@@ -33,6 +33,28 @@ def load_all_country_data():
 
 load_all_country_data()
 
+# ── Build unique field/course name index for autocomplete ────────────────────
+UNIQUE_FIELDS = []
+
+def build_field_index():
+    """Extract all unique course/field names from loaded data for autocomplete."""
+    global UNIQUE_FIELDS
+    fields = set()
+    for c in FALLBACK_COURSES:
+        course = c.get("course", "").strip()
+        if not course:
+            continue
+        # Strip degree prefix like 'MSc in ', 'BEng in ', etc.
+        m = re.match(r'^(?:MSc|BSc|MEng|BEng|MBA|BBA|LLM|LLB|MD|MBBS|PhD)\s+in\s+(.+)$', course)
+        if m:
+            fields.add(m.group(1))
+        else:
+            fields.add(course)
+    UNIQUE_FIELDS = sorted(fields, key=str.lower)
+    print(f"✅ Field index built: {len(UNIQUE_FIELDS)} unique fields", flush=True)
+
+build_field_index()
+
 # ── Caching ──────────────────────────────────────────────────────────────────
 SEARCH_CACHE = {}
 
@@ -191,6 +213,27 @@ def fallback_search(country, degree, field):
 
 
 # ── Routes ───────────────────────────────────────────────────────────────────
+@app.route("/api/fields")
+def get_fields():
+    """Return all unique course/field names for autocomplete."""
+    country = request.args.get("country", "").strip().lower()
+    if country:
+        fields = set()
+        for c in FALLBACK_COURSES:
+            if country not in c.get("country", "").lower():
+                continue
+            course = c.get("course", "").strip()
+            if not course:
+                continue
+            m = re.match(r'^(?:MSc|BSc|MEng|BEng|MBA|BBA|LLM|LLB|MD|MBBS|PhD)\s+in\s+(.+)$', course)
+            if m:
+                fields.add(m.group(1))
+            else:
+                fields.add(course)
+        return jsonify(sorted(fields, key=str.lower))
+    return jsonify(UNIQUE_FIELDS)
+
+
 @app.route("/api/countries")
 def get_countries():
     return jsonify(COUNTRIES)
