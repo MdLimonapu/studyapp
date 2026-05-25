@@ -12,14 +12,32 @@ load_dotenv(dotenv_path=dotenv_path)
 app = Flask(__name__)
 CORS(app)
 
-# ── Fallback static data (Germany) ──────────────────────────────────────────
-try:
-    data_path = os.path.join(os.path.dirname(__file__), "data", "germany.json")
-    with open(data_path) as f:
-        FALLBACK_COURSES = json.load(f)
-except FileNotFoundError:
-    FALLBACK_COURSES = []
-    print("Warning: data/germany.json not found. Fallback search unavailable.", flush=True)
+# ── Fallback static data (all countries) ─────────────────────────────────────
+FALLBACK_COURSES = []
+DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
+
+def load_all_country_data():
+    """Load course data from all JSON files in the data directory."""
+    global FALLBACK_COURSES
+    all_courses = []
+    if not os.path.isdir(DATA_DIR):
+        print("Warning: data/ directory not found. Fallback search unavailable.", flush=True)
+        return
+    for filename in sorted(os.listdir(DATA_DIR)):
+        if filename.endswith(".json"):
+            filepath = os.path.join(DATA_DIR, filename)
+            try:
+                with open(filepath) as f:
+                    data = json.load(f)
+                if isinstance(data, list):
+                    all_courses.extend(data)
+                    print(f"  📂 Loaded {len(data):5d} courses from {filename}", flush=True)
+            except Exception as e:
+                print(f"  ⚠️  Failed to load {filename}: {e}", flush=True)
+    FALLBACK_COURSES = all_courses
+    print(f"✅ Total fallback courses loaded: {len(FALLBACK_COURSES)}", flush=True)
+
+load_all_country_data()
 
 # ── Gemini AI setup ──────────────────────────────────────────────────────────
 API_KEYS = []
@@ -180,7 +198,7 @@ def calculate_similarity(s1, s2):
     overlap = w1_filtered.intersection(w2_filtered)
     return len(overlap) / max(len(w1_filtered), len(w2_filtered))
 
-def match_local_germany_link(uni, course):
+def match_local_link(uni, course, country=None):
     if not FALLBACK_COURSES:
         return None
     best_match = None
@@ -188,6 +206,8 @@ def match_local_germany_link(uni, course):
     norm_uni = normalize_text(uni)
     norm_course = normalize_text(course)
     for c in FALLBACK_COURSES:
+        if country and c.get("country", "").lower() != country.lower():
+            continue
         c_uni = normalize_text(c.get("uni", ""))
         c_course = normalize_text(c.get("course", ""))
         uni_sim = calculate_similarity(norm_uni, c_uni)
@@ -200,6 +220,7 @@ def match_local_germany_link(uni, course):
     if best_match and best_score >= 0.8: # Must be a solid match
         return best_match.get("link", "")
     return None
+
 
 def match_grounding_metadata_link(uni, course, response):
     try:
@@ -374,7 +395,7 @@ def extract_json_array(text):
 
 
 def fallback_search(country, degree, field):
-    """Use the static Germany JSON when Gemini is unavailable."""
+    """Use static country JSON data when Gemini is unavailable."""
     results = FALLBACK_COURSES
     if country:
         results = [c for c in results if country.lower() in c.get("country", "").lower()]
@@ -517,15 +538,13 @@ def search():
                 fallback_link = f"https://www.google.com/search?q={urllib.parse.quote_plus(fallback_query)}"
                 
                 # Link resolution flow
-                matched_link = None
-                if country.lower() == "germany":
-                    matched_link = match_local_germany_link(uni, course)
+                matched_link = match_local_link(uni, course, country)
                 if not matched_link:
                     matched_link = match_grounding_metadata_link(uni, course, response)
                 
                 link_to_clean = matched_link if matched_link else r.get("link", "")
-                # If matched to a verified link, keep it (is_ai=False). If not, force search query fallback (is_ai=True) to prevent 404s!
-                final_link = clean_link(link_to_clean, fallback_link, is_ai=(not matched_link))
+                # Since search grounding is active, these are grounded real links, so we don't force rewriting to search queries
+                final_link = clean_link(link_to_clean, fallback_link, is_ai=False)
                 
                 normalised.append({
                     "university":   uni,
@@ -601,13 +620,13 @@ def search():
                 return jsonify(response_data)
                 
             except Exception as e2:
-                print(f"❌ Tier 2 search failed: {e2} — falling back to static Germany data.", flush=True)
+                print(f"❌ Tier 2 search failed: {e2} — falling back to static data.", flush=True)
                 
-                notice = "Add a Gemini API key to enable AI-powered search for all countries."
+                notice = "Add a Gemini API key to enable full search for all countries."
                 if "RESOURCE_EXHAUSTED" in err_msg or "quota" in err_msg.lower():
-                    notice = "Gemini API rate limit exceeded (RESOURCE_EXHAUSTED). Falling back to static data. Please try again in a few minutes."
+                    notice = "Gemini API rate limit exceeded. Falling back to static database."
                 elif "API_KEY_INVALID" in err_msg or "key not valid" in err_msg.lower():
-                    notice = "The provided Gemini API key is invalid. Please check your Render configuration."
+                    notice = "The provided Gemini API key is invalid. Please check your configuration."
                 
                 formatted, total, source = fallback_search(country, degree, field)
                 return jsonify({
@@ -618,16 +637,17 @@ def search():
                     "fallback_notice": notice,
                 })
 
-    # ── Fallback to static Germany JSON (Tier 3) ────────────────────────────
+    # ── Fallback to static JSON (Tier 3) ────────────────────────────
     formatted, total, source = fallback_search(country, degree, field)
     return jsonify({
         "results":        formatted,
         "total":          total,
         "related_fields": [],
         "source":         source,
-        "fallback_notice": "Add a Gemini API key to enable AI-powered search for all countries." if source == "static" else None,
+        "fallback_notice": "Add a Gemini API key to enable full search for all countries." if source == "static" else None,
     })
 
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=False)
+    port = int(os.environ.get("PORT", 5001))
+    app.run(host="0.0.0.0", port=port, debug=False)

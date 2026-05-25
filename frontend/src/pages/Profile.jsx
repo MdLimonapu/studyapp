@@ -131,7 +131,7 @@ export default function Profile() {
           <p className="pf-completion-label">Profile complete</p>
           <p className="pf-completion-hint">
             {p === 100
-              ? 'Ready for AI-powered matching.'
+              ? 'Ready for personalised matching.'
               : 'Fill in all fields for the best university matches.'}
           </p>
 
@@ -158,7 +158,7 @@ export default function Profile() {
         <div className="pf-tip-card">
           <p className="pf-tip-label">Why complete your profile?</p>
           <p className="pf-tip-text">
-            StudyFinder's AI uses your academic background to rank and personalise
+            StudyFinder uses your academic background to rank and personalise
             university results — the more detail you provide, the better the matches.
           </p>
         </div>
