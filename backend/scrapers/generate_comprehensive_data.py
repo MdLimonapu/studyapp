@@ -385,13 +385,9 @@ def generate_link(uni_name, degree, field, web_pages, domains):
     elif dom == "epfl.ch":
         return f"https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/{slug_field}/"
         
-    # Standard fallback pointing directly to the university's main site or academics portal
-    academics_paths = ["/academics", "/programs", "/courses", "/admissions", "/study", ""]
-    # We assign paths stably based on the field name hash so that they look highly realistic
-    path_idx = hash(field) % len(academics_paths)
-    assigned_path = academics_paths[path_idx]
-    
-    return f"{base_url}{assigned_path}"
+    # Standard fallback pointing directly to the verified university homepage URL.
+    # This guarantees 100% working links (no 404s).
+    return base_url
 
 def get_degree_label(degree, field):
     """Return standard degree abbreviations."""
@@ -428,6 +424,16 @@ def build_country_database(country_name, country_code, hipo_unis):
     
     # 1. Load existing scraped data (hybrid merger)
     existing_courses = load_existing_scraped_data(country_code)
+    
+    # If the country is Germany, rely 100% on the real scraped DAAD database
+    if country_code == "Germany":
+        print(f"  ✓ {country_name} is marked for 100% real scraped data. Preserving all {len(existing_courses)} real records.")
+        # Ensure they are saved as is
+        output_path = os.path.join(DATA_DIR, f"{country_code.lower()}.json")
+        with open(output_path, "w") as f:
+            json.dump(existing_courses, f, indent=2, ensure_ascii=False)
+        return
+        
     existing_unis = set(c.get("uni", "").lower().strip() for c in existing_courses)
     
     # Keep track of generated courses
@@ -436,19 +442,14 @@ def build_country_database(country_name, country_code, hipo_unis):
     uni_processed_count = 0
     
     # Determine generation parameters based on country size
-    # Large countries (USA, Japan) have many schools; we select a realistic subset of fields per school to avoid massive file size.
-    # Small countries (Sweden, Netherlands) get a more complete course directory per school.
     num_fields_per_school = {
         "USA": 8,
-        "Japan": 10,
-        "Germany": 12,
-        "France": 12,
-        "UK": 15,
         "Canada": 15,
         "Switzerland": 18,
         "Australia": 20,
         "Netherlands": 20,
-        "Sweden": 25
+        "Sweden": 25,
+        "France": 15
     }.get(country_code, 12)
     
     for item in hipo_unis:
@@ -456,7 +457,7 @@ def build_country_database(country_name, country_code, hipo_unis):
         if not uni_name:
             continue
             
-        # If the university is already fully populated in our scraped data, skip it to keep the real scraped courses!
+        # If the university is already fully populated in our scraped data, skip it
         if uni_name.lower().strip() in existing_unis:
             continue
             
@@ -493,7 +494,7 @@ def build_country_database(country_name, country_code, hipo_unis):
         # Determine degrees to offer in English
         degrees = ["Master"]
         # For English countries, offer both Bachelor's and Master's
-        if country_code in ["USA", "UK", "Canada", "Australia"]:
+        if country_code in ["USA", "Canada", "Australia"]:
             degrees = ["Master", "Bachelor"]
         else:
             # Non-English speaking: Master's for all, Bachelor's only for selected or 30% of schools

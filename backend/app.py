@@ -394,6 +394,34 @@ def extract_json_array(text):
     return json.loads(text)
 
 
+def get_search_keywords(field):
+    field_lower = field.lower().strip()
+    keywords = [field_lower]
+    
+    # Map major synonyms and related academic disciplines
+    synonyms = {
+        "computer science": ["computer science", "computing", "software engineering", "informatics", "computer engineering"],
+        "electrical engineering": ["electrical engineering", "electronic engineering", "electronics", "power systems", "microelectronics", "embedded systems"],
+        "data science": ["data science", "data analytics", "big data", "machine learning", "statistics"],
+        "artificial intelligence": ["artificial intelligence", "machine learning", "deep learning", "cognitive science", "robotics", "intelligent systems"],
+        "business administration": ["business administration", "management", "business management", "mba", "bba", "entrepreneurship", "international business"],
+        "finance": ["finance", "financial", "accounting", "banking"],
+        "marketing": ["marketing", "sales", "digital marketing", "branding"],
+        "cybersecurity": ["cybersecurity", "cyber security", "information security", "network security", "cryptography"],
+        "biomedical engineering": ["biomedical engineering", "bioengineering", "biotech", "biotechnology"],
+        "medicine": ["medicine", "medical", "clinical", "healthcare", "health science", "biomedical"],
+        "nursing": ["nursing", "healthcare", "clinical nursing"],
+        "environmental engineering": ["environmental engineering", "environment", "sustainability", "sustainable", "ecology"],
+        "mechanical engineering": ["mechanical engineering", "robotics", "mechatronics", "automotive", "aerospace engineering"],
+    }
+    
+    for key, syns in synonyms.items():
+        if key in field_lower:
+            keywords.extend(syns)
+            
+    # Deduplicate and return
+    return list(set(keywords))
+
 def fallback_search(country, degree, field):
     """Use static country JSON data when Gemini is unavailable."""
     results = FALLBACK_COURSES
@@ -402,8 +430,11 @@ def fallback_search(country, degree, field):
     if degree:
         results = [c for c in results if degree.lower() in c.get("degree", "").lower()]
     if field:
-        fl = field.lower()
-        results = [c for c in results if fl in c.get("course", "").lower()]
+        keywords = get_search_keywords(field)
+        results = [
+            c for c in results 
+            if any(kw in c.get("course", "").lower() for kw in keywords)
+        ]
 
     total = len(results)
     formatted = []
