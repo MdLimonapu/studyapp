@@ -16,7 +16,7 @@ try:
         FALLBACK_COURSES = json.load(f)
 except FileNotFoundError:
     FALLBACK_COURSES = []
-    print("Warning: data/germany.json not found. Fallback search unavailable.")
+    print("Warning: data/germany.json not found. Fallback search unavailable.", flush=True)
 
 # ── Gemini AI setup ──────────────────────────────────────────────────────────
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
@@ -25,11 +25,11 @@ gemini_client = None
 if GEMINI_API_KEY:
     try:
         gemini_client = genai.Client(api_key=GEMINI_API_KEY)
-        print("✅ Gemini AI client initialised with google-genai SDK.")
+        print("✅ Gemini AI client initialised with google-genai SDK.", flush=True)
     except Exception as e:
-        print(f"⚠️  Gemini init failed: {e}")
+        print(f"⚠️  Gemini init failed: {e}", flush=True)
 else:
-    print("⚠️  GEMINI_API_KEY not set — falling back to static data.")
+    print("⚠️  GEMINI_API_KEY not set — falling back to static data.", flush=True)
 
 # ── Countries ────────────────────────────────────────────────────────────────
 COUNTRIES = [
@@ -202,7 +202,7 @@ Return ONLY the JSON array (no markdown fences)."""
         results = extract_json_array(response.text)
         return jsonify(results)
     except Exception as e:
-        print(f"News fetch failed: {e}")
+        print(f"News fetch failed: {e}", flush=True)
         return jsonify([])
 
 
@@ -252,7 +252,24 @@ def search():
             })
 
         except Exception as e:
-            print(f"Gemini search failed: {e} — falling back to static data.")
+            err_msg = str(e)
+            print(f"Gemini search failed: {err_msg} — falling back to static data.", flush=True)
+            
+            # Help user identify key/quota limits
+            notice = "Add a Gemini API key to enable AI-powered search for all countries."
+            if "RESOURCE_EXHAUSTED" in err_msg or "quota" in err_msg.lower():
+                notice = "Gemini API rate limit exceeded (RESOURCE_EXHAUSTED). Falling back to static data. Please try again in a few minutes."
+            elif "API_KEY_INVALID" in err_msg or "key not valid" in err_msg.lower():
+                notice = "The provided Gemini API key is invalid. Please check your Render configuration."
+
+            formatted, total, source = fallback_search(country, degree, field)
+            return jsonify({
+                "results":        formatted,
+                "total":          total,
+                "related_fields": [],
+                "source":         "static",
+                "fallback_notice": notice,
+            })
 
     # ── Fallback to static Germany JSON ─────────────────────────────────────
     formatted, total, source = fallback_search(country, degree, field)
