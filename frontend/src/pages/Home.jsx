@@ -28,7 +28,7 @@ const FALLBACK_NEWS = [
   {title:"KTH Stockholm opens applications for 60+ English Master programs", source:"kth.se", date:"Jan 2026", summary:"KTH offers world-class engineering and technology programs in English.", country:"Sweden"},
 ]
 
-const GERMANY_ONLY_COUNTRIES = ["UK", "USA", "Canada", "Australia", "Netherlands", "Sweden", "France", "Switzerland", "Japan"]
+const GERMANY_ONLY_COUNTRIES = []
 
 export default function Home() {
   const [countries, setCountries] = useState([])
@@ -92,7 +92,7 @@ export default function Home() {
 
   const isProfileComplete = (p) => p && p.fullName && p.fullName.trim() !== ''
 
-  const isGermanyOnly = form.country && GERMANY_ONLY_COUNTRIES.includes(form.country)
+  const isGermanyOnly = false
 
   const doSearch = async () => {
     setShowProfilePrompt(false)
@@ -158,9 +158,9 @@ export default function Home() {
               <option value="">Select country</option>
               {countries.map(c => <option key={c.name} value={c.name}>{c.flag} {c.name}</option>)}
             </select>
-            {isGermanyOnly && (
-              <p className="data-notice">⚠️ Only Germany data is currently available. Results for other countries coming soon.</p>
-            )}
+          {isGermanyOnly && (
+            <p className="data-notice">⚠️ Only Germany data is currently available. Results for other countries coming soon.</p>
+          )}
           </div>
           <div>
             <label>Degree level</label>
@@ -196,7 +196,7 @@ export default function Home() {
           </div>
           {error && <p className="error-msg">⚠️ {error}</p>}
           <button type="submit" disabled={loading}>
-            {loading ? <span className="spinner"></span> : 'Search universities →'}
+            {loading ? <span className="spinner"></span> : '🤖 Search with AI →'}
           </button>
           {!isProfileComplete(profile) && (
             <p className="profile-hint">💡 <span onClick={() => navigate('/profile')}>Complete your profile</span> for better matches</p>
