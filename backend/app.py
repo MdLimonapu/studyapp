@@ -20,15 +20,23 @@ except FileNotFoundError:
 
 # ── Gemini AI setup ──────────────────────────────────────────────────────────
 API_KEYS = []
+
+# Try parsing comma-separated list first
 keys_str = os.environ.get("GEMINI_API_KEYS", "")
 if keys_str:
-    # Try parsing comma-separated list of keys
     API_KEYS = [k.strip() for k in keys_str.split(",") if k.strip()]
-else:
-    # Fallback to single GEMINI_API_KEY
-    single_key = os.environ.get("GEMINI_API_KEY", "").strip()
-    if single_key:
-        API_KEYS = [single_key]
+
+# If no list is set, look for GEMINI_API_KEY and any numbered variants (GEMINI_API_KEY_1, GEMINI_API_KEY_2, etc.)
+if not API_KEYS:
+    main_key = os.environ.get("GEMINI_API_KEY", "").strip()
+    if main_key:
+        API_KEYS.append(main_key)
+
+for env_key in sorted(os.environ.keys()):
+    if env_key.startswith("GEMINI_API_KEY_"):
+        val = os.environ.get(env_key, "").strip()
+        if val and val not in API_KEYS:
+            API_KEYS.append(val)
 
 if API_KEYS:
     print(f"✅ Gemini AI key pool initialised with {len(API_KEYS)} key(s).", flush=True)
