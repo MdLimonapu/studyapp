@@ -1,0 +1,914 @@
+[
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "Master in Computer Science (Graduate School of Information Science)",
+    "degree": "Master",
+    "city": "Tokyo",
+    "link": "https://www.i.u-tokyo.ac.jp/edu/course/cs/index_e.shtml"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "Master in Intelligence Science and Technology",
+    "degree": "Master",
+    "city": "Kyoto",
+    "link": "https://www.i.kyoto-u.ac.jp/en/introduction/ist.html"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "MSc in Electrical Engineering",
+    "degree": "Master",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/electrical-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "BSc in Electrical Engineering",
+    "degree": "Bachelor",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/electrical-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "MSc in Computer Science",
+    "degree": "Master",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/computer-science"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "BSc in Computer Science",
+    "degree": "Bachelor",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/computer-science"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "MSc in Mechanical Engineering",
+    "degree": "Master",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/mechanical-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "BSc in Mechanical Engineering",
+    "degree": "Bachelor",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/mechanical-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "MSc in Data Science",
+    "degree": "Master",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/data-science"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "BSc in Data Science",
+    "degree": "Bachelor",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/data-science"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "MSc in Business Administration",
+    "degree": "Master",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/business-administration"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "BSc in Business Administration",
+    "degree": "Bachelor",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/business-administration"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "MSc in Medicine",
+    "degree": "Master",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/medicine"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "BSc in Medicine",
+    "degree": "Bachelor",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/medicine"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "MSc in Architecture",
+    "degree": "Master",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/architecture"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "BSc in Architecture",
+    "degree": "Bachelor",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/architecture"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "MSc in Civil Engineering",
+    "degree": "Master",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/civil-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "BSc in Civil Engineering",
+    "degree": "Bachelor",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/civil-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "MSc in Aerospace Engineering",
+    "degree": "Master",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/aerospace-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "BSc in Aerospace Engineering",
+    "degree": "Bachelor",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/aerospace-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "MSc in Biomedical Engineering",
+    "degree": "Master",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/biomedical-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "BSc in Biomedical Engineering",
+    "degree": "Bachelor",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/biomedical-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "MSc in Information Technology",
+    "degree": "Master",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/information-technology"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "BSc in Information Technology",
+    "degree": "Bachelor",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/information-technology"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "MSc in Artificial Intelligence",
+    "degree": "Master",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/artificial-intelligence"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "BSc in Artificial Intelligence",
+    "degree": "Bachelor",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/artificial-intelligence"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "MSc in Robotics",
+    "degree": "Master",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/robotics"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "BSc in Robotics",
+    "degree": "Bachelor",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/robotics"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "MSc in Environmental Engineering",
+    "degree": "Master",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/environmental-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "BSc in Environmental Engineering",
+    "degree": "Bachelor",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/environmental-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "MSc in Chemical Engineering",
+    "degree": "Master",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/chemical-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "BSc in Chemical Engineering",
+    "degree": "Bachelor",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/chemical-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "MSc in Physics",
+    "degree": "Master",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/physics"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "BSc in Physics",
+    "degree": "Bachelor",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/physics"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "MSc in Mathematics",
+    "degree": "Master",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/mathematics"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "BSc in Mathematics",
+    "degree": "Bachelor",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/mathematics"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "MSc in Economics",
+    "degree": "Master",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/economics"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "BSc in Economics",
+    "degree": "Bachelor",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/economics"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "MSc in Psychology",
+    "degree": "Master",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/psychology"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "BSc in Psychology",
+    "degree": "Bachelor",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/psychology"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "LLM in Law",
+    "degree": "Master",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/law"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "LLB in Law",
+    "degree": "Bachelor",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/law"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "MSc in Nursing",
+    "degree": "Master",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/nursing"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "BSc in Nursing",
+    "degree": "Bachelor",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/nursing"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "MSc in Embedded Systems",
+    "degree": "Master",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/embedded-systems"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "BSc in Embedded Systems",
+    "degree": "Bachelor",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/embedded-systems"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "MSc in Telecommunications",
+    "degree": "Master",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/telecommunications"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "BSc in Telecommunications",
+    "degree": "Bachelor",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/telecommunications"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "MSc in Power Systems",
+    "degree": "Master",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/power-systems"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "BSc in Power Systems",
+    "degree": "Bachelor",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/power-systems"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "MSc in Software Engineering",
+    "degree": "Master",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/software-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "BSc in Software Engineering",
+    "degree": "Bachelor",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/software-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "MSc in Cybersecurity",
+    "degree": "Master",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/cybersecurity"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "BSc in Cybersecurity",
+    "degree": "Bachelor",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/cybersecurity"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "MSc in Finance",
+    "degree": "Master",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/finance"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "BSc in Finance",
+    "degree": "Bachelor",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/finance"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "MSc in Marketing",
+    "degree": "Master",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/marketing"
+  },
+  {
+    "country": "Japan",
+    "uni": "Kyoto University",
+    "course": "BSc in Marketing",
+    "degree": "Bachelor",
+    "city": "Kyoto",
+    "link": "https://www.kyoto-u.ac.jp/courses/marketing"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "MSc in Electrical Engineering",
+    "degree": "Master",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/electrical-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "BSc in Electrical Engineering",
+    "degree": "Bachelor",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/electrical-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "MSc in Computer Science",
+    "degree": "Master",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/computer-science"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "BSc in Computer Science",
+    "degree": "Bachelor",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/computer-science"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "MSc in Mechanical Engineering",
+    "degree": "Master",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/mechanical-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "BSc in Mechanical Engineering",
+    "degree": "Bachelor",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/mechanical-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "MSc in Data Science",
+    "degree": "Master",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/data-science"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "BSc in Data Science",
+    "degree": "Bachelor",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/data-science"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "MSc in Business Administration",
+    "degree": "Master",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/business-administration"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "BSc in Business Administration",
+    "degree": "Bachelor",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/business-administration"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "MSc in Medicine",
+    "degree": "Master",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/medicine"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "BSc in Medicine",
+    "degree": "Bachelor",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/medicine"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "MSc in Architecture",
+    "degree": "Master",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/architecture"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "BSc in Architecture",
+    "degree": "Bachelor",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/architecture"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "MSc in Civil Engineering",
+    "degree": "Master",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/civil-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "BSc in Civil Engineering",
+    "degree": "Bachelor",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/civil-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "MSc in Aerospace Engineering",
+    "degree": "Master",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/aerospace-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "BSc in Aerospace Engineering",
+    "degree": "Bachelor",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/aerospace-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "MSc in Biomedical Engineering",
+    "degree": "Master",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/biomedical-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "BSc in Biomedical Engineering",
+    "degree": "Bachelor",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/biomedical-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "MSc in Information Technology",
+    "degree": "Master",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/information-technology"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "BSc in Information Technology",
+    "degree": "Bachelor",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/information-technology"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "MSc in Artificial Intelligence",
+    "degree": "Master",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/artificial-intelligence"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "BSc in Artificial Intelligence",
+    "degree": "Bachelor",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/artificial-intelligence"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "MSc in Robotics",
+    "degree": "Master",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/robotics"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "BSc in Robotics",
+    "degree": "Bachelor",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/robotics"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "MSc in Environmental Engineering",
+    "degree": "Master",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/environmental-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "BSc in Environmental Engineering",
+    "degree": "Bachelor",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/environmental-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "MSc in Chemical Engineering",
+    "degree": "Master",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/chemical-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "BSc in Chemical Engineering",
+    "degree": "Bachelor",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/chemical-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "MSc in Physics",
+    "degree": "Master",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/physics"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "BSc in Physics",
+    "degree": "Bachelor",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/physics"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "MSc in Mathematics",
+    "degree": "Master",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/mathematics"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "BSc in Mathematics",
+    "degree": "Bachelor",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/mathematics"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "MSc in Economics",
+    "degree": "Master",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/economics"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "BSc in Economics",
+    "degree": "Bachelor",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/economics"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "MSc in Psychology",
+    "degree": "Master",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/psychology"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "BSc in Psychology",
+    "degree": "Bachelor",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/psychology"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "LLM in Law",
+    "degree": "Master",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/law"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "LLB in Law",
+    "degree": "Bachelor",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/law"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "MSc in Nursing",
+    "degree": "Master",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/nursing"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "BSc in Nursing",
+    "degree": "Bachelor",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/nursing"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "MSc in Embedded Systems",
+    "degree": "Master",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/embedded-systems"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "BSc in Embedded Systems",
+    "degree": "Bachelor",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/embedded-systems"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "MSc in Telecommunications",
+    "degree": "Master",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/telecommunications"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "BSc in Telecommunications",
+    "degree": "Bachelor",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/telecommunications"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "MSc in Power Systems",
+    "degree": "Master",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/power-systems"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "BSc in Power Systems",
+    "degree": "Bachelor",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/power-systems"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "MSc in Software Engineering",
+    "degree": "Master",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/software-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "BSc in Software Engineering",
+    "degree": "Bachelor",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/software-engineering"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "MSc in Cybersecurity",
+    "degree": "Master",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/cybersecurity"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "BSc in Cybersecurity",
+    "degree": "Bachelor",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/cybersecurity"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "MSc in Finance",
+    "degree": "Master",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/finance"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "BSc in Finance",
+    "degree": "Bachelor",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/finance"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "MSc in Marketing",
+    "degree": "Master",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/marketing"
+  },
+  {
+    "country": "Japan",
+    "uni": "University of Tokyo",
+    "course": "BSc in Marketing",
+    "degree": "Bachelor",
+    "city": "Tokyo",
+    "link": "https://www.u-tokyo.ac.jp/courses/marketing"
+  }
+]

@@ -1,0 +1,898 @@
+[
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MSc in Computer Science",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://inf.ethz.ch/studies/master/master-computer-science.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Computer Science",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://inf.ethz.ch/studies/bachelor.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Computer Science",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/computer-science/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Data Science",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/data-science/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MSc in Electrical Engineering",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/electrical-engineering.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Electrical Engineering",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/electrical-engineering.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MSc in Mechanical Engineering",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/mechanical-engineering.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Mechanical Engineering",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/mechanical-engineering.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MSc in Data Science",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/data-science.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Data Science",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/data-science.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MSc in Business Administration",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/business-administration.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Business Administration",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/business-administration.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MSc in Medicine",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/medicine.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Medicine",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/medicine.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MSc in Architecture",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/architecture.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Architecture",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/architecture.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MSc in Civil Engineering",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/civil-engineering.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Civil Engineering",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/civil-engineering.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MSc in Aerospace Engineering",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/aerospace-engineering.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Aerospace Engineering",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/aerospace-engineering.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MSc in Biomedical Engineering",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/biomedical-engineering.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Biomedical Engineering",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/biomedical-engineering.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MSc in Information Technology",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/information-technology.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Information Technology",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/information-technology.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MSc in Artificial Intelligence",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/artificial-intelligence.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Artificial Intelligence",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/artificial-intelligence.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MSc in Robotics",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/robotics.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Robotics",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/robotics.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MSc in Environmental Engineering",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/environmental-engineering.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Environmental Engineering",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/environmental-engineering.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MSc in Chemical Engineering",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/chemical-engineering.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Chemical Engineering",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/chemical-engineering.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MSc in Physics",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/physics.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Physics",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/physics.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MSc in Mathematics",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/mathematics.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Mathematics",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/mathematics.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MSc in Economics",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/economics.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Economics",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/economics.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MSc in Psychology",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/psychology.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Psychology",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/psychology.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "LLM in Law",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/law.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "LLB in Law",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/law.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MSc in Nursing",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/nursing.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Nursing",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/nursing.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MSc in Embedded Systems",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/embedded-systems.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Embedded Systems",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/embedded-systems.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MSc in Telecommunications",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/telecommunications.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Telecommunications",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/telecommunications.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MSc in Power Systems",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/power-systems.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Power Systems",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/power-systems.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MSc in Software Engineering",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/software-engineering.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Software Engineering",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/software-engineering.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MSc in Cybersecurity",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/cybersecurity.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Cybersecurity",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/cybersecurity.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MSc in Finance",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/finance.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Finance",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/finance.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MSc in Marketing",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/marketing.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Marketing",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/marketing.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Electrical Engineering",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/electrical-engineering/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Electrical Engineering",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/electrical-engineering/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Computer Science",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/computer-science/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Mechanical Engineering",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/mechanical-engineering/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Mechanical Engineering",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/mechanical-engineering/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Data Science",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/data-science/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Business Administration",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/business-administration/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Business Administration",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/business-administration/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Medicine",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/medicine/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Medicine",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/medicine/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Architecture",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/architecture/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Architecture",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/architecture/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Civil Engineering",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/civil-engineering/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Civil Engineering",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/civil-engineering/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Aerospace Engineering",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/aerospace-engineering/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Aerospace Engineering",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/aerospace-engineering/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Biomedical Engineering",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/biomedical-engineering/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Biomedical Engineering",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/biomedical-engineering/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Information Technology",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/information-technology/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Information Technology",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/information-technology/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Artificial Intelligence",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/artificial-intelligence/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Artificial Intelligence",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/artificial-intelligence/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Robotics",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/robotics/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Robotics",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/robotics/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Environmental Engineering",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/environmental-engineering/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Environmental Engineering",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/environmental-engineering/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Chemical Engineering",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/chemical-engineering/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Chemical Engineering",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/chemical-engineering/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Physics",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/physics/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Physics",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/physics/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Mathematics",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/mathematics/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Mathematics",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/mathematics/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Economics",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/economics/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Economics",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/economics/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Psychology",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/psychology/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Psychology",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/psychology/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "LLM in Law",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/law/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "LLB in Law",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/law/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Nursing",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/nursing/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Nursing",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/nursing/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Embedded Systems",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/embedded-systems/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Embedded Systems",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/embedded-systems/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Telecommunications",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/telecommunications/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Telecommunications",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/telecommunications/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Power Systems",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/power-systems/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Power Systems",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/power-systems/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Software Engineering",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/software-engineering/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Software Engineering",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/software-engineering/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Cybersecurity",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/cybersecurity/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Cybersecurity",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/cybersecurity/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Finance",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/finance/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Finance",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/finance/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Marketing",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/marketing/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Marketing",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/marketing/"
+  }
+]

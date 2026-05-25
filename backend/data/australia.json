@@ -1,0 +1,1842 @@
+[
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "Master of Computer Science",
+    "degree": "Master",
+    "city": "Melbourne",
+    "link": "https://study.unimelb.edu.au/find/courses/graduate/master-of-computer-science/"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "Bachelor of Science (Computer Science)",
+    "degree": "Bachelor",
+    "city": "Melbourne",
+    "link": "https://study.unimelb.edu.au/find/courses/major/computer-science/"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "Master of Computer Science",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/courses/pc/master-of-computer-science.html"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "Bachelor of Advanced Computing",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/courses/uc/bachelor-of-advanced-computing.html"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "Master of Computing",
+    "degree": "Master",
+    "city": "Canberra",
+    "link": "https://programsandcourses.anu.edu.au/program/mcomp"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "Master of Information Technology",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/study/postgraduate/master-of-information-technology"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "MSc in Electrical Engineering",
+    "degree": "Master",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/electrical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "BSc in Electrical Engineering",
+    "degree": "Bachelor",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/electrical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "MSc in Computer Science",
+    "degree": "Master",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/computer-science"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "BSc in Computer Science",
+    "degree": "Bachelor",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/computer-science"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "MSc in Mechanical Engineering",
+    "degree": "Master",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/mechanical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "BSc in Mechanical Engineering",
+    "degree": "Bachelor",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/mechanical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "MSc in Data Science",
+    "degree": "Master",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/data-science"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "BSc in Data Science",
+    "degree": "Bachelor",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/data-science"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "MSc in Business Administration",
+    "degree": "Master",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/business-administration"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "BSc in Business Administration",
+    "degree": "Bachelor",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/business-administration"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "MSc in Medicine",
+    "degree": "Master",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/medicine"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "BSc in Medicine",
+    "degree": "Bachelor",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/medicine"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "MSc in Architecture",
+    "degree": "Master",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/architecture"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "BSc in Architecture",
+    "degree": "Bachelor",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/architecture"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "MSc in Civil Engineering",
+    "degree": "Master",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/civil-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "BSc in Civil Engineering",
+    "degree": "Bachelor",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/civil-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "MSc in Aerospace Engineering",
+    "degree": "Master",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/aerospace-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "BSc in Aerospace Engineering",
+    "degree": "Bachelor",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/aerospace-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "MSc in Biomedical Engineering",
+    "degree": "Master",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/biomedical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "BSc in Biomedical Engineering",
+    "degree": "Bachelor",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/biomedical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "MSc in Information Technology",
+    "degree": "Master",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/information-technology"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "BSc in Information Technology",
+    "degree": "Bachelor",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/information-technology"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "MSc in Artificial Intelligence",
+    "degree": "Master",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/artificial-intelligence"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "BSc in Artificial Intelligence",
+    "degree": "Bachelor",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/artificial-intelligence"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "MSc in Robotics",
+    "degree": "Master",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/robotics"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "BSc in Robotics",
+    "degree": "Bachelor",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/robotics"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "MSc in Environmental Engineering",
+    "degree": "Master",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/environmental-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "BSc in Environmental Engineering",
+    "degree": "Bachelor",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/environmental-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "MSc in Chemical Engineering",
+    "degree": "Master",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/chemical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "BSc in Chemical Engineering",
+    "degree": "Bachelor",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/chemical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "MSc in Physics",
+    "degree": "Master",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/physics"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "BSc in Physics",
+    "degree": "Bachelor",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/physics"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "MSc in Mathematics",
+    "degree": "Master",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/mathematics"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "BSc in Mathematics",
+    "degree": "Bachelor",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/mathematics"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "MSc in Economics",
+    "degree": "Master",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/economics"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "BSc in Economics",
+    "degree": "Bachelor",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/economics"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "MSc in Psychology",
+    "degree": "Master",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/psychology"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "BSc in Psychology",
+    "degree": "Bachelor",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/psychology"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "LLM in Law",
+    "degree": "Master",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/law"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "LLB in Law",
+    "degree": "Bachelor",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/law"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "MSc in Nursing",
+    "degree": "Master",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/nursing"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "BSc in Nursing",
+    "degree": "Bachelor",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/nursing"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "MSc in Embedded Systems",
+    "degree": "Master",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/embedded-systems"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "BSc in Embedded Systems",
+    "degree": "Bachelor",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/embedded-systems"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "MSc in Telecommunications",
+    "degree": "Master",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/telecommunications"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "BSc in Telecommunications",
+    "degree": "Bachelor",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/telecommunications"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "MSc in Power Systems",
+    "degree": "Master",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/power-systems"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "BSc in Power Systems",
+    "degree": "Bachelor",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/power-systems"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "MSc in Software Engineering",
+    "degree": "Master",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/software-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "BSc in Software Engineering",
+    "degree": "Bachelor",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/software-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "MSc in Cybersecurity",
+    "degree": "Master",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/cybersecurity"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "BSc in Cybersecurity",
+    "degree": "Bachelor",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/cybersecurity"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "MSc in Finance",
+    "degree": "Master",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/finance"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "BSc in Finance",
+    "degree": "Bachelor",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/finance"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "MSc in Marketing",
+    "degree": "Master",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/marketing"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Melbourne",
+    "course": "BSc in Marketing",
+    "degree": "Bachelor",
+    "city": "Melbourne",
+    "link": "https://www.unimelb.edu.au/courses/marketing"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "MSc in Electrical Engineering",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/electrical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "BSc in Electrical Engineering",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/electrical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "MSc in Computer Science",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/computer-science"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "BSc in Computer Science",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/computer-science"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "MSc in Mechanical Engineering",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/mechanical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "BSc in Mechanical Engineering",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/mechanical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "MSc in Data Science",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/data-science"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "BSc in Data Science",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/data-science"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "MSc in Business Administration",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/business-administration"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "BSc in Business Administration",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/business-administration"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "MSc in Medicine",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/medicine"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "BSc in Medicine",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/medicine"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "MSc in Architecture",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/architecture"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "BSc in Architecture",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/architecture"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "MSc in Civil Engineering",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/civil-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "BSc in Civil Engineering",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/civil-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "MSc in Aerospace Engineering",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/aerospace-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "BSc in Aerospace Engineering",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/aerospace-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "MSc in Biomedical Engineering",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/biomedical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "BSc in Biomedical Engineering",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/biomedical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "MSc in Information Technology",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/information-technology"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "BSc in Information Technology",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/information-technology"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "MSc in Artificial Intelligence",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/artificial-intelligence"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "BSc in Artificial Intelligence",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/artificial-intelligence"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "MSc in Robotics",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/robotics"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "BSc in Robotics",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/robotics"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "MSc in Environmental Engineering",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/environmental-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "BSc in Environmental Engineering",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/environmental-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "MSc in Chemical Engineering",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/chemical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "BSc in Chemical Engineering",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/chemical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "MSc in Physics",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/physics"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "BSc in Physics",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/physics"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "MSc in Mathematics",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/mathematics"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "BSc in Mathematics",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/mathematics"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "MSc in Economics",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/economics"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "BSc in Economics",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/economics"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "MSc in Psychology",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/psychology"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "BSc in Psychology",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/psychology"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "LLM in Law",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/law"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "LLB in Law",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/law"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "MSc in Nursing",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/nursing"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "BSc in Nursing",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/nursing"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "MSc in Embedded Systems",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/embedded-systems"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "BSc in Embedded Systems",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/embedded-systems"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "MSc in Telecommunications",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/telecommunications"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "BSc in Telecommunications",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/telecommunications"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "MSc in Power Systems",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/power-systems"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "BSc in Power Systems",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/power-systems"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "MSc in Software Engineering",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/software-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "BSc in Software Engineering",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/software-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "MSc in Cybersecurity",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/cybersecurity"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "BSc in Cybersecurity",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/cybersecurity"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "MSc in Finance",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/finance"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "BSc in Finance",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/finance"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "MSc in Marketing",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/marketing"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of Sydney",
+    "course": "BSc in Marketing",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.sydney.edu.au/courses/marketing"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "MSc in Electrical Engineering",
+    "degree": "Master",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/electrical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "BSc in Electrical Engineering",
+    "degree": "Bachelor",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/electrical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "MSc in Computer Science",
+    "degree": "Master",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/computer-science"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "BSc in Computer Science",
+    "degree": "Bachelor",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/computer-science"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "MSc in Mechanical Engineering",
+    "degree": "Master",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/mechanical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "BSc in Mechanical Engineering",
+    "degree": "Bachelor",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/mechanical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "MSc in Data Science",
+    "degree": "Master",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/data-science"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "BSc in Data Science",
+    "degree": "Bachelor",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/data-science"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "MSc in Business Administration",
+    "degree": "Master",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/business-administration"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "BSc in Business Administration",
+    "degree": "Bachelor",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/business-administration"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "MSc in Medicine",
+    "degree": "Master",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/medicine"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "BSc in Medicine",
+    "degree": "Bachelor",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/medicine"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "MSc in Architecture",
+    "degree": "Master",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/architecture"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "BSc in Architecture",
+    "degree": "Bachelor",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/architecture"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "MSc in Civil Engineering",
+    "degree": "Master",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/civil-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "BSc in Civil Engineering",
+    "degree": "Bachelor",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/civil-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "MSc in Aerospace Engineering",
+    "degree": "Master",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/aerospace-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "BSc in Aerospace Engineering",
+    "degree": "Bachelor",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/aerospace-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "MSc in Biomedical Engineering",
+    "degree": "Master",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/biomedical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "BSc in Biomedical Engineering",
+    "degree": "Bachelor",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/biomedical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "MSc in Information Technology",
+    "degree": "Master",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/information-technology"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "BSc in Information Technology",
+    "degree": "Bachelor",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/information-technology"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "MSc in Artificial Intelligence",
+    "degree": "Master",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/artificial-intelligence"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "BSc in Artificial Intelligence",
+    "degree": "Bachelor",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/artificial-intelligence"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "MSc in Robotics",
+    "degree": "Master",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/robotics"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "BSc in Robotics",
+    "degree": "Bachelor",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/robotics"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "MSc in Environmental Engineering",
+    "degree": "Master",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/environmental-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "BSc in Environmental Engineering",
+    "degree": "Bachelor",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/environmental-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "MSc in Chemical Engineering",
+    "degree": "Master",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/chemical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "BSc in Chemical Engineering",
+    "degree": "Bachelor",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/chemical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "MSc in Physics",
+    "degree": "Master",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/physics"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "BSc in Physics",
+    "degree": "Bachelor",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/physics"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "MSc in Mathematics",
+    "degree": "Master",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/mathematics"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "BSc in Mathematics",
+    "degree": "Bachelor",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/mathematics"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "MSc in Economics",
+    "degree": "Master",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/economics"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "BSc in Economics",
+    "degree": "Bachelor",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/economics"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "MSc in Psychology",
+    "degree": "Master",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/psychology"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "BSc in Psychology",
+    "degree": "Bachelor",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/psychology"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "LLM in Law",
+    "degree": "Master",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/law"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "LLB in Law",
+    "degree": "Bachelor",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/law"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "MSc in Nursing",
+    "degree": "Master",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/nursing"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "BSc in Nursing",
+    "degree": "Bachelor",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/nursing"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "MSc in Embedded Systems",
+    "degree": "Master",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/embedded-systems"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "BSc in Embedded Systems",
+    "degree": "Bachelor",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/embedded-systems"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "MSc in Telecommunications",
+    "degree": "Master",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/telecommunications"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "BSc in Telecommunications",
+    "degree": "Bachelor",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/telecommunications"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "MSc in Power Systems",
+    "degree": "Master",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/power-systems"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "BSc in Power Systems",
+    "degree": "Bachelor",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/power-systems"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "MSc in Software Engineering",
+    "degree": "Master",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/software-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "BSc in Software Engineering",
+    "degree": "Bachelor",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/software-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "MSc in Cybersecurity",
+    "degree": "Master",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/cybersecurity"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "BSc in Cybersecurity",
+    "degree": "Bachelor",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/cybersecurity"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "MSc in Finance",
+    "degree": "Master",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/finance"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "BSc in Finance",
+    "degree": "Bachelor",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/finance"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "MSc in Marketing",
+    "degree": "Master",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/marketing"
+  },
+  {
+    "country": "Australia",
+    "uni": "Australian National University",
+    "course": "BSc in Marketing",
+    "degree": "Bachelor",
+    "city": "Canberra",
+    "link": "https://www.anu.edu.au/courses/marketing"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "MSc in Electrical Engineering",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/electrical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "BSc in Electrical Engineering",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/electrical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "MSc in Computer Science",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/computer-science"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "BSc in Computer Science",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/computer-science"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "MSc in Mechanical Engineering",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/mechanical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "BSc in Mechanical Engineering",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/mechanical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "MSc in Data Science",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/data-science"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "BSc in Data Science",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/data-science"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "MSc in Business Administration",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/business-administration"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "BSc in Business Administration",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/business-administration"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "MSc in Medicine",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/medicine"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "BSc in Medicine",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/medicine"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "MSc in Architecture",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/architecture"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "BSc in Architecture",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/architecture"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "MSc in Civil Engineering",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/civil-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "BSc in Civil Engineering",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/civil-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "MSc in Aerospace Engineering",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/aerospace-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "BSc in Aerospace Engineering",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/aerospace-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "MSc in Biomedical Engineering",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/biomedical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "BSc in Biomedical Engineering",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/biomedical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "MSc in Information Technology",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/information-technology"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "BSc in Information Technology",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/information-technology"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "MSc in Artificial Intelligence",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/artificial-intelligence"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "BSc in Artificial Intelligence",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/artificial-intelligence"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "MSc in Robotics",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/robotics"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "BSc in Robotics",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/robotics"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "MSc in Environmental Engineering",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/environmental-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "BSc in Environmental Engineering",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/environmental-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "MSc in Chemical Engineering",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/chemical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "BSc in Chemical Engineering",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/chemical-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "MSc in Physics",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/physics"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "BSc in Physics",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/physics"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "MSc in Mathematics",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/mathematics"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "BSc in Mathematics",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/mathematics"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "MSc in Economics",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/economics"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "BSc in Economics",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/economics"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "MSc in Psychology",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/psychology"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "BSc in Psychology",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/psychology"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "LLM in Law",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/law"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "LLB in Law",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/law"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "MSc in Nursing",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/nursing"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "BSc in Nursing",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/nursing"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "MSc in Embedded Systems",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/embedded-systems"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "BSc in Embedded Systems",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/embedded-systems"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "MSc in Telecommunications",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/telecommunications"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "BSc in Telecommunications",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/telecommunications"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "MSc in Power Systems",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/power-systems"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "BSc in Power Systems",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/power-systems"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "MSc in Software Engineering",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/software-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "BSc in Software Engineering",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/software-engineering"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "MSc in Cybersecurity",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/cybersecurity"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "BSc in Cybersecurity",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/cybersecurity"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "MSc in Finance",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/finance"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "BSc in Finance",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/finance"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "MSc in Marketing",
+    "degree": "Master",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/marketing"
+  },
+  {
+    "country": "Australia",
+    "uni": "University of New South Wales",
+    "course": "BSc in Marketing",
+    "degree": "Bachelor",
+    "city": "Sydney",
+    "link": "https://www.unsw.edu.au/courses/marketing"
+  }
+]

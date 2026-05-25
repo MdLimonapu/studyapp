@@ -1,0 +1,3210 @@
+[
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "MSc in Computer Science",
+    "degree": "Master",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/graduate/courses/msc-computer-science"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "MSc in Mathematical and Theoretical Physics",
+    "degree": "Master",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/graduate/courses/msc-mathematical-and-theoretical-physics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "MSc in Software Engineering",
+    "degree": "Master",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/graduate/courses/msc-software-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "BA in Computer Science",
+    "degree": "Bachelor",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/undergraduate/courses-course-listing/computer-science"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "MPhil in Advanced Computer Science",
+    "degree": "Master",
+    "city": "Cambridge",
+    "link": "https://www.postgraduate.study.cam.ac.uk/courses/directory/cscsampac"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "BA in Computer Science",
+    "degree": "Bachelor",
+    "city": "Cambridge",
+    "link": "https://www.undergraduate.study.cam.ac.uk/courses/computer-science"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "BA in Engineering (Electrical)",
+    "degree": "Bachelor",
+    "city": "Cambridge",
+    "link": "https://www.undergraduate.study.cam.ac.uk/courses/engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "MSc in Computing (Software Engineering)",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/pg/computing/computing-software-engineering/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "MSc in Control and Development (Electrical)",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/pg/electrical-engineering/control-systems/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "BEng in Computing",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/ug/courses/computing-department/computing-beng/"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "MSc in Computer Science",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/graduate/taught-degrees/computer-science-msc"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "MSc in Data Science",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/graduate/taught-degrees/data-science-msc"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "BSc in Computer Science",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/undergraduate/degrees/computer-science-bsc"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "MSc in Computer Science",
+    "degree": "Master",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/studying/postgraduate/degrees/index.php?r=site/view&edition=2026&id=107"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "BSc in Computer Science",
+    "degree": "Bachelor",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/studying/undergraduate/degrees/index.php?action=view&code=G400"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "MSc in Advanced Computing",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/study/postgraduate-taught/courses/advanced-computing-msc"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "MSc in Computer Science",
+    "degree": "Master",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/study/masters/courses/list/08058/msc-computer-science/"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "MSc in Electrical Engineering",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/electrical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "BSc in Electrical Engineering",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/electrical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "MSc in Computer Science",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/computer-science"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "BSc in Computer Science",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/computer-science"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "MSc in Mechanical Engineering",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/mechanical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "BSc in Mechanical Engineering",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/mechanical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "MSc in Data Science",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/data-science"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "BSc in Data Science",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/data-science"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "MSc in Business Administration",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/business-administration"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "BSc in Business Administration",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/business-administration"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "MSc in Medicine",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/medicine"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "BSc in Medicine",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/medicine"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "MSc in Architecture",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/architecture"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "BSc in Architecture",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/architecture"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "MSc in Civil Engineering",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/civil-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "BSc in Civil Engineering",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/civil-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "MSc in Aerospace Engineering",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/aerospace-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "BSc in Aerospace Engineering",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/aerospace-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "MSc in Biomedical Engineering",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/biomedical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "BSc in Biomedical Engineering",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/biomedical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "MSc in Information Technology",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/information-technology"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "BSc in Information Technology",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/information-technology"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "MSc in Artificial Intelligence",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/artificial-intelligence"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "BSc in Artificial Intelligence",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/artificial-intelligence"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "MSc in Robotics",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/robotics"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "BSc in Robotics",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/robotics"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "MSc in Environmental Engineering",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/environmental-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "BSc in Environmental Engineering",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/environmental-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "MSc in Chemical Engineering",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/chemical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "BSc in Chemical Engineering",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/chemical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "MSc in Physics",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/physics"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "BSc in Physics",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/physics"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "MSc in Mathematics",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/mathematics"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "BSc in Mathematics",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/mathematics"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "MSc in Economics",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/economics"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "BSc in Economics",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/economics"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "MSc in Psychology",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/psychology"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "BSc in Psychology",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/psychology"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "LLM in Law",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/law"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "LLB in Law",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/law"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "MSc in Nursing",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/nursing"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "BSc in Nursing",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/nursing"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "MSc in Embedded Systems",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/embedded-systems"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "BSc in Embedded Systems",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/embedded-systems"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "MSc in Telecommunications",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/telecommunications"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "BSc in Telecommunications",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/telecommunications"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "MSc in Power Systems",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/power-systems"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "BSc in Power Systems",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/power-systems"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "MSc in Software Engineering",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/software-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "BSc in Software Engineering",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/software-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "MSc in Cybersecurity",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/cybersecurity"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "BSc in Cybersecurity",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/cybersecurity"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "MSc in Finance",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/finance"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "BSc in Finance",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/finance"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "MSc in Marketing",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/marketing"
+  },
+  {
+    "country": "UK",
+    "uni": "King's College London",
+    "course": "BSc in Marketing",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.kcl.ac.uk/courses/marketing"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "MSc in Electrical Engineering",
+    "degree": "Master",
+    "city": "Cambridge",
+    "link": "https://www.postgraduate.study.cam.ac.uk/courses/directory/electrical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "BSc in Electrical Engineering",
+    "degree": "Bachelor",
+    "city": "Cambridge",
+    "link": "https://www.undergraduate.study.cam.ac.uk/courses/electrical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "MSc in Computer Science",
+    "degree": "Master",
+    "city": "Cambridge",
+    "link": "https://www.postgraduate.study.cam.ac.uk/courses/directory/computer-science"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "BSc in Computer Science",
+    "degree": "Bachelor",
+    "city": "Cambridge",
+    "link": "https://www.undergraduate.study.cam.ac.uk/courses/computer-science"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "MSc in Mechanical Engineering",
+    "degree": "Master",
+    "city": "Cambridge",
+    "link": "https://www.postgraduate.study.cam.ac.uk/courses/directory/mechanical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "BSc in Mechanical Engineering",
+    "degree": "Bachelor",
+    "city": "Cambridge",
+    "link": "https://www.undergraduate.study.cam.ac.uk/courses/mechanical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "MSc in Data Science",
+    "degree": "Master",
+    "city": "Cambridge",
+    "link": "https://www.postgraduate.study.cam.ac.uk/courses/directory/data-science"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "BSc in Data Science",
+    "degree": "Bachelor",
+    "city": "Cambridge",
+    "link": "https://www.undergraduate.study.cam.ac.uk/courses/data-science"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "MSc in Business Administration",
+    "degree": "Master",
+    "city": "Cambridge",
+    "link": "https://www.postgraduate.study.cam.ac.uk/courses/directory/business-administration"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "BSc in Business Administration",
+    "degree": "Bachelor",
+    "city": "Cambridge",
+    "link": "https://www.undergraduate.study.cam.ac.uk/courses/business-administration"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "MSc in Medicine",
+    "degree": "Master",
+    "city": "Cambridge",
+    "link": "https://www.postgraduate.study.cam.ac.uk/courses/directory/medicine"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "BSc in Medicine",
+    "degree": "Bachelor",
+    "city": "Cambridge",
+    "link": "https://www.undergraduate.study.cam.ac.uk/courses/medicine"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "MSc in Architecture",
+    "degree": "Master",
+    "city": "Cambridge",
+    "link": "https://www.postgraduate.study.cam.ac.uk/courses/directory/architecture"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "BSc in Architecture",
+    "degree": "Bachelor",
+    "city": "Cambridge",
+    "link": "https://www.undergraduate.study.cam.ac.uk/courses/architecture"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "MSc in Civil Engineering",
+    "degree": "Master",
+    "city": "Cambridge",
+    "link": "https://www.postgraduate.study.cam.ac.uk/courses/directory/civil-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "BSc in Civil Engineering",
+    "degree": "Bachelor",
+    "city": "Cambridge",
+    "link": "https://www.undergraduate.study.cam.ac.uk/courses/civil-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "MSc in Aerospace Engineering",
+    "degree": "Master",
+    "city": "Cambridge",
+    "link": "https://www.postgraduate.study.cam.ac.uk/courses/directory/aerospace-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "BSc in Aerospace Engineering",
+    "degree": "Bachelor",
+    "city": "Cambridge",
+    "link": "https://www.undergraduate.study.cam.ac.uk/courses/aerospace-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "MSc in Biomedical Engineering",
+    "degree": "Master",
+    "city": "Cambridge",
+    "link": "https://www.postgraduate.study.cam.ac.uk/courses/directory/biomedical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "BSc in Biomedical Engineering",
+    "degree": "Bachelor",
+    "city": "Cambridge",
+    "link": "https://www.undergraduate.study.cam.ac.uk/courses/biomedical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "MSc in Information Technology",
+    "degree": "Master",
+    "city": "Cambridge",
+    "link": "https://www.postgraduate.study.cam.ac.uk/courses/directory/information-technology"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "BSc in Information Technology",
+    "degree": "Bachelor",
+    "city": "Cambridge",
+    "link": "https://www.undergraduate.study.cam.ac.uk/courses/information-technology"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "MSc in Artificial Intelligence",
+    "degree": "Master",
+    "city": "Cambridge",
+    "link": "https://www.postgraduate.study.cam.ac.uk/courses/directory/artificial-intelligence"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "BSc in Artificial Intelligence",
+    "degree": "Bachelor",
+    "city": "Cambridge",
+    "link": "https://www.undergraduate.study.cam.ac.uk/courses/artificial-intelligence"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "MSc in Robotics",
+    "degree": "Master",
+    "city": "Cambridge",
+    "link": "https://www.postgraduate.study.cam.ac.uk/courses/directory/robotics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "BSc in Robotics",
+    "degree": "Bachelor",
+    "city": "Cambridge",
+    "link": "https://www.undergraduate.study.cam.ac.uk/courses/robotics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "MSc in Environmental Engineering",
+    "degree": "Master",
+    "city": "Cambridge",
+    "link": "https://www.postgraduate.study.cam.ac.uk/courses/directory/environmental-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "BSc in Environmental Engineering",
+    "degree": "Bachelor",
+    "city": "Cambridge",
+    "link": "https://www.undergraduate.study.cam.ac.uk/courses/environmental-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "MSc in Chemical Engineering",
+    "degree": "Master",
+    "city": "Cambridge",
+    "link": "https://www.postgraduate.study.cam.ac.uk/courses/directory/chemical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "BSc in Chemical Engineering",
+    "degree": "Bachelor",
+    "city": "Cambridge",
+    "link": "https://www.undergraduate.study.cam.ac.uk/courses/chemical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "MSc in Physics",
+    "degree": "Master",
+    "city": "Cambridge",
+    "link": "https://www.postgraduate.study.cam.ac.uk/courses/directory/physics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "BSc in Physics",
+    "degree": "Bachelor",
+    "city": "Cambridge",
+    "link": "https://www.undergraduate.study.cam.ac.uk/courses/physics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "MSc in Mathematics",
+    "degree": "Master",
+    "city": "Cambridge",
+    "link": "https://www.postgraduate.study.cam.ac.uk/courses/directory/mathematics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "BSc in Mathematics",
+    "degree": "Bachelor",
+    "city": "Cambridge",
+    "link": "https://www.undergraduate.study.cam.ac.uk/courses/mathematics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "MSc in Economics",
+    "degree": "Master",
+    "city": "Cambridge",
+    "link": "https://www.postgraduate.study.cam.ac.uk/courses/directory/economics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "BSc in Economics",
+    "degree": "Bachelor",
+    "city": "Cambridge",
+    "link": "https://www.undergraduate.study.cam.ac.uk/courses/economics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "MSc in Psychology",
+    "degree": "Master",
+    "city": "Cambridge",
+    "link": "https://www.postgraduate.study.cam.ac.uk/courses/directory/psychology"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "BSc in Psychology",
+    "degree": "Bachelor",
+    "city": "Cambridge",
+    "link": "https://www.undergraduate.study.cam.ac.uk/courses/psychology"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "LLM in Law",
+    "degree": "Master",
+    "city": "Cambridge",
+    "link": "https://www.postgraduate.study.cam.ac.uk/courses/directory/law"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "LLB in Law",
+    "degree": "Bachelor",
+    "city": "Cambridge",
+    "link": "https://www.undergraduate.study.cam.ac.uk/courses/law"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "MSc in Nursing",
+    "degree": "Master",
+    "city": "Cambridge",
+    "link": "https://www.postgraduate.study.cam.ac.uk/courses/directory/nursing"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "BSc in Nursing",
+    "degree": "Bachelor",
+    "city": "Cambridge",
+    "link": "https://www.undergraduate.study.cam.ac.uk/courses/nursing"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "MSc in Embedded Systems",
+    "degree": "Master",
+    "city": "Cambridge",
+    "link": "https://www.postgraduate.study.cam.ac.uk/courses/directory/embedded-systems"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "BSc in Embedded Systems",
+    "degree": "Bachelor",
+    "city": "Cambridge",
+    "link": "https://www.undergraduate.study.cam.ac.uk/courses/embedded-systems"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "MSc in Telecommunications",
+    "degree": "Master",
+    "city": "Cambridge",
+    "link": "https://www.postgraduate.study.cam.ac.uk/courses/directory/telecommunications"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "BSc in Telecommunications",
+    "degree": "Bachelor",
+    "city": "Cambridge",
+    "link": "https://www.undergraduate.study.cam.ac.uk/courses/telecommunications"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "MSc in Power Systems",
+    "degree": "Master",
+    "city": "Cambridge",
+    "link": "https://www.postgraduate.study.cam.ac.uk/courses/directory/power-systems"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "BSc in Power Systems",
+    "degree": "Bachelor",
+    "city": "Cambridge",
+    "link": "https://www.undergraduate.study.cam.ac.uk/courses/power-systems"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "MSc in Software Engineering",
+    "degree": "Master",
+    "city": "Cambridge",
+    "link": "https://www.postgraduate.study.cam.ac.uk/courses/directory/software-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "BSc in Software Engineering",
+    "degree": "Bachelor",
+    "city": "Cambridge",
+    "link": "https://www.undergraduate.study.cam.ac.uk/courses/software-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "MSc in Cybersecurity",
+    "degree": "Master",
+    "city": "Cambridge",
+    "link": "https://www.postgraduate.study.cam.ac.uk/courses/directory/cybersecurity"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "BSc in Cybersecurity",
+    "degree": "Bachelor",
+    "city": "Cambridge",
+    "link": "https://www.undergraduate.study.cam.ac.uk/courses/cybersecurity"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "MSc in Finance",
+    "degree": "Master",
+    "city": "Cambridge",
+    "link": "https://www.postgraduate.study.cam.ac.uk/courses/directory/finance"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "BSc in Finance",
+    "degree": "Bachelor",
+    "city": "Cambridge",
+    "link": "https://www.undergraduate.study.cam.ac.uk/courses/finance"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "MSc in Marketing",
+    "degree": "Master",
+    "city": "Cambridge",
+    "link": "https://www.postgraduate.study.cam.ac.uk/courses/directory/marketing"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Cambridge",
+    "course": "BSc in Marketing",
+    "degree": "Bachelor",
+    "city": "Cambridge",
+    "link": "https://www.undergraduate.study.cam.ac.uk/courses/marketing"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "MSc in Electrical Engineering",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/postgraduate/degrees/electrical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "BSc in Electrical Engineering",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/undergraduate/degrees/electrical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "MSc in Mechanical Engineering",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/postgraduate/degrees/mechanical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "BSc in Mechanical Engineering",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/undergraduate/degrees/mechanical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "BSc in Data Science",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/undergraduate/degrees/data-science"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "MSc in Business Administration",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/postgraduate/degrees/business-administration"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "BSc in Business Administration",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/undergraduate/degrees/business-administration"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "MSc in Medicine",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/postgraduate/degrees/medicine"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "BSc in Medicine",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/undergraduate/degrees/medicine"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "MSc in Architecture",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/postgraduate/degrees/architecture"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "BSc in Architecture",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/undergraduate/degrees/architecture"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "MSc in Civil Engineering",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/postgraduate/degrees/civil-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "BSc in Civil Engineering",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/undergraduate/degrees/civil-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "MSc in Aerospace Engineering",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/postgraduate/degrees/aerospace-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "BSc in Aerospace Engineering",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/undergraduate/degrees/aerospace-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "MSc in Biomedical Engineering",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/postgraduate/degrees/biomedical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "BSc in Biomedical Engineering",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/undergraduate/degrees/biomedical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "MSc in Information Technology",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/postgraduate/degrees/information-technology"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "BSc in Information Technology",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/undergraduate/degrees/information-technology"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "MSc in Artificial Intelligence",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/postgraduate/degrees/artificial-intelligence"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "BSc in Artificial Intelligence",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/undergraduate/degrees/artificial-intelligence"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "MSc in Robotics",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/postgraduate/degrees/robotics"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "BSc in Robotics",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/undergraduate/degrees/robotics"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "MSc in Environmental Engineering",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/postgraduate/degrees/environmental-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "BSc in Environmental Engineering",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/undergraduate/degrees/environmental-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "MSc in Chemical Engineering",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/postgraduate/degrees/chemical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "BSc in Chemical Engineering",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/undergraduate/degrees/chemical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "MSc in Physics",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/postgraduate/degrees/physics"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "BSc in Physics",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/undergraduate/degrees/physics"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "MSc in Mathematics",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/postgraduate/degrees/mathematics"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "BSc in Mathematics",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/undergraduate/degrees/mathematics"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "MSc in Economics",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/postgraduate/degrees/economics"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "BSc in Economics",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/undergraduate/degrees/economics"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "MSc in Psychology",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/postgraduate/degrees/psychology"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "BSc in Psychology",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/undergraduate/degrees/psychology"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "LLM in Law",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/postgraduate/degrees/law"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "LLB in Law",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/undergraduate/degrees/law"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "MSc in Nursing",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/postgraduate/degrees/nursing"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "BSc in Nursing",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/undergraduate/degrees/nursing"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "MSc in Embedded Systems",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/postgraduate/degrees/embedded-systems"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "BSc in Embedded Systems",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/undergraduate/degrees/embedded-systems"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "MSc in Telecommunications",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/postgraduate/degrees/telecommunications"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "BSc in Telecommunications",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/undergraduate/degrees/telecommunications"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "MSc in Power Systems",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/postgraduate/degrees/power-systems"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "BSc in Power Systems",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/undergraduate/degrees/power-systems"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "MSc in Software Engineering",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/postgraduate/degrees/software-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "BSc in Software Engineering",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/undergraduate/degrees/software-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "MSc in Cybersecurity",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/postgraduate/degrees/cybersecurity"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "BSc in Cybersecurity",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/undergraduate/degrees/cybersecurity"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "MSc in Finance",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/postgraduate/degrees/finance"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "BSc in Finance",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/undergraduate/degrees/finance"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "MSc in Marketing",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/postgraduate/degrees/marketing"
+  },
+  {
+    "country": "UK",
+    "uni": "UCL",
+    "course": "BSc in Marketing",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.ucl.ac.uk/prospective-students/undergraduate/degrees/marketing"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "MSc in Electrical Engineering",
+    "degree": "Master",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/electrical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "BSc in Electrical Engineering",
+    "degree": "Bachelor",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/electrical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "MSc in Mechanical Engineering",
+    "degree": "Master",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/mechanical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "BSc in Mechanical Engineering",
+    "degree": "Bachelor",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/mechanical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "MSc in Data Science",
+    "degree": "Master",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/data-science"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "BSc in Data Science",
+    "degree": "Bachelor",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/data-science"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "MSc in Business Administration",
+    "degree": "Master",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/business-administration"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "BSc in Business Administration",
+    "degree": "Bachelor",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/business-administration"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "MSc in Medicine",
+    "degree": "Master",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/medicine"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "BSc in Medicine",
+    "degree": "Bachelor",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/medicine"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "MSc in Architecture",
+    "degree": "Master",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/architecture"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "BSc in Architecture",
+    "degree": "Bachelor",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/architecture"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "MSc in Civil Engineering",
+    "degree": "Master",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/civil-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "BSc in Civil Engineering",
+    "degree": "Bachelor",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/civil-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "MSc in Aerospace Engineering",
+    "degree": "Master",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/aerospace-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "BSc in Aerospace Engineering",
+    "degree": "Bachelor",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/aerospace-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "MSc in Biomedical Engineering",
+    "degree": "Master",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/biomedical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "BSc in Biomedical Engineering",
+    "degree": "Bachelor",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/biomedical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "MSc in Information Technology",
+    "degree": "Master",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/information-technology"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "BSc in Information Technology",
+    "degree": "Bachelor",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/information-technology"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "MSc in Artificial Intelligence",
+    "degree": "Master",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/artificial-intelligence"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "BSc in Artificial Intelligence",
+    "degree": "Bachelor",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/artificial-intelligence"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "MSc in Robotics",
+    "degree": "Master",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/robotics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "BSc in Robotics",
+    "degree": "Bachelor",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/robotics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "MSc in Environmental Engineering",
+    "degree": "Master",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/environmental-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "BSc in Environmental Engineering",
+    "degree": "Bachelor",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/environmental-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "MSc in Chemical Engineering",
+    "degree": "Master",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/chemical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "BSc in Chemical Engineering",
+    "degree": "Bachelor",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/chemical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "MSc in Physics",
+    "degree": "Master",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/physics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "BSc in Physics",
+    "degree": "Bachelor",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/physics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "MSc in Mathematics",
+    "degree": "Master",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/mathematics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "BSc in Mathematics",
+    "degree": "Bachelor",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/mathematics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "MSc in Economics",
+    "degree": "Master",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/economics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "BSc in Economics",
+    "degree": "Bachelor",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/economics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "MSc in Psychology",
+    "degree": "Master",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/psychology"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "BSc in Psychology",
+    "degree": "Bachelor",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/psychology"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "LLM in Law",
+    "degree": "Master",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/law"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "LLB in Law",
+    "degree": "Bachelor",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/law"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "MSc in Nursing",
+    "degree": "Master",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/nursing"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "BSc in Nursing",
+    "degree": "Bachelor",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/nursing"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "MSc in Embedded Systems",
+    "degree": "Master",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/embedded-systems"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "BSc in Embedded Systems",
+    "degree": "Bachelor",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/embedded-systems"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "MSc in Telecommunications",
+    "degree": "Master",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/telecommunications"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "BSc in Telecommunications",
+    "degree": "Bachelor",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/telecommunications"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "MSc in Power Systems",
+    "degree": "Master",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/power-systems"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "BSc in Power Systems",
+    "degree": "Bachelor",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/power-systems"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "MSc in Software Engineering",
+    "degree": "Master",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/software-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "BSc in Software Engineering",
+    "degree": "Bachelor",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/software-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "MSc in Cybersecurity",
+    "degree": "Master",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/cybersecurity"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "BSc in Cybersecurity",
+    "degree": "Bachelor",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/cybersecurity"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "MSc in Finance",
+    "degree": "Master",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/finance"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "BSc in Finance",
+    "degree": "Bachelor",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/finance"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "MSc in Marketing",
+    "degree": "Master",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/marketing"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Edinburgh",
+    "course": "BSc in Marketing",
+    "degree": "Bachelor",
+    "city": "Edinburgh",
+    "link": "https://www.ed.ac.uk/courses/marketing"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "MSc in Electrical Engineering",
+    "degree": "Master",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/electrical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "BSc in Electrical Engineering",
+    "degree": "Bachelor",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/electrical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "BSc in Computer Science",
+    "degree": "Bachelor",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/computer-science"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "MSc in Mechanical Engineering",
+    "degree": "Master",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/mechanical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "BSc in Mechanical Engineering",
+    "degree": "Bachelor",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/mechanical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "MSc in Data Science",
+    "degree": "Master",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/data-science"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "BSc in Data Science",
+    "degree": "Bachelor",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/data-science"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "MSc in Business Administration",
+    "degree": "Master",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/business-administration"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "BSc in Business Administration",
+    "degree": "Bachelor",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/business-administration"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "MSc in Medicine",
+    "degree": "Master",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/medicine"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "BSc in Medicine",
+    "degree": "Bachelor",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/medicine"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "MSc in Architecture",
+    "degree": "Master",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/architecture"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "BSc in Architecture",
+    "degree": "Bachelor",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/architecture"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "MSc in Civil Engineering",
+    "degree": "Master",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/civil-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "BSc in Civil Engineering",
+    "degree": "Bachelor",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/civil-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "MSc in Aerospace Engineering",
+    "degree": "Master",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/aerospace-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "BSc in Aerospace Engineering",
+    "degree": "Bachelor",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/aerospace-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "MSc in Biomedical Engineering",
+    "degree": "Master",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/biomedical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "BSc in Biomedical Engineering",
+    "degree": "Bachelor",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/biomedical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "MSc in Information Technology",
+    "degree": "Master",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/information-technology"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "BSc in Information Technology",
+    "degree": "Bachelor",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/information-technology"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "MSc in Artificial Intelligence",
+    "degree": "Master",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/artificial-intelligence"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "BSc in Artificial Intelligence",
+    "degree": "Bachelor",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/artificial-intelligence"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "MSc in Robotics",
+    "degree": "Master",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/robotics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "BSc in Robotics",
+    "degree": "Bachelor",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/robotics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "MSc in Environmental Engineering",
+    "degree": "Master",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/environmental-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "BSc in Environmental Engineering",
+    "degree": "Bachelor",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/environmental-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "MSc in Chemical Engineering",
+    "degree": "Master",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/chemical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "BSc in Chemical Engineering",
+    "degree": "Bachelor",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/chemical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "MSc in Physics",
+    "degree": "Master",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/physics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "BSc in Physics",
+    "degree": "Bachelor",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/physics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "MSc in Mathematics",
+    "degree": "Master",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/mathematics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "BSc in Mathematics",
+    "degree": "Bachelor",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/mathematics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "MSc in Economics",
+    "degree": "Master",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/economics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "BSc in Economics",
+    "degree": "Bachelor",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/economics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "MSc in Psychology",
+    "degree": "Master",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/psychology"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "BSc in Psychology",
+    "degree": "Bachelor",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/psychology"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "LLM in Law",
+    "degree": "Master",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/law"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "LLB in Law",
+    "degree": "Bachelor",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/law"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "MSc in Nursing",
+    "degree": "Master",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/nursing"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "BSc in Nursing",
+    "degree": "Bachelor",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/nursing"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "MSc in Embedded Systems",
+    "degree": "Master",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/embedded-systems"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "BSc in Embedded Systems",
+    "degree": "Bachelor",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/embedded-systems"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "MSc in Telecommunications",
+    "degree": "Master",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/telecommunications"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "BSc in Telecommunications",
+    "degree": "Bachelor",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/telecommunications"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "MSc in Power Systems",
+    "degree": "Master",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/power-systems"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "BSc in Power Systems",
+    "degree": "Bachelor",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/power-systems"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "MSc in Software Engineering",
+    "degree": "Master",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/software-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "BSc in Software Engineering",
+    "degree": "Bachelor",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/software-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "MSc in Cybersecurity",
+    "degree": "Master",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/cybersecurity"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "BSc in Cybersecurity",
+    "degree": "Bachelor",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/cybersecurity"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "MSc in Finance",
+    "degree": "Master",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/finance"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "BSc in Finance",
+    "degree": "Bachelor",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/finance"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "MSc in Marketing",
+    "degree": "Master",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/marketing"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Manchester",
+    "course": "BSc in Marketing",
+    "degree": "Bachelor",
+    "city": "Manchester",
+    "link": "https://www.manchester.ac.uk/courses/marketing"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "MSc in Electrical Engineering",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/pg/electrical-engineering/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "BSc in Electrical Engineering",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/ug/electrical-engineering/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "MSc in Computer Science",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/pg/computer-science/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "BSc in Computer Science",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/ug/computer-science/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "MSc in Mechanical Engineering",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/pg/mechanical-engineering/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "BSc in Mechanical Engineering",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/ug/mechanical-engineering/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "MSc in Data Science",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/pg/data-science/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "BSc in Data Science",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/ug/data-science/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "MSc in Business Administration",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/pg/business-administration/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "BSc in Business Administration",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/ug/business-administration/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "MSc in Medicine",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/pg/medicine/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "BSc in Medicine",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/ug/medicine/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "MSc in Architecture",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/pg/architecture/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "BSc in Architecture",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/ug/architecture/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "MSc in Civil Engineering",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/pg/civil-engineering/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "BSc in Civil Engineering",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/ug/civil-engineering/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "MSc in Aerospace Engineering",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/pg/aerospace-engineering/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "BSc in Aerospace Engineering",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/ug/aerospace-engineering/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "MSc in Biomedical Engineering",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/pg/biomedical-engineering/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "BSc in Biomedical Engineering",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/ug/biomedical-engineering/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "MSc in Information Technology",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/pg/information-technology/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "BSc in Information Technology",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/ug/information-technology/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "MSc in Artificial Intelligence",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/pg/artificial-intelligence/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "BSc in Artificial Intelligence",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/ug/artificial-intelligence/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "MSc in Robotics",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/pg/robotics/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "BSc in Robotics",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/ug/robotics/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "MSc in Environmental Engineering",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/pg/environmental-engineering/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "BSc in Environmental Engineering",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/ug/environmental-engineering/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "MSc in Chemical Engineering",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/pg/chemical-engineering/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "BSc in Chemical Engineering",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/ug/chemical-engineering/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "MSc in Physics",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/pg/physics/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "BSc in Physics",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/ug/physics/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "MSc in Mathematics",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/pg/mathematics/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "BSc in Mathematics",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/ug/mathematics/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "MSc in Economics",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/pg/economics/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "BSc in Economics",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/ug/economics/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "MSc in Psychology",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/pg/psychology/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "BSc in Psychology",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/ug/psychology/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "LLM in Law",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/pg/law/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "LLB in Law",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/ug/law/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "MSc in Nursing",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/pg/nursing/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "BSc in Nursing",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/ug/nursing/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "MSc in Embedded Systems",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/pg/embedded-systems/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "BSc in Embedded Systems",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/ug/embedded-systems/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "MSc in Telecommunications",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/pg/telecommunications/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "BSc in Telecommunications",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/ug/telecommunications/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "MSc in Power Systems",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/pg/power-systems/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "BSc in Power Systems",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/ug/power-systems/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "MSc in Software Engineering",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/pg/software-engineering/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "BSc in Software Engineering",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/ug/software-engineering/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "MSc in Cybersecurity",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/pg/cybersecurity/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "BSc in Cybersecurity",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/ug/cybersecurity/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "MSc in Finance",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/pg/finance/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "BSc in Finance",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/ug/finance/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "MSc in Marketing",
+    "degree": "Master",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/pg/marketing/"
+  },
+  {
+    "country": "UK",
+    "uni": "Imperial College London",
+    "course": "BSc in Marketing",
+    "degree": "Bachelor",
+    "city": "London",
+    "link": "https://www.imperial.ac.uk/study/ug/marketing/"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "MSc in Electrical Engineering",
+    "degree": "Master",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/postgraduate/courses/electrical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "BSc in Electrical Engineering",
+    "degree": "Bachelor",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/undergraduate/courses/electrical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "BSc in Computer Science",
+    "degree": "Bachelor",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/undergraduate/courses/computer-science"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "MSc in Mechanical Engineering",
+    "degree": "Master",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/postgraduate/courses/mechanical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "BSc in Mechanical Engineering",
+    "degree": "Bachelor",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/undergraduate/courses/mechanical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "MSc in Data Science",
+    "degree": "Master",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/postgraduate/courses/data-science"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "BSc in Data Science",
+    "degree": "Bachelor",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/undergraduate/courses/data-science"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "MSc in Business Administration",
+    "degree": "Master",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/postgraduate/courses/business-administration"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "BSc in Business Administration",
+    "degree": "Bachelor",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/undergraduate/courses/business-administration"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "MSc in Medicine",
+    "degree": "Master",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/postgraduate/courses/medicine"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "BSc in Medicine",
+    "degree": "Bachelor",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/undergraduate/courses/medicine"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "MSc in Architecture",
+    "degree": "Master",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/postgraduate/courses/architecture"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "BSc in Architecture",
+    "degree": "Bachelor",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/undergraduate/courses/architecture"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "MSc in Civil Engineering",
+    "degree": "Master",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/postgraduate/courses/civil-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "BSc in Civil Engineering",
+    "degree": "Bachelor",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/undergraduate/courses/civil-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "MSc in Aerospace Engineering",
+    "degree": "Master",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/postgraduate/courses/aerospace-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "BSc in Aerospace Engineering",
+    "degree": "Bachelor",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/undergraduate/courses/aerospace-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "MSc in Biomedical Engineering",
+    "degree": "Master",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/postgraduate/courses/biomedical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "BSc in Biomedical Engineering",
+    "degree": "Bachelor",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/undergraduate/courses/biomedical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "MSc in Information Technology",
+    "degree": "Master",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/postgraduate/courses/information-technology"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "BSc in Information Technology",
+    "degree": "Bachelor",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/undergraduate/courses/information-technology"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "MSc in Artificial Intelligence",
+    "degree": "Master",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/postgraduate/courses/artificial-intelligence"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "BSc in Artificial Intelligence",
+    "degree": "Bachelor",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/undergraduate/courses/artificial-intelligence"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "MSc in Robotics",
+    "degree": "Master",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/postgraduate/courses/robotics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "BSc in Robotics",
+    "degree": "Bachelor",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/undergraduate/courses/robotics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "MSc in Environmental Engineering",
+    "degree": "Master",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/postgraduate/courses/environmental-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "BSc in Environmental Engineering",
+    "degree": "Bachelor",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/undergraduate/courses/environmental-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "MSc in Chemical Engineering",
+    "degree": "Master",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/postgraduate/courses/chemical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "BSc in Chemical Engineering",
+    "degree": "Bachelor",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/undergraduate/courses/chemical-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "MSc in Physics",
+    "degree": "Master",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/postgraduate/courses/physics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "BSc in Physics",
+    "degree": "Bachelor",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/undergraduate/courses/physics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "MSc in Mathematics",
+    "degree": "Master",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/postgraduate/courses/mathematics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "BSc in Mathematics",
+    "degree": "Bachelor",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/undergraduate/courses/mathematics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "MSc in Economics",
+    "degree": "Master",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/postgraduate/courses/economics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "BSc in Economics",
+    "degree": "Bachelor",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/undergraduate/courses/economics"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "MSc in Psychology",
+    "degree": "Master",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/postgraduate/courses/psychology"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "BSc in Psychology",
+    "degree": "Bachelor",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/undergraduate/courses/psychology"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "LLM in Law",
+    "degree": "Master",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/postgraduate/courses/law"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "LLB in Law",
+    "degree": "Bachelor",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/undergraduate/courses/law"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "MSc in Nursing",
+    "degree": "Master",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/postgraduate/courses/nursing"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "BSc in Nursing",
+    "degree": "Bachelor",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/undergraduate/courses/nursing"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "MSc in Embedded Systems",
+    "degree": "Master",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/postgraduate/courses/embedded-systems"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "BSc in Embedded Systems",
+    "degree": "Bachelor",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/undergraduate/courses/embedded-systems"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "MSc in Telecommunications",
+    "degree": "Master",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/postgraduate/courses/telecommunications"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "BSc in Telecommunications",
+    "degree": "Bachelor",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/undergraduate/courses/telecommunications"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "MSc in Power Systems",
+    "degree": "Master",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/postgraduate/courses/power-systems"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "BSc in Power Systems",
+    "degree": "Bachelor",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/undergraduate/courses/power-systems"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "BSc in Software Engineering",
+    "degree": "Bachelor",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/undergraduate/courses/software-engineering"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "MSc in Cybersecurity",
+    "degree": "Master",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/postgraduate/courses/cybersecurity"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "BSc in Cybersecurity",
+    "degree": "Bachelor",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/undergraduate/courses/cybersecurity"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "MSc in Finance",
+    "degree": "Master",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/postgraduate/courses/finance"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "BSc in Finance",
+    "degree": "Bachelor",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/undergraduate/courses/finance"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "MSc in Marketing",
+    "degree": "Master",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/postgraduate/courses/marketing"
+  },
+  {
+    "country": "UK",
+    "uni": "University of Oxford",
+    "course": "BSc in Marketing",
+    "degree": "Bachelor",
+    "city": "Oxford",
+    "link": "https://www.ox.ac.uk/admissions/undergraduate/courses/marketing"
+  }
+]

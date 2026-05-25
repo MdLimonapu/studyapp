@@ -1,0 +1,1354 @@
+[
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "MSc in Computer Science",
+    "degree": "Master",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/en/studies/master/computer-science"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "MSc in Software Engineering of Distributed Systems",
+    "degree": "Master",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/en/studies/master/software-engineering-distributed-systems"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "MSc in Computer Science",
+    "degree": "Master",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/en/education/find-masters-programme/computer-science-algorithms-languages-and-logic-msc/"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "MSc in Computer Science",
+    "degree": "Master",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/lubas/i-uoh-lut-EAMCS"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "MSc in Electrical Engineering",
+    "degree": "Master",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/electrical-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "BSc in Electrical Engineering",
+    "degree": "Bachelor",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/electrical-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "BSc in Computer Science",
+    "degree": "Bachelor",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/computer-science"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "MSc in Mechanical Engineering",
+    "degree": "Master",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/mechanical-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "BSc in Mechanical Engineering",
+    "degree": "Bachelor",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/mechanical-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "MSc in Data Science",
+    "degree": "Master",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/data-science"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "BSc in Data Science",
+    "degree": "Bachelor",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/data-science"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "MSc in Business Administration",
+    "degree": "Master",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/business-administration"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "BSc in Business Administration",
+    "degree": "Bachelor",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/business-administration"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "MSc in Medicine",
+    "degree": "Master",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/medicine"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "BSc in Medicine",
+    "degree": "Bachelor",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/medicine"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "MSc in Architecture",
+    "degree": "Master",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/architecture"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "BSc in Architecture",
+    "degree": "Bachelor",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/architecture"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "MSc in Civil Engineering",
+    "degree": "Master",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/civil-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "BSc in Civil Engineering",
+    "degree": "Bachelor",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/civil-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "MSc in Aerospace Engineering",
+    "degree": "Master",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/aerospace-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "BSc in Aerospace Engineering",
+    "degree": "Bachelor",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/aerospace-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "MSc in Biomedical Engineering",
+    "degree": "Master",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/biomedical-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "BSc in Biomedical Engineering",
+    "degree": "Bachelor",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/biomedical-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "MSc in Information Technology",
+    "degree": "Master",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/information-technology"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "BSc in Information Technology",
+    "degree": "Bachelor",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/information-technology"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "MSc in Artificial Intelligence",
+    "degree": "Master",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/artificial-intelligence"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "BSc in Artificial Intelligence",
+    "degree": "Bachelor",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/artificial-intelligence"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "MSc in Robotics",
+    "degree": "Master",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/robotics"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "BSc in Robotics",
+    "degree": "Bachelor",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/robotics"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "MSc in Environmental Engineering",
+    "degree": "Master",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/environmental-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "BSc in Environmental Engineering",
+    "degree": "Bachelor",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/environmental-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "MSc in Chemical Engineering",
+    "degree": "Master",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/chemical-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "BSc in Chemical Engineering",
+    "degree": "Bachelor",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/chemical-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "MSc in Physics",
+    "degree": "Master",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/physics"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "BSc in Physics",
+    "degree": "Bachelor",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/physics"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "MSc in Mathematics",
+    "degree": "Master",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/mathematics"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "BSc in Mathematics",
+    "degree": "Bachelor",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/mathematics"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "MSc in Economics",
+    "degree": "Master",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/economics"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "BSc in Economics",
+    "degree": "Bachelor",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/economics"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "MSc in Psychology",
+    "degree": "Master",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/psychology"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "BSc in Psychology",
+    "degree": "Bachelor",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/psychology"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "LLM in Law",
+    "degree": "Master",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/law"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "LLB in Law",
+    "degree": "Bachelor",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/law"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "MSc in Nursing",
+    "degree": "Master",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/nursing"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "BSc in Nursing",
+    "degree": "Bachelor",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/nursing"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "MSc in Embedded Systems",
+    "degree": "Master",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/embedded-systems"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "BSc in Embedded Systems",
+    "degree": "Bachelor",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/embedded-systems"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "MSc in Telecommunications",
+    "degree": "Master",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/telecommunications"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "BSc in Telecommunications",
+    "degree": "Bachelor",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/telecommunications"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "MSc in Power Systems",
+    "degree": "Master",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/power-systems"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "BSc in Power Systems",
+    "degree": "Bachelor",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/power-systems"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "MSc in Software Engineering",
+    "degree": "Master",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/software-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "BSc in Software Engineering",
+    "degree": "Bachelor",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/software-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "MSc in Cybersecurity",
+    "degree": "Master",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/cybersecurity"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "BSc in Cybersecurity",
+    "degree": "Bachelor",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/cybersecurity"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "MSc in Finance",
+    "degree": "Master",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/finance"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "BSc in Finance",
+    "degree": "Bachelor",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/finance"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "MSc in Marketing",
+    "degree": "Master",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/marketing"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Chalmers University of Technology",
+    "course": "BSc in Marketing",
+    "degree": "Bachelor",
+    "city": "Gothenburg",
+    "link": "https://www.chalmers.se/courses/marketing"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "MSc in Electrical Engineering",
+    "degree": "Master",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/electrical-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "BSc in Electrical Engineering",
+    "degree": "Bachelor",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/electrical-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "BSc in Computer Science",
+    "degree": "Bachelor",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/computer-science"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "MSc in Mechanical Engineering",
+    "degree": "Master",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/mechanical-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "BSc in Mechanical Engineering",
+    "degree": "Bachelor",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/mechanical-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "MSc in Data Science",
+    "degree": "Master",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/data-science"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "BSc in Data Science",
+    "degree": "Bachelor",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/data-science"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "MSc in Business Administration",
+    "degree": "Master",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/business-administration"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "BSc in Business Administration",
+    "degree": "Bachelor",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/business-administration"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "MSc in Medicine",
+    "degree": "Master",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/medicine"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "BSc in Medicine",
+    "degree": "Bachelor",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/medicine"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "MSc in Architecture",
+    "degree": "Master",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/architecture"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "BSc in Architecture",
+    "degree": "Bachelor",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/architecture"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "MSc in Civil Engineering",
+    "degree": "Master",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/civil-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "BSc in Civil Engineering",
+    "degree": "Bachelor",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/civil-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "MSc in Aerospace Engineering",
+    "degree": "Master",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/aerospace-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "BSc in Aerospace Engineering",
+    "degree": "Bachelor",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/aerospace-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "MSc in Biomedical Engineering",
+    "degree": "Master",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/biomedical-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "BSc in Biomedical Engineering",
+    "degree": "Bachelor",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/biomedical-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "MSc in Information Technology",
+    "degree": "Master",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/information-technology"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "BSc in Information Technology",
+    "degree": "Bachelor",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/information-technology"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "MSc in Artificial Intelligence",
+    "degree": "Master",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/artificial-intelligence"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "BSc in Artificial Intelligence",
+    "degree": "Bachelor",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/artificial-intelligence"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "MSc in Robotics",
+    "degree": "Master",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/robotics"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "BSc in Robotics",
+    "degree": "Bachelor",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/robotics"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "MSc in Environmental Engineering",
+    "degree": "Master",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/environmental-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "BSc in Environmental Engineering",
+    "degree": "Bachelor",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/environmental-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "MSc in Chemical Engineering",
+    "degree": "Master",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/chemical-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "BSc in Chemical Engineering",
+    "degree": "Bachelor",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/chemical-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "MSc in Physics",
+    "degree": "Master",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/physics"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "BSc in Physics",
+    "degree": "Bachelor",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/physics"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "MSc in Mathematics",
+    "degree": "Master",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/mathematics"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "BSc in Mathematics",
+    "degree": "Bachelor",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/mathematics"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "MSc in Economics",
+    "degree": "Master",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/economics"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "BSc in Economics",
+    "degree": "Bachelor",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/economics"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "MSc in Psychology",
+    "degree": "Master",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/psychology"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "BSc in Psychology",
+    "degree": "Bachelor",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/psychology"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "LLM in Law",
+    "degree": "Master",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/law"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "LLB in Law",
+    "degree": "Bachelor",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/law"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "MSc in Nursing",
+    "degree": "Master",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/nursing"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "BSc in Nursing",
+    "degree": "Bachelor",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/nursing"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "MSc in Embedded Systems",
+    "degree": "Master",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/embedded-systems"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "BSc in Embedded Systems",
+    "degree": "Bachelor",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/embedded-systems"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "MSc in Telecommunications",
+    "degree": "Master",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/telecommunications"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "BSc in Telecommunications",
+    "degree": "Bachelor",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/telecommunications"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "MSc in Power Systems",
+    "degree": "Master",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/power-systems"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "BSc in Power Systems",
+    "degree": "Bachelor",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/power-systems"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "MSc in Software Engineering",
+    "degree": "Master",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/software-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "BSc in Software Engineering",
+    "degree": "Bachelor",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/software-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "MSc in Cybersecurity",
+    "degree": "Master",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/cybersecurity"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "BSc in Cybersecurity",
+    "degree": "Bachelor",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/cybersecurity"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "MSc in Finance",
+    "degree": "Master",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/finance"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "BSc in Finance",
+    "degree": "Bachelor",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/finance"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "MSc in Marketing",
+    "degree": "Master",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/marketing"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Lund University",
+    "course": "BSc in Marketing",
+    "degree": "Bachelor",
+    "city": "Lund",
+    "link": "https://www.lunduniversity.lu.se/courses/marketing"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "MSc in Electrical Engineering",
+    "degree": "Master",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/electrical-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "BSc in Electrical Engineering",
+    "degree": "Bachelor",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/electrical-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "BSc in Computer Science",
+    "degree": "Bachelor",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/computer-science"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "MSc in Mechanical Engineering",
+    "degree": "Master",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/mechanical-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "BSc in Mechanical Engineering",
+    "degree": "Bachelor",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/mechanical-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "MSc in Data Science",
+    "degree": "Master",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/data-science"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "BSc in Data Science",
+    "degree": "Bachelor",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/data-science"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "MSc in Business Administration",
+    "degree": "Master",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/business-administration"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "BSc in Business Administration",
+    "degree": "Bachelor",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/business-administration"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "MSc in Medicine",
+    "degree": "Master",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/medicine"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "BSc in Medicine",
+    "degree": "Bachelor",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/medicine"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "MSc in Architecture",
+    "degree": "Master",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/architecture"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "BSc in Architecture",
+    "degree": "Bachelor",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/architecture"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "MSc in Civil Engineering",
+    "degree": "Master",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/civil-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "BSc in Civil Engineering",
+    "degree": "Bachelor",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/civil-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "MSc in Aerospace Engineering",
+    "degree": "Master",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/aerospace-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "BSc in Aerospace Engineering",
+    "degree": "Bachelor",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/aerospace-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "MSc in Biomedical Engineering",
+    "degree": "Master",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/biomedical-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "BSc in Biomedical Engineering",
+    "degree": "Bachelor",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/biomedical-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "MSc in Information Technology",
+    "degree": "Master",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/information-technology"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "BSc in Information Technology",
+    "degree": "Bachelor",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/information-technology"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "MSc in Artificial Intelligence",
+    "degree": "Master",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/artificial-intelligence"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "BSc in Artificial Intelligence",
+    "degree": "Bachelor",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/artificial-intelligence"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "MSc in Robotics",
+    "degree": "Master",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/robotics"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "BSc in Robotics",
+    "degree": "Bachelor",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/robotics"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "MSc in Environmental Engineering",
+    "degree": "Master",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/environmental-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "BSc in Environmental Engineering",
+    "degree": "Bachelor",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/environmental-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "MSc in Chemical Engineering",
+    "degree": "Master",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/chemical-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "BSc in Chemical Engineering",
+    "degree": "Bachelor",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/chemical-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "MSc in Physics",
+    "degree": "Master",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/physics"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "BSc in Physics",
+    "degree": "Bachelor",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/physics"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "MSc in Mathematics",
+    "degree": "Master",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/mathematics"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "BSc in Mathematics",
+    "degree": "Bachelor",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/mathematics"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "MSc in Economics",
+    "degree": "Master",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/economics"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "BSc in Economics",
+    "degree": "Bachelor",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/economics"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "MSc in Psychology",
+    "degree": "Master",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/psychology"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "BSc in Psychology",
+    "degree": "Bachelor",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/psychology"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "LLM in Law",
+    "degree": "Master",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/law"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "LLB in Law",
+    "degree": "Bachelor",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/law"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "MSc in Nursing",
+    "degree": "Master",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/nursing"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "BSc in Nursing",
+    "degree": "Bachelor",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/nursing"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "MSc in Embedded Systems",
+    "degree": "Master",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/embedded-systems"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "BSc in Embedded Systems",
+    "degree": "Bachelor",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/embedded-systems"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "MSc in Telecommunications",
+    "degree": "Master",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/telecommunications"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "BSc in Telecommunications",
+    "degree": "Bachelor",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/telecommunications"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "MSc in Power Systems",
+    "degree": "Master",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/power-systems"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "BSc in Power Systems",
+    "degree": "Bachelor",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/power-systems"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "MSc in Software Engineering",
+    "degree": "Master",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/software-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "BSc in Software Engineering",
+    "degree": "Bachelor",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/software-engineering"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "MSc in Cybersecurity",
+    "degree": "Master",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/cybersecurity"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "BSc in Cybersecurity",
+    "degree": "Bachelor",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/cybersecurity"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "MSc in Finance",
+    "degree": "Master",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/finance"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "BSc in Finance",
+    "degree": "Bachelor",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/finance"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "MSc in Marketing",
+    "degree": "Master",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/marketing"
+  },
+  {
+    "country": "Sweden",
+    "uni": "KTH Royal Institute of Technology",
+    "course": "BSc in Marketing",
+    "degree": "Bachelor",
+    "city": "Stockholm",
+    "link": "https://www.kth.se/courses/marketing"
+  }
+]
