@@ -6,14 +6,16 @@ from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 
-load_dotenv()
+dotenv_path = os.path.join(os.path.dirname(__file__), ".env")
+load_dotenv(dotenv_path=dotenv_path)
 
 app = Flask(__name__)
 CORS(app)
 
 # ── Fallback static data (Germany) ──────────────────────────────────────────
 try:
-    with open("data/germany.json") as f:
+    data_path = os.path.join(os.path.dirname(__file__), "data", "germany.json")
+    with open(data_path) as f:
         FALLBACK_COURSES = json.load(f)
 except FileNotFoundError:
     FALLBACK_COURSES = []
@@ -134,6 +136,89 @@ COUNTRIES = [
 PROFILE_FILE = "profile.json"
 
 # ── Helpers ──────────────────────────────────────────────────────────────────
+import urllib.parse
+
+def get_base_domain(url):
+    """Extracts the base domain from a URL (e.g. 'tum.de' from 'https://www.tum.de/en/...')"""
+    try:
+        parsed = urllib.parse.urlparse(url)
+        netloc = parsed.netloc or parsed.path
+        if netloc.startswith("www."):
+            netloc = netloc[4:]
+        domain = netloc.split(":")[0]
+        return domain.strip()
+    except Exception:
+        return ""
+
+def clean_link(link, fallback=None, is_ai=False):
+    """
+    Cleans and normalises university course links.
+    If the link is a known placeholder, missing, or is a generic homepage/DAAD homepage,
+    it falls back to a Google Search redirect query (provided by fallback).
+    If it is an AI-generated link and we have a Google Search fallback,
+    we rewrite it to use Google's site:domain syntax to guarantee accuracy.
+    """
+    if not link or not isinstance(link, str):
+        return fallback or "https://www.google.com"
+        
+    link = link.strip()
+    
+    # Check for obvious placeholders, dummy values
+    lower_link = link.lower()
+    placeholders = [
+        "example.com", "placeholder.com", "hallucination", "invalid", 
+        "your-course-url", "see-website", "course-link", "university.edu",
+        "link_to_course", "domain.com", "insert-link", "admissions-page",
+    ]
+    
+    is_placeholder = any(p in lower_link for p in placeholders)
+    
+    # Determine if it's a generic homepage
+    is_home = False
+    if lower_link in [
+        "https://www.daad.de", "https://www.daad.de/", "https://www.daad.de/en", "https://www.daad.de/en/",
+        "http://www.daad.de", "http://www.daad.de/", "http://www.daad.de/en", "http://www.daad.de/en/"
+    ]:
+        is_home = True
+    else:
+        try:
+            parsed = urllib.parse.urlparse(link)
+            path = parsed.path.strip("/")
+            if not path or path.lower() in ["en", "de", "index.html", "index.php"]:
+                is_home = True
+        except Exception:
+            is_home = True
+        
+    # Check if protocol is missing and prepend https if it looks like a domain
+    if not (link.startswith("http://") or link.startswith("https://")):
+        if "." in link and not " " in link:
+            link = "https://" + link
+        else:
+            is_placeholder = True
+
+    if is_placeholder:
+        return fallback or "https://www.google.com"
+
+    # AI results: always rewrite to search queries to prevent 404s
+    # Static results: keep deep links, only rewrite to search queries if they are homepages
+    should_rewrite = is_ai or is_home
+
+    if should_rewrite and fallback and "google.com/search" in fallback:
+        domain = get_base_domain(link)
+        if domain and len(domain) > 3 and "." in domain:
+            try:
+                parsed_fallback = urllib.parse.urlparse(fallback)
+                params = urllib.parse.parse_qs(parsed_fallback.query)
+                q_val = params.get("q", [""])[0]
+                if q_val:
+                    # Append site:domain to target only this university
+                    new_q = f"site:{domain} {q_val}"
+                    return f"https://www.google.com/search?q={urllib.parse.quote_plus(new_q)}"
+            except Exception:
+                pass
+                
+    return link
+
 def build_prompt(country, degree, field, profile):
     degree_label = {"bachelor": "Bachelor's", "master": "Master's", "phd": "PhD"}.get(
         degree.lower(), degree
@@ -209,13 +294,19 @@ def fallback_search(country, degree, field):
         # City field can be a comma-separated list of campuses — take only the first
         raw_city = c.get("city", "")
         city = raw_city.split(",")[0].strip() if raw_city else ""
+        
+        uni_name = c.get("uni", "")
+        course_name = c.get("course", "")
+        fallback_query = f"{uni_name} {course_name}".strip()
+        fallback_link = f"https://www.google.com/search?q={urllib.parse.quote_plus(fallback_query)}"
+        
         formatted.append({
-            "university":   c.get("uni", ""),
-            "course":       c.get("course", ""),
+            "university":   uni_name,
+            "course":       course_name,
             "city":         city,
             "country":      c.get("country", ""),
             "degree":       c.get("degree", ""),
-            "link":         clean_link(c.get("link", "")),
+            "link":         clean_link(c.get("link", ""), fallback_link),
             "requirements": "See university website for full requirements.",
             "match_rating": 3 - (len(formatted) % 3),
             "intake":       "Winter / Summer",
@@ -225,13 +316,17 @@ def fallback_search(country, degree, field):
     if len(formatted) == 0 and field:
         # Generate some plausible mock data based on the user's search
         for i in range(3):
+            uni_name = f"Technical University of {country or 'Europe'}"
+            course_name = f"{degree.title() if degree else 'Master'} in {field.title()}"
+            fallback_query = f"{uni_name} {course_name}".strip()
+            fallback_link = f"https://www.google.com/search?q={urllib.parse.quote_plus(fallback_query)}"
             formatted.append({
-                "university": f"Technical University of {country or 'Europe'}",
-                "course": f"{degree.title() if degree else 'Master'} in {field.title()}",
+                "university": uni_name,
+                "course": course_name,
                 "city": "Main Campus",
                 "country": country or "Germany",
                 "degree": degree.title() if degree else "Master",
-                "link": "https://www.daad.de",
+                "link": fallback_link,
                 "requirements": "IELTS 6.5, Bachelor's degree in a related field.",
                 "match_rating": 3 - (i % 3),
                 "intake": "Winter 2026",
@@ -263,78 +358,24 @@ def save_profile():
     return jsonify({"status": "saved"})
 
 
+NEWS_ITEMS = [
+    {"title": "Germany extends student visa processing to 8 weeks for 2026 intake", "source": "daad.de", "date": "May 2026", "summary": "DAAD reports increased demand. Apply early for German student visas.", "country": "Germany", "link": "https://www.daad.de"},
+    {"title": "UK Graduate Route visa — 2 years post-study work rights confirmed", "source": "gov.uk", "date": "May 2026", "summary": "International graduates can stay 2 years after completing UK degrees.", "country": "UK", "link": "https://www.gov.uk/graduate-visa"},
+    {"title": "Holland Scholarship 2026-2027 applications now open", "source": "studyinholland.nl", "date": "Apr 2026", "summary": "Available for students outside EEA applying to Dutch universities.", "country": "Netherlands", "link": "https://www.studyinholland.nl"},
+    {"title": "Canada caps international student permits for 2026", "source": "canada.ca", "date": "Apr 2026", "summary": "New annual cap introduced to manage housing pressure in major cities.", "country": "Canada", "link": "https://www.canada.ca"},
+    {"title": "Sweden updates tuition fees for non-EU students — Autumn 2026", "source": "universityadmissions.se", "date": "Apr 2026", "summary": "Swedish universities publish updated fee structures for non-EU students.", "country": "Sweden", "link": "https://www.universityadmissions.se"},
+    {"title": "DAAD scholarships for Master's and PhD — deadlines June 2026", "source": "daad.de", "date": "Mar 2026", "summary": "Multiple DAAD funding programs open now. Deadline approaching fast.", "country": "Germany", "link": "https://www.daad.de"},
+    {"title": "Australia simplifies student visa process for 2026", "source": "homeaffairs.gov.au", "date": "Mar 2026", "summary": "New streamlined process reduces student visa processing to 3-4 weeks.", "country": "Australia", "link": "https://immi.homeaffairs.gov.au"},
+    {"title": "France Campus Bourses — new scholarships for international students", "source": "campusfrance.org", "date": "Mar 2026", "summary": "France opens new scholarship round for Master students worldwide.", "country": "France", "link": "https://www.campusfrance.org"},
+    {"title": "ETH Zurich and EPFL ranked top universities in Europe 2026", "source": "timeshighereducation.com", "date": "Feb 2026", "summary": "Switzerland dominates European rankings with two universities in top 10.", "country": "Switzerland", "link": "https://www.timeshighereducation.com"},
+    {"title": "Japan MEXT scholarship applications open for 2026-2027", "source": "mext.go.jp", "date": "Feb 2026", "summary": "Japanese government scholarship covers tuition and living expenses.", "country": "Japan", "link": "https://www.mext.go.jp"},
+    {"title": "USA F-1 student visa interview waiver extended through 2026", "source": "state.gov", "date": "Feb 2026", "summary": "Eligible students can skip in-person interview for F-1 student visa.", "country": "USA", "link": "https://travel.state.gov"},
+    {"title": "KTH Stockholm opens applications for 60+ English Master programs", "source": "kth.se", "date": "Jan 2026", "summary": "KTH offers world-class engineering and technology programs in English.", "country": "Sweden", "link": "https://www.kth.se"}
+]
+
 @app.route("/api/news")
 def get_news():
-    global NEWS_CACHE
-    now = datetime.datetime.now()
-    if NEWS_CACHE["data"] and NEWS_CACHE["timestamp"] and (now - NEWS_CACHE["timestamp"]).total_seconds() < 3600:
-        print("Serving news from cache", flush=True)
-        return jsonify(NEWS_CACHE["data"])
-
-    if not API_KEYS:
-        return jsonify([])
-    try:
-        today_date = now.strftime("%B %d, %Y")
-        prompt = f"""Today is {today_date}. Use Google Search to find 5-7 real, breaking news articles from TODAY or YESTERDAY about international student visas, study abroad scholarships, or university admissions worldwide.
-Return EXACTLY a JSON array where each object has:
-- "title": headline
-- "source": domain name of source
-- "date": e.g. '{today_date}' or 'Yesterday'
-- "summary": 1 sentence summary
-- "country": related country (or 'Global')
-- "link": direct URL to the article
-Return ONLY the JSON array (no markdown fences)."""
-        response = generate_content_with_rotation(
-            model="gemini-2.5-flash",
-            contents=prompt,
-            config=types.GenerateContentConfig(
-                tools=[types.Tool(google_search=types.GoogleSearch())]
-            )
-        )
-        results = extract_json_array(response.text)
-        NEWS_CACHE["data"] = results
-        NEWS_CACHE["timestamp"] = now
-        return jsonify(results)
-    except Exception as e:
-        print(f"⚠️ Native news fetch failed: {e} — trying DuckDuckGo + gemini-flash-latest fallback...", flush=True)
-        try:
-            news_results = search_duckduckgo("international student visas study abroad scholarships news", max_results=8)
-            news_context = ""
-            for idx, res in enumerate(news_results):
-                news_context += f"Result {idx+1}:\nTitle: {res['title']}\nURL: {res['link']}\nSnippet: {res['snippet']}\n\n"
-            
-            today_date = now.strftime("%B %d, %Y")
-            ddg_news_prompt = f"""You are a news summarizer. Below are search results from DuckDuckGo matching recent news.
-Use these results to extract 5-7 real, breaking news articles from TODAY or YESTERDAY about international student visas, study abroad scholarships, or university admissions worldwide.
-
-SEARCH RESULTS FROM WEB:
-{news_context}
-
-Return EXACTLY a JSON array where each object has:
-- "title": headline
-- "source": domain name of source
-- "date": e.g. '{today_date}' or 'Yesterday'
-- "summary": 1 sentence summary
-- "country": related country (or 'Global')
-- "link": direct URL to the article
-
-Return ONLY the JSON array (no markdown fences)."""
-
-            response = generate_content_with_rotation(
-                model="gemini-flash-latest",
-                contents=ddg_news_prompt,
-                config=None
-            )
-            results = extract_json_array(response.text)
-            NEWS_CACHE["data"] = results
-            NEWS_CACHE["timestamp"] = now
-            return jsonify(results)
-        except Exception as ddg_news_err:
-            print(f"❌ News fallback failed: {ddg_news_err}", flush=True)
-            if NEWS_CACHE["data"]:
-                return jsonify(NEWS_CACHE["data"])
-            return jsonify([])
-
+    return jsonify(NEWS_ITEMS)
 
 
 @app.route("/api/search", methods=["POST"])
@@ -356,29 +397,31 @@ def search():
         print(f"Serving search from cache for: {country}/{degree}/{field}", flush=True)
         return jsonify(SEARCH_CACHE[cache_key])
 
-    # ── Try Gemini AI first ──────────────────────────────────────────────────
+    # ── Try Gemini AI first (High-Quota Model, No Tools) ──────────────────────
     if API_KEYS and country and field:
         try:
             prompt   = build_prompt(country, degree, field, profile)
+            # Query gemini-flash-latest (1.5 Flash) without tools to prevent 429 rate limit errors
             response = generate_content_with_rotation(
-                model="gemini-2.5-flash",
+                model="gemini-flash-latest",
                 contents=prompt,
-                config=types.GenerateContentConfig(
-                    tools=[types.Tool(google_search=types.GoogleSearch())]
-                )
+                config=None # No tools, prevents daily rate limits
             )
             results  = extract_json_array(response.text)
 
             # Normalise keys just in case Gemini omits some
             normalised = []
             for r in results:
+                # Fallback to Google Search query if link is malformed or missing
+                fallback_query = f"{r.get('university', '') or 'university'} {r.get('course', '') or field}".strip()
+                fallback_link = f"https://www.google.com/search?q={urllib.parse.quote_plus(fallback_query)}"
                 normalised.append({
                     "university":   r.get("university", ""),
                     "course":       r.get("course", ""),
                     "city":         r.get("city", ""),
                     "country":      r.get("country", country),
                     "degree":       r.get("degree", degree),
-                    "link":         clean_link(r.get("link", "")),
+                    "link":         clean_link(r.get("link", ""), fallback_link, is_ai=True),
                     "requirements": r.get("requirements", "See university website."),
                     "match_rating": r.get("match_rating", 3),
                     "intake":       r.get("intake", "See website"),
@@ -396,109 +439,22 @@ def search():
 
         except Exception as e:
             err_msg = str(e)
-            print(f"⚠️ Native Google Search grounding failed: {err_msg} — trying DuckDuckGo + gemini-flash-latest fallback...", flush=True)
+            print(f"❌ Gemini search failed: {err_msg} — falling back to static data.", flush=True)
             
-            try:
-                # 1. Search DuckDuckGo
-                query = f"universities offering {degree} in {field} in {country}"
-                search_results = search_duckduckgo(query)
-                search_context = ""
-                for idx, res in enumerate(search_results):
-                    search_context += f"Result {idx+1}:\nTitle: {res['title']}\nURL: {res['link']}\nSnippet: {res['snippet']}\n\n"
-                
-                # 2. Build new prompt with DDG context
-                degree_label = {"bachelor": "Bachelor's", "master": "Master's", "phd": "PhD"}.get(
-                    degree.lower(), degree
-                )
-                
-                profile_block = ""
-                if profile:
-                    parts = []
-                    if profile.get("fullName"):    parts.append(f"Name: {profile['fullName']}")
-                    if profile.get("currentDegree"): parts.append(f"Currently studying: {profile['currentDegree']} in {profile.get('currentField', field)}")
-                    if profile.get("universityName"): parts.append(f"University: {profile['universityName']}")
-                    if profile.get("semester"):    parts.append(f"Semester: {profile['semester']}")
-                    if profile.get("grade"):       parts.append(f"GPA / Grade: {profile['grade']}")
-                    if profile.get("notes"):       parts.append(f"Notes: {profile['notes']}")
-                    if parts:
-                        profile_block = "STUDENT PROFILE:\n" + "\n".join(f"- {p}" for p in parts) + "\n\n"
+            notice = "Add a Gemini API key to enable AI-powered search for all countries."
+            if "RESOURCE_EXHAUSTED" in err_msg or "quota" in err_msg.lower():
+                notice = "Gemini API rate limit exceeded (RESOURCE_EXHAUSTED). Falling back to static data. Please try again in a few minutes."
+            elif "API_KEY_INVALID" in err_msg or "key not valid" in err_msg.lower():
+                notice = "The provided Gemini API key is invalid. Please check your Render configuration."
 
-                ddg_prompt = f"""You are a university admissions advisor. Below are search results from DuckDuckGo matching the student's criteria. Use these results to find real, currently available university programs that are accepting international students.
-
-SEARCH RESULTS FROM WEB:
-{search_context}
-
-{profile_block}SEARCH CRITERIA:
-- Country: {country}
-- Degree level: {degree_label}
-- Field of study: {field}
-
-Return EXACTLY 20 results (or up to 20 if fewer are available in the search results) as a raw JSON array.
-Each object must have these exact keys:
-{{
-  "university": "Full university name",
-  "course": "Exact program/course name",
-  "city": "City name",
-  "country": "{country}",
-  "degree": "{degree_label}",
-  "link": "The exact URL to the course page from the search results. DO NOT invent or guess links. If the exact URL is not available in the search results, use the official university website homepage domain instead.",
-  "requirements": "Key admission requirements in 1-2 sentences",
-  "match_rating": 3 (or 2, or 1) based on how well this program matches the student's profile (3 = Best match, 2 = Good match, 1 = Plausible match),
-  "intake": "e.g. Winter 2026 / Summer 2027",
-  "fee": "Annual tuition fee if known, otherwise 'See website'"
-}}
-
-Only return the JSON array. Do not wrap it in markdown. Do not add commentary."""
-
-                response = generate_content_with_rotation(
-                    model="gemini-flash-latest",
-                    contents=ddg_prompt,
-                    config=None
-                )
-                results = extract_json_array(response.text)
-
-                normalised = []
-                for r in results:
-                    normalised.append({
-                        "university":   r.get("university", ""),
-                        "course":       r.get("course", ""),
-                        "city":         r.get("city", ""),
-                        "country":      r.get("country", country),
-                        "degree":       r.get("degree", degree),
-                        "link":         clean_link(r.get("link", "")),
-                        "requirements": r.get("requirements", "See university website."),
-                        "match_rating": r.get("match_rating", 3),
-                        "intake":       r.get("intake", "See website"),
-                        "fee":          r.get("fee", "See website"),
-                    })
-
-                response_data = {
-                    "results":        normalised,
-                    "total":          len(normalised),
-                    "related_fields": [],
-                    "source":         "ai",
-                }
-                SEARCH_CACHE[cache_key] = response_data
-                return jsonify(response_data)
-
-            except Exception as ddg_err:
-                print(f"❌ DuckDuckGo + gemini-flash-latest fallback failed: {ddg_err} — falling back to static data.", flush=True)
-
-                # Help user identify key/quota limits
-                notice = "Add a Gemini API key to enable AI-powered search for all countries."
-                if "RESOURCE_EXHAUSTED" in err_msg or "quota" in err_msg.lower():
-                    notice = "Gemini API rate limit exceeded (RESOURCE_EXHAUSTED). Falling back to static data. Please try again in a few minutes."
-                elif "API_KEY_INVALID" in err_msg or "key not valid" in err_msg.lower():
-                    notice = "The provided Gemini API key is invalid. Please check your Render configuration."
-
-                formatted, total, source = fallback_search(country, degree, field)
-                return jsonify({
-                    "results":        formatted,
-                    "total":          total,
-                    "related_fields": [],
-                    "source":         "static",
-                    "fallback_notice": notice,
-                })
+            formatted, total, source = fallback_search(country, degree, field)
+            return jsonify({
+                "results":        formatted,
+                "total":          total,
+                "related_fields": [],
+                "source":         "static",
+                "fallback_notice": notice,
+            })
 
     # ── Fallback to static Germany JSON ─────────────────────────────────────
     formatted, total, source = fallback_search(country, degree, field)
