@@ -121,21 +121,23 @@ def fallback_search(country, degree, field):
         results = [c for c in results if fl in c.get("course", "").lower()]
 
     total = len(results)
-    formatted = [
-        {
+    formatted = []
+    for c in results[:50]:
+        # City field can be a comma-separated list of campuses — take only the first
+        raw_city = c.get("city", "")
+        city = raw_city.split(",")[0].strip() if raw_city else ""
+        formatted.append({
             "university":   c.get("uni", ""),
             "course":       c.get("course", ""),
-            "city":         c.get("city", ""),
+            "city":         city,
             "country":      c.get("country", ""),
             "degree":       c.get("degree", ""),
             "link":         c.get("link", ""),
-            "requirements": "See university website for requirements.",
-            "why_match":    "Matched based on your field and degree selection.",
+            "requirements": "See university website for full requirements.",
+            "why_match":    "",
             "intake":       "Winter / Summer",
             "fee":          "See website",
-        }
-        for c in results[:50]
-    ]
+        })
     return formatted, total, "static"
 
 
@@ -214,7 +216,7 @@ def search():
         "total":          total,
         "related_fields": [],
         "source":         source,
-        "fallback_notice": "AI search unavailable — showing static Germany data." if source == "static" else None,
+        "fallback_notice": "Add a Gemini API key to enable AI-powered search for all countries." if source == "static" else None,
     })
 
 

@@ -80,7 +80,7 @@ export default function University() {
                 <h3 className="rc-uni">{item.university}</h3>
                 <p className="rc-course">{item.course}</p>
 
-                {item.why_match && (
+                {item.why_match && item.why_match.trim() && (
                   <div className="rc-why">
                     <span className="rc-why-label">✨ Why it matches you</span>
                     <p>{item.why_match}</p>
