@@ -31,7 +31,6 @@ body {
   backdrop-filter: blur(24px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   display: flex; justify-content: space-between; align-items: center;
-  position: sticky; top: 0; z-index: 100;
 }
 .brand { display: flex; align-items: center; gap: 12px; }
 .brand-icon { font-size: 28px; }
@@ -600,13 +599,19 @@ button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
   flex: 0 0 280px;
   display: flex; flex-direction: column; gap: 10px;
   background: var(--card);
+  backdrop-filter: blur(24px);
   border: 1px solid var(--card-border);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.04);
   border-radius: 18px; padding: 20px;
   text-decoration: none; color: var(--text);
-  transition: border 0.2s, transform 0.2s;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   min-height: 180px;
 }
-.news-card:hover { border-color: rgba(81,250,170,0.35); transform: translateY(-2px); }
+.news-card:hover { 
+  border-color: rgba(81,250,170,0.4); 
+  transform: translateY(-4px); 
+  box-shadow: 0 16px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);
+}
 .news-card-top { display: flex; align-items: center; gap: 8px; }
 .news-flag { font-size: 18px; }
 .news-country { font-size: 11px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.08em; }

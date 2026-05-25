@@ -168,11 +168,13 @@ def get_news():
     if not gemini_client:
         return jsonify([])
     try:
-        prompt = """Use Google Search to find 5-7 recent real news articles about international student visas, study abroad scholarships, or university admissions worldwide.
+        from datetime import datetime
+        today_date = datetime.now().strftime("%B %d, %Y")
+        prompt = f"""Today is {today_date}. Use Google Search to find 5-7 real, breaking news articles from TODAY or YESTERDAY about international student visas, study abroad scholarships, or university admissions worldwide.
 Return EXACTLY a JSON array where each object has:
 - "title": headline
 - "source": domain name of source
-- "date": e.g. 'Month Year'
+- "date": e.g. '{today_date}' or 'Yesterday'
 - "summary": 1 sentence summary
 - "country": related country (or 'Global')
 - "link": direct URL to the article
