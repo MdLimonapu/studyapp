@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-import json, os, re
+import json, os, re, datetime
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
@@ -30,6 +30,10 @@ if GEMINI_API_KEY:
         print(f"⚠️  Gemini init failed: {e}", flush=True)
 else:
     print("⚠️  GEMINI_API_KEY not set — falling back to static data.", flush=True)
+
+# ── Caching ──────────────────────────────────────────────────────────────────
+NEWS_CACHE = {"data": None, "timestamp": None}
+SEARCH_CACHE = {}
 
 # ── Countries ────────────────────────────────────────────────────────────────
 COUNTRIES = [
@@ -179,11 +183,16 @@ def save_profile():
 
 @app.route("/api/news")
 def get_news():
+    global NEWS_CACHE
+    now = datetime.datetime.now()
+    if NEWS_CACHE["data"] and NEWS_CACHE["timestamp"] and (now - NEWS_CACHE["timestamp"]).total_seconds() < 3600:
+        print("Serving news from cache", flush=True)
+        return jsonify(NEWS_CACHE["data"])
+
     if not gemini_client:
         return jsonify([])
     try:
-        from datetime import datetime
-        today_date = datetime.now().strftime("%B %d, %Y")
+        today_date = now.strftime("%B %d, %Y")
         prompt = f"""Today is {today_date}. Use Google Search to find 5-7 real, breaking news articles from TODAY or YESTERDAY about international student visas, study abroad scholarships, or university admissions worldwide.
 Return EXACTLY a JSON array where each object has:
 - "title": headline
@@ -201,9 +210,13 @@ Return ONLY the JSON array (no markdown fences)."""
             )
         )
         results = extract_json_array(response.text)
+        NEWS_CACHE["data"] = results
+        NEWS_CACHE["timestamp"] = now
         return jsonify(results)
     except Exception as e:
         print(f"News fetch failed: {e}", flush=True)
+        if NEWS_CACHE["data"]:
+            return jsonify(NEWS_CACHE["data"])
         return jsonify([])
 
 
@@ -211,10 +224,21 @@ Return ONLY the JSON array (no markdown fences)."""
 @app.route("/api/search", methods=["POST"])
 def search():
     body    = request.json or {}
-    country = body.get("country", "")
-    degree  = body.get("degree", "master")
-    field   = body.get("field", "")
+    country = body.get("country", "").strip()
+    degree  = body.get("degree", "master").strip()
+    field   = body.get("field", "").strip()
     profile = body.get("profile", {})
+
+    # ── Try Caching ──────────────────────────────────────────────────────────
+    profile_summary = (
+        profile.get("grade", ""),
+        profile.get("currentField", ""),
+        profile.get("currentDegree", "")
+    )
+    cache_key = (country.lower(), degree.lower(), field.lower(), profile_summary)
+    if cache_key in SEARCH_CACHE:
+        print(f"Serving search from cache for: {country}/{degree}/{field}", flush=True)
+        return jsonify(SEARCH_CACHE[cache_key])
 
     # ── Try Gemini AI first ──────────────────────────────────────────────────
     if gemini_client and country and field:
@@ -245,12 +269,14 @@ def search():
                     "fee":          r.get("fee", "See website"),
                 })
 
-            return jsonify({
+            response_data = {
                 "results":        normalised,
                 "total":          len(normalised),
                 "related_fields": [],
                 "source":         "ai",
-            })
+            }
+            SEARCH_CACHE[cache_key] = response_data
+            return jsonify(response_data)
 
         except Exception as e:
             err_msg = str(e)
