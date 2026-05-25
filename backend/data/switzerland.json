@@ -5,7 +5,7 @@
     "course": "MSc in Computer Science",
     "degree": "Master",
     "city": "Zurich",
-    "link": "https://inf.ethz.ch/studies/master/master-computer-science.html"
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/computer-science.html"
   },
   {
     "country": "Switzerland",
@@ -13,28 +13,12 @@
     "course": "BSc in Computer Science",
     "degree": "Bachelor",
     "city": "Zurich",
-    "link": "https://inf.ethz.ch/studies/bachelor.html"
-  },
-  {
-    "country": "Switzerland",
-    "uni": "EPFL",
-    "course": "MSc in Computer Science",
-    "degree": "Master",
-    "city": "Lausanne",
-    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/computer-science/"
-  },
-  {
-    "country": "Switzerland",
-    "uni": "EPFL",
-    "course": "MSc in Data Science",
-    "degree": "Master",
-    "city": "Lausanne",
-    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/data-science/"
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/computer-science.html"
   },
   {
     "country": "Switzerland",
     "uni": "ETH Zurich",
-    "course": "MSc in Electrical Engineering",
+    "course": "MEng in Electrical Engineering",
     "degree": "Master",
     "city": "Zurich",
     "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/electrical-engineering.html"
@@ -42,7 +26,7 @@
   {
     "country": "Switzerland",
     "uni": "ETH Zurich",
-    "course": "BSc in Electrical Engineering",
+    "course": "BEng in Electrical Engineering",
     "degree": "Bachelor",
     "city": "Zurich",
     "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/electrical-engineering.html"
@@ -50,7 +34,7 @@
   {
     "country": "Switzerland",
     "uni": "ETH Zurich",
-    "course": "MSc in Mechanical Engineering",
+    "course": "MEng in Mechanical Engineering",
     "degree": "Master",
     "city": "Zurich",
     "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/mechanical-engineering.html"
@@ -58,7 +42,7 @@
   {
     "country": "Switzerland",
     "uni": "ETH Zurich",
-    "course": "BSc in Mechanical Engineering",
+    "course": "BEng in Mechanical Engineering",
     "degree": "Bachelor",
     "city": "Zurich",
     "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/mechanical-engineering.html"
@@ -82,7 +66,7 @@
   {
     "country": "Switzerland",
     "uni": "ETH Zurich",
-    "course": "MSc in Business Administration",
+    "course": "MBA in Business Administration",
     "degree": "Master",
     "city": "Zurich",
     "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/business-administration.html"
@@ -90,7 +74,7 @@
   {
     "country": "Switzerland",
     "uni": "ETH Zurich",
-    "course": "BSc in Business Administration",
+    "course": "BBA in Business Administration",
     "degree": "Bachelor",
     "city": "Zurich",
     "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/business-administration.html"
@@ -98,39 +82,7 @@
   {
     "country": "Switzerland",
     "uni": "ETH Zurich",
-    "course": "MSc in Medicine",
-    "degree": "Master",
-    "city": "Zurich",
-    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/medicine.html"
-  },
-  {
-    "country": "Switzerland",
-    "uni": "ETH Zurich",
-    "course": "BSc in Medicine",
-    "degree": "Bachelor",
-    "city": "Zurich",
-    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/medicine.html"
-  },
-  {
-    "country": "Switzerland",
-    "uni": "ETH Zurich",
-    "course": "MSc in Architecture",
-    "degree": "Master",
-    "city": "Zurich",
-    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/architecture.html"
-  },
-  {
-    "country": "Switzerland",
-    "uni": "ETH Zurich",
-    "course": "BSc in Architecture",
-    "degree": "Bachelor",
-    "city": "Zurich",
-    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/architecture.html"
-  },
-  {
-    "country": "Switzerland",
-    "uni": "ETH Zurich",
-    "course": "MSc in Civil Engineering",
+    "course": "MEng in Civil Engineering",
     "degree": "Master",
     "city": "Zurich",
     "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/civil-engineering.html"
@@ -138,7 +90,7 @@
   {
     "country": "Switzerland",
     "uni": "ETH Zurich",
-    "course": "BSc in Civil Engineering",
+    "course": "BEng in Civil Engineering",
     "degree": "Bachelor",
     "city": "Zurich",
     "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/civil-engineering.html"
@@ -146,7 +98,7 @@
   {
     "country": "Switzerland",
     "uni": "ETH Zurich",
-    "course": "MSc in Aerospace Engineering",
+    "course": "MEng in Aerospace Engineering",
     "degree": "Master",
     "city": "Zurich",
     "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/aerospace-engineering.html"
@@ -154,7 +106,7 @@
   {
     "country": "Switzerland",
     "uni": "ETH Zurich",
-    "course": "BSc in Aerospace Engineering",
+    "course": "BEng in Aerospace Engineering",
     "degree": "Bachelor",
     "city": "Zurich",
     "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/aerospace-engineering.html"
@@ -162,7 +114,7 @@
   {
     "country": "Switzerland",
     "uni": "ETH Zurich",
-    "course": "MSc in Biomedical Engineering",
+    "course": "MEng in Biomedical Engineering",
     "degree": "Master",
     "city": "Zurich",
     "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/biomedical-engineering.html"
@@ -170,7 +122,7 @@
   {
     "country": "Switzerland",
     "uni": "ETH Zurich",
-    "course": "BSc in Biomedical Engineering",
+    "course": "BEng in Biomedical Engineering",
     "degree": "Bachelor",
     "city": "Zurich",
     "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/biomedical-engineering.html"
@@ -226,7 +178,7 @@
   {
     "country": "Switzerland",
     "uni": "ETH Zurich",
-    "course": "MSc in Environmental Engineering",
+    "course": "MEng in Environmental Engineering",
     "degree": "Master",
     "city": "Zurich",
     "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/environmental-engineering.html"
@@ -234,7 +186,7 @@
   {
     "country": "Switzerland",
     "uni": "ETH Zurich",
-    "course": "BSc in Environmental Engineering",
+    "course": "BEng in Environmental Engineering",
     "degree": "Bachelor",
     "city": "Zurich",
     "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/environmental-engineering.html"
@@ -242,7 +194,7 @@
   {
     "country": "Switzerland",
     "uni": "ETH Zurich",
-    "course": "MSc in Chemical Engineering",
+    "course": "MEng in Chemical Engineering",
     "degree": "Master",
     "city": "Zurich",
     "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/chemical-engineering.html"
@@ -250,7 +202,7 @@
   {
     "country": "Switzerland",
     "uni": "ETH Zurich",
-    "course": "BSc in Chemical Engineering",
+    "course": "BEng in Chemical Engineering",
     "degree": "Bachelor",
     "city": "Zurich",
     "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/chemical-engineering.html"
@@ -322,6 +274,38 @@
   {
     "country": "Switzerland",
     "uni": "ETH Zurich",
+    "course": "MSc in Architecture",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/architecture.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Architecture",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/architecture.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MD in Medicine",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/medicine.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MBBS in Medicine",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/medicine.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
     "course": "LLM in Law",
     "degree": "Master",
     "city": "Zurich",
@@ -334,70 +318,6 @@
     "degree": "Bachelor",
     "city": "Zurich",
     "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/law.html"
-  },
-  {
-    "country": "Switzerland",
-    "uni": "ETH Zurich",
-    "course": "MSc in Nursing",
-    "degree": "Master",
-    "city": "Zurich",
-    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/nursing.html"
-  },
-  {
-    "country": "Switzerland",
-    "uni": "ETH Zurich",
-    "course": "BSc in Nursing",
-    "degree": "Bachelor",
-    "city": "Zurich",
-    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/nursing.html"
-  },
-  {
-    "country": "Switzerland",
-    "uni": "ETH Zurich",
-    "course": "MSc in Embedded Systems",
-    "degree": "Master",
-    "city": "Zurich",
-    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/embedded-systems.html"
-  },
-  {
-    "country": "Switzerland",
-    "uni": "ETH Zurich",
-    "course": "BSc in Embedded Systems",
-    "degree": "Bachelor",
-    "city": "Zurich",
-    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/embedded-systems.html"
-  },
-  {
-    "country": "Switzerland",
-    "uni": "ETH Zurich",
-    "course": "MSc in Telecommunications",
-    "degree": "Master",
-    "city": "Zurich",
-    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/telecommunications.html"
-  },
-  {
-    "country": "Switzerland",
-    "uni": "ETH Zurich",
-    "course": "BSc in Telecommunications",
-    "degree": "Bachelor",
-    "city": "Zurich",
-    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/telecommunications.html"
-  },
-  {
-    "country": "Switzerland",
-    "uni": "ETH Zurich",
-    "course": "MSc in Power Systems",
-    "degree": "Master",
-    "city": "Zurich",
-    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/power-systems.html"
-  },
-  {
-    "country": "Switzerland",
-    "uni": "ETH Zurich",
-    "course": "BSc in Power Systems",
-    "degree": "Bachelor",
-    "city": "Zurich",
-    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/power-systems.html"
   },
   {
     "country": "Switzerland",
@@ -450,6 +370,70 @@
   {
     "country": "Switzerland",
     "uni": "ETH Zurich",
+    "course": "MSc in Embedded Systems",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/embedded-systems.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Embedded Systems",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/embedded-systems.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MSc in Telecommunications",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/telecommunications.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Telecommunications",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/telecommunications.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MSc in Power Systems",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/power-systems.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Power Systems",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/power-systems.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MSc in Nursing",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/nursing.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Nursing",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/nursing.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
     "course": "MSc in Marketing",
     "degree": "Master",
     "city": "Zurich",
@@ -465,19 +449,43 @@
   },
   {
     "country": "Switzerland",
-    "uni": "EPFL",
-    "course": "MSc in Electrical Engineering",
+    "uni": "ETH Zurich",
+    "course": "MSc in Biology",
     "degree": "Master",
-    "city": "Lausanne",
-    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/electrical-engineering/"
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/biology.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Biology",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/biology.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "MSc in Chemistry",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/postgraduate/degree-programmes/chemistry.html"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "ETH Zurich",
+    "course": "BSc in Chemistry",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://ethz.ch/en/studies/undergraduate/degree-programmes/chemistry.html"
   },
   {
     "country": "Switzerland",
     "uni": "EPFL",
-    "course": "BSc in Electrical Engineering",
-    "degree": "Bachelor",
+    "course": "MSc in Computer Science",
+    "degree": "Master",
     "city": "Lausanne",
-    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/electrical-engineering/"
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/computer-science/"
   },
   {
     "country": "Switzerland",
@@ -490,7 +498,23 @@
   {
     "country": "Switzerland",
     "uni": "EPFL",
-    "course": "MSc in Mechanical Engineering",
+    "course": "MEng in Electrical Engineering",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/electrical-engineering/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BEng in Electrical Engineering",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/electrical-engineering/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MEng in Mechanical Engineering",
     "degree": "Master",
     "city": "Lausanne",
     "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/mechanical-engineering/"
@@ -498,10 +522,18 @@
   {
     "country": "Switzerland",
     "uni": "EPFL",
-    "course": "BSc in Mechanical Engineering",
+    "course": "BEng in Mechanical Engineering",
     "degree": "Bachelor",
     "city": "Lausanne",
     "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/mechanical-engineering/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Data Science",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/data-science/"
   },
   {
     "country": "Switzerland",
@@ -514,7 +546,7 @@
   {
     "country": "Switzerland",
     "uni": "EPFL",
-    "course": "MSc in Business Administration",
+    "course": "MBA in Business Administration",
     "degree": "Master",
     "city": "Lausanne",
     "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/business-administration/"
@@ -522,7 +554,7 @@
   {
     "country": "Switzerland",
     "uni": "EPFL",
-    "course": "BSc in Business Administration",
+    "course": "BBA in Business Administration",
     "degree": "Bachelor",
     "city": "Lausanne",
     "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/business-administration/"
@@ -530,39 +562,7 @@
   {
     "country": "Switzerland",
     "uni": "EPFL",
-    "course": "MSc in Medicine",
-    "degree": "Master",
-    "city": "Lausanne",
-    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/medicine/"
-  },
-  {
-    "country": "Switzerland",
-    "uni": "EPFL",
-    "course": "BSc in Medicine",
-    "degree": "Bachelor",
-    "city": "Lausanne",
-    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/medicine/"
-  },
-  {
-    "country": "Switzerland",
-    "uni": "EPFL",
-    "course": "MSc in Architecture",
-    "degree": "Master",
-    "city": "Lausanne",
-    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/architecture/"
-  },
-  {
-    "country": "Switzerland",
-    "uni": "EPFL",
-    "course": "BSc in Architecture",
-    "degree": "Bachelor",
-    "city": "Lausanne",
-    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/architecture/"
-  },
-  {
-    "country": "Switzerland",
-    "uni": "EPFL",
-    "course": "MSc in Civil Engineering",
+    "course": "MEng in Civil Engineering",
     "degree": "Master",
     "city": "Lausanne",
     "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/civil-engineering/"
@@ -570,7 +570,7 @@
   {
     "country": "Switzerland",
     "uni": "EPFL",
-    "course": "BSc in Civil Engineering",
+    "course": "BEng in Civil Engineering",
     "degree": "Bachelor",
     "city": "Lausanne",
     "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/civil-engineering/"
@@ -578,7 +578,7 @@
   {
     "country": "Switzerland",
     "uni": "EPFL",
-    "course": "MSc in Aerospace Engineering",
+    "course": "MEng in Aerospace Engineering",
     "degree": "Master",
     "city": "Lausanne",
     "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/aerospace-engineering/"
@@ -586,7 +586,7 @@
   {
     "country": "Switzerland",
     "uni": "EPFL",
-    "course": "BSc in Aerospace Engineering",
+    "course": "BEng in Aerospace Engineering",
     "degree": "Bachelor",
     "city": "Lausanne",
     "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/aerospace-engineering/"
@@ -594,7 +594,7 @@
   {
     "country": "Switzerland",
     "uni": "EPFL",
-    "course": "MSc in Biomedical Engineering",
+    "course": "MEng in Biomedical Engineering",
     "degree": "Master",
     "city": "Lausanne",
     "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/biomedical-engineering/"
@@ -602,7 +602,7 @@
   {
     "country": "Switzerland",
     "uni": "EPFL",
-    "course": "BSc in Biomedical Engineering",
+    "course": "BEng in Biomedical Engineering",
     "degree": "Bachelor",
     "city": "Lausanne",
     "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/biomedical-engineering/"
@@ -658,7 +658,7 @@
   {
     "country": "Switzerland",
     "uni": "EPFL",
-    "course": "MSc in Environmental Engineering",
+    "course": "MEng in Environmental Engineering",
     "degree": "Master",
     "city": "Lausanne",
     "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/environmental-engineering/"
@@ -666,7 +666,7 @@
   {
     "country": "Switzerland",
     "uni": "EPFL",
-    "course": "BSc in Environmental Engineering",
+    "course": "BEng in Environmental Engineering",
     "degree": "Bachelor",
     "city": "Lausanne",
     "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/environmental-engineering/"
@@ -674,7 +674,7 @@
   {
     "country": "Switzerland",
     "uni": "EPFL",
-    "course": "MSc in Chemical Engineering",
+    "course": "MEng in Chemical Engineering",
     "degree": "Master",
     "city": "Lausanne",
     "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/chemical-engineering/"
@@ -682,7 +682,7 @@
   {
     "country": "Switzerland",
     "uni": "EPFL",
-    "course": "BSc in Chemical Engineering",
+    "course": "BEng in Chemical Engineering",
     "degree": "Bachelor",
     "city": "Lausanne",
     "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/chemical-engineering/"
@@ -754,6 +754,38 @@
   {
     "country": "Switzerland",
     "uni": "EPFL",
+    "course": "MSc in Architecture",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/architecture/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Architecture",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/architecture/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MD in Medicine",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/medicine/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MBBS in Medicine",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/medicine/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
     "course": "LLM in Law",
     "degree": "Master",
     "city": "Lausanne",
@@ -766,70 +798,6 @@
     "degree": "Bachelor",
     "city": "Lausanne",
     "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/law/"
-  },
-  {
-    "country": "Switzerland",
-    "uni": "EPFL",
-    "course": "MSc in Nursing",
-    "degree": "Master",
-    "city": "Lausanne",
-    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/nursing/"
-  },
-  {
-    "country": "Switzerland",
-    "uni": "EPFL",
-    "course": "BSc in Nursing",
-    "degree": "Bachelor",
-    "city": "Lausanne",
-    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/nursing/"
-  },
-  {
-    "country": "Switzerland",
-    "uni": "EPFL",
-    "course": "MSc in Embedded Systems",
-    "degree": "Master",
-    "city": "Lausanne",
-    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/embedded-systems/"
-  },
-  {
-    "country": "Switzerland",
-    "uni": "EPFL",
-    "course": "BSc in Embedded Systems",
-    "degree": "Bachelor",
-    "city": "Lausanne",
-    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/embedded-systems/"
-  },
-  {
-    "country": "Switzerland",
-    "uni": "EPFL",
-    "course": "MSc in Telecommunications",
-    "degree": "Master",
-    "city": "Lausanne",
-    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/telecommunications/"
-  },
-  {
-    "country": "Switzerland",
-    "uni": "EPFL",
-    "course": "BSc in Telecommunications",
-    "degree": "Bachelor",
-    "city": "Lausanne",
-    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/telecommunications/"
-  },
-  {
-    "country": "Switzerland",
-    "uni": "EPFL",
-    "course": "MSc in Power Systems",
-    "degree": "Master",
-    "city": "Lausanne",
-    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/power-systems/"
-  },
-  {
-    "country": "Switzerland",
-    "uni": "EPFL",
-    "course": "BSc in Power Systems",
-    "degree": "Bachelor",
-    "city": "Lausanne",
-    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/power-systems/"
   },
   {
     "country": "Switzerland",
@@ -882,6 +850,70 @@
   {
     "country": "Switzerland",
     "uni": "EPFL",
+    "course": "MSc in Embedded Systems",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/embedded-systems/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Embedded Systems",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/embedded-systems/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Telecommunications",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/telecommunications/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Telecommunications",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/telecommunications/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Power Systems",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/power-systems/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Power Systems",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/power-systems/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Nursing",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/nursing/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Nursing",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/nursing/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
     "course": "MSc in Marketing",
     "degree": "Master",
     "city": "Lausanne",
@@ -894,5 +926,3877 @@
     "degree": "Bachelor",
     "city": "Lausanne",
     "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/marketing/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Biology",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/biology/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Biology",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/biology/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "MSc in Chemistry",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/chemistry/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "EPFL",
+    "course": "BSc in Chemistry",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.epfl.ch/education/studies/en/rules-and-procedures/study-plans-prog-ects/chemistry/"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "MSc in Computer Science",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/computer-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "BSc in Computer Science",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/computer-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "MEng in Electrical Engineering",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/electrical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "BEng in Electrical Engineering",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/electrical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "MEng in Mechanical Engineering",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/mechanical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "BEng in Mechanical Engineering",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/mechanical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "MSc in Data Science",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/data-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "BSc in Data Science",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/data-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "MBA in Business Administration",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/business-administration"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "BBA in Business Administration",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/business-administration"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "MEng in Civil Engineering",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/civil-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "BEng in Civil Engineering",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/civil-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "MEng in Aerospace Engineering",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/aerospace-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "BEng in Aerospace Engineering",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/aerospace-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "MEng in Biomedical Engineering",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/biomedical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "BEng in Biomedical Engineering",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/biomedical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "MSc in Information Technology",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/information-technology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "BSc in Information Technology",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/information-technology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "MSc in Artificial Intelligence",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/artificial-intelligence"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "BSc in Artificial Intelligence",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/artificial-intelligence"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "MSc in Robotics",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/robotics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "BSc in Robotics",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/robotics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "MEng in Environmental Engineering",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/environmental-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "BEng in Environmental Engineering",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/environmental-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "MEng in Chemical Engineering",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/chemical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "BEng in Chemical Engineering",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/chemical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "MSc in Physics",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/physics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "BSc in Physics",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/physics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "MSc in Mathematics",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/mathematics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "BSc in Mathematics",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/mathematics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "MSc in Economics",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/economics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "BSc in Economics",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/economics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "MSc in Psychology",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/psychology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "BSc in Psychology",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/psychology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "MSc in Architecture",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/architecture"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "BSc in Architecture",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/architecture"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "MD in Medicine",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/medicine"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "MBBS in Medicine",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/medicine"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "LLM in Law",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/law"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "LLB in Law",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/law"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "MSc in Software Engineering",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/software-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "BSc in Software Engineering",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/software-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "MSc in Cybersecurity",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/cybersecurity"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "BSc in Cybersecurity",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/cybersecurity"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "MSc in Finance",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/finance"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "BSc in Finance",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/finance"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "MSc in Embedded Systems",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/embedded-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "BSc in Embedded Systems",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/embedded-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "MSc in Telecommunications",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/telecommunications"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "BSc in Telecommunications",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/telecommunications"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "MSc in Power Systems",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/power-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "BSc in Power Systems",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/power-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "MSc in Nursing",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/nursing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "BSc in Nursing",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/nursing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "MSc in Marketing",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/marketing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "BSc in Marketing",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/marketing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "MSc in Biology",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/biology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "BSc in Biology",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/biology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "MSc in Chemistry",
+    "degree": "Master",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/chemistry"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Zurich",
+    "course": "BSc in Chemistry",
+    "degree": "Bachelor",
+    "city": "Zurich",
+    "link": "https://www.uzh.ch/courses/chemistry"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "MSc in Computer Science",
+    "degree": "Master",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/computer-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "BSc in Computer Science",
+    "degree": "Bachelor",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/computer-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "MEng in Electrical Engineering",
+    "degree": "Master",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/electrical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "BEng in Electrical Engineering",
+    "degree": "Bachelor",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/electrical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "MEng in Mechanical Engineering",
+    "degree": "Master",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/mechanical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "BEng in Mechanical Engineering",
+    "degree": "Bachelor",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/mechanical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "MSc in Data Science",
+    "degree": "Master",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/data-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "BSc in Data Science",
+    "degree": "Bachelor",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/data-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "MBA in Business Administration",
+    "degree": "Master",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/business-administration"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "BBA in Business Administration",
+    "degree": "Bachelor",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/business-administration"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "MEng in Civil Engineering",
+    "degree": "Master",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/civil-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "BEng in Civil Engineering",
+    "degree": "Bachelor",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/civil-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "MEng in Aerospace Engineering",
+    "degree": "Master",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/aerospace-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "BEng in Aerospace Engineering",
+    "degree": "Bachelor",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/aerospace-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "MEng in Biomedical Engineering",
+    "degree": "Master",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/biomedical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "BEng in Biomedical Engineering",
+    "degree": "Bachelor",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/biomedical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "MSc in Information Technology",
+    "degree": "Master",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/information-technology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "BSc in Information Technology",
+    "degree": "Bachelor",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/information-technology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "MSc in Artificial Intelligence",
+    "degree": "Master",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/artificial-intelligence"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "BSc in Artificial Intelligence",
+    "degree": "Bachelor",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/artificial-intelligence"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "MSc in Robotics",
+    "degree": "Master",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/robotics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "BSc in Robotics",
+    "degree": "Bachelor",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/robotics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "MEng in Environmental Engineering",
+    "degree": "Master",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/environmental-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "BEng in Environmental Engineering",
+    "degree": "Bachelor",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/environmental-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "MEng in Chemical Engineering",
+    "degree": "Master",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/chemical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "BEng in Chemical Engineering",
+    "degree": "Bachelor",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/chemical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "MSc in Physics",
+    "degree": "Master",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/physics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "BSc in Physics",
+    "degree": "Bachelor",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/physics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "MSc in Mathematics",
+    "degree": "Master",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/mathematics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "BSc in Mathematics",
+    "degree": "Bachelor",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/mathematics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "MSc in Economics",
+    "degree": "Master",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/economics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "BSc in Economics",
+    "degree": "Bachelor",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/economics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "MSc in Psychology",
+    "degree": "Master",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/psychology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "BSc in Psychology",
+    "degree": "Bachelor",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/psychology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "MSc in Architecture",
+    "degree": "Master",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/architecture"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "BSc in Architecture",
+    "degree": "Bachelor",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/architecture"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "MD in Medicine",
+    "degree": "Master",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/medicine"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "MBBS in Medicine",
+    "degree": "Bachelor",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/medicine"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "LLM in Law",
+    "degree": "Master",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/law"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "LLB in Law",
+    "degree": "Bachelor",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/law"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "MSc in Software Engineering",
+    "degree": "Master",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/software-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "BSc in Software Engineering",
+    "degree": "Bachelor",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/software-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "MSc in Cybersecurity",
+    "degree": "Master",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/cybersecurity"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "BSc in Cybersecurity",
+    "degree": "Bachelor",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/cybersecurity"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "MSc in Finance",
+    "degree": "Master",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/finance"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "BSc in Finance",
+    "degree": "Bachelor",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/finance"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "MSc in Embedded Systems",
+    "degree": "Master",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/embedded-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "BSc in Embedded Systems",
+    "degree": "Bachelor",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/embedded-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "MSc in Telecommunications",
+    "degree": "Master",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/telecommunications"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "BSc in Telecommunications",
+    "degree": "Bachelor",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/telecommunications"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "MSc in Power Systems",
+    "degree": "Master",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/power-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "BSc in Power Systems",
+    "degree": "Bachelor",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/power-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "MSc in Nursing",
+    "degree": "Master",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/nursing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "BSc in Nursing",
+    "degree": "Bachelor",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/nursing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "MSc in Marketing",
+    "degree": "Master",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/marketing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "BSc in Marketing",
+    "degree": "Bachelor",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/marketing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "MSc in Biology",
+    "degree": "Master",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/biology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "BSc in Biology",
+    "degree": "Bachelor",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/biology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "MSc in Chemistry",
+    "degree": "Master",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/chemistry"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Basel",
+    "course": "BSc in Chemistry",
+    "degree": "Bachelor",
+    "city": "Basel",
+    "link": "https://www.unibas.ch/courses/chemistry"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "MSc in Computer Science",
+    "degree": "Master",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/computer-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "BSc in Computer Science",
+    "degree": "Bachelor",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/computer-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "MEng in Electrical Engineering",
+    "degree": "Master",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/electrical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "BEng in Electrical Engineering",
+    "degree": "Bachelor",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/electrical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "MEng in Mechanical Engineering",
+    "degree": "Master",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/mechanical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "BEng in Mechanical Engineering",
+    "degree": "Bachelor",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/mechanical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "MSc in Data Science",
+    "degree": "Master",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/data-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "BSc in Data Science",
+    "degree": "Bachelor",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/data-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "MBA in Business Administration",
+    "degree": "Master",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/business-administration"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "BBA in Business Administration",
+    "degree": "Bachelor",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/business-administration"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "MEng in Civil Engineering",
+    "degree": "Master",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/civil-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "BEng in Civil Engineering",
+    "degree": "Bachelor",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/civil-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "MEng in Aerospace Engineering",
+    "degree": "Master",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/aerospace-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "BEng in Aerospace Engineering",
+    "degree": "Bachelor",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/aerospace-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "MEng in Biomedical Engineering",
+    "degree": "Master",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/biomedical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "BEng in Biomedical Engineering",
+    "degree": "Bachelor",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/biomedical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "MSc in Information Technology",
+    "degree": "Master",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/information-technology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "BSc in Information Technology",
+    "degree": "Bachelor",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/information-technology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "MSc in Artificial Intelligence",
+    "degree": "Master",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/artificial-intelligence"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "BSc in Artificial Intelligence",
+    "degree": "Bachelor",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/artificial-intelligence"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "MSc in Robotics",
+    "degree": "Master",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/robotics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "BSc in Robotics",
+    "degree": "Bachelor",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/robotics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "MEng in Environmental Engineering",
+    "degree": "Master",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/environmental-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "BEng in Environmental Engineering",
+    "degree": "Bachelor",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/environmental-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "MEng in Chemical Engineering",
+    "degree": "Master",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/chemical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "BEng in Chemical Engineering",
+    "degree": "Bachelor",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/chemical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "MSc in Physics",
+    "degree": "Master",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/physics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "BSc in Physics",
+    "degree": "Bachelor",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/physics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "MSc in Mathematics",
+    "degree": "Master",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/mathematics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "BSc in Mathematics",
+    "degree": "Bachelor",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/mathematics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "MSc in Economics",
+    "degree": "Master",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/economics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "BSc in Economics",
+    "degree": "Bachelor",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/economics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "MSc in Psychology",
+    "degree": "Master",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/psychology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "BSc in Psychology",
+    "degree": "Bachelor",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/psychology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "MSc in Architecture",
+    "degree": "Master",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/architecture"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "BSc in Architecture",
+    "degree": "Bachelor",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/architecture"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "MD in Medicine",
+    "degree": "Master",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/medicine"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "MBBS in Medicine",
+    "degree": "Bachelor",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/medicine"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "LLM in Law",
+    "degree": "Master",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/law"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "LLB in Law",
+    "degree": "Bachelor",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/law"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "MSc in Software Engineering",
+    "degree": "Master",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/software-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "BSc in Software Engineering",
+    "degree": "Bachelor",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/software-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "MSc in Cybersecurity",
+    "degree": "Master",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/cybersecurity"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "BSc in Cybersecurity",
+    "degree": "Bachelor",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/cybersecurity"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "MSc in Finance",
+    "degree": "Master",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/finance"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "BSc in Finance",
+    "degree": "Bachelor",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/finance"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "MSc in Embedded Systems",
+    "degree": "Master",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/embedded-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "BSc in Embedded Systems",
+    "degree": "Bachelor",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/embedded-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "MSc in Telecommunications",
+    "degree": "Master",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/telecommunications"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "BSc in Telecommunications",
+    "degree": "Bachelor",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/telecommunications"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "MSc in Power Systems",
+    "degree": "Master",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/power-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "BSc in Power Systems",
+    "degree": "Bachelor",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/power-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "MSc in Nursing",
+    "degree": "Master",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/nursing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "BSc in Nursing",
+    "degree": "Bachelor",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/nursing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "MSc in Marketing",
+    "degree": "Master",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/marketing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "BSc in Marketing",
+    "degree": "Bachelor",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/marketing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "MSc in Biology",
+    "degree": "Master",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/biology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "BSc in Biology",
+    "degree": "Bachelor",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/biology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "MSc in Chemistry",
+    "degree": "Master",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/chemistry"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Bern",
+    "course": "BSc in Chemistry",
+    "degree": "Bachelor",
+    "city": "Bern",
+    "link": "https://www.unibe.ch/courses/chemistry"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "MSc in Computer Science",
+    "degree": "Master",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/computer-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "BSc in Computer Science",
+    "degree": "Bachelor",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/computer-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "MEng in Electrical Engineering",
+    "degree": "Master",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/electrical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "BEng in Electrical Engineering",
+    "degree": "Bachelor",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/electrical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "MEng in Mechanical Engineering",
+    "degree": "Master",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/mechanical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "BEng in Mechanical Engineering",
+    "degree": "Bachelor",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/mechanical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "MSc in Data Science",
+    "degree": "Master",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/data-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "BSc in Data Science",
+    "degree": "Bachelor",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/data-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "MBA in Business Administration",
+    "degree": "Master",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/business-administration"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "BBA in Business Administration",
+    "degree": "Bachelor",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/business-administration"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "MEng in Civil Engineering",
+    "degree": "Master",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/civil-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "BEng in Civil Engineering",
+    "degree": "Bachelor",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/civil-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "MEng in Aerospace Engineering",
+    "degree": "Master",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/aerospace-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "BEng in Aerospace Engineering",
+    "degree": "Bachelor",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/aerospace-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "MEng in Biomedical Engineering",
+    "degree": "Master",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/biomedical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "BEng in Biomedical Engineering",
+    "degree": "Bachelor",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/biomedical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "MSc in Information Technology",
+    "degree": "Master",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/information-technology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "BSc in Information Technology",
+    "degree": "Bachelor",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/information-technology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "MSc in Artificial Intelligence",
+    "degree": "Master",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/artificial-intelligence"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "BSc in Artificial Intelligence",
+    "degree": "Bachelor",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/artificial-intelligence"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "MSc in Robotics",
+    "degree": "Master",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/robotics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "BSc in Robotics",
+    "degree": "Bachelor",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/robotics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "MEng in Environmental Engineering",
+    "degree": "Master",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/environmental-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "BEng in Environmental Engineering",
+    "degree": "Bachelor",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/environmental-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "MEng in Chemical Engineering",
+    "degree": "Master",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/chemical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "BEng in Chemical Engineering",
+    "degree": "Bachelor",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/chemical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "MSc in Physics",
+    "degree": "Master",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/physics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "BSc in Physics",
+    "degree": "Bachelor",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/physics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "MSc in Mathematics",
+    "degree": "Master",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/mathematics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "BSc in Mathematics",
+    "degree": "Bachelor",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/mathematics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "MSc in Economics",
+    "degree": "Master",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/economics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "BSc in Economics",
+    "degree": "Bachelor",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/economics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "MSc in Psychology",
+    "degree": "Master",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/psychology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "BSc in Psychology",
+    "degree": "Bachelor",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/psychology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "MSc in Architecture",
+    "degree": "Master",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/architecture"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "BSc in Architecture",
+    "degree": "Bachelor",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/architecture"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "MD in Medicine",
+    "degree": "Master",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/medicine"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "MBBS in Medicine",
+    "degree": "Bachelor",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/medicine"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "LLM in Law",
+    "degree": "Master",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/law"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "LLB in Law",
+    "degree": "Bachelor",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/law"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "MSc in Software Engineering",
+    "degree": "Master",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/software-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "BSc in Software Engineering",
+    "degree": "Bachelor",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/software-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "MSc in Cybersecurity",
+    "degree": "Master",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/cybersecurity"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "BSc in Cybersecurity",
+    "degree": "Bachelor",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/cybersecurity"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "MSc in Finance",
+    "degree": "Master",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/finance"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "BSc in Finance",
+    "degree": "Bachelor",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/finance"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "MSc in Embedded Systems",
+    "degree": "Master",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/embedded-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "BSc in Embedded Systems",
+    "degree": "Bachelor",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/embedded-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "MSc in Telecommunications",
+    "degree": "Master",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/telecommunications"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "BSc in Telecommunications",
+    "degree": "Bachelor",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/telecommunications"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "MSc in Power Systems",
+    "degree": "Master",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/power-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "BSc in Power Systems",
+    "degree": "Bachelor",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/power-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "MSc in Nursing",
+    "degree": "Master",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/nursing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "BSc in Nursing",
+    "degree": "Bachelor",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/nursing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "MSc in Marketing",
+    "degree": "Master",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/marketing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "BSc in Marketing",
+    "degree": "Bachelor",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/marketing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "MSc in Biology",
+    "degree": "Master",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/biology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "BSc in Biology",
+    "degree": "Bachelor",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/biology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "MSc in Chemistry",
+    "degree": "Master",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/chemistry"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Geneva",
+    "course": "BSc in Chemistry",
+    "degree": "Bachelor",
+    "city": "Geneva",
+    "link": "https://www.unige.ch/courses/chemistry"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "MSc in Computer Science",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/computer-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "BSc in Computer Science",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/computer-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "MEng in Electrical Engineering",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/electrical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "BEng in Electrical Engineering",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/electrical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "MEng in Mechanical Engineering",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/mechanical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "BEng in Mechanical Engineering",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/mechanical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "MSc in Data Science",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/data-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "BSc in Data Science",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/data-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "MBA in Business Administration",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/business-administration"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "BBA in Business Administration",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/business-administration"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "MEng in Civil Engineering",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/civil-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "BEng in Civil Engineering",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/civil-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "MEng in Aerospace Engineering",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/aerospace-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "BEng in Aerospace Engineering",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/aerospace-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "MEng in Biomedical Engineering",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/biomedical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "BEng in Biomedical Engineering",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/biomedical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "MSc in Information Technology",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/information-technology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "BSc in Information Technology",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/information-technology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "MSc in Artificial Intelligence",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/artificial-intelligence"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "BSc in Artificial Intelligence",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/artificial-intelligence"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "MSc in Robotics",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/robotics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "BSc in Robotics",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/robotics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "MEng in Environmental Engineering",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/environmental-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "BEng in Environmental Engineering",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/environmental-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "MEng in Chemical Engineering",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/chemical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "BEng in Chemical Engineering",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/chemical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "MSc in Physics",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/physics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "BSc in Physics",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/physics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "MSc in Mathematics",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/mathematics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "BSc in Mathematics",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/mathematics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "MSc in Economics",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/economics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "BSc in Economics",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/economics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "MSc in Psychology",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/psychology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "BSc in Psychology",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/psychology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "MSc in Architecture",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/architecture"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "BSc in Architecture",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/architecture"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "MD in Medicine",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/medicine"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "MBBS in Medicine",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/medicine"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "LLM in Law",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/law"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "LLB in Law",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/law"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "MSc in Software Engineering",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/software-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "BSc in Software Engineering",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/software-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "MSc in Cybersecurity",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/cybersecurity"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "BSc in Cybersecurity",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/cybersecurity"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "MSc in Finance",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/finance"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "BSc in Finance",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/finance"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "MSc in Embedded Systems",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/embedded-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "BSc in Embedded Systems",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/embedded-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "MSc in Telecommunications",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/telecommunications"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "BSc in Telecommunications",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/telecommunications"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "MSc in Power Systems",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/power-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "BSc in Power Systems",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/power-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "MSc in Nursing",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/nursing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "BSc in Nursing",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/nursing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "MSc in Marketing",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/marketing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "BSc in Marketing",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/marketing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "MSc in Biology",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/biology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "BSc in Biology",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/biology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "MSc in Chemistry",
+    "degree": "Master",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/chemistry"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Lausanne",
+    "course": "BSc in Chemistry",
+    "degree": "Bachelor",
+    "city": "Lausanne",
+    "link": "https://www.unil.ch/courses/chemistry"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "MSc in Computer Science",
+    "degree": "Master",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/computer-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "BSc in Computer Science",
+    "degree": "Bachelor",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/computer-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "MEng in Electrical Engineering",
+    "degree": "Master",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/electrical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "BEng in Electrical Engineering",
+    "degree": "Bachelor",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/electrical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "MEng in Mechanical Engineering",
+    "degree": "Master",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/mechanical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "BEng in Mechanical Engineering",
+    "degree": "Bachelor",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/mechanical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "MSc in Data Science",
+    "degree": "Master",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/data-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "BSc in Data Science",
+    "degree": "Bachelor",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/data-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "MBA in Business Administration",
+    "degree": "Master",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/business-administration"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "BBA in Business Administration",
+    "degree": "Bachelor",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/business-administration"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "MEng in Civil Engineering",
+    "degree": "Master",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/civil-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "BEng in Civil Engineering",
+    "degree": "Bachelor",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/civil-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "MEng in Aerospace Engineering",
+    "degree": "Master",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/aerospace-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "BEng in Aerospace Engineering",
+    "degree": "Bachelor",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/aerospace-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "MEng in Biomedical Engineering",
+    "degree": "Master",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/biomedical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "BEng in Biomedical Engineering",
+    "degree": "Bachelor",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/biomedical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "MSc in Information Technology",
+    "degree": "Master",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/information-technology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "BSc in Information Technology",
+    "degree": "Bachelor",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/information-technology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "MSc in Artificial Intelligence",
+    "degree": "Master",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/artificial-intelligence"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "BSc in Artificial Intelligence",
+    "degree": "Bachelor",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/artificial-intelligence"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "MSc in Robotics",
+    "degree": "Master",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/robotics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "BSc in Robotics",
+    "degree": "Bachelor",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/robotics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "MEng in Environmental Engineering",
+    "degree": "Master",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/environmental-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "BEng in Environmental Engineering",
+    "degree": "Bachelor",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/environmental-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "MEng in Chemical Engineering",
+    "degree": "Master",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/chemical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "BEng in Chemical Engineering",
+    "degree": "Bachelor",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/chemical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "MSc in Physics",
+    "degree": "Master",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/physics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "BSc in Physics",
+    "degree": "Bachelor",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/physics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "MSc in Mathematics",
+    "degree": "Master",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/mathematics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "BSc in Mathematics",
+    "degree": "Bachelor",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/mathematics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "MSc in Economics",
+    "degree": "Master",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/economics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "BSc in Economics",
+    "degree": "Bachelor",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/economics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "MSc in Psychology",
+    "degree": "Master",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/psychology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "BSc in Psychology",
+    "degree": "Bachelor",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/psychology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "MSc in Architecture",
+    "degree": "Master",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/architecture"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "BSc in Architecture",
+    "degree": "Bachelor",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/architecture"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "MD in Medicine",
+    "degree": "Master",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/medicine"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "MBBS in Medicine",
+    "degree": "Bachelor",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/medicine"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "LLM in Law",
+    "degree": "Master",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/law"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "LLB in Law",
+    "degree": "Bachelor",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/law"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "MSc in Software Engineering",
+    "degree": "Master",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/software-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "BSc in Software Engineering",
+    "degree": "Bachelor",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/software-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "MSc in Cybersecurity",
+    "degree": "Master",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/cybersecurity"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "BSc in Cybersecurity",
+    "degree": "Bachelor",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/cybersecurity"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "MSc in Finance",
+    "degree": "Master",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/finance"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "BSc in Finance",
+    "degree": "Bachelor",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/finance"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "MSc in Embedded Systems",
+    "degree": "Master",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/embedded-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "BSc in Embedded Systems",
+    "degree": "Bachelor",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/embedded-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "MSc in Telecommunications",
+    "degree": "Master",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/telecommunications"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "BSc in Telecommunications",
+    "degree": "Bachelor",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/telecommunications"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "MSc in Power Systems",
+    "degree": "Master",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/power-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "BSc in Power Systems",
+    "degree": "Bachelor",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/power-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "MSc in Nursing",
+    "degree": "Master",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/nursing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "BSc in Nursing",
+    "degree": "Bachelor",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/nursing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "MSc in Marketing",
+    "degree": "Master",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/marketing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "BSc in Marketing",
+    "degree": "Bachelor",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/marketing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "MSc in Biology",
+    "degree": "Master",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/biology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "BSc in Biology",
+    "degree": "Bachelor",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/biology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "MSc in Chemistry",
+    "degree": "Master",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/chemistry"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of St. Gallen",
+    "course": "BSc in Chemistry",
+    "degree": "Bachelor",
+    "city": "St. Gallen",
+    "link": "https://www.unisg.ch/courses/chemistry"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "MSc in Computer Science",
+    "degree": "Master",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/computer-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "BSc in Computer Science",
+    "degree": "Bachelor",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/computer-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "MEng in Electrical Engineering",
+    "degree": "Master",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/electrical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "BEng in Electrical Engineering",
+    "degree": "Bachelor",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/electrical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "MEng in Mechanical Engineering",
+    "degree": "Master",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/mechanical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "BEng in Mechanical Engineering",
+    "degree": "Bachelor",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/mechanical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "MSc in Data Science",
+    "degree": "Master",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/data-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "BSc in Data Science",
+    "degree": "Bachelor",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/data-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "MBA in Business Administration",
+    "degree": "Master",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/business-administration"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "BBA in Business Administration",
+    "degree": "Bachelor",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/business-administration"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "MEng in Civil Engineering",
+    "degree": "Master",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/civil-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "BEng in Civil Engineering",
+    "degree": "Bachelor",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/civil-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "MEng in Aerospace Engineering",
+    "degree": "Master",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/aerospace-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "BEng in Aerospace Engineering",
+    "degree": "Bachelor",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/aerospace-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "MEng in Biomedical Engineering",
+    "degree": "Master",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/biomedical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "BEng in Biomedical Engineering",
+    "degree": "Bachelor",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/biomedical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "MSc in Information Technology",
+    "degree": "Master",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/information-technology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "BSc in Information Technology",
+    "degree": "Bachelor",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/information-technology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "MSc in Artificial Intelligence",
+    "degree": "Master",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/artificial-intelligence"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "BSc in Artificial Intelligence",
+    "degree": "Bachelor",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/artificial-intelligence"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "MSc in Robotics",
+    "degree": "Master",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/robotics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "BSc in Robotics",
+    "degree": "Bachelor",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/robotics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "MEng in Environmental Engineering",
+    "degree": "Master",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/environmental-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "BEng in Environmental Engineering",
+    "degree": "Bachelor",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/environmental-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "MEng in Chemical Engineering",
+    "degree": "Master",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/chemical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "BEng in Chemical Engineering",
+    "degree": "Bachelor",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/chemical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "MSc in Physics",
+    "degree": "Master",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/physics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "BSc in Physics",
+    "degree": "Bachelor",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/physics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "MSc in Mathematics",
+    "degree": "Master",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/mathematics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "BSc in Mathematics",
+    "degree": "Bachelor",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/mathematics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "MSc in Economics",
+    "degree": "Master",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/economics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "BSc in Economics",
+    "degree": "Bachelor",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/economics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "MSc in Psychology",
+    "degree": "Master",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/psychology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "BSc in Psychology",
+    "degree": "Bachelor",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/psychology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "MSc in Architecture",
+    "degree": "Master",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/architecture"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "BSc in Architecture",
+    "degree": "Bachelor",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/architecture"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "MD in Medicine",
+    "degree": "Master",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/medicine"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "MBBS in Medicine",
+    "degree": "Bachelor",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/medicine"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "LLM in Law",
+    "degree": "Master",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/law"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "LLB in Law",
+    "degree": "Bachelor",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/law"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "MSc in Software Engineering",
+    "degree": "Master",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/software-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "BSc in Software Engineering",
+    "degree": "Bachelor",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/software-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "MSc in Cybersecurity",
+    "degree": "Master",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/cybersecurity"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "BSc in Cybersecurity",
+    "degree": "Bachelor",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/cybersecurity"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "MSc in Finance",
+    "degree": "Master",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/finance"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "BSc in Finance",
+    "degree": "Bachelor",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/finance"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "MSc in Embedded Systems",
+    "degree": "Master",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/embedded-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "BSc in Embedded Systems",
+    "degree": "Bachelor",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/embedded-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "MSc in Telecommunications",
+    "degree": "Master",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/telecommunications"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "BSc in Telecommunications",
+    "degree": "Bachelor",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/telecommunications"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "MSc in Power Systems",
+    "degree": "Master",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/power-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "BSc in Power Systems",
+    "degree": "Bachelor",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/power-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "MSc in Nursing",
+    "degree": "Master",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/nursing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "BSc in Nursing",
+    "degree": "Bachelor",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/nursing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "MSc in Marketing",
+    "degree": "Master",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/marketing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "BSc in Marketing",
+    "degree": "Bachelor",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/marketing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "MSc in Biology",
+    "degree": "Master",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/biology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "BSc in Biology",
+    "degree": "Bachelor",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/biology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "MSc in Chemistry",
+    "degree": "Master",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/chemistry"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Fribourg",
+    "course": "BSc in Chemistry",
+    "degree": "Bachelor",
+    "city": "Fribourg",
+    "link": "https://www.unifr.ch/courses/chemistry"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "MSc in Computer Science",
+    "degree": "Master",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/computer-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "BSc in Computer Science",
+    "degree": "Bachelor",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/computer-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "MEng in Electrical Engineering",
+    "degree": "Master",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/electrical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "BEng in Electrical Engineering",
+    "degree": "Bachelor",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/electrical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "MEng in Mechanical Engineering",
+    "degree": "Master",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/mechanical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "BEng in Mechanical Engineering",
+    "degree": "Bachelor",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/mechanical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "MSc in Data Science",
+    "degree": "Master",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/data-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "BSc in Data Science",
+    "degree": "Bachelor",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/data-science"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "MBA in Business Administration",
+    "degree": "Master",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/business-administration"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "BBA in Business Administration",
+    "degree": "Bachelor",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/business-administration"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "MEng in Civil Engineering",
+    "degree": "Master",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/civil-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "BEng in Civil Engineering",
+    "degree": "Bachelor",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/civil-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "MEng in Aerospace Engineering",
+    "degree": "Master",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/aerospace-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "BEng in Aerospace Engineering",
+    "degree": "Bachelor",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/aerospace-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "MEng in Biomedical Engineering",
+    "degree": "Master",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/biomedical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "BEng in Biomedical Engineering",
+    "degree": "Bachelor",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/biomedical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "MSc in Information Technology",
+    "degree": "Master",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/information-technology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "BSc in Information Technology",
+    "degree": "Bachelor",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/information-technology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "MSc in Artificial Intelligence",
+    "degree": "Master",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/artificial-intelligence"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "BSc in Artificial Intelligence",
+    "degree": "Bachelor",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/artificial-intelligence"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "MSc in Robotics",
+    "degree": "Master",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/robotics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "BSc in Robotics",
+    "degree": "Bachelor",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/robotics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "MEng in Environmental Engineering",
+    "degree": "Master",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/environmental-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "BEng in Environmental Engineering",
+    "degree": "Bachelor",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/environmental-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "MEng in Chemical Engineering",
+    "degree": "Master",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/chemical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "BEng in Chemical Engineering",
+    "degree": "Bachelor",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/chemical-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "MSc in Physics",
+    "degree": "Master",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/physics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "BSc in Physics",
+    "degree": "Bachelor",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/physics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "MSc in Mathematics",
+    "degree": "Master",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/mathematics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "BSc in Mathematics",
+    "degree": "Bachelor",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/mathematics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "MSc in Economics",
+    "degree": "Master",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/economics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "BSc in Economics",
+    "degree": "Bachelor",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/economics"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "MSc in Psychology",
+    "degree": "Master",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/psychology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "BSc in Psychology",
+    "degree": "Bachelor",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/psychology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "MSc in Architecture",
+    "degree": "Master",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/architecture"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "BSc in Architecture",
+    "degree": "Bachelor",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/architecture"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "MD in Medicine",
+    "degree": "Master",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/medicine"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "MBBS in Medicine",
+    "degree": "Bachelor",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/medicine"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "LLM in Law",
+    "degree": "Master",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/law"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "LLB in Law",
+    "degree": "Bachelor",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/law"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "MSc in Software Engineering",
+    "degree": "Master",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/software-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "BSc in Software Engineering",
+    "degree": "Bachelor",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/software-engineering"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "MSc in Cybersecurity",
+    "degree": "Master",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/cybersecurity"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "BSc in Cybersecurity",
+    "degree": "Bachelor",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/cybersecurity"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "MSc in Finance",
+    "degree": "Master",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/finance"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "BSc in Finance",
+    "degree": "Bachelor",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/finance"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "MSc in Embedded Systems",
+    "degree": "Master",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/embedded-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "BSc in Embedded Systems",
+    "degree": "Bachelor",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/embedded-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "MSc in Telecommunications",
+    "degree": "Master",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/telecommunications"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "BSc in Telecommunications",
+    "degree": "Bachelor",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/telecommunications"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "MSc in Power Systems",
+    "degree": "Master",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/power-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "BSc in Power Systems",
+    "degree": "Bachelor",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/power-systems"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "MSc in Nursing",
+    "degree": "Master",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/nursing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "BSc in Nursing",
+    "degree": "Bachelor",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/nursing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "MSc in Marketing",
+    "degree": "Master",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/marketing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "BSc in Marketing",
+    "degree": "Bachelor",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/marketing"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "MSc in Biology",
+    "degree": "Master",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/biology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "BSc in Biology",
+    "degree": "Bachelor",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/biology"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "MSc in Chemistry",
+    "degree": "Master",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/chemistry"
+  },
+  {
+    "country": "Switzerland",
+    "uni": "University of Neuchâtel",
+    "course": "BSc in Chemistry",
+    "degree": "Bachelor",
+    "city": "Neuchâtel",
+    "link": "https://www.unine.ch/courses/chemistry"
   }
 ]
