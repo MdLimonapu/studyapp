@@ -150,6 +150,102 @@ def get_base_domain(url):
     except Exception:
         return ""
 
+def normalize_text(text):
+    if not text:
+        return ""
+    text = text.lower()
+    replacements = {
+        "münchen": "munich",
+        "köln": "cologne",
+        "nürnberg": "nuremberg",
+        "technische": "technical",
+        "universität": "university",
+        "hochschule": "university",
+    }
+    for k, v in replacements.items():
+        text = text.replace(k, v)
+    return text
+
+def calculate_similarity(s1, s2):
+    w1 = set(w for w in s1.replace("(", " ").replace(")", " ").replace("-", " ").replace(",", " ").split() if len(w) > 2)
+    w2 = set(w for w in s2.replace("(", " ").replace(")", " ").replace("-", " ").replace(",", " ").split() if len(w) > 2)
+    if not w1 or not w2:
+        return 0
+    stops = {"university", "of", "and", "in", "for", "the", "applied", "sciences", "management", "business", "engineering", "master", "bachelor", "science"}
+    w1_filtered = w1 - stops
+    w2_filtered = w2 - stops
+    if not w1_filtered or not w2_filtered:
+        overlap = w1.intersection(w2)
+        return len(overlap) / max(len(w1), len(w2))
+    overlap = w1_filtered.intersection(w2_filtered)
+    return len(overlap) / max(len(w1_filtered), len(w2_filtered))
+
+def match_local_germany_link(uni, course):
+    if not FALLBACK_COURSES:
+        return None
+    best_match = None
+    best_score = 0
+    norm_uni = normalize_text(uni)
+    norm_course = normalize_text(course)
+    for c in FALLBACK_COURSES:
+        c_uni = normalize_text(c.get("uni", ""))
+        c_course = normalize_text(c.get("course", ""))
+        uni_sim = calculate_similarity(norm_uni, c_uni)
+        course_sim = calculate_similarity(norm_course, c_course)
+        if uni_sim > 0.3 and course_sim > 0.3:
+            score = uni_sim + course_sim
+            if score > best_score:
+                best_score = score
+                best_match = c
+    if best_match and best_score >= 0.8: # Must be a solid match
+        return best_match.get("link", "")
+    return None
+
+def match_grounding_metadata_link(uni, course, response):
+    try:
+        if not hasattr(response, 'candidates') or not response.candidates:
+            return None
+        metadata = getattr(response.candidates[0], 'grounding_metadata', None)
+        if not metadata:
+            return None
+        chunks = getattr(metadata, 'grounding_chunks', [])
+        if not chunks:
+            return None
+            
+        sources = []
+        for chunk in chunks:
+            web = getattr(chunk, 'web', None)
+            if web:
+                uri = getattr(web, 'uri', '')
+                title = getattr(web, 'title', '')
+                if uri and title:
+                    sources.append({
+                        "uri": uri,
+                        "title": title.lower(),
+                        "domain": get_base_domain(uri).lower()
+                    })
+        if not sources:
+            return None
+            
+        best_match = None
+        best_score = 0
+        norm_uni = normalize_text(uni)
+        norm_course = normalize_text(course)
+        for src in sources:
+            src_title = normalize_text(src["title"])
+            uni_sim = calculate_similarity(norm_uni, src_title)
+            course_sim = calculate_similarity(norm_course, src_title)
+            if uni_sim > 0.2 and course_sim > 0.2:
+                score = uni_sim + course_sim
+                if score > best_score:
+                    best_score = score
+                    best_match = src
+        if best_match and best_score >= 0.5:
+            return best_match["uri"]
+    except Exception as e:
+        print(f"⚠️ Error matching grounded links: {e}", flush=True)
+    return None
+
 def clean_link(link, fallback=None, is_ai=False):
     """
     Cleans and normalises university course links.
@@ -414,15 +510,30 @@ def search():
             # Normalise keys: since search grounding is active, these links are real!
             normalised = []
             for r in results:
-                fallback_query = f"{r.get('university', '') or 'university'} {r.get('course', '') or field}".strip()
+                uni = r.get("university", "")
+                course = r.get("course", "")
+                
+                fallback_query = f"{uni or 'university'} {course or field}".strip()
                 fallback_link = f"https://www.google.com/search?q={urllib.parse.quote_plus(fallback_query)}"
+                
+                # Link resolution flow
+                matched_link = None
+                if country.lower() == "germany":
+                    matched_link = match_local_germany_link(uni, course)
+                if not matched_link:
+                    matched_link = match_grounding_metadata_link(uni, course, response)
+                
+                link_to_clean = matched_link if matched_link else r.get("link", "")
+                # If matched to a verified link, keep it (is_ai=False). If not, force search query fallback (is_ai=True) to prevent 404s!
+                final_link = clean_link(link_to_clean, fallback_link, is_ai=(not matched_link))
+                
                 normalised.append({
-                    "university":   r.get("university", ""),
-                    "course":       r.get("course", ""),
+                    "university":   uni,
+                    "course":       course,
                     "city":         r.get("city", ""),
                     "country":      r.get("country", country),
                     "degree":       r.get("degree", degree),
-                    "link":         clean_link(r.get("link", ""), fallback_link, is_ai=False), # Keep real links!
+                    "link":         final_link,
                     "requirements": r.get("requirements", "See university website."),
                     "match_rating": r.get("match_rating", 3),
                     "intake":       r.get("intake", "See website"),
@@ -454,15 +565,26 @@ def search():
                 # Normalise keys: since no grounding is active, deep links are hallucinated -> rewrite them!
                 normalised = []
                 for r in results:
-                    fallback_query = f"{r.get('university', '') or 'university'} {r.get('course', '') or field}".strip()
+                    uni = r.get("university", "")
+                    course = r.get("course", "")
+                    
+                    fallback_query = f"{uni or 'university'} {course or field}".strip()
                     fallback_link = f"https://www.google.com/search?q={urllib.parse.quote_plus(fallback_query)}"
+                    
+                    matched_link = None
+                    if country.lower() == "germany":
+                        matched_link = match_local_germany_link(uni, course)
+                        
+                    link_to_clean = matched_link if matched_link else r.get("link", "")
+                    final_link = clean_link(link_to_clean, fallback_link, is_ai=(not matched_link))
+                    
                     normalised.append({
-                        "university":   r.get("university", ""),
-                        "course":       r.get("course", ""),
+                        "university":   uni,
+                        "course":       course,
                         "city":         r.get("city", ""),
                         "country":      r.get("country", country),
                         "degree":       r.get("degree", degree),
-                        "link":         clean_link(r.get("link", ""), fallback_link, is_ai=True), # Force Google Search for hallucinations!
+                        "link":         final_link,
                         "requirements": r.get("requirements", "See university website."),
                         "match_rating": r.get("match_rating", 3),
                         "intake":       r.get("intake", "See website"),
