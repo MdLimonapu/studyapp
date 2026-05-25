@@ -362,15 +362,18 @@ def fallback_search(country, degree, field):
         if field:
             field_lower = field.lower().strip()
             # Assign match rating:
-            # 3 = Exact search string contained in course name or uni name
-            # 2 = Matches related synonym keywords
-            # 1 = General keyword match
-            if field_lower in course_title or field_lower in uni_name:
+            # 3 = Exact search string contained in the course title
+            # 2 = Matches related synonym keywords in the course title
+            # 1 = Matches the search string in the university name
+            if field_lower in course_title:
                 rating = 3
             elif any(kw in course_title for kw in keywords):
                 rating = 2
-            else:
+            elif field_lower in uni_name:
                 rating = 1
+            else:
+                # Does not match the search field or related keywords at all, exclude it
+                continue
         else:
             rating = 3
             
