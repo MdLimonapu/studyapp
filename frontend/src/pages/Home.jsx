@@ -14,18 +14,18 @@ const ALL_FIELDS = [
 ]
 
 const FALLBACK_NEWS = [
-  {title:"Germany extends student visa processing to 8 weeks for 2026 intake", source:"daad.de", date:"May 2026", summary:"DAAD reports increased demand. Apply early for German student visas.", country:"Germany"},
-  {title:"UK Graduate Route visa — 2 years post-study work rights confirmed", source:"gov.uk", date:"May 2026", summary:"International graduates can stay 2 years after completing UK degrees.", country:"UK"},
-  {title:"Holland Scholarship 2026-2027 applications now open", source:"studyinholland.nl", date:"Apr 2026", summary:"Available for students outside EEA applying to Dutch universities.", country:"Netherlands"},
-  {title:"Canada caps international student permits for 2026", source:"canada.ca", date:"Apr 2026", summary:"New annual cap introduced to manage housing pressure in major cities.", country:"Canada"},
-  {title:"Sweden updates tuition fees for non-EU students — Autumn 2026", source:"universityadmissions.se", date:"Apr 2026", summary:"Swedish universities publish updated fee structures for non-EU students.", country:"Sweden"},
-  {title:"DAAD scholarships for Master's and PhD — deadlines June 2026", source:"daad.de", date:"Mar 2026", summary:"Multiple DAAD funding programs open now. Deadline approaching fast.", country:"Germany"},
-  {title:"Australia simplifies student visa process for 2026", source:"homeaffairs.gov.au", date:"Mar 2026", summary:"New streamlined process reduces student visa processing to 3-4 weeks.", country:"Australia"},
-  {title:"France Campus Bourses — new scholarships for international students", source:"campusfrance.org", date:"Mar 2026", summary:"France opens new scholarship round for Master students worldwide.", country:"France"},
-  {title:"ETH Zurich and EPFL ranked top universities in Europe 2026", source:"timeshighereducation.com", date:"Feb 2026", summary:"Switzerland dominates European rankings with two universities in top 10.", country:"Switzerland"},
-  {title:"Japan MEXT scholarship applications open for 2026-2027", source:"mext.go.jp", date:"Feb 2026", summary:"Japanese government scholarship covers tuition and living expenses.", country:"Japan"},
-  {title:"USA F-1 student visa interview waiver extended through 2026", source:"state.gov", date:"Feb 2026", summary:"Eligible students can skip in-person interview for F-1 student visa.", country:"USA"},
-  {title:"KTH Stockholm opens applications for 60+ English Master programs", source:"kth.se", date:"Jan 2026", summary:"KTH offers world-class engineering and technology programs in English.", country:"Sweden"},
+  {title:"Germany extends student visa processing to 8 weeks for 2026 intake", source:"daad.de", date:"May 2026", summary:"DAAD reports increased demand. Apply early for German student visas.", country:"Germany", link: "https://www.daad.de"},
+  {title:"UK Graduate Route visa — 2 years post-study work rights confirmed", source:"gov.uk", date:"May 2026", summary:"International graduates can stay 2 years after completing UK degrees.", country:"UK", link: "https://www.gov.uk/graduate-visa"},
+  {title:"Holland Scholarship 2026-2027 applications now open", source:"studyinholland.nl", date:"Apr 2026", summary:"Available for students outside EEA applying to Dutch universities.", country:"Netherlands", link: "https://www.studyinholland.nl"},
+  {title:"Canada caps international student permits for 2026", source:"canada.ca", date:"Apr 2026", summary:"New annual cap introduced to manage housing pressure in major cities.", country:"Canada", link: "https://www.canada.ca"},
+  {title:"Sweden updates tuition fees for non-EU students — Autumn 2026", source:"universityadmissions.se", date:"Apr 2026", summary:"Swedish universities publish updated fee structures for non-EU students.", country:"Sweden", link: "https://www.universityadmissions.se"},
+  {title:"DAAD scholarships for Master's and PhD — deadlines June 2026", source:"daad.de", date:"Mar 2026", summary:"Multiple DAAD funding programs open now. Deadline approaching fast.", country:"Germany", link: "https://www.daad.de"},
+  {title:"Australia simplifies student visa process for 2026", source:"homeaffairs.gov.au", date:"Mar 2026", summary:"New streamlined process reduces student visa processing to 3-4 weeks.", country:"Australia", link: "https://immi.homeaffairs.gov.au"},
+  {title:"France Campus Bourses — new scholarships for international students", source:"campusfrance.org", date:"Mar 2026", summary:"France opens new scholarship round for Master students worldwide.", country:"France", link: "https://www.campusfrance.org"},
+  {title:"ETH Zurich and EPFL ranked top universities in Europe 2026", source:"timeshighereducation.com", date:"Feb 2026", summary:"Switzerland dominates European rankings with two universities in top 10.", country:"Switzerland", link: "https://www.timeshighereducation.com"},
+  {title:"Japan MEXT scholarship applications open for 2026-2027", source:"mext.go.jp", date:"Feb 2026", summary:"Japanese government scholarship covers tuition and living expenses.", country:"Japan", link: "https://www.mext.go.jp"},
+  {title:"USA F-1 student visa interview waiver extended through 2026", source:"state.gov", date:"Feb 2026", summary:"Eligible students can skip in-person interview for F-1 student visa.", country:"USA", link: "https://travel.state.gov"},
+  {title:"KTH Stockholm opens applications for 60+ English Master programs", source:"kth.se", date:"Jan 2026", summary:"KTH offers world-class engineering and technology programs in English.", country:"Sweden", link: "https://www.kth.se"}
 ]
 
 const GERMANY_ONLY_COUNTRIES = []
