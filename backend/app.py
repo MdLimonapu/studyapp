@@ -25,7 +25,7 @@ if GEMINI_API_KEY:
         import google.generativeai as genai
         genai.configure(api_key=GEMINI_API_KEY)
         gemini_client = genai.GenerativeModel(
-            model_name="gemini-1.5-flash",
+            model_name="gemini-2.5-flash",
             tools="google_search_retrieval",
         )
         print("✅ Gemini AI client initialised with Google Search Grounding.")
