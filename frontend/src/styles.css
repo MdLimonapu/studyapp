@@ -25,8 +25,8 @@ body {
 
 /* TOPBAR */
 .topbar {
-  max-width: 1440px; margin: 0 auto; width: 100%;
-  padding: 32px 40px;
+  max-width: 100%; width: 100%;
+  padding: 32px 4%;
   display: flex; justify-content: space-between; align-items: center;
 }
 .brand { display: flex; align-items: center; gap: 12px; }
@@ -45,7 +45,7 @@ body {
 .nav-icon { font-size: 18px; }
 
 /* PAGE */
-.page-wrap { max-width: 1440px; margin: 0 auto; padding: 10px 40px 60px; width: 100%; flex: 1; }
+.page-wrap { max-width: 100%; padding: 10px 4% 60px; width: 100%; flex: 1; }
 
 /* CARD */
 .card {
@@ -58,7 +58,7 @@ body {
 }
 
 /* GRID */
-.grid.two-col { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 40px; align-items: stretch; }
+.grid.two-col { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 32px; align-items: stretch; }
 .grid.one-col-gap { display: grid; gap: 20px; }
 
 /* HERO */
