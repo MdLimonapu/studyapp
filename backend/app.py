@@ -198,24 +198,114 @@ def get_search_keywords(field):
     # Deduplicate and return
     return list(set(keywords))
 
+def get_estimated_fee(country, degree, uni_name):
+    country_lower = country.lower().strip()
+    degree_lower = degree.lower().strip()
+    uni_lower = uni_name.lower().strip()
+    
+    # 1. Germany
+    if country_lower == "germany":
+        is_private = any(k in uni_lower for k in ["private", "international", "business school", "applied sciences", "hhl", "gisma", "bsbi"])
+        if is_private:
+            return "€8,000 - €15,000 / year"
+        return "None (Semester contribution ~€200 - €400)"
+        
+    # 2. USA
+    elif country_lower in ["usa", "united states"]:
+        is_ivy = any(k in uni_lower for k in ["harvard", "yale", "princeton", "columbia", "pennsylvania", "dartmouth", "brown", "cornell", "stanford", "mit"])
+        if is_ivy:
+            return "$55,000 - $65,000 / year"
+        return "$25,000 - $45,000 / year"
+        
+    # 3. UK
+    elif country_lower in ["uk", "united kingdom"]:
+        is_oxbridge = any(k in uni_lower for k in ["oxford", "cambridge", "imperial", "ucl", "lse"])
+        if is_oxbridge:
+            return "£25,000 - £38,000 / year"
+        return "£16,000 - £26,000 / year"
+        
+    # 4. Canada
+    elif country_lower == "canada":
+        if degree_lower == "bachelor":
+            return "CAD 22,000 - 38,000 / year"
+        return "CAD 18,000 - 32,000 / year"
+        
+    # 5. Australia
+    elif country_lower == "australia":
+        return "AUD 32,000 - 45,000 / year"
+        
+    # 6. Netherlands
+    elif country_lower == "netherlands":
+        if degree_lower == "bachelor":
+            return "€8,000 - €14,000 / year"
+        return "€12,000 - €19,000 / year"
+        
+    # 7. Sweden
+    elif country_lower == "sweden":
+        return "SEK 90,000 - 145,000 / year (~€8,000 - €13,000)"
+        
+    # 8. France
+    elif country_lower == "france":
+        is_business = any(k in uni_lower for k in ["business", "hec", "essec", "esc", "edhec"])
+        if is_business:
+            return "€12,000 - €22,000 / year"
+        if degree_lower == "bachelor":
+            return "€2,770 / year (State rate)"
+        return "€3,770 / year (State rate)"
+        
+    # 9. Switzerland
+    elif country_lower == "switzerland":
+        return "CHF 1,000 - CHF 2,000 / year"
+        
+    # 10. Japan
+    elif country_lower == "japan":
+        is_national = any(k in uni_lower for k in ["tokyo", "kyoto", "osaka", "tohoku", "nagoya", "kyushu", "hokkaido", "tsukuba", "kobe"])
+        if is_national:
+            return "¥535,800 / year (~$3,500)"
+        return "¥800,000 - ¥1,400,000 / year"
+        
+    return "See website"
+
+
 def fallback_search(country, degree, field):
-    """Search static country JSON data."""
+    """Search static country JSON data with rating-based relevance sorting and smart links."""
     results = FALLBACK_COURSES
     if country:
         results = [c for c in results if country.lower() in c.get("country", "").lower()]
     if degree:
         results = [c for c in results if degree.lower() in c.get("degree", "").lower()]
-    if field:
-        keywords = get_search_keywords(field)
-        results = [
-            c for c in results 
-            if any(kw in c.get("course", "").lower() for kw in keywords)
-        ]
-
-    total = len(results)
+        
+    scored_results = []
+    keywords = get_search_keywords(field) if field else []
+    
+    for c in results:
+        course_title = c.get("course", "").lower()
+        uni_name = c.get("uni", "").lower()
+        
+        if field:
+            field_lower = field.lower().strip()
+            # Assign match rating:
+            # 3 = Exact search string contained in course name or uni name
+            # 2 = Matches related synonym keywords
+            # 1 = General keyword match
+            if field_lower in course_title or field_lower in uni_name:
+                rating = 3
+            elif any(kw in course_title for kw in keywords):
+                rating = 2
+            else:
+                rating = 1
+        else:
+            rating = 3
+            
+        scored_results.append((c, rating))
+        
+    # Sort scored results by rating descending (3 stars, then 2 stars, then 1 star)
+    scored_results.sort(key=lambda x: x[1], reverse=True)
+    
+    total = len(scored_results)
     formatted = []
-    for c in results[:50]:
-        # City field can be a comma-separated list of campuses — take only the first
+    
+    for c, rating in scored_results[:50]:
         raw_city = c.get("city", "")
         city = raw_city.split(",")[0].strip() if raw_city else ""
         
@@ -224,19 +314,39 @@ def fallback_search(country, degree, field):
         fallback_query = f"{uni_name} {course_name}".strip()
         fallback_link = f"https://www.google.com/search?q={urllib.parse.quote_plus(fallback_query)}"
         
+        # Resolve working links:
+        # Germany uses 100% real scraped DAAD links.
+        # Other countries use Google Search redirects for generated courses, unless they match verified templates.
+        db_link = c.get("link", "")
+        is_germany = c.get("country", "").lower() == "germany"
+        
+        is_verified_template = False
+        verified_domains = ["ox.ac.uk", "cam.ac.uk", "imperial.ac.uk", "ucl.ac.uk", "ed.ac.uk", "kth.se", "ethz.ch", "epfl.ch"]
+        base_domain = get_base_domain(db_link)
+        if any(vd in base_domain for vd in verified_domains):
+            is_verified_template = True
+            
+        if is_germany or is_verified_template:
+            link = clean_link(db_link, fallback_link)
+        else:
+            link = fallback_link
+            
+        # Get estimated or existing fee data
+        fee = c.get("fee") if c.get("fee") else get_estimated_fee(c.get("country", ""), c.get("degree", ""), uni_name)
+            
         formatted.append({
             "university":   uni_name,
             "course":       course_name,
             "city":         city,
             "country":      c.get("country", ""),
             "degree":       c.get("degree", ""),
-            "link":         clean_link(c.get("link", ""), fallback_link),
+            "link":         link,
             "requirements": "See university website for full requirements.",
-            "match_rating": 3 - (len(formatted) % 3),
+            "match_rating": rating,
             "intake":       "Winter / Summer",
-            "fee":          "See website",
+            "fee":          fee,
         })
-
+        
     if len(formatted) == 0 and field:
         # Generate some plausible results based on the user's search
         for i in range(3):
@@ -252,11 +362,12 @@ def fallback_search(country, degree, field):
                 "degree": degree.title() if degree else "Master",
                 "link": fallback_link,
                 "requirements": "IELTS 6.5, Bachelor's degree in a related field.",
-                "match_rating": 3 - (i % 3),
+                "match_rating": 3 - i,
                 "intake": "Winter 2026",
-                "fee": "See website",
+                "fee": get_estimated_fee(country or "Germany", degree or "Master", uni_name),
             })
         total = len(formatted)
+        
     return formatted, total
 
 
