@@ -2,6 +2,8 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 import json, os, re
 from dotenv import load_dotenv
+from google import genai
+from google.genai import types
 
 load_dotenv()
 
@@ -22,13 +24,8 @@ gemini_client = None
 
 if GEMINI_API_KEY:
     try:
-        import google.generativeai as genai
-        genai.configure(api_key=GEMINI_API_KEY)
-        gemini_client = genai.GenerativeModel(
-            model_name="gemini-2.5-flash",
-            tools="google_search",
-        )
-        print("✅ Gemini AI client initialised with Google Search Grounding.")
+        gemini_client = genai.Client(api_key=GEMINI_API_KEY)
+        print("✅ Gemini AI client initialised with google-genai SDK.")
     except Exception as e:
         print(f"⚠️  Gemini init failed: {e}")
 else:
@@ -195,7 +192,13 @@ Return EXACTLY a JSON array where each object has:
 - "country": related country (or 'Global')
 - "link": direct URL to the article
 Return ONLY the JSON array (no markdown fences)."""
-        response = gemini_client.generate_content(prompt)
+        response = gemini_client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=prompt,
+            config=types.GenerateContentConfig(
+                tools=[types.Tool(google_search=types.GoogleSearch())]
+            )
+        )
         results = extract_json_array(response.text)
         return jsonify(results)
     except Exception as e:
@@ -216,7 +219,13 @@ def search():
     if gemini_client and country and field:
         try:
             prompt   = build_prompt(country, degree, field, profile)
-            response = gemini_client.generate_content(prompt)
+            response = gemini_client.models.generate_content(
+                model="gemini-2.5-flash",
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    tools=[types.Tool(google_search=types.GoogleSearch())]
+                )
+            )
             results  = extract_json_array(response.text)
 
             # Normalise keys just in case Gemini omits some
