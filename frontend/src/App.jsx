@@ -21,8 +21,23 @@ export default function App() {
     <div className="app-shell">
       <header className="topbar">
         <NavLink to="/" className="brand" style={{textDecoration:'none', color:'inherit'}}>
-          <div className="brand-icon">🎓</div>
-          <h1>StudyFinder</h1>
+          <div className="brand-icon" style={{ display: 'flex', alignItems: 'center' }}>
+            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M16 2L2 9L16 16L30 9L16 2Z" fill="url(#studplex-grad)" />
+              <path d="M6 14.5V21C6 24.3 10.5 27 16 27C21.5 27 26 24.3 26 21V14.5L16 19.5L6 14.5Z" fill="url(#studplex-grad2)" />
+              <defs>
+                <linearGradient id="studplex-grad" x1="2" y1="2" x2="30" y2="16" gradientUnits="userSpaceOnUse">
+                  <stop stopColor="#51faaa" />
+                  <stop offset="1" stopColor="#ff81ff" />
+                </linearGradient>
+                <linearGradient id="studplex-grad2" x1="6" y1="14.5" x2="26" y2="27" gradientUnits="userSpaceOnUse">
+                  <stop stopColor="#ff81ff" />
+                  <stop offset="1" stopColor="#51faaa" />
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <h1>Stud<span style={{color: 'var(--accent)'}}>plex</span></h1>
         </NavLink>
         <nav className="nav-links">
           <NavLink to="/">Home</NavLink>

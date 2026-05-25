@@ -166,7 +166,7 @@ export default function Home() {
 
       <section className="grid two-col">
         <div className="card hero-card">
-          <span className="badge">🎓 Study Search</span>
+          <span className="badge">🎓 Studplex Search</span>
           <h2>Find the right<br/><span>university</span><br/>worldwide</h2>
           <p>Select a country, degree level, and field to find matching universities with exact course page links.</p>
           <div className="hero-stats">
