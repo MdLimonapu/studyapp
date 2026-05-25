@@ -25,7 +25,7 @@ body {
 
 /* TOPBAR */
 .topbar {
-  max-width: 1180px; margin: 0 auto; width: 100%;
+  max-width: 1080px; margin: 0 auto; width: 100%;
   padding: 24px 20px;
   display: flex; justify-content: space-between; align-items: center; gap: 20px;
 }
@@ -50,7 +50,7 @@ body {
 .nav-icon { font-size: 18px; }
 
 /* PAGE */
-.page-wrap { max-width: 1180px; margin: 0 auto; padding: 10px 20px 40px; width: 100%; flex: 1; }
+.page-wrap { max-width: 1080px; margin: 0 auto; padding: 10px 20px 40px; width: 100%; flex: 1; }
 
 /* CARD */
 .card {
@@ -58,15 +58,15 @@ body {
   backdrop-filter: blur(20px);
   border: 1px solid var(--card-border);
   border-radius: 24px;
-  padding: 28px;
+  padding: 36px;
 }
 
 /* GRID */
-.grid.two-col { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 20px; }
+.grid.two-col { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 32px; align-items: center; }
 .grid.one-col-gap { display: grid; gap: 20px; }
 
 /* HERO */
-.hero-card { min-height: 340px; display: flex; flex-direction: column; justify-content: center; gap: 16px; }
+.hero-card { display: flex; flex-direction: column; justify-content: center; gap: 16px; }
 .hero-card h2 { font-size: 44px; font-weight: 800; line-height: 1.1; color: var(--text); }
 .hero-card h2 span { color: var(--accent); }
 .hero-card p { color: var(--muted); font-size: 16px; max-width: 440px; line-height: 1.6; }
