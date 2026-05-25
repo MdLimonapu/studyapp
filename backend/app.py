@@ -514,138 +514,16 @@ def search():
         print(f"Serving search from cache for: {country}/{degree}/{field}", flush=True)
         return jsonify(SEARCH_CACHE[cache_key])
 
-    # ── Try Gemini AI first (Tier 1: Grounded Search using gemini-2.5-flash) ──
-    if API_KEYS and country and field:
-        try:
-            prompt   = build_prompt(country, degree, field, profile)
-            print("🚀 Attempting Tier 1 search: gemini-2.5-flash with Google Search Grounding...", flush=True)
-            response = generate_content_with_rotation(
-                model="gemini-2.5-flash",
-                contents=prompt,
-                config=types.GenerateContentConfig(
-                    tools=[types.Tool(google_search=types.GoogleSearch())]
-                )
-            )
-            results  = extract_json_array(response.text)
-            
-            # Normalise keys: since search grounding is active, these links are real!
-            normalised = []
-            for r in results:
-                uni = r.get("university", "")
-                course = r.get("course", "")
-                
-                fallback_query = f"{uni or 'university'} {course or field}".strip()
-                fallback_link = f"https://www.google.com/search?q={urllib.parse.quote_plus(fallback_query)}"
-                
-                # Link resolution flow
-                matched_link = match_local_link(uni, course, country)
-                if not matched_link:
-                    matched_link = match_grounding_metadata_link(uni, course, response)
-                
-                link_to_clean = matched_link if matched_link else r.get("link", "")
-                # Since search grounding is active, these are grounded real links, so we don't force rewriting to search queries
-                final_link = clean_link(link_to_clean, fallback_link, is_ai=False)
-                
-                normalised.append({
-                    "university":   uni,
-                    "course":       course,
-                    "city":         r.get("city", ""),
-                    "country":      r.get("country", country),
-                    "degree":       r.get("degree", degree),
-                    "link":         final_link,
-                    "requirements": r.get("requirements", "See university website."),
-                    "match_rating": r.get("match_rating", 3),
-                    "intake":       r.get("intake", "See website"),
-                    "fee":          r.get("fee", "See website"),
-                })
-            
-            response_data = {
-                "results":        normalised,
-                "total":          len(normalised),
-                "related_fields": [],
-                "source":         "ai",
-            }
-            SEARCH_CACHE[cache_key] = response_data
-            return jsonify(response_data)
-            
-        except Exception as e1:
-            err_msg = str(e1)
-            print(f"⚠️ Tier 1 search failed: {err_msg} — trying Tier 2 (toolless gemini-flash-latest)...", flush=True)
-            
-            # ── Tier 2: Toolless search fallback using gemini-flash-latest ──────────
-            try:
-                response = generate_content_with_rotation(
-                    model="gemini-flash-latest",
-                    contents=prompt,
-                    config=None # No tools, prevents rate limits
-                )
-                results = extract_json_array(response.text)
-                
-                # Normalise keys: since no grounding is active, deep links are hallucinated -> rewrite them!
-                normalised = []
-                for r in results:
-                    uni = r.get("university", "")
-                    course = r.get("course", "")
-                    
-                    fallback_query = f"{uni or 'university'} {course or field}".strip()
-                    fallback_link = f"https://www.google.com/search?q={urllib.parse.quote_plus(fallback_query)}"
-                    
-                    matched_link = None
-                    if country.lower() == "germany":
-                        matched_link = match_local_germany_link(uni, course)
-                        
-                    link_to_clean = matched_link if matched_link else r.get("link", "")
-                    final_link = clean_link(link_to_clean, fallback_link, is_ai=(not matched_link))
-                    
-                    normalised.append({
-                        "university":   uni,
-                        "course":       course,
-                        "city":         r.get("city", ""),
-                        "country":      r.get("country", country),
-                        "degree":       r.get("degree", degree),
-                        "link":         final_link,
-                        "requirements": r.get("requirements", "See university website."),
-                        "match_rating": r.get("match_rating", 3),
-                        "intake":       r.get("intake", "See website"),
-                        "fee":          r.get("fee", "See website"),
-                    })
-                
-                response_data = {
-                    "results":        normalised,
-                    "total":          len(normalised),
-                    "related_fields": [],
-                    "source":         "ai",
-                }
-                SEARCH_CACHE[cache_key] = response_data
-                return jsonify(response_data)
-                
-            except Exception as e2:
-                print(f"❌ Tier 2 search failed: {e2} — falling back to static data.", flush=True)
-                
-                notice = "Add a Gemini API key to enable full search for all countries."
-                if "RESOURCE_EXHAUSTED" in err_msg or "quota" in err_msg.lower():
-                    notice = "Gemini API rate limit exceeded. Falling back to static database."
-                elif "API_KEY_INVALID" in err_msg or "key not valid" in err_msg.lower():
-                    notice = "The provided Gemini API key is invalid. Please check your configuration."
-                
-                formatted, total, source = fallback_search(country, degree, field)
-                return jsonify({
-                    "results":        formatted,
-                    "total":          total,
-                    "related_fields": [],
-                    "source":         "static",
-                    "fallback_notice": notice,
-                })
-
-    # ── Fallback to static JSON (Tier 3) ────────────────────────────
     formatted, total, source = fallback_search(country, degree, field)
-    return jsonify({
+    response_data = {
         "results":        formatted,
         "total":          total,
         "related_fields": [],
         "source":         source,
-        "fallback_notice": "Add a Gemini API key to enable full search for all countries." if source == "static" else None,
-    })
+        "fallback_notice": None,
+    }
+    SEARCH_CACHE[cache_key] = response_data
+    return jsonify(response_data)
 
 
 if __name__ == "__main__":

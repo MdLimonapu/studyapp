@@ -39,13 +39,12 @@ export default function University() {
             <span className="chip">🎓 {form.degree || '-'}</span>
             <span className="chip">📚 {form.field || '-'}</span>
           </p>
-          {isStatic && result.fallback_notice && (
-            <p className="data-notice" style={{marginTop: 10}}>⚠️ {result.fallback_notice}</p>
-          )}
         </div>
         <div className="summary-right">
-          <div className="big-number">{result.total || 0}</div>
-          <div className="big-label">Results found</div>
+          <div className="summary-stats">
+            <div className="big-number">{result.total || 0}</div>
+            <div className="big-label">Results found</div>
+          </div>
           <button className="btn-outline" onClick={() => navigate('/')}>New search</button>
         </div>
       </div>
