@@ -151,6 +151,7 @@ def fallback_search(country, degree, field):
                 "intake": "Winter 2026",
                 "fee": "See website",
             })
+        total = len(formatted)
     return formatted, total, "static"
 
 
