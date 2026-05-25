@@ -2,6 +2,9 @@ from flask import Flask, jsonify, request
 from flask_cors import CORS
 import json, os, re
 import urllib.parse
+import urllib.request
+from bs4 import BeautifulSoup
+import ssl
 
 app = Flask(__name__)
 CORS(app)
@@ -63,6 +66,80 @@ build_field_index()
 
 # ── Caching ──────────────────────────────────────────────────────────────────
 SEARCH_CACHE = {}
+RESOLVED_LINKS_CACHE = {}
+CACHE_PATH = os.path.join(DATA_DIR, "resolved_links_cache.json")
+
+def load_resolved_links_cache():
+    global RESOLVED_LINKS_CACHE
+    if os.path.exists(CACHE_PATH):
+        try:
+            with open(CACHE_PATH, "r") as f:
+                RESOLVED_LINKS_CACHE = json.load(f)
+            print(f"✅ Loaded {len(RESOLVED_LINKS_CACHE)} resolved links from cache.", flush=True)
+        except Exception as e:
+            print(f"⚠️ Failed to load resolved links cache: {e}", flush=True)
+
+def save_resolved_links_cache():
+    try:
+        with open(CACHE_PATH, "w") as f:
+            json.dump(RESOLVED_LINKS_CACHE, f, indent=2)
+    except Exception as e:
+        print(f"⚠️ Failed to save resolved links cache: {e}", flush=True)
+
+load_resolved_links_cache()
+
+def search_ddg_direct_link(query, target_domain=None):
+    """Search DuckDuckGo HTML for a direct university course page link."""
+    url = f"https://html.duckduckgo.com/html/?q={urllib.parse.quote_plus(query)}"
+    
+    # Bypass SSL verification to avoid platform certificate issues
+    ctx = ssl.create_default_context()
+    ctx.check_hostname = False
+    ctx.verify_mode = ssl.CERT_NONE
+    
+    req = urllib.request.Request(
+        url,
+        headers={
+            "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        }
+    )
+    try:
+        with urllib.request.urlopen(req, context=ctx, timeout=7) as response:
+            html = response.read()
+        soup = BeautifulSoup(html, "html.parser")
+        links = soup.select("a.result__url")
+        
+        resolved_links = []
+        for a in links:
+            href = a.get("href", "")
+            if "uddg=" in href:
+                parsed = urllib.parse.urlparse(href)
+                queries = urllib.parse.parse_qs(parsed.query)
+                target = queries.get("uddg", [None])[0]
+                if target:
+                    resolved_links.append(target)
+            elif href.startswith("http"):
+                resolved_links.append(href)
+                
+        # Prioritise links matching the target university domain (e.g. uva.nl)
+        if target_domain and resolved_links:
+            clean_domain = target_domain.lower().replace("www.", "").strip()
+            for l in resolved_links:
+                # Exclude social media or search portals
+                if any(p in l.lower() for p in ["wikipedia.org", "facebook.com", "linkedin.com", "twitter.com", "instagram.com", "youtube.com"]):
+                    continue
+                if clean_domain in l.lower():
+                    return l
+                    
+        # Fall back to first non-social link
+        for l in resolved_links:
+            if not any(p in l.lower() for p in ["wikipedia.org", "facebook.com", "linkedin.com", "twitter.com", "instagram.com", "youtube.com"]):
+                return l
+                
+        return resolved_links[0] if resolved_links else None
+    except Exception as e:
+        print(f"Error searching DDG for query '{query}': {e}", flush=True)
+        return None
 
 # ── Countries ────────────────────────────────────────────────────────────────
 COUNTRIES = [
@@ -316,7 +393,6 @@ def fallback_search(country, degree, field):
         
         # Resolve working links:
         # Germany uses 100% real scraped DAAD links.
-        # Other countries use Google Search redirects for generated courses, unless they match verified templates.
         db_link = c.get("link", "")
         is_germany = c.get("country", "").lower() == "germany"
         
@@ -329,7 +405,19 @@ def fallback_search(country, degree, field):
         if is_germany or is_verified_template:
             link = clean_link(db_link, fallback_link)
         else:
-            link = fallback_link
+            # Query-based direct link resolver with persistent cache
+            cache_key = f"{uni_name} | {course_name}"
+            if cache_key in RESOLVED_LINKS_CACHE:
+                link = RESOLVED_LINKS_CACHE[cache_key]
+            else:
+                resolved = search_ddg_direct_link(f"{uni_name} {course_name}", base_domain)
+                if resolved:
+                    link = resolved
+                    RESOLVED_LINKS_CACHE[cache_key] = resolved
+                    save_resolved_links_cache()
+                else:
+                    # Fallback to the university's main page if DDG fails
+                    link = clean_link(db_link, fallback_link)
             
         # Get estimated or existing fee data
         fee = c.get("fee") if c.get("fee") else get_estimated_fee(c.get("country", ""), c.get("degree", ""), uni_name)
