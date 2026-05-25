@@ -33,25 +33,31 @@ def load_all_country_data():
 
 load_all_country_data()
 
-# ── Build unique field/course name index for autocomplete ────────────────────
-UNIQUE_FIELDS = []
+# ── Curated field/course categories for autocomplete ────────────────────────
+UNIQUE_FIELDS = [
+    # Computer Science & IT
+    "Computer Science", "Software Engineering", "Data Science", "Artificial Intelligence", 
+    "Cybersecurity", "Informatics", "Information Technology",
+    # Engineering
+    "Electrical Engineering", "Mechanical Engineering", "Aerospace Engineering", 
+    "Biomedical Engineering", "Chemical Engineering", "Civil Engineering", 
+    "Environmental Engineering", "Industrial Engineering", "Mechatronics & Robotics",
+    # Business & Economics
+    "Business Administration", "Finance", "Accounting", "Marketing", "Economics", 
+    "Management", "Entrepreneurship", "International Business",
+    # Natural Sciences
+    "Physics", "Chemistry", "Biology", "Mathematics", "Statistics", "Environmental Science",
+    # Health & Medicine
+    "Medicine", "Nursing", "Dentistry", "Pharmacy", "Public Health", "Biomedical Sciences",
+    # Social Sciences & Humanities
+    "Law", "Psychology", "International Relations", "Political Science", "Sociology",
+    # Art, Design & Architecture
+    "Architecture", "Graphic Design", "Fine Arts", "Music", "Media & Communications"
+]
 
 def build_field_index():
-    """Extract all unique course/field names from loaded data for autocomplete."""
-    global UNIQUE_FIELDS
-    fields = set()
-    for c in FALLBACK_COURSES:
-        course = c.get("course", "").strip()
-        if not course:
-            continue
-        # Strip degree prefix like 'MSc in ', 'BEng in ', etc.
-        m = re.match(r'^(?:MSc|BSc|MEng|BEng|MBA|BBA|LLM|LLB|MD|MBBS|PhD)\s+in\s+(.+)$', course)
-        if m:
-            fields.add(m.group(1))
-        else:
-            fields.add(course)
-    UNIQUE_FIELDS = sorted(fields, key=str.lower)
-    print(f"✅ Field index built: {len(UNIQUE_FIELDS)} unique fields", flush=True)
+    """No-op now that we use curated fields, but kept for compatibility."""
+    print(f"✅ Curated field index ready: {len(UNIQUE_FIELDS)} categories", flush=True)
 
 build_field_index()
 
@@ -126,21 +132,63 @@ def get_search_keywords(field):
     field_lower = field.lower().strip()
     keywords = [field_lower]
     
+    # If the user searches for generic 'engineering', return related engineering branches
+    if field_lower == "engineering":
+        keywords.extend([
+            "engineering", "electrical", "electronic", "mechanical", "aerospace", 
+            "biomedical", "chemical", "civil", "environmental engineering", 
+            "industrial engineering", "mechatronics", "robotics", "software engineering"
+        ])
+        return list(set(keywords))
+
     # Map major synonyms and related academic disciplines
     synonyms = {
-        "computer science": ["computer science", "computing", "software engineering", "informatics", "computer engineering"],
-        "electrical engineering": ["electrical engineering", "electronic engineering", "electronics", "power systems", "microelectronics", "embedded systems"],
-        "data science": ["data science", "data analytics", "big data", "machine learning", "statistics"],
-        "artificial intelligence": ["artificial intelligence", "machine learning", "deep learning", "cognitive science", "robotics", "intelligent systems"],
-        "business administration": ["business administration", "management", "business management", "mba", "bba", "entrepreneurship", "international business"],
-        "finance": ["finance", "financial", "accounting", "banking"],
-        "marketing": ["marketing", "sales", "digital marketing", "branding"],
-        "cybersecurity": ["cybersecurity", "cyber security", "information security", "network security", "cryptography"],
-        "biomedical engineering": ["biomedical engineering", "bioengineering", "biotech", "biotechnology"],
-        "medicine": ["medicine", "medical", "clinical", "healthcare", "health science", "biomedical"],
-        "nursing": ["nursing", "healthcare", "clinical nursing"],
-        "environmental engineering": ["environmental engineering", "environment", "sustainability", "sustainable", "ecology"],
-        "mechanical engineering": ["mechanical engineering", "robotics", "mechatronics", "automotive", "aerospace engineering"],
+        "computer science": ["computer science", "computing", "software engineering", "informatics", "computer engineering", "information technology", "it"],
+        "software engineering": ["software engineering", "computer science", "computing", "programming", "software development"],
+        "data science": ["data science", "data analytics", "big data", "machine learning", "statistics", "data analysis"],
+        "artificial intelligence": ["artificial intelligence", "machine learning", "deep learning", "cognitive science", "robotics", "intelligent systems", "computer vision", "nlp"],
+        "cybersecurity": ["cybersecurity", "cyber security", "information security", "network security", "cryptography", "infosec"],
+        "informatics": ["informatics", "computer science", "information systems"],
+        "information technology": ["information technology", "it", "information systems", "computer networks"],
+        "electrical engineering": ["electrical engineering", "electronic engineering", "electronics", "power systems", "microelectronics", "embedded systems", "telecommunications"],
+        "mechanical engineering": ["mechanical engineering", "robotics", "mechatronics", "automotive", "aerospace engineering", "fluid dynamics", "thermodynamics"],
+        "aerospace engineering": ["aerospace", "aeronautical", "aviation", "space technology"],
+        "biomedical engineering": ["biomedical engineering", "bioengineering", "biotech", "biotechnology", "prosthetics"],
+        "chemical engineering": ["chemical engineering", "chemistry", "process engineering", "biochemical engineering"],
+        "civil engineering": ["civil engineering", "structural engineering", "geotechnical", "construction management"],
+        "environmental engineering": ["environmental engineering", "environment", "sustainability", "sustainable", "ecology", "water resources"],
+        "industrial engineering": ["industrial engineering", "operations research", "systems engineering", "supply chain"],
+        "mechatronics & robotics": ["mechatronics", "robotics", "automation", "control systems"],
+        "business administration": ["business administration", "management", "business management", "mba", "bba", "entrepreneurship", "international business", "corporate strategy"],
+        "finance": ["finance", "financial", "accounting", "banking", "investment", "corporate finance"],
+        "accounting": ["accounting", "audit", "taxation", "financial reporting"],
+        "marketing": ["marketing", "sales", "digital marketing", "branding", "public relations"],
+        "economics": ["economics", "macroeconomics", "microeconomics", "econometrics", "political economy"],
+        "management": ["management", "leadership", "human resources", "hr", "project management"],
+        "entrepreneurship": ["entrepreneurship", "innovation", "startups", "venture"],
+        "international business": ["international business", "global management", "cross-cultural"],
+        "physics": ["physics", "astrophysics", "quantum", "thermodynamics", "optics"],
+        "chemistry": ["chemistry", "biochemistry", "organic chemistry", "chemical"],
+        "biology": ["biology", "molecular biology", "genetics", "microbiology", "ecology", "zoology"],
+        "mathematics": ["mathematics", "math", "algebra", "calculus", "geometry"],
+        "statistics": ["statistics", "probability", "data analysis", "actuarial"],
+        "environmental science": ["environmental science", "ecology", "conservation", "climate change"],
+        "medicine": ["medicine", "medical", "clinical", "healthcare", "health science", "biomedical", "surgery"],
+        "nursing": ["nursing", "healthcare", "clinical nursing", "patient care"],
+        "dentistry": ["dentistry", "dental", "oral health"],
+        "pharmacy": ["pharmacy", "pharmacology", "pharmaceutical", "drug discovery"],
+        "public health": ["public health", "epidemiology", "global health", "health policy"],
+        "biomedical sciences": ["biomedical sciences", "biomedicine", "immunology", "pathology"],
+        "law": ["law", "llm", "llb", "legal", "jurisprudence", "human rights"],
+        "psychology": ["psychology", "cognitive science", "behavioral science", "clinical psychology"],
+        "international relations": ["international relations", "global politics", "diplomacy", "foreign policy"],
+        "political science": ["political science", "politics", "government", "public policy"],
+        "sociology": ["sociology", "social sciences", "anthropology"],
+        "architecture": ["architecture", "architectural", "urban planning", "landscape architecture"],
+        "graphic design": ["graphic design", "visual communication", "ux", "ui", "illustration"],
+        "fine arts": ["fine arts", "visual arts", "painting", "sculpture"],
+        "music": ["music", "musicology", "performance", "composition"],
+        "media & communications": ["media", "communications", "journalism", "public relations", "broadcasting"],
     }
     
     for key, syns in synonyms.items():

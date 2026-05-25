@@ -83,10 +83,11 @@ body {
   width: fit-content;
 }
 
-/* FORM */
 .form-card {
   display: grid;
   gap: 28px;
+  position: relative;
+  z-index: 10;
 }
 
 .form-card > div {
