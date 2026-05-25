@@ -39,19 +39,13 @@ export default function University() {
             <span className="chip">🎓 {form.degree || '-'}</span>
             <span className="chip">📚 {form.field || '-'}</span>
           </p>
-          {isAI && (
-            <div className="ai-badge">
-              <span className="ai-dot"></span>
-              AI-powered — live web search
-            </div>
-          )}
           {isStatic && result.fallback_notice && (
             <p className="data-notice" style={{marginTop: 10}}>⚠️ {result.fallback_notice}</p>
           )}
         </div>
         <div className="summary-right">
           <div className="big-number">{result.total || 0}</div>
-          <div className="big-label">{isAI ? 'AI matches found' : 'Results found'}</div>
+          <div className="big-label">Results found</div>
           <button className="btn-outline" onClick={() => navigate('/')}>New search</button>
         </div>
       </div>
@@ -102,13 +96,6 @@ export default function University() {
                     <span className="rc-meta-value">{item.fee || 'See website'}</span>
                   </div>
                 </div>
-
-                {item.requirements && (
-                  <details className="rc-requirements-details" onClick={(e) => e.stopPropagation()}>
-                    <summary>📋 Admission Requirements</summary>
-                    <p>{item.requirements}</p>
-                  </details>
-                )}
 
                 <div className="rc-cta">Open course page</div>
               </a>
