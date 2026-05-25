@@ -15,9 +15,7 @@ const FIELD_OPTIONS = [
 
 function validateEmail(email) {
   if (!email) return ''
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-    ? ''
-    : 'Please enter a valid email address.'
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? '' : 'Please enter a valid email address.'
 }
 
 export default function Profile() {
@@ -25,8 +23,8 @@ export default function Profile() {
     fullName: '', email: '', currentDegree: '', currentField: '',
     semester: '', universityName: '', grade: '', notes: '', avatarUrl: ''
   })
-  const [saved, setSaved]       = useState(false)
-  const [saving, setSaving]     = useState(false)
+  const [saved, setSaved]         = useState(false)
+  const [saving, setSaving]       = useState(false)
   const [emailError, setEmailError] = useState('')
   const [fieldSugs, setFieldSugs]   = useState([])
   const [showSugs, setShowSugs]     = useState(false)
@@ -47,19 +45,15 @@ export default function Profile() {
     return () => document.removeEventListener('mousedown', handler)
   }, [])
 
-  const completion = () => {
+  const pct = () => {
     const keys = ['fullName', 'email', 'currentDegree', 'currentField', 'grade']
     return Math.round(keys.filter(k => profile[k]?.trim()).length / keys.length * 100)
   }
 
-  const set = (key, val) => {
-    setProfile(p => ({ ...p, [key]: val }))
-    setSaved(false)
-  }
+  const set = (key, val) => { setProfile(p => ({ ...p, [key]: val })); setSaved(false) }
 
   const handleAvatar = (e) => {
-    const file = e.target.files[0]
-    if (!file) return
+    const file = e.target.files[0]; if (!file) return
     const reader = new FileReader()
     reader.onload = (ev) => set('avatarUrl', ev.target.result)
     reader.readAsDataURL(file)
@@ -67,12 +61,10 @@ export default function Profile() {
 
   const handleFieldInput = (val) => {
     set('currentField', val)
-    if (val.length > 0) {
-      setFieldSugs(FIELD_OPTIONS.filter(f => f.toLowerCase().includes(val.toLowerCase())).slice(0, 5))
-      setShowSugs(true)
-    } else {
-      setShowSugs(false)
-    }
+    setFieldSugs(val.length > 0
+      ? FIELD_OPTIONS.filter(f => f.toLowerCase().includes(val.toLowerCase())).slice(0, 5)
+      : [])
+    setShowSugs(val.length > 0)
   }
 
   const submit = async (e) => {
@@ -81,146 +73,131 @@ export default function Profile() {
     if (err) { setEmailError(err); return }
     setSaving(true)
     await saveProfile(profile)
-    setSaving(false)
-    setSaved(true)
+    setSaving(false); setSaved(true)
   }
 
-  const pct = completion()
+  const p = pct()
+  const circumference = 100
+  const dash = (p / 100) * circumference
 
   return (
-    <div className="profile-page">
+    <div className="pf-layout">
 
-      {/* Page header */}
-      <div className="profile-page-header">
-        <div className="profile-page-header-left">
-          <p className="profile-page-eyebrow">Student Profile</p>
-          <h1 className="profile-page-title">Your Academic Profile</h1>
-          <p className="profile-page-sub">
-            Complete your profile so StudyFinder can surface the most relevant
-            degree programs for your background, goals, and qualifications.
+      {/* ── Left sidebar ── */}
+      <aside className="pf-sidebar">
+
+        <div className="pf-avatar-card">
+          <button type="button" className="pf-avatar-btn" onClick={() => fileRef.current.click()}>
+            {profile.avatarUrl
+              ? <img src={profile.avatarUrl} alt="Profile" className="pf-avatar-img" />
+              : <div className="pf-avatar-initials">
+                  {profile.fullName ? profile.fullName[0].toUpperCase() : 'A'}
+                </div>
+            }
+            <span className="pf-avatar-overlay">Upload photo</span>
+          </button>
+          <input ref={fileRef} type="file" accept="image/*" hidden onChange={handleAvatar} />
+
+          <div className="pf-avatar-info">
+            <p className="pf-avatar-name">{profile.fullName || 'Your Name'}</p>
+            <p className="pf-avatar-email">{profile.email || 'No email added yet'}</p>
+          </div>
+        </div>
+
+        <div className="pf-completion-card">
+          <div className="pf-ring-wrap">
+            <svg viewBox="0 0 36 36" className="pf-ring-svg">
+              <circle className="pf-ring-bg" cx="18" cy="18" r="15.9" />
+              <circle
+                className="pf-ring-prog"
+                cx="18" cy="18" r="15.9"
+                strokeDasharray={`${(p / 100) * 99.9}, 100`}
+                strokeDashoffset="25"
+              />
+            </svg>
+            <span className="pf-ring-pct">{p}%</span>
+          </div>
+          <p className="pf-completion-label">Profile complete</p>
+          <p className="pf-completion-hint">
+            {p === 100
+              ? 'Ready for AI-powered matching.'
+              : 'Fill in all fields for the best university matches.'}
+          </p>
+
+          <div className="pf-checklist">
+            {[
+              ['Full name',    !!profile.fullName],
+              ['Email',        !!profile.email],
+              ['Degree level', !!profile.currentDegree],
+              ['Field',        !!profile.currentField],
+              ['Grade / GPA',  !!profile.grade],
+            ].map(([label, done]) => (
+              <div key={label} className={`pf-check-item ${done ? 'pf-check-done' : ''}`}>
+                <span className="pf-check-dot" />
+                <span>{label}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="pf-tip-card">
+          <p className="pf-tip-label">Why complete your profile?</p>
+          <p className="pf-tip-text">
+            StudyFinder's AI uses your academic background to rank and personalise
+            university results — the more detail you provide, the better the matches.
           </p>
         </div>
-        <div className="profile-completion-widget">
-          <div className="pct-ring-wrap">
-            <svg viewBox="0 0 36 36" className="pct-ring-svg">
-              <path className="pct-ring-track"
-                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-              <path className="pct-ring-fill"
-                strokeDasharray={`${pct}, 100`}
-                d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
-            </svg>
-            <span className="pct-ring-num">{pct}%</span>
-          </div>
-          <div className="profile-completion-meta">
-            <p className="pct-label">Profile completeness</p>
-            <p className="pct-sublabel">
-              {pct === 100
-                ? 'Your profile is ready for AI matching.'
-                : 'Complete all fields for the best matches.'}
-            </p>
-          </div>
-        </div>
-      </div>
 
-      <form onSubmit={submit} noValidate>
+      </aside>
 
-        {/* Avatar card */}
-        <div className="card profile-avatar-card">
-          <div className="profile-avatar-inner">
-            <button
-              type="button"
-              className="avatar-upload-btn"
-              onClick={() => fileRef.current.click()}
-              aria-label="Upload profile photo"
-            >
-              {profile.avatarUrl
-                ? <img src={profile.avatarUrl} alt="Profile" className="avatar-img" />
-                : <div className="avatar-initials">
-                    {profile.fullName ? profile.fullName[0].toUpperCase() : 'A'}
-                  </div>
-              }
-              <span className="avatar-upload-label">Change photo</span>
-            </button>
-            <input ref={fileRef} type="file" accept="image/*" hidden onChange={handleAvatar} />
-            <div className="avatar-identity">
-              <p className="avatar-display-name">{profile.fullName || 'Your full name'}</p>
-              <p className="avatar-display-email">{profile.email || 'Add your email address below'}</p>
-              <p className="avatar-upload-hint">
-                JPG or PNG, maximum 2 MB. Your photo is stored locally.
-              </p>
-            </div>
-          </div>
-          {saved && (
-            <div className="save-success-banner">
-              Profile saved successfully.
-            </div>
-          )}
-        </div>
+      {/* ── Right form ── */}
+      <form className="pf-form" onSubmit={submit} noValidate>
 
-        {/* Section 01 — Personal Information */}
-        <div className="card profile-section-card">
-          <div className="section-header">
-            <div className="section-number">01</div>
+        {/* Section 01 */}
+        <div className="pf-section-card">
+          <div className="pf-section-head">
+            <span className="pf-section-num">01</span>
             <div>
-              <h2 className="section-title">Personal Information</h2>
-              <p className="section-desc">
-                Your name and email are used to personalise results and save your preferences.
-              </p>
+              <h2 className="pf-section-title">Personal Information</h2>
+              <p className="pf-section-desc">Used to personalise your experience and save your preferences.</p>
             </div>
           </div>
-
-          <div className="form-row">
-            <div className="form-group">
+          <div className="pf-divider" />
+          <div className="pf-fields-grid">
+            <div className="pf-field">
               <label htmlFor="fullName">Full Name</label>
-              <input
-                id="fullName"
-                type="text"
-                placeholder="e.g. James Anderson"
-                value={profile.fullName}
-                onChange={e => set('fullName', e.target.value)}
-                autoComplete="name"
-              />
+              <input id="fullName" type="text" placeholder="e.g. James Anderson"
+                value={profile.fullName} onChange={e => set('fullName', e.target.value)}
+                autoComplete="name" />
             </div>
-            <div className="form-group">
+            <div className="pf-field">
               <label htmlFor="email">Email Address</label>
-              <input
-                id="email"
-                type="email"
-                placeholder="e.g. james.anderson@university.edu"
+              <input id="email" type="email" placeholder="e.g. james@university.edu"
                 value={profile.email}
-                onChange={e => {
-                  set('email', e.target.value)
-                  setEmailError(validateEmail(e.target.value))
-                }}
-                className={emailError ? 'input-invalid' : ''}
-                autoComplete="email"
-              />
-              {emailError && <span className="field-error">{emailError}</span>}
+                onChange={e => { set('email', e.target.value); setEmailError(validateEmail(e.target.value)) }}
+                className={emailError ? 'pf-input-error' : ''}
+                autoComplete="email" />
+              {emailError && <span className="pf-error-msg">{emailError}</span>}
             </div>
           </div>
         </div>
 
-        {/* Section 02 — Academic Background */}
-        <div className="card profile-section-card">
-          <div className="section-header">
-            <div className="section-number">02</div>
+        {/* Section 02 */}
+        <div className="pf-section-card">
+          <div className="pf-section-head">
+            <span className="pf-section-num">02</span>
             <div>
-              <h2 className="section-title">Academic Background</h2>
-              <p className="section-desc">
-                Tell us about your current studies so we can match you with the right programs worldwide.
-              </p>
+              <h2 className="pf-section-title">Academic Background</h2>
+              <p className="pf-section-desc">Your current studies help us match you with the right programs worldwide.</p>
             </div>
           </div>
-
-          <div className="form-row">
-            <div className="form-group">
+          <div className="pf-divider" />
+          <div className="pf-fields-grid">
+            <div className="pf-field">
               <label htmlFor="currentDegree">Current Degree Level</label>
-              <select
-                id="currentDegree"
-                value={profile.currentDegree}
-                onChange={e => set('currentDegree', e.target.value)}
-              >
-                <option value="">Select your current level</option>
+              <select id="currentDegree" value={profile.currentDegree}
+                onChange={e => set('currentDegree', e.target.value)}>
+                <option value="">Select your level</option>
                 <option value="High School">High School / Secondary</option>
                 <option value="Foundation">Foundation / Pre-university</option>
                 <option value="Bachelor">Bachelor's Degree</option>
@@ -230,26 +207,20 @@ export default function Profile() {
                 <option value="Other">Other</option>
               </select>
             </div>
-            <div className="form-group" ref={fieldRef}>
+            <div className="pf-field" ref={fieldRef}>
               <label htmlFor="currentField">Field of Study</label>
               <div className="autocomplete-wrap">
-                <input
-                  id="currentField"
-                  type="text"
+                <input id="currentField" type="text"
                   placeholder="e.g. Computer Science, Economics"
                   value={profile.currentField}
                   onChange={e => handleFieldInput(e.target.value)}
                   onFocus={() => profile.currentField && setShowSugs(true)}
-                  autoComplete="off"
-                />
+                  autoComplete="off" />
                 {showSugs && fieldSugs.length > 0 && (
                   <div className="suggestions-dropdown">
                     {fieldSugs.map((s, i) => (
-                      <div
-                        key={i}
-                        className="suggestion-item"
-                        onMouseDown={() => { set('currentField', s); setShowSugs(false) }}
-                      >
+                      <div key={i} className="suggestion-item"
+                        onMouseDown={() => { set('currentField', s); setShowSugs(false) }}>
                         <span>→</span> {s}
                       </div>
                     ))}
@@ -259,73 +230,53 @@ export default function Profile() {
             </div>
           </div>
 
-          <div className="form-row">
-            <div className="form-group">
+          <div className="pf-fields-grid">
+            <div className="pf-field">
               <label htmlFor="universityName">Current University or Institution</label>
-              <input
-                id="universityName"
-                type="text"
+              <input id="universityName" type="text"
                 placeholder="e.g. University of Toronto, ETH Zurich, NUS"
                 value={profile.universityName}
-                onChange={e => set('universityName', e.target.value)}
-              />
-              <span className="field-hint">
-                Enter the full name of your current or most recent institution.
-              </span>
+                onChange={e => set('universityName', e.target.value)} />
+              <span className="pf-hint">Enter the full name of your current or most recent institution.</span>
             </div>
-            <div className="form-group">
+            <div className="pf-field">
               <label htmlFor="semester">Current Semester or Year</label>
-              <input
-                id="semester"
-                type="text"
+              <input id="semester" type="text"
                 placeholder="e.g. Year 2, Semester 4, Final year"
                 value={profile.semester}
-                onChange={e => set('semester', e.target.value)}
-              />
+                onChange={e => set('semester', e.target.value)} />
             </div>
           </div>
 
-          <div className="form-row">
-            <div className="form-group">
+          <div className="pf-fields-grid">
+            <div className="pf-field">
               <label htmlFor="grade">Academic Grade or GPA</label>
-              <input
-                id="grade"
-                type="text"
+              <input id="grade" type="text"
                 placeholder="e.g. 3.8 / 4.0 GPA, First Class, 85%"
                 value={profile.grade}
-                onChange={e => set('grade', e.target.value)}
-              />
-              <span className="field-hint">
-                Enter your GPA, percentage, or grade classification as used in your country.
-              </span>
+                onChange={e => set('grade', e.target.value)} />
+              <span className="pf-hint">Enter your GPA, percentage, or grade classification as used in your country.</span>
             </div>
-            <div className="form-group">
+            <div className="pf-field">
               <label htmlFor="notes">Additional Information</label>
-              <input
-                id="notes"
-                type="text"
-                placeholder="e.g. Research interests, language skills, work experience"
+              <input id="notes" type="text"
+                placeholder="e.g. Research interests, language skills"
                 value={profile.notes}
-                onChange={e => set('notes', e.target.value)}
-              />
-              <span className="field-hint">
-                Optional. Anything else that may help match you to a program.
-              </span>
+                onChange={e => set('notes', e.target.value)} />
+              <span className="pf-hint">Optional. Anything else that may help find a better match.</span>
             </div>
           </div>
         </div>
 
-        {/* Save */}
-        <div className="profile-form-footer">
-          <p className="profile-form-footer-note">
-            Your profile is saved to this device. It is used only to personalise your search results.
-          </p>
-          <button
-            type="submit"
-            id="save-profile-btn"
-            className={`btn-save-profile ${saved ? 'btn-save-profile--saved' : ''}`}
-            disabled={saving}
-          >
+        {/* Footer */}
+        <div className="pf-form-footer">
+          <div className="pf-footer-left">
+            {saved && <span className="pf-saved-msg">Your profile has been saved successfully.</span>}
+            {!saved && <span className="pf-footer-note">Your profile is stored on this device and used only to personalise your search results.</span>}
+          </div>
+          <button type="submit" id="save-profile-btn"
+            className={`pf-save-btn ${saved ? 'pf-save-btn--saved' : ''}`}
+            disabled={saving}>
             {saving ? 'Saving...' : saved ? 'Saved' : 'Save Profile'}
           </button>
         </div>
