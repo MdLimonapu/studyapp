@@ -159,7 +159,7 @@ def build_prompt(country, degree, field, profile):
 
 Search for real {degree_label} programs in {field} at universities in {country} that are accepting international students.
 
-Return EXACTLY 10 results as a raw JSON array (no markdown fences, no explanation, just the array).
+Return EXACTLY 20 results as a raw JSON array (no markdown fences, no explanation, just the array).
 Each object must have these exact keys:
 {{
   "university": "Full university name",
@@ -169,7 +169,7 @@ Each object must have these exact keys:
   "degree": "{degree_label}",
   "link": "Direct URL to the course or program page",
   "requirements": "Key admission requirements in 1-2 sentences",
-  "why_match": "One sentence explaining why this suits this student's profile",
+  "match_rating": 3 (or 2, or 1) based on how well this program matches the student's profile (3 = Best match, 2 = Good match, 1 = Plausible match),
   "intake": "e.g. Winter 2026 / Summer 2027",
   "fee": "Annual tuition fee if known, otherwise 'See website'"
 }}
@@ -217,7 +217,7 @@ def fallback_search(country, degree, field):
             "degree":       c.get("degree", ""),
             "link":         c.get("link", ""),
             "requirements": "See university website for full requirements.",
-            "why_match":    "",
+            "match_rating": 3 - (len(formatted) % 3),
             "intake":       "Winter / Summer",
             "fee":          "See website",
         })
@@ -233,7 +233,7 @@ def fallback_search(country, degree, field):
                 "degree": degree.title() if degree else "Master",
                 "link": "https://www.daad.de",
                 "requirements": "IELTS 6.5, Bachelor's degree in a related field.",
-                "why_match": f"Excellent program for students interested in {field}.",
+                "match_rating": 3 - (i % 3),
                 "intake": "Winter 2026",
                 "fee": "See website",
             })
@@ -380,7 +380,7 @@ def search():
                     "degree":       r.get("degree", degree),
                     "link":         r.get("link", ""),
                     "requirements": r.get("requirements", "See university website."),
-                    "why_match":    r.get("why_match", ""),
+                    "match_rating": r.get("match_rating", 3),
                     "intake":       r.get("intake", "See website"),
                     "fee":          r.get("fee", "See website"),
                 })
@@ -433,7 +433,7 @@ SEARCH RESULTS FROM WEB:
 - Degree level: {degree_label}
 - Field of study: {field}
 
-Return EXACTLY 10 results (or up to 10 if fewer are available in the search results) as a raw JSON array.
+Return EXACTLY 20 results (or up to 20 if fewer are available in the search results) as a raw JSON array.
 Each object must have these exact keys:
 {{
   "university": "Full university name",
@@ -443,7 +443,7 @@ Each object must have these exact keys:
   "degree": "{degree_label}",
   "link": "Direct URL to the course from the search results",
   "requirements": "Key admission requirements in 1-2 sentences",
-  "why_match": "One sentence explaining why this suits this student's profile",
+  "match_rating": 3 (or 2, or 1) based on how well this program matches the student's profile (3 = Best match, 2 = Good match, 1 = Plausible match),
   "intake": "e.g. Winter 2026 / Summer 2027",
   "fee": "Annual tuition fee if known, otherwise 'See website'"
 }}
@@ -467,7 +467,7 @@ Only return the JSON array. Do not wrap it in markdown. Do not add commentary.""
                         "degree":       r.get("degree", degree),
                         "link":         r.get("link", ""),
                         "requirements": r.get("requirements", "See university website."),
-                        "why_match":    r.get("why_match", ""),
+                        "match_rating": r.get("match_rating", 3),
                         "intake":       r.get("intake", "See website"),
                         "fee":          r.get("fee", "See website"),
                     })

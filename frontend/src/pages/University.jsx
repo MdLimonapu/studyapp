@@ -11,6 +11,13 @@ function SkeletonCard() {
   )
 }
 
+const getMatchLabel = (rating) => {
+  const r = Number(rating) || 3;
+  if (r >= 3) return { stars: '⭐⭐⭐', label: 'Best Match' };
+  if (r === 2) return { stars: '⭐⭐', label: 'Good Match' };
+  return { stars: '⭐', label: 'Plausible Match' };
+}
+
 export default function University() {
   const raw    = localStorage.getItem('searchResults')
   const result = raw ? JSON.parse(raw) : { results: [], related_fields: [], source: null }
@@ -80,12 +87,10 @@ export default function University() {
                 <h3 className="rc-uni">{item.university}</h3>
                 <p className="rc-course">{item.course}</p>
 
-                {item.why_match && item.why_match.trim() && (
-                  <div className="rc-why">
-                    <span className="rc-why-label">✨ Why it matches you</span>
-                    <p>{item.why_match}</p>
-                  </div>
-                )}
+                <div className="rc-rating-badge" onClick={(e) => e.stopPropagation()}>
+                  <span className="rc-stars">{getMatchLabel(item.match_rating).stars}</span>
+                  <span className="rc-label">{getMatchLabel(item.match_rating).label}</span>
+                </div>
 
                 <div className="rc-meta">
                   <div className="rc-meta-item">
