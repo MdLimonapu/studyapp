@@ -99,7 +99,10 @@ export default function University() {
                 </div>
 
                 {item.requirements && (
-                  <p className="rc-requirements">📋 {item.requirements}</p>
+                  <details className="rc-requirements-details" onClick={(e) => e.stopPropagation()}>
+                    <summary>📋 Admission Requirements</summary>
+                    <p>{item.requirements}</p>
+                  </details>
                 )}
 
                 <div className="rc-cta">Open course page</div>

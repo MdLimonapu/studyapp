@@ -271,25 +271,58 @@ button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
 /* Why match section */
 .rc-why {
-  background: rgba(81,250,170,0.05);
-  border: 1px solid rgba(81,250,170,0.15);
-  border-radius: 12px; padding: 12px 14px;
-  display: flex; flex-direction: column; gap: 4px;
+  background: rgba(81,250,170,0.02);
+  border: 1px dashed rgba(81,250,170,0.15);
+  border-radius: 10px; padding: 8px 12px;
+  display: flex; flex-direction: column; gap: 3px;
 }
 .rc-why-label {
-  font-size: 11px; font-weight: 700; color: var(--accent);
-  text-transform: uppercase; letter-spacing: 0.06em;
+  font-size: 10px; font-weight: 700; color: var(--accent);
+  text-transform: uppercase; letter-spacing: 0.05em;
 }
-.rc-why p { font-size: 13px; color: var(--muted); line-height: 1.5; margin: 0; }
+.rc-why p { font-size: 12.5px; color: var(--muted); line-height: 1.45; margin: 0; }
 
 /* City chip */
 .rc-city { font-size: 12px; color: var(--muted); }
 
-/* Requirements */
-.rc-requirements {
-  font-size: 12px; color: var(--muted); line-height: 1.5;
+/* Collapsible Requirements Details */
+.rc-requirements-details {
+  border-top: 1px solid var(--card-border);
+  padding-top: 10px;
+  margin-top: 2px;
+}
+.rc-requirements-details summary {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: var(--accent);
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  user-select: none;
+}
+.rc-requirements-details summary::before {
+  content: '▶';
+  display: inline-block;
+  font-size: 8px;
+  transition: transform 0.2s;
+  color: var(--muted);
+}
+.rc-requirements-details[open] summary::before {
+  transform: rotate(90deg);
+}
+.rc-requirements-details summary::-webkit-details-marker {
+  display: none;
+}
+.rc-requirements-details p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.5;
+  margin: 8px 0 0 0;
+  background: rgba(255,255,255,0.01);
   border-left: 2px solid rgba(255,255,255,0.1);
-  padding-left: 10px; margin: 0;
+  padding-left: 8px;
 }
 
 /* Skeleton loader */
