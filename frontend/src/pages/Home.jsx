@@ -91,7 +91,29 @@ export default function Home() {
   const handleFieldChange = (val) => {
     setForm({...form, field: val})
     if (val.length > 0) {
-      setSuggestions(allFields.filter(f => f.toLowerCase().includes(val.toLowerCase())).slice(0,10))
+      const query = val.toLowerCase().trim()
+      
+      // 1. Exact start matching (e.g. typing 'e' matches 'Electrical Engineering' first)
+      const startsWithQuery = allFields.filter(f => f.toLowerCase().startsWith(query))
+      
+      // 2. Word boundary starting matches (e.g. typing 'e' matches 'Software Engineering' next)
+      const wordStartsWithQuery = allFields.filter(f => {
+        const lower = f.toLowerCase()
+        if (lower.startsWith(query)) return false
+        return lower.split(/\s+/).some(word => word.startsWith(query))
+      })
+      
+      // 3. Contains query anywhere else
+      const containsQuery = allFields.filter(f => {
+        const lower = f.toLowerCase()
+        return lower.includes(query) && 
+               !lower.startsWith(query) && 
+               !lower.split(/\s+/).some(word => word.startsWith(query))
+      })
+
+      // Combine and remove duplicates while preserving order
+      const combined = Array.from(new Set([...startsWithQuery, ...wordStartsWithQuery, ...containsQuery]))
+      setSuggestions(combined.slice(0, 5))
       setShowSug(true)
     } else setShowSug(false)
   }
