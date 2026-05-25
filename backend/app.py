@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-import json, os, re, datetime
+import json, os, re, datetime, requests
+from bs4 import BeautifulSoup
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
@@ -78,6 +79,43 @@ def generate_content_with_rotation(contents, config=None, model="gemini-2.5-flas
 # ── Caching ──────────────────────────────────────────────────────────────────
 NEWS_CACHE = {"data": None, "timestamp": None}
 SEARCH_CACHE = {}
+
+# ── DuckDuckGo search scraper ────────────────────────────────────────────────
+def search_duckduckgo(query, max_results=8):
+    url = "https://html.duckduckgo.com/html/"
+    params = {"q": query}
+    headers = {
+        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+    }
+    try:
+        response = requests.post(url, data=params, headers=headers, timeout=10)
+        if response.status_code != 200:
+            print(f"⚠️ DuckDuckGo returned status code {response.status_code}", flush=True)
+            return []
+        soup = BeautifulSoup(response.text, "html.parser")
+        results = soup.select(".result")
+        
+        search_data = []
+        for item in results:
+            a = item.select_one(".result__a")
+            snippet = item.select_one(".result__snippet")
+            if a and snippet:
+                link = a.get("href", "")
+                if "/y.js" in link or "duckduckgo.com/y.js" in link:
+                    continue
+                title = a.get_text(strip=True)
+                desc = snippet.get_text(strip=True)
+                search_data.append({
+                    "title": title,
+                    "link": link,
+                    "snippet": desc
+                })
+                if len(search_data) >= max_results:
+                    break
+        return search_data
+    except Exception as e:
+        print(f"⚠️ DuckDuckGo search failed: {e}", flush=True)
+        return []
 
 # ── Countries ────────────────────────────────────────────────────────────────
 COUNTRIES = [
@@ -258,10 +296,44 @@ Return ONLY the JSON array (no markdown fences)."""
         NEWS_CACHE["timestamp"] = now
         return jsonify(results)
     except Exception as e:
-        print(f"News fetch failed: {e}", flush=True)
-        if NEWS_CACHE["data"]:
-            return jsonify(NEWS_CACHE["data"])
-        return jsonify([])
+        print(f"⚠️ Native news fetch failed: {e} — trying DuckDuckGo + gemini-flash-latest fallback...", flush=True)
+        try:
+            news_results = search_duckduckgo("international student visas study abroad scholarships news", max_results=8)
+            news_context = ""
+            for idx, res in enumerate(news_results):
+                news_context += f"Result {idx+1}:\nTitle: {res['title']}\nURL: {res['link']}\nSnippet: {res['snippet']}\n\n"
+            
+            today_date = now.strftime("%B %d, %Y")
+            ddg_news_prompt = f"""You are a news summarizer. Below are search results from DuckDuckGo matching recent news.
+Use these results to extract 5-7 real, breaking news articles from TODAY or YESTERDAY about international student visas, study abroad scholarships, or university admissions worldwide.
+
+SEARCH RESULTS FROM WEB:
+{news_context}
+
+Return EXACTLY a JSON array where each object has:
+- "title": headline
+- "source": domain name of source
+- "date": e.g. '{today_date}' or 'Yesterday'
+- "summary": 1 sentence summary
+- "country": related country (or 'Global')
+- "link": direct URL to the article
+
+Return ONLY the JSON array (no markdown fences)."""
+
+            response = generate_content_with_rotation(
+                model="gemini-flash-latest",
+                contents=ddg_news_prompt,
+                config=None
+            )
+            results = extract_json_array(response.text)
+            NEWS_CACHE["data"] = results
+            NEWS_CACHE["timestamp"] = now
+            return jsonify(results)
+        except Exception as ddg_news_err:
+            print(f"❌ News fallback failed: {ddg_news_err}", flush=True)
+            if NEWS_CACHE["data"]:
+                return jsonify(NEWS_CACHE["data"])
+            return jsonify([])
 
 
 
@@ -324,23 +396,109 @@ def search():
 
         except Exception as e:
             err_msg = str(e)
-            print(f"Gemini search failed: {err_msg} — falling back to static data.", flush=True)
+            print(f"⚠️ Native Google Search grounding failed: {err_msg} — trying DuckDuckGo + gemini-flash-latest fallback...", flush=True)
             
-            # Help user identify key/quota limits
-            notice = "Add a Gemini API key to enable AI-powered search for all countries."
-            if "RESOURCE_EXHAUSTED" in err_msg or "quota" in err_msg.lower():
-                notice = "Gemini API rate limit exceeded (RESOURCE_EXHAUSTED). Falling back to static data. Please try again in a few minutes."
-            elif "API_KEY_INVALID" in err_msg or "key not valid" in err_msg.lower():
-                notice = "The provided Gemini API key is invalid. Please check your Render configuration."
+            try:
+                # 1. Search DuckDuckGo
+                query = f"universities offering {degree} in {field} in {country}"
+                search_results = search_duckduckgo(query)
+                search_context = ""
+                for idx, res in enumerate(search_results):
+                    search_context += f"Result {idx+1}:\nTitle: {res['title']}\nURL: {res['link']}\nSnippet: {res['snippet']}\n\n"
+                
+                # 2. Build new prompt with DDG context
+                degree_label = {"bachelor": "Bachelor's", "master": "Master's", "phd": "PhD"}.get(
+                    degree.lower(), degree
+                )
+                
+                profile_block = ""
+                if profile:
+                    parts = []
+                    if profile.get("fullName"):    parts.append(f"Name: {profile['fullName']}")
+                    if profile.get("currentDegree"): parts.append(f"Currently studying: {profile['currentDegree']} in {profile.get('currentField', field)}")
+                    if profile.get("universityName"): parts.append(f"University: {profile['universityName']}")
+                    if profile.get("semester"):    parts.append(f"Semester: {profile['semester']}")
+                    if profile.get("grade"):       parts.append(f"GPA / Grade: {profile['grade']}")
+                    if profile.get("notes"):       parts.append(f"Notes: {profile['notes']}")
+                    if parts:
+                        profile_block = "STUDENT PROFILE:\n" + "\n".join(f"- {p}" for p in parts) + "\n\n"
 
-            formatted, total, source = fallback_search(country, degree, field)
-            return jsonify({
-                "results":        formatted,
-                "total":          total,
-                "related_fields": [],
-                "source":         "static",
-                "fallback_notice": notice,
-            })
+                ddg_prompt = f"""You are a university admissions advisor. Below are search results from DuckDuckGo matching the student's criteria. Use these results to find real, currently available university programs that are accepting international students.
+
+SEARCH RESULTS FROM WEB:
+{search_context}
+
+{profile_block}SEARCH CRITERIA:
+- Country: {country}
+- Degree level: {degree_label}
+- Field of study: {field}
+
+Return EXACTLY 10 results (or up to 10 if fewer are available in the search results) as a raw JSON array.
+Each object must have these exact keys:
+{{
+  "university": "Full university name",
+  "course": "Exact program/course name",
+  "city": "City name",
+  "country": "{country}",
+  "degree": "{degree_label}",
+  "link": "Direct URL to the course from the search results",
+  "requirements": "Key admission requirements in 1-2 sentences",
+  "why_match": "One sentence explaining why this suits this student's profile",
+  "intake": "e.g. Winter 2026 / Summer 2027",
+  "fee": "Annual tuition fee if known, otherwise 'See website'"
+}}
+
+Only return the JSON array. Do not wrap it in markdown. Do not add commentary."""
+
+                response = generate_content_with_rotation(
+                    model="gemini-flash-latest",
+                    contents=ddg_prompt,
+                    config=None
+                )
+                results = extract_json_array(response.text)
+
+                normalised = []
+                for r in results:
+                    normalised.append({
+                        "university":   r.get("university", ""),
+                        "course":       r.get("course", ""),
+                        "city":         r.get("city", ""),
+                        "country":      r.get("country", country),
+                        "degree":       r.get("degree", degree),
+                        "link":         r.get("link", ""),
+                        "requirements": r.get("requirements", "See university website."),
+                        "why_match":    r.get("why_match", ""),
+                        "intake":       r.get("intake", "See website"),
+                        "fee":          r.get("fee", "See website"),
+                    })
+
+                response_data = {
+                    "results":        normalised,
+                    "total":          len(normalised),
+                    "related_fields": [],
+                    "source":         "ai",
+                }
+                SEARCH_CACHE[cache_key] = response_data
+                return jsonify(response_data)
+
+            except Exception as ddg_err:
+                print(f"❌ DuckDuckGo + gemini-flash-latest fallback failed: {ddg_err} — falling back to static data.", flush=True)
+
+                # Help user identify key/quota limits
+                notice = "Add a Gemini API key to enable AI-powered search for all countries."
+                if "RESOURCE_EXHAUSTED" in err_msg or "quota" in err_msg.lower():
+                    notice = "Gemini API rate limit exceeded (RESOURCE_EXHAUSTED). Falling back to static data. Please try again in a few minutes."
+                elif "API_KEY_INVALID" in err_msg or "key not valid" in err_msg.lower():
+                    notice = "The provided Gemini API key is invalid. Please check your Render configuration."
+
+                formatted, total, source = fallback_search(country, degree, field)
+                return jsonify({
+                    "results":        formatted,
+                    "total":          total,
+                    "related_fields": [],
+                    "source":         "static",
+                    "fallback_notice": notice,
+                })
 
     # ── Fallback to static Germany JSON ─────────────────────────────────────
     formatted, total, source = fallback_search(country, degree, field)
