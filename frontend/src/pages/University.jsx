@@ -102,7 +102,7 @@ export default function University() {
                   <p className="rc-requirements">📋 {item.requirements}</p>
                 )}
 
-                <div className="rc-cta">Open course page →</div>
+                <div className="rc-cta">Open course page</div>
               </a>
             ))
             : (

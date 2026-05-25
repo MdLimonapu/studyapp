@@ -129,7 +129,7 @@ export default function Home() {
             <h2>Complete your profile first</h2>
             <p>To get accurate university matches based on your <strong>grade, field and degree</strong> — please fill in your profile first.</p>
             <div className="modal-actions">
-              <button className="btn-accent" onClick={() => navigate('/profile')}>Complete profile →</button>
+              <button className="btn-accent" onClick={() => navigate('/profile')}>Complete profile</button>
               <button className="btn-ghost" onClick={doSearch}>Search anyway</button>
             </div>
           </div>
@@ -187,7 +187,7 @@ export default function Home() {
                   {suggestions.map((s,i) => (
                     <div key={i} className="suggestion-item"
                       onMouseDown={() => { setForm({...form, field: s}); setShowSug(false) }}>
-                      <span>→</span> {s}
+                      {s}
                     </div>
                   ))}
                 </div>
@@ -196,7 +196,7 @@ export default function Home() {
           </div>
           {error && <p className="error-msg">⚠️ {error}</p>}
           <button type="submit" disabled={loading}>
-            {loading ? <span className="spinner"></span> : 'Find My Perfect Program →'}
+            {loading ? <span className="spinner"></span> : 'Find My Perfect Program'}
           </button>
           {!isProfileComplete(profile) && (
             <p className="profile-hint">💡 <span onClick={() => navigate('/profile')}>Complete your profile</span> for better matches</p>

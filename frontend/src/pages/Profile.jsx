@@ -236,7 +236,7 @@ export default function Profile() {
                     {fieldSugs.map((s, i) => (
                       <div key={i} className="suggestion-item"
                         onMouseDown={() => { set('currentField', s); setShowSugs(false) }}>
-                        <span>→</span> {s}
+                        {s}
                       </div>
                     ))}
                   </div>

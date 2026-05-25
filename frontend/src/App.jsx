@@ -10,7 +10,7 @@ function NotFound() {
       <h3>Page not found</h3>
       <p>The page you're looking for doesn't exist.</p>
       <a href="/" style={{display:'inline-block',marginTop:16}}>
-        <button style={{width:'auto',padding:'12px 28px'}}>Go home →</button>
+        <button style={{width:'auto',padding:'12px 28px'}}>Go home</button>
       </a>
     </div>
   )
