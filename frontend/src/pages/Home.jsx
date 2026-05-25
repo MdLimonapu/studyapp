@@ -196,7 +196,7 @@ export default function Home() {
           </div>
           {error && <p className="error-msg">⚠️ {error}</p>}
           <button type="submit" disabled={loading}>
-            {loading ? <span className="spinner"></span> : '🤖 Search with AI →'}
+            {loading ? <span className="spinner"></span> : 'Find My Perfect Program →'}
           </button>
           {!isProfileComplete(profile) && (
             <p className="profile-hint">💡 <span onClick={() => navigate('/profile')}>Complete your profile</span> for better matches</p>

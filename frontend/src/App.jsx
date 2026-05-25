@@ -20,10 +20,10 @@ export default function App() {
   return (
     <div className="app-shell">
       <header className="topbar">
-        <div className="brand">
+        <NavLink to="/" className="brand" style={{textDecoration:'none', color:'inherit'}}>
           <div className="brand-icon">🎓</div>
           <h1>StudyFinder</h1>
-        </div>
+        </NavLink>
         <nav className="nav-links">
           <NavLink to="/">Home</NavLink>
           <NavLink to="/university">University</NavLink>
@@ -40,9 +40,6 @@ export default function App() {
         </Routes>
       </main>
 
-      <footer className="footer">
-        <p>StudyFinder — Powered by live university data 🌍</p>
-      </footer>
     </div>
   )
 }

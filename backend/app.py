@@ -165,7 +165,25 @@ def save_profile():
 
 @app.route("/api/news")
 def get_news():
-    return jsonify([])
+    if not gemini_client:
+        return jsonify([])
+    try:
+        prompt = """Use Google Search to find 5-7 recent real news articles about international student visas, study abroad scholarships, or university admissions worldwide.
+Return EXACTLY a JSON array where each object has:
+- "title": headline
+- "source": domain name of source
+- "date": e.g. 'Month Year'
+- "summary": 1 sentence summary
+- "country": related country (or 'Global')
+- "link": direct URL to the article
+Return ONLY the JSON array (no markdown fences)."""
+        response = gemini_client.generate_content(prompt)
+        results = extract_json_array(response.text)
+        return jsonify(results)
+    except Exception as e:
+        print(f"News fetch failed: {e}")
+        return jsonify([])
+
 
 
 @app.route("/api/search", methods=["POST"])

@@ -23,6 +23,7 @@ export default function Profile() {
     fullName: '', email: '', currentDegree: '', currentField: '',
     semester: '', universityName: '', grade: '', notes: '', avatarUrl: ''
   })
+  const [initialLoaded, setInitialLoaded] = useState(false)
   const [saved, setSaved]         = useState(false)
   const [saving, setSaving]       = useState(false)
   const [emailError, setEmailError] = useState('')
@@ -30,12 +31,30 @@ export default function Profile() {
   const [showSugs, setShowSugs]     = useState(false)
   const fieldRef = useRef(null)
   const fileRef  = useRef(null)
+  const debounceRef = useRef(null)
 
   useEffect(() => {
     fetchProfile()
-      .then(data => { if (Object.keys(data).length) setProfile(p => ({ ...p, ...data })) })
-      .catch(() => {})
+      .then(data => {
+        if (data && Object.keys(data).length) setProfile(p => ({ ...p, ...data }))
+        setInitialLoaded(true)
+      })
+      .catch(() => setInitialLoaded(true))
   }, [])
+
+  useEffect(() => {
+    if (!initialLoaded) return
+    if (debounceRef.current) clearTimeout(debounceRef.current)
+    setSaving(true)
+    setSaved(false)
+    debounceRef.current = setTimeout(() => {
+      saveProfile(profile).then(() => {
+        setSaving(false)
+        setSaved(true)
+        setTimeout(() => setSaved(false), 3000)
+      })
+    }, 1000)
+  }, [profile, initialLoaded])
 
   useEffect(() => {
     const handler = (e) => {
@@ -50,7 +69,7 @@ export default function Profile() {
     return Math.round(keys.filter(k => profile[k]?.trim()).length / keys.length * 100)
   }
 
-  const set = (key, val) => { setProfile(p => ({ ...p, [key]: val })); setSaved(false) }
+  const set = (key, val) => { setProfile(p => ({ ...p, [key]: val })) }
 
   const handleAvatar = (e) => {
     const file = e.target.files[0]; if (!file) return
@@ -67,14 +86,6 @@ export default function Profile() {
     setShowSugs(val.length > 0)
   }
 
-  const submit = async (e) => {
-    e.preventDefault()
-    const err = validateEmail(profile.email)
-    if (err) { setEmailError(err); return }
-    setSaving(true)
-    await saveProfile(profile)
-    setSaving(false); setSaved(true)
-  }
 
   const p = pct()
   const circumference = 100
@@ -138,6 +149,10 @@ export default function Profile() {
               </div>
             ))}
           </div>
+
+          <div style={{marginTop: 16, fontSize: 13, fontWeight: 600, color: saving ? 'var(--muted)' : (saved ? 'var(--accent)' : 'transparent'), transition: 'color 0.3s'}}>
+            {saving ? 'Saving changes...' : (saved ? '✓ All changes saved' : ' ')}
+          </div>
         </div>
 
         <div className="pf-tip-card">
@@ -151,7 +166,7 @@ export default function Profile() {
       </aside>
 
       {/* ── Right form ── */}
-      <form className="pf-form" onSubmit={submit} noValidate>
+      <form className="pf-form" onSubmit={e => e.preventDefault()} noValidate>
 
         {/* Section 01 */}
         <div className="pf-section-card">
@@ -266,19 +281,6 @@ export default function Profile() {
               <span className="pf-hint">Optional. Anything else that may help find a better match.</span>
             </div>
           </div>
-        </div>
-
-        {/* Footer */}
-        <div className="pf-form-footer">
-          <div className="pf-footer-left">
-            {saved && <span className="pf-saved-msg">Your profile has been saved successfully.</span>}
-            {!saved && <span className="pf-footer-note">Your profile is stored on this device and used only to personalise your search results.</span>}
-          </div>
-          <button type="submit" id="save-profile-btn"
-            className={`pf-save-btn ${saved ? 'pf-save-btn--saved' : ''}`}
-            disabled={saving}>
-            {saving ? 'Saving...' : saved ? 'Saved' : 'Save Profile'}
-          </button>
         </div>
 
       </form>
