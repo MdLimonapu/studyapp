@@ -128,14 +128,14 @@ export default function University() {
         </div>
       )}
 
-      <div className={`blur-gate-wrapper ${!isRegistered && resultsToRender.length > 3 ? 'gated' : ''}`}>
+      <div className={`blur-gate-wrapper ${!isRegistered && resultsToRender.length > 4 ? 'gated' : ''}`}>
         <div className="results-grid">
           {isLoading
             ? Array.from({length: 6}).map((_, i) => <SkeletonCard key={i} />)
             : resultsToRender.length
               ? resultsToRender.map((item, i) => {
                 const match = getMatchLabel(item.match_rating);
-                const isBlurred = !isRegistered && i >= 3;
+                const isBlurred = !isRegistered && i >= 4;
                 return (
                   <a
                     key={i}
@@ -192,7 +192,7 @@ export default function University() {
           }
         </div>
 
-        {!isRegistered && resultsToRender.length > 3 && (
+        {!isRegistered && resultsToRender.length > 4 && (
           <div className="blur-gate-overlay">
             <div className="blur-gate-card">
               <div className="blur-gate-icon">🔒</div>
