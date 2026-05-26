@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import AuthModal from '../components/AuthModal'
 
 const countryFlags = {
   'germany': '🇩🇪',
@@ -89,16 +90,9 @@ export default function University() {
   const [isRegistered, setIsRegistered] = useState(() => {
     return !!localStorage.getItem('user_account')
   })
-  const [email, setEmail] = useState('')
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
 
   const isLoading = !raw
-
-  const handleRegister = (e) => {
-    e.preventDefault()
-    if (!email) return
-    localStorage.setItem('user_account', JSON.stringify({ email, createdAt: new Date().toISOString() }))
-    setIsRegistered(true)
-  }
 
   const resultsToRender = result.results || []
 
@@ -206,22 +200,24 @@ export default function University() {
               <p>
                 We found <strong>{result.total || resultsToRender.length} matches</strong> for you. Sign up for a free account to unlock all results.
               </p>
-              <form className="gate-form" onSubmit={handleRegister}>
-                <input 
-                  type="email" 
-                  placeholder="Enter your email address" 
-                  value={email}
-                  onChange={e => setEmail(e.target.value)}
-                  required 
-                />
-                <button type="submit" className="btn-accent">
-                  Create Account & View Matches
-                </button>
-              </form>
+              <button 
+                type="button" 
+                className="btn-accent" 
+                onClick={() => setIsAuthModalOpen(true)}
+                style={{ width: '100%', padding: '14px', borderRadius: '12px', fontWeight: 700 }}
+              >
+                Unlock All Matches
+              </button>
             </div>
           </div>
         )}
       </div>
+
+      <AuthModal 
+        isOpen={isAuthModalOpen} 
+        onClose={() => setIsAuthModalOpen(false)} 
+        onAuthSuccess={() => setIsRegistered(true)} 
+      />
     </section>
   )
 }
