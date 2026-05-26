@@ -12,23 +12,33 @@ CORS(app)
 # ── Static course data (all countries) ────────────────────────────────────────
 FALLBACK_COURSES = []
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
+DATA_BACKUP_DIR = os.path.join(os.path.dirname(__file__), "data_backup")
 
 def load_all_country_data():
     """Load course data from all JSON files in the data directory."""
     global FALLBACK_COURSES
     all_courses = []
-    if not os.path.isdir(DATA_DIR):
-        print("Warning: data/ directory not found.", flush=True)
+    loaded_files = set()
+    data_dirs = [DATA_DIR, DATA_BACKUP_DIR]
+
+    if not any(os.path.isdir(data_dir) for data_dir in data_dirs):
+        print("Warning: no course data directories found.", flush=True)
         return
-    for filename in sorted(os.listdir(DATA_DIR)):
-        if filename.endswith(".json"):
-            filepath = os.path.join(DATA_DIR, filename)
+
+    for data_dir in data_dirs:
+        if not os.path.isdir(data_dir):
+            continue
+        for filename in sorted(os.listdir(data_dir)):
+            if not filename.endswith(".json") or filename in loaded_files:
+                continue
             try:
+                filepath = os.path.join(data_dir, filename)
                 with open(filepath) as f:
                     data = json.load(f)
                 if isinstance(data, list):
                     all_courses.extend(data)
                     print(f"  📂 Loaded {len(data):5d} courses from {filename}", flush=True)
+                    loaded_files.add(filename)
             except Exception as e:
                 print(f"  ⚠️  Failed to load {filename}: {e}", flush=True)
     FALLBACK_COURSES = all_courses

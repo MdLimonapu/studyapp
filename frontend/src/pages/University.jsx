@@ -18,10 +18,20 @@ const getMatchLabel = (rating) => {
   return { stars: '⭐', label: 'Plausible Match' };
 }
 
+const parseStoredJson = (key, fallback) => {
+  try {
+    const value = localStorage.getItem(key)
+    return value ? JSON.parse(value) : fallback
+  } catch {
+    localStorage.removeItem(key)
+    return fallback
+  }
+}
+
 export default function University() {
   const raw    = localStorage.getItem('searchResults')
-  const result = raw ? JSON.parse(raw) : { results: [], related_fields: [], source: null }
-  const form   = JSON.parse(localStorage.getItem('searchForm') || '{}')
+  const result = parseStoredJson('searchResults', { results: [], related_fields: [], source: null })
+  const form   = parseStoredJson('searchForm', {})
   const navigate = useNavigate()
 
   const isAI      = result.source === 'ai'
