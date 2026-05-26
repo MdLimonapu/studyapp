@@ -752,6 +752,23 @@ def get_news():
     return jsonify(NEWS_ITEMS)
 
 
+@app.route("/api/news/fetch", methods=["GET", "POST"])
+def trigger_fetch_news():
+    # Simple token validation to prevent public abuse
+    token = request.args.get("token") or request.headers.get("X-Cron-Token")
+    expected_token = os.environ.get("CRON_TOKEN")
+    
+    if expected_token and token != expected_token:
+        return jsonify({"error": "Unauthorized"}), 401
+        
+    try:
+        from scrapers.fetch_news import main as run_fetch_news
+        run_fetch_news()
+        return jsonify({"status": "success", "message": "News cache updated successfully"})
+    except Exception as e:
+        return jsonify({"status": "error", "message": str(e)}), 500
+
+
 @app.route("/api/search", methods=["POST"])
 def search():
     body    = request.json or {}
