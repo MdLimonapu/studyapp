@@ -9,6 +9,44 @@ import ssl
 app = Flask(__name__)
 CORS(app)
 
+# Load environment variables from .env file manually if present
+dotenv_path = os.path.join(os.path.dirname(__file__), ".env")
+if os.path.exists(dotenv_path):
+    with open(dotenv_path) as f:
+        for line in f:
+            if line.strip() and not line.startswith("#"):
+                parts = line.strip().split("=", 1)
+                if len(parts) == 2:
+                    os.environ[parts[0].strip()] = parts[1].strip()
+
+# Initialize MongoDB connection using remote cluster MONGO_URI
+mongo_client = None
+db = None
+users_col = None
+
+mongo_uri = os.environ.get("MONGO_URI")
+if mongo_uri:
+    try:
+        from pymongo import MongoClient
+        mongo_client = MongoClient(mongo_uri, serverSelectionTimeoutMS=5000)
+        db_name = "studplex"
+        parsed_uri = urllib.parse.urlparse(mongo_uri)
+        if parsed_uri.path and parsed_uri.path != "/":
+            db_name = parsed_uri.path.strip("/")
+        
+        db = mongo_client[db_name]
+        users_col = db["users"]
+        mongo_client.admin.command('ping')
+        print(f"✅ Connected to Cloud MongoDB Atlas successfully (DB: {db_name}).", flush=True)
+    except Exception as e:
+        print(f"⚠️ Warning: Could not connect to MongoDB Atlas Cloud database: {e}", flush=True)
+        mongo_client = None
+        db = None
+        users_col = None
+else:
+    print("⚠️ Warning: MONGO_URI not found in environment. Cloud database storage is disabled.", flush=True)
+
+
 # ── Static course data (all countries) ────────────────────────────────────────
 FALLBACK_COURSES = []
 DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
@@ -729,6 +767,43 @@ def search():
     }
     SEARCH_CACHE[cache_key] = response_data
     return jsonify(response_data)
+
+
+@app.route("/api/register", methods=["POST"])
+def register_user():
+    data = request.json or {}
+    email = data.get("email", "").strip()
+    full_name = data.get("fullName", "").strip()
+    method = data.get("method", "email").strip()
+    avatar_url = data.get("avatarUrl", "")
+
+    if not email:
+        return jsonify({"error": "Email is required"}), 400
+
+    # If MongoDB is connected, save the user
+    if users_col is not None:
+        try:
+            import datetime
+            user_doc = {
+                "email": email.lower(),
+                "fullName": full_name,
+                "method": method,
+                "avatarUrl": avatar_url,
+                "lastActive": datetime.datetime.now(datetime.timezone.utc)
+            }
+            users_col.update_one(
+                {"email": email.lower()},
+                {"$set": user_doc, "$setOnInsert": {"signUpDate": datetime.datetime.now(datetime.timezone.utc)}},
+                upsert=True
+            )
+            print(f"💾 User saved to Cloud MongoDB: {email}", flush=True)
+            return jsonify({"status": "saved", "database": "mongodb"})
+        except Exception as e:
+            print(f"⚠️ Failed to save user to MongoDB: {e}", flush=True)
+            return jsonify({"status": "saved_fallback_error", "error": str(e)})
+    else:
+        print(f"⚠️ User sign-up bypass (MongoDB disconnected): {email}", flush=True)
+        return jsonify({"status": "saved_offline"})
 
 
 if __name__ == "__main__":

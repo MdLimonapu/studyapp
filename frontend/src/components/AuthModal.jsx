@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { saveProfile } from '../api'
+import { saveProfile, registerUser } from '../api'
 
 export default function AuthModal({ isOpen, onClose, onAuthSuccess }) {
   const [email, setEmail] = useState('')
@@ -47,6 +47,13 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess }) {
           fullName: user.fullName,
           avatarUrl: user.avatarUrl
         })
+        
+        // Register in MongoDB
+        try {
+          await registerUser(user)
+        } catch (dbErr) {
+          console.error("MongoDB register failed:", dbErr)
+        }
         
         // Notify app layout to reload avatar initials
         window.dispatchEvent(new Event('profile-updated'))
@@ -116,6 +123,13 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess }) {
         avatarUrl: null
       })
 
+      // Register in MongoDB
+      try {
+        await registerUser(user)
+      } catch (dbErr) {
+        console.error("MongoDB register failed:", dbErr)
+      }
+
       window.dispatchEvent(new Event('profile-updated'))
       onAuthSuccess()
       onClose()
@@ -143,6 +157,13 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess }) {
         fullName: user.fullName,
         avatarUrl: null
       })
+
+      // Register in MongoDB
+      try {
+        await registerUser(user)
+      } catch (dbErr) {
+        console.error("MongoDB register failed:", dbErr)
+      }
 
       window.dispatchEvent(new Event('profile-updated'))
       onAuthSuccess()
