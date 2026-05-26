@@ -19,6 +19,13 @@ function NotFound() {
   )
 }
 
+const getInitials = (name) => {
+  if (!name) return '👤'
+  const parts = name.trim().split(/\s+/)
+  if (parts.length === 1) return parts[0][0].toUpperCase()
+  return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase()
+}
+
 export default function App() {
   const [profile, setProfile] = useState(null)
 
@@ -61,7 +68,6 @@ export default function App() {
             <NavLink to="/">Home</NavLink>
             <NavLink to="/university">University</NavLink>
             <NavLink to="/roadmap">Roadmap</NavLink>
-            <NavLink to="/profile">Profile</NavLink>
           </nav>
 
           <NavLink to="/profile" className="topbar-profile">
@@ -69,7 +75,7 @@ export default function App() {
               <img src={profile.avatarUrl} alt="Avatar" className="topbar-avatar" />
             ) : (
               <div className="topbar-avatar-initial">
-                {profile && profile.fullName ? profile.fullName[0].toUpperCase() : '👤'}
+                {profile && profile.fullName ? getInitials(profile.fullName) : '👤'}
               </div>
             )}
           </NavLink>
