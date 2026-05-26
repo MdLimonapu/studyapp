@@ -3,7 +3,3 @@ flask-cors
 gunicorn
 beautifulsoup4
 requests
-pymongo
-dnspython
-python-dotenv
-certifi

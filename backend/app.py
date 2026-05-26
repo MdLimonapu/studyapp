@@ -5,39 +5,9 @@ import urllib.parse
 import urllib.request
 from bs4 import BeautifulSoup
 import ssl
-from dotenv import load_dotenv
-import pymongo
-from pymongo.errors import ConnectionFailure, PyMongoError
-import certifi
-
-# Load environment variables
-load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
-
-# Connect to MongoDB Atlas
-MONGO_URI = os.getenv("MONGO_URI")
-db = None
-profiles_col = None
-
-if MONGO_URI:
-    try:
-        # 5 seconds connection timeout
-        client = pymongo.MongoClient(
-            MONGO_URI, 
-            serverSelectionTimeoutMS=5000,
-            tlsCAFile=certifi.where()
-        )
-        # Verify connection
-        client.admin.command('ping')
-        db = client["studyapp_db"]
-        profiles_col = db["profiles"]
-        print("🔌 Connected to MongoDB Atlas successfully!", flush=True)
-    except (ConnectionFailure, PyMongoError) as e:
-        print(f"⚠️ Failed to connect to MongoDB Atlas: {e}. Falling back to local file.", flush=True)
-else:
-    print("ℹ️ MONGO_URI not found in env. Falling back to local file.", flush=True)
 
 # ── Static course data (all countries) ────────────────────────────────────────
 FALLBACK_COURSES = []
@@ -201,6 +171,7 @@ COUNTRIES = [
     {"name": "Japan",       "flag": "🇯🇵"},
 ]
 
+PROFILE_FILE = os.path.join(os.path.dirname(__file__), "profile.json")
 
 # ── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -700,36 +671,18 @@ def get_countries():
 
 @app.route("/api/profile", methods=["GET"])
 def get_profile():
-    if profiles_col is not None:
-        try:
-            profile_data = profiles_col.find_one({}, {"_id": 0})
-            if profile_data:
-                return jsonify(profile_data)
-        except Exception as e:
-            print(f"Error reading from MongoDB: {e}", flush=True)
+    if os.path.exists(PROFILE_FILE):
+        with open(PROFILE_FILE) as f:
+            return jsonify(json.load(f))
     return jsonify({})
 
 
 @app.route("/api/profile", methods=["POST"])
 def save_profile():
-    data = request.json or {}
-    
-    if profiles_col is not None:
-        try:
-            data_copy = data.copy()
-            data_copy.pop("_id", None)
-            result = profiles_col.find_one({})
-            if result:
-                profiles_col.replace_one({"_id": result["_id"]}, data_copy)
-            else:
-                profiles_col.insert_one(data_copy)
-            print("💾 Saved profile to MongoDB Atlas successfully!", flush=True)
-            return jsonify({"status": "saved"})
-        except Exception as e:
-            print(f"Error writing to MongoDB: {e}", flush=True)
-            return jsonify({"status": "error", "message": str(e)}), 500
-            
-    return jsonify({"status": "error", "message": "MongoDB not connected"}), 503
+    data = request.json
+    with open(PROFILE_FILE, "w") as f:
+        json.dump(data, f)
+    return jsonify({"status": "saved"})
 
 
 NEWS_ITEMS = [
