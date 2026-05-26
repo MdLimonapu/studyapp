@@ -632,22 +632,7 @@ def fallback_search(country, degree, field, user_grade=None):
 # ── Routes ───────────────────────────────────────────────────────────────────
 @app.route("/api/fields")
 def get_fields():
-    """Return all unique course/field names for autocomplete."""
-    country = request.args.get("country", "").strip().lower()
-    if country:
-        fields = set()
-        for c in FALLBACK_COURSES:
-            if country not in c.get("country", "").lower():
-                continue
-            course = c.get("course", "").strip()
-            if not course:
-                continue
-            m = re.match(r'^(?:MSc|BSc|MEng|BEng|MBA|BBA|LLM|LLB|MD|MBBS|PhD)\s+in\s+(.+)$', course)
-            if m:
-                fields.add(m.group(1))
-            else:
-                fields.add(course)
-        return jsonify(sorted(fields, key=str.lower))
+    """Return curated field categories for autocomplete — always the same standardized list."""
     return jsonify(UNIQUE_FIELDS)
 
 
