@@ -1,14 +1,14 @@
 {
-  "currentDegree": "",
-  "currentField": "",
-  "email": "",
-  "fullName": "",
-  "grade": "",
+  "currentDegree": "Bachelor",
+  "currentField": "Computer Science",
+  "email": "mdlimon@example.com",
+  "fullName": "Md Limon Apu",
+  "grade": "3.5",
   "language": "",
-  "notes": "",
-  "semester": "",
+  "notes": "Test profile pre-populated in MongoDB Atlas!",
+  "semester": "Semester 6",
   "targetCountry": "",
   "targetDegree": "",
   "targetField": "",
-  "universityName": ""
+  "universityName": "Paderborn University"
 }
