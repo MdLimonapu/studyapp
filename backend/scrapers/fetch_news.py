@@ -17,31 +17,37 @@ API_KEY = os.environ.get("GEMINI_API_KEY")
 RSS_URL = "https://news.google.com/rss/search?q=study+abroad+student+visa+news+updates&hl=en-US&gl=US&ceid=US:en"
 
 def fetch_rss_news():
-    try:
-        print("Fetching RSS feed from Google News...", flush=True)
-        req = urllib.request.Request(
-            RSS_URL, 
-            headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
-        )
-        with urllib.request.urlopen(req) as response:
-            xml_data = response.read()
-        
-        root = ET.fromstring(xml_data)
-        items = []
-        for item in root.findall('.//item')[:15]:  # Get top 15 news items
-            title = item.find('title').text if item.find('title') is not None else ""
-            link = item.find('link').text if item.find('link') is not None else ""
-            pub_date = item.find('pubDate').text if item.find('pubDate') is not None else ""
-            items.append({
-                "raw_title": title,
-                "link": link,
-                "pub_date": pub_date
-            })
-        print(f"Fetched {len(items)} articles successfully.", flush=True)
-        return items
-    except Exception as e:
-        print(f"Error fetching RSS: {e}", flush=True)
-        return []
+    urls = [
+        "https://news.google.com/rss/search?q=study+abroad+student+visa+news+updates+when:2d&hl=en-US&gl=US&ceid=US:en",
+        "https://news.google.com/rss/search?q=study+abroad+student+visa+news+updates+when:7d&hl=en-US&gl=US&ceid=US:en"
+    ]
+    for url in urls:
+        try:
+            print(f"Fetching RSS feed from Google News: {url}", flush=True)
+            req = urllib.request.Request(
+                url, 
+                headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
+            )
+            with urllib.request.urlopen(req) as response:
+                xml_data = response.read()
+            
+            root = ET.fromstring(xml_data)
+            items = []
+            for item in root.findall('.//item')[:15]:  # Get top 15 news items
+                title = item.find('title').text if item.find('title') is not None else ""
+                link = item.find('link').text if item.find('link') is not None else ""
+                pub_date = item.find('pubDate').text if item.find('pubDate') is not None else ""
+                items.append({
+                    "raw_title": title,
+                    "link": link,
+                    "pub_date": pub_date
+                })
+            if items:
+                print(f"Fetched {len(items)} articles successfully from {url}", flush=True)
+                return items
+        except Exception as e:
+            print(f"Error fetching RSS from {url}: {e}", flush=True)
+    return []
 
 def summarize_with_gemini(raw_news):
     if not API_KEY:
@@ -130,10 +136,12 @@ def main():
         print("No news fetched. Exiting.", flush=True)
         return
         
+    processed_news = []
     if API_KEY:
         processed_news = summarize_with_gemini(raw_news)
-    else:
-        print("⚠️ GEMINI_API_KEY not found in environment. Using RSS title parsing fallback...", flush=True)
+        
+    if not processed_news:
+        print("⚠️ Gemini processing was skipped, failed, or hit rate limits. Falling back to direct RSS parsing...", flush=True)
         processed_news = fallback_process(raw_news)
         
     if not processed_news:
