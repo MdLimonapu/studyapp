@@ -133,7 +133,7 @@ export default function Profile() {
               <circle
                 className="pf-ring-prog"
                 cx="18" cy="18" r="15.9"
-                strokeDasharray={`${(p / 100) * 99.9}, 100`}
+                style={{ strokeDasharray: `${(p / 100) * 99.9}, 100` }}
                 strokeDashoffset="25"
               />
             </svg>

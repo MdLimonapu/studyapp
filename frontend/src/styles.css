@@ -735,7 +735,7 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 .pf-ring-bg { fill: none; stroke: rgba(255,255,255,0.06); stroke-width: 3; }
 .pf-ring-prog {
   fill: none; stroke: var(--accent); stroke-width: 3; stroke-linecap: round;
-  stroke-dasharray: 0, 100; transition: stroke-dasharray 0.6s cubic-bezier(0.4,0,0.2,1);
+  transition: stroke-dasharray 0.6s cubic-bezier(0.4, 0, 0.2, 1);
 }
 .pf-ring-pct {
   position: absolute; inset: 0;
