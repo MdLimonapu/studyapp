@@ -168,176 +168,178 @@ export default function Roadmap() {
         </div>
       </div>
 
-      {/* COUNTRY SELECTOR GRID */}
-      <div className="card" style={{ padding: '28px' }}>
-        <h3 style={{ fontSize: '18px', fontWeight: 800, marginBottom: '16px' }}>Select Country</h3>
-        <div className="country-grid">
-          {Object.keys(ROADMAPS).map(country => {
-            const active = selectedCountry === country
-            const count = getCountryCompletedCount(country)
-            const total = getCountryTotalSteps(country)
-            const done = count === total
+      <div className="eligibility-two-col">
+        {/* COUNTRY SELECTOR GRID */}
+        <div className="card" style={{ padding: '24px' }}>
+          <h3 style={{ fontSize: '18px', fontWeight: 800, marginBottom: '16px' }}>Select Country</h3>
+          <div className="country-grid">
+            {Object.keys(ROADMAPS).map(country => {
+              const active = selectedCountry === country
+              const count = getCountryCompletedCount(country)
+              const total = getCountryTotalSteps(country)
+              const done = count === total
 
-            return (
-              <div
-                key={country}
-                onClick={() => setSelectedCountry(country)}
-                className={`country-box ${active ? 'active' : ''}`}
-              >
-                <span className="country-box-flag">{ROADMAPS[country].flag}</span>
-                <span className="country-box-name">{country}</span>
-                <span className="country-box-status">
-                  {done ? '✅ Eligible' : `${count}/${total} Steps`}
-                </span>
-              </div>
-            )
-          })}
-        </div>
-      </div>
-
-      {/* INTERACTIVE ELIGIBILITY CHECKLIST */}
-      <div className="card" style={{ padding: '32px' }}>
-        
-        {/* Header Info */}
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '16px', marginBottom: '20px' }}>
-          <div>
-            <h3 style={{ fontSize: '22px', fontWeight: 900, display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <span>{currentRoadmap.flag}</span> {selectedCountry} Eligibility checklist
-            </h3>
+              return (
+                <div
+                  key={country}
+                  onClick={() => setSelectedCountry(country)}
+                  className={`country-box ${active ? 'active' : ''}`}
+                >
+                  <span className="country-box-flag">{ROADMAPS[country].flag}</span>
+                  <span className="country-box-name">{country}</span>
+                  <span className="country-box-status">
+                    {done ? '✅ Eligible' : `${count}/${total} Steps`}
+                  </span>
+                </div>
+              )
+            })}
           </div>
+        </div>
+
+        {/* INTERACTIVE ELIGIBILITY CHECKLIST */}
+        <div className="card" style={{ padding: '32px' }}>
           
-          {/* Progress circular tag */}
-          <div className="summary-stats" style={{ padding: '8px 16px', height: 'auto', background: 'rgba(255,255,255,0.02)' }}>
-            <span className="big-number" style={{ fontSize: '24px' }}>{progressPercent}%</span>
-            <span className="big-label">Done</span>
-          </div>
-        </div>
-
-        {/* Progress Bar */}
-        <div style={{ width: '100%', height: '6px', background: 'rgba(255,255,255,0.05)', borderRadius: '3px', marginBottom: '24px', overflow: 'hidden' }}>
-          <div style={{ height: '100%', width: `${progressPercent}%`, background: 'var(--accent)', transition: 'width 0.3s ease' }}></div>
-        </div>
-
-        {/* Steps List */}
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '24px' }}>
-          {currentRoadmap.steps.map(step => {
-            const checked = !!currentCompleted[step.id]
-            return (
-              <div 
-                key={step.id} 
-                onClick={() => handleToggleStep(step.id)}
-                style={{
-                  display: 'flex',
-                  gap: '16px',
-                  padding: '16px 20px',
-                  background: checked ? 'rgba(81,250,170,0.02)' : 'rgba(255,255,255,0.01)',
-                  border: checked ? '1px solid rgba(81,250,170,0.15)' : '1px solid rgba(255,255,255,0.04)',
-                  borderRadius: '16px',
-                  cursor: 'pointer',
-                  transition: 'all 0.2s ease',
-                  alignItems: 'flex-start'
-                }}
-                className="roadmap-step-card"
-              >
-                {/* Custom Checkbox */}
-                <div style={{ marginTop: '2px', flexShrink: 0 }}>
-                  <input 
-                    type="checkbox" 
-                    checked={checked}
-                    onChange={() => {}} // toggled by parent click
-                    style={{ 
-                      width: '18px', 
-                      height: '18px', 
-                      accentColor: 'var(--accent)',
-                      cursor: 'pointer'
-                    }} 
-                  />
-                </div>
-
-                {/* Step Description */}
-                <div style={{ flex: 1, minWidth: 0 }}>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px' }}>
-                    <h4 style={{ 
-                      fontSize: '14.5px', 
-                      fontWeight: 700, 
-                      color: checked ? 'var(--text)' : 'rgba(255,255,255,0.9)',
-                      textDecoration: checked ? 'line-through' : 'none',
-                      transition: 'all 0.2s'
-                    }}>
-                      {step.title}
-                    </h4>
-                    {step.critical && (
-                      <span style={{ 
-                        fontSize: '9px', 
-                        fontWeight: 800, 
-                        color: checked ? 'rgba(81,250,170,0.5)' : 'var(--accent)',
-                        border: checked ? '1px solid rgba(81,250,170,0.2)' : '1px solid rgba(81,250,170,0.4)',
-                        padding: '2px 6px',
-                        borderRadius: '4px',
-                        textTransform: 'uppercase',
-                        letterSpacing: '0.05em'
-                      }}>
-                        Required
-                      </span>
-                    )}
-                  </div>
-                  <p style={{ 
-                    color: 'var(--muted)', 
-                    fontSize: '12.5px', 
-                    marginTop: '4px', 
-                    lineHeight: 1.5,
-                    textDecoration: checked ? 'line-through' : 'none',
-                    opacity: checked ? 0.6 : 1
-                  }}>
-                    {step.desc}
-                  </p>
-                </div>
-              </div>
-            )
-          })}
-        </div>
-
-        {/* Eligibility Banner / Search Trigger */}
-        {isEligible ? (
-          <div className="roadmap-success-card">
+          {/* Header Info */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '16px', marginBottom: '20px' }}>
             <div>
-              <span style={{ fontSize: '32px' }}>🎉</span>
-              <h4 style={{ fontSize: '18px', fontWeight: 800, color: 'var(--accent)', marginTop: '8px' }}>
-                Eligibility Unlocked for {selectedCountry}!
-              </h4>
-              <p style={{ color: 'var(--muted)', fontSize: '13px', marginTop: '6px', maxWidth: '440px', lineHeight: 1.55 }}>
-                You have completed all critical preparation requirements. You are fully ready to find courses and start your application process!
-              </p>
+              <h3 style={{ fontSize: '22px', fontWeight: 900, display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <span>{currentRoadmap.flag}</span> {selectedCountry} Eligibility checklist
+              </h3>
             </div>
-            <button 
-              type="button" 
-              onClick={handleSearchClick}
+            
+            {/* Progress circular tag */}
+            <div className="summary-stats" style={{ padding: '8px 16px', height: 'auto', background: 'rgba(255,255,255,0.02)' }}>
+              <span className="big-number" style={{ fontSize: '24px' }}>{progressPercent}%</span>
+              <span className="big-label">Done</span>
+            </div>
+          </div>
+
+          {/* Progress Bar */}
+          <div style={{ width: '100%', height: '6px', background: 'rgba(255,255,255,0.05)', borderRadius: '3px', marginBottom: '24px', overflow: 'hidden' }}>
+            <div style={{ height: '100%', width: `${progressPercent}%`, background: 'var(--accent)', transition: 'width 0.3s ease' }}></div>
+          </div>
+
+          {/* Steps List */}
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '24px' }}>
+            {currentRoadmap.steps.map(step => {
+              const checked = !!currentCompleted[step.id]
+              return (
+                <div 
+                  key={step.id} 
+                  onClick={() => handleToggleStep(step.id)}
+                  style={{
+                    display: 'flex',
+                    gap: '16px',
+                    padding: '16px 20px',
+                    background: checked ? 'rgba(81,250,170,0.02)' : 'rgba(255,255,255,0.01)',
+                    border: checked ? '1px solid rgba(81,250,170,0.15)' : '1px solid rgba(255,255,255,0.04)',
+                    borderRadius: '16px',
+                    cursor: 'pointer',
+                    transition: 'all 0.2s ease',
+                    alignItems: 'flex-start'
+                  }}
+                  className="roadmap-step-card"
+                >
+                  {/* Custom Checkbox */}
+                  <div style={{ marginTop: '2px', flexShrink: 0 }}>
+                    <input 
+                      type="checkbox" 
+                      checked={checked}
+                      onChange={() => {}} // toggled by parent click
+                      style={{ 
+                        width: '18px', 
+                        height: '18px', 
+                        accentColor: 'var(--accent)',
+                        cursor: 'pointer'
+                      }} 
+                    />
+                  </div>
+
+                  {/* Step Description */}
+                  <div style={{ flex: 1, minWidth: 0 }}>
+                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px' }}>
+                      <h4 style={{ 
+                        fontSize: '14.5px', 
+                        fontWeight: 700, 
+                        color: checked ? 'var(--text)' : 'rgba(255,255,255,0.9)',
+                        textDecoration: checked ? 'line-through' : 'none',
+                        transition: 'all 0.2s'
+                      }}>
+                        {step.title}
+                      </h4>
+                      {step.critical && (
+                        <span style={{ 
+                          fontSize: '9px', 
+                          fontWeight: 800, 
+                          color: checked ? 'rgba(81,250,170,0.5)' : 'var(--accent)',
+                          border: checked ? '1px solid rgba(81,250,170,0.2)' : '1px solid rgba(81,250,170,0.4)',
+                          padding: '2px 6px',
+                          borderRadius: '4px',
+                          textTransform: 'uppercase',
+                          letterSpacing: '0.05em'
+                        }}>
+                          Required
+                        </span>
+                      )}
+                    </div>
+                    <p style={{ 
+                      color: 'var(--muted)', 
+                      fontSize: '12.5px', 
+                      marginTop: '4px', 
+                      lineHeight: 1.5,
+                      textDecoration: checked ? 'line-through' : 'none',
+                      opacity: checked ? 0.6 : 1
+                    }}>
+                      {step.desc}
+                    </p>
+                  </div>
+                </div>
+              )
+            })}
+          </div>
+
+          {/* Eligibility Banner / Search Trigger */}
+          {isEligible ? (
+            <div className="roadmap-success-card">
+              <div>
+                <span style={{ fontSize: '32px' }}>🎉</span>
+                <h4 style={{ fontSize: '18px', fontWeight: 800, color: 'var(--accent)', marginTop: '8px' }}>
+                  Eligibility Unlocked for {selectedCountry}!
+                </h4>
+                <p style={{ color: 'var(--muted)', fontSize: '13px', marginTop: '6px', maxWidth: '440px', lineHeight: 1.55 }}>
+                  You have completed all critical preparation requirements. You are fully ready to find courses and start your application process!
+                </p>
+              </div>
+              <button 
+                type="button" 
+                onClick={handleSearchClick}
+                style={{
+                  width: 'auto',
+                  padding: '14px 28px',
+                  borderRadius: '12px',
+                  fontSize: '14.5px'
+                }}
+              >
+                🔍 Find Courses in {selectedCountry}
+              </button>
+            </div>
+          ) : (
+            <div 
               style={{
-                width: 'auto',
-                padding: '14px 28px',
-                borderRadius: '12px',
-                fontSize: '14.5px'
+                background: 'rgba(255,255,255,0.01)',
+                border: '1px solid rgba(255,255,255,0.03)',
+                borderRadius: '20px',
+                padding: '24px',
+                textAlign: 'center'
               }}
             >
-              🔍 Find Courses in {selectedCountry}
-            </button>
-          </div>
-        ) : (
-          <div 
-            style={{
-              background: 'rgba(255,255,255,0.01)',
-              border: '1px solid rgba(255,255,255,0.03)',
-              borderRadius: '20px',
-              padding: '24px',
-              textAlign: 'center'
-            }}
-          >
-            <p style={{ color: 'var(--muted)', fontSize: '13px', lineHeight: 1.5 }}>
-              ⚠️ Complete all <strong style={{ color: 'var(--accent)' }}>Required</strong> steps above to verify your eligibility and unlock the search button.
-            </p>
-          </div>
-        )}
+              <p style={{ color: 'var(--muted)', fontSize: '13px', lineHeight: 1.5 }}>
+                ⚠️ Complete all <strong style={{ color: 'var(--accent)' }}>Required</strong> steps above to verify your eligibility and unlock the search button.
+              </p>
+            </div>
+          )}
 
+        </div>
       </div>
 
     </section>
