@@ -27,6 +27,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           borderRadius: '12px',
         },
         elements: {
+          modalCloseButton: {
+            display: 'none !important',
+          },
           card: {
             border: '1px solid rgba(255, 255, 255, 0.08)',
             background: 'rgba(18, 20, 38, 0.95) !important',
