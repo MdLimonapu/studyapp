@@ -36,7 +36,14 @@ export default function Profile() {
   useEffect(() => {
     fetchProfile()
       .then(data => {
-        if (data && Object.keys(data).length) setProfile(p => ({ ...p, ...data }))
+        if (data && Object.keys(data).length) {
+          const cleaned = {
+            ...data,
+            semester: String(data.semester || '').replace(/[^0-9]/g, ''),
+            grade: String(data.grade || '').replace(/[^0-9.]/g, '')
+          }
+          setProfile(p => ({ ...p, ...cleaned }))
+        }
         setInitialLoaded(true)
       })
       .catch(() => setInitialLoaded(true))
@@ -67,7 +74,10 @@ export default function Profile() {
 
   const pct = () => {
     const keys = ['fullName', 'email', 'currentDegree', 'currentField', 'grade']
-    return Math.round(keys.filter(k => profile[k]?.trim()).length / keys.length * 100)
+    return Math.round(keys.filter(k => {
+      const val = profile[k];
+      return val !== null && val !== undefined && String(val).trim() !== '';
+    }).length / keys.length * 100)
   }
 
   const set = (key, val) => { setProfile(p => ({ ...p, [key]: val })) }
@@ -258,9 +268,9 @@ export default function Profile() {
             <div className="pf-field">
               <label htmlFor="semester">Current Semester or Year</label>
               <input id="semester" type="text"
-                placeholder="e.g. Year 2, Semester 4, Final year"
+                placeholder="e.g. 6"
                 value={profile.semester}
-                onChange={e => set('semester', e.target.value)} />
+                onChange={e => set('semester', e.target.value.replace(/[^0-9]/g, ''))} />
             </div>
           </div>
 
@@ -268,10 +278,10 @@ export default function Profile() {
             <div className="pf-field">
               <label htmlFor="grade">Academic Grade or GPA</label>
               <input id="grade" type="text"
-                placeholder="e.g. 3.8 / 4.0 GPA, First Class, 85%"
+                placeholder="e.g. 3.5 or 85"
                 value={profile.grade}
-                onChange={e => set('grade', e.target.value)} />
-              <span className="pf-hint">Enter your GPA, percentage, or grade classification as used in your country.</span>
+                onChange={e => set('grade', e.target.value.replace(/[^0-9.]/g, ''))} />
+              <span className="pf-hint">Enter your GPA or percentage as a number (e.g. 3.5, 85).</span>
             </div>
             <div className="pf-field">
               <label htmlFor="notes">Additional Information</label>
