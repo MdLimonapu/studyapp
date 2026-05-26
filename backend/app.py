@@ -215,6 +215,46 @@ def clean_link(link, fallback=None):
     return link
 
 
+def get_search_alternatives(field):
+    field_lower = field.lower().strip()
+    alternatives = [field_lower]
+    
+    # 1. Clean and normalize spacing/separators
+    norm_space = re.sub(r'[/&,\-–]|\band\b|\bor\b', ' ', field_lower)
+    norm_space = ' '.join(norm_space.split())
+    if norm_space not in alternatives:
+        alternatives.append(norm_space)
+        
+    norm_and = re.sub(r'[/&,\-–]|\bor\b', ' and ', field_lower)
+    norm_and = ' '.join(norm_and.split())
+    if norm_and not in alternatives:
+        alternatives.append(norm_and)
+        
+    norm_amp = re.sub(r'[/,\-–]|\band\b|\bor\b', ' & ', field_lower)
+    norm_amp = ' '.join(norm_amp.split())
+    if norm_amp not in alternatives:
+        alternatives.append(norm_amp)
+
+    # 2. Handle specific combined slash/or disciplines
+    if '/' in field_lower or ' or ' in field_lower or ' and ' in field_lower or ' & ' in field_lower:
+        parts = re.split(r'[/]|\bor\b|\band\b|&', field_lower)
+        words = field_lower.split()
+        if len(words) > 1:
+            noun = words[-1]
+            for part in parts[:-1]:
+                part_clean = part.strip()
+                if part_clean:
+                    alt_part = f"{part_clean} {noun}"
+                    alt_part = ' '.join(alt_part.split())
+                    if alt_part not in alternatives:
+                        alternatives.append(alt_part)
+            last_part_clean = parts[-1].strip()
+            if last_part_clean and last_part_clean not in alternatives:
+                alternatives.append(last_part_clean)
+                
+    return alternatives
+
+
 def get_search_keywords(field):
     field_lower = field.lower().strip()
     keywords = [field_lower]
@@ -521,11 +561,12 @@ def fallback_search(country, degree, field, user_grade=None):
                     
             if not is_generic:
                 # Specific query matching:
-                if field_lower in course_title:
+                alternatives = get_search_alternatives(field_lower)
+                if any(alt in course_title for alt in alternatives):
                     rating = 3
                 elif any(len(kw) >= 3 and kw in course_title for kw in keywords):
                     rating = 2
-                elif field_lower in uni_name:
+                elif any(alt in uni_name for alt in alternatives):
                     rating = 1
                     
             # Skip if there's no match
