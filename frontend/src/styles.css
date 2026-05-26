@@ -61,7 +61,7 @@ body {
 }
 
 /* GRID */
-.grid.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; align-items: stretch; }
+.grid.two-col { display: grid; grid-template-columns: 0.6fr 0.4fr; gap: 32px; align-items: stretch; }
 .grid.one-col-gap { display: grid; gap: 20px; }
 
 /* HERO */

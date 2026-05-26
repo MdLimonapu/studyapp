@@ -178,7 +178,7 @@ export default function Home() {
         <div className="card hero-card">
           <span className="badge">🎓 Studplex Search</span>
           <h2>Find the right<br/><span>university</span><br/>worldwide</h2>
-          <p>Select a country, degree level, and field to find matching universities with exact course page links.</p>
+          <p>Match with your dream international university program in seconds.</p>
           <div className="hero-stats">
             <div className="stat"><strong>10+</strong><span>Countries</span></div>
             <div className="stat"><strong>Live</strong><span>Real Data</span></div>
