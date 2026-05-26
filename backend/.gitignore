@@ -2,6 +2,7 @@
 __pycache__/
 *.pyc
 .env
-data/
+data/*
 !data/resolved_links_cache.json
+!data/news_cache.json
 
