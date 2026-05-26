@@ -4,4 +4,4 @@ __pycache__
 *.pyc
 frontend/dist
 dist
-
+package-lock.json
