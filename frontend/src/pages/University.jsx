@@ -100,10 +100,6 @@ export default function University() {
                     <span className="rc-meta-label">Intake</span>
                     <span className="rc-meta-value">{item.intake || 'See website'}</span>
                   </div>
-                  <div className="rc-meta-item">
-                    <span className="rc-meta-label">Fee</span>
-                    <span className="rc-meta-value">{item.fee || 'See website'}</span>
-                  </div>
                 </div>
 
                 <div className="rc-cta">Open course page</div>

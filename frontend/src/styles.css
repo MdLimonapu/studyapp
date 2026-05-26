@@ -431,7 +431,7 @@ button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 .rc-course { font-weight: 600; color: var(--accent); font-size: 14px; }
 .snippet { font-size: 13px; color: var(--muted); font-style: italic; border-left: 2px solid rgba(81,250,170,0.3); padding-left: 10px; }
 .info-grid,
-.rc-meta { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.rc-meta { display: grid; grid-template-columns: 1fr; gap: 12px; }
 .info-item { display: flex; gap: 6px; font-size: 13px; color: var(--muted); align-items: center; }
 .course-link {
   display: inline-block; margin-top: auto;
