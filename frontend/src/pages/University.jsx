@@ -48,18 +48,13 @@ const formatGpa = (reqs) => {
 function SkeletonCard() {
   return (
     <div className="result-card card skeleton-card">
-      <div className="skeleton-header">
-        <div className="skeleton-line sk-short"></div>
-        <div className="skeleton-line sk-tiny"></div>
-      </div>
+      <div className="skeleton-line sk-short"></div>
       <div className="skeleton-line sk-long"></div>
       <div className="skeleton-line sk-medium"></div>
-      <div className="skeleton-specs-list">
-        <div className="sk-spec-row-placeholder"></div>
-        <div className="sk-spec-row-placeholder"></div>
-        <div className="sk-spec-row-placeholder"></div>
+      <div className="skeleton-meta-row">
+        <div className="skeleton-line sk-badge"></div>
+        <div className="skeleton-line sk-tiny"></div>
       </div>
-      <div className="skeleton-line sk-badge"></div>
       <div className="skeleton-line sk-full"></div>
     </div>
   )
@@ -142,37 +137,22 @@ export default function University() {
                       <span className="rc-country-name">{item.country}</span>
                       {item.city && <span className="rc-city">• {item.city}</span>}
                     </div>
-                    {item.source && (
-                      <span className="rc-source-tag">
-                        {formatSource(item.source)}
-                      </span>
-                    )}
                   </div>
 
                   <h3 className="rc-uni">{item.university}</h3>
                   <p className="rc-course">{item.course}</p>
 
-                  <div className="rc-specs-list">
-                    <div className="rc-spec-row">
-                      <span className="rc-spec-icon">🎓</span>
-                      <span className="rc-spec-label">Degree</span>
-                      <span className="rc-spec-value">{formatDegree(item.degree)}</span>
+                  <div className="rc-meta-row">
+                    <div className={`rc-rating-badge ${match.class}`} onClick={(e) => e.stopPropagation()}>
+                      <span className="rc-stars">{match.stars}</span>
+                      <span className="rc-label">{match.label}</span>
                     </div>
-                    <div className="rc-spec-row">
-                      <span className="rc-spec-icon">📊</span>
-                      <span className="rc-spec-label">Min GPA</span>
-                      <span className="rc-spec-value">{formatGpa(item.requirements)}</span>
-                    </div>
-                    <div className="rc-spec-row">
-                      <span className="rc-spec-icon">🗓️</span>
-                      <span className="rc-spec-label">Intake</span>
-                      <span className="rc-spec-value">{item.intake || 'Winter / Summer'}</span>
-                    </div>
-                  </div>
 
-                  <div className={`rc-rating-badge ${match.class}`} onClick={(e) => e.stopPropagation()}>
-                    <span className="rc-stars">{match.stars}</span>
-                    <span className="rc-label">{match.label}</span>
+                    <div className="rc-intake">
+                      <span className="rc-intake-icon">🗓️</span>
+                      <span className="rc-intake-label">Intake:</span>
+                      <span className="rc-intake-value">{item.intake || 'Winter / Summer'}</span>
+                    </div>
                   </div>
 
                   <div className="rc-cta-container">
