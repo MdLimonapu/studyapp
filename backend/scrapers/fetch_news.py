@@ -14,7 +14,8 @@ ssl._create_default_https_context = ssl._create_unverified_context
 
 # Load env from parent directory
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(os.path.dirname(__file__)), ".env"))
-API_KEY = os.environ.get("GEMINI_API_KEY")
+raw_keys = os.environ.get("GEMINI_API_KEY", "")
+API_KEYS = [k.strip() for k in raw_keys.split(",") if k.strip()]
 
 COUNTRIES = ["Germany", "UK", "USA", "Canada", "Australia", "Netherlands", "Sweden", "France", "Switzerland", "Japan"]
 
@@ -114,21 +115,22 @@ def fetch_rss_news():
     return all_items
 
 def summarize_with_gemini(raw_news):
-    if not API_KEY:
-        print("❌ GEMINI_API_KEY not found in environment.", flush=True)
+    if not API_KEYS:
+        print("❌ No GEMINI_API_KEY found in environment.", flush=True)
         return []
     
     if not raw_news:
         print("No raw news items to process.", flush=True)
         return []
         
-    client = genai.Client(api_key=API_KEY)
+    # Models to try in order of priority and availability
+    models_to_try = ["gemini-flash-latest", "gemini-2.5-flash", "gemini-2.0-flash"]
     
     prompt = f"""
-You are a study abroad counselor. Analyze the following list of study visa and study abroad news articles from a Google News RSS feed.
-Filter out articles that are not directly relevant to international students, visa policies, scholarships, or study abroad country updates.
+You are a study abroad counselor. Analyze and summarize the following list of study visa and study abroad news articles from a Google News RSS feed.
+You must process and include all the articles provided to ensure complete country coverage.
 
-For the relevant articles, summarize them and output a clean JSON list matching this structure:
+For each article, generate a summary and output a clean JSON list matching this structure:
 {{
   "news": [
     {{
@@ -147,32 +149,38 @@ Raw Articles to Process (each article has an associated search_country. Ensure y
 
 Return ONLY valid JSON. Do not include markdown code block formatting (such as ```json) in your final output.
 """
-    try:
-        print("Processing news items with Gemini...", flush=True)
-        response = client.models.generate_content(
-            model="gemini-2.5-flash",
-            contents=prompt,
-            config=types.GenerateContentConfig(
-                response_mime_type="application/json",
-                temperature=0.2
-            )
-        )
-        
-        # Clean response if LLM wrapped it in markdown code block
-        text = response.text.strip()
-        if text.startswith("```"):
-            lines = text.split("\n")
-            if lines[0].startswith("```"):
-                lines = lines[1:]
-            if lines[-1].startswith("```"):
-                lines = lines[:-1]
-            text = "\n".join(lines).strip()
-            
-        data = json.loads(text)
-        return data.get("news", [])
-    except Exception as e:
-        print(f"Error calling Gemini: {e}", flush=True)
-        return []
+
+    for api_key in API_KEYS:
+        for model in models_to_try:
+            try:
+                print(f"Processing news items with Gemini (Model: {model}, Key: {api_key[:10]}...)", flush=True)
+                client = genai.Client(api_key=api_key)
+                response = client.models.generate_content(
+                    model=model,
+                    contents=prompt,
+                    config=types.GenerateContentConfig(
+                        response_mime_type="application/json",
+                        temperature=0.2
+                    )
+                )
+                
+                # Clean response if LLM wrapped it in markdown code block
+                text = response.text.strip()
+                if text.startswith("```"):
+                    lines = text.split("\n")
+                    if lines[0].startswith("```"):
+                        lines = lines[1:]
+                    if lines[-1].startswith("```"):
+                        lines = lines[:-1]
+                    text = "\n".join(lines).strip()
+                    
+                data = json.loads(text)
+                return data.get("news", [])
+            except Exception as e:
+                print(f"Error calling Gemini with key {api_key[:10]}... and model {model}: {e}", flush=True)
+                
+    print("❌ All API keys and models exhausted.", flush=True)
+    return []
 
 def extract_country_from_title(title):
     import re
@@ -201,11 +209,17 @@ def extract_country_from_title(title):
         return "Europe"
     return "Global"
 
-def get_country_summary(country):
-    if country == "Global":
-        return "Latest visa and study abroad updates."
-    else:
+def get_fallback_summary(raw_title, country):
+    title = raw_title
+    if " - " in title:
+        title = title.rsplit(" - ", 1)[0]
+    title = title.strip().rstrip(". ")
+    if not title:
         return f"Latest student visa updates for {country}."
+    summary = title[0].upper() + title[1:]
+    if not summary.endswith("."):
+        summary += "."
+    return summary
 
 def clean_fallback_title(title):
     if ":" in title:
@@ -227,11 +241,14 @@ def fallback_process(raw_news):
             source = parts[1]
             
         title = clean_fallback_title(title)
-        country = extract_country_from_title(title)
-        if country == "Global" and item.get("search_country"):
-            country = item["search_country"]
+        
+        country = item.get("search_country")
+        if not country or country == "Global":
+            country = extract_country_from_title(title)
+        if not country:
+            country = "Global"
             
-        summary = get_country_summary(country)
+        summary = get_fallback_summary(item["raw_title"], country)
         formatted_date = parse_and_format_date(item["pub_date"])
             
         news.append({
@@ -251,7 +268,7 @@ def main():
         return
         
     processed_news = []
-    if API_KEY:
+    if API_KEYS:
         processed_news = summarize_with_gemini(raw_news)
         
     if not processed_news:

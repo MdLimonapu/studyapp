@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { NavLink, Routes, Route } from 'react-router-dom'
+import { NavLink, Routes, Route, useNavigate } from 'react-router-dom'
 import Home from './pages/Home'
 import University from './pages/University'
 import Profile from './pages/Profile'
@@ -28,6 +28,7 @@ const getInitials = (name) => {
 }
 
 export default function App() {
+  const navigate = useNavigate()
   const [profile, setProfile] = useState(null)
   const { user, isLoaded } = useUser()
 
@@ -111,20 +112,27 @@ export default function App() {
             <NavLink to="/">Home</NavLink>
             <NavLink to="/university">University</NavLink>
             <NavLink to="/roadmap">Check Eligibility</NavLink>
+            <SignedIn>
+              <NavLink to="/profile">Profile</NavLink>
+            </SignedIn>
           </nav>
 
           <SignedIn>
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-              <NavLink to="/profile" className="topbar-profile" style={{ margin: 0 }}>
-                {profile && profile.avatarUrl ? (
-                  <img src={profile.avatarUrl} alt="Avatar" className="topbar-avatar" />
-                ) : (
-                  <div className="topbar-avatar-initial">
-                    {profile && profile.fullName ? getInitials(profile.fullName) : '👤'}
-                  </div>
-                )}
-              </NavLink>
-              <UserButton afterSignOutUrl="/" />
+              <UserButton afterSignOutUrl="/">
+                <UserButton.MenuItems>
+                  <UserButton.Action 
+                    label="My Profile" 
+                    labelIcon={
+                      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{ marginRight: '8px' }}>
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                      </svg>
+                    }
+                    onClick={() => navigate('/profile')} 
+                  />
+                </UserButton.MenuItems>
+              </UserButton>
             </div>
           </SignedIn>
           <SignedOut>
