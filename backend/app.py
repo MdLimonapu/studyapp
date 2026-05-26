@@ -740,6 +740,15 @@ NEWS_ITEMS = [
 
 @app.route("/api/news")
 def get_news():
+    cache_path = os.path.join(os.path.dirname(__file__), "data", "news_cache.json")
+    if os.path.exists(cache_path):
+        try:
+            with open(cache_path, "r") as f:
+                cached_data = json.load(f)
+                if cached_data:
+                    return jsonify(cached_data)
+        except Exception as e:
+            print(f"⚠️ Error reading news cache: {e}", flush=True)
     return jsonify(NEWS_ITEMS)
 
 
