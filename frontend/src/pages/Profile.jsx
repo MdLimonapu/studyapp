@@ -173,44 +173,6 @@ export default function Profile() {
             university results — the more detail you provide, the better the matches.
           </p>
         </div>
-
-        {localStorage.getItem('user_account') && (
-          <button
-            type="button"
-            onClick={() => {
-              localStorage.removeItem('user_account');
-              saveProfile({
-                fullName: '',
-                email: '',
-                currentDegree: '',
-                currentField: '',
-                semester: '',
-                universityName: '',
-                grade: '',
-                notes: '',
-                avatarUrl: ''
-              }).then(() => {
-                window.dispatchEvent(new Event('profile-updated'));
-                window.location.reload();
-              });
-            }}
-            className="btn-outline"
-            style={{
-              width: '100%',
-              padding: '12px',
-              borderRadius: '12px',
-              fontSize: '13.5px',
-              fontWeight: 600,
-              color: '#ff6b6b',
-              borderColor: 'rgba(255, 107, 107, 0.25)',
-              marginTop: '16px',
-              cursor: 'pointer'
-            }}
-          >
-            🚪 Sign Out & Reset Profile
-          </button>
-        )}
-
       </aside>
 
       {/* ── Right form ── */}

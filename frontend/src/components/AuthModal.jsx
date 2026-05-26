@@ -140,40 +140,7 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess }) {
     }
   }
 
-  const handleDemoAccess = async () => {
-    setLoading(true)
-    setError('')
-    try {
-      const user = {
-        email: 'demo.student@studplex.com',
-        fullName: 'Demo Student',
-        avatarUrl: null,
-        method: 'demo'
-      }
 
-      localStorage.setItem('user_account', JSON.stringify(user))
-
-      await saveProfile({
-        fullName: user.fullName,
-        avatarUrl: null
-      })
-
-      // Register in MongoDB
-      try {
-        await registerUser(user)
-      } catch (dbErr) {
-        console.error("MongoDB register failed:", dbErr)
-      }
-
-      window.dispatchEvent(new Event('profile-updated'))
-      onAuthSuccess()
-      onClose()
-    } catch {
-      setError('Demo access failed.')
-    } finally {
-      setLoading(false)
-    }
-  }
 
   return (
     <div className="modal-overlay" style={{ zIndex: 1000 }}>
@@ -276,23 +243,6 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess }) {
         {/* OAuth Buttons Container */}
         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '12px', width: '100%' }}>
           <div id="google-signin-btn" style={{ minHeight: '40px' }}></div>
-          
-          <button 
-            type="button" 
-            onClick={handleDemoAccess}
-            className="btn-outline" 
-            style={{
-              width: '100%',
-              padding: '12px',
-              fontSize: '13.5px',
-              borderRadius: '12px',
-              fontWeight: 600,
-              background: 'rgba(255,255,255,0.01)',
-              borderColor: 'var(--card-border)'
-            }}
-          >
-            ⚡ Quick Demo Access (No setup needed)
-          </button>
         </div>
 
         <p style={{ marginTop: '24px', fontSize: '13px', color: 'var(--muted)' }}>
