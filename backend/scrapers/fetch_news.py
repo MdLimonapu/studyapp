@@ -3,6 +3,8 @@ import json
 import xml.etree.ElementTree as ET
 import urllib.request
 import ssl
+import datetime
+from email.utils import parsedate_to_datetime
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
@@ -16,15 +18,33 @@ API_KEY = os.environ.get("GEMINI_API_KEY")
 
 COUNTRIES = ["Germany", "UK", "USA", "Canada", "Australia", "Netherlands", "Sweden", "France", "Switzerland", "Japan"]
 
+def is_within_days(pub_date_str, days):
+    try:
+        dt = parsedate_to_datetime(pub_date_str)
+        now = datetime.datetime.now(datetime.timezone.utc)
+        return (now - dt).days <= days
+    except Exception:
+        return True
+
+def parse_and_format_date(pub_date_str):
+    try:
+        dt = parsedate_to_datetime(pub_date_str)
+        return dt.strftime("%b %d, %Y")
+    except Exception:
+        return "Today"
+
 def fetch_rss_news():
     all_items = []
+    seen_links = set()
+    seen_titles = set()
+    
     for country in COUNTRIES:
         urls = [
             f"https://news.google.com/rss/search?q=student+visa+study+abroad+{country}+when:7d&hl=en-US&gl=US&ceid=US:en",
             f"https://news.google.com/rss/search?q=student+visa+study+abroad+{country}&hl=en-US&gl=US&ceid=US:en"
         ]
         
-        country_items = []
+        candidates = []
         for url in urls:
             try:
                 print(f"Fetching RSS feed for {country}: {url}", flush=True)
@@ -36,25 +56,61 @@ def fetch_rss_news():
                     xml_data = response.read()
                 
                 root = ET.fromstring(xml_data)
-                for item in root.findall('.//item')[:2]:  # Get top 2 articles per country
+                for item in root.findall('.//item')[:10]:  # Inspect top 10 candidates
                     title = item.find('title').text if item.find('title') is not None else ""
                     link = item.find('link').text if item.find('link') is not None else ""
                     pub_date = item.find('pubDate').text if item.find('pubDate') is not None else ""
-                    country_items.append({
+                    
+                    clean_title = title.rsplit(" - ", 1)[0].strip().lower() if " - " in title else title.strip().lower()
+                    if link in seen_links or clean_title in seen_titles:
+                        continue
+                        
+                    candidates.append({
                         "raw_title": title,
                         "link": link,
                         "pub_date": pub_date,
-                        "search_country": country
+                        "search_country": country,
+                        "clean_title": clean_title
                     })
-                if country_items:
-                    print(f"Successfully fetched {len(country_items)} articles for {country}.", flush=True)
+                if candidates:
                     break
             except Exception as e:
                 print(f"Error fetching RSS for {country} from {url}: {e}", flush=True)
-                
-        all_items.extend(country_items)
         
-    print(f"Total articles fetched across all countries: {len(all_items)}", flush=True)
+        # Filter candidates by age. Try strictly last 2 days first.
+        country_selected = []
+        for c in candidates:
+            if is_within_days(c["pub_date"], 2):
+                country_selected.append(c)
+                seen_links.add(c["link"])
+                seen_titles.add(c["clean_title"])
+                if len(country_selected) >= 2:
+                    break
+                    
+        # If we got less than 2 articles from the last 2 days, relax filter to last 7 days
+        if len(country_selected) < 2:
+            for c in candidates:
+                if c not in country_selected and is_within_days(c["pub_date"], 7):
+                    country_selected.append(c)
+                    seen_links.add(c["link"])
+                    seen_titles.add(c["clean_title"])
+                    if len(country_selected) >= 2:
+                        break
+                        
+        # If still less than 2, take whatever unique ones we have left
+        if len(country_selected) < 2:
+            for c in candidates:
+                if c not in country_selected:
+                    country_selected.append(c)
+                    seen_links.add(c["link"])
+                    seen_titles.add(c["clean_title"])
+                    if len(country_selected) >= 2:
+                        break
+                        
+        print(f"Successfully selected {len(country_selected)} unique articles for {country}.", flush=True)
+        all_items.extend(country_selected)
+        
+    print(f"Total unique articles selected across all countries: {len(all_items)}", flush=True)
     return all_items
 
 def summarize_with_gemini(raw_news):
@@ -76,17 +132,17 @@ For the relevant articles, summarize them and output a clean JSON list matching 
 {{
   "news": [
     {{
-      "title": "Clear, concise, professional headline about the visa policy or study update",
-      "source": "Website name (e.g. Times Higher Education, PIE News, Canada.ca)",
-      "date": "Month Year (e.g., May 2026)",
-      "summary": "1-2 sentence summary of what this means for students, written in a clear and helpful tone.",
+      "title": "Clear, punchy counselor headline (UNDER 7 WORDS MAX)",
+      "source": "Website name (e.g. Times Higher Education, PIE News)",
+      "date": "Exact Month Day, Year (e.g., May 27, 2026)",
+      "summary": "Extremely short summary (UNDER 12 WORDS MAX, exactly ONE short sentence)",
       "country": "The primary country concerned (e.g., Germany, UK, Canada, USA, France, etc.)",
       "link": "The article URL"
     }}
   ]
 }}
 
-Raw Articles to Process (each article has an associated search_country. Ensure you set "country" to that search_country or the actual target country):
+Raw Articles to Process (each article has an associated search_country. Ensure you set "country" to that search_country):
 {json.dumps(raw_news, indent=2)}
 
 Return ONLY valid JSON. Do not include markdown code block formatting (such as ```json) in your final output.
@@ -147,11 +203,18 @@ def extract_country_from_title(title):
 
 def get_country_summary(country):
     if country == "Global":
-        return "Latest updates regarding study abroad and student visas globally."
-    elif country in ["UK", "USA", "Netherlands"]:
-        return f"Latest updates regarding study abroad and student visas in the {country}."
+        return "Latest visa and study abroad updates."
     else:
-        return f"Latest updates regarding study abroad and student visas in {country}."
+        return f"Latest student visa updates for {country}."
+
+def clean_fallback_title(title):
+    if ":" in title:
+        parts = title.split(":", 1)
+        if len(parts[0]) > 12:
+            title = parts[0]
+    if len(title) > 60:  # Even shorter fallback titles (under 60 chars)
+        title = title[:60].rsplit(" ", 1)[0] + "..."
+    return title.strip()
 
 def fallback_process(raw_news):
     news = []
@@ -163,13 +226,18 @@ def fallback_process(raw_news):
             title = parts[0]
             source = parts[1]
             
+        title = clean_fallback_title(title)
         country = extract_country_from_title(title)
+        if country == "Global" and item.get("search_country"):
+            country = item["search_country"]
+            
         summary = get_country_summary(country)
+        formatted_date = parse_and_format_date(item["pub_date"])
             
         news.append({
             "title": title,
             "source": source,
-            "date": "Today",
+            "date": formatted_date,
             "summary": summary,
             "country": country,
             "link": item["link"]
