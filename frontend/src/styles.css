@@ -1048,59 +1048,55 @@ button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
   width: 100%;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 480px) {
   .country-grid {
     grid-template-columns: repeat(2, 1fr);
-  }
-}
-@media (max-width: 600px) {
-  .country-grid {
-    grid-template-columns: 1fr;
+    gap: 10px;
   }
 }
 
 .country-box {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   background: rgba(0, 0, 0, 0.15);
   border: 1px solid var(--card-border);
-  border-radius: 12px;
-  padding: 10px 14px;
+  border-radius: 16px;
+  padding: 16px 12px;
   cursor: pointer;
-  transition: all 0.2s ease;
-  text-align: left;
-  gap: 10px;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  text-align: center;
   width: 100%;
+  aspect-ratio: 1 / 1;
+  box-sizing: border-box;
 }
 
 .country-box:hover {
   background: rgba(255, 255, 255, 0.03);
   border-color: rgba(255, 255, 255, 0.08);
+  transform: translateY(-2px);
 }
 
 .country-box.active {
   background: rgba(81, 250, 170, 0.08);
   border-color: var(--accent);
-  box-shadow: 0 0 14px rgba(81, 250, 170, 0.08);
-}
-
-.country-box-top {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+  box-shadow: 0 4px 20px rgba(81, 250, 170, 0.06);
 }
 
 .country-box-flag {
-  font-size: 18px;
+  font-size: 32px;
   line-height: 1;
+  margin-bottom: 8px;
 }
 
 .country-box-name {
-  font-size: 14.5px;
+  font-size: 14px;
   font-weight: 700;
   color: var(--text);
   transition: color 0.2s;
+  margin-bottom: 4px;
+  word-break: break-word;
 }
 
 .country-box.active .country-box-name {
@@ -1108,7 +1104,7 @@ button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 }
 
 .country-box-status {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 600;
   color: var(--muted);
 }

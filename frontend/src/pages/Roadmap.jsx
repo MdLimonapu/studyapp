@@ -184,10 +184,8 @@ export default function Roadmap() {
                 onClick={() => setSelectedCountry(country)}
                 className={`country-box ${active ? 'active' : ''}`}
               >
-                <div className="country-box-top">
-                  <span className="country-box-flag">{ROADMAPS[country].flag}</span>
-                  <span className="country-box-name">{country}</span>
-                </div>
+                <span className="country-box-flag">{ROADMAPS[country].flag}</span>
+                <span className="country-box-name">{country}</span>
                 <span className="country-box-status">
                   {done ? '✅ Eligible' : `${count}/${total} Steps`}
                 </span>
