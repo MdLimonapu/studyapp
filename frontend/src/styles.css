@@ -1147,3 +1147,120 @@ button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 .country-box.active .country-box-status {
   color: rgba(81, 250, 170, 0.85);
 }
+
+/* BLUR GATE STYLES FOR SEARCH RESULTS */
+.result-card.blurred-card {
+  filter: blur(8px) grayscale(40%);
+  pointer-events: none;
+  user-select: none;
+  opacity: 0.5;
+}
+
+.blur-gate-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+.blur-gate-wrapper.gated {
+  min-height: 520px;
+}
+
+.blur-gate-overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -10px;
+  right: -10px;
+  background: linear-gradient(
+    to bottom,
+    rgba(12, 14, 29, 0) 0%,
+    rgba(12, 14, 29, 0.6) 180px,
+    rgba(12, 14, 29, 0.98) 320px,
+    #0c0e1d 100%
+  );
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding-bottom: 60px;
+  z-index: 100;
+}
+
+.blur-gate-card {
+  background: var(--card);
+  backdrop-filter: blur(40px);
+  border: 1px solid rgba(81, 250, 170, 0.25);
+  box-shadow: 0 32px 80px rgba(0, 0, 0, 0.65), 0 0 40px rgba(81, 250, 170, 0.05);
+  border-radius: 24px;
+  padding: 36px 40px;
+  text-align: center;
+  max-width: 480px;
+  width: 90%;
+  animation: gateFloatUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  box-sizing: border-box;
+}
+
+@keyframes gateFloatUp {
+  from {
+    transform: translateY(30px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.blur-gate-icon {
+  font-size: 40px;
+  margin-bottom: 12px;
+}
+
+.blur-gate-card h3 {
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 10px;
+  color: var(--text);
+}
+
+.blur-gate-card p {
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.55;
+  margin-bottom: 24px;
+}
+
+.gate-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.gate-form input {
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--card-border);
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--text);
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.gate-form input:focus {
+  border-color: var(--accent);
+  background: rgba(255, 255, 255, 0.04);
+  outline: none;
+  box-shadow: 0 0 10px rgba(81, 250, 170, 0.05);
+}
+
+.gate-form button {
+  padding: 14px;
+  font-size: 14.5px;
+  font-weight: 700;
+  border-radius: 12px;
+  cursor: pointer;
+  width: 100%;
+}

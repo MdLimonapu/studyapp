@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const countryFlags = {
@@ -85,7 +86,21 @@ export default function University() {
   const form   = parseStoredJson('searchForm', {})
   const navigate = useNavigate()
 
+  const [isRegistered, setIsRegistered] = useState(() => {
+    return !!localStorage.getItem('user_account')
+  })
+  const [email, setEmail] = useState('')
+
   const isLoading = !raw
+
+  const handleRegister = (e) => {
+    e.preventDefault()
+    if (!email) return
+    localStorage.setItem('user_account', JSON.stringify({ email, createdAt: new Date().toISOString() }))
+    setIsRegistered(true)
+  }
+
+  const resultsToRender = result.results || []
 
   return (
     <section className="grid one-col-gap">
@@ -119,61 +134,93 @@ export default function University() {
         </div>
       )}
 
-      <div className="results-grid">
-        {isLoading
-          ? Array.from({length: 6}).map((_, i) => <SkeletonCard key={i} />)
-          : result.results?.length
-            ? result.results.map((item, i) => {
-              const match = getMatchLabel(item.match_rating);
-              return (
-                <a
-                  key={i}
-                  className="result-card card"
-                  href={item.link || '#'}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <div className="rc-top">
-                    <div className="rc-location">
-                      <span className="rc-flag">{getCountryFlag(item.country)}</span>
-                      <span className="rc-country-name">{item.country}</span>
-                      {item.city && <span className="rc-city">• {item.city}</span>}
+      <div className={`blur-gate-wrapper ${!isRegistered && resultsToRender.length > 3 ? 'gated' : ''}`}>
+        <div className="results-grid">
+          {isLoading
+            ? Array.from({length: 6}).map((_, i) => <SkeletonCard key={i} />)
+            : resultsToRender.length
+              ? resultsToRender.map((item, i) => {
+                const match = getMatchLabel(item.match_rating);
+                const isBlurred = !isRegistered && i >= 3;
+                return (
+                  <a
+                    key={i}
+                    className={`result-card card ${isBlurred ? 'blurred-card' : ''}`}
+                    href={isBlurred ? '#' : (item.link || '#')}
+                    target={isBlurred ? '_self' : '_blank'}
+                    rel="noreferrer"
+                    onClick={(e) => {
+                      if (isBlurred) {
+                        e.preventDefault()
+                      }
+                    }}
+                  >
+                    <div className="rc-top">
+                      <div className="rc-location">
+                        <span className="rc-flag">{getCountryFlag(item.country)}</span>
+                        <span className="rc-country-name">{item.country}</span>
+                        {item.city && <span className="rc-city">• {item.city}</span>}
+                      </div>
+                      <div className={`rc-rating-badge ${match.class}`} onClick={(e) => e.stopPropagation()}>
+                        <span className="rc-stars">{match.stars}</span>
+                        <span className="rc-label">{match.label}</span>
+                      </div>
                     </div>
-                    <div className={`rc-rating-badge ${match.class}`} onClick={(e) => e.stopPropagation()}>
-                      <span className="rc-stars">{match.stars}</span>
-                      <span className="rc-label">{match.label}</span>
+
+                    <div className="rc-body">
+                      <h3 className="rc-uni">{item.university}</h3>
+                      <p className="rc-course">{item.course}</p>
                     </div>
-                  </div>
 
-                  <div className="rc-body">
-                    <h3 className="rc-uni">{item.university}</h3>
-                    <p className="rc-course">{item.course}</p>
-                  </div>
-
-                  <div className="rc-meta-section">
-                    <div className="rc-intake-row">
-                      <span className="rc-intake-icon">🗓️</span>
-                      <span className="rc-intake-label">Intake:</span>
-                      <span className="rc-intake-value">{item.intake || 'Winter / Summer'}</span>
+                    <div className="rc-meta-section">
+                      <div className="rc-intake-row">
+                        <span className="rc-intake-icon">🗓️</span>
+                        <span className="rc-intake-label">Intake:</span>
+                        <span className="rc-intake-value">{item.intake || 'Winter / Summer'}</span>
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="rc-cta-btn">
-                    <span>Open course page</span>
-                    <span className="rc-cta-btn-arrow">→</span>
-                  </div>
-                </a>
+                    <div className="rc-cta-btn">
+                      <span>Open course page</span>
+                      <span className="rc-cta-btn-arrow">→</span>
+                    </div>
+                  </a>
+                )
+              })
+              : (
+                <div className="card empty-state">
+                  <div className="empty-icon">🎓</div>
+                  <h3>No results found</h3>
+                  <p>Try a different field, degree, or country.</p>
+                  <button onClick={() => navigate('/')}>Search again</button>
+                </div>
               )
-            })
-            : (
-              <div className="card empty-state">
-                <div className="empty-icon">🎓</div>
-                <h3>No results found</h3>
-                <p>Try a different field, degree, or country.</p>
-                <button onClick={() => navigate('/')}>Search again</button>
-              </div>
-            )
-        }
+          }
+        </div>
+
+        {!isRegistered && resultsToRender.length > 3 && (
+          <div className="blur-gate-overlay">
+            <div className="blur-gate-card">
+              <div className="blur-gate-icon">🔒</div>
+              <h3>Unlock remaining matches</h3>
+              <p>
+                We found <strong>{result.total || resultsToRender.length} matches</strong> for you. Sign up for a free account to unlock all results.
+              </p>
+              <form className="gate-form" onSubmit={handleRegister}>
+                <input 
+                  type="email" 
+                  placeholder="Enter your email address" 
+                  value={email}
+                  onChange={e => setEmail(e.target.value)}
+                  required 
+                />
+                <button type="submit" className="btn-accent">
+                  Create Account & View Matches
+                </button>
+              </form>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   )
