@@ -34,6 +34,7 @@ export default function Home() {
   const [showSug, setShowSug] = useState(false)
   const [showProfilePrompt, setShowProfilePrompt] = useState(false)
   const [profile, setProfile] = useState(null)
+  const [useProfile, setUseProfile] = useState(true)
   const [news, setNews] = useState([])
   const [newsLoading, setNewsLoading] = useState(true)
   const sugRef = useRef(null)
@@ -132,12 +133,13 @@ export default function Home() {
 
   const isGermanyOnly = false
 
-  const doSearch = async () => {
+  const doSearch = async (bypassProfile = false) => {
     setShowProfilePrompt(false)
     setLoading(true)
     setError('')
     try {
-      const data = await searchCourses(form, profile)
+      const activeProfile = bypassProfile ? null : (useProfile ? profile : null)
+      const data = await searchCourses(form, activeProfile)
       localStorage.setItem('searchResults', JSON.stringify(data))
       localStorage.setItem('searchForm', JSON.stringify(form))
       navigate('/university')
@@ -147,7 +149,7 @@ export default function Home() {
 
   const submit = async (e) => {
     e.preventDefault()
-    if (!isProfileComplete(profile)) { setShowProfilePrompt(true); return }
+    if (!isProfileComplete(profile) && useProfile) { setShowProfilePrompt(true); return }
     await doSearch()
   }
 
@@ -168,7 +170,7 @@ export default function Home() {
             <p>To get accurate university matches based on your <strong>grade, field and degree</strong> — please fill in your profile first.</p>
             <div className="modal-actions">
               <button className="btn-accent" onClick={() => navigate('/profile')}>Complete profile</button>
-              <button className="btn-ghost" onClick={doSearch}>Search anyway</button>
+              <button className="btn-ghost" onClick={() => doSearch(true)}>Search anyway</button>
             </div>
           </div>
         </div>
@@ -184,9 +186,6 @@ export default function Home() {
             <div className="stat"><strong>Live</strong><span>Real Data</span></div>
             <div className="stat"><strong>Free</strong><span>To Use</span></div>
           </div>
-          {isProfileComplete(profile) && (
-            <div className="profile-pill">✅ Searching as <strong>{profile.fullName}</strong></div>
-          )}
         </div>
 
         <form className="card form-card" onSubmit={submit}>
@@ -233,11 +232,23 @@ export default function Home() {
             </div>
           </div>
           {error && <p className="error-msg">⚠️ {error}</p>}
+          
+          {isProfileComplete(profile) && useProfile && (
+            <div className="profile-pill-interactive" onClick={() => setUseProfile(false)} title="Click to search without profile info">
+              <span className="profile-pill-text">Searching as <strong>{profile.fullName}</strong></span>
+              <span className="profile-pill-close">×</span>
+            </div>
+          )}
+
           <button type="submit" disabled={loading}>
             {loading ? <span className="spinner"></span> : 'Find My Perfect Program'}
           </button>
+          
           {!isProfileComplete(profile) && (
             <p className="profile-hint">💡 <span onClick={() => navigate('/profile')}>Complete your profile</span> for better matches</p>
+          )}
+          {isProfileComplete(profile) && !useProfile && (
+            <p className="profile-hint">💡 <span onClick={() => setUseProfile(true)}>Use profile matches</span> for better results</p>
           )}
         </form>
       </section>
