@@ -854,51 +854,62 @@ button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 .btn-ghost:hover { color: var(--text); border-color: rgba(255,255,255,0.2); background: transparent; transform: none; }
 
 /* PROFILE PILL */
-.profile-pill-centered {
-  display: flex;
+.profile-pill-interactive {
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: rgba(81, 250, 170, 0.04);
-  border: 1px solid rgba(81, 250, 170, 0.35);
+  background: rgba(81, 250, 170, 0.05);
+  border: 1px solid rgba(81, 250, 170, 0.18);
   border-radius: 999px;
-  padding: 10px 24px;
-  font-size: 13.5px;
+  padding: 6px 12px;
+  font-size: 12px;
   color: var(--accent);
   cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  margin: 16px auto 0 auto;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-top: 8px;
   width: fit-content;
-  box-shadow: 0 0 12px rgba(81, 250, 170, 0.05);
 }
 
-.profile-pill-centered:hover {
-  background: rgba(81, 250, 170, 0.08);
-  border-color: var(--accent);
-  box-shadow: 0 0 18px rgba(81, 250, 170, 0.15);
-  transform: translateY(-1px);
+.profile-pill-interactive:hover {
+  background: rgba(239, 68, 68, 0.08);
+  border-color: rgba(239, 68, 68, 0.3);
+  color: #ef4444;
 }
 
-.profile-pill-centered strong {
-  color: #ffffff;
-  font-weight: 700;
-  margin-left: 4px;
+.profile-pill-interactive .profile-pill-text strong {
+  color: var(--text);
+  transition: color 0.2s;
+}
+
+.profile-pill-interactive:hover .profile-pill-text strong {
+  color: #ef4444;
+}
+
+.profile-pill-interactive .profile-pill-close {
+  font-size: 16px;
+  font-weight: 800;
+  max-width: 0;
+  opacity: 0;
+  overflow: hidden;
+  display: inline-block;
+  line-height: 1;
+  transform: scale(0.6) translateY(-0.5px);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.profile-pill-interactive:hover .profile-pill-close {
+  max-width: 20px;
+  opacity: 1;
+  margin-left: 8px;
+  transform: scale(1) translateY(-0.5px);
 }
 
 /* PROFILE HINT */
-.profile-hint-centered {
-  text-align: center;
-  font-size: 13.5px;
-  color: var(--muted);
-  margin: 16px auto 0 auto;
+.profile-hint {
+  text-align: center; font-size: 13px; color: var(--muted); margin-top: 4px;
 }
-.profile-hint-centered span {
-  color: var(--accent);
-  cursor: pointer;
-  text-decoration: underline;
-  font-weight: 600;
-}
-.profile-hint-centered span:hover {
-  color: #ffffff;
+.profile-hint span {
+  color: var(--accent); cursor: pointer; text-decoration: underline;
 }
 
 /* NEWS */
