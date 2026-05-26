@@ -24,6 +24,21 @@ const POPULAR_FIELDS = [
   "Artificial Intelligence", "Economics", "Physics", "Mathematics", "Law"
 ]
 
+const mapDegreeToSearch = (currentDegree) => {
+  if (!currentDegree) return 'master'
+  const d = currentDegree.toLowerCase().trim()
+  if (d.includes('high school') || d.includes('secondary') || d.includes('foundation') || d.includes('pre-university')) {
+    return 'bachelor'
+  }
+  if (d.includes('bachelor') || d.includes('undergraduate')) {
+    return 'master'
+  }
+  if (d.includes('master') || d.includes('postgraduate')) {
+    return 'phd'
+  }
+  return 'master'
+}
+
 export default function Home() {
   const [countries, setCountries] = useState([])
   const [form, setForm] = useState({ country: '', degree: 'master', field: '' })
@@ -51,7 +66,16 @@ export default function Home() {
       .catch(() => setAllFields(POPULAR_FIELDS))
 
     fetchProfile()
-      .then(data => { if (data && Object.keys(data).length > 0) setProfile(data) })
+      .then(data => {
+        if (data && Object.keys(data).length > 0) {
+          setProfile(data)
+          setForm(prev => ({
+            ...prev,
+            degree: prev.degree || mapDegreeToSearch(data.currentDegree),
+            field: prev.field || data.currentField || ''
+          }))
+        }
+      })
       .catch(() => {})
 
     fetchNews()
@@ -232,13 +256,19 @@ export default function Home() {
             </div>
             {isProfileComplete(profile) && (
               useProfile ? (
-                <div className="profile-pill-interactive" onClick={() => setUseProfile(false)} title="Click to search without profile info">
-                  <span className="profile-pill-text">Searching as <strong>{profile.fullName}</strong></span>
-                  <span className="profile-pill-close">×</span>
+                <div className="profile-pill-centered" onClick={() => setUseProfile(false)} title="Click to search without profile info">
+                  Searching as <strong>{profile.fullName}</strong>
                 </div>
               ) : (
-                <p className="profile-hint" style={{ textAlign: 'left', marginTop: 8 }}>
-                  💡 <span onClick={() => setUseProfile(true)}>Use profile matches</span> for better results
+                <p className="profile-hint-centered" style={{ marginTop: 12 }}>
+                  💡 <span onClick={() => {
+                    setUseProfile(true);
+                    setForm(prev => ({
+                      ...prev,
+                      degree: mapDegreeToSearch(profile.currentDegree),
+                      field: profile.currentField || ''
+                    }));
+                  }}>Use profile matches</span> for better results
                 </p>
               )
             )}
