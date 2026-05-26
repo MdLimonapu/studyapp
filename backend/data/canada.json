@@ -966,7 +966,10 @@
     "degree": "Master",
     "city": "Montreal",
     "link": "https://admission.umontreal.ca/programmes/maitrise-en-informatique/",
-    "fee": null
+    "fee": "",
+    "source": "University official course pages",
+    "source_url": "https://admission.umontreal.ca/programmes/maitrise-en-informatique/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -975,7 +978,10 @@
     "degree": "Master",
     "city": "Montreal",
     "link": "https://admission.umontreal.ca/programmes/maitrise-en-informatique-option-apprentissage-automatique/",
-    "fee": null
+    "fee": "",
+    "source": "University official course pages",
+    "source_url": "https://admission.umontreal.ca/programmes/maitrise-en-informatique-option-apprentissage-automatique/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -984,7 +990,10 @@
     "degree": "Master",
     "city": "Montreal",
     "link": "https://admission.umontreal.ca/programmes/doctorat-en-informatique/",
-    "fee": null
+    "fee": "",
+    "source": "University official course pages",
+    "source_url": "https://admission.umontreal.ca/programmes/doctorat-en-informatique/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -993,7 +1002,10 @@
     "degree": "Master",
     "city": "Montreal",
     "link": "https://admission.umontreal.ca/programmes/maitrise-en-sciences-pharmaceutiques/",
-    "fee": null
+    "fee": "",
+    "source": "University official course pages",
+    "source_url": "https://admission.umontreal.ca/programmes/maitrise-en-sciences-pharmaceutiques/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1002,7 +1014,10 @@
     "degree": "Master",
     "city": "Montreal",
     "link": "https://admission.umontreal.ca/programmes/maitrise-en-droit-option-droit-des-affaires-dans-un-contexte-mondialise/",
-    "fee": null
+    "fee": "",
+    "source": "University official course pages",
+    "source_url": "https://admission.umontreal.ca/programmes/maitrise-en-droit-option-droit-des-affaires-dans-un-contexte-mondialise/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1011,7 +1026,10 @@
     "degree": "Master",
     "city": "Montreal",
     "link": "https://admission.umontreal.ca/programmes/maitrise-en-genie-biomedical/",
-    "fee": null
+    "fee": "",
+    "source": "University official course pages",
+    "source_url": "https://admission.umontreal.ca/programmes/maitrise-en-genie-biomedical/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1020,7 +1038,10 @@
     "degree": "Master",
     "city": "Quebec City",
     "link": "https://www.fsa.ulaval.ca/en/programs/mba/mba-global-business/",
-    "fee": null
+    "fee": "",
+    "source": "University official course pages",
+    "source_url": "https://www.fsa.ulaval.ca/en/programs/mba/mba-global-business/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1029,7 +1050,10 @@
     "degree": "Master",
     "city": "Quebec City",
     "link": "https://www.ift.ulaval.ca/en/etudes/cycles-superieurs/maitrise-en-informatique/",
-    "fee": null
+    "fee": "",
+    "source": "University official course pages",
+    "source_url": "https://www.ift.ulaval.ca/en/etudes/cycles-superieurs/maitrise-en-informatique/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1038,7 +1062,10 @@
     "degree": "Master",
     "city": "Quebec City",
     "link": "https://www.ift.ulaval.ca/en/etudes/cycles-superieurs/doctorat-en-informatique/",
-    "fee": null
+    "fee": "",
+    "source": "University official course pages",
+    "source_url": "https://www.ift.ulaval.ca/en/etudes/cycles-superieurs/doctorat-en-informatique/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1047,7 +1074,10 @@
     "degree": "Master",
     "city": "Quebec City",
     "link": "https://www.gel.ulaval.ca/en/studies/graduate-programs/master-degree-in-electrical-engineering/",
-    "fee": null
+    "fee": "",
+    "source": "University official course pages",
+    "source_url": "https://www.gel.ulaval.ca/en/studies/graduate-programs/master-degree-in-electrical-engineering/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1056,7 +1086,10 @@
     "degree": "Master",
     "city": "Quebec City",
     "link": "https://www.gmc.ulaval.ca/en/studies/graduate-programs/master-degree-in-mechanical-engineering/",
-    "fee": null
+    "fee": "",
+    "source": "University official course pages",
+    "source_url": "https://www.gmc.ulaval.ca/en/studies/graduate-programs/master-degree-in-mechanical-engineering/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1065,7 +1098,10 @@
     "degree": "Master",
     "city": "Quebec City",
     "link": "https://www.hei.ulaval.ca/en/programs/master-international-development",
-    "fee": null
+    "fee": "",
+    "source": "University official course pages",
+    "source_url": "https://www.hei.ulaval.ca/en/programs/master-international-development",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1074,7 +1110,10 @@
     "degree": "Master",
     "city": "Quebec City",
     "link": "https://www.enap.ca/enap/en/1172/Master_s_degree_in_public_administration.enap",
-    "fee": null
+    "fee": "",
+    "source": "University official course pages",
+    "source_url": "https://www.enap.ca/enap/en/1172/Master_s_degree_in_public_administration.enap",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1083,7 +1122,10 @@
     "degree": "Bachelor",
     "city": "Guelph",
     "link": "https://admission.uoguelph.ca/bsc/cs",
-    "fee": "$37,000 / year"
+    "fee": "$37,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://admission.uoguelph.ca/bsc/cs",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1092,7 +1134,10 @@
     "degree": "Bachelor",
     "city": "Guelph",
     "link": "https://admission.uoguelph.ca/bcomm",
-    "fee": "$37,000 / year"
+    "fee": "$37,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://admission.uoguelph.ca/bcomm",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1101,7 +1146,10 @@
     "degree": "Master",
     "city": "Guelph",
     "link": "https://www.socs.uoguelph.ca/graduate-studies/msc-computer-science",
-    "fee": "$22,000 / year"
+    "fee": "$22,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.socs.uoguelph.ca/graduate-studies/msc-computer-science",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1110,7 +1158,10 @@
     "degree": "Master",
     "city": "Guelph",
     "link": "https://www.uoguelph.ca/engineering/meng",
-    "fee": "$25,000 / year"
+    "fee": "$25,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uoguelph.ca/engineering/meng",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1119,7 +1170,10 @@
     "degree": "Bachelor",
     "city": "Guelph",
     "link": "https://admission.uoguelph.ca/bbrm",
-    "fee": "$37,000 / year"
+    "fee": "$37,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://admission.uoguelph.ca/bbrm",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1128,7 +1182,10 @@
     "degree": "Master",
     "city": "Guelph",
     "link": "https://bioinformatics.uoguelph.ca/graduate-programs/msc",
-    "fee": "$22,000 / year"
+    "fee": "$22,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://bioinformatics.uoguelph.ca/graduate-programs/msc",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1137,7 +1194,10 @@
     "degree": "Master",
     "city": "Guelph",
     "link": "https://www.uoguelph.ca/foodscience/graduate-studies",
-    "fee": "$22,000 / year"
+    "fee": "$22,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uoguelph.ca/foodscience/graduate-studies",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1146,7 +1206,10 @@
     "degree": "Bachelor",
     "city": "Guelph",
     "link": "https://admission.uoguelph.ca/ba/psychology",
-    "fee": "$33,000 / year"
+    "fee": "$33,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://admission.uoguelph.ca/ba/psychology",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1155,7 +1218,10 @@
     "degree": "Master",
     "city": "Guelph",
     "link": "https://economics.uoguelph.ca/graduate-studies/ma-economics",
-    "fee": "$22,000 / year"
+    "fee": "$22,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://economics.uoguelph.ca/graduate-studies/ma-economics",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1164,7 +1230,10 @@
     "degree": "Bachelor",
     "city": "Guelph",
     "link": "https://admission.uoguelph.ca/bsc/bio",
-    "fee": "$37,000 / year"
+    "fee": "$37,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://admission.uoguelph.ca/bsc/bio",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1173,7 +1242,10 @@
     "degree": "Bachelor",
     "city": "Saskatoon",
     "link": "https://programs.usask.ca/arts-and-science/computer-science/bsc-four-year-computer-science.php",
-    "fee": "$28,000 / year"
+    "fee": "$28,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://programs.usask.ca/arts-and-science/computer-science/bsc-four-year-computer-science.php",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1182,7 +1254,10 @@
     "degree": "Master",
     "city": "Saskatoon",
     "link": "https://grad.usask.ca/programs/computer-science.php",
-    "fee": "$7,500 / year"
+    "fee": "$7,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://grad.usask.ca/programs/computer-science.php",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1191,7 +1266,10 @@
     "degree": "Bachelor",
     "city": "Saskatoon",
     "link": "https://programs.usask.ca/engineering/electrical-engineering.php",
-    "fee": "$29,000 / year"
+    "fee": "$29,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://programs.usask.ca/engineering/electrical-engineering.php",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1200,7 +1278,10 @@
     "degree": "Master",
     "city": "Saskatoon",
     "link": "https://grad.usask.ca/programs/electrical-computer-engineering.php",
-    "fee": "$7,500 / year"
+    "fee": "$7,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://grad.usask.ca/programs/electrical-computer-engineering.php",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1209,7 +1290,10 @@
     "degree": "Bachelor",
     "city": "Saskatoon",
     "link": "https://programs.usask.ca/edwards/bachelor-of-commerce.php",
-    "fee": "$26,000 / year"
+    "fee": "$26,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://programs.usask.ca/edwards/bachelor-of-commerce.php",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1218,7 +1302,10 @@
     "degree": "Master",
     "city": "Saskatoon",
     "link": "https://grad.usask.ca/programs/business-administration.php",
-    "fee": "$35,000 / total"
+    "fee": "$35,000 / total",
+    "source": "University official course pages",
+    "source_url": "https://grad.usask.ca/programs/business-administration.php",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1227,7 +1314,10 @@
     "degree": "Bachelor",
     "city": "Saskatoon",
     "link": "https://programs.usask.ca/arts-and-science/biology/bsc-four-year-biology.php",
-    "fee": "$24,000 / year"
+    "fee": "$24,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://programs.usask.ca/arts-and-science/biology/bsc-four-year-biology.php",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1236,7 +1326,10 @@
     "degree": "Master",
     "city": "Saskatoon",
     "link": "https://grad.usask.ca/programs/biology.php",
-    "fee": "$7,500 / year"
+    "fee": "$7,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://grad.usask.ca/programs/biology.php",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1245,7 +1338,10 @@
     "degree": "Bachelor",
     "city": "Saskatoon",
     "link": "https://programs.usask.ca/agriculture-and-bioresources/bachelor-of-science-in-agriculture.php",
-    "fee": "$25,000 / year"
+    "fee": "$25,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://programs.usask.ca/agriculture-and-bioresources/bachelor-of-science-in-agriculture.php",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1254,7 +1350,10 @@
     "degree": "Master",
     "city": "Saskatoon",
     "link": "https://grad.usask.ca/programs/agricultural-resource-economics.php",
-    "fee": "$7,500 / year"
+    "fee": "$7,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://grad.usask.ca/programs/agricultural-resource-economics.php",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1263,7 +1362,10 @@
     "degree": "Bachelor",
     "city": "Saskatoon",
     "link": "https://programs.usask.ca/arts-and-science/psychology/ba-four-year-psychology.php",
-    "fee": "$23,000 / year"
+    "fee": "$23,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://programs.usask.ca/arts-and-science/psychology/ba-four-year-psychology.php",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1272,7 +1374,10 @@
     "degree": "Master",
     "city": "Saskatoon",
     "link": "https://grad.usask.ca/programs/psychology.php",
-    "fee": "$7,500 / year"
+    "fee": "$7,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://grad.usask.ca/programs/psychology.php",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1281,7 +1386,10 @@
     "degree": "Bachelor",
     "city": "Saskatoon",
     "link": "https://programs.usask.ca/arts-and-science/chemistry/bsc-four-year-chemistry.php",
-    "fee": "$24,000 / year"
+    "fee": "$24,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://programs.usask.ca/arts-and-science/chemistry/bsc-four-year-chemistry.php",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1290,7 +1398,10 @@
     "degree": "Master",
     "city": "Saskatoon",
     "link": "https://grad.usask.ca/programs/chemistry.php",
-    "fee": "$7,500 / year"
+    "fee": "$7,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://grad.usask.ca/programs/chemistry.php",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1299,7 +1410,10 @@
     "degree": "Bachelor",
     "city": "Saskatoon",
     "link": "https://programs.usask.ca/arts-and-science/physics-and-engineering-physics/bsc-four-year-physics.php",
-    "fee": "$24,000 / year"
+    "fee": "$24,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://programs.usask.ca/arts-and-science/physics-and-engineering-physics/bsc-four-year-physics.php",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1308,7 +1422,10 @@
     "degree": "Master",
     "city": "Saskatoon",
     "link": "https://grad.usask.ca/programs/physics-engineering-physics.php",
-    "fee": "$7,500 / year"
+    "fee": "$7,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://grad.usask.ca/programs/physics-engineering-physics.php",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1317,7 +1434,10 @@
     "degree": "Bachelor",
     "city": "Saskatoon",
     "link": "https://programs.usask.ca/arts-and-science/history/ba-four-year-history.php",
-    "fee": "$23,000 / year"
+    "fee": "$23,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://programs.usask.ca/arts-and-science/history/ba-four-year-history.php",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1326,7 +1446,10 @@
     "degree": "Master",
     "city": "Saskatoon",
     "link": "https://grad.usask.ca/programs/history.php",
-    "fee": "$7,500 / year"
+    "fee": "$7,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://grad.usask.ca/programs/history.php",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1335,7 +1458,10 @@
     "degree": "Bachelor",
     "city": "Saskatoon",
     "link": "https://programs.usask.ca/arts-and-science/geological-sciences/bsc-four-year-geology.php",
-    "fee": "$24,000 / year"
+    "fee": "$24,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://programs.usask.ca/arts-and-science/geological-sciences/bsc-four-year-geology.php",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1344,7 +1470,10 @@
     "degree": "Master",
     "city": "Saskatoon",
     "link": "https://grad.usask.ca/programs/geological-sciences.php",
-    "fee": "$7,500 / year"
+    "fee": "$7,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://grad.usask.ca/programs/geological-sciences.php",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1353,7 +1482,10 @@
     "degree": "Bachelor",
     "city": "St. John's",
     "link": "https://www.mun.ca/computerscience/undergraduate/",
-    "fee": "$20,000 / year"
+    "fee": "$20,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.mun.ca/computerscience/undergraduate/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1362,7 +1494,10 @@
     "degree": "Bachelor",
     "city": "St. John's",
     "link": "https://www.mun.ca/engineering/future/undergraduate/",
-    "fee": "$20,000 / year"
+    "fee": "$20,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.mun.ca/engineering/future/undergraduate/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1371,7 +1506,10 @@
     "degree": "Bachelor",
     "city": "St. John's",
     "link": "https://www.mun.ca/business/programs/undergraduate/bba/",
-    "fee": "$20,000 / year"
+    "fee": "$20,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.mun.ca/business/programs/undergraduate/bba/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1380,7 +1518,10 @@
     "degree": "Master",
     "city": "St. John's",
     "link": "https://www.mun.ca/computerscience/graduate/",
-    "fee": "$12,000 / year"
+    "fee": "$12,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.mun.ca/computerscience/graduate/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1389,7 +1530,10 @@
     "degree": "Master",
     "city": "St. John's",
     "link": "https://www.mun.ca/engineering/graduate/programs/m-app-sc/",
-    "fee": "$12,000 / year"
+    "fee": "$12,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.mun.ca/engineering/graduate/programs/m-app-sc/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1398,7 +1542,10 @@
     "degree": "Bachelor",
     "city": "St. John's",
     "link": "https://www.mun.ca/economics/undergraduate/",
-    "fee": "$20,000 / year"
+    "fee": "$20,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.mun.ca/economics/undergraduate/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1407,7 +1554,10 @@
     "degree": "Master",
     "city": "St. John's",
     "link": "https://www.mun.ca/biology/graduate/",
-    "fee": "$12,000 / year"
+    "fee": "$12,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.mun.ca/biology/graduate/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1416,7 +1566,10 @@
     "degree": "Bachelor",
     "city": "St. John's",
     "link": "https://www.mun.ca/nursing/undergraduate/",
-    "fee": "$20,000 / year"
+    "fee": "$20,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.mun.ca/nursing/undergraduate/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1425,7 +1578,10 @@
     "degree": "Master",
     "city": "St. John's",
     "link": "https://www.mun.ca/business/programs/graduate/mba/",
-    "fee": "$15,000 / year"
+    "fee": "$15,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.mun.ca/business/programs/graduate/mba/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1434,7 +1590,10 @@
     "degree": "Master",
     "city": "St. John's",
     "link": "https://www.mun.ca/english/graduate/",
-    "fee": "$12,000 / year"
+    "fee": "$12,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.mun.ca/english/graduate/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1443,7 +1602,10 @@
     "degree": "Bachelor",
     "city": "St. John's",
     "link": "https://www.mun.ca/chemistry/undergraduate/",
-    "fee": "$20,000 / year"
+    "fee": "$20,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.mun.ca/chemistry/undergraduate/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1452,7 +1614,10 @@
     "degree": "Master",
     "city": "St. John's",
     "link": "https://www.mun.ca/chemistry/graduate/",
-    "fee": "$12,000 / year"
+    "fee": "$12,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.mun.ca/chemistry/graduate/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1461,7 +1626,10 @@
     "degree": "Bachelor",
     "city": "St. John's",
     "link": "https://www.mun.ca/physics/undergraduate/",
-    "fee": "$20,000 / year"
+    "fee": "$20,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.mun.ca/physics/undergraduate/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1470,7 +1638,10 @@
     "degree": "Master",
     "city": "St. John's",
     "link": "https://www.mun.ca/physics/graduate/",
-    "fee": "$12,000 / year"
+    "fee": "$12,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.mun.ca/physics/graduate/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1479,7 +1650,10 @@
     "degree": "Bachelor",
     "city": "St. John's",
     "link": "https://www.mun.ca/psychology/undergraduate/",
-    "fee": "$20,000 / year"
+    "fee": "$20,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.mun.ca/psychology/undergraduate/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1488,7 +1662,10 @@
     "degree": "Master",
     "city": "St. John's",
     "link": "https://www.mun.ca/psychology/graduate/",
-    "fee": "$12,000 / year"
+    "fee": "$12,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.mun.ca/psychology/graduate/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1497,7 +1674,10 @@
     "degree": "Bachelor",
     "city": "St. John's",
     "link": "https://www.mun.ca/socialwork/undergraduate/",
-    "fee": "$20,000 / year"
+    "fee": "$20,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.mun.ca/socialwork/undergraduate/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1506,7 +1686,10 @@
     "degree": "Master",
     "city": "St. John's",
     "link": "https://www.mun.ca/socialwork/graduate/",
-    "fee": "$12,000 / year"
+    "fee": "$12,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.mun.ca/socialwork/graduate/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1515,7 +1698,10 @@
     "degree": "Bachelor",
     "city": "St. John's",
     "link": "https://www.mun.ca/history/undergraduate/",
-    "fee": "$20,000 / year"
+    "fee": "$20,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.mun.ca/history/undergraduate/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1524,7 +1710,10 @@
     "degree": "Master",
     "city": "St. John's",
     "link": "https://www.mun.ca/history/graduate/",
-    "fee": "$12,000 / year"
+    "fee": "$12,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.mun.ca/history/graduate/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1533,7 +1722,10 @@
     "degree": "Bachelor",
     "city": "Winnipeg",
     "link": "https://sci.umanitoba.ca/computer-science/programs/undergraduate-programs/",
-    "fee": "$19,500 / year"
+    "fee": "$19,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://sci.umanitoba.ca/computer-science/programs/undergraduate-programs/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1542,7 +1734,10 @@
     "degree": "Bachelor",
     "city": "Winnipeg",
     "link": "https://umanitoba.ca/engineering/mechanical-engineering",
-    "fee": "$22,000 / year"
+    "fee": "$22,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://umanitoba.ca/engineering/mechanical-engineering",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1551,7 +1746,10 @@
     "degree": "Bachelor",
     "city": "Winnipeg",
     "link": "https://umanitoba.ca/asper/bachelor-commerce-honours",
-    "fee": "$20,000 / year"
+    "fee": "$20,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://umanitoba.ca/asper/bachelor-commerce-honours",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1560,7 +1758,10 @@
     "degree": "Bachelor",
     "city": "Winnipeg",
     "link": "https://sci.umanitoba.ca/biological-sciences/undergraduate-programs/",
-    "fee": "$19,500 / year"
+    "fee": "$19,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://sci.umanitoba.ca/biological-sciences/undergraduate-programs/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1569,7 +1770,10 @@
     "degree": "Bachelor",
     "city": "Winnipeg",
     "link": "https://umanitoba.ca/engineering/electrical-computer-engineering",
-    "fee": "$22,000 / year"
+    "fee": "$22,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://umanitoba.ca/engineering/electrical-computer-engineering",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1578,7 +1782,10 @@
     "degree": "Bachelor",
     "city": "Winnipeg",
     "link": "https://umanitoba.ca/arts/bachelor-of-arts",
-    "fee": "$18,500 / year"
+    "fee": "$18,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://umanitoba.ca/arts/bachelor-of-arts",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1587,7 +1794,10 @@
     "degree": "Bachelor",
     "city": "Winnipeg",
     "link": "https://umanitoba.ca/nursing/undergraduate-programs",
-    "fee": "$23,000 / year"
+    "fee": "$23,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://umanitoba.ca/nursing/undergraduate-programs",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1596,7 +1806,10 @@
     "degree": "Master",
     "city": "Winnipeg",
     "link": "https://sci.umanitoba.ca/computer-science/programs/graduate-programs/",
-    "fee": "$12,000 / year"
+    "fee": "$12,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://sci.umanitoba.ca/computer-science/programs/graduate-programs/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1605,7 +1818,10 @@
     "degree": "Master",
     "city": "Winnipeg",
     "link": "https://umanitoba.ca/asper/master-business-administration",
-    "fee": "$38,000 / year"
+    "fee": "$38,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://umanitoba.ca/asper/master-business-administration",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1614,7 +1830,10 @@
     "degree": "Master",
     "city": "Winnipeg",
     "link": "https://umanitoba.ca/engineering/graduate-studies-mechanical-engineering",
-    "fee": "$12,000 / year"
+    "fee": "$12,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://umanitoba.ca/engineering/graduate-studies-mechanical-engineering",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1623,7 +1842,10 @@
     "degree": "Master",
     "city": "Winnipeg",
     "link": "https://umanitoba.ca/arts/political-studies/master-public-administration",
-    "fee": "$12,000 / year"
+    "fee": "$12,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://umanitoba.ca/arts/political-studies/master-public-administration",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1632,7 +1854,10 @@
     "degree": "Master",
     "city": "Winnipeg",
     "link": "https://umanitoba.ca/arts/economics/graduate-studies",
-    "fee": "$12,000 / year"
+    "fee": "$12,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://umanitoba.ca/arts/economics/graduate-studies",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1641,7 +1866,10 @@
     "degree": "Master",
     "city": "Winnipeg",
     "link": "https://sci.umanitoba.ca/biological-sciences/graduate-programs/",
-    "fee": "$12,000 / year"
+    "fee": "$12,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://sci.umanitoba.ca/biological-sciences/graduate-programs/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1650,7 +1878,10 @@
     "degree": "Master",
     "city": "Winnipeg",
     "link": "https://umanitoba.ca/engineering/graduate-studies-electrical-computer-engineering",
-    "fee": "$12,000 / year"
+    "fee": "$12,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://umanitoba.ca/engineering/graduate-studies-electrical-computer-engineering",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1659,7 +1890,10 @@
     "degree": "Master",
     "city": "Winnipeg",
     "link": "https://umanitoba.ca/social-work/graduate-programs",
-    "fee": "$12,000 / year"
+    "fee": "$12,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://umanitoba.ca/social-work/graduate-programs",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1668,7 +1902,10 @@
     "degree": "Bachelor",
     "city": "Toronto",
     "link": "https://www.torontomu.ca/admissions/undergraduate/programs/cs/",
-    "fee": "$38,411 / year"
+    "fee": "$38,411 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.torontomu.ca/admissions/undergraduate/programs/cs/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1677,7 +1914,10 @@
     "degree": "Bachelor",
     "city": "Toronto",
     "link": "https://www.torontomu.ca/admissions/undergraduate/programs/aerospace-eng/",
-    "fee": "$45,695 / year"
+    "fee": "$45,695 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.torontomu.ca/admissions/undergraduate/programs/aerospace-eng/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1686,7 +1926,10 @@
     "degree": "Bachelor",
     "city": "Toronto",
     "link": "https://www.torontomu.ca/admissions/undergraduate/programs/biomedical-eng/",
-    "fee": "$45,695 / year"
+    "fee": "$45,695 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.torontomu.ca/admissions/undergraduate/programs/biomedical-eng/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1695,7 +1938,10 @@
     "degree": "Bachelor",
     "city": "Toronto",
     "link": "https://www.torontomu.ca/admissions/undergraduate/programs/business-management/",
-    "fee": "$38,411 / year"
+    "fee": "$38,411 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.torontomu.ca/admissions/undergraduate/programs/business-management/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1704,7 +1950,10 @@
     "degree": "Bachelor",
     "city": "Toronto",
     "link": "https://www.torontomu.ca/admissions/undergraduate/programs/psychology/",
-    "fee": "$34,510 / year"
+    "fee": "$34,510 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.torontomu.ca/admissions/undergraduate/programs/psychology/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1713,7 +1962,10 @@
     "degree": "Master",
     "city": "Toronto",
     "link": "https://www.torontomu.ca/graduate/computer-science/programs/msc/",
-    "fee": "$24,534 / year"
+    "fee": "$24,534 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.torontomu.ca/graduate/computer-science/programs/msc/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1722,7 +1974,10 @@
     "degree": "Master",
     "city": "Toronto",
     "link": "https://www.torontomu.ca/graduate/electrical-computer-engineering/programs/masc/",
-    "fee": "$24,534 / year"
+    "fee": "$24,534 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.torontomu.ca/graduate/electrical-computer-engineering/programs/masc/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1731,7 +1986,10 @@
     "degree": "Master",
     "city": "Toronto",
     "link": "https://www.torontomu.ca/tedrogersschool/mba/",
-    "fee": "$66,800 / program"
+    "fee": "$66,800 / program",
+    "source": "University official course pages",
+    "source_url": "https://www.torontomu.ca/tedrogersschool/mba/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1740,7 +1998,10 @@
     "degree": "Master",
     "city": "Toronto",
     "link": "https://www.torontomu.ca/graduate/immigration-settlement-studies/",
-    "fee": "$24,534 / year"
+    "fee": "$24,534 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.torontomu.ca/graduate/immigration-settlement-studies/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1749,7 +2010,10 @@
     "degree": "Master",
     "city": "Toronto",
     "link": "https://www.torontomu.ca/graduate/aerospace-engineering/programs/meng/",
-    "fee": "$24,534 / year"
+    "fee": "$24,534 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.torontomu.ca/graduate/aerospace-engineering/programs/meng/",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1758,7 +2022,10 @@
     "degree": "Bachelor",
     "city": "Windsor",
     "link": "https://www.uwindsor.ca/science/school-of-computer-science/303/bachelor-computer-science",
-    "fee": "$37,294 / year"
+    "fee": "$37,294 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uwindsor.ca/science/school-of-computer-science/303/bachelor-computer-science",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1767,7 +2034,10 @@
     "degree": "Master",
     "city": "Windsor",
     "link": "https://www.uwindsor.ca/engineering/meng",
-    "fee": "$35,626 / year"
+    "fee": "$35,626 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uwindsor.ca/engineering/meng",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1776,7 +2046,10 @@
     "degree": "Bachelor",
     "city": "Windsor",
     "link": "https://www.uwindsor.ca/nursing/308/bscn-program",
-    "fee": "$38,550 / year"
+    "fee": "$38,550 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uwindsor.ca/nursing/308/bscn-program",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1785,7 +2058,10 @@
     "degree": "Bachelor",
     "city": "Windsor",
     "link": "https://www.uwindsor.ca/business/odette-bcom",
-    "fee": "$37,294 / year"
+    "fee": "$37,294 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uwindsor.ca/business/odette-bcom",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1794,7 +2070,10 @@
     "degree": "Master",
     "city": "Windsor",
     "link": "https://www.uwindsor.ca/science/school-of-computer-science/1089/master-applied-computing",
-    "fee": "$39,268 / year"
+    "fee": "$39,268 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uwindsor.ca/science/school-of-computer-science/1089/master-applied-computing",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1803,7 +2082,10 @@
     "degree": "Bachelor",
     "city": "Windsor",
     "link": "https://www.uwindsor.ca/engineering/undergraduate-programs",
-    "fee": "$39,598 / year"
+    "fee": "$39,598 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uwindsor.ca/engineering/undergraduate-programs",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1812,7 +2094,10 @@
     "degree": "Master",
     "city": "Windsor",
     "link": "https://www.uwindsor.ca/business/master-of-management",
-    "fee": "$36,974 / year"
+    "fee": "$36,974 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uwindsor.ca/business/master-of-management",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1821,7 +2106,10 @@
     "degree": "Bachelor",
     "city": "Windsor",
     "link": "https://www.uwindsor.ca/psychology/305/undergraduate-programs",
-    "fee": "$32,580 / year"
+    "fee": "$32,580 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uwindsor.ca/psychology/305/undergraduate-programs",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1830,7 +2118,10 @@
     "degree": "Master",
     "city": "Windsor",
     "link": "https://www.uwindsor.ca/biology/328/graduate-programs",
-    "fee": "$22,500 / year"
+    "fee": "$22,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uwindsor.ca/biology/328/graduate-programs",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1839,7 +2130,10 @@
     "degree": "Bachelor",
     "city": "Windsor",
     "link": "https://www.uwindsor.ca/communication-media-film/307/undergraduate-programs",
-    "fee": "$32,580 / year"
+    "fee": "$32,580 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uwindsor.ca/communication-media-film/307/undergraduate-programs",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1848,7 +2142,10 @@
     "degree": "Master",
     "city": "Windsor",
     "link": "https://www.uwindsor.ca/socialwork/312/master-social-work",
-    "fee": "$22,500 / year"
+    "fee": "$22,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uwindsor.ca/socialwork/312/master-social-work",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1857,7 +2154,10 @@
     "degree": "Bachelor",
     "city": "Windsor",
     "link": "https://www.uwindsor.ca/chemistry/304/undergraduate-programs",
-    "fee": "$35,120 / year"
+    "fee": "$35,120 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uwindsor.ca/chemistry/304/undergraduate-programs",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1866,7 +2166,10 @@
     "degree": "Master",
     "city": "Windsor",
     "link": "https://www.uwindsor.ca/physics/329/graduate-programs",
-    "fee": "$22,500 / year"
+    "fee": "$22,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uwindsor.ca/physics/329/graduate-programs",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1875,7 +2178,10 @@
     "degree": "Bachelor",
     "city": "Windsor",
     "link": "https://www.uwindsor.ca/sociology/306/undergraduate-programs",
-    "fee": "$32,580 / year"
+    "fee": "$32,580 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uwindsor.ca/sociology/306/undergraduate-programs",
+    "verified_at": "2026-05-26"
   },
   {
     "country": "Canada",
@@ -1884,6 +2190,729 @@
     "degree": "Master",
     "city": "Windsor",
     "link": "https://www.uwindsor.ca/education/343/master-of-education",
-    "fee": "$24,500 / year"
+    "fee": "$24,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uwindsor.ca/education/343/master-of-education",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "University of Regina",
+    "course": "Bachelor of Science in Computer Science",
+    "degree": "Bachelor",
+    "city": "Regina",
+    "link": "https://www.uregina.ca/science/cs/programs/undergraduate/index.html",
+    "fee": "$22,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uregina.ca/science/cs/programs/undergraduate/index.html",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "University of Regina",
+    "course": "Master of Science in Computer Science",
+    "degree": "Master",
+    "city": "Regina",
+    "link": "https://www.uregina.ca/science/cs/programs/graduate/msc/index.html",
+    "fee": "$18,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uregina.ca/science/cs/programs/graduate/msc/index.html",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "University of Regina",
+    "course": "Bachelor of Business Administration",
+    "degree": "Bachelor",
+    "city": "Regina",
+    "link": "https://www.uregina.ca/business/programs/undergraduate/bba/index.html",
+    "fee": "$22,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uregina.ca/business/programs/undergraduate/bba/index.html",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "University of Regina",
+    "course": "Master of Business Administration",
+    "degree": "Master",
+    "city": "Regina",
+    "link": "https://www.uregina.ca/business/programs/graduate/mba/index.html",
+    "fee": "$35,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uregina.ca/business/programs/graduate/mba/index.html",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "University of Regina",
+    "course": "Bachelor of Applied Science in Software Systems Engineering",
+    "degree": "Bachelor",
+    "city": "Regina",
+    "link": "https://www.uregina.ca/engineering/programs/undergraduate/software-systems.html",
+    "fee": "$24,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uregina.ca/engineering/programs/undergraduate/software-systems.html",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "University of Regina",
+    "course": "Master of Engineering in Process Systems Engineering",
+    "degree": "Master",
+    "city": "Regina",
+    "link": "https://www.uregina.ca/engineering/programs/graduate/process-systems.html",
+    "fee": "$19,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uregina.ca/engineering/programs/graduate/process-systems.html",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "University of Regina",
+    "course": "Bachelor of Arts in Psychology",
+    "degree": "Bachelor",
+    "city": "Regina",
+    "link": "https://www.uregina.ca/arts/psychology/programs/undergraduate/index.html",
+    "fee": "$20,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uregina.ca/arts/psychology/programs/undergraduate/index.html",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "University of Regina",
+    "course": "Master of Arts in Psychology",
+    "degree": "Master",
+    "city": "Regina",
+    "link": "https://www.uregina.ca/arts/psychology/programs/graduate/index.html",
+    "fee": "$17,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uregina.ca/arts/psychology/programs/graduate/index.html",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "University of Regina",
+    "course": "Bachelor of Science in Biology",
+    "degree": "Bachelor",
+    "city": "Regina",
+    "link": "https://www.uregina.ca/science/biology/programs/undergraduate/index.html",
+    "fee": "$21,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uregina.ca/science/biology/programs/undergraduate/index.html",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "University of Regina",
+    "course": "Master of Science in Biology",
+    "degree": "Master",
+    "city": "Regina",
+    "link": "https://www.uregina.ca/science/biology/programs/graduate/index.html",
+    "fee": "$18,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uregina.ca/science/biology/programs/graduate/index.html",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "University of Regina",
+    "course": "Bachelor of Science in Geology",
+    "degree": "Bachelor",
+    "city": "Regina",
+    "link": "https://www.uregina.ca/science/geology/programs/undergraduate/index.html",
+    "fee": "$21,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uregina.ca/science/geology/programs/undergraduate/index.html",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "University of Regina",
+    "course": "Master of Science in Geology",
+    "degree": "Master",
+    "city": "Regina",
+    "link": "https://www.uregina.ca/science/geology/programs/graduate/index.html",
+    "fee": "$18,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uregina.ca/science/geology/programs/graduate/index.html",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "University of Regina",
+    "course": "Bachelor of Arts in Economics",
+    "degree": "Bachelor",
+    "city": "Regina",
+    "link": "https://www.uregina.ca/arts/economics/programs/undergraduate/index.html",
+    "fee": "$20,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uregina.ca/arts/economics/programs/undergraduate/index.html",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "University of Regina",
+    "course": "Master of Arts in Economics",
+    "degree": "Master",
+    "city": "Regina",
+    "link": "https://www.uregina.ca/arts/economics/programs/graduate/index.html",
+    "fee": "$17,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uregina.ca/arts/economics/programs/graduate/index.html",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "University of Regina",
+    "course": "Bachelor of Health Studies",
+    "degree": "Bachelor",
+    "city": "Regina",
+    "link": "https://www.uregina.ca/kinesiology/programs/undergraduate/health-studies.html",
+    "fee": "$21,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uregina.ca/kinesiology/programs/undergraduate/health-studies.html",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "University of Regina",
+    "course": "Master of Health Information Management",
+    "degree": "Master",
+    "city": "Regina",
+    "link": "https://www.uregina.ca/gradstudies/programs/mhim.html",
+    "fee": "$25,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uregina.ca/gradstudies/programs/mhim.html",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "University of Regina",
+    "course": "Bachelor of Science in Physics",
+    "degree": "Bachelor",
+    "city": "Regina",
+    "link": "https://www.uregina.ca/science/physics/programs/undergraduate/index.html",
+    "fee": "$21,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uregina.ca/science/physics/programs/undergraduate/index.html",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "University of Regina",
+    "course": "Master of Science in Physics",
+    "degree": "Master",
+    "city": "Regina",
+    "link": "https://www.uregina.ca/science/physics/programs/graduate/index.html",
+    "fee": "$18,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uregina.ca/science/physics/programs/graduate/index.html",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "University of Regina",
+    "course": "Bachelor of Arts in Sociology",
+    "degree": "Bachelor",
+    "city": "Regina",
+    "link": "https://www.uregina.ca/arts/sociology/programs/undergraduate/index.html",
+    "fee": "$20,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uregina.ca/arts/sociology/programs/undergraduate/index.html",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "University of Regina",
+    "course": "Master of Arts in Sociology",
+    "degree": "Master",
+    "city": "Regina",
+    "link": "https://www.uregina.ca/arts/sociology/programs/graduate/index.html",
+    "fee": "$17,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.uregina.ca/arts/sociology/programs/graduate/index.html",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Brock University",
+    "course": "BSc in Computer Science",
+    "degree": "Bachelor",
+    "city": "St. Catharines",
+    "link": "https://brocku.ca/programs/undergraduate/computer-science/",
+    "fee": "$32,875 / year",
+    "source": "University official course pages",
+    "source_url": "https://brocku.ca/programs/undergraduate/computer-science/",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Brock University",
+    "course": "BBA in Business Administration",
+    "degree": "Bachelor",
+    "city": "St. Catharines",
+    "link": "https://brocku.ca/programs/undergraduate/business-administration/",
+    "fee": "$33,400 / year",
+    "source": "University official course pages",
+    "source_url": "https://brocku.ca/programs/undergraduate/business-administration/",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Brock University",
+    "course": "BSc in Nursing",
+    "degree": "Bachelor",
+    "city": "St. Catharines",
+    "link": "https://brocku.ca/programs/undergraduate/nursing/",
+    "fee": "$37,200 / year",
+    "source": "University official course pages",
+    "source_url": "https://brocku.ca/programs/undergraduate/nursing/",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Brock University",
+    "course": "BSc in Psychology",
+    "degree": "Bachelor",
+    "city": "St. Catharines",
+    "link": "https://brocku.ca/programs/undergraduate/psychology/",
+    "fee": "$32,875 / year",
+    "source": "University official course pages",
+    "source_url": "https://brocku.ca/programs/undergraduate/psychology/",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Brock University",
+    "course": "BSc in Public Health",
+    "degree": "Bachelor",
+    "city": "St. Catharines",
+    "link": "https://brocku.ca/programs/undergraduate/public-health/",
+    "fee": "$32,875 / year",
+    "source": "University official course pages",
+    "source_url": "https://brocku.ca/programs/undergraduate/public-health/",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Brock University",
+    "course": "BSc in Game Programming",
+    "degree": "Bachelor",
+    "city": "St. Catharines",
+    "link": "https://brocku.ca/programs/undergraduate/game-programming/",
+    "fee": "$32,875 / year",
+    "source": "University official course pages",
+    "source_url": "https://brocku.ca/programs/undergraduate/game-programming/",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Brock University",
+    "course": "BSc in Biological Sciences",
+    "degree": "Bachelor",
+    "city": "St. Catharines",
+    "link": "https://brocku.ca/programs/undergraduate/biological-sciences/",
+    "fee": "$32,875 / year",
+    "source": "University official course pages",
+    "source_url": "https://brocku.ca/programs/undergraduate/biological-sciences/",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Brock University",
+    "course": "MSc in Computer Science",
+    "degree": "Master",
+    "city": "St. Catharines",
+    "link": "https://brocku.ca/programs/graduate/computer-science-msc/",
+    "fee": "$24,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://brocku.ca/programs/graduate/computer-science-msc/",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Brock University",
+    "course": "Master of Business Administration (MBA)",
+    "degree": "Master",
+    "city": "St. Catharines",
+    "link": "https://brocku.ca/goodman/programs/mba/",
+    "fee": "$39,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://brocku.ca/goodman/programs/mba/",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Brock University",
+    "course": "MA in Applied Linguistics",
+    "degree": "Master",
+    "city": "St. Catharines",
+    "link": "https://brocku.ca/programs/graduate/applied-linguistics-ma/",
+    "fee": "$24,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://brocku.ca/programs/graduate/applied-linguistics-ma/",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Brock University",
+    "course": "MA in Psychology",
+    "degree": "Master",
+    "city": "St. Catharines",
+    "link": "https://brocku.ca/programs/graduate/psychology-ma/",
+    "fee": "$24,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://brocku.ca/programs/graduate/psychology-ma/",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Brock University",
+    "course": "MSc in Management",
+    "degree": "Master",
+    "city": "St. Catharines",
+    "link": "https://brocku.ca/goodman/programs/msc-management/",
+    "fee": "$27,000 / year",
+    "source": "University official course pages",
+    "source_url": "https://brocku.ca/goodman/programs/msc-management/",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Brock University",
+    "course": "BSc in Chemistry",
+    "degree": "Bachelor",
+    "city": "St. Catharines",
+    "link": "https://brocku.ca/programs/undergraduate/chemistry/",
+    "fee": "$32,875 / year",
+    "source": "University official course pages",
+    "source_url": "https://brocku.ca/programs/undergraduate/chemistry/",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Brock University",
+    "course": "BSc in Physics",
+    "degree": "Bachelor",
+    "city": "St. Catharines",
+    "link": "https://brocku.ca/programs/undergraduate/physics/",
+    "fee": "$32,875 / year",
+    "source": "University official course pages",
+    "source_url": "https://brocku.ca/programs/undergraduate/physics/",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Brock University",
+    "course": "BA in Economics",
+    "degree": "Bachelor",
+    "city": "St. Catharines",
+    "link": "https://brocku.ca/programs/undergraduate/economics/",
+    "fee": "$31,400 / year",
+    "source": "University official course pages",
+    "source_url": "https://brocku.ca/programs/undergraduate/economics/",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Brock University",
+    "course": "BA in Political Science",
+    "degree": "Bachelor",
+    "city": "St. Catharines",
+    "link": "https://brocku.ca/programs/undergraduate/political-science/",
+    "fee": "$31,400 / year",
+    "source": "University official course pages",
+    "source_url": "https://brocku.ca/programs/undergraduate/political-science/",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Brock University",
+    "course": "BA in Sociology",
+    "degree": "Bachelor",
+    "city": "St. Catharines",
+    "link": "https://brocku.ca/programs/undergraduate/sociology/",
+    "fee": "$31,400 / year",
+    "source": "University official course pages",
+    "source_url": "https://brocku.ca/programs/undergraduate/sociology/",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Brock University",
+    "course": "Master of Education (MEd)",
+    "degree": "Master",
+    "city": "St. Catharines",
+    "link": "https://brocku.ca/programs/graduate/education-med/",
+    "fee": "$24,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://brocku.ca/programs/graduate/education-med/",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Brock University",
+    "course": "MSc in Applied Health Sciences",
+    "degree": "Master",
+    "city": "St. Catharines",
+    "link": "https://brocku.ca/programs/graduate/applied-health-sciences-msc/",
+    "fee": "$24,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://brocku.ca/programs/graduate/applied-health-sciences-msc/",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Brock University",
+    "course": "BA in History",
+    "degree": "Bachelor",
+    "city": "St. Catharines",
+    "link": "https://brocku.ca/programs/undergraduate/history/",
+    "fee": "$31,400 / year",
+    "source": "University official course pages",
+    "source_url": "https://brocku.ca/programs/undergraduate/history/",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Lakehead University",
+    "course": "BSc in Computer Science",
+    "degree": "Bachelor",
+    "city": "Thunder Bay",
+    "link": "https://www.lakeheadu.ca/programs/undergraduate/computer-science",
+    "fee": "$30,950 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.lakeheadu.ca/programs/undergraduate/computer-science",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Lakehead University",
+    "course": "BEng in Software Engineering",
+    "degree": "Bachelor",
+    "city": "Thunder Bay",
+    "link": "https://www.lakeheadu.ca/programs/undergraduate/software-engineering",
+    "fee": "$35,700 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.lakeheadu.ca/programs/undergraduate/software-engineering",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Lakehead University",
+    "course": "BSc in Nursing",
+    "degree": "Bachelor",
+    "city": "Thunder Bay",
+    "link": "https://www.lakeheadu.ca/programs/undergraduate/nursing",
+    "fee": "$30,950 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.lakeheadu.ca/programs/undergraduate/nursing",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Lakehead University",
+    "course": "BCom in Business Administration",
+    "degree": "Bachelor",
+    "city": "Thunder Bay",
+    "link": "https://www.lakeheadu.ca/programs/undergraduate/business-administration",
+    "fee": "$29,450 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.lakeheadu.ca/programs/undergraduate/business-administration",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Lakehead University",
+    "course": "BSc in Psychology",
+    "degree": "Bachelor",
+    "city": "Thunder Bay",
+    "link": "https://www.lakeheadu.ca/programs/undergraduate/psychology",
+    "fee": "$29,450 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.lakeheadu.ca/programs/undergraduate/psychology",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Lakehead University",
+    "course": "BEng in Civil Engineering",
+    "degree": "Bachelor",
+    "city": "Thunder Bay",
+    "link": "https://www.lakeheadu.ca/programs/undergraduate/civil-engineering",
+    "fee": "$35,700 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.lakeheadu.ca/programs/undergraduate/civil-engineering",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Lakehead University",
+    "course": "BSc in Biology",
+    "degree": "Bachelor",
+    "city": "Thunder Bay",
+    "link": "https://www.lakeheadu.ca/programs/undergraduate/biology",
+    "fee": "$30,950 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.lakeheadu.ca/programs/undergraduate/biology",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Lakehead University",
+    "course": "BSc in Economics",
+    "degree": "Bachelor",
+    "city": "Thunder Bay",
+    "link": "https://www.lakeheadu.ca/programs/undergraduate/economics",
+    "fee": "$29,450 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.lakeheadu.ca/programs/undergraduate/economics",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Lakehead University",
+    "course": "MSc in Computer Science",
+    "degree": "Master",
+    "city": "Thunder Bay",
+    "link": "https://www.lakeheadu.ca/programs/graduate/programs/masters/computer-science",
+    "fee": "$26,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.lakeheadu.ca/programs/graduate/programs/masters/computer-science",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Lakehead University",
+    "course": "MSc in Biology",
+    "degree": "Master",
+    "city": "Thunder Bay",
+    "link": "https://www.lakeheadu.ca/programs/graduate/programs/masters/biology",
+    "fee": "$26,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.lakeheadu.ca/programs/graduate/programs/masters/biology",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Lakehead University",
+    "course": "MSc in Engineering",
+    "degree": "Master",
+    "city": "Thunder Bay",
+    "link": "https://www.lakeheadu.ca/programs/graduate/programs/masters/engineering",
+    "fee": "$28,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.lakeheadu.ca/programs/graduate/programs/masters/engineering",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Lakehead University",
+    "course": "MSc in Physics",
+    "degree": "Master",
+    "city": "Thunder Bay",
+    "link": "https://www.lakeheadu.ca/programs/graduate/programs/masters/physics",
+    "fee": "$26,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.lakeheadu.ca/programs/graduate/programs/masters/physics",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Lakehead University",
+    "course": "MA in Economics",
+    "degree": "Master",
+    "city": "Thunder Bay",
+    "link": "https://www.lakeheadu.ca/programs/graduate/programs/masters/economics",
+    "fee": "$26,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.lakeheadu.ca/programs/graduate/programs/masters/economics",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Lakehead University",
+    "course": "MA in Sociology",
+    "degree": "Master",
+    "city": "Thunder Bay",
+    "link": "https://www.lakeheadu.ca/programs/graduate/programs/masters/sociology",
+    "fee": "$26,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.lakeheadu.ca/programs/graduate/programs/masters/sociology",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Lakehead University",
+    "course": "MEd in Education",
+    "degree": "Master",
+    "city": "Thunder Bay",
+    "link": "https://www.lakeheadu.ca/programs/graduate/programs/masters/education",
+    "fee": "$26,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.lakeheadu.ca/programs/graduate/programs/masters/education",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Lakehead University",
+    "course": "MSc in Management",
+    "degree": "Master",
+    "city": "Thunder Bay",
+    "link": "https://www.lakeheadu.ca/programs/graduate/programs/masters/management",
+    "fee": "$28,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.lakeheadu.ca/programs/graduate/programs/masters/management",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Lakehead University",
+    "course": "BSc in Chemistry",
+    "degree": "Bachelor",
+    "city": "Thunder Bay",
+    "link": "https://www.lakeheadu.ca/programs/undergraduate/chemistry",
+    "fee": "$30,950 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.lakeheadu.ca/programs/undergraduate/chemistry",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Lakehead University",
+    "course": "BSc in Mathematics",
+    "degree": "Bachelor",
+    "city": "Thunder Bay",
+    "link": "https://www.lakeheadu.ca/programs/undergraduate/mathematics",
+    "fee": "$29,450 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.lakeheadu.ca/programs/undergraduate/mathematics",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Lakehead University",
+    "course": "BSc in Environmental Science",
+    "degree": "Bachelor",
+    "city": "Thunder Bay",
+    "link": "https://www.lakeheadu.ca/programs/undergraduate/environmental-science",
+    "fee": "$30,950 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.lakeheadu.ca/programs/undergraduate/environmental-science",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Canada",
+    "uni": "Lakehead University",
+    "course": "MPH in Public Health",
+    "degree": "Master",
+    "city": "Thunder Bay",
+    "link": "https://www.lakeheadu.ca/programs/graduate/programs/masters/public-health",
+    "fee": "$26,500 / year",
+    "source": "University official course pages",
+    "source_url": "https://www.lakeheadu.ca/programs/graduate/programs/masters/public-health",
+    "verified_at": "2026-05-26"
   }
 ]
