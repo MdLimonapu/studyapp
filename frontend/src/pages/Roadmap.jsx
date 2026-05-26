@@ -4,129 +4,93 @@ import { useNavigate } from 'react-router-dom'
 const ROADMAPS = {
   'Germany': {
     flag: '🇩🇪',
-    portal: 'Uni-Assist or Direct University Portal',
-    visaInfo: 'Blocked Account (~€11,900/year)',
     steps: [
-      { id: 1, title: 'Check HZB Admission Qualification', desc: 'Verify if your secondary school diploma or previous degree qualifies for direct admission in Germany using the Anabin database or DAAD tools.', critical: true },
-      { id: 2, title: 'Pass Language Proficiency (English/German)', desc: 'Confirm course language. If German-taught, you need DSH/TestDaF. If English, take IELTS (typically 6.5+) or TOEFL.', critical: true },
-      { id: 3, title: 'Obtain APS Certificate (Selected Countries)', desc: 'Applicants from India, China, and Vietnam must apply for and receive the APS certificate before submitting university files.', critical: false },
-      { id: 4, title: 'Prepare Certified Translations & Motivation Letter', desc: 'Get your transcripts and certificates translated to German or English. Draft a strong Statement of Purpose (SOP).', critical: true },
-      { id: 5, title: 'Submit Applications via Uni-Assist or Direct Portal', desc: 'Submit application documents through Uni-Assist (processing fee: €75) or directly on the university portal based on specific course rules.', critical: true },
-      { id: 6, title: 'Open a German Blocked Account (Sperrkonto)', desc: 'Once accepted, deposit the required living funds (approx. €11,900) into an approved provider (e.g. Expatrio, Coracle, Fintiba).', critical: true },
-      { id: 7, title: 'Apply for German Student Visa', desc: 'Book a visa appointment at the German embassy. Bring your university admission letter, blocked account proof, and health insurance.', critical: true }
+      { id: 1, title: 'Check University Admission Qualification', desc: 'Verify if your high school diploma or previous university degrees qualify you for direct admission in Germany.', critical: true },
+      { id: 2, title: 'Pass Language Proficiency (English/German)', desc: 'Obtain required scores (e.g. IELTS 6.5+ for English programs, or TestDaF for German programs).', critical: true },
+      { id: 3, title: 'Prepare Transcripts & Motivation Letter', desc: 'Get your academic transcripts translated. Write a compelling Letter of Motivation.', critical: true },
+      { id: 4, title: 'Submit Applications via Uni-Assist or Direct Portal', desc: 'Send your application through the centralized Uni-Assist platform or directly to the university.', critical: true },
+      { id: 5, title: 'Secure Blocked Account & Visa', desc: 'Deposit the required living funds (approx. €11,900) into a blocked account and book your visa interview.', critical: true }
     ]
   },
   'UK': {
     flag: '🇬🇧',
-    portal: 'UCAS (Undergrad) or Direct University Portal',
-    visaInfo: 'Student Visa Proof of Funds (~£12,006 - £15,000/year)',
     steps: [
-      { id: 1, title: 'Take English Language Test (IELTS/PTE)', desc: 'Take IELTS Academic or PTE Academic. A score of 6.0 - 7.0 is standard depending on course competitiveness.', critical: true },
-      { id: 2, title: 'Write Personal Statement & Request References', desc: 'Draft a compelling Personal Statement explaining your academic interest. Request 1-2 letters of recommendation.', critical: true },
-      { id: 3, title: 'Submit UCAS Application or Apply Directly', desc: 'Apply through UCAS for Bachelor courses, or apply directly on the university portal for Master/PhD programs.', critical: true },
-      { id: 4, title: 'Accept Offer & Receive CAS Certificate', desc: 'Meet conditional offer grades, pay your tuition deposit, and obtain your official CAS (Confirmation of Acceptance for Studies).', critical: true },
-      { id: 5, title: 'Verify Maintenance Funds requirement', desc: 'Ensure you have tuition fees plus £1,023/month (outside London) or £1,334/month (inside London) in your bank account for 28 consecutive days.', critical: true },
-      { id: 6, title: 'Apply for UK Student Visa', desc: 'Submit visa form online, pay the Health Surcharge (IHS), and attend your biometrics appointment at the visa center.', critical: true }
+      { id: 1, title: 'Take English Language Test (IELTS/PTE)', desc: 'Take a recognized English proficiency test. Usually, an IELTS score of 6.0 - 7.0 is required.', critical: true },
+      { id: 2, title: 'Write Personal Statement & Request References', desc: 'Draft an essay explaining your academic interest. Ask teachers or employers for reference letters.', critical: true },
+      { id: 3, title: 'Submit Application via UCAS or Portal', desc: 'Apply through UCAS for Bachelor courses, or apply directly on the university portal for Master/PhD programs.', critical: true },
+      { id: 4, title: 'Receive CAS Certificate & Apply for Visa', desc: 'Accept your offer, pay the deposit to receive your CAS letter, and submit your student visa application.', critical: true }
     ]
   },
   'USA': {
     flag: '🇺🇸',
-    portal: 'Common App or Direct University Portal',
-    visaInfo: 'I-20 financial proof (~$30k-$60k/year)',
     steps: [
-      { id: 1, title: 'Take Standardized Tests (SAT/ACT/GRE)', desc: 'Take SAT/ACT for Undergrad, or GRE/GMAT for Postgrad. Verify if your target universities are test-optional.', critical: false },
-      { id: 2, title: 'Take TOEFL/IELTS English Exam', desc: 'Submit English proficiency. US universities widely prefer TOEFL but accept IELTS (typically 6.5+).', critical: true },
-      { id: 3, title: 'Draft Admission Essays & Request Recommendations', desc: 'Write your Statement of Purpose (SOP) or Common App essays. Request letters of recommendation from 2-3 academic referees.', critical: true },
-      { id: 4, title: 'Submit Applications & Pay Fees', desc: 'Submit applications via Common App or direct portals. Pay university application fees ($50-$100 per school).', critical: true },
-      { id: 5, title: 'Request Form I-20 after Admission', desc: 'Once accepted, submit bank statements to the university showing financial support for 1 year to receive your official I-20 certificate.', critical: true },
-      { id: 6, title: 'Pay SEVIS I-901 Fee & Book Interview', desc: 'Pay the mandatory $350 SEVIS fee online. Complete the DS-160 visa form and attend your F-1 student visa interview.', critical: true }
+      { id: 1, title: 'Take TOEFL/IELTS English Exam', desc: 'Take an English proficiency test. US universities widely prefer TOEFL but accept IELTS (6.5+).', critical: true },
+      { id: 2, title: 'Draft Essays & Request Recommendations', desc: 'Write your Statement of Purpose (SOP). Request letters of recommendation from 2-3 academic referees.', critical: true },
+      { id: 3, title: 'Submit Applications & Pay Fees', desc: 'Submit applications via Common App or direct portals. Pay university application fees ($50-$100 per school).', critical: true },
+      { id: 4, title: 'Obtain Form I-20 & Book Visa Interview', desc: 'Submit bank statements to prove financial support, get your Form I-20, and attend the student visa interview.', critical: true }
     ]
   },
   'Canada': {
     flag: '🇨🇦',
-    portal: 'OUAC or Direct University Portal',
-    visaInfo: 'Guaranteed Investment Certificate (GIC ~$20,635 CAD)',
     steps: [
       { id: 1, title: 'Take IELTS Academic Test', desc: 'For streamlined visa processing (SDS stream), you must score a minimum of 6.0 in all bands of IELTS Academic.', critical: true },
-      { id: 2, title: 'Prepare Transcripts & Study Plan (SOP)', desc: 'Gather certified academic transcripts and write a highly detailed Study Plan explaining your academic intentions in Canada.', critical: true },
-      { id: 3, title: 'Submit Application to College/University', desc: 'Apply directly or via provincial systems (like OUAC in Ontario). Pay the application fee ($100-$150 CAD).', critical: true },
-      { id: 4, title: 'Obtain official Letter of Acceptance (LOA)', desc: 'Once accepted, pay your first semester or first year tuition fee deposit to secure your LOA certificate.', critical: true },
-      { id: 5, title: 'Purchase GIC (Guaranteed Investment Certificate)', desc: 'Purchase a GIC of $20,635 CAD from an approved Canadian bank (e.g. CIBC, Scotiabank) for visa proof of living funds.', critical: true },
-      { id: 6, title: 'Submit Canadian Study Permit Application', desc: 'Apply online for the Study Permit. Provide your LOA, tuition receipt, GIC certificate, and undergo a medical exam.', critical: true }
+      { id: 2, title: 'Prepare Transcripts & Study Plan (SOP)', desc: 'Gather certified academic records and write a detailed Study Plan explaining your academic intentions in Canada.', critical: true },
+      { id: 3, title: 'Submit Application directly to University', desc: 'Apply directly via the university online portal and pay the application fee ($100-$150 CAD).', critical: true },
+      { id: 4, title: 'Purchase GIC & Apply for Study Permit', desc: 'Purchase a GIC of $20,635 CAD from an approved bank and submit your Canadian Study Permit application.', critical: true }
     ]
   },
   'Australia': {
     flag: '🇦🇺',
-    portal: 'Direct Portal or Authorized Agent Portal',
-    visaInfo: 'Student Visa Proof of Funds (~$29,710 AUD/year)',
     steps: [
       { id: 1, title: 'Pass IELTS or PTE Academic Test', desc: 'Take a recognized English test. IELTS Academic (6.0 - 6.5) or PTE Academic (50 - 58) is standard.', critical: true },
-      { id: 2, title: 'Complete Genuine Student (GS) Statements', desc: 'Address the Genuine Student requirement by detailing your career goals, course relevance, and incentives to return home.', critical: true },
-      { id: 3, title: 'Submit University Application', desc: 'Submit application documents to the university directly or via an authorized educational agent.', critical: true },
-      { id: 4, title: 'Accept Offer & Pay Tuition Deposit', desc: 'Sign and return the acceptance form and pay the first-semester tuition deposit to secure your placement.', critical: true },
-      { id: 5, title: 'Receive Confirmation of Enrolment (CoE)', desc: 'The university will issue a CoE document once payment is verified. This is mandatory for your visa.', critical: true },
-      { id: 6, title: 'Purchase Overseas Student Health Cover (OSHC)', desc: 'Obtain health insurance for the entire duration of your stay in Australia, which is required for the visa application.', critical: true },
-      { id: 7, title: 'Apply for Student Visa (Subclass 500)', desc: 'Submit your student visa application online. Provide CoE, OSHC, GS statements, and proof of funds (~$29,710 AUD/year).', critical: true }
+      { id: 2, title: 'Complete Genuine Student (GS) Statements', desc: 'Address the Genuine Student requirement by detailing your career goals and course relevance.', critical: true },
+      { id: 3, title: 'Submit Application & Pay Deposit', desc: 'Apply directly or via agent, pay the tuition deposit, and obtain your Confirmation of Enrolment (CoE).', critical: true },
+      { id: 4, title: 'Purchase OSHC Health Cover & Get Visa', desc: 'Purchase Overseas Student Health Cover and apply online for your Student Visa (Subclass 500).', critical: true }
     ]
   },
   'Netherlands': {
     flag: '🇳🇱',
-    portal: 'Studielink and Osiris/University Portal',
-    visaInfo: 'Student Visa Proof of Funds (~€12,000/year)',
     steps: [
       { id: 1, title: 'Register on Studielink.nl', desc: 'Create an account on the centralized Dutch national student portal and select your target programs.', critical: true },
-      { id: 2, title: 'Submit Documents via University Portal', desc: 'Upload your academic records, CV, and motivation letter on the university online portal (e.g. Osiris).', critical: true },
-      { id: 3, title: 'Pass English Test (IELTS/TOEFL)', desc: 'Dutch universities require strong English skills. IELTS score of 6.0 - 6.5 or TOEFL 80 - 90 is standard.', critical: true },
-      { id: 4, title: 'Accept Offer & Pay University Invoice', desc: 'Once accepted, pay the tuition invoice and deposit living funds (~€12,000) which the university will verify.', critical: true },
-      { id: 5, title: 'Wait for University to File your Visa', desc: 'In the Netherlands, the university applies for your student visa (MVV/VVR) on your behalf after checking financial records.', critical: true }
+      { id: 2, title: 'Upload Documents & Pass English Test', desc: 'Submit transcripts on university portal. Provide IELTS (6.5+) or TOEFL score.', critical: true },
+      { id: 3, title: 'Accept Offer & Deposit Living Funds', desc: 'Once accepted, pay the tuition invoice and deposit living funds (~€12,000) for university verification.', critical: true },
+      { id: 4, title: 'Let University Handle Visa Application', desc: 'The university applies for your student visa (MVV/VVR) on your behalf after checking financial records.', critical: true }
     ]
   },
   'Sweden': {
     flag: '🇸🇪',
-    portal: 'Universityadmissions.se',
-    visaInfo: 'Proof of Living Funds (~SEK 10,314/month)',
     steps: [
-      { id: 1, title: 'Create UniversityAdmissions.se Account', desc: 'Register on Sweden’s centralized portal. Select up to 4 programs in order of preference.', critical: true },
+      { id: 1, title: 'Register on Universityadmissions.se', desc: 'Create an account on Sweden’s centralized portal. Select up to 4 programs.', critical: true },
       { id: 2, title: 'Upload Academic Records & English Test', desc: 'Upload certified academic transcripts, diplomas, and English test scores (IELTS Academic 6.5+).', critical: true },
-      { id: 3, title: 'Pay Sweden Application Fee (SEK 900)', desc: 'Pay the application fee of SEK 900 online. Applications are only processed after payment is cleared.', critical: true },
-      { id: 4, title: 'Accept Admission Offer & Pay First Semester Fee', desc: 'Accept the offer on the portal once results are published. Pay the first semester tuition fee invoice to the university.', critical: true },
-      { id: 5, title: 'Apply for Swedish Residence Permit for Studies', desc: 'Submit application online to Swedish Migration Agency. Prove you have living funds (approx. SEK 10,314/month) for 10 months.', critical: true }
+      { id: 3, title: 'Pay Application Fee (SEK 900)', desc: 'Pay the application fee of SEK 900 online so Swedish admissions will process your files.', critical: true },
+      { id: 4, title: 'Pay First Semester Tuition & Get Visa', desc: 'Accept your offer, pay the first semester fee directly, and apply for your study residence permit.', critical: true }
     ]
   },
   'France': {
     flag: '🇫🇷',
-    portal: 'Campus France (Etudes en France)',
-    visaInfo: 'Long-stay Student Visa Proof of Funds (~€615/month)',
     steps: [
-      { id: 1, title: 'Register on Etudes en France portal', desc: 'Create an account on the official Campus France portal for your country to select programs.', critical: true },
-      { id: 2, title: 'Pass French/English Language Certification', desc: 'For French-taught courses, pass DELF/DALF. For English-taught, submit IELTS (6.0 - 6.5) or TOEFL.', critical: true },
-      { id: 3, title: 'Submit Documents & CV', desc: 'Upload academic transcripts, CV, and motivation letters. Some courses require portfolios.', critical: true },
-      { id: 4, title: 'Attend Campus France Interview', desc: 'Schedule and attend the mandatory academic interview at your local Campus France office.', critical: true },
-      { id: 5, title: 'Confirm Admission & Apply for Student Visa', desc: 'Once accepted, confirm your choice on the portal to generate your registration certificate, then apply online for your visa.', critical: true },
-      { id: 6, title: 'Prove Financial Self-Sufficiency', desc: 'Provide bank statements showing you have at least €615 per month for 1 year to secure your student visa.', critical: true }
+      { id: 1, title: 'Register on Campus France Portal', desc: 'Create an account on the Etudes en France portal for your country to select programs.', critical: true },
+      { id: 2, title: 'Submit Language Test (English/French)', desc: 'Submit DELF/DALF for French programs, or IELTS/TOEFL for English-taught programs.', critical: true },
+      { id: 3, title: 'Attend Campus France Academic Interview', desc: 'Schedule and attend the mandatory academic interview at your local Campus France office.', critical: true },
+      { id: 4, title: 'Accept Offer & Apply for student Visa', desc: 'Confirm your choice on the portal and apply for your student visa showing proof of funds (~€615/month).', critical: true }
     ]
   },
   'Switzerland': {
     flag: '🇨🇭',
-    portal: 'Direct University Portal',
-    visaInfo: 'Swiss Bank Account Proof (~CHF 20,000/year)',
     steps: [
-      { id: 1, title: 'Verify Course Language & Take Tests', desc: 'Verify course language (German, French, or English). Pass language tests (IELTS/TOEFL or Goethe/DELF).', critical: true },
-      { id: 2, title: 'Submit Online Application Directly', desc: 'Switzerland has no central application system. Apply directly on the university portal and pay fee (CHF 100 - CHF 200).', critical: true },
-      { id: 3, title: 'Receive Admission Confirmation', desc: 'Accept admission offer and pay the first-semester fee deposit to receive your official registration letter.', critical: true },
-      { id: 4, title: 'Show Swiss Bank Statement for Visa', desc: 'Prove you have CHF 20,000 available in a bank account under your name at a bank recognized in Switzerland.', critical: true },
-      { id: 5, title: 'Apply for National Visa D', desc: 'Book appointment at the Swiss consulate. Bring registration letter, study plan, and bank statements.', critical: true }
+      { id: 1, title: 'Verify Course Language & Pass Test', desc: 'Confirm program language and take Goethe/DELF (German/French) or IELTS/TOEFL (English).', critical: true },
+      { id: 2, title: 'Submit Online Application Directly', desc: 'Apply directly via the university online application system and pay fee (CHF 100 - CHF 200).', critical: true },
+      { id: 3, title: 'Confirm Admission & Show Swiss Bank Funds', desc: 'Show CHF 20,000 available in a bank account under your name at a bank recognized in Switzerland.', critical: true },
+      { id: 4, title: 'Apply for National Visa D', desc: 'Book visa appointment at Swiss consulate and bring your registration letter and bank statements.', critical: true }
     ]
   },
   'Japan': {
     flag: '🇯🇵',
-    portal: 'Direct University Portal',
-    visaInfo: 'Certificate of Eligibility Proof of Funds (~2,000,000 JPY/year)',
     steps: [
       { id: 1, title: 'Language Certification (Japanese/English)', desc: 'Japanese-taught courses require JLPT N2/N1. English-taught courses require TOEFL/IELTS.', critical: true },
-      { id: 2, title: 'Submit University Application Directly', desc: 'Apply directly to the university online or by sending physical documents during their strict window.', critical: true },
-      { id: 3, title: 'Receive Admission & Apply for COE', desc: 'Once accepted, submit visa documents to the university so they can apply for your COE (Certificate of Eligibility) at Japan Immigration.', critical: true },
-      { id: 4, title: 'Receive COE & Apply for Student Visa', desc: 'Once immigration issues the physical COE card, bring it with university admission letter and bank statement to the Japanese embassy.', critical: true }
+      { id: 2, title: 'Submit Application directly to University', desc: 'Apply directly to the Japanese university online or mail physical documents.', critical: true },
+      { id: 3, title: 'Receive Admission & Request COE', desc: 'Submit documents for the university to apply for your COE (Certificate of Eligibility) at Japan Immigration.', critical: true },
+      { id: 4, title: 'Receive COE & Get Embassy Visa', desc: 'Take your physical COE card and university admission letter to the Japanese embassy to receive your visa.', critical: true }
     ]
   }
 }
@@ -256,12 +220,6 @@ export default function Roadmap() {
               <h3 style={{ fontSize: '24px', fontWeight: 900, display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <span>{currentRoadmap.flag}</span> {selectedCountry} Roadmap
               </h3>
-              <p style={{ color: 'var(--muted)', fontSize: '13px', marginTop: '6px' }}>
-                Application Portal: <strong style={{ color: 'var(--text)' }}>{currentRoadmap.portal}</strong>
-              </p>
-              <p style={{ color: 'var(--muted)', fontSize: '13px', marginTop: '2px' }}>
-                Visa Financial Requirement: <strong style={{ color: 'var(--text)' }}>{currentRoadmap.visaInfo}</strong>
-              </p>
             </div>
             
             {/* Progress circular tag */}
@@ -357,21 +315,7 @@ export default function Roadmap() {
 
           {/* Eligibility Banner / Search Trigger */}
           {isEligible ? (
-            <div 
-              style={{
-                background: 'rgba(81,250,170,0.06)',
-                border: '1px solid rgba(81,250,170,0.25)',
-                borderRadius: '20px',
-                padding: '24px',
-                display: 'flex',
-                flexDirection: 'column',
-                gap: '16px',
-                alignItems: 'center',
-                textAlign: 'center',
-                boxShadow: '0 8px 32px rgba(81,250,170,0.05)',
-                animation: 'pulse 2s infinite'
-              }}
-            >
+            <div className="roadmap-success-card">
               <div>
                 <span style={{ fontSize: '32px' }}>🎉</span>
                 <h4 style={{ fontSize: '18px', fontWeight: 800, color: 'var(--accent)', marginTop: '8px' }}>
