@@ -855,21 +855,19 @@ button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
 /* PROFILE PILL */
 .profile-pill-interactive {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
   background: rgba(81, 250, 170, 0.05);
   border: 1px solid rgba(81, 250, 170, 0.18);
   border-radius: 999px;
-  padding: 6px 14px;
-  font-size: 12.5px;
+  padding: 6px 12px;
+  font-size: 12px;
   color: var(--accent);
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-top: 8px;
   width: fit-content;
-  justify-self: center;
-  align-self: center;
-  margin-top: 4px;
 }
 
 .profile-pill-interactive:hover {

@@ -230,15 +230,20 @@ export default function Home() {
                 </div>
               )}
             </div>
+            {isProfileComplete(profile) && (
+              useProfile ? (
+                <div className="profile-pill-interactive" onClick={() => setUseProfile(false)} title="Click to search without profile info">
+                  <span className="profile-pill-text">Searching as <strong>{profile.fullName}</strong></span>
+                  <span className="profile-pill-close">×</span>
+                </div>
+              ) : (
+                <p className="profile-hint" style={{ textAlign: 'left', marginTop: 8 }}>
+                  💡 <span onClick={() => setUseProfile(true)}>Use profile matches</span> for better results
+                </p>
+              )
+            )}
           </div>
           {error && <p className="error-msg">⚠️ {error}</p>}
-          
-          {isProfileComplete(profile) && useProfile && (
-            <div className="profile-pill-interactive" onClick={() => setUseProfile(false)} title="Click to search without profile info">
-              <span className="profile-pill-text">Searching as <strong>{profile.fullName}</strong></span>
-              <span className="profile-pill-close">×</span>
-            </div>
-          )}
 
           <button type="submit" disabled={loading}>
             {loading ? <span className="spinner"></span> : 'Find My Perfect Program'}
@@ -246,9 +251,6 @@ export default function Home() {
           
           {!isProfileComplete(profile) && (
             <p className="profile-hint">💡 <span onClick={() => navigate('/profile')}>Complete your profile</span> for better matches</p>
-          )}
-          {isProfileComplete(profile) && !useProfile && (
-            <p className="profile-hint">💡 <span onClick={() => setUseProfile(true)}>Use profile matches</span> for better results</p>
           )}
         </form>
       </section>
