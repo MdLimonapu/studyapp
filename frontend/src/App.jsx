@@ -67,7 +67,7 @@ export default function App() {
           <nav className="nav-links">
             <NavLink to="/">Home</NavLink>
             <NavLink to="/university">University</NavLink>
-            <NavLink to="/roadmap">Roadmap</NavLink>
+            <NavLink to="/roadmap">Eligibility</NavLink>
           </nav>
 
           <NavLink to="/profile" className="topbar-profile">
