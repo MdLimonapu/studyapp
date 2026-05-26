@@ -14,6 +14,9 @@ ReactDOM.createRoot(document.getElementById('root')).render(
       publishableKey={PUBLISHABLE_KEY}
       appearance={{
         baseTheme: dark,
+        layout: {
+          unsafe_disableDevelopmentModeWarnings: true,
+        },
         variables: {
           colorPrimary: '#51faaa',
           colorBackground: '#121426',

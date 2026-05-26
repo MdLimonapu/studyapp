@@ -1277,3 +1277,15 @@ button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
   cursor: pointer;
   width: 100%;
 }
+
+/* Clerk button styling reset to prevent global button styles from corrupting the layout */
+.cl-rootBox button,
+.cl-rootBox button:hover,
+[class^="cl-"] button,
+[class^="cl-"] button:hover,
+[class*=" cl-"] button,
+[class*=" cl-"] button:hover {
+  all: revert;
+  box-sizing: border-box;
+}
+
