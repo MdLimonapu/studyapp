@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
-import { NavLink, Routes, Route } from 'react-router-dom'
+import { NavLink, Routes, Route, useNavigate } from 'react-router-dom'
 import Home from './pages/Home'
 import University from './pages/University'
 import Profile from './pages/Profile'
 import Roadmap from './pages/Roadmap'
-import { fetchProfile } from './api'
+import AuthModal from './components/AuthModal'
+import { fetchProfile, saveProfile } from './api'
+
 
 function NotFound() {
   return (
@@ -28,17 +30,41 @@ const getInitials = (name) => {
 
 export default function App() {
   const [profile, setProfile] = useState(null)
+  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('user_account'))
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
+  const navigate = useNavigate()
 
   useEffect(() => {
     const updateProfile = () => {
       fetchProfile()
         .then(data => { if (data && Object.keys(data).length > 0) setProfile(data) })
         .catch(() => {})
+      setIsLoggedIn(!!localStorage.getItem('user_account'))
     }
     updateProfile()
     window.addEventListener('profile-updated', updateProfile)
     return () => window.removeEventListener('profile-updated', updateProfile)
   }, [])
+
+  const handleLogout = () => {
+    localStorage.removeItem('user_account')
+    saveProfile({
+      fullName: '',
+      email: '',
+      currentDegree: '',
+      currentField: '',
+      semester: '',
+      universityName: '',
+      grade: '',
+      notes: '',
+      avatarUrl: ''
+    }).then(() => {
+      setProfile(null)
+      setIsLoggedIn(false)
+      window.dispatchEvent(new Event('profile-updated'))
+      navigate('/')
+    })
+  }
 
   return (
     <div className="app-shell">
@@ -70,15 +96,51 @@ export default function App() {
             <NavLink to="/roadmap">Check Eligibility</NavLink>
           </nav>
 
-          <NavLink to="/profile" className="topbar-profile">
-            {profile && profile.avatarUrl ? (
-              <img src={profile.avatarUrl} alt="Avatar" className="topbar-avatar" />
-            ) : (
-              <div className="topbar-avatar-initial">
-                {profile && profile.fullName ? getInitials(profile.fullName) : '👤'}
-              </div>
-            )}
-          </NavLink>
+          {isLoggedIn ? (
+            <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+              <NavLink to="/profile" className="topbar-profile" style={{ margin: 0 }}>
+                {profile && profile.avatarUrl ? (
+                  <img src={profile.avatarUrl} alt="Avatar" className="topbar-avatar" />
+                ) : (
+                  <div className="topbar-avatar-initial">
+                    {profile && profile.fullName ? getInitials(profile.fullName) : '👤'}
+                  </div>
+                )}
+              </NavLink>
+              <button 
+                onClick={handleLogout} 
+                className="btn-outline" 
+                style={{ 
+                  padding: '8px 16px', 
+                  fontSize: '13px', 
+                  width: 'auto', 
+                  margin: 0,
+                  borderRadius: '10px',
+                  fontWeight: 600,
+                  cursor: 'pointer',
+                  borderColor: 'rgba(255, 255, 255, 0.08)'
+                }}
+              >
+                Sign Out
+              </button>
+            </div>
+          ) : (
+            <button 
+              onClick={() => setIsAuthModalOpen(true)} 
+              className="btn-accent" 
+              style={{ 
+                padding: '8px 20px', 
+                fontSize: '13px', 
+                width: 'auto', 
+                margin: 0,
+                borderRadius: '10px',
+                fontWeight: 700,
+                cursor: 'pointer'
+              }}
+            >
+              Sign In
+            </button>
+          )}
         </div>
       </header>
 
@@ -92,6 +154,11 @@ export default function App() {
         </Routes>
       </main>
 
+      <AuthModal 
+        isOpen={isAuthModalOpen} 
+        onClose={() => setIsAuthModalOpen(false)} 
+        onAuthSuccess={() => setIsLoggedIn(true)} 
+      />
     </div>
   )
 }
