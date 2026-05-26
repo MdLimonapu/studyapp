@@ -134,7 +134,7 @@ export default function Roadmap() {
 
   // Calculate progress
   const totalSteps = currentRoadmap.steps.length
-  const completedCount = Object.values(currentCompleted).filter(Boolean).length
+  const completedCount = currentRoadmap.steps.filter(step => currentCompleted[step.id]).length
   const progressPercent = totalSteps > 0 ? Math.round((completedCount / totalSteps) * 100) : 0
 
   // Check if critical steps are all completed
@@ -148,7 +148,7 @@ export default function Roadmap() {
 
   const getCountryCompletedCount = (country) => {
     const completed = completedSteps[country] || {}
-    return Object.values(completed).filter(Boolean).length
+    return ROADMAPS[country].steps.filter(step => completed[step.id]).length
   }
 
   const getCountryTotalSteps = (country) => {
