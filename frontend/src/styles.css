@@ -1058,15 +1058,34 @@ button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 /* COUNTRY GRID & BOXES */
 .country-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
   width: 100%;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 1200px) {
+  .country-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 960px) {
+  .country-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media (max-width: 600px) {
+  .country-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+}
+
+@media (max-width: 400px) {
   .country-grid {
     grid-template-columns: repeat(2, 1fr);
-    gap: 10px;
+    gap: 8px;
   }
 }
 
@@ -1077,8 +1096,8 @@ button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
   justify-content: center;
   background: rgba(0, 0, 0, 0.15);
   border: 1px solid var(--card-border);
-  border-radius: 16px;
-  padding: 12px;
+  border-radius: 12px;
+  padding: 10px 8px;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   text-align: center;
@@ -1100,13 +1119,13 @@ button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 }
 
 .country-box-flag {
-  font-size: 28px;
+  font-size: 24px;
   line-height: 1;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
 .country-box-name {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
   color: var(--text);
   transition: color 0.2s;
@@ -1120,7 +1139,7 @@ button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 }
 
 .country-box-status {
-  font-size: 11px;
+  font-size: 9.5px;
   font-weight: 600;
   color: var(--muted);
 }
