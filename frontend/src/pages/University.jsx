@@ -48,11 +48,13 @@ const formatGpa = (reqs) => {
 function SkeletonCard() {
   return (
     <div className="result-card card skeleton-card">
-      <div className="skeleton-line sk-short" style={{ marginBottom: '8px' }}></div>
+      <div className="skeleton-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+        <div className="skeleton-line sk-short" style={{ margin: 0 }}></div>
+        <div className="skeleton-line sk-badge" style={{ margin: 0, height: '24px', width: '100px' }}></div>
+      </div>
       <div className="skeleton-line sk-long" style={{ height: '24px', marginBottom: '8px' }}></div>
       <div className="skeleton-line sk-medium" style={{ marginBottom: '16px' }}></div>
       <div className="skeleton-meta-section">
-        <div className="skeleton-line sk-badge" style={{ marginBottom: '12px' }}></div>
         <div className="skeleton-line sk-tiny"></div>
       </div>
       <div className="skeleton-line sk-full" style={{ height: '44px', marginTop: 'auto' }}></div>
@@ -137,6 +139,10 @@ export default function University() {
                       <span className="rc-country-name">{item.country}</span>
                       {item.city && <span className="rc-city">• {item.city}</span>}
                     </div>
+                    <div className={`rc-rating-badge ${match.class}`} onClick={(e) => e.stopPropagation()}>
+                      <span className="rc-stars">{match.stars}</span>
+                      <span className="rc-label">{match.label}</span>
+                    </div>
                   </div>
 
                   <div className="rc-body">
@@ -145,13 +151,6 @@ export default function University() {
                   </div>
 
                   <div className="rc-meta-section">
-                    <div className="rc-rating-container">
-                      <span className={`rc-rating-badge ${match.class}`} onClick={(e) => e.stopPropagation()}>
-                        <span className="rc-stars">{match.stars}</span>
-                        <span className="rc-label">{match.label}</span>
-                      </span>
-                    </div>
-
                     <div className="rc-intake-row">
                       <span className="rc-intake-icon">🗓️</span>
                       <span className="rc-intake-label">Intake:</span>

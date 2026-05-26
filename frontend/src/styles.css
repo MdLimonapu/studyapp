@@ -204,12 +204,17 @@ button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
   border: 1px solid rgba(255, 255, 255, 0.08);
   color: var(--text);
   width: auto;
-  padding: 12px 24px;
+  padding: 0 24px;
   border-radius: 14px;
   font-weight: 700;
   font-size: 14px;
   box-shadow: none;
   transition: all 0.2s ease;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
 }
 .btn-outline:hover {
   background: rgba(81, 250, 170, 0.05);
@@ -291,12 +296,14 @@ button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 }
 .summary-stats {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   gap: 8px;
   background: rgba(81, 250, 170, 0.04);
-  border: 1px solid rgba(81, 250, 170, 0.15);
-  padding: 10px 20px;
-  border-radius: 16px;
+  border: 1px solid rgba(81, 250, 170, 0.12);
+  padding: 0 20px;
+  border-radius: 14px;
+  height: 44px;
+  box-sizing: border-box;
 }
 .big-number {
   font-size: 32px;
@@ -425,15 +432,9 @@ button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
 .rc-meta-section {
   display: flex;
-  flex-direction: column;
-  gap: 12px;
-  padding-top: 16px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  margin-top: 16px;
-}
-
-.rc-rating-container {
-  display: flex;
+  padding-top: 14px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  margin-top: auto;
 }
 
 .rc-intake-row {
