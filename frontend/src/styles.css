@@ -868,6 +868,7 @@ button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   width: fit-content;
   justify-self: center;
+  align-self: center;
   margin-top: 4px;
 }
 
