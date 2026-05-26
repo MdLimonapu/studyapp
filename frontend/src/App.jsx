@@ -2,6 +2,7 @@ import { NavLink, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import University from './pages/University'
 import Profile from './pages/Profile'
+import Roadmap from './pages/Roadmap'
 
 function NotFound() {
   return (
@@ -42,6 +43,7 @@ export default function App() {
         <nav className="nav-links">
           <NavLink to="/">Home</NavLink>
           <NavLink to="/university">University</NavLink>
+          <NavLink to="/roadmap">Roadmap</NavLink>
           <NavLink to="/profile">Profile</NavLink>
         </nav>
       </header>
@@ -50,6 +52,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/university" element={<University />} />
+          <Route path="/roadmap" element={<Roadmap />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

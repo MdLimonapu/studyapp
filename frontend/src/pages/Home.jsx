@@ -63,6 +63,16 @@ export default function Home() {
 
   // Re-fetch fields when country changes
   useEffect(() => {
+    if (countries.length > 0) {
+      const prefill = localStorage.getItem('prefillCountry')
+      if (prefill) {
+        setForm(prev => ({ ...prev, country: prefill }))
+        localStorage.removeItem('prefillCountry')
+      }
+    }
+  }, [countries])
+
+  useEffect(() => {
     fetchFields(form.country)
       .then(setAllFields)
       .catch(() => {})
