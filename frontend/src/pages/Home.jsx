@@ -277,7 +277,10 @@ export default function Home() {
                   </div>
                   <p className="news-title">{item.title}</p>
                   <p className="news-summary">{item.summary}</p>
-                  <span className="news-date">{item.date}</span>
+                  <div className="news-card-bottom">
+                    <span className="news-date">{item.date}</span>
+                    {item.source && <span className="news-source">{item.source}</span>}
+                  </div>
                 </a>
               ))}
             </div>

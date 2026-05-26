@@ -14,40 +14,48 @@ ssl._create_default_https_context = ssl._create_unverified_context
 load_dotenv(dotenv_path=os.path.join(os.path.dirname(os.path.dirname(__file__)), ".env"))
 API_KEY = os.environ.get("GEMINI_API_KEY")
 
-RSS_URL = "https://news.google.com/rss/search?q=study+abroad+student+visa+news+updates&hl=en-US&gl=US&ceid=US:en"
+COUNTRIES = ["Germany", "UK", "USA", "Canada", "Australia", "Netherlands", "Sweden", "France", "Switzerland", "Japan"]
 
 def fetch_rss_news():
-    urls = [
-        "https://news.google.com/rss/search?q=study+abroad+student+visa+news+updates+when:2d&hl=en-US&gl=US&ceid=US:en",
-        "https://news.google.com/rss/search?q=study+abroad+student+visa+news+updates+when:7d&hl=en-US&gl=US&ceid=US:en"
-    ]
-    for url in urls:
-        try:
-            print(f"Fetching RSS feed from Google News: {url}", flush=True)
-            req = urllib.request.Request(
-                url, 
-                headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
-            )
-            with urllib.request.urlopen(req) as response:
-                xml_data = response.read()
-            
-            root = ET.fromstring(xml_data)
-            items = []
-            for item in root.findall('.//item')[:15]:  # Get top 15 news items
-                title = item.find('title').text if item.find('title') is not None else ""
-                link = item.find('link').text if item.find('link') is not None else ""
-                pub_date = item.find('pubDate').text if item.find('pubDate') is not None else ""
-                items.append({
-                    "raw_title": title,
-                    "link": link,
-                    "pub_date": pub_date
-                })
-            if items:
-                print(f"Fetched {len(items)} articles successfully from {url}", flush=True)
-                return items
-        except Exception as e:
-            print(f"Error fetching RSS from {url}: {e}", flush=True)
-    return []
+    all_items = []
+    for country in COUNTRIES:
+        urls = [
+            f"https://news.google.com/rss/search?q=student+visa+study+abroad+{country}+when:7d&hl=en-US&gl=US&ceid=US:en",
+            f"https://news.google.com/rss/search?q=student+visa+study+abroad+{country}&hl=en-US&gl=US&ceid=US:en"
+        ]
+        
+        country_items = []
+        for url in urls:
+            try:
+                print(f"Fetching RSS feed for {country}: {url}", flush=True)
+                req = urllib.request.Request(
+                    url, 
+                    headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
+                )
+                with urllib.request.urlopen(req) as response:
+                    xml_data = response.read()
+                
+                root = ET.fromstring(xml_data)
+                for item in root.findall('.//item')[:2]:  # Get top 2 articles per country
+                    title = item.find('title').text if item.find('title') is not None else ""
+                    link = item.find('link').text if item.find('link') is not None else ""
+                    pub_date = item.find('pubDate').text if item.find('pubDate') is not None else ""
+                    country_items.append({
+                        "raw_title": title,
+                        "link": link,
+                        "pub_date": pub_date,
+                        "search_country": country
+                    })
+                if country_items:
+                    print(f"Successfully fetched {len(country_items)} articles for {country}.", flush=True)
+                    break
+            except Exception as e:
+                print(f"Error fetching RSS for {country} from {url}: {e}", flush=True)
+                
+        all_items.extend(country_items)
+        
+    print(f"Total articles fetched across all countries: {len(all_items)}", flush=True)
+    return all_items
 
 def summarize_with_gemini(raw_news):
     if not API_KEY:
@@ -64,7 +72,7 @@ def summarize_with_gemini(raw_news):
 You are a study abroad counselor. Analyze the following list of study visa and study abroad news articles from a Google News RSS feed.
 Filter out articles that are not directly relevant to international students, visa policies, scholarships, or study abroad country updates.
 
-For the relevant articles (up to 8-10 max), summarize them and output a clean JSON list matching this structure:
+For the relevant articles, summarize them and output a clean JSON list matching this structure:
 {{
   "news": [
     {{
@@ -72,13 +80,13 @@ For the relevant articles (up to 8-10 max), summarize them and output a clean JS
       "source": "Website name (e.g. Times Higher Education, PIE News, Canada.ca)",
       "date": "Month Year (e.g., May 2026)",
       "summary": "1-2 sentence summary of what this means for students, written in a clear and helpful tone.",
-      "country": "The primary country concerned (e.g., Germany, UK, Canada, USA, France, etc. Use 'Global' if general)",
+      "country": "The primary country concerned (e.g., Germany, UK, Canada, USA, France, etc.)",
       "link": "The article URL"
     }}
   ]
 }}
 
-Raw Articles to Process:
+Raw Articles to Process (each article has an associated search_country. Ensure you set "country" to that search_country or the actual target country):
 {json.dumps(raw_news, indent=2)}
 
 Return ONLY valid JSON. Do not include markdown code block formatting (such as ```json) in your final output.
@@ -110,6 +118,41 @@ Return ONLY valid JSON. Do not include markdown code block formatting (such as `
         print(f"Error calling Gemini: {e}", flush=True)
         return []
 
+def extract_country_from_title(title):
+    import re
+    title_lower = title.lower()
+    if any(k in title_lower for k in ["germany", "german", "daad"]):
+        return "Germany"
+    if any(k in title_lower for k in ["uk", "united kingdom", "british", "london", "oxford", "cambridge"]):
+        return "UK"
+    if re.search(r'\b(us|usa|united states|america|american|harvard|yale|mit)\b', title_lower):
+        return "USA"
+    if any(k in title_lower for k in ["canada", "canadian", "toronto", "vancouver", "mcgill"]):
+        return "Canada"
+    if any(k in title_lower for k in ["australia", "australian", "sydney", "melbourne"]):
+        return "Australia"
+    if any(k in title_lower for k in ["netherlands", "dutch", "holland", "amsterdam"]):
+        return "Netherlands"
+    if any(k in title_lower for k in ["sweden", "swedish", "stockholm"]):
+        return "Sweden"
+    if any(k in title_lower for k in ["france", "french", "paris"]):
+        return "France"
+    if any(k in title_lower for k in ["switzerland", "swiss", "zurich"]):
+        return "Switzerland"
+    if any(k in title_lower for k in ["japan", "japanese", "tokyo"]):
+        return "Japan"
+    if any(k in title_lower for k in ["europe", "european", "eu"]):
+        return "Europe"
+    return "Global"
+
+def get_country_summary(country):
+    if country == "Global":
+        return "Latest updates regarding study abroad and student visas globally."
+    elif country in ["UK", "USA", "Netherlands"]:
+        return f"Latest updates regarding study abroad and student visas in the {country}."
+    else:
+        return f"Latest updates regarding study abroad and student visas in {country}."
+
 def fallback_process(raw_news):
     news = []
     for item in raw_news:
@@ -120,12 +163,15 @@ def fallback_process(raw_news):
             title = parts[0]
             source = parts[1]
             
+        country = extract_country_from_title(title)
+        summary = get_country_summary(country)
+            
         news.append({
             "title": title,
             "source": source,
             "date": "Today",
-            "summary": "Latest updates regarding study abroad and student visas.",
-            "country": "Global",
+            "summary": summary,
+            "country": country,
             "link": item["link"]
         })
     return news
