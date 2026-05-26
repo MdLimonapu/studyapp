@@ -49,23 +49,29 @@ load_all_country_data()
 # ── Curated field/course categories for autocomplete ────────────────────────
 UNIQUE_FIELDS = [
     # Computer Science & IT
-    "Computer Science", "Software Engineering", "Data Science", "Artificial Intelligence", 
+    "Computer Science", "Software Engineering", "Data Science", "Artificial Intelligence",
     "Cybersecurity", "Informatics", "Information Technology",
     # Engineering
-    "Electrical Engineering", "Mechanical Engineering", "Aerospace Engineering", 
-    "Biomedical Engineering", "Chemical Engineering", "Civil Engineering", 
+    "Engineering", "Electrical Engineering", "Mechanical Engineering", "Aerospace Engineering",
+    "Biomedical Engineering", "Chemical Engineering", "Civil Engineering",
     "Environmental Engineering", "Industrial Engineering", "Mechatronics & Robotics",
+    "Materials Science", "Energy Systems", "Transport & Logistics",
     # Business & Economics
-    "Business Administration", "Finance", "Accounting", "Marketing", "Economics", 
+    "Business Administration", "Finance", "Accounting", "Marketing", "Economics",
     "Management", "Entrepreneurship", "International Business",
     # Natural Sciences
     "Physics", "Chemistry", "Biology", "Mathematics", "Statistics", "Environmental Science",
+    "Geography & Earth Sciences", "Agriculture & Food Science", "Veterinary Science",
     # Health & Medicine
     "Medicine", "Nursing", "Dentistry", "Pharmacy", "Public Health", "Biomedical Sciences",
+    "Sports Science",
     # Social Sciences & Humanities
     "Law", "Psychology", "International Relations", "Political Science", "Sociology",
+    "Education", "Social Work", "History & Cultural Studies", "Theology & Philosophy",
+    "Languages & Linguistics",
     # Art, Design & Architecture
-    "Architecture", "Graphic Design", "Fine Arts", "Music", "Media & Communications"
+    "Architecture", "Urban Planning", "Graphic Design", "Fine Arts", "Music",
+    "Performing Arts", "Fashion & Textile Design", "Media & Communications",
 ]
 
 def build_field_index():
@@ -279,52 +285,74 @@ def get_search_keywords(field):
 
     # Map major synonyms and related academic disciplines
     synonyms = {
+        # Computer Science & IT
         "computer science": ["computer science", "computing", "software engineering", "informatics", "computer engineering", "information technology", "it"],
         "software engineering": ["software engineering", "computer science", "computing", "programming", "software development"],
         "data science": ["data science", "data analytics", "big data", "machine learning", "statistics", "data analysis"],
-        "artificial intelligence": ["artificial intelligence", "machine learning", "deep learning", "cognitive science", "robotics", "intelligent systems", "computer vision", "nlp"],
+        "artificial intelligence": ["artificial intelligence", "machine learning", "deep learning", "cognitive science", "intelligent systems", "computer vision", "nlp", "ai engineering", "ai in", "ai for"],
         "cybersecurity": ["cybersecurity", "cyber security", "information security", "network security", "cryptography", "infosec"],
         "informatics": ["informatics", "computer science", "information systems"],
         "information technology": ["information technology", "it", "information systems", "computer networks"],
+        # Engineering
         "electrical engineering": ["electrical engineering", "electronic engineering", "electronics", "power systems", "microelectronics", "embedded systems", "telecommunications"],
-        "mechanical engineering": ["mechanical engineering", "robotics", "mechatronics", "automotive", "aerospace engineering", "fluid dynamics", "thermodynamics"],
-        "aerospace engineering": ["aerospace", "aeronautical", "aviation", "space technology"],
+        "mechanical engineering": ["mechanical engineering", "mechatronics", "automotive", "fluid dynamics", "thermodynamics"],
+        "aerospace engineering": ["aerospace", "aeronautical", "aviation", "space technology", "space engineering", "space science"],
         "biomedical engineering": ["biomedical engineering", "bioengineering", "biotech", "biotechnology", "prosthetics"],
-        "chemical engineering": ["chemical engineering", "chemistry", "process engineering", "biochemical engineering"],
-        "civil engineering": ["civil engineering", "structural engineering", "geotechnical", "construction management"],
-        "environmental engineering": ["environmental engineering", "environment", "sustainability", "sustainable", "ecology", "water resources"],
-        "industrial engineering": ["industrial engineering", "operations research", "systems engineering", "supply chain"],
-        "mechatronics & robotics": ["mechatronics", "robotics", "automation", "control systems"],
+        "chemical engineering": ["chemical engineering", "process engineering", "biochemical engineering"],
+        "civil engineering": ["civil engineering", "structural engineering", "geotechnical", "construction management", "construction engineering"],
+        "environmental engineering": ["environmental engineering", "water resources", "water engineering", "environmental systems"],
+        "industrial engineering": ["industrial engineering", "operations research", "systems engineering", "manufacturing engineering", "production engineering"],
+        "mechatronics & robotics": ["mechatronics", "robotics", "automation", "control systems", "autonomous systems"],
+        "materials science": ["materials science", "materials engineering", "advanced materials", "nanotechnology", "nanoscience", "polymer", "ceramic", "composite", "metallurgy", "semiconductor"],
+        "energy systems": ["energy systems", "energy engineering", "renewable energy", "solar energy", "wind energy", "smart energy", "power engineering", "energy technology", "sustainable energy"],
+        "transport & logistics": ["transport", "logistics", "supply chain", "aviation management", "air transport", "shipping", "maritime", "mobility"],
+        # Business & Economics
         "business administration": ["business administration", "management", "business management", "mba", "bba", "entrepreneurship", "international business", "corporate strategy"],
-        "finance": ["finance", "financial", "accounting", "banking", "investment", "corporate finance"],
-        "accounting": ["accounting", "audit", "taxation", "financial reporting"],
-        "marketing": ["marketing", "sales", "digital marketing", "branding", "public relations"],
+        "finance": ["finance", "financial", "banking", "investment", "corporate finance"],
+        "accounting": ["accounting", "accountancy", "accountan", "audit", "taxation", "controlling", "financial reporting"],
+        "marketing": ["marketing", "sales", "digital marketing", "branding", "advertising", "brand design"],
         "economics": ["economics", "macroeconomics", "microeconomics", "econometrics", "political economy"],
         "management": ["management", "leadership", "human resources", "hr", "project management"],
         "entrepreneurship": ["entrepreneurship", "innovation", "startups", "venture"],
         "international business": ["international business", "global management", "cross-cultural"],
+        # Natural Sciences
         "physics": ["physics", "astrophysics", "quantum", "thermodynamics", "optics"],
-        "chemistry": ["chemistry", "biochemistry", "organic chemistry", "chemical"],
-        "biology": ["biology", "molecular biology", "genetics", "microbiology", "ecology", "zoology"],
-        "mathematics": ["mathematics", "math", "algebra", "calculus", "geometry"],
-        "statistics": ["statistics", "probability", "data analysis", "actuarial"],
-        "environmental science": ["environmental science", "ecology", "conservation", "climate change"],
+        "chemistry": ["chemistry", "biochemistry", "organic chemistry", "chemical", "synthesis", "catalysis"],
+        "biology": ["biology", "molecular biology", "genetics", "microbiology", "ecology", "zoology", "botany", "marine biology", "evolutionary biology"],
+        "mathematics": ["mathematics", "math", "algebra", "calculus", "geometry", "applied mathematics"],
+        "statistics": ["statistics", "probability", "data analysis", "actuarial", "biostatistics"],
+        "environmental science": ["environmental science", "ecology", "conservation", "climate change", "climate science", "atmospheric"],
+        "geography & earth sciences": ["geography", "earth science", "geology", "geoscience", "geophysics", "meteorology", "oceanography", "hydrology", "cartography", "gis", "remote sensing"],
+        "agriculture & food science": ["agriculture", "agri", "food science", "food technology", "animal science", "forestry", "horticulture", "viticulture", "agribusiness", "agricultural", "crop science", "aquaculture", "fishery", "food and nutrition"],
+        "veterinary science": ["veterinary", "veterinarian", "animal health", "animal medicine", "zoo medicine"],
+        # Health & Medicine
         "medicine": ["medicine", "medical", "clinical", "healthcare", "health science", "biomedical", "surgery"],
-        "nursing": ["nursing", "healthcare", "clinical nursing", "patient care"],
+        "nursing": ["nursing", "clinical nursing", "patient care", "midwifery"],
         "dentistry": ["dentistry", "dental", "oral health"],
         "pharmacy": ["pharmacy", "pharmacology", "pharmaceutical", "drug discovery"],
         "public health": ["public health", "epidemiology", "global health", "health policy"],
         "biomedical sciences": ["biomedical sciences", "biomedicine", "immunology", "pathology"],
+        "sports science": ["sports science", "sport science", "exercise science", "sport and exercise", "kinesiology", "physical education", "sports medicine", "sports management", "sport management", "coaching", "athletic"],
+        # Social Sciences & Humanities
         "law": ["law", "llm", "llb", "legal", "jurisprudence", "human rights"],
-        "psychology": ["psychology", "cognitive science", "behavioral science", "clinical psychology"],
-        "international relations": ["international relations", "global politics", "diplomacy", "foreign policy"],
-        "political science": ["political science", "politics", "government", "public policy"],
-        "sociology": ["sociology", "social sciences", "anthropology"],
-        "architecture": ["architecture", "architectural", "urban planning", "landscape architecture"],
-        "graphic design": ["graphic design", "visual communication", "ux", "ui", "illustration"],
-        "fine arts": ["fine arts", "visual arts", "painting", "sculpture"],
-        "music": ["music", "musicology", "performance", "composition"],
-        "media & communications": ["media", "communications", "journalism", "public relations", "broadcasting"],
+        "psychology": ["psychology", "cognitive science", "behavioral science", "clinical psychology", "neuroscience"],
+        "international relations": ["international relations", "global politics", "diplomacy", "foreign policy", "international studies"],
+        "political science": ["political science", "politics", "government", "public policy", "political studies"],
+        "sociology": ["sociology", "social sciences", "anthropology", "social research"],
+        "education": ["education", "pedagogy", "teaching", "teacher", "learning science", "curriculum", "educational", "didactic"],
+        "social work": ["social work", "social development", "community development", "welfare", "refugee", "migration", "human rights"],
+        "history & cultural studies": ["history", "heritage", "cultural studies", "culture", "cultural science", "archaeology", "museum", "archival", "humanities", "civilisation", "classics"],
+        "theology & philosophy": ["theology", "religion", "philosophy", "ethics", "moral", "divinity", "religious studies"],
+        "languages & linguistics": ["linguistics", "language", "translation", "interpretation", "interpreting", "literary studies", "literature", "philology"],
+        # Art, Design & Architecture
+        "architecture": ["architecture", "architectural", "building design"],
+        "urban planning": ["urban planning", "urban design", "urban development", "spatial planning", "spatial design", "landscape architecture", "landscape design", "regional planning", "city planning"],
+        "graphic design": ["graphic design", "visual communication", "ux", "ui", "user experience", "illustration", "visual design"],
+        "fine arts": ["fine arts", "visual arts", "painting", "sculpture", "drawing", "printmaking"],
+        "music": ["music", "musicology", "composition", "conducting", "instrumental"],
+        "performing arts": ["performing arts", "theatre", "theater", "drama", "dance", "acting", "performance", "choreography", "film", "cinema", "animation", "screen"],
+        "fashion & textile design": ["fashion", "textile", "clothing", "costume", "interior design", "product design", "jewellery", "luxury", "accessories"],
+        "media & communications": ["media", "communications", "journalism", "public relations", "broadcasting", "advertising", "digital media", "social media"],
     }
     
     for key, syns in synonyms.items():
