@@ -1,12 +1,11 @@
 import { useEffect, useState } from 'react'
-import { NavLink, Routes, Route, useNavigate } from 'react-router-dom'
+import { NavLink, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import University from './pages/University'
 import Profile from './pages/Profile'
 import Roadmap from './pages/Roadmap'
-import AuthModal from './components/AuthModal'
-import { fetchProfile, saveProfile } from './api'
-
+import { SignedIn, SignedOut, UserButton, SignInButton, useUser } from '@clerk/clerk-react'
+import { fetchProfile, saveProfile, registerUser } from './api'
 
 function NotFound() {
   return (
@@ -30,41 +29,59 @@ const getInitials = (name) => {
 
 export default function App() {
   const [profile, setProfile] = useState(null)
-  const [isLoggedIn, setIsLoggedIn] = useState(!!localStorage.getItem('user_account'))
-  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
-  const navigate = useNavigate()
+  const { user, isLoaded } = useUser()
 
   useEffect(() => {
     const updateProfile = () => {
       fetchProfile()
         .then(data => { if (data && Object.keys(data).length > 0) setProfile(data) })
         .catch(() => {})
-      setIsLoggedIn(!!localStorage.getItem('user_account'))
     }
     updateProfile()
     window.addEventListener('profile-updated', updateProfile)
     return () => window.removeEventListener('profile-updated', updateProfile)
   }, [])
 
-  const handleLogout = () => {
-    localStorage.removeItem('user_account')
-    saveProfile({
-      fullName: '',
-      email: '',
-      currentDegree: '',
-      currentField: '',
-      semester: '',
-      universityName: '',
-      grade: '',
-      notes: '',
-      avatarUrl: ''
-    }).then(() => {
-      setProfile(null)
-      setIsLoggedIn(false)
-      window.dispatchEvent(new Event('profile-updated'))
-      navigate('/')
-    })
-  }
+  // Sync Clerk authentication status and user details automatically to the backend
+  useEffect(() => {
+    if (isLoaded) {
+      if (user) {
+        const email = user.primaryEmailAddress?.emailAddress || ""
+        const fullName = user.fullName || user.username || "Clerk User"
+        const avatarUrl = user.imageUrl || ""
+
+        saveProfile({
+          fullName,
+          email,
+          avatarUrl
+        }).then(() => {
+          window.dispatchEvent(new Event('profile-updated'))
+        }).catch(() => {})
+
+        registerUser({
+          email,
+          fullName,
+          avatarUrl,
+          method: 'clerk'
+        }).catch(() => {})
+      } else {
+        // User logged out, clear backend profile JSON
+        saveProfile({
+          fullName: '',
+          email: '',
+          currentDegree: '',
+          currentField: '',
+          semester: '',
+          universityName: '',
+          grade: '',
+          notes: '',
+          avatarUrl: ''
+        }).then(() => {
+          window.dispatchEvent(new Event('profile-updated'))
+        }).catch(() => {})
+      }
+    }
+  }, [user, isLoaded])
 
   return (
     <div className="app-shell">
@@ -96,7 +113,7 @@ export default function App() {
             <NavLink to="/roadmap">Check Eligibility</NavLink>
           </nav>
 
-          {isLoggedIn ? (
+          <SignedIn>
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
               <NavLink to="/profile" className="topbar-profile" style={{ margin: 0 }}>
                 {profile && profile.avatarUrl ? (
@@ -107,40 +124,27 @@ export default function App() {
                   </div>
                 )}
               </NavLink>
+              <UserButton afterSignOutUrl="/" />
+            </div>
+          </SignedIn>
+          <SignedOut>
+            <SignInButton mode="modal">
               <button 
-                onClick={handleLogout} 
-                className="btn-outline" 
+                className="btn-accent" 
                 style={{ 
-                  padding: '8px 16px', 
+                  padding: '8px 20px', 
                   fontSize: '13px', 
                   width: 'auto', 
                   margin: 0,
                   borderRadius: '10px',
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  borderColor: 'rgba(255, 255, 255, 0.08)'
+                  fontWeight: 700,
+                  cursor: 'pointer'
                 }}
               >
-                Sign Out
+                Sign In
               </button>
-            </div>
-          ) : (
-            <button 
-              onClick={() => setIsAuthModalOpen(true)} 
-              className="btn-accent" 
-              style={{ 
-                padding: '8px 20px', 
-                fontSize: '13px', 
-                width: 'auto', 
-                margin: 0,
-                borderRadius: '10px',
-                fontWeight: 700,
-                cursor: 'pointer'
-              }}
-            >
-              Sign In
-            </button>
-          )}
+            </SignInButton>
+          </SignedOut>
         </div>
       </header>
 
@@ -154,11 +158,6 @@ export default function App() {
         </Routes>
       </main>
 
-      <AuthModal 
-        isOpen={isAuthModalOpen} 
-        onClose={() => setIsAuthModalOpen(false)} 
-        onAuthSuccess={() => setIsLoggedIn(true)} 
-      />
     </div>
   )
 }

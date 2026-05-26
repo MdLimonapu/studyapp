@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import AuthModal from '../components/AuthModal'
+import { useAuth, SignInButton } from '@clerk/clerk-react'
 
 const countryFlags = {
   'germany': '🇩🇪',
@@ -87,10 +87,7 @@ export default function University() {
   const form   = parseStoredJson('searchForm', {})
   const navigate = useNavigate()
 
-  const [isRegistered, setIsRegistered] = useState(() => {
-    return !!localStorage.getItem('user_account')
-  })
-  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false)
+  const { isSignedIn } = useAuth()
 
   const isLoading = !raw
 
@@ -128,14 +125,14 @@ export default function University() {
         </div>
       )}
 
-      <div className={`blur-gate-wrapper ${!isRegistered && resultsToRender.length > 4 ? 'gated' : ''}`}>
+      <div className={`blur-gate-wrapper ${!isSignedIn && resultsToRender.length > 4 ? 'gated' : ''}`}>
         <div className="results-grid">
           {isLoading
             ? Array.from({length: 6}).map((_, i) => <SkeletonCard key={i} />)
             : resultsToRender.length
               ? resultsToRender.map((item, i) => {
                 const match = getMatchLabel(item.match_rating);
-                const isBlurred = !isRegistered && i >= 4;
+                const isBlurred = !isSignedIn && i >= 4;
                 return (
                   <a
                     key={i}
@@ -192,7 +189,7 @@ export default function University() {
           }
         </div>
 
-        {!isRegistered && resultsToRender.length > 4 && (
+        {!isSignedIn && resultsToRender.length > 4 && (
           <div className="blur-gate-overlay">
             <div className="blur-gate-card">
               <div className="blur-gate-icon">🔒</div>
@@ -200,24 +197,19 @@ export default function University() {
               <p>
                 We found <strong>{result.total || resultsToRender.length} matches</strong> for you. Sign up for a free account to unlock all results.
               </p>
-              <button 
-                type="button" 
-                className="btn-accent" 
-                onClick={() => setIsAuthModalOpen(true)}
-                style={{ width: '100%', padding: '14px', borderRadius: '12px', fontWeight: 700 }}
-              >
-                Unlock All Matches
-              </button>
+              <SignInButton mode="modal">
+                <button 
+                  type="button" 
+                  className="btn-accent" 
+                  style={{ width: '100%', padding: '14px', borderRadius: '12px', fontWeight: 700 }}
+                >
+                  Unlock All Matches
+                </button>
+              </SignInButton>
             </div>
           </div>
         )}
       </div>
-
-      <AuthModal 
-        isOpen={isAuthModalOpen} 
-        onClose={() => setIsAuthModalOpen(false)} 
-        onAuthSuccess={() => setIsRegistered(true)} 
-      />
     </section>
   )
 }
