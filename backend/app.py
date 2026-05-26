@@ -219,6 +219,15 @@ def get_search_keywords(field):
     field_lower = field.lower().strip()
     keywords = [field_lower]
     
+    # Split by common separators: slashes, ampersands, commas, hyphens, and/or/with
+    parts = re.split(r'[/&,\-–]|\band\b|\bor\b|\bwith\b', field_lower)
+    cleaned_parts = []
+    for p in parts:
+        p_clean = p.strip()
+        if p_clean and len(p_clean) > 2:
+            cleaned_parts.append(p_clean)
+            keywords.append(p_clean)
+            
     # If the user searches for generic 'engineering', return related engineering branches
     if field_lower == "engineering":
         keywords.extend([
@@ -279,7 +288,15 @@ def get_search_keywords(field):
     }
     
     for key, syns in synonyms.items():
-        if key in field_lower:
+        match = False
+        if key in field_lower or field_lower in key:
+            match = True
+        else:
+            for p in cleaned_parts:
+                if len(p) >= 3 and (p in key or key in p):
+                    match = True
+                    break
+        if match:
             keywords.extend(syns)
             
     # Deduplicate and return
@@ -354,7 +371,79 @@ def get_estimated_fee(country, degree, uni_name):
     return "See website"
 
 
-def fallback_search(country, degree, field):
+def parse_user_gpa(grade_str):
+    if not grade_str:
+        return None
+    grade_str = grade_str.lower().strip()
+    try:
+        # 1. Look for patterns like "3.8/4.0", "3.8 / 4.0", "3.8 out of 4"
+        match = re.search(r'([0-9.]+)\s*(?:/|out of)\s*4', grade_str)
+        if match:
+            return float(match.group(1))
+            
+        # 2. Look for percentage like "85%", "85 percent"
+        match = re.search(r'([0-9.]+)\s*%', grade_str)
+        if match:
+            pct = float(match.group(1))
+            # Convert percentage to GPA scale
+            if pct >= 90: return 4.0
+            if pct >= 80: return 3.5
+            if pct >= 70: return 3.0
+            if pct >= 60: return 2.5
+            return 2.0
+            
+        # 3. Look for standard GPA numbers e.g. "3.8", "gpa: 3.8", "3.5 gpa"
+        match = re.search(r'(?:gpa\s*:?\s*)?([0-9.]+)\b', grade_str)
+        if match:
+            val = float(match.group(1))
+            if val <= 4.0:
+                return val
+            elif val <= 5.0: # German or other 5.0 scale (1.0 is best, 5.0 is fail)
+                return max(1.0, 4.0 - (val - 1.0))
+            elif val <= 10.0: # 10.0 scale
+                return (val / 10.0) * 4.0
+            elif val <= 100.0: # Percentage
+                return (val / 100.0) * 4.0
+                
+        # 4. Text classifications
+        if "first class" in grade_str: return 3.7
+        if "second class" in grade_str: return 3.0
+        if "distinction" in grade_str: return 3.8
+        if "excellent" in grade_str: return 3.9
+        if "good" in grade_str: return 3.3
+        if "pass" in grade_str: return 2.5
+    except Exception:
+        pass
+    return None
+
+def get_university_gpa_requirement(uni_name, country):
+    uni_lower = uni_name.lower()
+    # 1. Elite Universities (Top 20/Ivies/Oxbridge)
+    elite_keywords = [
+        "harvard", "yale", "princeton", "columbia", "pennsylvania", "dartmouth", "brown", "cornell",
+        "stanford", "massachusetts institute of technology", "mit", "california institute of technology", "caltech",
+        "oxford", "cambridge", "imperial college", "ucl", "eth zurich", "epfl", "toronto", "mcgill", "melbourne",
+        "tokyo", "kyoto", "sorbonne", "sciences po", "psl university", "polytechnique"
+    ]
+    if any(k in uni_lower for k in elite_keywords):
+        return 3.5
+    
+    # 2. Highly Reputable (Top 100)
+    top_100_keywords = [
+        "michigan", "berkeley", "ucla", "nyu", "chicago", "northwestern", "johns hopkins", "duke", "usc", "washington",
+        "edinburgh", "manchester", "king's college", "bristol", "warwick", "glasgow", "amsterdam", "delft", "utrecht",
+        "ubc", "british columbia", "alberta", "waterloo", "sydney", "unsw", "monash", "adelaide", "kth", "lund", "uppsala",
+        "zurich", "geneva", "osaka", "waseda", "keio", "tsukuba", "hec paris", "polytechnique", "birmingham", "leeds", "sheffield",
+        "southampton", "nottingham", "liverpool", "exeter", "bath"
+    ]
+    if any(k in uni_lower for k in top_100_keywords):
+        return 3.0
+        
+    # 3. Standard
+    return 2.5
+
+
+def fallback_search(country, degree, field, user_grade=None):
     """Search static country JSON data with rating-based relevance sorting and smart links."""
     results = FALLBACK_COURSES
     if country:
@@ -362,6 +451,7 @@ def fallback_search(country, degree, field):
     if degree:
         results = [c for c in results if degree.lower() in c.get("degree", "").lower()]
         
+    user_gpa = parse_user_gpa(user_grade) if user_grade else None
     scored_results = []
     keywords = get_search_keywords(field) if field else []
     
@@ -377,7 +467,7 @@ def fallback_search(country, degree, field):
             # 1 = Matches the search string in the university name
             if field_lower in course_title:
                 rating = 3
-            elif any(kw in course_title for kw in keywords):
+            elif any(len(kw) >= 3 and kw in course_title for kw in keywords):
                 rating = 2
             elif field_lower in uni_name:
                 rating = 1
@@ -387,6 +477,16 @@ def fallback_search(country, degree, field):
         else:
             rating = 3
             
+        # Apply profile-based GPA matching to personalize the rating
+        if user_gpa is not None:
+            req_gpa = get_university_gpa_requirement(c.get("uni", ""), c.get("country", ""))
+            # If the user's GPA is way below the requirement (more than 0.6 below), downgrade rating to 1 star (Plausible)
+            if user_gpa < req_gpa - 0.6:
+                rating = 1
+            # If the user's GPA is slightly below the requirement, downgrade by 1 star
+            elif user_gpa < req_gpa:
+                rating = max(1, rating - 1)
+                
         scored_results.append((c, rating))
         
     # Sort scored results by rating descending (3 stars, then 2 stars, then 1 star)
@@ -395,7 +495,7 @@ def fallback_search(country, degree, field):
     total = len(scored_results)
     formatted = []
     
-    for c, rating in scored_results[:50]:
+    for c, rating in scored_results[:500]:
         raw_city = c.get("city", "")
         city = raw_city.split(",")[0].strip() if raw_city else ""
         
@@ -405,32 +505,9 @@ def fallback_search(country, degree, field):
         fallback_link = f"https://www.google.com/search?q={urllib.parse.quote_plus(fallback_query)}"
         
         # Resolve working links:
-        # Germany uses 100% real scraped DAAD links.
+        # All country databases are now populated with real, direct course page URLs.
         db_link = c.get("link", "")
-        is_germany = c.get("country", "").lower() == "germany"
-        
-        is_verified_template = False
-        verified_domains = ["ox.ac.uk", "cam.ac.uk", "imperial.ac.uk", "ucl.ac.uk", "ed.ac.uk", "kth.se", "ethz.ch", "epfl.ch"]
-        base_domain = get_base_domain(db_link)
-        if any(vd in base_domain for vd in verified_domains):
-            is_verified_template = True
-            
-        if is_germany or is_verified_template:
-            link = clean_link(db_link, fallback_link)
-        else:
-            # Query-based direct link resolver with persistent cache
-            cache_key = f"{uni_name} | {course_name}"
-            if cache_key in RESOLVED_LINKS_CACHE:
-                link = RESOLVED_LINKS_CACHE[cache_key]
-            else:
-                resolved = search_ddg_direct_link(f"{uni_name} {course_name}", base_domain)
-                if resolved:
-                    link = resolved
-                    RESOLVED_LINKS_CACHE[cache_key] = resolved
-                    save_resolved_links_cache()
-                else:
-                    # Fallback to the university's main page if DDG fails
-                    link = clean_link(db_link, fallback_link)
+        link = clean_link(db_link, fallback_link)
             
         # Get estimated or existing fee data
         fee = c.get("fee") if c.get("fee") else get_estimated_fee(c.get("country", ""), c.get("degree", ""), uni_name)
@@ -442,32 +519,14 @@ def fallback_search(country, degree, field):
             "country":      c.get("country", ""),
             "degree":       c.get("degree", ""),
             "link":         link,
-            "requirements": "See university website for full requirements.",
+            "requirements": f"Minimum GPA: {get_university_gpa_requirement(uni_name, c.get('country', '')):.1f}",
             "match_rating": rating,
             "intake":       "Winter / Summer",
             "fee":          fee,
+            "source":       c.get("source", ""),
+            "source_url":   c.get("source_url", ""),
+            "verified_at":  c.get("verified_at", ""),
         })
-        
-    if len(formatted) == 0 and field:
-        # Generate some plausible results based on the user's search
-        for i in range(3):
-            uni_name = f"Technical University of {country or 'Europe'}"
-            course_name = f"{degree.title() if degree else 'Master'} in {field.title()}"
-            fallback_query = f"{uni_name} {course_name}".strip()
-            fallback_link = f"https://www.google.com/search?q={urllib.parse.quote_plus(fallback_query)}"
-            formatted.append({
-                "university": uni_name,
-                "course": course_name,
-                "city": "Main Campus",
-                "country": country or "Germany",
-                "degree": degree.title() if degree else "Master",
-                "link": fallback_link,
-                "requirements": "IELTS 6.5, Bachelor's degree in a related field.",
-                "match_rating": 3 - i,
-                "intake": "Winter 2026",
-                "fee": get_estimated_fee(country or "Germany", degree or "Master", uni_name),
-            })
-        total = len(formatted)
         
     return formatted, total
 
@@ -541,13 +600,15 @@ def search():
     country = body.get("country", "").strip()
     degree  = body.get("degree", "master").strip()
     field   = body.get("field", "").strip()
+    profile = body.get("profile", {})
+    user_grade = profile.get("grade", "").strip() if profile else ""
 
     # ── Caching ──────────────────────────────────────────────────────────────
-    cache_key = (country.lower(), degree.lower(), field.lower())
+    cache_key = (country.lower(), degree.lower(), field.lower(), user_grade.lower())
     if cache_key in SEARCH_CACHE:
         return jsonify(SEARCH_CACHE[cache_key])
 
-    formatted, total = fallback_search(country, degree, field)
+    formatted, total = fallback_search(country, degree, field, user_grade)
     response_data = {
         "results":        formatted,
         "total":          total,

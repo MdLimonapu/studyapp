@@ -1,0 +1,45 @@
+{
+  "generated_at": "2026-05-26",
+  "sources": {
+    "Germany": {
+      "status": "ok",
+      "rows": 2512
+    },
+    "UK": {
+      "status": "ok",
+      "rows": 1618
+    },
+    "France": {
+      "status": "ok",
+      "rows": 1753
+    },
+    "Australia": {
+      "status": "ok",
+      "rows": 10894
+    },
+    "USA": {
+      "status": "ok",
+      "rows": 52128
+    },
+    "Switzerland": {
+      "status": "ok",
+      "rows": 400
+    },
+    "Sweden": {
+      "status": "ok",
+      "rows": 10
+    },
+    "Netherlands": {
+      "status": "ok",
+      "rows": 4542
+    },
+    "Japan": {
+      "status": "ok",
+      "rows": 25
+    },
+    "Canada": {
+      "status": "ok",
+      "rows": 80
+    }
+  }
+}
