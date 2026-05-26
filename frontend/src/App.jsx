@@ -1,8 +1,10 @@
+import { useEffect, useState } from 'react'
 import { NavLink, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
 import University from './pages/University'
 import Profile from './pages/Profile'
 import Roadmap from './pages/Roadmap'
+import { fetchProfile } from './api'
 
 function NotFound() {
   return (
@@ -18,6 +20,19 @@ function NotFound() {
 }
 
 export default function App() {
+  const [profile, setProfile] = useState(null)
+
+  useEffect(() => {
+    const updateProfile = () => {
+      fetchProfile()
+        .then(data => { if (data && Object.keys(data).length > 0) setProfile(data) })
+        .catch(() => {})
+    }
+    updateProfile()
+    window.addEventListener('profile-updated', updateProfile)
+    return () => window.removeEventListener('profile-updated', updateProfile)
+  }, [])
+
   return (
     <div className="app-shell">
       <header className="topbar">
@@ -40,12 +55,25 @@ export default function App() {
           </div>
           <h1>Stud<span style={{color: 'var(--accent)'}}>plex</span></h1>
         </NavLink>
-        <nav className="nav-links">
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/university">University</NavLink>
-          <NavLink to="/roadmap">Roadmap</NavLink>
-          <NavLink to="/profile">Profile</NavLink>
-        </nav>
+        
+        <div className="topbar-right">
+          <nav className="nav-links">
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/university">University</NavLink>
+            <NavLink to="/roadmap">Roadmap</NavLink>
+            <NavLink to="/profile">Profile</NavLink>
+          </nav>
+
+          <NavLink to="/profile" className="topbar-profile">
+            {profile && profile.avatarUrl ? (
+              <img src={profile.avatarUrl} alt="Avatar" className="topbar-avatar" />
+            ) : (
+              <div className="topbar-avatar-initial">
+                {profile && profile.fullName ? profile.fullName[0].toUpperCase() : '👤'}
+              </div>
+            )}
+          </NavLink>
+        </div>
       </header>
 
       <main className="page-wrap">

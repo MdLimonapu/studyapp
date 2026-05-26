@@ -51,6 +51,7 @@ export default function Profile() {
       saveProfile(profile).then(() => {
         setSaving(false)
         setSaved(true)
+        window.dispatchEvent(new Event('profile-updated'))
         setTimeout(() => setSaved(false), 3000)
       })
     }, 1000)
