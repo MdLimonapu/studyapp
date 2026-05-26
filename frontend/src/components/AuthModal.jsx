@@ -80,8 +80,7 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess }) {
       if (window.google) {
         try {
           google.accounts.id.initialize({
-            // Dummy client id. The button will render. If users customize it via .env, it'll connect to their GCloud project.
-            client_id: "542289437119-9vplk22n8mupcge7j8n8q51vpe5q6uun.apps.googleusercontent.com", 
+            client_id: import.meta.env.VITE_GOOGLE_CLIENT_ID || "542289437119-9vplk22n8mupcge7j8n8q51vpe5q6uun.apps.googleusercontent.com", 
             callback: handleGoogleCredential
           })
           google.accounts.id.renderButton(
