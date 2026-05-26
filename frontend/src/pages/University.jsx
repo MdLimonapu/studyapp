@@ -48,14 +48,14 @@ const formatGpa = (reqs) => {
 function SkeletonCard() {
   return (
     <div className="result-card card skeleton-card">
-      <div className="skeleton-line sk-short"></div>
-      <div className="skeleton-line sk-long"></div>
-      <div className="skeleton-line sk-medium"></div>
-      <div className="skeleton-meta-row">
-        <div className="skeleton-line sk-badge"></div>
+      <div className="skeleton-line sk-short" style={{ marginBottom: '8px' }}></div>
+      <div className="skeleton-line sk-long" style={{ height: '24px', marginBottom: '8px' }}></div>
+      <div className="skeleton-line sk-medium" style={{ marginBottom: '16px' }}></div>
+      <div className="skeleton-meta-section">
+        <div className="skeleton-line sk-badge" style={{ marginBottom: '12px' }}></div>
         <div className="skeleton-line sk-tiny"></div>
       </div>
-      <div className="skeleton-line sk-full"></div>
+      <div className="skeleton-line sk-full" style={{ height: '44px', marginTop: 'auto' }}></div>
     </div>
   )
 }
@@ -91,16 +91,16 @@ export default function University() {
       <div className="card search-summary">
         <div className="summary-left">
           <h2>University matches</h2>
-          <p>
+          <div className="summary-chips">
             <span className="chip">{getCountryFlag(form.country)} {form.country || '-'}</span>
             <span className="chip">🎓 {form.degree || '-'}</span>
             <span className="chip">📚 {form.field || '-'}</span>
-          </p>
+          </div>
         </div>
         <div className="summary-right">
           <div className="summary-stats">
-            <div className="big-number">{result.total || 0}</div>
-            <div className="big-label">Results found</div>
+            <span className="big-number">{result.total || 0}</span>
+            <span className="big-label">Results</span>
           </div>
           <button className="btn-outline" onClick={() => navigate('/')}>New search</button>
         </div>
@@ -139,25 +139,29 @@ export default function University() {
                     </div>
                   </div>
 
-                  <h3 className="rc-uni">{item.university}</h3>
-                  <p className="rc-course">{item.course}</p>
+                  <div className="rc-body">
+                    <h3 className="rc-uni">{item.university}</h3>
+                    <p className="rc-course">{item.course}</p>
+                  </div>
 
-                  <div className="rc-meta-row">
-                    <div className={`rc-rating-badge ${match.class}`} onClick={(e) => e.stopPropagation()}>
-                      <span className="rc-stars">{match.stars}</span>
-                      <span className="rc-label">{match.label}</span>
+                  <div className="rc-meta-section">
+                    <div className="rc-rating-container">
+                      <span className={`rc-rating-badge ${match.class}`} onClick={(e) => e.stopPropagation()}>
+                        <span className="rc-stars">{match.stars}</span>
+                        <span className="rc-label">{match.label}</span>
+                      </span>
                     </div>
 
-                    <div className="rc-intake">
+                    <div className="rc-intake-row">
                       <span className="rc-intake-icon">🗓️</span>
                       <span className="rc-intake-label">Intake:</span>
                       <span className="rc-intake-value">{item.intake || 'Winter / Summer'}</span>
                     </div>
                   </div>
 
-                  <div className="rc-cta-container">
-                    <span className="rc-cta-text">Open course page</span>
-                    <span className="rc-cta-arrow">→</span>
+                  <div className="rc-cta-btn">
+                    <span>Open course page</span>
+                    <span className="rc-cta-btn-arrow">→</span>
                   </div>
                 </a>
               )

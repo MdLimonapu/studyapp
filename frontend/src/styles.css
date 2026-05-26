@@ -244,19 +244,26 @@ button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
   align-items: center;
   flex-wrap: wrap;
   gap: 24px;
-  background: linear-gradient(135deg, rgba(18, 20, 38, 0.7) 0%, rgba(12, 14, 29, 0.9) 100%) !important;
-  border: 1px solid rgba(81, 250, 170, 0.15) !important;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-  padding: 32px 40px !important;
+  background: rgba(18, 20, 38, 0.3) !important;
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.05) !important;
+  border-radius: 24px;
+  padding: 28px 40px !important;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.03);
 }
 .summary-left h2 {
-  margin: 0 0 16px;
+  margin: 0 0 12px;
   font-size: 32px;
   font-weight: 800;
   letter-spacing: -0.02em;
   background: linear-gradient(to right, #ffffff, var(--muted));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+.summary-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 .chip {
   display: inline-flex;
@@ -269,7 +276,6 @@ button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
   padding: 8px 16px;
   font-size: 13.5px;
   font-weight: 600;
-  margin-right: 10px;
   transition: all 0.2s ease;
   backdrop-filter: blur(10px);
 }
@@ -281,30 +287,30 @@ button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 .summary-right {
   display: flex;
   align-items: center;
-  gap: 36px;
-  text-align: left;
+  gap: 24px;
 }
 .summary-stats {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  align-items: baseline;
+  gap: 8px;
+  background: rgba(81, 250, 170, 0.04);
+  border: 1px solid rgba(81, 250, 170, 0.15);
+  padding: 10px 20px;
+  border-radius: 16px;
 }
 .big-number {
-  font-size: 58px;
-  font-weight: 900;
-  background: linear-gradient(135deg, #51faaa 0%, #3bf29b 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--accent);
   line-height: 1;
 }
 .big-label {
   font-size: 11px;
   color: var(--muted);
   text-transform: uppercase;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.05em;
   font-weight: 700;
-  margin-top: 4px;
-  margin-bottom: 0 !important;
+  margin-top: 0;
 }
 
 /* FILTER BAR */
@@ -394,11 +400,11 @@ button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 }
 
 .rc-uni {
-  font-size: 20px;
+  font-size: 19px;
   font-weight: 800;
   color: var(--text);
-  margin: 0;
-  line-height: 1.35;
+  margin: 0 0 8px 0;
+  line-height: 1.4;
   letter-spacing: -0.01em;
 }
 
@@ -407,25 +413,35 @@ button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
   font-weight: 600;
   color: var(--accent);
   margin: 0;
-  line-height: 1.4;
+  line-height: 1.45;
 }
 
-/* Card Meta Row (Intake & Match Rating) */
-.rc-meta-row {
+.rc-body {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: auto;
+}
+
+.rc-meta-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 16px;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 16px 0;
-  margin: 8px 0;
+  margin-top: 16px;
 }
 
-.rc-intake {
+.rc-rating-container {
+  display: flex;
+}
+
+.rc-intake-row {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   font-size: 13px;
+  color: var(--muted);
 }
 
 .rc-intake-icon {
@@ -433,13 +449,12 @@ button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 }
 
 .rc-intake-label {
-  color: var(--muted);
   font-weight: 600;
 }
 
 .rc-intake-value {
   color: var(--text);
-  font-weight: 700;
+  font-weight: 750;
 }
 
 /* Rating Badge */
@@ -449,13 +464,11 @@ button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
   gap: 8px;
   border-radius: 8px;
   padding: 6px 12px;
-  width: fit-content;
   user-select: none;
   font-size: 10.5px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  margin-bottom: 4px;
 }
 
 .rc-rating-badge.best-match {
@@ -481,42 +494,35 @@ button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 }
 
 /* Action button CTA */
-.rc-cta-container {
+.rc-cta-btn {
+  margin-top: 16px;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 12px 18px;
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  justify-content: center;
+  gap: 8px;
+  padding: 13px 18px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 12px;
-  margin-top: auto;
-  transition: all 0.25s ease;
-}
-
-.rc-cta-text {
-  font-size: 13px;
+  color: var(--text);
   font-weight: 700;
-  color: var(--muted);
-  transition: color 0.25s ease;
+  font-size: 13.5px;
+  transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.rc-cta-arrow {
+.result-card:hover .rc-cta-btn {
+  background: linear-gradient(135deg, var(--accent) 0%, #24d187 100%);
+  border-color: transparent;
+  color: #0c0e1d;
+  box-shadow: 0 4px 12px rgba(81, 250, 170, 0.2);
+}
+
+.rc-cta-btn-arrow {
   font-size: 15px;
-  color: var(--muted);
-  transition: all 0.25s ease;
+  transition: transform 0.25s ease;
 }
 
-.result-card:hover .rc-cta-container {
-  background: rgba(81, 250, 170, 0.08);
-  border-color: rgba(81, 250, 170, 0.25);
-}
-
-.result-card:hover .rc-cta-text {
-  color: var(--accent);
-}
-
-.result-card:hover .rc-cta-arrow {
-  color: var(--accent);
+.result-card:hover .rc-cta-btn-arrow {
   transform: translateX(4px);
 }
 
@@ -526,14 +532,13 @@ button:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
   gap: 16px;
 }
 
-.skeleton-meta-row {
+.skeleton-meta-section {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
+  gap: 12px;
   border-top: 1px solid rgba(255, 255, 255, 0.06);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-  padding: 16px 0;
-  margin: 8px 0;
+  padding: 16px 0 0 0;
+  margin-top: 16px;
 }
 
 .skeleton-line {
