@@ -201,7 +201,6 @@ COUNTRIES = [
     {"name": "Japan",       "flag": "🇯🇵"},
 ]
 
-PROFILE_FILE = os.path.join(os.path.dirname(__file__), "profile.json")
 
 # ── Helpers ──────────────────────────────────────────────────────────────────
 
@@ -708,14 +707,6 @@ def get_profile():
                 return jsonify(profile_data)
         except Exception as e:
             print(f"Error reading from MongoDB: {e}", flush=True)
-            
-    # Fallback to local profile.json
-    if os.path.exists(PROFILE_FILE):
-        with open(PROFILE_FILE) as f:
-            try:
-                return jsonify(json.load(f))
-            except Exception:
-                pass
     return jsonify({})
 
 
@@ -723,10 +714,8 @@ def get_profile():
 def save_profile():
     data = request.json or {}
     
-    # Save to MongoDB if available
     if profiles_col is not None:
         try:
-            # We strip the MongoDB '_id' field if it is present in the incoming data
             data_copy = data.copy()
             data_copy.pop("_id", None)
             result = profiles_col.find_one({})
@@ -735,19 +724,12 @@ def save_profile():
             else:
                 profiles_col.insert_one(data_copy)
             print("💾 Saved profile to MongoDB Atlas successfully!", flush=True)
+            return jsonify({"status": "saved"})
         except Exception as e:
-            print(f"Error writing to MongoDB: {e}. Saving locally instead.", flush=True)
+            print(f"Error writing to MongoDB: {e}", flush=True)
+            return jsonify({"status": "error", "message": str(e)}), 500
             
-    # Always save locally as a backup / offline fallback
-    try:
-        data_copy = data.copy()
-        data_copy.pop("_id", None)
-        with open(PROFILE_FILE, "w") as f:
-            json.dump(data_copy, f)
-    except Exception as e:
-         print(f"Error saving local backup: {e}", flush=True)
-         
-    return jsonify({"status": "saved"})
+    return jsonify({"status": "error", "message": "MongoDB not connected"}), 503
 
 
 NEWS_ITEMS = [
