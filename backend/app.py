@@ -443,13 +443,41 @@ def get_university_gpa_requirement(uni_name, country):
     return 2.5
 
 
+def normalize_country(c_name):
+    if not c_name:
+        return ""
+    c_lower = c_name.lower().strip()
+    if c_lower in ["usa", "united states", "us", "u.s.a.", "u.s.", "united states of america"]:
+        return "usa"
+    if c_lower in ["uk", "united kingdom", "great britain", "u.k.", "gb", "england", "scotland", "wales", "northern ireland"]:
+        return "uk"
+    return c_lower
+
+
+GENERIC_BRANCHES = {
+    "engineering": {
+        "core": ["general engineering", "engineering science", "engineering management", "engineering technology", "systems engineering", "engineering and management", "advanced engineering", "business and engineering", "business administration and engineering"],
+        "sub": ["software", "electrical", "electronic", "mechanical", "aerospace", "civil", "chemical", "biomedical", "environmental", "industrial", "mechatronics", "robotics", "robotic", "computer engineering", "marine", "materials", "embedded", "autonomous", "automotive", "power", "energy", "renewable", "green", "sustainable", "process", "telecommunications", "telecommunication", "construction", "structural", "nanotechnology", "nano", "optical", "optics", "medical", "micro", "water", "fluid", "mobility", "transport", "logistics", "production", "manufacturing", "metallurg", "mining", "petroleum", "nuclear"]
+    },
+    "computer science": {
+        "core": ["computer science", "computing", "computer engineering", "informatics"],
+        "sub": ["software", "artificial", "intelligence", "data", "cyber", "security", "information technology", "it", "machine learning", "robotics", "robotic", "embedded", "information systems", "network", "web", "cloud", "game", "media", "graphics", "vision"]
+    },
+    "business": {
+        "core": ["business administration", "business management", "business", "mba", "bba", "international business"],
+        "sub": ["finance", "financial", "accounting", "account", "marketing", "market", "entrepreneur", "management", "economics", "econom", "hr", "human resources", "logistics", "logist", "supply", "commerce", "tourism", "hospitality", "healthcare management", "public relations"]
+    }
+}
+
+
 def fallback_search(country, degree, field, user_grade=None):
     """Search static country JSON data with rating-based relevance sorting and smart links."""
     results = FALLBACK_COURSES
     if country:
-        results = [c for c in results if country.lower() in c.get("country", "").lower()]
+        norm_country = normalize_country(country)
+        results = [c for c in results if normalize_country(c.get("country", "")) == norm_country]
     if degree:
-        results = [c for c in results if degree.lower() in c.get("degree", "").lower()]
+        results = [c_match for c_match in results if degree.lower() in c_match.get("degree", "").lower()]
         
     user_gpa = parse_user_gpa(user_grade) if user_grade else None
     scored_results = []
@@ -461,18 +489,47 @@ def fallback_search(country, degree, field, user_grade=None):
         
         if field:
             field_lower = field.lower().strip()
-            # Assign match rating:
-            # 3 = Exact search string contained in the course title
-            # 2 = Matches related synonym keywords in the course title
-            # 1 = Matches the search string in the university name
-            if field_lower in course_title:
-                rating = 3
-            elif any(len(kw) >= 3 and kw in course_title for kw in keywords):
-                rating = 2
-            elif field_lower in uni_name:
-                rating = 1
-            else:
-                # Does not match the search field or related keywords at all, exclude it
+            rating = 0
+            
+            # Check for generic parent categorization (e.g. engineering, computer science, business)
+            is_generic = False
+            for gen_key, gen_cfg in GENERIC_BRANCHES.items():
+                if field_lower == gen_key:
+                    is_generic = True
+                    
+                    # Determine if it is a core/general program or a specific sector
+                    is_core = any(core_kw in course_title for core_kw in gen_cfg["core"])
+                    
+                    # Strip common academic degree labels to see if only the main keyword is left
+                    clean_title = re.sub(
+                        r'\b(msc|bsc|meng|beng|mba|bba|llm|llb|phd|master|bachelor|degree|of|in|science|arts|technology|engineering)\b',
+                        '',
+                        course_title
+                    ).strip()
+                    
+                    if not clean_title or clean_title == gen_key:
+                        is_core = True
+                        
+                    has_sub_term = any(sub_term in course_title for sub_term in gen_cfg["sub"])
+                        
+                    if gen_key in course_title or has_sub_term:
+                        if is_core and not has_sub_term:
+                            rating = 3  # Core general matches -> 3 stars
+                        else:
+                            rating = 2  # Specific branch matches -> 2 stars
+                    break
+                    
+            if not is_generic:
+                # Specific query matching:
+                if field_lower in course_title:
+                    rating = 3
+                elif any(len(kw) >= 3 and kw in course_title for kw in keywords):
+                    rating = 2
+                elif field_lower in uni_name:
+                    rating = 1
+                    
+            # Skip if there's no match
+            if rating == 0:
                 continue
         else:
             rating = 3
