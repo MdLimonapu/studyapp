@@ -1,11 +1,17 @@
 import { useState, useEffect } from 'react'
 import { useUser } from '@clerk/clerk-react'
 
+function validateEmail(email) {
+  if (!email) return ''
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? '' : 'Please enter a valid email address.'
+}
+
 export default function Contact() {
   const { user, isLoaded } = useUser()
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
+  const [emailError, setEmailError] = useState('')
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
   const [activeFaq, setActiveFaq] = useState(null)
 
@@ -22,6 +28,13 @@ export default function Contact() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
+    
+    const emailErr = validateEmail(form.email)
+    if (emailErr) {
+      setEmailError(emailErr)
+      return
+    }
+    
     setLoading(true)
     setError(null)
     
@@ -143,22 +156,33 @@ export default function Contact() {
                       type="email" 
                       placeholder="e.g. alex@gmail.com" 
                       value={form.email} 
-                      onChange={e => setForm({ ...form, email: e.target.value })} 
+                      onChange={e => {
+                        setForm({ ...form, email: e.target.value })
+                        setEmailError(validateEmail(e.target.value))
+                      }} 
+                      className={emailError ? 'pf-input-error' : ''}
                       required 
                     />
+                    {emailError && <span style={{ color: '#ef4444', fontSize: '11px', marginTop: '4px', display: 'block' }}>{emailError}</span>}
                   </div>
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="subject" style={{ fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', color: 'var(--muted)' }}>Subject</label>
-                  <input 
+                  <label htmlFor="subject" style={{ fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', color: 'var(--muted)' }}>Subject Category</label>
+                  <select 
                     id="subject"
-                    type="text" 
-                    placeholder="How can we help you?" 
                     value={form.subject} 
                     onChange={e => setForm({ ...form, subject: e.target.value })} 
                     required 
-                  />
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <option value="">Select a category</option>
+                    <option value="General Inquiry">General Inquiry</option>
+                    <option value="Technical Support">Technical Support</option>
+                    <option value="Feedback & Suggestions">Feedback & Suggestions</option>
+                    <option value="Partnership & Advertising">Partnership & Advertising</option>
+                    <option value="Other">Other</option>
+                  </select>
                 </div>
 
                 <div className="form-group">
@@ -179,7 +203,7 @@ export default function Contact() {
                   type="submit" 
                   className="btn-accent" 
                   style={{ marginTop: '12px', padding: '16px', borderRadius: '12px', fontWeight: '800' }} 
-                  disabled={loading}
+                  disabled={loading || !!emailError}
                 >
                   {loading ? 'Sending Message...' : 'Send Message'}
                 </button>
