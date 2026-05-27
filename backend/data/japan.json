@@ -29,7 +29,7 @@
     "course": "Degree Program",
     "degree": "Bachelor",
     "city": "",
-    "link": "https://studyinjapan.go.jp/en/search-for-schools/course_detail.php?lang=en&&depid=3050314224&school_code=305031",
+    "link": "https://studyinjapan.go.jp",
     "fee": "",
     "source": "Study in Japan official school search",
     "source_url": "https://www.studyinjapan.go.jp/en/search-for-schools/school_search.php?lang=en&limit=25&offset=0&go=go&course=1",
@@ -53,7 +53,7 @@
     "course": "Degree Program",
     "degree": "Bachelor",
     "city": "",
-    "link": "https://studyinjapan.go.jp/en/search-for-schools/course_detail.php?lang=en&&depid=3050314110&school_code=305031",
+    "link": "https://studyinjapan.go.jp",
     "fee": "",
     "source": "Study in Japan official school search",
     "source_url": "https://www.studyinjapan.go.jp/en/search-for-schools/school_search.php?lang=en&limit=25&offset=0&go=go&course=1",
@@ -65,7 +65,7 @@
     "course": "Degree Program",
     "degree": "Master",
     "city": "",
-    "link": "https://studyinjapan.go.jp/en/search-for-schools/course_detail.php?lang=en&&depid=3050314618&school_code=305031",
+    "link": "https://studyinjapan.go.jp",
     "fee": "",
     "source": "Study in Japan official school search",
     "source_url": "https://www.studyinjapan.go.jp/en/search-for-schools/school_search.php?lang=en&limit=25&offset=0&go=go&course=1",
@@ -41825,7 +41825,7 @@
     "course": "PhD in Architecture",
     "degree": "phd",
     "city": "Heart",
-    "link": "http://www.juntan.k-junshin.ac.jp/jundai"
+    "link": "http://www.juntan.k-junshin.ac.jp"
   },
   {
     "country": "Japan",
@@ -41833,7 +41833,7 @@
     "course": "PhD in Psychology",
     "degree": "phd",
     "city": "Heart",
-    "link": "http://www.juntan.k-junshin.ac.jp/jundai"
+    "link": "http://www.juntan.k-junshin.ac.jp"
   },
   {
     "country": "Japan",
@@ -41841,7 +41841,7 @@
     "course": "MSc in Architecture",
     "degree": "master",
     "city": "Heart",
-    "link": "http://www.juntan.k-junshin.ac.jp/jundai"
+    "link": "http://www.juntan.k-junshin.ac.jp"
   },
   {
     "country": "Japan",
@@ -41849,7 +41849,7 @@
     "course": "MSc in Psychology",
     "degree": "master",
     "city": "Heart",
-    "link": "http://www.juntan.k-junshin.ac.jp/jundai"
+    "link": "http://www.juntan.k-junshin.ac.jp"
   },
   {
     "country": "Japan",
@@ -41857,7 +41857,7 @@
     "course": "BSc in Architecture",
     "degree": "bachelor",
     "city": "Heart",
-    "link": "http://www.juntan.k-junshin.ac.jp/jundai"
+    "link": "http://www.juntan.k-junshin.ac.jp"
   },
   {
     "country": "Japan",
@@ -41865,7 +41865,7 @@
     "course": "BSc in Psychology",
     "degree": "bachelor",
     "city": "Heart",
-    "link": "http://www.juntan.k-junshin.ac.jp/jundai"
+    "link": "http://www.juntan.k-junshin.ac.jp"
   },
   {
     "country": "Japan",
@@ -111089,7 +111089,7 @@
     "course": "PhD in Civil Engineering",
     "degree": "phd",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111097,7 +111097,7 @@
     "course": "PhD in Psychology",
     "degree": "phd",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111105,7 +111105,7 @@
     "course": "PhD in Biology",
     "degree": "phd",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111113,7 +111113,7 @@
     "course": "PhD in Power Systems",
     "degree": "phd",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111121,7 +111121,7 @@
     "course": "PhD in Mathematics",
     "degree": "phd",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111129,7 +111129,7 @@
     "course": "PhD in Mechanical Engineering",
     "degree": "phd",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111137,7 +111137,7 @@
     "course": "PhD in Aerospace Engineering",
     "degree": "phd",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111145,7 +111145,7 @@
     "course": "PhD in Chemical Engineering",
     "degree": "phd",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111153,7 +111153,7 @@
     "course": "PhD in Software Engineering",
     "degree": "phd",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111161,7 +111161,7 @@
     "course": "PhD in Artificial Intelligence",
     "degree": "phd",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111169,7 +111169,7 @@
     "course": "PhD in Law",
     "degree": "phd",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111177,7 +111177,7 @@
     "course": "PhD in Robotics",
     "degree": "phd",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111185,7 +111185,7 @@
     "course": "MEng in Civil Engineering",
     "degree": "master",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111193,7 +111193,7 @@
     "course": "MSc in Psychology",
     "degree": "master",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111201,7 +111201,7 @@
     "course": "MSc in Biology",
     "degree": "master",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111209,7 +111209,7 @@
     "course": "MSc in Power Systems",
     "degree": "master",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111217,7 +111217,7 @@
     "course": "MSc in Mathematics",
     "degree": "master",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111225,7 +111225,7 @@
     "course": "MEng in Mechanical Engineering",
     "degree": "master",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111233,7 +111233,7 @@
     "course": "MEng in Aerospace Engineering",
     "degree": "master",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111241,7 +111241,7 @@
     "course": "MEng in Chemical Engineering",
     "degree": "master",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111249,7 +111249,7 @@
     "course": "MEng in Software Engineering",
     "degree": "master",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111257,7 +111257,7 @@
     "course": "MSc in Artificial Intelligence",
     "degree": "master",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111265,7 +111265,7 @@
     "course": "LLM in Law",
     "degree": "master",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111273,7 +111273,7 @@
     "course": "MEng in Robotics",
     "degree": "master",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111281,7 +111281,7 @@
     "course": "BEng in Civil Engineering",
     "degree": "bachelor",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111289,7 +111289,7 @@
     "course": "BSc in Psychology",
     "degree": "bachelor",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111297,7 +111297,7 @@
     "course": "BSc in Biology",
     "degree": "bachelor",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111305,7 +111305,7 @@
     "course": "BSc in Power Systems",
     "degree": "bachelor",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111313,7 +111313,7 @@
     "course": "BSc in Mathematics",
     "degree": "bachelor",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111321,7 +111321,7 @@
     "course": "BEng in Mechanical Engineering",
     "degree": "bachelor",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111329,7 +111329,7 @@
     "course": "BEng in Aerospace Engineering",
     "degree": "bachelor",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111337,7 +111337,7 @@
     "course": "BEng in Chemical Engineering",
     "degree": "bachelor",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111345,7 +111345,7 @@
     "course": "BEng in Software Engineering",
     "degree": "bachelor",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111353,7 +111353,7 @@
     "course": "BSc in Artificial Intelligence",
     "degree": "bachelor",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111361,7 +111361,7 @@
     "course": "LLB in Law",
     "degree": "bachelor",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -111369,7 +111369,7 @@
     "course": "BEng in Robotics",
     "degree": "bachelor",
     "city": "Tokyo",
-    "link": "http://www.shokei-gakuen.ac.jp/shokeicol"
+    "link": "http://www.shokei-gakuen.ac.jp"
   },
   {
     "country": "Japan",
@@ -116705,7 +116705,7 @@
     "course": "PhD in Aerospace Engineering",
     "degree": "phd",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116713,7 +116713,7 @@
     "course": "PhD in Artificial Intelligence",
     "degree": "phd",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116721,7 +116721,7 @@
     "course": "PhD in Information Technology",
     "degree": "phd",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116729,7 +116729,7 @@
     "course": "PhD in Telecommunications",
     "degree": "phd",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116737,7 +116737,7 @@
     "course": "PhD in Power Systems",
     "degree": "phd",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116745,7 +116745,7 @@
     "course": "PhD in Finance",
     "degree": "phd",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116753,7 +116753,7 @@
     "course": "PhD in Chemical Engineering",
     "degree": "phd",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116761,7 +116761,7 @@
     "course": "PhD in Psychology",
     "degree": "phd",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116769,7 +116769,7 @@
     "course": "PhD in Law",
     "degree": "phd",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116777,7 +116777,7 @@
     "course": "PhD in Robotics",
     "degree": "phd",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116785,7 +116785,7 @@
     "course": "PhD in Chemistry",
     "degree": "phd",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116793,7 +116793,7 @@
     "course": "PhD in Civil Engineering",
     "degree": "phd",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116801,7 +116801,7 @@
     "course": "MEng in Aerospace Engineering",
     "degree": "master",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116809,7 +116809,7 @@
     "course": "MSc in Artificial Intelligence",
     "degree": "master",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116817,7 +116817,7 @@
     "course": "MSc in Information Technology",
     "degree": "master",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116825,7 +116825,7 @@
     "course": "MSc in Telecommunications",
     "degree": "master",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116833,7 +116833,7 @@
     "course": "MSc in Power Systems",
     "degree": "master",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116841,7 +116841,7 @@
     "course": "MSc in Finance",
     "degree": "master",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116849,7 +116849,7 @@
     "course": "MEng in Chemical Engineering",
     "degree": "master",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116857,7 +116857,7 @@
     "course": "MSc in Psychology",
     "degree": "master",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116865,7 +116865,7 @@
     "course": "LLM in Law",
     "degree": "master",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116873,7 +116873,7 @@
     "course": "MEng in Robotics",
     "degree": "master",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116881,7 +116881,7 @@
     "course": "MSc in Chemistry",
     "degree": "master",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116889,7 +116889,7 @@
     "course": "MEng in Civil Engineering",
     "degree": "master",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116897,7 +116897,7 @@
     "course": "BEng in Aerospace Engineering",
     "degree": "bachelor",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116905,7 +116905,7 @@
     "course": "BSc in Artificial Intelligence",
     "degree": "bachelor",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116913,7 +116913,7 @@
     "course": "BSc in Information Technology",
     "degree": "bachelor",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116921,7 +116921,7 @@
     "course": "BSc in Telecommunications",
     "degree": "bachelor",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116929,7 +116929,7 @@
     "course": "BSc in Power Systems",
     "degree": "bachelor",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116937,7 +116937,7 @@
     "course": "BSc in Finance",
     "degree": "bachelor",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116945,7 +116945,7 @@
     "course": "BEng in Chemical Engineering",
     "degree": "bachelor",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116953,7 +116953,7 @@
     "course": "BSc in Psychology",
     "degree": "bachelor",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116961,7 +116961,7 @@
     "course": "LLB in Law",
     "degree": "bachelor",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116969,7 +116969,7 @@
     "course": "BEng in Robotics",
     "degree": "bachelor",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116977,7 +116977,7 @@
     "course": "BSc in Chemistry",
     "degree": "bachelor",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -116985,7 +116985,7 @@
     "course": "BEng in Civil Engineering",
     "degree": "bachelor",
     "city": "Tokyo",
-    "link": "http://www.sugino.ac.jp/daiindex.html"
+    "link": "http://www.sugino.ac.jp"
   },
   {
     "country": "Japan",
@@ -122369,7 +122369,7 @@
     "course": "PhD in Information Technology",
     "degree": "phd",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122377,7 +122377,7 @@
     "course": "PhD in Aerospace Engineering",
     "degree": "phd",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122385,7 +122385,7 @@
     "course": "PhD in Nursing",
     "degree": "phd",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122393,7 +122393,7 @@
     "course": "PhD in Civil Engineering",
     "degree": "phd",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122401,7 +122401,7 @@
     "course": "PhD in Data Science",
     "degree": "phd",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122409,7 +122409,7 @@
     "course": "PhD in Architecture",
     "degree": "phd",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122417,7 +122417,7 @@
     "course": "PhD in Biology",
     "degree": "phd",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122425,7 +122425,7 @@
     "course": "PhD in Chemistry",
     "degree": "phd",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122433,7 +122433,7 @@
     "course": "PhD in Mathematics",
     "degree": "phd",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122441,7 +122441,7 @@
     "course": "PhD in Psychology",
     "degree": "phd",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122449,7 +122449,7 @@
     "course": "PhD in Software Engineering",
     "degree": "phd",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122457,7 +122457,7 @@
     "course": "PhD in Artificial Intelligence",
     "degree": "phd",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122465,7 +122465,7 @@
     "course": "MSc in Information Technology",
     "degree": "master",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122473,7 +122473,7 @@
     "course": "MEng in Aerospace Engineering",
     "degree": "master",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122481,7 +122481,7 @@
     "course": "MSc in Nursing",
     "degree": "master",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122489,7 +122489,7 @@
     "course": "MEng in Civil Engineering",
     "degree": "master",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122497,7 +122497,7 @@
     "course": "MSc in Data Science",
     "degree": "master",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122505,7 +122505,7 @@
     "course": "MSc in Architecture",
     "degree": "master",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122513,7 +122513,7 @@
     "course": "MSc in Biology",
     "degree": "master",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122521,7 +122521,7 @@
     "course": "MSc in Chemistry",
     "degree": "master",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122529,7 +122529,7 @@
     "course": "MSc in Mathematics",
     "degree": "master",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122537,7 +122537,7 @@
     "course": "MSc in Psychology",
     "degree": "master",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122545,7 +122545,7 @@
     "course": "MEng in Software Engineering",
     "degree": "master",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122553,7 +122553,7 @@
     "course": "MSc in Artificial Intelligence",
     "degree": "master",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122561,7 +122561,7 @@
     "course": "BSc in Information Technology",
     "degree": "bachelor",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122569,7 +122569,7 @@
     "course": "BEng in Aerospace Engineering",
     "degree": "bachelor",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122577,7 +122577,7 @@
     "course": "BSc in Nursing",
     "degree": "bachelor",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122585,7 +122585,7 @@
     "course": "BEng in Civil Engineering",
     "degree": "bachelor",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122593,7 +122593,7 @@
     "course": "BSc in Data Science",
     "degree": "bachelor",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122601,7 +122601,7 @@
     "course": "BSc in Architecture",
     "degree": "bachelor",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122609,7 +122609,7 @@
     "course": "BSc in Biology",
     "degree": "bachelor",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122617,7 +122617,7 @@
     "course": "BSc in Chemistry",
     "degree": "bachelor",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122625,7 +122625,7 @@
     "course": "BSc in Mathematics",
     "degree": "bachelor",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122633,7 +122633,7 @@
     "course": "BSc in Psychology",
     "degree": "bachelor",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122641,7 +122641,7 @@
     "course": "BEng in Software Engineering",
     "degree": "bachelor",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",
@@ -122649,7 +122649,7 @@
     "course": "BSc in Artificial Intelligence",
     "degree": "bachelor",
     "city": "Fuji",
-    "link": "http://www.termnet.co.jp/fujidai"
+    "link": "http://www.termnet.co.jp"
   },
   {
     "country": "Japan",

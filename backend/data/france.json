@@ -65,7 +65,7 @@
     "course": "Advanced Computational Design & Fabrication: Concrete Robotic 3D Printing in Architecture - Summer school 2023",
     "degree": "",
     "city": "Lille",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/1811",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -77,7 +77,7 @@
     "course": "Advanced Master Aeronautical and Space Structures",
     "degree": "Master",
     "city": "Toulouse",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/190",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -197,7 +197,7 @@
     "course": "Advanced Master in Embedded Systems",
     "degree": "Master",
     "city": "Toulouse",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/197",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -413,7 +413,7 @@
     "course": "Aeronautical / Aerospace Engineering courses",
     "degree": "",
     "city": "Toulouse",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3383",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -617,7 +617,7 @@
     "course": "Bachelor (B.Sc.2) of Science in Global Management",
     "degree": "Bachelor",
     "city": "Toulouse",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3145",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -701,7 +701,7 @@
     "course": "Bachelor Degree in Economics and Management - International Track",
     "degree": "Bachelor",
     "city": "Marseille",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/449",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -725,7 +725,7 @@
     "course": "Bachelor in Culinary Arts",
     "degree": "Bachelor",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/1626",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -737,7 +737,7 @@
     "course": "Bachelor in Design",
     "degree": "Bachelor",
     "city": "Nantes",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2674",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -845,7 +845,7 @@
     "course": "Bachelor in International Management - 3rd year entry",
     "degree": "Bachelor",
     "city": "Clermont-Ferrand",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3215",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -1061,7 +1061,7 @@
     "course": "Bachelor of Business Administration",
     "degree": "Bachelor",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/236",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -1121,7 +1121,7 @@
     "course": "Bachelor of Materials Science and Engineering",
     "degree": "Bachelor",
     "city": "Toulouse",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2961",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -1325,7 +1325,7 @@
     "course": "Bachelor's degree (L3) in International Management & Business",
     "degree": "Bachelor",
     "city": "Montpellier",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3936",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -1397,7 +1397,7 @@
     "course": "Bachelor's degree in Administration and International Trade - North America Track",
     "degree": "Bachelor",
     "city": "Créteil",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/1584",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -1517,7 +1517,7 @@
     "course": "BBA Big Data and Management",
     "degree": "Bachelor",
     "city": "Nantes",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2735",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -1661,7 +1661,7 @@
     "course": "Burgundy Wines",
     "degree": "",
     "city": "Beaune",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/1946",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -1793,7 +1793,7 @@
     "course": "Challenges for Sustainable Management",
     "degree": "",
     "city": "Rennes",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3533",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -1973,7 +1973,7 @@
     "course": "Degree of Biotechnology Engineering",
     "degree": "",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/1620",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -2309,7 +2309,7 @@
     "course": "Dual Master's Degree “Europe and Asia in Global Affairs”, with Fudan university",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2885",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -2321,7 +2321,7 @@
     "course": "Dual Master's Degree “European Affairs”, with Freie Universität",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2868",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -2333,7 +2333,7 @@
     "course": "Dual Master's Degree “European Affairs”, with London School of Economics",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2869",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -2381,7 +2381,7 @@
     "course": "Dual Master's Degree “International Affairs”, with Columbia University",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2856",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -2405,7 +2405,7 @@
     "course": "Dual Master's Degree “International Affairs”, with Georgetown University",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2863",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -2477,7 +2477,7 @@
     "course": "Dual Master's Degree “International Affairs”, with University of Saint Gallen",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2862",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -2765,7 +2765,7 @@
     "course": "EIT Manufacturing Master's - Digital Manufacturing for Innovative Ecosystem",
     "degree": "Master",
     "city": "Nantes",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2006",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -2825,7 +2825,7 @@
     "course": "Engineering degree",
     "degree": "",
     "city": "Palaiseau",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3521",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -3221,7 +3221,7 @@
     "course": "Erasmus Mundus Joint Master in Planetary Geosciences - GeoPlaNet",
     "degree": "Master",
     "city": "Nantes",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3319",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -3257,7 +3257,7 @@
     "course": "Erasmus Mundus Joint Master of Science in Imaging and Light in Extended Reality",
     "degree": "Master",
     "city": "Saint-Etienne",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3252",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -3269,7 +3269,7 @@
     "course": "Erasmus Mundus Joint Master programme in Functional Advanced Materials Engineering with Artificial Intelligence for Sustainability",
     "degree": "Master",
     "city": "Grenoble",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/90",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -3521,7 +3521,7 @@
     "course": "European Erasmus Mundus Master in Cognitive Science and Applications, speciality Natural Language Processing",
     "degree": "Master",
     "city": "Nancy",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/1876",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -3581,7 +3581,7 @@
     "course": "European Master in Biological and Chemical Engineering for a Sustainable Bioeconomy - Erasmus Mundus Joint Master (M1&M2)",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2312",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -3641,7 +3641,7 @@
     "course": "European Master's in High Performance Computing (EUMaster4HPC)",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3430",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -3677,7 +3677,7 @@
     "course": "Exchange Semester Agroecology (autumn semester : from September to January / 30 ECTS)",
     "degree": "",
     "city": "Rennes",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2113",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -3713,7 +3713,7 @@
     "course": "Executive Master in Critical Materials",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3875",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -3725,7 +3725,7 @@
     "course": "Executive Master Smart Mobility",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3264",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -3737,7 +3737,7 @@
     "course": "Executive Master's degree in Infrastructure Project Finance",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2278",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -3797,7 +3797,7 @@
     "course": "Expert Diploma in Artistic Pieces",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3527",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -3917,7 +3917,7 @@
     "course": "Foundation Master Programme (1 year pre-master's)",
     "degree": "Master",
     "city": "Nantes",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3417",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -3941,7 +3941,7 @@
     "course": "French and Italian Pastry Arts Diploma",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3525",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -4013,7 +4013,7 @@
     "course": "French Pastry Arts Essentials",
     "degree": "",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2219",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -4109,7 +4109,7 @@
     "course": "Global Engineering Programme",
     "degree": "",
     "city": "La Rochelle",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2183",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -4145,7 +4145,7 @@
     "course": "Global Executive MBA",
     "degree": "Bachelor",
     "city": "Marseille - Toulon - Bordeaux",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/1060",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -4157,7 +4157,7 @@
     "course": "Global Master in Management - Global Economic Transformation & Technology track",
     "degree": "Master",
     "city": "Lille - Nice",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3618",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -4301,7 +4301,7 @@
     "course": "High School Summer Program",
     "degree": "",
     "city": "Lille - Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3165",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -4433,7 +4433,7 @@
     "course": "Industrial ceramics and processing - International semester",
     "degree": "",
     "city": "Limoges",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3841",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -4445,7 +4445,7 @@
     "course": "InMICS - International Master in Composition for Screen",
     "degree": "Master",
     "city": "Lyon",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2303",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -4505,7 +4505,7 @@
     "course": "Intensive Professional Program in Bread Baking",
     "degree": "",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3149",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -4601,7 +4601,7 @@
     "course": "International BBA",
     "degree": "Bachelor",
     "city": "Grenoble",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/751",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -4685,7 +4685,7 @@
     "course": "International Master in BioMedical Engineering",
     "degree": "Master",
     "city": "Villeneuve d'Ascq",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/1654",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -4865,7 +4865,7 @@
     "course": "International Semester - Industrial Processes & Environmental Management",
     "degree": "",
     "city": "Grenoble",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2348",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -5045,7 +5045,7 @@
     "course": "Investment Banking and International Finance - Summer Program",
     "degree": "",
     "city": "Jouy-en-Josas",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/1988",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -5105,7 +5105,7 @@
     "course": "Joint Erasmus Mundus Master in Wine Tourism Innovation",
     "degree": "Master",
     "city": "Bordeaux",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/1969",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -5129,7 +5129,7 @@
     "course": "Leadership & becoming - Summer school",
     "degree": "",
     "city": "LE HAVRE",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3743",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -5177,7 +5177,7 @@
     "course": "Licence (L3) International Economics and Management",
     "degree": "",
     "city": "Strasbourg",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3824",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -5573,7 +5573,7 @@
     "course": "M2 Master of Science Design Engineering : Mechanical Engineering and Materials",
     "degree": "Master",
     "city": "Brest",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2852",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -5609,7 +5609,7 @@
     "course": "M2 Master's of Public Health: Comparative Effectiveness Research",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/1282",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -5633,7 +5633,7 @@
     "course": "M2 Mechanics of Materials for Engineering and Integrity of Structures",
     "degree": "",
     "city": "Gyf-sur-Yvette",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2590",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -5657,7 +5657,7 @@
     "course": "M2 Molecular Nano Bio Photonics",
     "degree": "",
     "city": "Gyf-sur-Yvette",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2588",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -5717,7 +5717,7 @@
     "course": "M2M HEC - Yale",
     "degree": "",
     "city": "Jouy-en-Josas",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/1999",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -5801,7 +5801,7 @@
     "course": "Master 1 Biologie-Santé - Cursus Santé - Site Versailles - Médecine #PR718",
     "degree": "Master",
     "city": "Saint Aubin",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2931",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -5861,7 +5861,7 @@
     "course": "Master 1 Biology-Health: Biochemistry and Biotechnology Platform (Evry Site) #PR806",
     "degree": "Master",
     "city": "Saint Aubin",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2800",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -5897,7 +5897,7 @@
     "course": "Master 1 Biology-Health: Genetics, Molecular and Cellular Biology Platform (Orsay Site) #PR801",
     "degree": "Master",
     "city": "Saint Aubin",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2803",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -5909,7 +5909,7 @@
     "course": "Master 1 Biology-Health: Physiology and Physiopathology Platform (Evry Site) #PR808",
     "degree": "Master",
     "city": "Saint Aubin",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2804",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -6005,7 +6005,7 @@
     "course": "Master 1 Electrical Engineering : International track in electrical engineering",
     "degree": "Master",
     "city": "Saint Aubin",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2355",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -6041,7 +6041,7 @@
     "course": "Master 1 Graduate Programme in Cognitive Sciences for Business purposes (SCE)",
     "degree": "Master",
     "city": "Lille",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2962",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -6641,7 +6641,7 @@
     "course": "Master 2 Chimie/Sciences du médicament et des produits de santé: Research and Development for Analytical Strategies #PR378",
     "degree": "Master",
     "city": "Saint Aubin",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2820",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -6977,7 +6977,7 @@
     "course": "Master 2 Environmental, Energy and Transportation Economics : Energy Economics #PR347",
     "degree": "Master",
     "city": "Saint Aubin",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/1411",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -7265,7 +7265,7 @@
     "course": "Master 2 in Foundations of Computer Science",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2565",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -7673,7 +7673,7 @@
     "course": "Master 2 Management Stratégique: International Strategy and Management #PR328",
     "degree": "Master",
     "city": "Saint Aubin",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2923",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -7817,7 +7817,7 @@
     "course": "Master 2 Mathématiques et applications: Data Science : Health, Insurance and Finance - apprentissage #PR1174",
     "degree": "Master",
     "city": "Saint Aubin",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2898",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -7865,7 +7865,7 @@
     "course": "Master 2 of Fundamental Physics and Applications: Universe & Particles",
     "degree": "Master",
     "city": "Clermont-Ferrand",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2775",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -7913,7 +7913,7 @@
     "course": "Master 2 Pharmaceutical Science : Regulatory Affairs of the Health Industry #PR392",
     "degree": "Master",
     "city": "Saint Aubin",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/1473",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -8033,7 +8033,7 @@
     "course": "Master 2 Science Politique: International Cooperation Policies #PR1114",
     "degree": "Master",
     "city": "Saint Aubin",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2897",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -8045,7 +8045,7 @@
     "course": "Master 2 Sciences and Technology for Energy",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2744",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -8057,7 +8057,7 @@
     "course": "Master 2 Sciences du médicament et des produits de santé: Quality Control : Medication #PR389",
     "degree": "Master",
     "city": "Saint Aubin",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2925",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -8105,7 +8105,7 @@
     "course": "Master 2 Sport Management : Sport Leisure and Event Management",
     "degree": "Master",
     "city": "Saint Aubin",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2362",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -8297,7 +8297,7 @@
     "course": "Master Computer Science - Track Machine Learning & Data Mining",
     "degree": "Master",
     "city": "Saint-Etienne",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3253",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -8381,7 +8381,7 @@
     "course": "Master degree in Earth and Water under Global Change",
     "degree": "Master",
     "city": "Montpellier",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3513",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -8753,7 +8753,7 @@
     "course": "Master Graduate Programme in Physics of the 21st century (1st year)",
     "degree": "Master",
     "city": "Lille",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2946",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -8885,7 +8885,7 @@
     "course": "Master in Artificial Intelligence and Cybersecurity",
     "degree": "Master",
     "city": "Noisy-le-Grand",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/111",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -9005,7 +9005,7 @@
     "course": "Master in Cancer Biology",
     "degree": "Master",
     "city": "Bordeaux",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2306",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -9281,7 +9281,7 @@
     "course": "Master in Fashion Management",
     "degree": "Master",
     "city": "Lille - Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/966",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -9293,7 +9293,7 @@
     "course": "Master in Finance",
     "degree": "Master",
     "city": "Cergy-Pontoise",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/549",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -9317,7 +9317,7 @@
     "course": "Master in Human Rights and Humanitarian Action",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/712",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -9485,7 +9485,7 @@
     "course": "Master in International Human Resources Management (2nd year)",
     "degree": "Master",
     "city": "Angers",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2734",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -9641,7 +9641,7 @@
     "course": "Master in Light Sciences and Technologies",
     "degree": "Master",
     "city": "Bordeaux",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/1960",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -9785,7 +9785,7 @@
     "course": "Master in Management (Grande Ecole Program)",
     "degree": "Master",
     "city": "Grenoble",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/1627",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -9845,7 +9845,7 @@
     "course": "Master in Management & Public Affairs - Double Degree with Freie Universität Berlin",
     "degree": "Master",
     "city": "Jouy-en-Josas",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/1561",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -9917,7 +9917,7 @@
     "course": "Master in Management Sciences",
     "degree": "Master",
     "city": "Jouy-en-Josas",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2765",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -10145,7 +10145,7 @@
     "course": "Master in Optics, Image, Vision, Multimedia / Track \"Computational Colour & Spectral Imaging - COSI\" - EMJMD",
     "degree": "Master",
     "city": "Saint-Etienne",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3251",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -10241,7 +10241,7 @@
     "course": "Master in Sciences & Technology \"Electronic Embedded Systems\"",
     "degree": "Master",
     "city": "Saint-Etienne du Rouvray",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2958",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -10337,7 +10337,7 @@
     "course": "Master International Air Transport Operations Management",
     "degree": "Master",
     "city": "Toulouse",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3290",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -10433,7 +10433,7 @@
     "course": "Master Material Science for Nuclear Energy",
     "degree": "Master",
     "city": "Grenoble",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/63",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -10625,7 +10625,7 @@
     "course": "Master of Civil Engineering",
     "degree": "Master",
     "city": "Nancy",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2991",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -10673,7 +10673,7 @@
     "course": "Master of Information Technology Innovative Information Systems",
     "degree": "Master",
     "city": "Toulouse",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3684",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -10685,7 +10685,7 @@
     "course": "Master of International Business",
     "degree": "Master",
     "city": "Versailles Saint Quentin en Yvelines",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2599",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -10841,7 +10841,7 @@
     "course": "Master of Science (M2) in Human Resource Management and Organisational Behaviour",
     "degree": "Master",
     "city": "Toulouse",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2030",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -10865,7 +10865,7 @@
     "course": "Master of Science (M2) in Strategy and International Management",
     "degree": "Master",
     "city": "Toulouse",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2033",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -10949,7 +10949,7 @@
     "course": "Master of Science (MSc) Electrical and Optical engineering - 1st year",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3793",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -10961,7 +10961,7 @@
     "course": "Master of Science (MSc) Electrical and Optical engineering - 2nd year",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3794",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -11093,7 +11093,7 @@
     "course": "Master of Science (MSc) Supply Chain Management - Purchasing",
     "degree": "Master",
     "city": "LE HAVRE",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/96",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -11213,7 +11213,7 @@
     "course": "Master of Science and Technology (MSc&T) Data Science For Business",
     "degree": "Master",
     "city": "Palaiseau",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/1955",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -11513,7 +11513,7 @@
     "course": "Master of Science in Digital Marketing Management",
     "degree": "Master",
     "city": "Rennes",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/931",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -12221,7 +12221,7 @@
     "course": "Master's degree (2nd year) Management of Information and Knowledge Systems (MIKS) - Capability Engineering and Management",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3587",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -12257,7 +12257,7 @@
     "course": "Master's degree (M1 & M2) in Science and Technology - Environmental Engineering",
     "degree": "Master",
     "city": "Marseille",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2280",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -12305,7 +12305,7 @@
     "course": "Master's degree (M1) in Applied Economics: Public Policy and Development",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3047",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -12461,7 +12461,7 @@
     "course": "Master's degree (M1) in Earth and Planetary Science, Environment - Geophysics and Earth Imaging",
     "degree": "Master",
     "city": "Grenoble",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3898",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -12473,7 +12473,7 @@
     "course": "Master's degree (M1) in Earth and Planetary Science, Environment - Georesources",
     "degree": "Master",
     "city": "Grenoble",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3899",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -12581,7 +12581,7 @@
     "course": "Master's degree (M1) in Finance - Financial Markets track",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3055",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -12713,7 +12713,7 @@
     "course": "Master's degree (M1) in Mathematics & Applications - Applied Mathematics",
     "degree": "Master",
     "city": "Grenoble",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3912",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -12725,7 +12725,7 @@
     "course": "Master's degree (M1) in Mathematics and applications",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3760",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -12773,7 +12773,7 @@
     "course": "Master's degree (M1) in Nanosciences and Nanotechnologies - Nanochemistry",
     "degree": "Master",
     "city": "Grenoble",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3078",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -12857,7 +12857,7 @@
     "course": "Master's degree (M1) in Space Science and Technology",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3534",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -13121,7 +13121,7 @@
     "course": "Master's degree (M2) in Aeronautical Engineering (RNCP36108)",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3645",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -13253,7 +13253,7 @@
     "course": "Master's degree (M2) in BioMedical Engineering",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3050",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -13301,7 +13301,7 @@
     "course": "Master's degree (M2) in Biomimicry and Surface Engineering (BIOSURF), Bioinspiration, Tribology, Surface Texturing, Wettability, Materials",
     "degree": "Master",
     "city": "Ecully",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3135",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -13385,7 +13385,7 @@
     "course": "Master's degree (M2) in Civil Engineering in Geomechanics, Civil Engineering and Risks",
     "degree": "Master",
     "city": "Grenoble",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3089",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -14585,7 +14585,7 @@
     "course": "Master's degree (M2) in International Management - European Context",
     "degree": "Master",
     "city": "Toulouse",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2040",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -14897,7 +14897,7 @@
     "course": "Master's degree (M2) in Mechanical Engineering - Turbulences: Methods & Applications",
     "degree": "Master",
     "city": "Grenoble",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3259",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -14993,7 +14993,7 @@
     "course": "Master's degree (M2) in Multilevel Governance in Europe",
     "degree": "Master",
     "city": "Lille",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3923",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -15089,7 +15089,7 @@
     "course": "Master's degree (M2) in Nuclear Energy",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3059",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -15353,7 +15353,7 @@
     "course": "Master's degree (M2) in Science in Advanced Electronic Systems Engineering",
     "degree": "Master",
     "city": "Dijon",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/1594",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -15365,7 +15365,7 @@
     "course": "Master's degree (M2) in Smart Mechanics",
     "degree": "Master",
     "city": "Besançon",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3237",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -15413,7 +15413,7 @@
     "course": "Master's degree (M2) in Strategy & Consulting",
     "degree": "Master",
     "city": "Lyon Ecully",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3090",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -15533,7 +15533,7 @@
     "course": "Master's degree (M2) in Urban Planning and International Expertise",
     "degree": "Master",
     "city": "Marne-la-Vallée",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2459",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -15845,7 +15845,7 @@
     "course": "Master's degree in Administration and International Trade - Sustainability and Green Business Track",
     "degree": "Master",
     "city": "Créteil",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/1586",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -15881,7 +15881,7 @@
     "course": "Master's Degree in Agriculture, Food Sciences, Environment and Nutrition",
     "degree": "Master",
     "city": "Avignon",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2763",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -15929,7 +15929,7 @@
     "course": "Master's degree in Banking and Finance: Law and Regulations of Banking and Financial Systems",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3010",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -16097,7 +16097,7 @@
     "course": "Master's degree in English Studies – Literature",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3005",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -16133,7 +16133,7 @@
     "course": "Master's degree in Functional Biology and Ecology",
     "degree": "Master",
     "city": "Perpignan",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3687",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -16325,7 +16325,7 @@
     "course": "Master's degree in Molecular Materials for Organic Electronics and Photonics (M2)",
     "degree": "Master",
     "city": "Angers",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2253",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -16481,7 +16481,7 @@
     "course": "Master's degree Integrative Biology and Physiology: Computational and Mathematical Biology – Bioinformatics",
     "degree": "Master",
     "city": "Marseille",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2690",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -16541,7 +16541,7 @@
     "course": "Master's degree of Engineering (M2) in Smart & Secure Devices for Innovation and Defense",
     "degree": "Master",
     "city": "Ivry sur Seine",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2595",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -16553,7 +16553,7 @@
     "course": "Master's Degree Of Science (MSc) Vaccinology from basic immunology to social sciences of health (M2)",
     "degree": "Master",
     "city": "Créteil",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2068",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -16649,7 +16649,7 @@
     "course": "Master's Degrees in Careers in Teaching and Secondary Level Education / English (ESPE)",
     "degree": "Master",
     "city": "La Garde",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2493",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -16853,7 +16853,7 @@
     "course": "MBA",
     "degree": "Bachelor",
     "city": "Paris la Défense",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/1940",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -17045,7 +17045,7 @@
     "course": "MFA Recording & Music Production",
     "degree": "",
     "city": "Elancourt",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2783",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -17189,7 +17189,7 @@
     "course": "MS in Media Management",
     "degree": "",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2627",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -17321,7 +17321,7 @@
     "course": "MSc Artificial Intelligence & Digital Technology Management",
     "degree": "Master",
     "city": "Dijon",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2170",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -17549,7 +17549,7 @@
     "course": "MSc Data sciences and artificial intelligence",
     "degree": "Master",
     "city": "Nice",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2075",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -17561,7 +17561,7 @@
     "course": "MSc Digital Business Analytics",
     "degree": "Master",
     "city": "Paris la Défense",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/645",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -17597,7 +17597,7 @@
     "course": "MSc Digital Transformation & Business Consulting",
     "degree": "Master",
     "city": "Montpellier",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3357",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -17621,7 +17621,7 @@
     "course": "MSc Environmental Hazards and Risks Management",
     "degree": "Master",
     "city": "Nice",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2081",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -17705,7 +17705,7 @@
     "course": "MSc in Aerospace Propulsion",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3971",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -17933,7 +17933,7 @@
     "course": "MSc in Culinary Leadership and Innovation",
     "degree": "Master",
     "city": "Ecully",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/1225",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -18353,7 +18353,7 @@
     "course": "MSc in International Business Management",
     "degree": "Master",
     "city": "La Rochelle",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/852",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -18365,7 +18365,7 @@
     "course": "MSc in International Corporate Finance",
     "degree": "Master",
     "city": "Paris-La Défense",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3390",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -18569,7 +18569,7 @@
     "course": "MSc in Luxury and Design Management",
     "degree": "Master",
     "city": "Nancy",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3340",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -18581,7 +18581,7 @@
     "course": "MSc in Luxury and Fashion Management",
     "degree": "Master",
     "city": "Sophia Antipolis",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/458",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -18617,7 +18617,7 @@
     "course": "MSc in Management of Energy Transitions",
     "degree": "Master",
     "city": "Lyon Ecully",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3728",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -18689,7 +18689,7 @@
     "course": "MSc in Marketing and Creativity",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2614",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -18761,7 +18761,7 @@
     "course": "MSc in Mechanical Engineering - Energetics and Propulsion",
     "degree": "Master",
     "city": "Nantes",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/305",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -18821,7 +18821,7 @@
     "course": "MSc in Project Management for Business Development",
     "degree": "Master",
     "city": "Sophia Antipolis",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/462",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -18893,7 +18893,7 @@
     "course": "MSc in Strategy and Digital Business",
     "degree": "Master",
     "city": "Paris",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2605",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -18953,7 +18953,7 @@
     "course": "MSc in Supply Chain Management",
     "degree": "Master",
     "city": "Reims et Rouen",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/1287",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -19145,7 +19145,7 @@
     "course": "MSc International Human Resource Management",
     "degree": "Master",
     "city": "Grenoble",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3632",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -19337,7 +19337,7 @@
     "course": "MSc Managerial and Financial Economics",
     "degree": "Master",
     "city": "Jouy-en-Josas",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/519",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -19385,7 +19385,7 @@
     "course": "MSc Marketing Strategy",
     "degree": "Master",
     "city": "Grenoble",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3628",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -19433,7 +19433,7 @@
     "course": "MSc Ocean Science, Conservation & Innovation - MARRES",
     "degree": "Master",
     "city": "Nice",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2077",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -19493,7 +19493,7 @@
     "course": "MSc Sustainable Finance (Paris)",
     "degree": "Master",
     "city": "Marseille - Toulon - Bordeaux",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/1171",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -19517,7 +19517,7 @@
     "course": "MSc Sustainable Management and Eco-Innovation",
     "degree": "Master",
     "city": "Beauvais",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3350",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -19565,7 +19565,7 @@
     "course": "MSc Wine & Hospitality Management",
     "degree": "Master",
     "city": "Marseille - Toulon - Bordeaux",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2345",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -19601,7 +19601,7 @@
     "course": "MSc. AEROSPACE MANAGEMENT",
     "degree": "Master",
     "city": "Toulouse",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2696",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -19649,7 +19649,7 @@
     "course": "MSc. CORPORATE FINANCE AND ADVISORY",
     "degree": "Master",
     "city": "Toulouse",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/2700",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -19757,7 +19757,7 @@
     "course": "MSc. MARKETING MANAGEMENT & COMMUNICATION",
     "degree": "Master",
     "city": "Toulouse",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/1846",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -20105,7 +20105,7 @@
     "course": "Programme in European Politics",
     "degree": "",
     "city": "Lille",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/1281",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -20273,7 +20273,7 @@
     "course": "Specialized Engineer in Communications for Intelligent Transport Systems - Connected Vehicles",
     "degree": "",
     "city": "Sophia Antipolis",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/1006",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -20525,7 +20525,7 @@
     "course": "Summer Program - Humanitarian Engineering",
     "degree": "",
     "city": "Villeurbanne",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3767",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -20993,7 +20993,7 @@
     "course": "Winter School",
     "degree": "",
     "city": "Toulouse",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/1897",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -21005,7 +21005,7 @@
     "course": "Winter School - Game Development",
     "degree": "",
     "city": "Le Kremlin Bicêtre",
-    "link": "https://taughtie.campusfrance.org/tiesearch/#/catalog/3765",
+    "link": "https://taughtie.campusfrance.org",
     "fee": "",
     "source": "Campus France Taught in English",
     "source_url": "https://tie-api.campusfrance.org/sgetprograms/1",
@@ -53969,7 +53969,7 @@
     "course": "PhD in Mathematics",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -53977,7 +53977,7 @@
     "course": "PhD in Information Technology",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -53985,7 +53985,7 @@
     "course": "PhD in Chemical Engineering",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -53993,7 +53993,7 @@
     "course": "PhD in Software Engineering",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54001,7 +54001,7 @@
     "course": "PhD in Civil Engineering",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54009,7 +54009,7 @@
     "course": "PhD in Psychology",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54017,7 +54017,7 @@
     "course": "PhD in Biomedical Engineering",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54025,7 +54025,7 @@
     "course": "PhD in Artificial Intelligence",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54033,7 +54033,7 @@
     "course": "PhD in Business Administration",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54041,7 +54041,7 @@
     "course": "PhD in Aerospace Engineering",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54049,7 +54049,7 @@
     "course": "PhD in Embedded Systems",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54057,7 +54057,7 @@
     "course": "PhD in Nursing",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54065,7 +54065,7 @@
     "course": "MSc in Mathematics",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54073,7 +54073,7 @@
     "course": "MSc in Information Technology",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54081,7 +54081,7 @@
     "course": "MEng in Chemical Engineering",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54089,7 +54089,7 @@
     "course": "MEng in Software Engineering",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54097,7 +54097,7 @@
     "course": "MEng in Civil Engineering",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54105,7 +54105,7 @@
     "course": "MSc in Psychology",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54113,7 +54113,7 @@
     "course": "MEng in Biomedical Engineering",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54121,7 +54121,7 @@
     "course": "MSc in Artificial Intelligence",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54129,7 +54129,7 @@
     "course": "MBA in Business Administration",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54137,7 +54137,7 @@
     "course": "MEng in Aerospace Engineering",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54145,7 +54145,7 @@
     "course": "MSc in Embedded Systems",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54153,7 +54153,7 @@
     "course": "MSc in Nursing",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54161,7 +54161,7 @@
     "course": "BSc in Mathematics",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54169,7 +54169,7 @@
     "course": "BSc in Information Technology",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54177,7 +54177,7 @@
     "course": "BEng in Chemical Engineering",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54185,7 +54185,7 @@
     "course": "BEng in Software Engineering",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54193,7 +54193,7 @@
     "course": "BEng in Civil Engineering",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54201,7 +54201,7 @@
     "course": "BSc in Psychology",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54209,7 +54209,7 @@
     "course": "BEng in Biomedical Engineering",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54217,7 +54217,7 @@
     "course": "BSc in Artificial Intelligence",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54225,7 +54225,7 @@
     "course": "BBA in Business Administration",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54233,7 +54233,7 @@
     "course": "BEng in Aerospace Engineering",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54241,7 +54241,7 @@
     "course": "BSc in Embedded Systems",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -54249,7 +54249,7 @@
     "course": "BSc in Nursing",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.ifp.fr/EC/EC000GP1.html"
+    "link": "http://www.ifp.fr"
   },
   {
     "country": "France",
@@ -56561,7 +56561,7 @@
     "course": "PhD in Power Systems",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56569,7 +56569,7 @@
     "course": "PhD in Biomedical Engineering",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56577,7 +56577,7 @@
     "course": "PhD in Medicine",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56585,7 +56585,7 @@
     "course": "PhD in Artificial Intelligence",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56593,7 +56593,7 @@
     "course": "PhD in Embedded Systems",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56601,7 +56601,7 @@
     "course": "PhD in Mathematics",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56609,7 +56609,7 @@
     "course": "PhD in Law",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56617,7 +56617,7 @@
     "course": "PhD in Software Engineering",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56625,7 +56625,7 @@
     "course": "PhD in Chemistry",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56633,7 +56633,7 @@
     "course": "PhD in Physics",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56641,7 +56641,7 @@
     "course": "PhD in Chemical Engineering",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56649,7 +56649,7 @@
     "course": "PhD in Biology",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56657,7 +56657,7 @@
     "course": "MSc in Power Systems",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56665,7 +56665,7 @@
     "course": "MEng in Biomedical Engineering",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56673,7 +56673,7 @@
     "course": "MD in Medicine",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56681,7 +56681,7 @@
     "course": "MSc in Artificial Intelligence",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56689,7 +56689,7 @@
     "course": "MSc in Embedded Systems",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56697,7 +56697,7 @@
     "course": "MSc in Mathematics",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56705,7 +56705,7 @@
     "course": "LLM in Law",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56713,7 +56713,7 @@
     "course": "MEng in Software Engineering",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56721,7 +56721,7 @@
     "course": "MSc in Chemistry",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56729,7 +56729,7 @@
     "course": "MSc in Physics",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56737,7 +56737,7 @@
     "course": "MEng in Chemical Engineering",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56745,7 +56745,7 @@
     "course": "MSc in Biology",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56753,7 +56753,7 @@
     "course": "BSc in Power Systems",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56761,7 +56761,7 @@
     "course": "BEng in Biomedical Engineering",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56769,7 +56769,7 @@
     "course": "MBBS in Medicine",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56777,7 +56777,7 @@
     "course": "BSc in Artificial Intelligence",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56785,7 +56785,7 @@
     "course": "BSc in Embedded Systems",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56793,7 +56793,7 @@
     "course": "BSc in Mathematics",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56801,7 +56801,7 @@
     "course": "LLB in Law",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56809,7 +56809,7 @@
     "course": "BEng in Software Engineering",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56817,7 +56817,7 @@
     "course": "BSc in Chemistry",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56825,7 +56825,7 @@
     "course": "BSc in Physics",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56833,7 +56833,7 @@
     "course": "BEng in Chemical Engineering",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -56841,7 +56841,7 @@
     "course": "BSc in Biology",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.iota.u-psud.fr/~ecole"
+    "link": "http://www.iota.u-psud.fr"
   },
   {
     "country": "France",
@@ -70769,7 +70769,7 @@
     "course": "PhD in Data Science",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -70777,7 +70777,7 @@
     "course": "PhD in Biomedical Engineering",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -70785,7 +70785,7 @@
     "course": "PhD in Medicine",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -70793,7 +70793,7 @@
     "course": "PhD in Embedded Systems",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -70801,7 +70801,7 @@
     "course": "PhD in Computer Science",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -70809,7 +70809,7 @@
     "course": "PhD in Civil Engineering",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -70817,7 +70817,7 @@
     "course": "PhD in Chemistry",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -70825,7 +70825,7 @@
     "course": "PhD in Chemical Engineering",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -70833,7 +70833,7 @@
     "course": "PhD in Telecommunications",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -70841,7 +70841,7 @@
     "course": "PhD in Nursing",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -70849,7 +70849,7 @@
     "course": "PhD in Power Systems",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -70857,7 +70857,7 @@
     "course": "PhD in Information Technology",
     "degree": "phd",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -70865,7 +70865,7 @@
     "course": "MSc in Data Science",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -70873,7 +70873,7 @@
     "course": "MEng in Biomedical Engineering",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -70881,7 +70881,7 @@
     "course": "MD in Medicine",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -70889,7 +70889,7 @@
     "course": "MSc in Embedded Systems",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -70897,7 +70897,7 @@
     "course": "MSc in Computer Science",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -70905,7 +70905,7 @@
     "course": "MEng in Civil Engineering",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -70913,7 +70913,7 @@
     "course": "MSc in Chemistry",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -70921,7 +70921,7 @@
     "course": "MEng in Chemical Engineering",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -70929,7 +70929,7 @@
     "course": "MSc in Telecommunications",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -70937,7 +70937,7 @@
     "course": "MSc in Nursing",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -70945,7 +70945,7 @@
     "course": "MSc in Power Systems",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -70953,7 +70953,7 @@
     "course": "MSc in Information Technology",
     "degree": "master",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -70961,7 +70961,7 @@
     "course": "BSc in Data Science",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -70969,7 +70969,7 @@
     "course": "BEng in Biomedical Engineering",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -70977,7 +70977,7 @@
     "course": "MBBS in Medicine",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -70985,7 +70985,7 @@
     "course": "BSc in Embedded Systems",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -70993,7 +70993,7 @@
     "course": "BSc in Computer Science",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -71001,7 +71001,7 @@
     "course": "BEng in Civil Engineering",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -71009,7 +71009,7 @@
     "course": "BSc in Chemistry",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -71017,7 +71017,7 @@
     "course": "BEng in Chemical Engineering",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -71025,7 +71025,7 @@
     "course": "BSc in Telecommunications",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -71033,7 +71033,7 @@
     "course": "BSc in Nursing",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -71041,7 +71041,7 @@
     "course": "BSc in Power Systems",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
@@ -71049,7 +71049,7 @@
     "course": "BSc in Information Technology",
     "degree": "bachelor",
     "city": "Paris",
-    "link": "http://www.univ-inpt.fr/~ensct"
+    "link": "http://www.univ-inpt.fr"
   },
   {
     "country": "France",
