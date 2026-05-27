@@ -177,10 +177,12 @@ export default function Contact() {
                     style={{ cursor: 'pointer' }}
                   >
                     <option value="">Select a category</option>
-                    <option value="General Inquiry">General Inquiry</option>
-                    <option value="Technical Support">Technical Support</option>
-                    <option value="Feedback & Suggestions">Feedback & Suggestions</option>
-                    <option value="Partnership & Advertising">Partnership & Advertising</option>
+                    <option value="University Matching & Admission">University Matching & Admission</option>
+                    <option value="Visa & Document Preparation">Visa & Document Preparation</option>
+                    <option value="Eligibility & Grade Conversion">Eligibility & Grade Conversion (APS/GPA)</option>
+                    <option value="Scholarships & Funding">Scholarships & Funding</option>
+                    <option value="Profile & Account Setup">Profile & Account Setup</option>
+                    <option value="Bug Report or Feedback">Bug Report or Feedback</option>
                     <option value="Other">Other</option>
                   </select>
                 </div>
