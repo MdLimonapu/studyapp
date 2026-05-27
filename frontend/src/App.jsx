@@ -116,7 +116,7 @@ export default function App() {
         <div className="topbar-right">
           <nav className="nav-links">
             <NavLink to="/">Home</NavLink>
-            <NavLink to="/university">University</NavLink>
+            <NavLink to="/university">University Matches</NavLink>
             <NavLink to="/roadmap">Check Eligibility</NavLink>
             <NavLink to="/contact">Contact</NavLink>
             <SignedIn>
