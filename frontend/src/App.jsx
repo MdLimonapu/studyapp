@@ -4,6 +4,7 @@ import Home from './pages/Home'
 import University from './pages/University'
 import Profile from './pages/Profile'
 import Roadmap from './pages/Roadmap'
+import Contact from './pages/Contact'
 import { SignedIn, SignedOut, UserButton, SignInButton, useUser } from '@clerk/clerk-react'
 import { fetchProfile, saveProfile, registerUser } from './api'
 
@@ -115,6 +116,7 @@ export default function App() {
             <NavLink to="/">Home</NavLink>
             <NavLink to="/university">University</NavLink>
             <NavLink to="/roadmap">Check Eligibility</NavLink>
+            <NavLink to="/contact">Contact</NavLink>
             <SignedIn>
               <NavLink to="/profile">Profile</NavLink>
             </SignedIn>
@@ -165,10 +167,41 @@ export default function App() {
           <Route path="/university" element={<University />} />
           <Route path="/roadmap" element={<Roadmap />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
 
+      <footer className="footer">
+        <div className="footer-content">
+          <div className="footer-brand">
+            <span className="footer-logo">Stud<span style={{ color: 'var(--accent)' }}>plex</span></span>
+            <p className="footer-tagline">Personalised international university matches in seconds.</p>
+          </div>
+          <div className="footer-links-group">
+            <div className="footer-col">
+              <h4>Navigation</h4>
+              <NavLink to="/">Home</NavLink>
+              <NavLink to="/university">University Matches</NavLink>
+              <NavLink to="/roadmap">Check Eligibility</NavLink>
+            </div>
+            <div className="footer-col">
+              <h4>Support</h4>
+              <NavLink to="/contact">Contact Support</NavLink>
+              <a href="https://clerk.com" target="_blank" rel="noreferrer">Secure Login</a>
+              <a href="https://www.daad.de" target="_blank" rel="noreferrer">DAAD Partner</a>
+            </div>
+            <div className="footer-col">
+              <h4>Legal</h4>
+              <span className="footer-dummy-link">Privacy Policy</span>
+              <span className="footer-dummy-link">Terms of Service</span>
+            </div>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <p>&copy; {new Date().getFullYear()} Studplex. All rights reserved. English-taught courses matching system.</p>
+        </div>
+      </footer>
     </div>
   )
 }
