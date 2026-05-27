@@ -819,9 +819,7 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   .pf-section-card { padding: 20px; }
 }
 
-/* FOOTER */
-.footer { text-align: center; padding: 28px 20px; border-top: 1px solid var(--card-border); color: var(--muted); font-size: 13px; }
-.footer p { margin: 4px 0; }
+/* Legacy footer removed to resolve styling conflicts */
 
 /* MODAL */
 .modal-overlay {
@@ -1311,11 +1309,13 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   padding: 48px 5% 24px 5%;
   margin-top: 60px;
   color: var(--muted);
+  text-align: left;
 }
 
 .footer-content {
   display: flex;
   justify-content: space-between;
+  align-items: flex-start;
   flex-wrap: wrap;
   gap: 40px;
   max-width: 100%;
@@ -1323,8 +1323,12 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 }
 
 .footer-brand {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
   min-width: 240px;
+  max-width: 320px;
 }
 
 .footer-logo {
@@ -1333,13 +1337,12 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   color: var(--text);
   letter-spacing: -0.02em;
   display: inline-block;
-  margin-bottom: 12px;
 }
 
 .footer-tagline {
   font-size: 13.5px;
   line-height: 1.6;
-  max-width: 320px;
+  color: var(--muted);
 }
 
 .footer-links-group {
