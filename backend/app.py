@@ -708,6 +708,17 @@ def get_countries():
     return jsonify(COUNTRIES)
 
 
+def generate_user_id(email):
+    import hashlib
+    if not email:
+        return ""
+    hash_object = hashlib.md5(email.lower().strip().encode('utf-8'))
+    hash_hex = hash_object.hexdigest()
+    # Take first 5 characters of hex and convert to integer, then map to a 5-digit range (10000 - 99999)
+    num = int(hash_hex[:5], 16) % 90000 + 10000
+    return f"SPX-{num}"
+
+
 @app.route("/api/profile", methods=["GET"])
 def get_profile():
     email = request.args.get("email")
@@ -716,6 +727,12 @@ def get_profile():
             user_doc = users_col.find_one({"email": email.lower()})
             if user_doc:
                 user_doc["_id"] = str(user_doc["_id"])
+                
+                # Auto-generate and save studplexId if missing
+                if "studplexId" not in user_doc:
+                    user_doc["studplexId"] = generate_user_id(email)
+                    users_col.update_one({"email": email.lower()}, {"$set": {"studplexId": user_doc["studplexId"]}})
+                
                 if "signUpDate" in user_doc:
                     user_doc["signUpDate"] = user_doc["signUpDate"].isoformat()
                 if "lastActive" in user_doc:
@@ -724,10 +741,16 @@ def get_profile():
         except Exception as e:
             print(f"⚠️ Error fetching profile from MongoDB: {e}", flush=True)
 
+    local_data = {}
     if os.path.exists(PROFILE_FILE):
-        with open(PROFILE_FILE) as f:
-            return jsonify(json.load(f))
-    return jsonify({})
+        try:
+            with open(PROFILE_FILE) as f:
+                local_data = json.load(f)
+        except Exception:
+            pass
+    if email:
+        local_data["studplexId"] = generate_user_id(email)
+    return jsonify(local_data)
 
 
 @app.route("/api/profile", methods=["POST"])
@@ -742,6 +765,9 @@ def save_profile():
             update_data["email"] = email.lower()
             update_data["lastActive"] = datetime.datetime.now(datetime.timezone.utc)
             
+            # Generate and update studplexId
+            update_data["studplexId"] = generate_user_id(email)
+            
             # Remove MongoDB internal _id if it exists in payload
             update_data.pop("_id", None)
             
@@ -755,6 +781,8 @@ def save_profile():
             print(f"⚠️ Error saving profile to MongoDB: {e}", flush=True)
 
     with open(PROFILE_FILE, "w") as f:
+        if email:
+            data["studplexId"] = generate_user_id(email)
         json.dump(data, f)
     return jsonify({"status": "saved"})
 
@@ -851,6 +879,7 @@ def register_user():
                 "fullName": full_name,
                 "method": method,
                 "avatarUrl": avatar_url,
+                "studplexId": generate_user_id(email),
                 "lastActive": datetime.datetime.now(datetime.timezone.utc)
             }
             users_col.update_one(
@@ -859,13 +888,13 @@ def register_user():
                 upsert=True
             )
             print(f"💾 User saved to Cloud MongoDB: {email}", flush=True)
-            return jsonify({"status": "saved", "database": "mongodb"})
+            return jsonify({"status": "saved", "database": "mongodb", "studplexId": user_doc["studplexId"]})
         except Exception as e:
             print(f"⚠️ Failed to save user to MongoDB: {e}", flush=True)
             return jsonify({"status": "saved_fallback_error", "error": str(e)})
     else:
         print(f"⚠️ User sign-up bypass (MongoDB disconnected): {email}", flush=True)
-        return jsonify({"status": "saved_offline"})
+        return jsonify({"status": "saved_offline", "studplexId": generate_user_id(email)})
 
 
 if __name__ == "__main__":

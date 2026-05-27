@@ -23,7 +23,8 @@ export default function Profile() {
   const { user, isLoaded } = useUser()
   const [profile, setProfile] = useState({
     fullName: '', email: '', currentDegree: '', currentField: '',
-    semester: '', universityName: '', grade: '', notes: '', avatarUrl: ''
+    semester: '', universityName: '', grade: '', notes: '', avatarUrl: '',
+    studplexId: ''
   })
   const [initialLoaded, setInitialLoaded] = useState(false)
   const [saved, setSaved]         = useState(false)
@@ -127,6 +128,21 @@ export default function Profile() {
           <div className="pf-avatar-info">
             <p className="pf-avatar-name">{profile.fullName || 'Your Name'}</p>
             <p className="pf-avatar-email">{profile.email || 'No email added yet'}</p>
+            {profile.studplexId && (
+              <span className="pf-avatar-id" style={{ 
+                display: 'inline-block', 
+                marginTop: '8px', 
+                padding: '4px 10px', 
+                borderRadius: '8px', 
+                fontSize: '11px', 
+                fontWeight: '700', 
+                background: 'rgba(81, 250, 170, 0.1)', 
+                color: 'var(--accent)',
+                letterSpacing: '0.05em'
+              }}>
+                ID: {profile.studplexId}
+              </span>
+            )}
           </div>
         </div>
 
