@@ -12,7 +12,7 @@ export default function Contact() {
     setError(null)
     
     try {
-      const response = await fetch("https://formsubmit.co/ajax/mdlimon2466@gmail.com", {
+      const response = await fetch("https://formsubmit.co/ajax/support@studplex.com", {
         method: "POST",
         headers: { 
           'Content-Type': 'application/json',
