@@ -134,7 +134,6 @@ export default function Profile() {
                 className="pf-ring-prog"
                 cx="18" cy="18" r="15.9"
                 style={{ strokeDasharray: `${(p / 100) * 99.9}, 100` }}
-                strokeDashoffset="25"
               />
             </svg>
             <span className="pf-ring-pct">{p}%</span>
