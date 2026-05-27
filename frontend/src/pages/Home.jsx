@@ -248,7 +248,22 @@ export default function Home() {
         </div>
       )}
 
-      <section className="grid two-col">
+      <style>{`
+        .home-search-grid {
+          display: grid;
+          grid-template-columns: 50% 40%;
+          gap: 10%;
+          align-items: stretch;
+        }
+        @media (max-width: 900px) {
+          .home-search-grid {
+            grid-template-columns: 1fr;
+            gap: 32px;
+          }
+        }
+      `}</style>
+
+      <section className="home-search-grid">
         <div className="card hero-card">
           <span className="badge">🎓 Studplex Search</span>
           <h2>Find the right<br/><span>university</span><br/>worldwide</h2>
