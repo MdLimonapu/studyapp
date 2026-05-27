@@ -70,12 +70,12 @@ export default function Contact() {
       a: "Our system matches you based on official eligibility parameters (GPA, degree level, field). However, requirements can change, so we recommend always verifying details via the 'Open course page' link before applying."
     },
     {
-      q: "What is a German blocked account (Sperrkonto)?",
-      a: "It is a special secure bank account where international students must deposit a required amount of money (approx. €11,900) to prove they can support themselves financially for a visa."
-    },
-    {
       q: "How do I edit my matching details?",
       a: "You can update your GPA, degree level, or field of study anytime by navigating to your Profile page. The matching engine will instantly adapt to your updated credentials."
+    },
+    {
+      q: "Who can I contact if I have visa or admission questions?",
+      a: "For official visa or university application queries, you should contact the respective country's embassy or the university's international student office directly, as they are the official authorities."
     }
   ]
 
@@ -134,7 +134,6 @@ export default function Contact() {
                       value={form.name} 
                       onChange={e => setForm({ ...form, name: e.target.value })} 
                       required 
-                      style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '10px', color: '#fff', padding: '12px' }}
                     />
                   </div>
                   <div className="form-group">
@@ -146,7 +145,6 @@ export default function Contact() {
                       value={form.email} 
                       onChange={e => setForm({ ...form, email: e.target.value })} 
                       required 
-                      style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '10px', color: '#fff', padding: '12px' }}
                     />
                   </div>
                 </div>
@@ -160,7 +158,6 @@ export default function Contact() {
                     value={form.subject} 
                     onChange={e => setForm({ ...form, subject: e.target.value })} 
                     required 
-                    style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '10px', color: '#fff', padding: '12px' }}
                   />
                 </div>
 
@@ -171,7 +168,7 @@ export default function Contact() {
                     placeholder="Write your message here..." 
                     value={form.message} 
                     onChange={e => setForm({ ...form, message: e.target.value })} 
-                    style={{ minHeight: '130px', resize: 'vertical', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '10px', color: '#fff', padding: '12px' }}
+                    style={{ minHeight: '130px', resize: 'vertical' }}
                     required 
                   />
                 </div>

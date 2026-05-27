@@ -1403,5 +1403,21 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   }
 }
 
+/* Glossy White Inputs styling for form groups */
+.form-group input, 
+.form-group textarea {
+  background: rgba(255, 255, 255, 0.04) !important;
+  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-radius: 12px !important;
+  color: #ffffff !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.05), 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+  transition: all 0.2s ease !important;
+  padding: 14px 16px !important;
+}
 
-
+.form-group input:focus, 
+.form-group textarea:focus {
+  background: rgba(255, 255, 255, 0.07) !important;
+  border-color: rgba(255, 255, 255, 0.25) !important;
+  box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.05), 0 0 12px rgba(255, 255, 255, 0.1) !important;
+}
