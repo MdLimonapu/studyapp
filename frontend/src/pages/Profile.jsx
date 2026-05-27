@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react'
+import { useUser } from '@clerk/clerk-react'
 import { fetchProfile, saveProfile } from '../api'
 
 const FIELD_OPTIONS = [
@@ -19,6 +20,7 @@ function validateEmail(email) {
 }
 
 export default function Profile() {
+  const { user, isLoaded } = useUser()
   const [profile, setProfile] = useState({
     fullName: '', email: '', currentDegree: '', currentField: '',
     semester: '', universityName: '', grade: '', notes: '', avatarUrl: ''
@@ -34,7 +36,9 @@ export default function Profile() {
   const debounceRef = useRef(null)
 
   useEffect(() => {
-    fetchProfile()
+    if (!isLoaded) return
+    const email = user?.primaryEmailAddress?.emailAddress || ""
+    fetchProfile(email)
       .then(data => {
         if (data && Object.keys(data).length) {
           const cleaned = {
@@ -47,7 +51,7 @@ export default function Profile() {
         setInitialLoaded(true)
       })
       .catch(() => setInitialLoaded(true))
-  }, [])
+  }, [user, isLoaded])
 
   useEffect(() => {
     if (!initialLoaded) return

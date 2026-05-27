@@ -34,14 +34,17 @@ export default function App() {
 
   useEffect(() => {
     const updateProfile = () => {
-      fetchProfile()
+      const email = user?.primaryEmailAddress?.emailAddress || ""
+      fetchProfile(email)
         .then(data => { if (data && Object.keys(data).length > 0) setProfile(data) })
         .catch(() => {})
     }
-    updateProfile()
+    if (isLoaded) {
+      updateProfile()
+    }
     window.addEventListener('profile-updated', updateProfile)
     return () => window.removeEventListener('profile-updated', updateProfile)
-  }, [])
+  }, [user, isLoaded])
 
   // Sync Clerk authentication status and user details automatically to the backend
   useEffect(() => {

@@ -36,6 +36,7 @@ if mongo_uri:
         
         db = mongo_client[db_name]
         users_col = db["users"]
+        users_col.create_index("email", unique=True)
         mongo_client.admin.command('ping')
         print(f"✅ Connected to Cloud MongoDB Atlas successfully (DB: {db_name}).", flush=True)
     except Exception as e:
@@ -709,6 +710,20 @@ def get_countries():
 
 @app.route("/api/profile", methods=["GET"])
 def get_profile():
+    email = request.args.get("email")
+    if email and users_col is not None:
+        try:
+            user_doc = users_col.find_one({"email": email.lower()})
+            if user_doc:
+                user_doc["_id"] = str(user_doc["_id"])
+                if "signUpDate" in user_doc:
+                    user_doc["signUpDate"] = user_doc["signUpDate"].isoformat()
+                if "lastActive" in user_doc:
+                    user_doc["lastActive"] = user_doc["lastActive"].isoformat()
+                return jsonify(user_doc)
+        except Exception as e:
+            print(f"⚠️ Error fetching profile from MongoDB: {e}", flush=True)
+
     if os.path.exists(PROFILE_FILE):
         with open(PROFILE_FILE) as f:
             return jsonify(json.load(f))
@@ -717,7 +732,28 @@ def get_profile():
 
 @app.route("/api/profile", methods=["POST"])
 def save_profile():
-    data = request.json
+    data = request.json or {}
+    email = data.get("email", "").strip()
+
+    if email and users_col is not None:
+        try:
+            import datetime
+            update_data = {**data}
+            update_data["email"] = email.lower()
+            update_data["lastActive"] = datetime.datetime.now(datetime.timezone.utc)
+            
+            # Remove MongoDB internal _id if it exists in payload
+            update_data.pop("_id", None)
+            
+            users_col.update_one(
+                {"email": email.lower()},
+                {"$set": update_data, "$setOnInsert": {"signUpDate": datetime.datetime.now(datetime.timezone.utc)}},
+                upsert=True
+            )
+            print(f"💾 Profile saved to MongoDB for: {email}", flush=True)
+        except Exception as e:
+            print(f"⚠️ Error saving profile to MongoDB: {e}", flush=True)
+
     with open(PROFILE_FILE, "w") as f:
         json.dump(data, f)
     return jsonify({"status": "saved"})

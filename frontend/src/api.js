@@ -13,8 +13,11 @@ export async function fetchFields(country) {
   return res.json();
 }
 
-export async function fetchProfile() {
-  const res = await fetch(`${BASE_URL}/api/profile`);
+export async function fetchProfile(email) {
+  const url = email 
+    ? `${BASE_URL}/api/profile?email=${encodeURIComponent(email)}` 
+    : `${BASE_URL}/api/profile`;
+  const res = await fetch(url);
   return res.json();
 }
 
