@@ -97,7 +97,7 @@ export default function Contact() {
   }
 
   return (
-    <div style={{ maxWidth: '1100px', margin: '40px auto 0 auto', padding: '0 20px' }}>
+    <div style={{ maxWidth: '1400px', margin: '40px auto 0 auto', padding: '0 20px' }}>
       
       {/* Page Header */}
       <div style={{ marginBottom: '32px', textAlign: 'center' }}>
