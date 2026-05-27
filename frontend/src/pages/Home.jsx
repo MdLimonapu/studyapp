@@ -42,7 +42,32 @@ export default function Home() {
   const sugRef = useRef(null)
   const sliderRef = useRef(null)
   const formRef = useRef(null)
+  const countryRef = useRef(null)
+  const degreeRef = useRef(null)
+  const fieldInputRef = useRef(null)
   const navigate = useNavigate()
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const focus = params.get('focus')
+    if (focus) {
+      setTimeout(() => {
+        formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }, 100)
+      
+      setTimeout(() => {
+        if (focus === 'country' && countryRef.current) {
+          countryRef.current.focus()
+        } else if (focus === 'degree' && degreeRef.current) {
+          // focus the active pill or first pill button
+          const activePill = degreeRef.current.querySelector('.pill-active') || degreeRef.current.querySelector('.pill')
+          if (activePill) activePill.focus()
+        } else if (focus === 'field' && fieldInputRef.current) {
+          fieldInputRef.current.focus()
+        }
+      }, 400)
+    }
+  }, [])
 
   useEffect(() => {
     fetchCountries()
@@ -213,7 +238,7 @@ export default function Home() {
         <form ref={formRef} className="card form-card" onSubmit={submit}>
           <div>
             <label>Country</label>
-            <select value={form.country} onChange={e => setForm({...form, country: e.target.value})} required>
+            <select ref={countryRef} value={form.country} onChange={e => setForm({...form, country: e.target.value})} required>
               <option value="">Select country</option>
               {countries.map(c => <option key={c.name} value={c.name}>{c.flag} {c.name}</option>)}
             </select>
@@ -223,7 +248,7 @@ export default function Home() {
           </div>
           <div>
             <label>Degree level</label>
-            <div className="degree-pills">
+            <div className="degree-pills" ref={degreeRef}>
               {['bachelor','master','phd'].map(d => (
                 <button type="button" key={d}
                   className={`pill ${form.degree===d?'pill-active':''}`}
@@ -236,7 +261,7 @@ export default function Home() {
           <div>
             <label>Field of study</label>
             <div className="autocomplete-wrap" ref={sugRef}>
-              <input type="text" placeholder="e.g. Electrical Engineering"
+              <input ref={fieldInputRef} type="text" placeholder="e.g. Electrical Engineering"
                 value={form.field}
                 onChange={e => handleFieldChange(e.target.value)}
                 onFocus={() => form.field && setShowSug(true)}
