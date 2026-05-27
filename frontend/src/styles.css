@@ -378,6 +378,7 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   font-weight: 600;
   transition: all 0.2s ease;
   backdrop-filter: blur(10px);
+  cursor: pointer;
 }
 .chip:hover {
   background: rgba(81, 250, 170, 0.05);

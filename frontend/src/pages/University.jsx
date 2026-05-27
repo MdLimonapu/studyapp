@@ -100,9 +100,9 @@ export default function University() {
         <div className="summary-left">
           <h2>University matches</h2>
           <div className="summary-chips">
-            <span className="chip">{getCountryFlag(form.country)} {form.country || '-'}</span>
-            <span className="chip">🎓 {form.degree || '-'}</span>
-            <span className="chip">📚 {form.field || '-'}</span>
+            <span className="chip" onClick={() => navigate('/')} title="Click to edit country search">{getCountryFlag(form.country)} {form.country || '-'}</span>
+            <span className="chip" onClick={() => navigate('/')} title="Click to edit degree search">🎓 {form.degree || '-'}</span>
+            <span className="chip" onClick={() => navigate('/')} title="Click to edit field search">📚 {form.field || '-'}</span>
           </div>
         </div>
         <div className="summary-right">
