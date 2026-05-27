@@ -109,12 +109,22 @@ export default function Contact() {
         </p>
       </div>
 
-      <div className="contact-grid" style={{ 
-        display: 'grid', 
-        gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', 
-        gap: '32px',
-        alignItems: 'start'
-      }}>
+      <style>{`
+        .contact-grid-custom {
+          display: grid;
+          grid-template-columns: 50% 40%;
+          gap: 10%;
+          align-items: start;
+        }
+        @media (max-width: 900px) {
+          .contact-grid-custom {
+            grid-template-columns: 1fr;
+            gap: 32px;
+          }
+        }
+      `}</style>
+
+      <div className="contact-grid-custom">
         
         {/* LEFT COLUMN: CONTACT FORM */}
         <div className="card" style={{ padding: '32px' }}>
