@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useUser } from '@clerk/clerk-react'
 import { fetchCountries, fetchFields, fetchProfile, fetchNews, searchCourses } from '../api'
 
 const FALLBACK_NEWS = [
@@ -25,6 +26,7 @@ const POPULAR_FIELDS = [
 ]
 
 export default function Home() {
+  const { user, isLoaded } = useUser()
   const [countries, setCountries] = useState([])
   const [form, setForm] = useState({ country: '', degree: 'master', field: '' })
   const [loading, setLoading] = useState(false)
@@ -39,6 +41,7 @@ export default function Home() {
   const [newsLoading, setNewsLoading] = useState(true)
   const sugRef = useRef(null)
   const sliderRef = useRef(null)
+  const formRef = useRef(null)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -50,10 +53,6 @@ export default function Home() {
       .then(setAllFields)
       .catch(() => setAllFields(POPULAR_FIELDS))
 
-    fetchProfile()
-      .then(data => { if (data && Object.keys(data).length > 0) setProfile(data) })
-      .catch(() => {})
-
     fetchNews()
       .then(data => {
         setNews(data && data.length > 3 ? data : FALLBACK_NEWS)
@@ -62,13 +61,36 @@ export default function Home() {
       .catch(() => { setNews(FALLBACK_NEWS); setNewsLoading(false) })
   }, [])
 
-  // Re-fetch fields when country changes
+  // Fetch Clerk user profile and pre-fill search details
+  useEffect(() => {
+    if (isLoaded) {
+      const email = user?.primaryEmailAddress?.emailAddress || ""
+      fetchProfile(email)
+        .then(data => { 
+          if (data && Object.keys(data).length > 0) {
+            setProfile(data)
+            // Pre-fill degree & field from profile
+            setForm(prev => ({
+              ...prev,
+              degree: data.currentDegree ? data.currentDegree.toLowerCase() : prev.degree,
+              field: data.currentField || prev.field
+            }))
+          }
+        })
+        .catch(() => {})
+    }
+  }, [user, isLoaded])
+
+  // Re-fetch fields when country changes, and handle prefill scroll
   useEffect(() => {
     if (countries.length > 0) {
       const prefill = localStorage.getItem('prefillCountry')
       if (prefill) {
         setForm(prev => ({ ...prev, country: prefill }))
         localStorage.removeItem('prefillCountry')
+        setTimeout(() => {
+          formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        }, 150)
       }
     }
   }, [countries])
@@ -188,7 +210,7 @@ export default function Home() {
           </div>
         </div>
 
-        <form className="card form-card" onSubmit={submit}>
+        <form ref={formRef} className="card form-card" onSubmit={submit}>
           <div>
             <label>Country</label>
             <select value={form.country} onChange={e => setForm({...form, country: e.target.value})} required>
