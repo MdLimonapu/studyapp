@@ -201,7 +201,7 @@ export default function App() {
           </div>
         </div>
         <div className="footer-bottom">
-          <p>&copy; {new Date().getFullYear()} Studplex. All rights reserved. English-taught courses matching system.</p>
+          <p>&copy; {new Date().getFullYear()} Studplex. All rights reserved.</p>
         </div>
       </footer>
     </div>
