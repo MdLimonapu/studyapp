@@ -204,15 +204,10 @@ export default function Contact() {
                     transition: 'all 0.3s ease'
                   }}
                 >
-                  <button
+                  <div
                     onClick={() => toggleFaq(i)}
                     style={{
                       width: '100%',
-                      background: 'none',
-                      border: 'none',
-                      margin: 0,
-                      padding: 0,
-                      textAlign: 'left',
                       display: 'flex',
                       justifyContent: 'space-between',
                       alignItems: 'center',
@@ -220,7 +215,8 @@ export default function Contact() {
                       cursor: 'pointer',
                       fontSize: '15px',
                       fontWeight: '700',
-                      transition: 'color 0.2s ease'
+                      transition: 'color 0.2s ease',
+                      padding: '8px 0'
                     }}
                   >
                     <span>{faq.q}</span>
@@ -232,7 +228,7 @@ export default function Contact() {
                     }}>
                       ▼
                     </span>
-                  </button>
+                  </div>
                   
                   {isOpen && (
                     <p style={{ 
