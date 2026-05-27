@@ -28,7 +28,22 @@ const POPULAR_FIELDS = [
 export default function Home() {
   const { user, isLoaded } = useUser()
   const [countries, setCountries] = useState([])
-  const [form, setForm] = useState({ country: '', degree: 'master', field: '' })
+  const [form, setForm] = useState(() => {
+    const saved = localStorage.getItem('searchForm')
+    if (saved) {
+      try {
+        const parsed = JSON.parse(saved)
+        if (parsed && typeof parsed === 'object') {
+          return {
+            country: parsed.country || '',
+            degree: parsed.degree || 'master',
+            field: parsed.field || ''
+          }
+        }
+      } catch (e) {}
+    }
+    return { country: '', degree: 'master', field: '' }
+  })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [suggestions, setSuggestions] = useState([])
