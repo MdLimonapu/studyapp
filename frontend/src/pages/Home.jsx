@@ -65,7 +65,14 @@ export default function Home() {
   useEffect(() => {
     const params = new URLSearchParams(window.location.search)
     const focus = params.get('focus')
-    if (focus) {
+    const val = params.get('val')
+    if (focus && val !== null) {
+      setForm({
+        country: focus === 'country' ? val : '',
+        degree: focus === 'degree' ? val : '',
+        field: focus === 'field' ? val : ''
+      })
+
       setTimeout(() => {
         formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
       }, 100)
@@ -109,12 +116,15 @@ export default function Home() {
         .then(data => { 
           if (data && Object.keys(data).length > 0) {
             setProfile(data)
-            // Pre-fill degree & field from profile
-            setForm(prev => ({
-              ...prev,
-              degree: data.currentDegree ? data.currentDegree.toLowerCase() : prev.degree,
-              field: data.currentField || prev.field
-            }))
+            // Pre-fill degree & field from profile ONLY if not returning with a specific focus query parameter
+            const params = new URLSearchParams(window.location.search)
+            if (!params.get('focus')) {
+              setForm(prev => ({
+                ...prev,
+                degree: data.currentDegree ? data.currentDegree.toLowerCase() : prev.degree,
+                field: data.currentField || prev.field
+              }))
+            }
           }
         })
         .catch(() => {})
