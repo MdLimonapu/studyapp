@@ -1,10 +1,24 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useUser } from '@clerk/clerk-react'
 
 export default function Contact() {
+  const { user, isLoaded } = useUser()
   const [submitted, setSubmitted] = useState(false)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
+  const [activeFaq, setActiveFaq] = useState(null)
+
+  // Pre-fill name and email when Clerk user loads
+  useEffect(() => {
+    if (isLoaded && user) {
+      setForm(prev => ({
+        ...prev,
+        name: user.fullName || user.username || prev.name,
+        email: user.primaryEmailAddress?.emailAddress || prev.email
+      }))
+    }
+  }, [user, isLoaded])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -29,7 +43,13 @@ export default function Contact() {
 
       if (response.ok) {
         setSubmitted(true)
-        setForm({ name: '', email: '', subject: '', message: '' })
+        // Reset form but preserve profile credentials if logged in
+        setForm({
+          name: user?.fullName || user?.username || '',
+          email: user?.primaryEmailAddress?.emailAddress || '',
+          subject: '',
+          message: ''
+        })
       } else {
         throw new Error("Failed to send message.")
       }
@@ -40,85 +60,213 @@ export default function Contact() {
     }
   }
 
+  const faqs = [
+    {
+      q: "Is Studplex free to use?",
+      a: "Yes! Studplex is 100% free for students searching for international English-taught university programs."
+    },
+    {
+      q: "How accurate are the university matches?",
+      a: "Our system matches you based on official eligibility parameters (GPA, degree level, field). However, requirements can change, so we recommend always verifying details via the 'Open course page' link before applying."
+    },
+    {
+      q: "What is a German blocked account (Sperrkonto)?",
+      a: "It is a special secure bank account where international students must deposit a required amount of money (approx. €11,900) to prove they can support themselves financially for a visa."
+    },
+    {
+      q: "How do I edit my matching details?",
+      a: "You can update your GPA, degree level, or field of study anytime by navigating to your Profile page. The matching engine will instantly adapt to your updated credentials."
+    }
+  ]
+
+  const toggleFaq = (index) => {
+    setActiveFaq(activeFaq === index ? null : index)
+  }
+
   return (
-    <div style={{ maxWidth: '800px', margin: '40px auto 0 auto' }}>
-      <div className="card">
-        {submitted ? (
-          <div className="empty-state" style={{ textAlign: 'center' }}>
-            <div className="empty-icon" style={{ fontSize: '48px', color: 'var(--accent)' }}>✉️</div>
-            <h3 style={{ fontSize: '24px', fontWeight: '800', marginTop: '16px' }}>Message Sent!</h3>
-            <p style={{ color: 'var(--muted)', marginTop: '8px' }}>
-              Thank you for contacting Studplex. Our team will get back to you shortly.
-            </p>
-            <button className="btn-accent" style={{ marginTop: '24px', width: 'auto', padding: '12px 28px' }} onClick={() => setSubmitted(false)}>
-              Send another message
-            </button>
-          </div>
-        ) : (
-          <div>
-            <div style={{ marginBottom: '32px' }}>
-              <h2 style={{ fontSize: '32px', fontWeight: '800', marginBottom: '8px' }}>Contact Support</h2>
-              <p style={{ color: 'var(--muted)' }}>Have a question, feedback, or need assistance? Drop us a line below.</p>
-            </div>
-            
-            <form onSubmit={handleSubmit} className="grid one-col-gap">
-              <div className="form-row">
-                <div className="form-group">
-                  <label htmlFor="name">Full Name</label>
-                  <input 
-                    id="name"
-                    type="text" 
-                    placeholder="e.g. Alex Carter" 
-                    value={form.name} 
-                    onChange={e => setForm({ ...form, name: e.target.value })} 
-                    required 
-                  />
-                </div>
-                <div className="form-group">
-                  <label htmlFor="email">Email Address</label>
-                  <input 
-                    id="email"
-                    type="email" 
-                    placeholder="e.g. alex@gmail.com" 
-                    value={form.email} 
-                    onChange={e => setForm({ ...form, email: e.target.value })} 
-                    required 
-                  />
-                </div>
-              </div>
+    <div style={{ maxWidth: '1100px', margin: '40px auto 0 auto', padding: '0 20px' }}>
+      
+      {/* Page Header */}
+      <div style={{ marginBottom: '32px', textAlign: 'center' }}>
+        <h2 style={{ fontSize: '36px', fontWeight: '900', marginBottom: '8px', letterSpacing: '-0.02em' }}>
+          How can we help?
+        </h2>
+        <p style={{ color: 'var(--muted)', fontSize: '16px' }}>
+          Submit a ticket below or browse our frequently asked questions.
+        </p>
+      </div>
 
-              <div className="form-group">
-                <label htmlFor="subject">Subject</label>
-                <input 
-                  id="subject"
-                  type="text" 
-                  placeholder="How can we help you?" 
-                  value={form.subject} 
-                  onChange={e => setForm({ ...form, subject: e.target.value })} 
-                  required 
-                />
-              </div>
-
-              <div className="form-group">
-                <label htmlFor="message">Message</label>
-                <textarea 
-                  id="message"
-                  placeholder="Write your message here..." 
-                  value={form.message} 
-                  onChange={e => setForm({ ...form, message: e.target.value })} 
-                  style={{ minHeight: '150px', resize: 'vertical' }}
-                  required 
-                />
-              </div>
-
-              {error && <p className="error-msg" style={{ color: '#ef4444', marginTop: '12px' }}>⚠️ {error}</p>}
-
-              <button type="submit" className="btn-accent" style={{ marginTop: '12px', padding: '16px' }} disabled={loading}>
-                {loading ? 'Sending Message...' : 'Send Message'}
+      <div className="contact-grid" style={{ 
+        display: 'grid', 
+        gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', 
+        gap: '32px',
+        alignItems: 'start'
+      }}>
+        
+        {/* LEFT COLUMN: CONTACT FORM */}
+        <div className="card" style={{ padding: '32px' }}>
+          {submitted ? (
+            <div className="empty-state" style={{ textAlign: 'center', padding: '20px 0' }}>
+              <div className="empty-icon" style={{ fontSize: '48px', color: 'var(--accent)', marginBottom: '16px' }}>✉️</div>
+              <h3 style={{ fontSize: '24px', fontWeight: '800' }}>Message Sent!</h3>
+              <p style={{ color: 'var(--muted)', marginTop: '8px', lineHeight: '1.5' }}>
+                Thank you for contacting Studplex. We've received your request and will get back to you at <strong>{user?.primaryEmailAddress?.emailAddress || 'your email'}</strong> shortly.
+              </p>
+              <button 
+                className="btn-accent" 
+                style={{ marginTop: '24px', width: 'auto', padding: '12px 28px' }} 
+                onClick={() => setSubmitted(false)}
+              >
+                Send another message
               </button>
-            </form>
+            </div>
+          ) : (
+            <div>
+              <h3 style={{ fontSize: '20px', fontWeight: '800', marginBottom: '24px' }}>Submit a Message</h3>
+              <form onSubmit={handleSubmit} className="grid one-col-gap">
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                  <div className="form-group">
+                    <label htmlFor="name" style={{ fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', color: 'var(--muted)' }}>Full Name</label>
+                    <input 
+                      id="name"
+                      type="text" 
+                      placeholder="e.g. Alex Carter" 
+                      value={form.name} 
+                      onChange={e => setForm({ ...form, name: e.target.value })} 
+                      required 
+                      style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '10px', color: '#fff', padding: '12px' }}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="email" style={{ fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', color: 'var(--muted)' }}>Email Address</label>
+                    <input 
+                      id="email"
+                      type="email" 
+                      placeholder="e.g. alex@gmail.com" 
+                      value={form.email} 
+                      onChange={e => setForm({ ...form, email: e.target.value })} 
+                      required 
+                      style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '10px', color: '#fff', padding: '12px' }}
+                    />
+                  </div>
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="subject" style={{ fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', color: 'var(--muted)' }}>Subject</label>
+                  <input 
+                    id="subject"
+                    type="text" 
+                    placeholder="How can we help you?" 
+                    value={form.subject} 
+                    onChange={e => setForm({ ...form, subject: e.target.value })} 
+                    required 
+                    style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '10px', color: '#fff', padding: '12px' }}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="message" style={{ fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', color: 'var(--muted)' }}>Message</label>
+                  <textarea 
+                    id="message"
+                    placeholder="Write your message here..." 
+                    value={form.message} 
+                    onChange={e => setForm({ ...form, message: e.target.value })} 
+                    style={{ minHeight: '130px', resize: 'vertical', background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '10px', color: '#fff', padding: '12px' }}
+                    required 
+                  />
+                </div>
+
+                {error && <p className="error-msg" style={{ color: '#ef4444', marginTop: '12px' }}>⚠️ {error}</p>}
+
+                <button 
+                  type="submit" 
+                  className="btn-accent" 
+                  style={{ marginTop: '12px', padding: '16px', borderRadius: '12px', fontWeight: '800' }} 
+                  disabled={loading}
+                >
+                  {loading ? 'Sending Message...' : 'Send Message'}
+                </button>
+              </form>
+            </div>
+          )}
+        </div>
+
+        {/* RIGHT COLUMN: FAQ ACCORDION */}
+        <div className="card" style={{ padding: '32px' }}>
+          <h3 style={{ fontSize: '20px', fontWeight: '800', marginBottom: '24px' }}>Frequently Asked Questions</h3>
+          
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            {faqs.map((faq, i) => {
+              const isOpen = activeFaq === i
+              return (
+                <div 
+                  key={i} 
+                  style={{ 
+                    borderBottom: '1px solid rgba(255, 255, 255, 0.05)', 
+                    paddingBottom: '16px',
+                    transition: 'all 0.3s ease'
+                  }}
+                >
+                  <button
+                    onClick={() => toggleFaq(i)}
+                    style={{
+                      width: '100%',
+                      background: 'none',
+                      border: 'none',
+                      margin: 0,
+                      padding: 0,
+                      textAlign: 'left',
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                      color: isOpen ? 'var(--accent)' : 'var(--text)',
+                      cursor: 'pointer',
+                      fontSize: '15px',
+                      fontWeight: '700',
+                      transition: 'color 0.2s ease'
+                    }}
+                  >
+                    <span>{faq.q}</span>
+                    <span style={{ 
+                      transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
+                      transition: 'transform 0.2s ease',
+                      fontSize: '12px',
+                      color: 'var(--muted)'
+                    }}>
+                      ▼
+                    </span>
+                  </button>
+                  
+                  {isOpen && (
+                    <p style={{ 
+                      color: 'var(--muted)', 
+                      fontSize: '13.5px', 
+                      marginTop: '10px', 
+                      lineHeight: '1.6',
+                      animation: 'fadeIn 0.3s ease-in-out'
+                    }}>
+                      {faq.a}
+                    </p>
+                  )}
+                </div>
+              )
+            })}
           </div>
-        )}
+
+          <div style={{ 
+            marginTop: '32px', 
+            padding: '16px 20px', 
+            background: 'rgba(255, 255, 255, 0.01)', 
+            border: '1px solid rgba(255, 255, 255, 0.03)', 
+            borderRadius: '12px',
+            fontSize: '13px',
+            color: 'var(--muted)',
+            lineHeight: '1.5'
+          }}>
+            💡 <strong>Pro Tip:</strong> Response times are usually under 24 hours. Messages sent directly to <a href="mailto:support@studplex.com" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>support@studplex.com</a> also automatically open a support ticket.
+          </div>
+        </div>
+
       </div>
     </div>
   )
