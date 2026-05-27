@@ -5,6 +5,8 @@ import University from './pages/University'
 import Profile from './pages/Profile'
 import Roadmap from './pages/Roadmap'
 import Contact from './pages/Contact'
+import Privacy from './pages/Privacy'
+import Terms from './pages/Terms'
 import { SignedIn, SignedOut, UserButton, SignInButton, useUser } from '@clerk/clerk-react'
 import { fetchProfile, saveProfile, registerUser } from './api'
 
@@ -168,6 +170,8 @@ export default function App() {
           <Route path="/roadmap" element={<Roadmap />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/privacy" element={<Privacy />} />
+          <Route path="/terms" element={<Terms />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
@@ -188,13 +192,11 @@ export default function App() {
             <div className="footer-col">
               <h4>Support</h4>
               <NavLink to="/contact">Contact Support</NavLink>
-              <a href="https://clerk.com" target="_blank" rel="noreferrer">Secure Login</a>
-              <a href="https://www.daad.de" target="_blank" rel="noreferrer">DAAD Partner</a>
             </div>
             <div className="footer-col">
               <h4>Legal</h4>
-              <span className="footer-dummy-link">Privacy Policy</span>
-              <span className="footer-dummy-link">Terms of Service</span>
+              <NavLink to="/privacy">Privacy Policy</NavLink>
+              <NavLink to="/terms">Terms of Service</NavLink>
             </div>
           </div>
         </div>
