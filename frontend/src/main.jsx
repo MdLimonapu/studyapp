@@ -35,6 +35,8 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             background: 'rgba(18, 20, 38, 0.95) !important',
             backdropFilter: 'blur(20px)',
             boxShadow: '0 20px 40px rgba(0, 0, 0, 0.5)',
+            width: '440px !important',
+            maxWidth: '100%',
           },
           socialButtonsIconButton: {
             borderColor: 'rgba(255, 255, 255, 0.08)',
