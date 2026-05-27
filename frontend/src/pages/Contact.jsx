@@ -2,12 +2,42 @@ import { useState } from 'react'
 
 export default function Contact() {
   const [submitted, setSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
   const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' })
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Simulated contact form submission
-    setSubmitted(true)
+    setLoading(true)
+    setError(null)
+    
+    try {
+      const response = await fetch("https://formsubmit.co/ajax/mdlimon2466@gmail.com", {
+        method: "POST",
+        headers: { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          subject: form.subject,
+          message: form.message,
+          _subject: `New Studplex Support Message: ${form.subject}`
+        })
+      })
+
+      if (response.ok) {
+        setSubmitted(true)
+        setForm({ name: '', email: '', subject: '', message: '' })
+      } else {
+        throw new Error("Failed to send message.")
+      }
+    } catch (err) {
+      setError("Something went wrong. Please try again later.")
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
@@ -81,8 +111,10 @@ export default function Contact() {
                 />
               </div>
 
-              <button type="submit" className="btn-accent" style={{ marginTop: '12px', padding: '16px' }}>
-                Send Message
+              {error && <p className="error-msg" style={{ color: '#ef4444', marginTop: '12px' }}>⚠️ {error}</p>}
+
+              <button type="submit" className="btn-accent" style={{ marginTop: '12px', padding: '16px' }} disabled={loading}>
+                {loading ? 'Sending Message...' : 'Send Message'}
               </button>
             </form>
           </div>
