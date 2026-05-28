@@ -57,12 +57,19 @@ export default function App() {
         const fullName = user.fullName || user.username || "Clerk User"
         const avatarUrl = user.imageUrl || ""
 
-        saveProfile({
-          fullName,
-          email,
-          avatarUrl
-        }).then(() => {
-          window.dispatchEvent(new Event('profile-updated'))
+        fetchProfile(email).then((existing) => {
+          if (!existing || !existing.email) {
+            saveProfile({
+              fullName,
+              email,
+              avatarUrl,
+              documents: []
+            }).then(() => {
+              window.dispatchEvent(new Event('profile-updated'))
+            }).catch(() => {})
+          } else {
+            window.dispatchEvent(new Event('profile-updated'))
+          }
         }).catch(() => {})
 
         registerUser({
@@ -72,20 +79,10 @@ export default function App() {
           method: 'clerk'
         }).catch(() => {})
       } else {
-        // User logged out, clear backend profile JSON
-        saveProfile({
-          fullName: '',
-          email: '',
-          currentDegree: '',
-          currentField: '',
-          semester: '',
-          universityName: '',
-          grade: '',
-          notes: '',
-          avatarUrl: ''
-        }).then(() => {
-          window.dispatchEvent(new Event('profile-updated'))
-        }).catch(() => {})
+        // User logged out, clear local session data but do NOT wipe the backend databases
+        localStorage.removeItem('searchResults')
+        localStorage.removeItem('searchForm')
+        setProfile(null)
       }
     }
   }, [user, isLoaded])
