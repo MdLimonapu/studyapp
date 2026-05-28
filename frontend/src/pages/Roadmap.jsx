@@ -564,14 +564,16 @@ export default function Roadmap() {
                 onClick={handleSearchClick}
                 style={{
                   width: 'auto',
-                  padding: '10px 20px',
-                  borderRadius: '10px',
+                  padding: '12px 24px',
+                  borderRadius: '12px',
                   fontSize: '13.5px',
-                  background: 'var(--dark2)',
-                  border: '1px solid var(--card-border)',
-                  color: 'var(--text)',
+                  background: 'var(--btn-gradient)',
+                  color: 'var(--btn-text)',
+                  border: 'none',
                   cursor: 'pointer',
-                  transition: 'all 0.2s'
+                  fontWeight: 700,
+                  transition: 'all 0.2s',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
                 }}
               >
                 🔍 Search Courses Anyway
