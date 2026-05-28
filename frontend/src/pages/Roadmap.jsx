@@ -562,19 +562,7 @@ export default function Roadmap() {
               <button 
                 type="button" 
                 onClick={handleSearchClick}
-                style={{
-                  width: 'auto',
-                  padding: '12px 24px',
-                  borderRadius: '12px',
-                  fontSize: '13.5px',
-                  background: 'var(--btn-gradient)',
-                  color: 'var(--btn-text)',
-                  border: 'none',
-                  cursor: 'pointer',
-                  fontWeight: 700,
-                  transition: 'all 0.2s',
-                  boxShadow: '0 4px 12px rgba(0,0,0,0.1)'
-                }}
+                className="btn-secondary-search"
               >
                 🔍 Search Courses Anyway
               </button>
