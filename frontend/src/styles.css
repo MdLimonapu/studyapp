@@ -291,7 +291,7 @@ select {
 input::placeholder { color: var(--muted); }
 input:focus, select:focus, textarea:focus {
   border-color: rgba(81,250,170,0.4);
-  background: rgba(81,250,170,0.04);
+  background-color: rgba(81,250,170,0.04);
 }
 select option { background: var(--bg); color: var(--text); }
 textarea { min-height: 100px; resize: vertical; }
