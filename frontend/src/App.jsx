@@ -113,7 +113,7 @@ export default function App() {
           <div className="brand-text" style={{ display: 'flex', flexDirection: 'column', gap: '1px' }}>
             <h1 style={{ margin: 0, fontSize: '24px', fontWeight: 800, color: 'var(--text)', letterSpacing: '-0.02em', lineHeight: 1.1 }}>Stud<span style={{color: 'var(--accent)'}}>plex</span></h1>
             <span className="brand-tagline" style={{ fontSize: '9px', color: 'var(--muted)', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
-              Study Abroad Simplified
+              Match Your Future
             </span>
           </div>
         </NavLink>
