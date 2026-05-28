@@ -545,8 +545,8 @@ export default function Roadmap() {
           ) : (
             <div 
               style={{
-                background: 'rgba(255,255,255,0.01)',
-                border: '1px solid rgba(255,255,255,0.03)',
+                background: 'var(--dark2)',
+                border: '1px solid var(--card-border)',
                 borderRadius: '20px',
                 padding: '24px',
                 textAlign: 'center',
