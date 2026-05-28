@@ -292,7 +292,7 @@ export default function Contact() {
             color: 'var(--muted)',
             lineHeight: '1.5'
           }}>
-            💡 <strong>Pro Tip:</strong> Response times are usually under 24 hours. Messages sent directly to <a href="mailto:support@studplex.com" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>support@studplex.com</a> also automatically open a support ticket.
+            💡 <strong>Note:</strong> We typically respond within 24 hours. You can also reach us directly at <a href="mailto:support@studplex.com" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>support@studplex.com</a>.
           </div>
         </div>
 
