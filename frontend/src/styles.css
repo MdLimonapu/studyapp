@@ -928,7 +928,7 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 }
 
 /* NEWS */
-.news-section { margin-top: 36px; }
+.news-section { margin-top: 36px; margin-bottom: 80px; }
 .news-header { display: flex; align-items: center; gap: 14px; margin-bottom: 20px; }
 .news-header h3 { font-size: 20px; font-weight: 700; }
 .live-dot { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--accent); font-weight: 600; }
