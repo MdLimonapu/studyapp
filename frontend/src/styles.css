@@ -32,9 +32,9 @@
 }
 
 :root[data-theme="light"] {
-  --bg: #faf9f5;
+  --bg: #fcfbf4;
   --card: #ffffff;
-  --card-border: rgba(0, 0, 0, 0.05);
+  --card-border: rgba(0, 0, 0, 0.08);
   --text: #0b0f19;
   --muted: #4b5563;
   --accent: #000000;
@@ -42,19 +42,19 @@
   --blue: #2563eb;
   --dark2: #f3f4f6;
   
-  --header-bg: rgba(250, 249, 245, 0.85);
-  --header-border: rgba(0, 0, 0, 0.04);
+  --header-bg: rgba(252, 251, 244, 0.85);
+  --header-border: rgba(0, 0, 0, 0.05);
   --footer-bg: #f3f4f6;
-  --footer-border: rgba(0, 0, 0, 0.06);
+  --footer-border: rgba(0, 0, 0, 0.08);
   --glass-glow: rgba(0, 0, 0, 0.02);
   
-  --radial-1: rgba(254, 240, 138, 0.25);
-  --radial-2: rgba(253, 224, 71, 0.15);
-  --radial-3: rgba(254, 243, 199, 0.2);
+  --radial-1: rgba(254, 240, 138, 0.7);
+  --radial-2: rgba(253, 224, 71, 0.4);
+  --radial-3: rgba(254, 243, 199, 0.6);
   
-  --shadow-card: 0 16px 48px -12px rgba(139, 92, 26, 0.08);
-  --shadow-news: 0 8px 24px -8px rgba(139, 92, 26, 0.04);
-  --shadow-news-hover: 0 20px 48px -8px rgba(139, 92, 26, 0.12);
+  --shadow-card: 0 12px 36px rgba(0, 0, 0, 0.06);
+  --shadow-news: 0 6px 16px rgba(0, 0, 0, 0.03);
+  --shadow-news-hover: 0 16px 36px rgba(0, 0, 0, 0.08);
   
   --input-bg: #ffffff;
   --border-hover: rgba(0, 0, 0, 0.15);
