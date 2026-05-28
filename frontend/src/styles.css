@@ -33,8 +33,8 @@
 
 :root[data-theme="light"] {
   --bg: #fcfbf4;
-  --card: rgba(255, 255, 255, 0.65);
-  --card-border: rgba(0, 0, 0, 0.04);
+  --card: #f9f8f0;
+  --card-border: rgba(0, 0, 0, 0.05);
   --text: #0b0f19;
   --muted: #4b5563;
   --accent: #000000;
