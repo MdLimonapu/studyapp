@@ -1,5 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useUser } from '@clerk/clerk-react'
+import { fetchProfile, saveProfile } from '../api'
 
 const ROADMAPS = {
   'Germany': {
@@ -99,6 +101,65 @@ export default function Roadmap() {
   const [selectedCountry, setSelectedCountry] = useState('Germany')
   const [completedSteps, setCompletedSteps] = useState({})
   const navigate = useNavigate()
+  
+  const { user, isLoaded } = useUser()
+  const [profile, setProfile] = useState(null)
+  const docInputRef = useRef(null)
+
+  // Fetch profile on mount / login
+  useEffect(() => {
+    if (!isLoaded || !user) return
+    const email = user.primaryEmailAddress?.emailAddress || ""
+    fetchProfile(email)
+      .then(data => { if (data) setProfile(data) })
+      .catch(() => {})
+  }, [user, isLoaded])
+
+  const handleDocumentUpload = (e) => {
+    const files = Array.from(e.target.files)
+    if (!files.length || !profile) return
+
+    files.forEach(file => {
+      if (file.size > 4 * 1024 * 1024) {
+        alert(`File "${file.name}" exceeds the 4MB limit.`)
+        return
+      }
+
+      const reader = new FileReader()
+      reader.onload = (ev) => {
+        const newDoc = {
+          id: Date.now() + Math.random().toString(36).substr(2, 9),
+          name: file.name,
+          size: file.size,
+          type: file.type,
+          data: ev.target.result,
+          uploadedAt: new Date().toISOString()
+        }
+        
+        const updatedProfile = {
+          ...profile,
+          documents: [...(profile.documents || []), newDoc]
+        }
+        setProfile(updatedProfile)
+        saveProfile(updatedProfile).then(() => {
+          window.dispatchEvent(new Event('profile-updated'))
+        }).catch(() => {})
+      }
+      reader.readAsDataURL(file)
+    })
+  }
+
+  const deleteDocument = (docId) => {
+    if (!profile) return
+    const updatedProfile = {
+      ...profile,
+      documents: (profile.documents || []).filter(d => d.id !== docId)
+    }
+    setProfile(updatedProfile)
+    saveProfile(updatedProfile).then(() => {
+      window.dispatchEvent(new Event('profile-updated'))
+    }).catch(() => {})
+  }
 
   // Load completed steps from localStorage on mount
   useEffect(() => {
@@ -292,6 +353,81 @@ export default function Roadmap() {
                     }}>
                       {step.desc}
                     </p>
+                    
+                    {(() => {
+                      const isDocStep = (step.title + " " + step.desc).toLowerCase().includes("document") ||
+                                        (step.title + " " + step.desc).toLowerCase().includes("transcript") ||
+                                        (step.title + " " + step.desc).toLowerCase().includes("academic record") ||
+                                        (step.title + " " + step.desc).toLowerCase().includes("certificate");
+                      if (!isDocStep) return null;
+                      return (
+                        <div style={{ marginTop: '16px', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '16px' }} onClick={e => e.stopPropagation()}>
+                          {user ? (
+                            <>
+                              <div className="pf-document-upload-zone" style={{ padding: '16px 12px' }} onClick={() => docInputRef.current.click()}>
+                                <div style={{ fontSize: '20px', marginBottom: '4px' }}>📤</div>
+                                <p style={{ margin: 0, fontWeight: 700, fontSize: '12px', color: 'var(--text)' }}>Upload certificates or transcripts here</p>
+                                <input 
+                                  ref={docInputRef} 
+                                  type="file" 
+                                  multiple 
+                                  accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" 
+                                  style={{ display: 'none' }} 
+                                  onChange={handleDocumentUpload} 
+                                />
+                              </div>
+                              {profile?.documents && profile.documents.length > 0 && (
+                                <div className="pf-documents-list" style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '12px' }}>
+                                  {profile.documents.map((doc) => {
+                                    const isPdf = doc.type === 'application/pdf';
+                                    const isImg = doc.type.startsWith('image/');
+                                    const sizeKb = Math.round(doc.size / 1024);
+                                    const sizeStr = sizeKb >= 1024 ? `${(sizeKb / 1024).toFixed(1)} MB` : `${sizeKb} KB`;
+                                    return (
+                                      <div key={doc.id} className="pf-document-item" style={{ 
+                                        display: 'flex', 
+                                        alignItems: 'center', 
+                                        justifyContent: 'space-between', 
+                                        padding: '8px 12px', 
+                                        background: 'rgba(255, 255, 255, 0.01)', 
+                                        border: '1px solid var(--card-border)', 
+                                        borderRadius: '10px' 
+                                      }}>
+                                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', overflow: 'hidden', flex: 1 }}>
+                                          <div style={{ fontSize: '16px' }}>{isPdf ? '📄' : (isImg ? '🖼️' : '📝')}</div>
+                                          <span style={{ fontSize: '12.5px', fontWeight: 600, color: 'var(--text)', whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>{doc.name} ({sizeStr})</span>
+                                        </div>
+                                        <button 
+                                          type="button" 
+                                          onClick={() => deleteDocument(doc.id)} 
+                                          style={{ 
+                                            background: 'transparent', 
+                                            border: 'none', 
+                                            color: 'rgba(248, 113, 113, 0.7)', 
+                                            fontSize: '14px', 
+                                            cursor: 'pointer', 
+                                            padding: '2px',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center'
+                                          }}
+                                        >
+                                          🗑️
+                                        </button>
+                                      </div>
+                                    )
+                                  })}
+                                </div>
+                              )}
+                            </>
+                          ) : (
+                            <div style={{ padding: '12px 16px', background: 'rgba(255,255,255,0.02)', border: '1px dashed rgba(255,255,255,0.05)', borderRadius: '12px', fontSize: '12px', color: 'var(--muted)', lineHeight: '1.45' }}>
+                              💡 <strong>Sign in</strong> to upload your study documents (transcripts, certificates) and sync them to your profile.
+                            </div>
+                          )}
+                        </div>
+                      );
+                    })()}
                   </div>
                 </div>
               )
