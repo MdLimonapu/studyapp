@@ -567,13 +567,12 @@ export default function Roadmap() {
                   padding: '10px 20px',
                   borderRadius: '10px',
                   fontSize: '13.5px',
-                  background: 'transparent',
-                  border: '1px solid rgba(255,255,255,0.15)',
-                  color: 'rgba(255,255,255,0.8)',
+                  background: 'var(--dark2)',
+                  border: '1px solid var(--card-border)',
+                  color: 'var(--text)',
                   cursor: 'pointer',
                   transition: 'all 0.2s'
                 }}
-                className="btn-secondary-search"
               >
                 🔍 Search Courses Anyway
               </button>
