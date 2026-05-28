@@ -24,7 +24,7 @@ export default function Profile() {
   const [profile, setProfile] = useState({
     fullName: '', email: '', currentDegree: '', currentField: '',
     semester: '', universityName: '', grade: '', notes: '', avatarUrl: '',
-    studplexId: ''
+    studplexId: '', documents: []
   })
   const [initialLoaded, setInitialLoaded] = useState(false)
   const [saved, setSaved]         = useState(false)
@@ -34,6 +34,7 @@ export default function Profile() {
   const [showSugs, setShowSugs]     = useState(false)
   const fieldRef = useRef(null)
   const fileRef  = useRef(null)
+  const docInputRef = useRef(null)
   const debounceRef = useRef(null)
 
   useEffect(() => {
@@ -45,7 +46,8 @@ export default function Profile() {
           const cleaned = {
             ...data,
             semester: String(data.semester || '').replace(/[^0-9]/g, ''),
-            grade: String(data.grade || '').replace(/[^0-9.]/g, '')
+            grade: String(data.grade || '').replace(/[^0-9.]/g, ''),
+            documents: data.documents || []
           }
           setProfile(p => ({ ...p, ...cleaned }))
         }
@@ -92,6 +94,42 @@ export default function Profile() {
     const reader = new FileReader()
     reader.onload = (ev) => set('avatarUrl', ev.target.result)
     reader.readAsDataURL(file)
+  }
+
+  const handleDocumentUpload = (e) => {
+    const files = Array.from(e.target.files)
+    if (!files.length) return
+
+    files.forEach(file => {
+      if (file.size > 4 * 1024 * 1024) {
+        alert(`File "${file.name}" exceeds the 4MB limit.`)
+        return
+      }
+
+      const reader = new FileReader()
+      reader.onload = (ev) => {
+        const newDoc = {
+          id: Date.now() + Math.random().toString(36).substr(2, 9),
+          name: file.name,
+          size: file.size,
+          type: file.type,
+          data: ev.target.result,
+          uploadedAt: new Date().toISOString()
+        }
+        setProfile(p => ({
+          ...p,
+          documents: [...(p.documents || []), newDoc]
+        }))
+      }
+      reader.readAsDataURL(file)
+    })
+  }
+
+  const deleteDocument = (docId) => {
+    setProfile(p => ({
+      ...p,
+      documents: (p.documents || []).filter(d => d.id !== docId)
+    }))
   }
 
   const handleFieldInput = (val) => {
@@ -310,6 +348,81 @@ export default function Profile() {
               <span className="pf-hint">Optional. Anything else that may help find a better match.</span>
             </div>
           </div>
+        </div>
+        
+        {/* Section 03 */}
+        <div className="pf-section-card">
+          <div className="pf-section-head">
+            <span className="pf-section-num">03</span>
+            <div>
+              <h2 className="pf-section-title">Documents & Certificates</h2>
+              <p className="pf-section-desc">Upload certificates, academic transcripts, or language test scores (max 4MB each).</p>
+            </div>
+          </div>
+          <div className="pf-divider" />
+          
+          <div className="pf-document-upload-zone" onClick={() => docInputRef.current.click()}>
+            <div style={{ fontSize: '32px', marginBottom: '8px' }}>📤</div>
+            <p style={{ margin: 0, fontWeight: 700, fontSize: '14px', color: 'var(--text)' }}>Click to upload files</p>
+            <p style={{ margin: '4px 0 0 0', fontSize: '12px', color: 'var(--muted)' }}>Supports PDF, DOCX, PNG, JPG</p>
+            <input 
+              ref={docInputRef} 
+              type="file" 
+              multiple 
+              accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" 
+              style={{ display: 'none' }} 
+              onChange={handleDocumentUpload} 
+            />
+          </div>
+
+          {profile.documents && profile.documents.length > 0 && (
+            <div className="pf-documents-list" style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              {profile.documents.map((doc) => {
+                const isPdf = doc.type === 'application/pdf';
+                const isImg = doc.type.startsWith('image/');
+                const sizeKb = Math.round(doc.size / 1024);
+                const sizeStr = sizeKb >= 1024 ? `${(sizeKb / 1024).toFixed(1)} MB` : `${sizeKb} KB`;
+                
+                return (
+                  <div key={doc.id} className="pf-document-item" style={{ 
+                    display: 'flex', 
+                    alignItems: 'center', 
+                    justifyContent: 'space-between', 
+                    padding: '12px 16px', 
+                    background: 'rgba(255, 255, 255, 0.01)', 
+                    border: '1px solid var(--card-border)', 
+                    borderRadius: '14px' 
+                  }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '12px', overflow: 'hidden', flex: 1 }}>
+                      <div style={{ fontSize: '20px' }}>{isPdf ? '📄' : (isImg ? '🖼️' : '📝')}</div>
+                      <div style={{ display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+                        <span style={{ fontSize: '13.5px', fontWeight: 600, color: 'var(--text)', whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>{doc.name}</span>
+                        <span style={{ fontSize: '11px', color: 'var(--muted)' }}>{sizeStr}</span>
+                      </div>
+                    </div>
+                    <button 
+                      type="button" 
+                      onClick={() => deleteDocument(doc.id)} 
+                      style={{ 
+                        background: 'transparent', 
+                        border: 'none', 
+                        color: 'rgba(248, 113, 113, 0.7)', 
+                        fontSize: '18px', 
+                        cursor: 'pointer', 
+                        padding: '4px',
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center'
+                      }}
+                      title="Delete document"
+                    >
+                      🗑️
+                    </button>
+                  </div>
+                )
+              })}
+            </div>
+          )}
         </div>
 
       </form>
