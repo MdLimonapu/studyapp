@@ -302,8 +302,8 @@ export default function Roadmap() {
                     display: 'flex',
                     gap: '16px',
                     padding: '16px 20px',
-                    background: checked ? 'rgba(81,250,170,0.02)' : 'rgba(255,255,255,0.01)',
-                    border: checked ? '1px solid rgba(81,250,170,0.15)' : '1px solid rgba(255,255,255,0.04)',
+                    background: checked ? 'rgba(81,250,170,0.02)' : 'var(--glass-glow)',
+                    border: checked ? '1px solid rgba(81,250,170,0.15)' : '1px solid var(--card-border)',
                     borderRadius: '16px',
                     cursor: 'pointer',
                     transition: 'all 0.2s ease',
@@ -332,7 +332,7 @@ export default function Roadmap() {
                       <h4 style={{ 
                         fontSize: '14.5px', 
                         fontWeight: 700, 
-                        color: checked ? 'var(--text)' : 'rgba(255,255,255,0.9)',
+                        color: checked ? 'var(--muted)' : 'var(--text)',
                         textDecoration: checked ? 'line-through' : 'none',
                         transition: 'all 0.2s'
                       }}>
@@ -365,7 +365,7 @@ export default function Roadmap() {
                     </p>
                     
                     {checked && user && (
-                      <div style={{ marginTop: '16px', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '16px' }} onClick={e => e.stopPropagation()}>
+                      <div style={{ marginTop: '16px', borderTop: '1px solid var(--card-border)', paddingTop: '16px' }} onClick={e => e.stopPropagation()}>
                         {(() => {
                           const stepDocs = (profile?.documents || []).filter(
                             d => d.country === selectedCountry && d.stepId === step.id

@@ -1184,7 +1184,7 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: rgba(0, 0, 0, 0.15);
+  background: var(--input-bg);
   border: 1px solid var(--card-border);
   border-radius: 12px;
   padding: 10px 8px;
@@ -1197,8 +1197,8 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 }
 
 .country-box:hover {
-  background: rgba(255, 255, 255, 0.03);
-  border-color: rgba(255, 255, 255, 0.08);
+  background: var(--input-bg);
+  border-color: var(--border-hover);
   transform: translateY(-2px);
 }
 
@@ -1507,12 +1507,13 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 28px;
+  height: 28px;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  margin-left: 8px;
+  margin-left: 20px;
   align-self: center;
+  transform: translateY(-1px);
 }
 .theme-toggle-btn:hover {
   border-color: var(--accent);
