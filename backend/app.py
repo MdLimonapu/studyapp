@@ -751,13 +751,13 @@ def get_profile():
             print(f"⚠️ Error fetching profile from MongoDB: {e}", flush=True)
 
     local_data = {}
-    if os.path.exists(PROFILE_FILE):
-        try:
-            with open(PROFILE_FILE) as f:
-                local_data = json.load(f)
-        except Exception:
-            pass
     if email:
+        if os.path.exists(PROFILE_FILE):
+            try:
+                with open(PROFILE_FILE) as f:
+                    local_data = json.load(f)
+            except Exception:
+                pass
         local_data["studplexId"] = generate_user_id(email)
     return jsonify(local_data)
 

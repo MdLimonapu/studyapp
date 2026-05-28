@@ -111,7 +111,11 @@ export default function Home() {
   // Fetch Clerk user profile and pre-fill search details
   useEffect(() => {
     if (isLoaded) {
-      const email = user?.primaryEmailAddress?.emailAddress || ""
+      if (!user) {
+        setProfile(null)
+        return
+      }
+      const email = user.primaryEmailAddress?.emailAddress || ""
       fetchProfile(email)
         .then(data => { 
           if (data && Object.keys(data).length > 0) {
@@ -336,7 +340,7 @@ export default function Home() {
             {loading ? <span className="spinner"></span> : 'Find My Perfect Program'}
           </button>
           
-          {!isProfileComplete(profile) && (
+          {user && !isProfileComplete(profile) && (
             <p className="profile-hint">💡 <span onClick={() => navigate('/profile')}>Complete your profile</span> for better matches</p>
           )}
         </form>

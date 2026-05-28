@@ -37,7 +37,11 @@ export default function App() {
 
   useEffect(() => {
     const updateProfile = () => {
-      const email = user?.primaryEmailAddress?.emailAddress || ""
+      if (!user) {
+        setProfile(null)
+        return
+      }
+      const email = user.primaryEmailAddress?.emailAddress || ""
       fetchProfile(email)
         .then(data => { if (data && Object.keys(data).length > 0) setProfile(data) })
         .catch(() => {})

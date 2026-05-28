@@ -100,11 +100,11 @@ const ROADMAPS = {
 export default function Roadmap() {
   const [selectedCountry, setSelectedCountry] = useState('Germany')
   const [completedSteps, setCompletedSteps] = useState({})
+  const [expandedSteps, setExpandedSteps] = useState({})
   const navigate = useNavigate()
   
   const { user, isLoaded } = useUser()
   const [profile, setProfile] = useState(null)
-  const docInputRef = useRef(null)
 
   // Fetch profile on mount / login
   useEffect(() => {
@@ -115,7 +115,14 @@ export default function Roadmap() {
       .catch(() => {})
   }, [user, isLoaded])
 
-  const handleDocumentUpload = (e) => {
+  const toggleExpandStep = (stepId) => {
+    setExpandedSteps(prev => ({
+      ...prev,
+      [stepId]: !prev[stepId]
+    }))
+  }
+
+  const handleDocumentUpload = (e, stepId) => {
     const files = Array.from(e.target.files)
     if (!files.length || !profile) return
 
@@ -133,7 +140,9 @@ export default function Roadmap() {
           size: file.size,
           type: file.type,
           data: ev.target.result,
-          uploadedAt: new Date().toISOString()
+          uploadedAt: new Date().toISOString(),
+          country: selectedCountry,
+          stepId: stepId
         }
         
         const updatedProfile = {
@@ -147,6 +156,7 @@ export default function Roadmap() {
       }
       reader.readAsDataURL(file)
     })
+    e.target.value = '' // Reset input
   }
 
   const deleteDocument = (docId) => {
@@ -354,80 +364,141 @@ export default function Roadmap() {
                       {step.desc}
                     </p>
                     
-                    {(() => {
-                      const isDocStep = (step.title + " " + step.desc).toLowerCase().includes("document") ||
-                                        (step.title + " " + step.desc).toLowerCase().includes("transcript") ||
-                                        (step.title + " " + step.desc).toLowerCase().includes("academic record") ||
-                                        (step.title + " " + step.desc).toLowerCase().includes("certificate");
-                      if (!isDocStep) return null;
-                      return (
-                        <div style={{ marginTop: '16px', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '16px' }} onClick={e => e.stopPropagation()}>
-                          {user ? (
-                            <>
-                              <div className="pf-document-upload-zone" style={{ padding: '16px 12px' }} onClick={() => docInputRef.current.click()}>
-                                <div style={{ fontSize: '20px', marginBottom: '4px' }}>📤</div>
-                                <p style={{ margin: 0, fontWeight: 700, fontSize: '12px', color: 'var(--text)' }}>Upload certificates or transcripts here</p>
-                                <input 
-                                  ref={docInputRef} 
-                                  type="file" 
-                                  multiple 
-                                  accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" 
-                                  style={{ display: 'none' }} 
-                                  onChange={handleDocumentUpload} 
-                                />
-                              </div>
-                              {profile?.documents && profile.documents.length > 0 && (
-                                <div className="pf-documents-list" style={{ display: 'flex', flexDirection: 'column', gap: '8px', marginTop: '12px' }}>
-                                  {profile.documents.map((doc) => {
-                                    const isPdf = doc.type === 'application/pdf';
-                                    const isImg = doc.type.startsWith('image/');
-                                    const sizeKb = Math.round(doc.size / 1024);
-                                    const sizeStr = sizeKb >= 1024 ? `${(sizeKb / 1024).toFixed(1)} MB` : `${sizeKb} KB`;
-                                    return (
-                                      <div key={doc.id} className="pf-document-item" style={{ 
-                                        display: 'flex', 
-                                        alignItems: 'center', 
-                                        justifyContent: 'space-between', 
-                                        padding: '8px 12px', 
-                                        background: 'rgba(255, 255, 255, 0.01)', 
-                                        border: '1px solid var(--card-border)', 
-                                        borderRadius: '10px' 
-                                      }}>
-                                        <div style={{ display: 'flex', alignItems: 'center', gap: '8px', overflow: 'hidden', flex: 1 }}>
-                                          <div style={{ fontSize: '16px' }}>{isPdf ? '📄' : (isImg ? '🖼️' : '📝')}</div>
-                                          <span style={{ fontSize: '12.5px', fontWeight: 600, color: 'var(--text)', whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>{doc.name} ({sizeStr})</span>
-                                        </div>
-                                        <button 
-                                          type="button" 
-                                          onClick={() => deleteDocument(doc.id)} 
-                                          style={{ 
-                                            background: 'transparent', 
-                                            border: 'none', 
-                                            color: 'rgba(248, 113, 113, 0.7)', 
-                                            fontSize: '14px', 
-                                            cursor: 'pointer', 
-                                            padding: '2px',
+                    {checked && user && (
+                      <div style={{ marginTop: '16px', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '16px' }} onClick={e => e.stopPropagation()}>
+                        {(() => {
+                          const stepDocs = (profile?.documents || []).filter(
+                            d => d.country === selectedCountry && d.stepId === step.id
+                          );
+                          const isExpanded = !!expandedSteps[step.id];
+                          
+                          return (
+                            <div>
+                              {stepDocs.length === 0 ? (
+                                <div 
+                                  className="pf-document-upload-zone" 
+                                  style={{ padding: '16px 12px' }} 
+                                  onClick={() => document.getElementById(`doc-upload-${step.id}`).click()}
+                                >
+                                  <div style={{ fontSize: '20px', marginBottom: '4px' }}>📤</div>
+                                  <p style={{ margin: 0, fontWeight: 700, fontSize: '12px', color: 'var(--text)' }}>
+                                    Upload certificates or transcripts here
+                                  </p>
+                                  <input 
+                                    id={`doc-upload-${step.id}`}
+                                    type="file" 
+                                    multiple 
+                                    accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" 
+                                    style={{ display: 'none' }} 
+                                    onChange={(e) => handleDocumentUpload(e, step.id)} 
+                                  />
+                                </div>
+                              ) : (
+                                <div>
+                                  <button
+                                    type="button"
+                                    onClick={() => toggleExpandStep(step.id)}
+                                    style={{
+                                      display: 'inline-flex',
+                                      alignItems: 'center',
+                                      gap: '8px',
+                                      background: 'rgba(255,255,255,0.03)',
+                                      border: '1px solid rgba(255,255,255,0.08)',
+                                      borderRadius: '8px',
+                                      padding: '6px 12px',
+                                      color: 'var(--text)',
+                                      fontSize: '12px',
+                                      fontWeight: 600,
+                                      cursor: 'pointer',
+                                      transition: 'all 0.2s',
+                                    }}
+                                  >
+                                    <span>📎 View Uploaded Documents ({stepDocs.length})</span>
+                                    <span style={{ fontSize: '9px', display: 'inline-block', transform: isExpanded ? 'rotate(180deg)' : 'rotate(0deg)', transition: 'transform 0.2s' }}>▼</span>
+                                  </button>
+
+                                  {isExpanded && (
+                                    <div style={{ marginTop: '12px', display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                      <div className="pf-documents-list" style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+                                        {stepDocs.map((doc) => {
+                                          const isPdf = doc.type === 'application/pdf';
+                                          const isImg = doc.type?.startsWith('image/');
+                                          const sizeKb = Math.round(doc.size / 1024);
+                                          const sizeStr = sizeKb >= 1024 ? `${(sizeKb / 1024).toFixed(1)} MB` : `${sizeKb} KB`;
+                                          return (
+                                            <div key={doc.id} className="pf-document-item" style={{ 
+                                              display: 'flex', 
+                                              alignItems: 'center', 
+                                              justifyContent: 'space-between', 
+                                              padding: '8px 12px', 
+                                              background: 'rgba(255, 255, 255, 0.01)', 
+                                              border: '1px solid var(--card-border)', 
+                                              borderRadius: '10px' 
+                                            }}>
+                                              <div style={{ display: 'flex', alignItems: 'center', gap: '8px', overflow: 'hidden', flex: 1 }}>
+                                                <div style={{ fontSize: '16px' }}>{isPdf ? '📄' : (isImg ? '🖼️' : '📝')}</div>
+                                                <span style={{ fontSize: '12.5px', fontWeight: 600, color: 'var(--text)', whiteSpace: 'nowrap', textOverflow: 'ellipsis', overflow: 'hidden' }}>{doc.name} ({sizeStr})</span>
+                                              </div>
+                                              <button 
+                                                type="button" 
+                                                onClick={() => deleteDocument(doc.id)} 
+                                                style={{ 
+                                                  background: 'transparent', 
+                                                  border: 'none', 
+                                                  color: 'rgba(248, 113, 113, 0.7)', 
+                                                  fontSize: '14px', 
+                                                  cursor: 'pointer', 
+                                                  padding: '2px',
+                                                  display: 'flex',
+                                                  alignItems: 'center',
+                                                  justifyContent: 'center'
+                                                }}
+                                              >
+                                                🗑️
+                                              </button>
+                                            </div>
+                                          )
+                                        })}
+                                      </div>
+
+                                      <div style={{ marginTop: '4px' }}>
+                                        <button
+                                          type="button"
+                                          onClick={() => document.getElementById(`doc-upload-${step.id}`).click()}
+                                          style={{
+                                            background: 'transparent',
+                                            border: 'none',
+                                            color: 'var(--accent)',
+                                            fontSize: '12px',
+                                            fontWeight: 600,
+                                            cursor: 'pointer',
+                                            padding: '4px 0',
                                             display: 'flex',
                                             alignItems: 'center',
-                                            justifyContent: 'center'
-                                          }}
-                                        >
-                                          🗑️
-                                        </button>
+                                            gap: '4px'
+                                            }}
+                                          >
+                                            ➕ Upload another document
+                                          </button>
+                                          <input 
+                                            id={`doc-upload-${step.id}`}
+                                            type="file" 
+                                            multiple 
+                                            accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" 
+                                            style={{ display: 'none' }} 
+                                            onChange={(e) => handleDocumentUpload(e, step.id)} 
+                                          />
+                                        </div>
                                       </div>
-                                    )
-                                  })}
-                                </div>
-                              )}
-                            </>
-                          ) : (
-                            <div style={{ padding: '12px 16px', background: 'rgba(255,255,255,0.02)', border: '1px dashed rgba(255,255,255,0.05)', borderRadius: '12px', fontSize: '12px', color: 'var(--muted)', lineHeight: '1.45' }}>
-                              💡 <strong>Sign in</strong> to upload your study documents (transcripts, certificates) and sync them to your profile.
-                            </div>
-                          )}
-                        </div>
-                      );
-                    })()}
+                                    )}
+                                  </div>
+                                )}
+                              </div>
+                            )
+                          })()
+                        }
+                      </div>
+                    )}
                   </div>
                 </div>
               )
@@ -466,12 +537,56 @@ export default function Roadmap() {
                 border: '1px solid rgba(255,255,255,0.03)',
                 borderRadius: '20px',
                 padding: '24px',
-                textAlign: 'center'
+                textAlign: 'center',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '16px'
               }}
             >
-              <p style={{ color: 'var(--muted)', fontSize: '13px', lineHeight: 1.5 }}>
-                ⚠️ Complete all <strong style={{ color: 'var(--accent)' }}>Required</strong> steps above to verify your eligibility and unlock the search button.
+              <p style={{ color: 'var(--muted)', fontSize: '13px', lineHeight: 1.5, margin: 0 }}>
+                ⚠️ Complete all <strong style={{ color: 'var(--accent)' }}>Required</strong> steps above to verify your eligibility.
               </p>
+              <button 
+                type="button" 
+                onClick={handleSearchClick}
+                style={{
+                  width: 'auto',
+                  padding: '10px 20px',
+                  borderRadius: '10px',
+                  fontSize: '13.5px',
+                  background: 'transparent',
+                  border: '1px solid rgba(255,255,255,0.15)',
+                  color: 'rgba(255,255,255,0.8)',
+                  cursor: 'pointer',
+                  transition: 'all 0.2s'
+                }}
+                className="btn-secondary-search"
+              >
+                🔍 Search Courses Anyway
+              </button>
+            </div>
+          )}
+
+          {/* Sign-in reminder at the bottom of the card for guest users */}
+          {!user && (
+            <div style={{ 
+              marginTop: '24px', 
+              padding: '16px 20px', 
+              background: 'rgba(255,255,255,0.02)', 
+              border: '1px dashed rgba(255,255,255,0.08)', 
+              borderRadius: '16px', 
+              fontSize: '13.5px', 
+              color: 'var(--muted)', 
+              lineHeight: '1.5',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '12px'
+            }}>
+              <span style={{ fontSize: '18px' }}>💡</span>
+              <span>
+                <strong>Sign in</strong> to upload your study documents (transcripts, certificates) for each step and sync them to your profile.
+              </span>
             </div>
           )}
 
