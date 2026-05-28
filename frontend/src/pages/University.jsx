@@ -104,7 +104,7 @@ export default function University() {
           <p style={{ color: 'var(--muted)', fontSize: '15.5px', margin: 0, lineHeight: 1.6, maxWidth: '440px' }}>
             You haven't searched for any programs yet. Let's find the perfect university matching your background and profile.
           </p>
-          <button className="btn-accent" style={{ padding: '14px 28px', borderRadius: '12px', fontWeight: 700, border: 'none', cursor: 'pointer', marginTop: '10px' }} onClick={() => navigate('/')}>
+          <button className="btn-accent" style={{ padding: '14px 28px', borderRadius: '12px', fontWeight: 700, border: 'none', cursor: 'pointer', marginTop: '10px', background: 'var(--btn-gradient)', color: 'var(--btn-text)' }} onClick={() => navigate('/')}>
             Go to Home Page
           </button>
         </div>

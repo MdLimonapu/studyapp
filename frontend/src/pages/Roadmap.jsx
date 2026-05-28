@@ -271,17 +271,29 @@ export default function Roadmap() {
         <div className="card" style={{ padding: '32px' }}>
           
           {/* Header Info */}
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', flexWrap: 'wrap', gap: '16px', marginBottom: '20px' }}>
+          <div style={{ 
+            display: 'flex', 
+            justifyContent: 'space-between', 
+            alignItems: 'center', 
+            flexWrap: 'wrap', 
+            gap: '16px', 
+            marginBottom: '24px',
+            background: 'var(--dark2)',
+            padding: '16px 24px',
+            borderRadius: '16px',
+            border: '1px solid var(--card-border)',
+            boxShadow: '0 4px 12px rgba(0,0,0,0.02)'
+          }}>
             <div>
-              <h3 style={{ fontSize: '22px', fontWeight: 900, display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <h3 style={{ fontSize: '18px', fontWeight: 900, display: 'flex', alignItems: 'center', gap: '10px', margin: 0 }}>
                 <span>{currentRoadmap.flag}</span> {selectedCountry} Eligibility checklist
               </h3>
             </div>
             
             {/* Progress circular tag */}
-            <div className="summary-stats" style={{ padding: '8px 16px', height: 'auto', background: 'rgba(255,255,255,0.02)' }}>
-              <span className="big-number" style={{ fontSize: '24px' }}>{progressPercent}%</span>
-              <span className="big-label">Done</span>
+            <div className="summary-stats" style={{ padding: '8px 16px', height: 'auto', background: 'var(--card)', borderRadius: '12px', border: '1px solid var(--card-border)', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+              <span className="big-number" style={{ fontSize: '18px', fontWeight: 800, color: 'var(--text)' }}>{progressPercent}%</span>
+              <span className="big-label" style={{ fontSize: '10px', textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--muted)' }}>Done</span>
             </div>
           </div>
 
