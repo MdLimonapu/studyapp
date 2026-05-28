@@ -1,34 +1,34 @@
 :root {
-  --bg: #0c0e1d;
-  --card: rgba(18, 20, 38, 0.5);
+  --bg: #1e222b;
+  --card: rgba(28, 32, 43, 0.65);
   --card-border: rgba(255, 255, 255, 0.05);
   --text: #ffffff;
-  --muted: #8b90b8;
-  --accent: #51faaa;
-  --accent2: #ff81ff;
-  --blue: #616083;
-  --dark2: #211f36;
+  --muted: #94a3b8;
+  --accent: #ff8c00;
+  --accent2: #f59e0b;
+  --blue: #475569;
+  --dark2: #282c37;
   
-  --header-bg: rgba(12, 14, 29, 0.8);
+  --header-bg: rgba(30, 34, 43, 0.8);
   --header-border: rgba(255, 255, 255, 0.05);
-  --footer-bg: rgba(12, 14, 29, 0.9);
+  --footer-bg: rgba(30, 34, 43, 0.9);
   --footer-border: rgba(255, 255, 255, 0.05);
-  --glass-glow: rgba(255, 255, 255, 0.04);
+  --glass-glow: rgba(255, 255, 255, 0.03);
   
-  --radial-1: rgba(97, 96, 131, 0.3);
-  --radial-2: rgba(255, 129, 255, 0.15);
-  --radial-3: rgba(81, 250, 170, 0.1);
+  --radial-1: rgba(255, 140, 0, 0.15);
+  --radial-2: rgba(245, 158, 11, 0.12);
+  --radial-3: rgba(251, 191, 36, 0.08);
   
-  --shadow-card: 0 24px 64px -12px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);
-  --shadow-news: 0 8px 24px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.04);
-  --shadow-news-hover: 0 16px 32px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.06);
+  --shadow-card: 0 24px 64px -12px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.05);
+  --shadow-news: 0 8px 24px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04);
+  --shadow-news-hover: 0 16px 32px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.05);
   
-  --input-bg: rgba(0, 0, 0, 0.15);
-  --border-hover: rgba(255, 255, 255, 0.2);
+  --input-bg: rgba(0, 0, 0, 0.2);
+  --border-hover: rgba(255, 255, 255, 0.15);
   
-  --btn-gradient: linear-gradient(135deg, var(--accent) 0%, #24d187 100%);
+  --btn-gradient: linear-gradient(135deg, var(--accent) 0%, #d97706 100%);
   --avatar-gradient: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
-  --btn-text: #0c0e1d;
+  --btn-text: #ffffff;
   --bg-image: radial-gradient(ellipse at 20% 50%, var(--radial-1) 0%, transparent 60%),
     radial-gradient(ellipse at 80% 10%, var(--radial-2) 0%, transparent 50%),
     radial-gradient(ellipse at 60% 90%, var(--radial-3) 0%, transparent 50%);

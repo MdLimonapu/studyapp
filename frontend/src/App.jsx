@@ -109,12 +109,12 @@ export default function App() {
               <path d="M6 14.5V21C6 24.3 10.5 27 16 27C21.5 27 26 24.3 26 21V14.5L16 19.5L6 14.5Z" fill="url(#studplex-grad2)" />
               <defs>
                 <linearGradient id="studplex-grad" x1="2" y1="2" x2="30" y2="16" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#51faaa" />
-                  <stop offset="1" stopColor="#ff81ff" />
+                  <stop stopColor="var(--accent)" />
+                  <stop offset="1" stopColor="var(--accent2)" />
                 </linearGradient>
                 <linearGradient id="studplex-grad2" x1="6" y1="14.5" x2="26" y2="27" gradientUnits="userSpaceOnUse">
-                  <stop stopColor="#ff81ff" />
-                  <stop offset="1" stopColor="#51faaa" />
+                  <stop stopColor="var(--accent2)" />
+                  <stop offset="1" stopColor="var(--accent)" />
                 </linearGradient>
               </defs>
             </svg>
