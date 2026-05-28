@@ -34,6 +34,14 @@ export default function App() {
   const navigate = useNavigate()
   const [profile, setProfile] = useState(null)
   const { user, isLoaded } = useUser()
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem('theme') || 'dark'
+  })
+
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme)
+    localStorage.setItem('theme', theme)
+  }, [theme])
 
   useEffect(() => {
     const updateProfile = () => {
@@ -129,6 +137,14 @@ export default function App() {
               <NavLink to="/profile">Profile</NavLink>
             </SignedIn>
           </nav>
+
+          <button 
+            className="theme-toggle-btn"
+            onClick={() => setTheme(prev => prev === 'dark' ? 'light' : 'dark')}
+            title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
+          >
+            {theme === 'dark' ? '☀️' : '🌙'}
+          </button>
 
           <SignedIn>
             <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
