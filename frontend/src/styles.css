@@ -25,6 +25,9 @@
   
   --input-bg: rgba(0, 0, 0, 0.15);
   --border-hover: rgba(255, 255, 255, 0.2);
+  
+  --btn-gradient: linear-gradient(135deg, var(--accent) 0%, #24d187 100%);
+  --avatar-gradient: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
 }
 
 :root[data-theme="light"] {
@@ -54,6 +57,9 @@
   
   --input-bg: #ffffff;
   --border-hover: rgba(0, 0, 0, 0.15);
+  
+  --btn-gradient: linear-gradient(135deg, #111827 0%, #374151 100%);
+  --avatar-gradient: linear-gradient(135deg, #1f2937 0%, #4b5563 100%);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -133,15 +139,15 @@ body {
   width: 38px;
   height: 38px;
   border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent) 0%, #24d187 100%);
-  color: #0c0e1d;
+  background: var(--btn-gradient);
+  color: #ffffff;
   font-weight: 800;
   font-size: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 0 10px rgba(81, 250, 170, 0.1);
+  border: 1px solid var(--card-border);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -343,16 +349,16 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)) {
   border-radius: 16px;
   border: none;
   padding: 20px 18px;
-  background: linear-gradient(135deg, var(--accent) 0%, #24d187 100%);
-  box-shadow: 0 4px 14px rgba(81,250,170,0.3), inset 0 1px 0 rgba(255,255,255,0.3);
-  color: #0c0e1d;
+  background: var(--btn-gradient);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.15);
+  color: #ffffff;
   font-size: 16px;
   font-weight: 800;
   cursor: pointer;
   transition: all 0.2s;
   margin-top: 8px;
 }
-button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):hover { opacity: 0.95; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(81,250,170,0.4), inset 0 1px 0 rgba(255,255,255,0.3); }
+button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):hover { opacity: 0.95; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.15); }
 button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 .btn-saved { background: #22c55e !important; }
 .btn-outline {
@@ -674,10 +680,10 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 }
 
 .result-card:hover .rc-cta-btn {
-  background: linear-gradient(135deg, var(--accent) 0%, #24d187 100%);
+  background: var(--btn-gradient);
   border-color: transparent;
-  color: #0c0e1d;
-  box-shadow: 0 4px 12px rgba(81, 250, 170, 0.2);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .rc-cta-btn-arrow {
@@ -774,8 +780,8 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 .pf-avatar-img { width: 96px; height: 96px; border-radius: 50%; object-fit: cover; display: block; }
 .pf-avatar-initials {
   width: 96px; height: 96px; border-radius: 50%;
-  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
-  color: #0c0e1d; font-size: 38px; font-weight: 900;
+  background: var(--avatar-gradient);
+  color: #ffffff; font-size: 38px; font-weight: 900;
   display: flex; align-items: center; justify-content: center;
 }
 .pf-avatar-overlay {
@@ -1277,9 +1283,9 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   height: 280px;
   background: linear-gradient(
     to bottom,
-    rgba(12, 14, 29, 0) 0%,
-    rgba(12, 14, 29, 0.95) 100px,
-    #0c0e1d 100%
+    rgba(255, 255, 255, 0) 0%,
+    var(--bg) 80px,
+    var(--bg) 100%
   );
   display: flex;
   align-items: flex-end;
