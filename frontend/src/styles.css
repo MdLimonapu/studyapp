@@ -28,6 +28,7 @@
   
   --btn-gradient: linear-gradient(135deg, var(--accent) 0%, #24d187 100%);
   --avatar-gradient: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
+  --btn-text: #0c0e1d;
 }
 
 :root[data-theme="light"] {
@@ -60,6 +61,7 @@
   
   --btn-gradient: linear-gradient(135deg, #111827 0%, #374151 100%);
   --avatar-gradient: linear-gradient(135deg, #1f2937 0%, #4b5563 100%);
+  --btn-text: #ffffff;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -351,7 +353,7 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)) {
   padding: 20px 18px;
   background: var(--btn-gradient);
   box-shadow: 0 4px 14px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.15);
-  color: #ffffff;
+  color: var(--btn-text);
   font-size: 16px;
   font-weight: 800;
   cursor: pointer;
@@ -682,7 +684,7 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 .result-card:hover .rc-cta-btn {
   background: var(--btn-gradient);
   border-color: transparent;
-  color: #ffffff;
+  color: var(--btn-text);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
