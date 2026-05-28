@@ -106,13 +106,13 @@ body {
 }
 .nav-links a:hover:not(.active) {
   color: var(--text);
-  background: rgba(255, 255, 255, 0.04);
-  border-color: rgba(255, 255, 255, 0.08);
+  background: var(--glass-glow);
+  border-color: var(--card-border);
 }
 .nav-links a.active {
-  color: var(--accent);
-  background: rgba(81, 250, 170, 0.1);
-  border-color: rgba(81, 250, 170, 0.3);
+  color: var(--text);
+  background: var(--dark2);
+  border-color: var(--card-border);
 }
 
 .topbar-profile {
@@ -916,7 +916,7 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 .modal-actions { display: flex; flex-direction: column; gap: 10px; margin-top: 24px; }
 .btn-accent {
   width: 100%; padding: 14px; border-radius: 14px;
-  background: var(--accent); color: #0c0e1d;
+  background: var(--btn-gradient); color: var(--btn-text);
   font-weight: 800; font-size: 15px; border: none; cursor: pointer;
 }
 .btn-ghost {
@@ -1211,9 +1211,9 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 }
 
 .country-box.active {
-  background: rgba(81, 250, 170, 0.08);
+  background: var(--dark2);
   border-color: var(--accent);
-  box-shadow: 0 4px 20px rgba(81, 250, 170, 0.06);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
 
 .country-box-flag {
@@ -1233,7 +1233,7 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 }
 
 .country-box.active .country-box-name {
-  color: var(--accent);
+  color: var(--text);
 }
 
 .country-box-status {
@@ -1243,7 +1243,7 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 }
 
 .country-box.active .country-box-status {
-  color: rgba(81, 250, 170, 0.85);
+  color: var(--muted);
 }
 
 /* BLUR GATE STYLES FOR SEARCH RESULTS */
