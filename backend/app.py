@@ -617,7 +617,16 @@ def fallback_search(country, degree, field, user_grade=None):
                     if not clean_title or clean_title == gen_key:
                         is_core = True
                         
-                    has_sub_term = any(sub_term in course_title for sub_term in gen_cfg["sub"])
+                    has_sub_term = False
+                    for sub_term in gen_cfg["sub"]:
+                        if len(sub_term) <= 2:
+                            if re.search(r'\b' + re.escape(sub_term) + r'\b', course_title):
+                                has_sub_term = True
+                                break
+                        else:
+                            if sub_term in course_title:
+                                has_sub_term = True
+                                break
                         
                     if gen_key in course_title or has_sub_term:
                         if is_core and not has_sub_term:
