@@ -9,6 +9,7 @@ import {
   ActivityIndicator, 
   Alert 
 } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { fetchProfile, saveProfile } from '../../services/api';
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
@@ -29,47 +30,84 @@ export default function ProfileScreen() {
   
   const [profile, setProfile] = useState({
     fullName: '',
-    email: 'student@example.com', // fallback/test email
+    email: '',
     currentDegree: '',
     currentField: '',
     semester: '',
     universityName: '',
     grade: '',
     notes: '',
+    studplexId: '',
   });
 
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
+  const [syncing, setSyncing] = useState(false);
 
+  // Load cached email and profile on mount
   useEffect(() => {
-    // Fetch profile on load
-    setLoading(true);
-    fetchProfile(profile.email)
-      .then(data => {
-        if (data && Object.keys(data).length) {
-          setProfile(p => ({
-            ...p,
-            fullName: data.fullName || '',
-            currentDegree: data.currentDegree || '',
-            currentField: data.currentField || '',
-            semester: String(data.semester || ''),
-            universityName: data.universityName || '',
-            grade: String(data.grade || ''),
-            notes: data.notes || '',
-          }));
-        }
-      })
-      .catch(err => {
-        console.error("Error loading profile:", err);
-      })
-      .finally(() => setLoading(false));
+    loadCachedProfile();
   }, []);
 
+  const loadCachedProfile = async () => {
+    setLoading(true);
+    try {
+      const email = await AsyncStorage.getItem('user_email');
+      if (email) {
+        setProfile(p => ({ ...p, email }));
+        await syncProfileFromServer(email);
+      } else {
+        // Fallback default email for testing
+        const defaultEmail = 'student@example.com';
+        setProfile(p => ({ ...p, email: defaultEmail }));
+        await syncProfileFromServer(defaultEmail);
+      }
+    } catch (err) {
+      console.error("Error loading cached email:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const syncProfileFromServer = async (emailToSync: string) => {
+    setSyncing(true);
+    try {
+      const data = await fetchProfile(emailToSync);
+      if (data && Object.keys(data).length) {
+        setProfile(p => ({
+          ...p,
+          fullName: data.fullName || '',
+          email: emailToSync,
+          currentDegree: data.currentDegree || '',
+          currentField: data.currentField || '',
+          semester: String(data.semester || ''),
+          universityName: data.universityName || '',
+          grade: String(data.grade || ''),
+          notes: data.notes || '',
+          studplexId: data.studplexId || '',
+        }));
+        await AsyncStorage.setItem('user_email', emailToSync);
+      } else {
+        // If email not found or empty, just keep the input email
+        setProfile(p => ({ ...p, email: emailToSync, studplexId: '' }));
+      }
+    } catch (err) {
+      console.error("Sync error:", err);
+    } finally {
+      setSyncing(false);
+    }
+  };
+
   const handleSave = () => {
+    if (!profile.email.trim()) {
+      Alert.alert("Error", "Please enter a valid email address.");
+      return;
+    }
     setSaving(true);
     saveProfile(profile)
-      .then(() => {
-        Alert.alert("Success", "Profile updated successfully!");
+      .then(async () => {
+        await AsyncStorage.setItem('user_email', profile.email);
+        Alert.alert("Success", "Profile updated and saved to server!");
       })
       .catch(err => {
         Alert.alert("Error", "Failed to update profile. Please try again.");
@@ -79,7 +117,7 @@ export default function ProfileScreen() {
   };
 
   const getCompletionPercentage = () => {
-    const keys = ['fullName', 'currentDegree', 'currentField', 'grade'];
+    const keys = ['fullName', 'email', 'currentDegree', 'currentField', 'grade'];
     const filled = keys.filter(k => profile[k as keyof typeof profile]?.trim() !== '');
     return Math.round((filled.length / keys.length) * 100);
   };
@@ -95,10 +133,29 @@ export default function ProfileScreen() {
   const completionPct = getCompletionPercentage();
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: colors.background }]}>
+    <ScrollView style={[styles.container, { backgroundColor: colors.background }]} keyboardShouldPersistTaps="handled">
+      {/* Upper Profile Identity Info */}
       <View style={styles.header}>
-        <Text style={[styles.headerTitle, { color: colors.text }]}>My Profile</Text>
-        <Text style={styles.headerSubtitle}>Set up your profile to match with universities</Text>
+        <View style={styles.identityRow}>
+          <View style={[styles.avatarCircle, { backgroundColor: colors.tint }]}>
+            <Text style={styles.avatarText}>
+              {profile.fullName ? profile.fullName[0].toUpperCase() : 'A'}
+            </Text>
+          </View>
+          <View style={styles.identityInfo}>
+            <Text style={[styles.identityName, { color: colors.text }]}>
+              {profile.fullName || "Your Name"}
+            </Text>
+            <Text style={[styles.identityEmail, { color: colors.text, opacity: 0.6 }]}>
+              {profile.email || "No email linked"}
+            </Text>
+            {profile.studplexId ? (
+              <View style={styles.studplexIdBadge}>
+                <Text style={styles.studplexIdText}>ID: {profile.studplexId}</Text>
+              </View>
+            ) : null}
+          </View>
+        </View>
       </View>
 
       {/* Profile Completion Card */}
@@ -111,9 +168,64 @@ export default function ProfileScreen() {
         </View>
         <Text style={styles.completionHint}>
           {completionPct === 100 
-            ? "Your profile is complete! Ready for matches." 
-            : "Fill in all required fields to unlock AI matching recommendations."}
+            ? "Your profile is fully complete! You are ready for AI university matches." 
+            : "Complete all fields to sync custom eligibility guidelines for study abroad."}
         </Text>
+
+        {/* Visual Checklist */}
+        <View style={styles.checklist}>
+          {[
+            { label: 'Full name', done: !!profile.fullName },
+            { label: 'Email address', done: !!profile.email },
+            { label: 'Degree level', done: !!profile.currentDegree },
+            { label: 'Field of study', done: !!profile.currentField },
+            { label: 'GPA / Grade', done: !!profile.grade },
+          ].map((item, idx) => (
+            <View key={idx} style={styles.checkItem}>
+              <View style={[
+                styles.checkDot, 
+                { backgroundColor: item.done ? '#10b981' : '#6b7280' }
+              ]} />
+              <Text style={[
+                styles.checkLabel, 
+                { color: colors.text, opacity: item.done ? 0.9 : 0.5 }
+              ]}>
+                {item.label}
+              </Text>
+            </View>
+          ))}
+        </View>
+      </View>
+
+      {/* Sync Profile Zone */}
+      <View style={[styles.section, { backgroundColor: colors.card, borderColor: colors.border }]}>
+        <Text style={[styles.sectionTitle, { color: colors.tint }]}>Account Sync</Text>
+        <Text style={[styles.hint, { color: colors.text, opacity: 0.6, marginBottom: 12 }]}>
+          Enter the email address you use on the Studplex website to import and sync your details instantly.
+        </Text>
+        
+        <View style={styles.syncRow}>
+          <TextInput 
+            style={[styles.syncInput, { borderColor: colors.border, color: colors.text }]}
+            value={profile.email}
+            onChangeText={(text) => setProfile(p => ({ ...p, email: text }))}
+            placeholder="e.g. student@example.com"
+            placeholderTextColor="#9ca3af"
+            keyboardType="email-address"
+            autoCapitalize="none"
+          />
+          <TouchableOpacity 
+            style={[styles.syncButton, { backgroundColor: colors.tint }]}
+            onPress={() => syncProfileFromServer(profile.email)}
+            disabled={syncing}
+          >
+            {syncing ? (
+              <ActivityIndicator color="#fff" size="small" />
+            ) : (
+              <Text style={styles.syncButtonText}>Sync</Text>
+            )}
+          </TouchableOpacity>
+        </View>
       </View>
 
       {/* Form Fields */}
@@ -128,13 +240,6 @@ export default function ProfileScreen() {
           placeholder="e.g. James Anderson"
           placeholderTextColor="#9ca3af"
         />
-
-        <Text style={[styles.label, { color: colors.text }]}>Email Address</Text>
-        <TextInput 
-          style={[styles.input, { borderColor: colors.border, color: colors.text, opacity: 0.7 }]}
-          value={profile.email}
-          editable={false}
-        />
       </View>
 
       <View style={[styles.section, { backgroundColor: colors.card, borderColor: colors.border }]}>
@@ -142,14 +247,14 @@ export default function ProfileScreen() {
 
         <Text style={[styles.label, { color: colors.text }]}>Degree Level</Text>
         <View style={styles.degreeRow}>
-          {DEGREE_OPTIONS.slice(0, 4).map((deg) => {
+          {DEGREE_OPTIONS.map((deg) => {
             const isSelected = profile.currentDegree === deg;
             return (
               <TouchableOpacity 
                 key={deg}
                 style={[
                   styles.degreeBadge, 
-                  { borderColor: colors.border },
+                  { borderColor: colors.border, backgroundColor: colors.card },
                   isSelected && { backgroundColor: colors.tint, borderColor: colors.tint }
                 ]}
                 onPress={() => setProfile(p => ({ ...p, currentDegree: deg }))}
@@ -188,7 +293,7 @@ export default function ProfileScreen() {
         {saving ? (
           <ActivityIndicator color="#fff" />
         ) : (
-          <Text style={styles.buttonText}>Save Profile</Text>
+          <Text style={styles.buttonText}>Save Changes</Text>
         )}
       </TouchableOpacity>
 
@@ -210,18 +315,59 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     marginTop: 10,
   },
-  headerTitle: {
+  identityRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  avatarCircle: {
+    width: 64,
+    height: 64,
+    borderRadius: 32,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 16,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  avatarText: {
+    color: '#fff',
     fontSize: 28,
     fontWeight: '800',
+  },
+  identityInfo: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  identityName: {
+    fontSize: 22,
+    fontWeight: '800',
+    marginBottom: 2,
+  },
+  identityEmail: {
+    fontSize: 13,
     marginBottom: 6,
   },
-  headerSubtitle: {
-    fontSize: 14,
-    color: '#6b7280',
+  studplexIdBadge: {
+    alignSelf: 'flex-start',
+    backgroundColor: 'rgba(255, 140, 0, 0.1)',
+    paddingVertical: 4,
+    paddingHorizontal: 10,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 140, 0, 0.25)',
+  },
+  studplexIdText: {
+    color: '#ff8c00',
+    fontSize: 11,
+    fontWeight: '800',
+    letterSpacing: 0.5,
   },
   card: {
     padding: 16,
-    borderRadius: 16,
+    borderRadius: 18,
     borderWidth: 1,
     marginBottom: 20,
   },
@@ -251,17 +397,42 @@ const styles = StyleSheet.create({
     fontSize: 13,
     color: '#6b7280',
     lineHeight: 18,
+    marginBottom: 16,
+  },
+  checklist: {
+    borderTopWidth: 1,
+    borderTopColor: '#374151',
+    paddingTop: 12,
+    gap: 8,
+  },
+  checkItem: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  checkDot: {
+    width: 8,
+    height: 8,
+    borderRadius: 4,
+    marginRight: 10,
+  },
+  checkLabel: {
+    fontSize: 13,
+    fontWeight: '600',
   },
   section: {
     padding: 16,
-    borderRadius: 16,
+    borderRadius: 18,
     borderWidth: 1,
     marginBottom: 16,
   },
   sectionTitle: {
     fontSize: 18,
     fontWeight: '700',
-    marginBottom: 16,
+    marginBottom: 10,
+  },
+  hint: {
+    fontSize: 12.5,
+    lineHeight: 18,
   },
   label: {
     fontSize: 14,
@@ -272,10 +443,34 @@ const styles = StyleSheet.create({
   input: {
     height: 48,
     borderWidth: 1,
-    borderRadius: 10,
+    borderRadius: 12,
     paddingHorizontal: 12,
     fontSize: 15,
     marginBottom: 10,
+  },
+  syncRow: {
+    flexDirection: 'row',
+    gap: 8,
+  },
+  syncInput: {
+    flex: 1,
+    height: 48,
+    borderWidth: 1,
+    borderRadius: 12,
+    paddingHorizontal: 12,
+    fontSize: 15,
+  },
+  syncButton: {
+    width: 80,
+    height: 48,
+    borderRadius: 12,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  syncButtonText: {
+    color: '#fff',
+    fontSize: 14,
+    fontWeight: '700',
   },
   degreeRow: {
     flexDirection: 'row',

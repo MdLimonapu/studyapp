@@ -8,9 +8,10 @@ import {
   TouchableOpacity, 
   ActivityIndicator, 
   Alert,
-  FlatList
+  Switch
 } from 'react-native';
-import { fetchCountries, searchCourses } from '../../services/api';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { fetchCountries, searchCourses, fetchProfile } from '../../services/api';
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
 
@@ -25,6 +26,35 @@ const STATIC_COUNTRIES = [
   {"name": "France",      "flag": "🇫🇷"},
   {"name": "Switzerland", "flag": "🇨🇭"},
   {"name": "Japan",       "flag": "🇯🇵"},
+];
+
+const POPULAR_FIELDS = [
+  "Computer Science", 
+  "Software Engineering", 
+  "Data Science", 
+  "Artificial Intelligence",
+  "Cybersecurity", 
+  "Information Technology", 
+  "Electrical Engineering", 
+  "Mechanical Engineering",
+  "Aerospace Engineering", 
+  "Biomedical Engineering", 
+  "Civil Engineering", 
+  "Business Administration",
+  "Finance", 
+  "Economics", 
+  "Management", 
+  "Physics", 
+  "Chemistry", 
+  "Biology", 
+  "Mathematics",
+  "Medicine", 
+  "Nursing", 
+  "Public Health", 
+  "Law", 
+  "Psychology", 
+  "Architecture", 
+  "Urban Planning"
 ];
 
 interface Program {
@@ -45,10 +75,18 @@ export default function SearchScreen() {
   const [selectedCountry, setSelectedCountry] = useState('');
   const [degree, setDegree] = useState('master');
   const [field, setField] = useState('');
+  const [fieldSuggestions, setFieldSuggestions] = useState<string[]>([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState<Program[]>([]);
   const [hasSearched, setHasSearched] = useState(false);
 
+  // Profile Sync States
+  const [profile, setProfile] = useState<any>(null);
+  const [useProfile, setUseProfile] = useState(true);
+
+  // Load countries and synced profile
   useEffect(() => {
     fetchCountries()
       .then(data => {
@@ -56,10 +94,55 @@ export default function SearchScreen() {
           setCountries(data);
         }
       })
-      .catch(() => {
-        // Use static fallback list if backend is booting
-      });
+      .catch(() => {});
+
+    loadProfileFromCache();
   }, []);
+
+  const loadProfileFromCache = async () => {
+    try {
+      const email = await AsyncStorage.getItem('user_email');
+      if (email) {
+        const data = await fetchProfile(email);
+        if (data && Object.keys(data).length > 0) {
+          setProfile(data);
+          if (data.currentField) {
+            setField(data.currentField);
+          }
+          if (data.currentDegree) {
+            setDegree(data.currentDegree.toLowerCase());
+          }
+        }
+      }
+    } catch (err) {
+      console.log("No profile cached yet:", err);
+    }
+  };
+
+  // Re-fetch profile on focus/scroll or when user returns
+  useEffect(() => {
+    const timer = setInterval(() => {
+      loadProfileFromCache();
+    }, 4000); // Poll every 4 seconds to sync changes seamlessly
+    return () => clearInterval(timer);
+  }, []);
+
+  const handleFieldInput = (val: string) => {
+    setField(val);
+    if (val.trim().length > 0) {
+      const query = val.toLowerCase().trim();
+      const filtered = POPULAR_FIELDS.filter(f => f.toLowerCase().includes(query)).slice(0, 5);
+      setFieldSuggestions(filtered);
+      setShowSuggestions(true);
+    } else {
+      setShowSuggestions(false);
+    }
+  };
+
+  const handleSelectSuggestion = (val: string) => {
+    setField(val);
+    setShowSuggestions(false);
+  };
 
   const handleSearch = () => {
     if (!selectedCountry) {
@@ -73,7 +156,16 @@ export default function SearchScreen() {
 
     setLoading(true);
     setHasSearched(true);
-    searchCourses({ country: selectedCountry, degree, field })
+
+    const searchPayload = {
+      country: selectedCountry,
+      degree,
+      field
+    };
+
+    const activeProfile = useProfile ? profile : null;
+
+    searchCourses(searchPayload, activeProfile)
       .then(data => {
         if (data && Array.isArray(data.courses)) {
           setResults(data.courses);
@@ -91,12 +183,58 @@ export default function SearchScreen() {
   };
 
   return (
-    <ScrollView style={[styles.container, { backgroundColor: colors.background }]}>
+    <ScrollView style={[styles.container, { backgroundColor: colors.background }]} keyboardShouldPersistTaps="handled">
       {/* Hero Header */}
       <View style={styles.heroCard}>
-        <Text style={styles.heroTitle}>Find the right{'\n'}<Text style={styles.heroTitleHighlight}>university</Text>{'\n'}worldwide</Text>
-        <Text style={styles.heroSubtitle}>AI-powered degree matching tailored to your profile.</Text>
+        <Text style={[styles.heroTitlePre, { color: colors.text }]}>Find the right</Text>
+        <Text style={styles.heroTitleMain}>university</Text>
+        <Text style={[styles.heroTitlePost, { color: colors.text }]}>worldwide</Text>
+        <Text style={[styles.heroSubtitle, { color: colors.text, opacity: 0.7 }]}>
+          AI-powered degree matching tailored to your profile.
+        </Text>
+
+        {/* Stats Row */}
+        <View style={[styles.statsRow, { borderColor: colors.border }]}>
+          <View style={styles.statItem}>
+            <Text style={[styles.statValue, { color: colors.tint }]}>10+</Text>
+            <Text style={styles.statLabel}>Countries</Text>
+          </View>
+          <View style={styles.statDivider} />
+          <View style={styles.statItem}>
+            <Text style={[styles.statValue, { color: colors.tint }]}>Live</Text>
+            <Text style={styles.statLabel}>Real Data</Text>
+          </View>
+          <View style={styles.statDivider} />
+          <View style={styles.statItem}>
+            <Text style={[styles.statValue, { color: colors.tint }]}>AI</Text>
+            <Text style={styles.statLabel}>Matching</Text>
+          </View>
+        </View>
       </View>
+
+      {/* Active Profile Banner */}
+      {profile && profile.fullName ? (
+        <View style={[styles.profileBanner, { backgroundColor: colors.card, borderColor: colors.border }]}>
+          <View style={styles.profileBannerLeft}>
+            <Text style={[styles.profileBannerText, { color: colors.text }]}>
+              Matching as <Text style={{ fontWeight: '700', color: colors.tint }}>{profile.fullName}</Text>
+            </Text>
+            {profile.grade && (
+              <Text style={styles.profileBannerSub}>
+                GPA: {profile.grade} • {profile.currentDegree}
+              </Text>
+            )}
+          </View>
+          <View style={styles.profileBannerRight}>
+            <Switch
+              value={useProfile}
+              onValueChange={setUseProfile}
+              trackColor={{ false: '#767577', true: '#ffa500' }}
+              thumbColor={useProfile ? colors.tint : '#f4f3f4'}
+            />
+          </View>
+        </View>
+      ) : null}
 
       {/* Form */}
       <View style={[styles.formCard, { backgroundColor: colors.card, borderColor: colors.border }]}>
@@ -109,7 +247,7 @@ export default function SearchScreen() {
                 key={c.name}
                 style={[
                   styles.countryPill,
-                  { borderColor: colors.border },
+                  { borderColor: colors.border, backgroundColor: colors.card },
                   isSelected && { backgroundColor: colors.tint, borderColor: colors.tint }
                 ]}
                 onPress={() => setSelectedCountry(c.name)}
@@ -131,7 +269,7 @@ export default function SearchScreen() {
                 key={d}
                 style={[
                   styles.degreePill,
-                  { borderColor: colors.border },
+                  { borderColor: colors.border, backgroundColor: colors.card },
                   isSelected && { backgroundColor: colors.tint, borderColor: colors.tint }
                 ]}
                 onPress={() => setDegree(d)}
@@ -148,10 +286,25 @@ export default function SearchScreen() {
         <TextInput
           style={[styles.input, { borderColor: colors.border, color: colors.text }]}
           value={field}
-          onChangeText={setField}
+          onChangeText={handleFieldInput}
           placeholder="e.g. Data Science, Robotics"
           placeholderTextColor="#9ca3af"
         />
+
+        {/* Suggestions List */}
+        {showSuggestions && fieldSuggestions.length > 0 && (
+          <View style={[styles.suggestionsDropdown, { backgroundColor: colors.card, borderColor: colors.border }]}>
+            {fieldSuggestions.map((item, idx) => (
+              <TouchableOpacity 
+                key={idx} 
+                style={[styles.suggestionItem, { borderBottomColor: colors.border }]}
+                onPress={() => handleSelectSuggestion(item)}
+              >
+                <Text style={[styles.suggestionItemText, { color: colors.text }]}>{item}</Text>
+              </TouchableOpacity>
+            ))}
+          </View>
+        )}
 
         <TouchableOpacity 
           style={[styles.searchButton, { backgroundColor: colors.tint }]}
@@ -173,7 +326,9 @@ export default function SearchScreen() {
           {loading ? (
             <ActivityIndicator size="small" color={colors.tint} style={{ marginTop: 20 }} />
           ) : results.length === 0 ? (
-            <Text style={styles.noResultsText}>No courses match your search criteria. Try adjusting the query.</Text>
+            <Text style={[styles.noResultsText, { color: colors.text, opacity: 0.6 }]}>
+              No courses match your search criteria. Try adjusting the query.
+            </Text>
           ) : (
             results.map((item, index) => (
               <View 
@@ -185,12 +340,12 @@ export default function SearchScreen() {
                     {item.title}
                   </Text>
                   {item.score && (
-                    <View style={[styles.scoreBadge, { backgroundColor: colors.tint }]}>
+                    <View style={[styles.scoreBadge, { backgroundColor: '#ff8c00' }]}>
                       <Text style={styles.scoreText}>{item.score}% Match</Text>
                     </View>
                   )}
                 </View>
-                <Text style={styles.programUniversity}>{item.university}</Text>
+                <Text style={[styles.programUniversity, { color: colors.text, opacity: 0.7 }]}>{item.university}</Text>
                 
                 <View style={styles.programFooter}>
                   <Text style={styles.programMeta}>{item.country} • {item.degree}</Text>
@@ -219,21 +374,91 @@ const styles = StyleSheet.create({
     paddingHorizontal: 4,
     marginBottom: 10,
   },
-  heroTitle: {
-    fontSize: 32,
-    fontWeight: '900',
-    lineHeight: 38,
+  heroTitlePre: {
+    fontSize: 28,
+    fontWeight: '800',
+    lineHeight: 30,
     letterSpacing: -0.5,
-    color: '#111827',
   },
-  heroTitleHighlight: {
+  heroTitleMain: {
+    fontSize: 42,
+    fontWeight: '900',
     color: '#ff8c00',
+    lineHeight: 44,
+    letterSpacing: -1,
+    textTransform: 'lowercase',
+  },
+  heroTitlePost: {
+    fontSize: 28,
+    fontWeight: '800',
+    lineHeight: 30,
+    letterSpacing: -0.5,
+    marginBottom: 8,
   },
   heroSubtitle: {
-    fontSize: 15,
-    color: '#4b5563',
+    fontSize: 14.5,
     marginTop: 8,
-    lineHeight: 22,
+    lineHeight: 20,
+  },
+  statsRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 14,
+    paddingHorizontal: 8,
+    borderWidth: 1,
+    borderRadius: 14,
+    marginTop: 18,
+    backgroundColor: 'rgba(255, 255, 255, 0.02)',
+  },
+  statItem: {
+    flex: 1,
+    alignItems: 'center',
+  },
+  statValue: {
+    fontSize: 18,
+    fontWeight: '800',
+  },
+  statLabel: {
+    fontSize: 11,
+    color: '#9ca3af',
+    marginTop: 2,
+    textTransform: 'uppercase',
+    fontWeight: '600',
+  },
+  statDivider: {
+    width: 1,
+    height: 24,
+    backgroundColor: '#374151',
+  },
+  profileBanner: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: 14,
+    borderRadius: 16,
+    borderWidth: 1,
+    marginBottom: 16,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.05,
+    shadowRadius: 6,
+    elevation: 2,
+  },
+  profileBannerLeft: {
+    flex: 1,
+  },
+  profileBannerText: {
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  profileBannerSub: {
+    fontSize: 12,
+    color: '#9ca3af',
+    marginTop: 2,
+  },
+  profileBannerRight: {
+    marginLeft: 12,
   },
   formCard: {
     padding: 16,
@@ -286,7 +511,21 @@ const styles = StyleSheet.create({
     borderRadius: 12,
     paddingHorizontal: 12,
     fontSize: 15,
+    marginBottom: 10,
+  },
+  suggestionsDropdown: {
+    borderRadius: 12,
+    borderWidth: 1,
     marginBottom: 16,
+    overflow: 'hidden',
+  },
+  suggestionItem: {
+    paddingVertical: 12,
+    paddingHorizontal: 14,
+    borderBottomWidth: 1,
+  },
+  suggestionItemText: {
+    fontSize: 14.5,
   },
   searchButton: {
     height: 52,
@@ -298,6 +537,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 8,
     elevation: 4,
+    marginTop: 10,
   },
   searchButtonText: {
     color: '#fff',
@@ -314,7 +554,6 @@ const styles = StyleSheet.create({
   },
   noResultsText: {
     fontSize: 14,
-    color: '#6b7280',
     textAlign: 'center',
     marginTop: 10,
   },
@@ -347,7 +586,6 @@ const styles = StyleSheet.create({
   },
   programUniversity: {
     fontSize: 14,
-    color: '#6b7280',
     marginTop: 4,
     marginBottom: 12,
   },

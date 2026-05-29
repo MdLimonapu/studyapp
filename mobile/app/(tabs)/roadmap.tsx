@@ -85,7 +85,9 @@ export default function RoadmapScreen() {
     <ScrollView style={[styles.container, { backgroundColor: colors.background }]}>
       <View style={styles.header}>
         <Text style={[styles.headerTitle, { color: colors.text }]}>Check Eligibility</Text>
-        <Text style={styles.headerSubtitle}>Select a country and track your requirements</Text>
+        <Text style={[styles.headerSubtitle, { color: colors.text, opacity: 0.6 }]}>
+          Select a destination country to view your requirements.
+        </Text>
       </View>
 
       {/* Country Horizontal Selector */}
@@ -99,7 +101,7 @@ export default function RoadmapScreen() {
               style={[
                 styles.countryTab, 
                 { backgroundColor: colors.card, borderColor: colors.border },
-                isSelected && { borderColor: colors.tint, borderWidth: 2 }
+                isSelected && { borderColor: colors.tint, borderWidth: 2, backgroundColor: 'rgba(255, 140, 0, 0.05)' }
               ]}
               onPress={() => setSelectedCountry(country)}
             >
@@ -114,9 +116,9 @@ export default function RoadmapScreen() {
       <View style={[styles.checklistCard, { backgroundColor: colors.card, borderColor: colors.border }]}>
         <View style={styles.progressHeader}>
           <Text style={[styles.progressTitle, { color: colors.text }]}>
-            {currentRoadmap.flag} {selectedCountry} Steps ({completedCount}/{totalSteps})
+            {currentRoadmap.flag} {selectedCountry} Steps
           </Text>
-          <Text style={[styles.progressPct, { color: colors.tint }]}>{progressPercent}%</Text>
+          <Text style={[styles.progressPct, { color: colors.tint }]}>{completedCount}/{totalSteps}</Text>
         </View>
 
         <View style={styles.progressTrack}>
@@ -129,23 +131,27 @@ export default function RoadmapScreen() {
             return (
               <TouchableOpacity 
                 key={step.id} 
-                style={[styles.stepItem, { borderBottomColor: colors.border }]}
+                style={[
+                  styles.stepCard, 
+                  { backgroundColor: colors.background, borderColor: colors.border },
+                  isDone && { borderColor: '#10b981', backgroundColor: 'rgba(16, 185, 129, 0.02)' }
+                ]}
                 onPress={() => handleToggleStep(step.id)}
-                activeOpacity={0.7}
+                activeOpacity={0.8}
               >
-                <View style={[
-                  styles.checkbox, 
-                  { borderColor: colors.tint },
-                  isDone && { backgroundColor: colors.tint }
-                ]}>
-                  {isDone && <Text style={styles.checkmark}>✓</Text>}
-                </View>
-                <View style={styles.stepContent}>
-                  <View style={styles.stepHeaderRow}>
+                <View style={styles.stepHeader}>
+                  <View style={[
+                    styles.checkbox, 
+                    { borderColor: colors.tint },
+                    isDone && { backgroundColor: '#10b981', borderColor: '#10b981' }
+                  ]}>
+                    {isDone && <Text style={styles.checkmark}>✓</Text>}
+                  </View>
+                  <View style={styles.stepTitleContainer}>
                     <Text style={[
                       styles.stepTitle, 
                       { color: colors.text },
-                      isDone && { textDecorationLine: 'line-through', opacity: 0.6 }
+                      isDone && { textDecorationLine: 'line-through', opacity: 0.5 }
                     ]}>
                       {step.title}
                     </Text>
@@ -155,13 +161,13 @@ export default function RoadmapScreen() {
                       </View>
                     )}
                   </View>
-                  <Text style={[
-                    styles.stepDesc,
-                    isDone && { textDecorationLine: 'line-through', opacity: 0.5 }
-                  ]}>
-                    {step.desc}
-                  </Text>
                 </View>
+                <Text style={[
+                  styles.stepDesc,
+                  { color: colors.text, opacity: isDone ? 0.4 : 0.6 }
+                ]}>
+                  {step.desc}
+                </Text>
               </TouchableOpacity>
             );
           })}
@@ -189,11 +195,12 @@ const styles = StyleSheet.create({
   },
   headerSubtitle: {
     fontSize: 14,
-    color: '#6b7280',
+    lineHeight: 20,
   },
   countryRow: {
     flexDirection: 'row',
     marginBottom: 20,
+    paddingVertical: 4,
   },
   countryTab: {
     flexDirection: 'row',
@@ -203,6 +210,11 @@ const styles = StyleSheet.create({
     borderRadius: 14,
     borderWidth: 1,
     marginRight: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.05,
+    shadowRadius: 4,
+    elevation: 2,
   },
   countryFlag: {
     fontSize: 18,
@@ -214,8 +226,13 @@ const styles = StyleSheet.create({
   },
   checklistCard: {
     padding: 16,
-    borderRadius: 18,
+    borderRadius: 20,
     borderWidth: 1,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.05,
+    shadowRadius: 10,
+    elevation: 3,
   },
   progressHeader: {
     flexDirection: 'row',
@@ -225,34 +242,44 @@ const styles = StyleSheet.create({
   },
   progressTitle: {
     fontSize: 16,
-    fontWeight: '700',
+    fontWeight: '800',
   },
   progressPct: {
-    fontSize: 18,
+    fontSize: 16,
     fontWeight: '800',
   },
   progressTrack: {
-    height: 6,
-    backgroundColor: '#e5e7eb',
-    borderRadius: 3,
+    height: 8,
+    backgroundColor: '#374151',
+    borderRadius: 4,
     marginBottom: 20,
     overflow: 'hidden',
   },
   progressFill: {
     height: '100%',
-    borderRadius: 3,
+    borderRadius: 4,
   },
   stepsList: {
-    marginTop: 10,
+    gap: 12,
   },
-  stepItem: {
+  stepCard: {
+    borderRadius: 14,
+    borderWidth: 1,
+    padding: 14,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.02,
+    shadowRadius: 4,
+    elevation: 1,
+  },
+  stepHeader: {
     flexDirection: 'row',
-    paddingVertical: 14,
-    borderBottomWidth: 1,
+    alignItems: 'flex-start',
+    marginBottom: 8,
   },
   checkbox: {
-    width: 20,
-    height: 20,
+    width: 22,
+    height: 22,
     borderRadius: 6,
     borderWidth: 2,
     justifyContent: 'center',
@@ -262,39 +289,41 @@ const styles = StyleSheet.create({
   },
   checkmark: {
     color: '#fff',
-    fontSize: 12,
+    fontSize: 13,
     fontWeight: '900',
   },
-  stepContent: {
+  stepTitleContainer: {
     flex: 1,
-  },
-  stepHeaderRow: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center',
-    marginBottom: 4,
+    alignItems: 'flex-start',
+    flexWrap: 'wrap',
+    gap: 6,
   },
   stepTitle: {
     fontSize: 14.5,
     fontWeight: '700',
     flex: 1,
     paddingRight: 8,
+    lineHeight: 20,
   },
   requiredTag: {
-    backgroundColor: '#fee2e2',
+    backgroundColor: 'rgba(239, 68, 68, 0.1)',
     paddingVertical: 2,
     paddingHorizontal: 6,
     borderRadius: 4,
+    borderWidth: 1,
+    borderColor: 'rgba(239, 68, 68, 0.2)',
   },
   requiredTagText: {
     color: '#ef4444',
-    fontSize: 9,
+    fontSize: 8.5,
     fontWeight: '800',
     textTransform: 'uppercase',
   },
   stepDesc: {
     fontSize: 13,
-    color: '#6b7280',
     lineHeight: 18,
+    paddingLeft: 34,
   },
 });
