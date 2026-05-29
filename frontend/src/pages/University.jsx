@@ -47,6 +47,62 @@ const formatGpa = (reqs) => {
   return reqs.replace('Minimum GPA:', 'GPA').trim();
 }
 
+const getUniDomain = (uni, city) => {
+  if (!uni) return 'daad.de';
+  const u = uni.toLowerCase().trim();
+  const c = city ? city.toLowerCase().trim() : '';
+
+  // 1. Direct mappings
+  if (u.includes('köln') || u.includes('cologne')) {
+    if (u.includes('th') || u.includes('hochschule')) return 'th-koeln.de';
+    return 'uni-koeln.de';
+  }
+  if (u.includes('paderborn')) return 'uni-paderborn.de';
+  if (u.includes('würzburg') || u.includes('wuerzburg')) return 'uni-wuerzburg.de';
+  if (u.includes('dresden')) return 'tu-dresden.de';
+  if (u.includes('chemnitz')) return 'tu-chemnitz.de';
+  if (u.includes('south westphalia') || u.includes('südwestfalen')) return 'fh-swf.de';
+  if (u.includes('frankfurt')) {
+    if (u.includes('applied sciences')) return 'frankfurt-university.de';
+    return 'uni-frankfurt.de';
+  }
+  if (u.includes('munich') || u.includes('münchen')) {
+    if (u.includes('technical') || u.includes('tu')) return 'tum.de';
+    return 'lmu.de';
+  }
+  if (u.includes('german international')) return 'giu-berlin.de';
+  if (u.includes('karlsruhe') || u.includes('kit')) return 'kit.edu';
+  if (u.includes('aachen') || u.includes('rwth')) return 'rwth-aachen.de';
+  if (u.includes('berlin')) {
+    if (u.includes('tu') || u.includes('technical')) return 'tu-berlin.de';
+    if (u.includes('free') || u.includes('freie')) return 'fu-berlin.de';
+    return 'hu-berlin.de';
+  }
+  if (u.includes('heidelberg')) return 'uni-heidelberg.de';
+  if (u.includes('bonn')) return 'uni-bonn.de';
+  if (u.includes('hamburg')) return 'uni-hamburg.de';
+  if (u.includes('stuttgart')) return 'uni-stuttgart.de';
+  if (u.includes('darmstadt')) return 'tu-darmstadt.de';
+  if (u.includes('freiburg')) return 'uni-freiburg.de';
+  if (u.includes('tübingen') || u.includes('tuebingen')) return 'uni-tuebingen.de';
+  if (u.includes('göttingen') || u.includes('goettingen')) return 'uni-goettingen.de';
+  if (u.includes('erlangen') || u.includes('nürnberg') || u.includes('fau')) return 'fau.de';
+
+  // 2. Generic heuristics based on city
+  if (c) {
+    const cleanCity = c.split(/\s+/)[0].replace(/[^a-z-]/g, '');
+    if (u.includes('technical') || u.includes('tu ') || u.includes('technische')) {
+      return `tu-${cleanCity}.de`;
+    }
+    if (u.includes('applied sciences') || u.includes('fh ') || u.includes('fachhochschule') || u.includes('hochschule')) {
+      return `hs-${cleanCity}.de`;
+    }
+    return `uni-${cleanCity}.de`;
+  }
+
+  return 'daad.de';
+}
+
 function SkeletonCard() {
   return (
     <div className="result-card card skeleton-card">
@@ -147,6 +203,7 @@ export default function University() {
                   ? resultsToRender.map((item, i) => {
                     const match = getMatchLabel(item.match_rating);
                     const isBlurred = !isSignedIn && i >= 4;
+                    const domainName = getUniDomain(item.university, item.city);
                     return (
                       <a
                         key={i}
@@ -173,7 +230,31 @@ export default function University() {
                         </div>
 
                         <div className="rc-body">
-                          <h3 className="rc-uni">{item.university}</h3>
+                          <div className="rc-uni-header" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
+                            <div className="rc-uni-logo-wrapper" style={{ 
+                              width: '32px', 
+                              height: '32px', 
+                              borderRadius: '8px', 
+                              background: '#ffffff', 
+                              border: '1px solid rgba(255,255,255,0.08)', 
+                              display: 'flex', 
+                              alignItems: 'center', 
+                              justifyContent: 'center', 
+                              overflow: 'hidden',
+                              flexShrink: 0
+                            }}>
+                              <img 
+                                src={`https://www.google.com/s2/favicons?domain=${domainName}&sz=64`}
+                                alt={`${item.university} logo`} 
+                                style={{ width: '20px', height: '20px', objectFit: 'contain' }}
+                                onError={(e) => {
+                                  e.target.style.display = 'none';
+                                  e.target.parentNode.innerHTML = '<span style="font-size: 16px;">🎓</span>';
+                                }}
+                              />
+                            </div>
+                            <h3 className="rc-uni" style={{ margin: 0, fontSize: '18px', fontWeight: 800, color: 'var(--text)', lineHeight: 1.3 }}>{item.university}</h3>
+                          </div>
                           <p className="rc-course">{item.course}</p>
                         </div>
 
