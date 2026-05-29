@@ -314,8 +314,8 @@ export default function Roadmap() {
                     display: 'flex',
                     gap: '16px',
                     padding: '16px 20px',
-                    background: checked ? 'rgba(81,250,170,0.02)' : 'var(--glass-glow)',
-                    border: checked ? '1px solid rgba(81,250,170,0.15)' : '1px solid var(--card-border)',
+                    background: checked ? 'var(--secondary-glow)' : 'var(--glass-glow)',
+                    border: checked ? '1px solid var(--secondary-border)' : '1px solid var(--card-border)',
                     borderRadius: '16px',
                     cursor: 'pointer',
                     transition: 'all 0.2s ease',
@@ -332,7 +332,7 @@ export default function Roadmap() {
                       style={{ 
                         width: '18px', 
                         height: '18px', 
-                        accentColor: 'var(--accent)',
+                        accentColor: 'var(--secondary-accent)',
                         cursor: 'pointer'
                       }} 
                     />
@@ -354,8 +354,8 @@ export default function Roadmap() {
                         <span style={{ 
                           fontSize: '9px', 
                           fontWeight: 800, 
-                          color: checked ? 'rgba(81,250,170,0.5)' : 'var(--accent)',
-                          border: checked ? '1px solid rgba(81,250,170,0.2)' : '1px solid rgba(81,250,170,0.4)',
+                          color: checked ? 'var(--secondary-accent)' : 'var(--accent)',
+                          border: '1px solid var(--secondary-border)',
                           padding: '2px 6px',
                           borderRadius: '4px',
                           textTransform: 'uppercase',

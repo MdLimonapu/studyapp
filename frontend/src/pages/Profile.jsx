@@ -174,8 +174,8 @@ export default function Profile() {
                 borderRadius: '8px', 
                 fontSize: '11px', 
                 fontWeight: '700', 
-                background: 'rgba(81, 250, 170, 0.1)', 
-                color: 'var(--accent)',
+                background: 'var(--secondary-glow)', 
+                color: 'var(--secondary-accent)',
                 letterSpacing: '0.05em'
               }}>
                 ID: {profile.studplexId}
