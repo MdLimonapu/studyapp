@@ -26,6 +26,10 @@ export default function Contact() {
     }
   }, [user, isLoaded])
 
+  useEffect(() => {
+    document.title = 'Contact Us | Studplex'
+  }, [])
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     

@@ -89,6 +89,7 @@ export default function Home() {
         }
       }, 400)
     }
+    document.title = 'Studplex — Discover the Right University, Worldwide'
   }, [])
 
   useEffect(() => {

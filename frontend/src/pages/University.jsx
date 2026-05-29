@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth, SignInButton } from '@clerk/clerk-react'
 
@@ -149,6 +149,16 @@ export default function University() {
   const isLoading = !raw && !!localStorage.getItem('searchForm')
 
   const resultsToRender = result.results || []
+
+  useEffect(() => {
+    if (form && (form.field || form.country)) {
+      const fieldPart = form.field ? form.field : 'University Matches';
+      const countryPart = form.country ? ` in ${form.country}` : '';
+      document.title = `${fieldPart}${countryPart} | Studplex`;
+    } else {
+      document.title = 'University Matches | Studplex';
+    }
+  }, [form])
 
   return (
     <section className="grid one-col-gap">

@@ -115,6 +115,10 @@ export default function Roadmap() {
       .catch(() => {})
   }, [user, isLoaded])
 
+  useEffect(() => {
+    document.title = `Check Eligibility for ${selectedCountry} | Studplex`
+  }, [selectedCountry])
+
   const toggleExpandStep = (stepId) => {
     setExpandedSteps(prev => ({
       ...prev,

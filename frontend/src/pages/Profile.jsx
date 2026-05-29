@@ -57,6 +57,10 @@ export default function Profile() {
   }, [user, isLoaded])
 
   useEffect(() => {
+    document.title = 'My Profile | Studplex'
+  }, [])
+
+  useEffect(() => {
     if (!initialLoaded) return
     if (debounceRef.current) clearTimeout(debounceRef.current)
     setSaving(true)
