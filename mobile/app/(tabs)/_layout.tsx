@@ -33,6 +33,7 @@ export default function TabLayout() {
         name="index"
         options={{
           title: 'Search',
+          headerShown: false,
           tabBarIcon: ({ color }) => (
             <FontAwesome name="search" size={24} color={color} />
           ),

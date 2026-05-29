@@ -8,9 +8,10 @@ import {
   TouchableOpacity, 
   ActivityIndicator, 
   Alert,
-  Switch
+  Keyboard
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Svg, { Path, Defs, LinearGradient, Stop } from 'react-native-svg';
 import { fetchCountries, searchCourses, fetchProfile } from '../../services/api';
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
@@ -73,6 +74,7 @@ export default function SearchScreen() {
 
   const [countries, setCountries] = useState(STATIC_COUNTRIES);
   const [selectedCountry, setSelectedCountry] = useState('');
+  const [showCountryDropdown, setShowCountryDropdown] = useState(false);
   const [degree, setDegree] = useState('master');
   const [field, setField] = useState('');
   const [fieldSuggestions, setFieldSuggestions] = useState<string[]>([]);
@@ -102,20 +104,25 @@ export default function SearchScreen() {
   const loadProfileFromCache = async () => {
     try {
       const email = await AsyncStorage.getItem('user_email');
-      if (email) {
+      if (email && email.trim() !== '') {
         const data = await fetchProfile(email);
         if (data && Object.keys(data).length > 0) {
           setProfile(data);
-          if (data.currentField) {
+          if (data.currentField && !field) {
             setField(data.currentField);
           }
           if (data.currentDegree) {
             setDegree(data.currentDegree.toLowerCase());
           }
+        } else {
+          setProfile(null);
         }
+      } else {
+        setProfile(null);
       }
     } catch (err) {
       console.log("No profile cached yet:", err);
+      setProfile(null);
     }
   };
 
@@ -145,6 +152,9 @@ export default function SearchScreen() {
   };
 
   const handleSearch = () => {
+    // Dismiss the keyboard instantly so user can see search results
+    Keyboard.dismiss();
+
     if (!selectedCountry) {
       Alert.alert("Required", "Please select a destination country.");
       return;
@@ -182,83 +192,75 @@ export default function SearchScreen() {
       .finally(() => setLoading(false));
   };
 
+  const selectedCountryData = countries.find(c => c.name === selectedCountry);
+
   return (
     <ScrollView style={[styles.container, { backgroundColor: colors.background }]} keyboardShouldPersistTaps="handled">
-      {/* Hero Header */}
-      <View style={styles.heroCard}>
-        <Text style={[styles.heroTitlePre, { color: colors.text }]}>Find the right</Text>
-        <Text style={styles.heroTitleMain}>university</Text>
-        <Text style={[styles.heroTitlePost, { color: colors.text }]}>worldwide</Text>
-        <Text style={[styles.heroSubtitle, { color: colors.text, opacity: 0.7 }]}>
-          AI-powered degree matching tailored to your profile.
-        </Text>
-
-        {/* Stats Row */}
-        <View style={[styles.statsRow, { borderColor: colors.border }]}>
-          <View style={styles.statItem}>
-            <Text style={[styles.statValue, { color: colors.tint }]}>10+</Text>
-            <Text style={styles.statLabel}>Countries</Text>
-          </View>
-          <View style={styles.statDivider} />
-          <View style={styles.statItem}>
-            <Text style={[styles.statValue, { color: colors.tint }]}>Live</Text>
-            <Text style={styles.statLabel}>Real Data</Text>
-          </View>
-          <View style={styles.statDivider} />
-          <View style={styles.statItem}>
-            <Text style={[styles.statValue, { color: colors.tint }]}>AI</Text>
-            <Text style={styles.statLabel}>Matching</Text>
-          </View>
+      {/* Header Row with Logo */}
+      <View style={styles.headerRow}>
+        <View style={styles.heroCard}>
+          <Text style={[styles.heroTitlePre, { color: colors.text }]}>Find the right</Text>
+          <Text style={styles.heroTitleMain}>university</Text>
+          <Text style={[styles.heroTitlePost, { color: colors.text }]}>worldwide</Text>
+          <Text style={[styles.heroSubtitle, { color: colors.text, opacity: 0.7 }]}>
+            Match your dream international university program in seconds.
+          </Text>
+        </View>
+        
+        {/* Render Vector Brand SVG Logo */}
+        <View style={styles.logoContainer}>
+          <Svg width="40" height="40" viewBox="0 0 32 32" fill="none">
+            <Path d="M16 2L2 9L16 16L30 9L16 2Z" fill="url(#studplex-grad)" />
+            <Path d="M6 14.5V21C6 24.3 10.5 27 16 27C21.5 27 26 24.3 26 21V14.5L16 19.5L6 14.5Z" fill="url(#studplex-grad2)" />
+            <Defs>
+              <LinearGradient id="studplex-grad" x1="2" y1="2" x2="30" y2="16">
+                <Stop stopColor="#ff8c00" offset="0" />
+                <Stop stopColor="#f59e0b" offset="1" />
+              </LinearGradient>
+              <LinearGradient id="studplex-grad2" x1="6" y1="14.5" x2="26" y2="27">
+                <Stop stopColor="#f59e0b" offset="0" />
+                <Stop stopColor="#ff8c00" offset="1" />
+              </LinearGradient>
+            </Defs>
+          </Svg>
         </View>
       </View>
-
-      {/* Active Profile Banner */}
-      {profile && profile.fullName ? (
-        <View style={[styles.profileBanner, { backgroundColor: colors.card, borderColor: colors.border }]}>
-          <View style={styles.profileBannerLeft}>
-            <Text style={[styles.profileBannerText, { color: colors.text }]}>
-              Matching as <Text style={{ fontWeight: '700', color: colors.tint }}>{profile.fullName}</Text>
-            </Text>
-            {profile.grade && (
-              <Text style={styles.profileBannerSub}>
-                GPA: {profile.grade} • {profile.currentDegree}
-              </Text>
-            )}
-          </View>
-          <View style={styles.profileBannerRight}>
-            <Switch
-              value={useProfile}
-              onValueChange={setUseProfile}
-              trackColor={{ false: '#767577', true: '#ffa500' }}
-              thumbColor={useProfile ? colors.tint : '#f4f3f4'}
-            />
-          </View>
-        </View>
-      ) : null}
 
       {/* Form */}
       <View style={[styles.formCard, { backgroundColor: colors.card, borderColor: colors.border }]}>
         <Text style={[styles.label, { color: colors.text }]}>Destination Country</Text>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.pillContainer}>
-          {countries.map((c) => {
-            const isSelected = selectedCountry === c.name;
-            return (
-              <TouchableOpacity
-                key={c.name}
-                style={[
-                  styles.countryPill,
-                  { borderColor: colors.border, backgroundColor: colors.card },
-                  isSelected && { backgroundColor: colors.tint, borderColor: colors.tint }
-                ]}
-                onPress={() => setSelectedCountry(c.name)}
-              >
-                <Text style={[styles.pillText, { color: isSelected ? '#fff' : colors.text }]}>
-                  {c.flag} {c.name}
-                </Text>
-              </TouchableOpacity>
-            );
-          })}
-        </ScrollView>
+        
+        {/* Custom Dropdown Selector */}
+        <TouchableOpacity 
+          style={[styles.dropdownSelector, { borderColor: colors.border }]} 
+          onPress={() => setShowCountryDropdown(!showCountryDropdown)}
+        >
+          <Text style={[styles.dropdownSelectorText, { color: selectedCountry ? colors.text : '#9ca3af' }]}>
+            {selectedCountryData ? `${selectedCountryData.flag} ${selectedCountryData.name}` : "Select country"}
+          </Text>
+          <Text style={{ color: colors.tint, fontSize: 12 }}>{showCountryDropdown ? "▲" : "▼"}</Text>
+        </TouchableOpacity>
+
+        {showCountryDropdown && (
+          <View style={[styles.dropdownList, { backgroundColor: colors.card, borderColor: colors.border }]}>
+            <ScrollView nestedScrollEnabled style={{ maxHeight: 200 }}>
+              {countries.map((c) => (
+                <TouchableOpacity
+                  key={c.name}
+                  style={[styles.dropdownItem, { borderBottomColor: colors.border }]}
+                  onPress={() => {
+                    setSelectedCountry(c.name);
+                    setShowCountryDropdown(false);
+                  }}
+                >
+                  <Text style={[styles.dropdownItemText, { color: colors.text }]}>
+                    {c.flag} {c.name}
+                  </Text>
+                </TouchableOpacity>
+              ))}
+            </ScrollView>
+          </View>
+        )}
 
         <Text style={[styles.label, { color: colors.text }]}>Degree Level</Text>
         <View style={styles.degreeRow}>
@@ -305,6 +307,30 @@ export default function SearchScreen() {
             ))}
           </View>
         )}
+
+        {/* Active Profile Sync (Pill format directly below study field) */}
+        {profile && profile.fullName ? (
+          useProfile ? (
+            <TouchableOpacity 
+              style={styles.profilePillInteractive} 
+              onPress={() => setUseProfile(false)}
+            >
+              <Text style={styles.profilePillText} numberOfLines={1}>
+                Searching as <Text style={{ fontWeight: '700' }}>{profile.fullName}</Text>
+              </Text>
+              <Text style={styles.profilePillClose}>×</Text>
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity 
+              style={styles.profilePromptContainer}
+              onPress={() => setUseProfile(true)}
+            >
+              <Text style={[styles.profilePromptText, { color: colors.text }]}>
+                💡 Use profile matches for better results
+              </Text>
+            </TouchableOpacity>
+          )
+        ) : null}
 
         <TouchableOpacity 
           style={[styles.searchButton, { backgroundColor: colors.tint }]}
@@ -368,11 +394,24 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
+    paddingTop: 40,
+  },
+  headerRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    marginBottom: 10,
+    marginTop: 10,
+  },
+  logoContainer: {
+    marginTop: 6,
+    marginRight: 4,
+    width: 40,
+    height: 40,
   },
   heroCard: {
-    paddingVertical: 20,
-    paddingHorizontal: 4,
-    marginBottom: 10,
+    flex: 1,
+    paddingRight: 16,
   },
   heroTitlePre: {
     fontSize: 28,
@@ -397,68 +436,7 @@ const styles = StyleSheet.create({
   },
   heroSubtitle: {
     fontSize: 14.5,
-    marginTop: 8,
     lineHeight: 20,
-  },
-  statsRow: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingVertical: 14,
-    paddingHorizontal: 8,
-    borderWidth: 1,
-    borderRadius: 14,
-    marginTop: 18,
-    backgroundColor: 'rgba(255, 255, 255, 0.02)',
-  },
-  statItem: {
-    flex: 1,
-    alignItems: 'center',
-  },
-  statValue: {
-    fontSize: 18,
-    fontWeight: '800',
-  },
-  statLabel: {
-    fontSize: 11,
-    color: '#9ca3af',
-    marginTop: 2,
-    textTransform: 'uppercase',
-    fontWeight: '600',
-  },
-  statDivider: {
-    width: 1,
-    height: 24,
-    backgroundColor: '#374151',
-  },
-  profileBanner: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: 14,
-    borderRadius: 16,
-    borderWidth: 1,
-    marginBottom: 16,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 6,
-    elevation: 2,
-  },
-  profileBannerLeft: {
-    flex: 1,
-  },
-  profileBannerText: {
-    fontSize: 14,
-    fontWeight: '600',
-  },
-  profileBannerSub: {
-    fontSize: 12,
-    color: '#9ca3af',
-    marginTop: 2,
-  },
-  profileBannerRight: {
-    marginLeft: 12,
   },
   formCard: {
     padding: 16,
@@ -477,21 +455,39 @@ const styles = StyleSheet.create({
     marginBottom: 8,
     marginTop: 8,
   },
+  dropdownSelector: {
+    height: 48,
+    borderWidth: 1,
+    borderRadius: 12,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 12,
+    marginBottom: 12,
+  },
+  dropdownSelectorText: {
+    fontSize: 15,
+    fontWeight: '500',
+  },
+  dropdownList: {
+    borderRadius: 12,
+    borderWidth: 1,
+    marginBottom: 12,
+    overflow: 'hidden',
+  },
+  dropdownItem: {
+    paddingVertical: 12,
+    paddingHorizontal: 14,
+    borderBottomWidth: 1,
+  },
+  dropdownItemText: {
+    fontSize: 14.5,
+    fontWeight: '600',
+  },
   pillContainer: {
     flexDirection: 'row',
     marginBottom: 12,
     paddingVertical: 4,
-  },
-  countryPill: {
-    paddingVertical: 8,
-    paddingHorizontal: 14,
-    borderRadius: 20,
-    borderWidth: 1,
-    marginRight: 8,
-  },
-  pillText: {
-    fontSize: 13,
-    fontWeight: '600',
   },
   degreeRow: {
     flexDirection: 'row',
@@ -504,6 +500,10 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     borderWidth: 1,
     alignItems: 'center',
+  },
+  pillText: {
+    fontSize: 13,
+    fontWeight: '600',
   },
   input: {
     height: 48,
@@ -526,6 +526,38 @@ const styles = StyleSheet.create({
   },
   suggestionItemText: {
     fontSize: 14.5,
+  },
+  profilePillInteractive: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    backgroundColor: 'rgba(255, 140, 0, 0.1)',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 140, 0, 0.25)',
+    borderRadius: 20,
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    marginVertical: 10,
+  },
+  profilePillText: {
+    color: '#ff8c00',
+    fontSize: 13.5,
+    fontWeight: '500',
+  },
+  profilePillClose: {
+    color: '#ff8c00',
+    fontSize: 18,
+    fontWeight: '600',
+    paddingLeft: 6,
+  },
+  profilePromptContainer: {
+    marginVertical: 10,
+    alignItems: 'flex-start',
+  },
+  profilePromptText: {
+    fontSize: 13.5,
+    fontWeight: '500',
+    textDecorationLine: 'underline',
   },
   searchButton: {
     height: 52,

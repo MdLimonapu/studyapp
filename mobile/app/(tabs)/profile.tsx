@@ -53,14 +53,22 @@ export default function ProfileScreen() {
     setLoading(true);
     try {
       const email = await AsyncStorage.getItem('user_email');
-      if (email) {
+      if (email && email.trim() !== '') {
         setProfile(p => ({ ...p, email }));
         await syncProfileFromServer(email);
       } else {
-        // Fallback default email for testing
-        const defaultEmail = 'student@example.com';
-        setProfile(p => ({ ...p, email: defaultEmail }));
-        await syncProfileFromServer(defaultEmail);
+        // Start completely blank/empty if not synced yet
+        setProfile({
+          fullName: '',
+          email: '',
+          currentDegree: '',
+          currentField: '',
+          semester: '',
+          universityName: '',
+          grade: '',
+          notes: '',
+          studplexId: '',
+        });
       }
     } catch (err) {
       console.error("Error loading cached email:", err);
