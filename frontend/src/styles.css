@@ -15,7 +15,7 @@
   --stat-1: #ff8c00;
   --stat-2: #10b981;
   --stat-3: #3b82f6;
-  --hero-sub: #cbd5e1;
+  --hero-sub: #ffedd5;
   
   --header-bg: rgba(30, 34, 43, 0.8);
   --header-border: rgba(255, 255, 255, 0.05);
@@ -59,7 +59,7 @@
   --stat-1: #d97706;
   --stat-2: #059669;
   --stat-3: #2563eb;
-  --hero-sub: #334155;
+  --hero-sub: #451a03;
   
   --header-bg: rgba(252, 251, 244, 0.85);
   --header-border: rgba(0, 0, 0, 0.05);
@@ -226,11 +226,11 @@ body {
   padding: 32px 36px;
 }
 
-.hero-card { display: flex; flex-direction: column; justify-content: center; gap: 20px; }
+.hero-card { display: flex; flex-direction: column; justify-content: center; gap: 12px; }
 .hero-card h2 { font-size: 48px; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; color: var(--text); }
 .hero-card h2 span { color: var(--accent); }
 .hero-card p { color: var(--hero-sub); font-size: 15.5px; max-width: 100%; line-height: 1.55; margin: 0; }
-.hero-stats { display: flex; gap: 32px; margin-top: 12px; }
+.hero-stats { display: flex; gap: 24px; margin-top: 8px; }
 .stat strong { font-size: 24px; font-weight: 800; display: block; }
 .stat:nth-child(1) strong { color: var(--stat-1); }
 .stat:nth-child(2) strong { color: var(--stat-2); }
@@ -248,8 +248,9 @@ body {
 }
 
 .form-card {
-  display: grid;
-  gap: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   position: relative;
   z-index: 10;
 }
@@ -283,13 +284,14 @@ body {
   padding: 12px 32px;
   font-size: 15px;
   border-radius: 12px;
-  margin: 16px auto 0 auto;
+  margin: 10px auto 0 auto;
   display: block;
 }
 
 .form-card .profile-hint {
-  margin-top: 2px;
+  margin-top: 10px;
   font-size: 12.5px;
+  text-align: center;
 }
 
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
