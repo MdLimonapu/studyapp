@@ -8,7 +8,9 @@ import {
   TouchableOpacity, 
   ActivityIndicator, 
   Alert,
-  Keyboard
+  Keyboard,
+  Modal,
+  Pressable
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Svg, { Path, Defs, LinearGradient, Stop } from 'react-native-svg';
@@ -232,50 +234,71 @@ export default function SearchScreen() {
         {/* Custom Dropdown Selector */}
         <TouchableOpacity 
           style={[styles.dropdownSelector, { borderColor: showCountryDropdown ? colors.tint : colors.border, backgroundColor: colorScheme === 'dark' ? '#14171f' : '#f9fafb' }]} 
-          onPress={() => setShowCountryDropdown(!showCountryDropdown)}
+          onPress={() => {
+            Keyboard.dismiss();
+            setShowCountryDropdown(true);
+          }}
         >
           <Text style={[styles.dropdownSelectorText, { color: selectedCountry ? colors.text : '#7f8a9e' }]}>
             {selectedCountryData ? `${selectedCountryData.flag}   ${selectedCountryData.name}` : "Select country"}
           </Text>
-          <Text style={{ color: colors.tint, fontSize: 13, fontWeight: '900' }}>{showCountryDropdown ? "▲" : "▼"}</Text>
+          <Text style={{ color: colors.tint, fontSize: 13, fontWeight: '900' }}>▼</Text>
         </TouchableOpacity>
  
-        {showCountryDropdown && (
-          <View style={[styles.dropdownList, { backgroundColor: colorScheme === 'dark' ? '#11131a' : '#f3f4f6', borderColor: colors.tint, borderWidth: 1.5 }]}>
-            <ScrollView nestedScrollEnabled style={{ maxHeight: 220 }}>
-              {countries.map((c) => {
-                const isSelected = selectedCountry === c.name;
-                return (
-                  <TouchableOpacity
-                    key={c.name}
-                    style={[
-                      styles.dropdownItem, 
-                      { borderBottomColor: colors.border },
-                      isSelected && { backgroundColor: 'rgba(204, 255, 0, 0.08)' }
-                    ]}
-                    onPress={() => {
-                      setSelectedCountry(c.name);
-                      setShowCountryDropdown(false);
-                    }}
-                  >
-                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
-                      <Text style={[
-                        styles.dropdownItemText, 
-                        { color: colors.text },
-                        isSelected && { color: colors.tint, fontWeight: '700' }
-                      ]}>
-                        {c.flag}   {c.name}
-                      </Text>
-                      {isSelected && (
-                        <Text style={{ color: colors.tint, fontWeight: '900', fontSize: 14 }}>✓</Text>
-                      )}
-                    </View>
-                  </TouchableOpacity>
-                );
-              })}
-            </ScrollView>
-          </View>
-        )}
+        {/* Floating Backdrop Modal Selector */}
+        <Modal
+          visible={showCountryDropdown}
+          transparent={true}
+          animationType="fade"
+          onRequestClose={() => setShowCountryDropdown(false)}
+        >
+          <Pressable 
+            style={styles.modalBackdrop} 
+            onPress={() => setShowCountryDropdown(false)}
+          >
+            <View style={[styles.modalContent, { backgroundColor: colors.card, borderColor: colors.border }]}>
+              <View style={styles.modalHeader}>
+                <Text style={[styles.modalTitle, { color: colors.text }]}>Select Destination</Text>
+                <TouchableOpacity onPress={() => setShowCountryDropdown(false)} style={styles.modalCloseButton}>
+                  <Text style={[styles.modalCloseText, { color: colors.tint }]}>✕</Text>
+                </TouchableOpacity>
+              </View>
+              
+              <ScrollView style={styles.modalScroll} keyboardShouldPersistTaps="handled">
+                {countries.map((c) => {
+                  const isSelected = selectedCountry === c.name;
+                  return (
+                    <TouchableOpacity
+                      key={c.name}
+                      style={[
+                        styles.modalDropdownItem, 
+                        { borderBottomColor: colors.border },
+                        isSelected && { backgroundColor: 'rgba(204, 255, 0, 0.1)' }
+                      ]}
+                      onPress={() => {
+                        setSelectedCountry(c.name);
+                        setShowCountryDropdown(false);
+                      }}
+                    >
+                      <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                        <Text style={[
+                          styles.modalDropdownItemText, 
+                          { color: colors.text },
+                          isSelected && { color: colors.tint, fontWeight: '700' }
+                        ]}>
+                          {c.flag}   {c.name}
+                        </Text>
+                        {isSelected && (
+                          <Text style={{ color: colors.tint, fontWeight: '900', fontSize: 16 }}>✓</Text>
+                        )}
+                      </View>
+                    </TouchableOpacity>
+                  );
+                })}
+              </ScrollView>
+            </View>
+          </Pressable>
+        </Modal>
  
         <Text style={[styles.label, { color: colors.text }]}>Degree Level</Text>
         <View style={styles.degreeRow}>
@@ -483,24 +506,57 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '600',
   },
-  dropdownList: {
-    borderRadius: 14,
+  modalBackdrop: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 24,
+  },
+  modalContent: {
+    width: '100%',
+    maxHeight: '70%',
+    borderRadius: 24,
     borderWidth: 1.5,
-    marginBottom: 14,
-    overflow: 'hidden',
+    padding: 20,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.1,
-    shadowRadius: 8,
-    elevation: 3,
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.3,
+    shadowRadius: 20,
+    elevation: 10,
   },
-  dropdownItem: {
-    paddingVertical: 14,
-    paddingHorizontal: 18,
+  modalHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 16,
+    paddingBottom: 12,
     borderBottomWidth: 1,
+    borderBottomColor: 'rgba(255, 255, 255, 0.1)',
   },
-  dropdownItemText: {
-    fontSize: 15.5,
+  modalTitle: {
+    fontSize: 18,
+    fontWeight: '800',
+  },
+  modalCloseButton: {
+    padding: 4,
+  },
+  modalCloseText: {
+    fontSize: 18,
+    fontWeight: '700',
+  },
+  modalScroll: {
+    maxHeight: 350,
+  },
+  modalDropdownItem: {
+    paddingVertical: 15,
+    paddingHorizontal: 16,
+    borderBottomWidth: 1,
+    borderRadius: 12,
+    marginVertical: 2,
+  },
+  modalDropdownItemText: {
+    fontSize: 16,
     fontWeight: '600',
   },
   pillContainer: {
