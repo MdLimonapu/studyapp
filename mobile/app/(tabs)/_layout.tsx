@@ -1,6 +1,6 @@
-import { SymbolView } from 'expo-symbols';
-import { Link, Tabs } from 'expo-router';
-import { Platform, Pressable } from 'react-native';
+import { FontAwesome } from '@expo/vector-icons';
+import { Tabs } from 'expo-router';
+import { Platform } from 'react-native';
 
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
@@ -34,15 +34,7 @@ export default function TabLayout() {
         options={{
           title: 'Search',
           tabBarIcon: ({ color }) => (
-            <SymbolView
-              name={{
-                ios: 'magnifyingglass',
-                android: 'search',
-                web: 'search',
-              }}
-              tintColor={color}
-              size={24}
-            />
+            <FontAwesome name="search" size={24} color={color} />
           ),
         }}
       />
@@ -51,15 +43,7 @@ export default function TabLayout() {
         options={{
           title: 'News',
           tabBarIcon: ({ color }) => (
-            <SymbolView
-              name={{
-                ios: 'newspaper',
-                android: 'article',
-                web: 'article',
-              }}
-              tintColor={color}
-              size={24}
-            />
+            <FontAwesome name="newspaper-o" size={24} color={color} />
           ),
         }}
       />
@@ -68,15 +52,7 @@ export default function TabLayout() {
         options={{
           title: 'Roadmap',
           tabBarIcon: ({ color }) => (
-            <SymbolView
-              name={{
-                ios: 'map',
-                android: 'map',
-                web: 'map',
-              }}
-              tintColor={color}
-              size={24}
-            />
+            <FontAwesome name="map-o" size={24} color={color} />
           ),
         }}
       />
@@ -85,15 +61,7 @@ export default function TabLayout() {
         options={{
           title: 'Profile',
           tabBarIcon: ({ color }) => (
-            <SymbolView
-              name={{
-                ios: 'person.circle',
-                android: 'person',
-                web: 'person',
-              }}
-              tintColor={color}
-              size={24}
-            />
+            <FontAwesome name="user-circle-o" size={24} color={color} />
           ),
         }}
       />
