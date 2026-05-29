@@ -25,9 +25,22 @@ const POPULAR_FIELDS = [
   "Artificial Intelligence", "Economics", "Physics", "Mathematics", "Law"
 ]
 
+const STATIC_COUNTRIES = [
+  {"name": "Germany",     "flag": "🇩🇪"},
+  {"name": "UK",          "flag": "🇬🇧"},
+  {"name": "USA",         "flag": "🇺🇸"},
+  {"name": "Canada",      "flag": "🇨🇦"},
+  {"name": "Australia",   "flag": "🇦🇺"},
+  {"name": "Netherlands", "flag": "🇳🇱"},
+  {"name": "Sweden",      "flag": "🇸🇪"},
+  {"name": "France",      "flag": "🇫🇷"},
+  {"name": "Switzerland", "flag": "🇨🇭"},
+  {"name": "Japan",       "flag": "🇯🇵"},
+]
+
 export default function Home() {
   const { user, isLoaded } = useUser()
-  const [countries, setCountries] = useState([])
+  const [countries, setCountries] = useState(STATIC_COUNTRIES)
   const [form, setForm] = useState(() => {
     const saved = localStorage.getItem('searchForm')
     if (saved) {
@@ -95,7 +108,7 @@ export default function Home() {
   useEffect(() => {
     fetchCountries()
       .then(setCountries)
-      .catch(() => setError('Cannot connect to backend.'))
+      .catch(() => console.log('Backend is booting up... using offline country list.'))
 
     fetchFields()
       .then(setAllFields)
