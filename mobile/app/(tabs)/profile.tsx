@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { fetchProfile, saveProfile } from '../../services/api';
+import { FontAwesome } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
 
@@ -146,16 +147,20 @@ export default function ProfileScreen() {
       <View style={styles.header}>
         <View style={styles.identityRow}>
           <View style={[styles.avatarCircle, { backgroundColor: colors.tint }]}>
-            <Text style={[styles.avatarText, { color: '#000' }]}>
-              {profile.fullName ? profile.fullName[0].toUpperCase() : 'A'}
-            </Text>
+            {profile.fullName ? (
+              <Text style={[styles.avatarText, { color: '#000' }]}>
+                {profile.fullName.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()}
+              </Text>
+            ) : (
+              <FontAwesome name="user" size={32} color="#000" />
+            )}
           </View>
           <View style={styles.identityInfo}>
             <Text style={[styles.identityName, { color: colors.text }]}>
-              {profile.fullName || "Your Name"}
+              {profile.fullName || "Global Student"}
             </Text>
             <Text style={[styles.identityEmail, { color: colors.text, opacity: 0.6 }]}>
-              {profile.email || "No email linked"}
+              {profile.email || "Unsynced Guest Profile"}
             </Text>
             {profile.studplexId ? (
               <View style={[styles.studplexIdBadge, { backgroundColor: 'rgba(255, 107, 0, 0.12)', borderColor: 'rgba(255, 107, 0, 0.35)' }]}>
