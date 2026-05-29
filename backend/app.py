@@ -836,8 +836,13 @@ def trigger_fetch_news():
         
     try:
         from scrapers.fetch_news import main as run_fetch_news
-        run_fetch_news()
-        return jsonify({"status": "success", "message": "News cache updated successfully"})
+        import threading
+        
+        # Run news fetching in the background to avoid timing out HTTP clients (like cron-job.org)
+        thread = threading.Thread(target=run_fetch_news)
+        thread.start()
+        
+        return jsonify({"status": "success", "message": "News update triggered in the background"})
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
