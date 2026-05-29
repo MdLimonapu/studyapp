@@ -126,17 +126,22 @@ body {
   padding: 8px 18px;
   border-radius: 999px;
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
-  border: 1px solid transparent;
+  background: var(--glass-glow);
+  border: 1px solid var(--card-border);
 }
 .nav-links a:hover {
   color: var(--text);
-  background: var(--glass-glow);
-  border-color: var(--card-border);
+  background: rgba(255, 255, 255, 0.06);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+:root[data-theme="light"] .nav-links a:hover {
+  background: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.12);
 }
 .nav-links a.active {
-  background: var(--secondary-glow);
-  border-color: var(--secondary-border);
-  color: var(--secondary-accent);
+  color: var(--text);
+  background: var(--dark2);
+  border-color: var(--card-border);
 }
 
 .topbar-profile {
