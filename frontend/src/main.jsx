@@ -18,36 +18,37 @@ ReactDOM.createRoot(document.getElementById('root')).render(
           unsafe_disableDevelopmentModeWarnings: true,
         },
         variables: {
-          colorPrimary: '#51faaa',
-          colorBackground: '#121426',
-          colorText: '#ffffff',
-          colorInputBackground: '#1a1d36',
-          colorInputText: '#ffffff',
-          colorTextSecondary: '#8b90b8',
-          borderRadius: '12px',
+          colorPrimary: 'var(--accent)',
+          colorBackground: 'var(--bg)',
+          colorText: 'var(--text)',
+          colorInputBackground: 'var(--input-bg)',
+          colorInputText: 'var(--text)',
+          colorTextSecondary: 'var(--muted)',
+          borderRadius: '16px',
         },
         elements: {
           modalCloseButton: {
             display: 'none !important',
           },
           card: {
-            border: '1px solid rgba(255, 255, 255, 0.08)',
-            background: 'rgba(18, 20, 38, 0.95) !important',
+            border: '1px solid var(--card-border)',
+            background: 'var(--card) !important',
             backdropFilter: 'blur(20px)',
-            boxShadow: '0 20px 40px rgba(0, 0, 0, 0.5)',
-            width: '440px !important',
+            boxShadow: 'var(--shadow-card)',
+            width: '500px !important',
             maxWidth: '100%',
           },
           socialButtonsIconButton: {
-            borderColor: 'rgba(255, 255, 255, 0.08)',
-            backgroundColor: 'rgba(255, 255, 255, 0.03)',
+            borderColor: 'var(--card-border)',
+            backgroundColor: 'var(--glass-glow)',
+            color: 'var(--text)',
             '&:hover': {
-              backgroundColor: 'rgba(255, 255, 255, 0.08)',
+              backgroundColor: 'var(--card-border)',
             }
           },
           formButtonPrimary: {
-            background: 'linear-gradient(135deg, #51faaa 0%, #ff81ff 100%) !important',
-            color: '#0c0e1d !important',
+            background: 'var(--btn-gradient) !important',
+            color: 'var(--btn-text) !important',
             fontWeight: '700',
             border: 'none',
             '&:hover': {
@@ -55,12 +56,12 @@ ReactDOM.createRoot(document.getElementById('root')).render(
             }
           },
           dividerLine: {
-            backgroundColor: 'rgba(255, 255, 255, 0.08)',
+            backgroundColor: 'var(--card-border)',
           },
           footer: {
             background: 'transparent !important',
             '& a': {
-              color: '#51faaa !important',
+              color: 'var(--accent) !important',
             }
           }
         }
