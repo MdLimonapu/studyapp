@@ -15,6 +15,7 @@ import {
   Platform
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { router } from 'expo-router';
 import Svg, { Path, Defs, LinearGradient, Stop } from 'react-native-svg';
 import { fetchCountries, searchCourses, fetchProfile } from '../../services/api';
 import Colors from '@/constants/Colors';
@@ -183,14 +184,16 @@ export default function SearchScreen() {
     const activeProfile = useProfile ? profile : null;
 
     searchCourses(searchPayload, activeProfile)
-      .then(data => {
+      .then(async (data) => {
+        let list = [];
         if (data && Array.isArray(data.courses)) {
-          setResults(data.courses);
+          list = data.courses;
         } else if (Array.isArray(data)) {
-          setResults(data);
-        } else {
-          setResults([]);
+          list = data;
         }
+        setResults(list);
+        await AsyncStorage.setItem('search_results', JSON.stringify(list));
+        router.push('/(tabs)/mymatches');
       })
       .catch(err => {
         Alert.alert("Search Error", "Could not fetch search results. Please check your network.");

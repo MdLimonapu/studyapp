@@ -16,20 +16,25 @@ export default function TabLayout() {
         tabBarActiveTintColor: colors.tint,
         tabBarInactiveTintColor: colors.tabIconDefault,
         tabBarStyle: {
-          backgroundColor: colors.card,
-          borderTopColor: colors.border,
-          borderTopWidth: 1,
-          height: Platform.OS === 'ios' ? 85 : 65,
-          paddingBottom: Platform.OS === 'ios' ? 25 : 10,
+          position: 'absolute',
+          bottom: Platform.OS === 'ios' ? 28 : 20,
+          left: 16,
+          right: 16,
+          backgroundColor: colorScheme === 'dark' ? 'rgba(19, 22, 32, 0.96)' : 'rgba(255, 255, 255, 0.96)',
+          borderWidth: 1.5,
+          borderColor: colors.border,
+          borderRadius: 24,
+          height: Platform.OS === 'ios' ? 76 : 66,
+          paddingBottom: Platform.OS === 'ios' ? 14 : 8,
           paddingTop: 8,
-          elevation: 8,
-          shadowColor: '#000',
-          shadowOffset: { width: 0, height: -4 },
-          shadowOpacity: 0.15,
-          shadowRadius: 10,
+          elevation: 10,
+          shadowColor: colorScheme === 'dark' ? '#ccff00' : '#000',
+          shadowOffset: { width: 0, height: 6 },
+          shadowOpacity: colorScheme === 'dark' ? 0.12 : 0.08,
+          shadowRadius: 16,
         },
         tabBarLabelStyle: {
-          fontSize: 11,
+          fontSize: 10.5,
           fontWeight: '700',
           marginTop: 2,
         },
@@ -41,6 +46,15 @@ export default function TabLayout() {
           title: 'Match',
           tabBarIcon: ({ color, focused }) => (
             <FontAwesome name="search" size={focused ? 24 : 22} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="mymatches"
+        options={{
+          title: 'My Match',
+          tabBarIcon: ({ color, focused }) => (
+            <FontAwesome name="heart-o" size={focused ? 24 : 22} color={color} />
           ),
         }}
       />
