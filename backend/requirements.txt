@@ -5,3 +5,5 @@ beautifulsoup4
 requests
 pymongo
 dnspython
+python-dotenv
+google-genai
