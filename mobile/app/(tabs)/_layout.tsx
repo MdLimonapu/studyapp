@@ -18,24 +18,29 @@ export default function TabLayout() {
         tabBarStyle: {
           backgroundColor: colors.card,
           borderTopColor: colors.border,
+          borderTopWidth: 1,
+          height: Platform.OS === 'ios' ? 85 : 65,
+          paddingBottom: Platform.OS === 'ios' ? 25 : 10,
+          paddingTop: 8,
+          elevation: 8,
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: -4 },
+          shadowOpacity: 0.15,
+          shadowRadius: 10,
         },
-        headerStyle: {
-          backgroundColor: colors.card,
-          shadowOpacity: 0.1,
-          elevation: 2,
+        tabBarLabelStyle: {
+          fontSize: 11,
+          fontWeight: '700',
+          marginTop: 2,
         },
-        headerTintColor: colors.text,
-        // Disable the static render of the header on web
-        // to prevent a hydration error in React Navigation v6.
-        headerShown: useClientOnlyValue(false, true),
+        headerShown: false,
       }}>
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Search',
-          headerShown: false,
-          tabBarIcon: ({ color }) => (
-            <FontAwesome name="search" size={24} color={color} />
+          title: 'Match',
+          tabBarIcon: ({ color, focused }) => (
+            <FontAwesome name="search" size={focused ? 24 : 22} color={color} />
           ),
         }}
       />
@@ -43,17 +48,17 @@ export default function TabLayout() {
         name="news"
         options={{
           title: 'News',
-          tabBarIcon: ({ color }) => (
-            <FontAwesome name="newspaper-o" size={24} color={color} />
+          tabBarIcon: ({ color, focused }) => (
+            <FontAwesome name="newspaper-o" size={focused ? 24 : 22} color={color} />
           ),
         }}
       />
       <Tabs.Screen
         name="roadmap"
         options={{
-          title: 'Roadmap',
-          tabBarIcon: ({ color }) => (
-            <FontAwesome name="map-o" size={24} color={color} />
+          title: 'Checklist',
+          tabBarIcon: ({ color, focused }) => (
+            <FontAwesome name="check-square-o" size={focused ? 24 : 22} color={color} />
           ),
         }}
       />
@@ -61,8 +66,8 @@ export default function TabLayout() {
         name="profile"
         options={{
           title: 'Profile',
-          tabBarIcon: ({ color }) => (
-            <FontAwesome name="user-circle-o" size={24} color={color} />
+          tabBarIcon: ({ color, focused }) => (
+            <FontAwesome name="user" size={focused ? 24 : 22} color={color} />
           ),
         }}
       />

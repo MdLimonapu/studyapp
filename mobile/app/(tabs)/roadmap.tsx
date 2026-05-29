@@ -84,12 +84,14 @@ export default function RoadmapScreen() {
   return (
     <ScrollView style={[styles.container, { backgroundColor: colors.background }]}>
       <View style={styles.header}>
-        <Text style={[styles.headerTitle, { color: colors.text }]}>Check Eligibility</Text>
+        <Text style={[styles.headerTitle, { color: colors.text }]}>
+          Check <Text style={{ color: colors.tint }}>Eligibility</Text>
+        </Text>
         <Text style={[styles.headerSubtitle, { color: colors.text, opacity: 0.6 }]}>
           Select a destination country to view your requirements.
         </Text>
       </View>
-
+ 
       {/* Country Horizontal Selector */}
       <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.countryRow}>
         {(Object.keys(ROADMAPS) as Array<keyof typeof ROADMAPS>).map((country) => {
@@ -101,7 +103,7 @@ export default function RoadmapScreen() {
               style={[
                 styles.countryTab, 
                 { backgroundColor: colors.card, borderColor: colors.border },
-                isSelected && { borderColor: colors.tint, borderWidth: 2, backgroundColor: 'rgba(255, 140, 0, 0.05)' }
+                isSelected && { borderColor: colors.tint, borderWidth: 2, backgroundColor: 'rgba(204, 255, 0, 0.08)' }
               ]}
               onPress={() => setSelectedCountry(country)}
             >
@@ -111,7 +113,7 @@ export default function RoadmapScreen() {
           );
         })}
       </ScrollView>
-
+ 
       {/* Checklist Card */}
       <View style={[styles.checklistCard, { backgroundColor: colors.card, borderColor: colors.border }]}>
         <View style={styles.progressHeader}>
@@ -120,11 +122,11 @@ export default function RoadmapScreen() {
           </Text>
           <Text style={[styles.progressPct, { color: colors.tint }]}>{completedCount}/{totalSteps}</Text>
         </View>
-
+ 
         <View style={styles.progressTrack}>
           <View style={[styles.progressFill, { width: `${progressPercent}%`, backgroundColor: colors.tint }]} />
         </View>
-
+ 
         <View style={styles.stepsList}>
           {currentRoadmap.steps.map((step) => {
             const isDone = !!currentCompleted[step.id];
@@ -134,7 +136,7 @@ export default function RoadmapScreen() {
                 style={[
                   styles.stepCard, 
                   { backgroundColor: colors.background, borderColor: colors.border },
-                  isDone && { borderColor: '#10b981', backgroundColor: 'rgba(16, 185, 129, 0.02)' }
+                  isDone && { borderColor: colors.tint, backgroundColor: 'rgba(204, 255, 0, 0.02)' }
                 ]}
                 onPress={() => handleToggleStep(step.id)}
                 activeOpacity={0.8}
@@ -143,7 +145,7 @@ export default function RoadmapScreen() {
                   <View style={[
                     styles.checkbox, 
                     { borderColor: colors.tint },
-                    isDone && { backgroundColor: '#10b981', borderColor: '#10b981' }
+                    isDone && { backgroundColor: colors.tint, borderColor: colors.tint }
                   ]}>
                     {isDone && <Text style={styles.checkmark}>✓</Text>}
                   </View>
@@ -183,6 +185,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
+    paddingTop: 40,
   },
   header: {
     marginBottom: 20,
@@ -288,7 +291,7 @@ const styles = StyleSheet.create({
     marginTop: 2,
   },
   checkmark: {
-    color: '#fff',
+    color: '#000',
     fontSize: 13,
     fontWeight: '900',
   },

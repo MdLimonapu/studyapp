@@ -146,7 +146,7 @@ export default function ProfileScreen() {
       <View style={styles.header}>
         <View style={styles.identityRow}>
           <View style={[styles.avatarCircle, { backgroundColor: colors.tint }]}>
-            <Text style={styles.avatarText}>
+            <Text style={[styles.avatarText, { color: '#000' }]}>
               {profile.fullName ? profile.fullName[0].toUpperCase() : 'A'}
             </Text>
           </View>
@@ -158,28 +158,28 @@ export default function ProfileScreen() {
               {profile.email || "No email linked"}
             </Text>
             {profile.studplexId ? (
-              <View style={styles.studplexIdBadge}>
-                <Text style={styles.studplexIdText}>ID: {profile.studplexId}</Text>
+              <View style={[styles.studplexIdBadge, { backgroundColor: 'rgba(255, 107, 0, 0.12)', borderColor: 'rgba(255, 107, 0, 0.35)' }]}>
+                <Text style={[styles.studplexIdText, { color: '#ff6b00' }]}>ID: {profile.studplexId}</Text>
               </View>
             ) : null}
           </View>
         </View>
       </View>
-
+ 
       {/* Profile Completion Card */}
       <View style={[styles.card, { backgroundColor: colors.card, borderColor: colors.border }]}>
         <View style={styles.completionHeader}>
           <Text style={[styles.completionTitle, { color: colors.text }]}>Completion: {completionPct}%</Text>
-          <View style={styles.progressContainer}>
+          <View style={[styles.progressContainer, { backgroundColor: colorScheme === 'dark' ? '#374151' : '#e5e7eb' }]}>
             <View style={[styles.progressBar, { width: `${completionPct}%`, backgroundColor: colors.tint }]} />
           </View>
         </View>
-        <Text style={styles.completionHint}>
+        <Text style={[styles.completionHint, { color: colorScheme === 'dark' ? '#8e9aa8' : '#6b7280' }]}>
           {completionPct === 100 
             ? "Your profile is fully complete! You are ready for AI university matches." 
             : "Complete all fields to sync custom eligibility guidelines for study abroad."}
         </Text>
-
+ 
         {/* Visual Checklist */}
         <View style={styles.checklist}>
           {[
@@ -192,7 +192,7 @@ export default function ProfileScreen() {
             <View key={idx} style={styles.checkItem}>
               <View style={[
                 styles.checkDot, 
-                { backgroundColor: item.done ? '#10b981' : '#6b7280' }
+                { backgroundColor: item.done ? colors.tint : '#6b7280' }
               ]} />
               <Text style={[
                 styles.checkLabel, 
@@ -204,7 +204,7 @@ export default function ProfileScreen() {
           ))}
         </View>
       </View>
-
+ 
       {/* Sync Profile Zone */}
       <View style={[styles.section, { backgroundColor: colors.card, borderColor: colors.border }]}>
         <Text style={[styles.sectionTitle, { color: colors.tint }]}>Account Sync</Text>
@@ -214,7 +214,7 @@ export default function ProfileScreen() {
         
         <View style={styles.syncRow}>
           <TextInput 
-            style={[styles.syncInput, { borderColor: colors.border, color: colors.text }]}
+            style={[styles.syncInput, { borderColor: colors.border, color: colors.text, backgroundColor: colorScheme === 'dark' ? '#14171f' : '#f9fafb' }]}
             value={profile.email}
             onChangeText={(text) => setProfile(p => ({ ...p, email: text }))}
             placeholder="e.g. student@example.com"
@@ -228,31 +228,31 @@ export default function ProfileScreen() {
             disabled={syncing}
           >
             {syncing ? (
-              <ActivityIndicator color="#fff" size="small" />
+              <ActivityIndicator color="#000" size="small" />
             ) : (
-              <Text style={styles.syncButtonText}>Sync</Text>
+              <Text style={[styles.syncButtonText, { color: '#000' }]}>Sync</Text>
             )}
           </TouchableOpacity>
         </View>
       </View>
-
+ 
       {/* Form Fields */}
       <View style={[styles.section, { backgroundColor: colors.card, borderColor: colors.border }]}>
         <Text style={[styles.sectionTitle, { color: colors.tint }]}>Personal Details</Text>
         
         <Text style={[styles.label, { color: colors.text }]}>Full Name</Text>
         <TextInput 
-          style={[styles.input, { borderColor: colors.border, color: colors.text }]}
+          style={[styles.input, { borderColor: colors.border, color: colors.text, backgroundColor: colorScheme === 'dark' ? '#14171f' : '#f9fafb' }]}
           value={profile.fullName}
           onChangeText={(text) => setProfile(p => ({ ...p, fullName: text }))}
           placeholder="e.g. James Anderson"
           placeholderTextColor="#9ca3af"
         />
       </View>
-
+ 
       <View style={[styles.section, { backgroundColor: colors.card, borderColor: colors.border }]}>
         <Text style={[styles.sectionTitle, { color: colors.tint }]}>Academic Information</Text>
-
+ 
         <Text style={[styles.label, { color: colors.text }]}>Degree Level</Text>
         <View style={styles.degreeRow}>
           {DEGREE_OPTIONS.map((deg) => {
@@ -262,29 +262,29 @@ export default function ProfileScreen() {
                 key={deg}
                 style={[
                   styles.degreeBadge, 
-                  { borderColor: colors.border, backgroundColor: colors.card },
+                  { borderColor: colors.border, backgroundColor: colorScheme === 'dark' ? '#14171f' : '#f9fafb' },
                   isSelected && { backgroundColor: colors.tint, borderColor: colors.tint }
                 ]}
                 onPress={() => setProfile(p => ({ ...p, currentDegree: deg }))}
               >
-                <Text style={[styles.degreeBadgeText, { color: isSelected ? '#fff' : colors.text }]}>{deg}</Text>
+                <Text style={[styles.degreeBadgeText, { color: isSelected ? '#000' : colors.text }]}>{deg}</Text>
               </TouchableOpacity>
             );
           })}
         </View>
-
+ 
         <Text style={[styles.label, { color: colors.text }]}>Field of Study</Text>
         <TextInput 
-          style={[styles.input, { borderColor: colors.border, color: colors.text }]}
+          style={[styles.input, { borderColor: colors.border, color: colors.text, backgroundColor: colorScheme === 'dark' ? '#14171f' : '#f9fafb' }]}
           value={profile.currentField}
           onChangeText={(text) => setProfile(p => ({ ...p, currentField: text }))}
           placeholder="e.g. Computer Science"
           placeholderTextColor="#9ca3af"
         />
-
+ 
         <Text style={[styles.label, { color: colors.text }]}>GPA / Academic Grade</Text>
         <TextInput 
-          style={[styles.input, { borderColor: colors.border, color: colors.text }]}
+          style={[styles.input, { borderColor: colors.border, color: colors.text, backgroundColor: colorScheme === 'dark' ? '#14171f' : '#f9fafb' }]}
           value={profile.grade}
           onChangeText={(text) => setProfile(p => ({ ...p, grade: text }))}
           placeholder="e.g. 3.5 or 85"
@@ -292,16 +292,16 @@ export default function ProfileScreen() {
           keyboardType="numeric"
         />
       </View>
-
+ 
       <TouchableOpacity 
         style={[styles.button, { backgroundColor: colors.tint }]}
         onPress={handleSave}
         disabled={saving}
       >
         {saving ? (
-          <ActivityIndicator color="#fff" />
+          <ActivityIndicator color="#000" />
         ) : (
-          <Text style={styles.buttonText}>Save Changes</Text>
+          <Text style={[styles.buttonText, { color: '#000' }]}>Save Changes</Text>
         )}
       </TouchableOpacity>
 
@@ -314,6 +314,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
+    paddingTop: 40,
   },
   center: {
     justifyContent: 'center',
@@ -341,7 +342,7 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
   avatarText: {
-    color: '#fff',
+    color: '#000',
     fontSize: 28,
     fontWeight: '800',
   },
@@ -360,15 +361,15 @@ const styles = StyleSheet.create({
   },
   studplexIdBadge: {
     alignSelf: 'flex-start',
-    backgroundColor: 'rgba(255, 140, 0, 0.1)',
+    backgroundColor: 'rgba(255, 107, 0, 0.12)',
     paddingVertical: 4,
     paddingHorizontal: 10,
     borderRadius: 8,
     borderWidth: 1,
-    borderColor: 'rgba(255, 140, 0, 0.25)',
+    borderColor: 'rgba(255, 107, 0, 0.35)',
   },
   studplexIdText: {
-    color: '#ff8c00',
+    color: '#ff6b00',
     fontSize: 11,
     fontWeight: '800',
     letterSpacing: 0.5,
@@ -476,7 +477,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   syncButtonText: {
-    color: '#fff',
+    color: '#000',
     fontSize: 14,
     fontWeight: '700',
   },
@@ -502,14 +503,14 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 10,
-    shadowColor: '#ff8c00',
+    shadowColor: '#ccff00',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.2,
     shadowRadius: 8,
     elevation: 4,
   },
   buttonText: {
-    color: '#fff',
+    color: '#000',
     fontSize: 16,
     fontWeight: '700',
   },

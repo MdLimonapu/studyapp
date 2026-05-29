@@ -69,10 +69,14 @@ export default function NewsScreen() {
   return (
     <ScrollView style={[styles.container, { backgroundColor: colors.background }]}>
       <View style={styles.header}>
-        <Text style={[styles.headerTitle, { color: colors.text }]}>Studplex Daily</Text>
-        <Text style={styles.headerSubtitle}>International study and university updates</Text>
+        <Text style={[styles.headerTitle, { color: colors.text }]}>
+          Studplex <Text style={{ color: colors.tint }}>Daily</Text>
+        </Text>
+        <Text style={[styles.headerSubtitle, { color: colorScheme === 'dark' ? '#8e9aa8' : '#6b7280' }]}>
+          International study and university updates
+        </Text>
       </View>
-
+ 
       {news.length === 0 ? (
         <View style={styles.emptyContainer}>
           <Text style={[styles.emptyText, { color: colors.text }]}>No news updates available right now.</Text>
@@ -91,12 +95,12 @@ export default function NewsScreen() {
             <View style={styles.cardContent}>
               <View style={styles.cardMeta}>
                 <Text style={[styles.sourceText, { color: colors.tint }]}>{item.source}</Text>
-                {item.date && <Text style={styles.dateText}>{item.date}</Text>}
+                {item.date && <Text style={[styles.dateText, { color: colorScheme === 'dark' ? '#8e9aa8' : '#6b7280' }]}>{item.date}</Text>}
               </View>
               <Text style={[styles.cardTitle, { color: colors.text }]} numberOfLines={2}>
                 {item.title}
               </Text>
-              <Text style={styles.cardSummary} numberOfLines={3}>
+              <Text style={[styles.cardSummary, { color: colorScheme === 'dark' ? '#a0aec0' : '#4b5563' }]} numberOfLines={3}>
                 {item.summary}
               </Text>
               <Text style={[styles.readMore, { color: colors.tint }]}>Read Full Article →</Text>
@@ -108,11 +112,12 @@ export default function NewsScreen() {
     </ScrollView>
   );
 }
-
+ 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
+    paddingTop: 40,
   },
   center: {
     justifyContent: 'center',

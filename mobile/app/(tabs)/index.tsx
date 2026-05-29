@@ -202,7 +202,7 @@ export default function SearchScreen() {
           <Text style={[styles.heroTitlePre, { color: colors.text }]}>Find the right</Text>
           <Text style={styles.heroTitleMain}>university</Text>
           <Text style={[styles.heroTitlePost, { color: colors.text }]}>worldwide</Text>
-          <Text style={[styles.heroSubtitle, { color: colors.text, opacity: 0.7 }]}>
+          <Text style={[styles.heroSubtitle, { color: colors.text, opacity: 0.6 }]}>
             Match your dream international university program in seconds.
           </Text>
         </View>
@@ -214,33 +214,33 @@ export default function SearchScreen() {
             <Path d="M6 14.5V21C6 24.3 10.5 27 16 27C21.5 27 26 24.3 26 21V14.5L16 19.5L6 14.5Z" fill="url(#studplex-grad2)" />
             <Defs>
               <LinearGradient id="studplex-grad" x1="2" y1="2" x2="30" y2="16">
-                <Stop stopColor="#ff8c00" offset="0" />
-                <Stop stopColor="#f59e0b" offset="1" />
+                <Stop stopColor="#ccff00" offset="0" />
+                <Stop stopColor="#ff6b00" offset="1" />
               </LinearGradient>
               <LinearGradient id="studplex-grad2" x1="6" y1="14.5" x2="26" y2="27">
-                <Stop stopColor="#f59e0b" offset="0" />
-                <Stop stopColor="#ff8c00" offset="1" />
+                <Stop stopColor="#ff6b00" offset="0" />
+                <Stop stopColor="#ccff00" offset="1" />
               </LinearGradient>
             </Defs>
           </Svg>
         </View>
       </View>
-
+ 
       {/* Form */}
       <View style={[styles.formCard, { backgroundColor: colors.card, borderColor: colors.border }]}>
         <Text style={[styles.label, { color: colors.text }]}>Destination Country</Text>
         
         {/* Custom Dropdown Selector */}
         <TouchableOpacity 
-          style={[styles.dropdownSelector, { borderColor: colors.border }]} 
+          style={[styles.dropdownSelector, { borderColor: colors.border, backgroundColor: colorScheme === 'dark' ? '#14171f' : '#f9fafb' }]} 
           onPress={() => setShowCountryDropdown(!showCountryDropdown)}
         >
-          <Text style={[styles.dropdownSelectorText, { color: selectedCountry ? colors.text : '#9ca3af' }]}>
+          <Text style={[styles.dropdownSelectorText, { color: selectedCountry ? colors.text : '#7f8a9e' }]}>
             {selectedCountryData ? `${selectedCountryData.flag} ${selectedCountryData.name}` : "Select country"}
           </Text>
           <Text style={{ color: colors.tint, fontSize: 12 }}>{showCountryDropdown ? "▲" : "▼"}</Text>
         </TouchableOpacity>
-
+ 
         {showCountryDropdown && (
           <View style={[styles.dropdownList, { backgroundColor: colors.card, borderColor: colors.border }]}>
             <ScrollView nestedScrollEnabled style={{ maxHeight: 200 }}>
@@ -261,7 +261,7 @@ export default function SearchScreen() {
             </ScrollView>
           </View>
         )}
-
+ 
         <Text style={[styles.label, { color: colors.text }]}>Degree Level</Text>
         <View style={styles.degreeRow}>
           {['bachelor', 'master', 'phd'].map((d) => {
@@ -271,28 +271,28 @@ export default function SearchScreen() {
                 key={d}
                 style={[
                   styles.degreePill,
-                  { borderColor: colors.border, backgroundColor: colors.card },
+                  { borderColor: colors.border, backgroundColor: colorScheme === 'dark' ? '#14171f' : '#f9fafb' },
                   isSelected && { backgroundColor: colors.tint, borderColor: colors.tint }
                 ]}
                 onPress={() => setDegree(d)}
               >
-                <Text style={[styles.pillText, { color: isSelected ? '#fff' : colors.text }]}>
+                <Text style={[styles.pillText, { color: isSelected ? '#000' : colors.text }]}>
                   {d === 'phd' ? 'PhD' : d.charAt(0).toUpperCase() + d.slice(1)}
                 </Text>
               </TouchableOpacity>
             );
           })}
         </View>
-
+ 
         <Text style={[styles.label, { color: colors.text }]}>Field of Study</Text>
         <TextInput
-          style={[styles.input, { borderColor: colors.border, color: colors.text }]}
+          style={[styles.input, { borderColor: colors.border, color: colors.text, backgroundColor: colorScheme === 'dark' ? '#14171f' : '#f9fafb' }]}
           value={field}
           onChangeText={handleFieldInput}
           placeholder="e.g. Data Science, Robotics"
-          placeholderTextColor="#9ca3af"
+          placeholderTextColor="#7f8a9e"
         />
-
+ 
         {/* Suggestions List */}
         {showSuggestions && fieldSuggestions.length > 0 && (
           <View style={[styles.suggestionsDropdown, { backgroundColor: colors.card, borderColor: colors.border }]}>
@@ -307,7 +307,7 @@ export default function SearchScreen() {
             ))}
           </View>
         )}
-
+ 
         {/* Active Profile Sync (Pill format directly below study field) */}
         {profile && profile.fullName ? (
           useProfile ? (
@@ -331,14 +331,14 @@ export default function SearchScreen() {
             </TouchableOpacity>
           )
         ) : null}
-
+ 
         <TouchableOpacity 
           style={[styles.searchButton, { backgroundColor: colors.tint }]}
           onPress={handleSearch}
           disabled={loading}
         >
           {loading ? (
-            <ActivityIndicator color="#fff" />
+            <ActivityIndicator color="#000" />
           ) : (
             <Text style={styles.searchButtonText}>Find My Perfect Program</Text>
           )}
@@ -366,12 +366,12 @@ export default function SearchScreen() {
                     {item.title}
                   </Text>
                   {item.score && (
-                    <View style={[styles.scoreBadge, { backgroundColor: '#ff8c00' }]}>
+                    <View style={styles.scoreBadge}>
                       <Text style={styles.scoreText}>{item.score}% Match</Text>
                     </View>
                   )}
                 </View>
-                <Text style={[styles.programUniversity, { color: colors.text, opacity: 0.7 }]}>{item.university}</Text>
+                <Text style={[styles.programUniversity, { color: colors.text, opacity: 0.6 }]}>{item.university}</Text>
                 
                 <View style={styles.programFooter}>
                   <Text style={styles.programMeta}>{item.country} • {item.degree}</Text>
@@ -422,7 +422,7 @@ const styles = StyleSheet.create({
   heroTitleMain: {
     fontSize: 42,
     fontWeight: '900',
-    color: '#ff8c00',
+    color: '#ccff00',
     lineHeight: 44,
     letterSpacing: -1,
     textTransform: 'lowercase',
@@ -439,8 +439,8 @@ const styles = StyleSheet.create({
     lineHeight: 20,
   },
   formCard: {
-    padding: 16,
-    borderRadius: 20,
+    padding: 20,
+    borderRadius: 24,
     borderWidth: 1,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 4 },
@@ -467,7 +467,7 @@ const styles = StyleSheet.create({
   },
   dropdownSelectorText: {
     fontSize: 15,
-    fontWeight: '500',
+    fontWeight: '600',
   },
   dropdownList: {
     borderRadius: 12,
@@ -531,21 +531,21 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    backgroundColor: 'rgba(255, 140, 0, 0.1)',
+    backgroundColor: 'rgba(204, 255, 0, 0.12)',
     borderWidth: 1,
-    borderColor: 'rgba(255, 140, 0, 0.25)',
+    borderColor: 'rgba(204, 255, 0, 0.3)',
     borderRadius: 20,
     paddingVertical: 8,
     paddingHorizontal: 12,
     marginVertical: 10,
   },
   profilePillText: {
-    color: '#ff8c00',
+    color: '#ccff00',
     fontSize: 13.5,
-    fontWeight: '500',
+    fontWeight: '600',
   },
   profilePillClose: {
-    color: '#ff8c00',
+    color: '#ccff00',
     fontSize: 18,
     fontWeight: '600',
     paddingLeft: 6,
@@ -556,7 +556,7 @@ const styles = StyleSheet.create({
   },
   profilePromptText: {
     fontSize: 13.5,
-    fontWeight: '500',
+    fontWeight: '600',
     textDecorationLine: 'underline',
   },
   searchButton: {
@@ -564,17 +564,19 @@ const styles = StyleSheet.create({
     borderRadius: 16,
     justifyContent: 'center',
     alignItems: 'center',
-    shadowColor: '#ff8c00',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.2,
-    shadowRadius: 8,
-    elevation: 4,
+    shadowColor: '#ccff00',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.35,
+    shadowRadius: 12,
+    elevation: 6,
     marginTop: 10,
   },
   searchButtonText: {
-    color: '#fff',
+    color: '#000',
     fontSize: 16,
-    fontWeight: '700',
+    fontWeight: '800',
+    textTransform: 'uppercase',
+    letterSpacing: 0.5,
   },
   resultsSection: {
     marginTop: 10,
@@ -590,7 +592,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   programCard: {
-    borderRadius: 16,
+    borderRadius: 20,
     borderWidth: 1,
     padding: 16,
     marginBottom: 12,
@@ -608,13 +610,16 @@ const styles = StyleSheet.create({
   },
   scoreBadge: {
     paddingVertical: 4,
-    paddingHorizontal: 8,
+    paddingHorizontal: 10,
     borderRadius: 8,
+    backgroundColor: 'rgba(212, 255, 0, 0.1)',
+    borderWidth: 1,
+    borderColor: 'rgba(212, 255, 0, 0.25)',
   },
   scoreText: {
-    color: '#fff',
-    fontSize: 11,
-    fontWeight: '700',
+    color: '#d4ff00',
+    fontSize: 12,
+    fontWeight: '800',
   },
   programUniversity: {
     fontSize: 14,
