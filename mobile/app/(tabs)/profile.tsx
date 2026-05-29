@@ -12,6 +12,7 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { fetchProfile, saveProfile } from '../../services/api';
 import { FontAwesome } from '@expo/vector-icons';
+import * as WebBrowser from 'expo-web-browser';
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
 
@@ -49,6 +50,14 @@ export default function ProfileScreen() {
   useEffect(() => {
     loadCachedProfile();
   }, []);
+
+  const handleOpenWebLogin = async () => {
+    try {
+      await WebBrowser.openBrowserAsync('https://studplex.com');
+    } catch (err) {
+      Alert.alert("Browser Error", "Could not load website login portal.");
+    }
+  };
 
   const loadCachedProfile = async () => {
     setLoading(true);
@@ -239,6 +248,15 @@ export default function ProfileScreen() {
             )}
           </TouchableOpacity>
         </View>
+
+        <TouchableOpacity 
+          style={[styles.webLoginButton, { borderColor: colors.tint }]}
+          onPress={handleOpenWebLogin}
+        >
+          <Text style={[styles.webLoginButtonText, { color: colors.tint }]}>
+            🔑  Log In / Register on Website
+          </Text>
+        </TouchableOpacity>
       </View>
  
       {/* Form Fields */}
@@ -553,6 +571,19 @@ const styles = StyleSheet.create({
   },
   unlinkButtonText: {
     fontSize: 14.5,
+    fontWeight: '700',
+  },
+  webLoginButton: {
+    height: 48,
+    borderRadius: 12,
+    borderWidth: 1.5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 16,
+    width: '100%',
+  },
+  webLoginButtonText: {
+    fontSize: 14,
     fontWeight: '700',
   },
 });
