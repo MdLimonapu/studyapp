@@ -10,7 +10,9 @@ import {
   Alert,
   Keyboard,
   Modal,
-  Pressable
+  Pressable,
+  KeyboardAvoidingView,
+  Platform
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Svg, { Path, Defs, LinearGradient, Stop } from 'react-native-svg';
@@ -81,6 +83,7 @@ export default function SearchScreen() {
   const [field, setField] = useState('');
   const [fieldSuggestions, setFieldSuggestions] = useState<string[]>([]);
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [showFieldModal, setShowFieldModal] = useState(false);
   
   const [loading, setLoading] = useState(false);
   const [results, setResults] = useState<Program[]>([]);
@@ -144,6 +147,7 @@ export default function SearchScreen() {
       setFieldSuggestions(filtered);
       setShowSuggestions(true);
     } else {
+      setFieldSuggestions(POPULAR_FIELDS.slice(0, 6)); // Default popular
       setShowSuggestions(false);
     }
   };
@@ -151,6 +155,7 @@ export default function SearchScreen() {
   const handleSelectSuggestion = (val: string) => {
     setField(val);
     setShowSuggestions(false);
+    setShowFieldModal(false);
   };
 
   const handleSearch = () => {
@@ -321,30 +326,115 @@ export default function SearchScreen() {
             );
           })}
         </View>
- 
+
         <Text style={[styles.label, { color: colors.text }]}>Field of Study</Text>
-        <TextInput
-          style={[styles.input, { borderColor: colors.border, color: colors.text, backgroundColor: colorScheme === 'dark' ? '#14171f' : '#f9fafb' }]}
-          value={field}
-          onChangeText={handleFieldInput}
-          placeholder="e.g. Data Science, Robotics"
-          placeholderTextColor="#7f8a9e"
-        />
+        
+        {/* Field Selection Selector trigger */}
+        <TouchableOpacity 
+          style={[styles.dropdownSelector, { borderColor: showFieldModal ? colors.tint : colors.border, backgroundColor: colorScheme === 'dark' ? '#14171f' : '#f9fafb' }]} 
+          onPress={() => {
+            setFieldSuggestions(field.trim().length > 0 
+              ? POPULAR_FIELDS.filter(f => f.toLowerCase().includes(field.toLowerCase().trim())).slice(0, 5)
+              : POPULAR_FIELDS.slice(0, 6)
+            );
+            setShowFieldModal(true);
+          }}
+        >
+          <Text style={[styles.dropdownSelectorText, { color: field ? colors.text : '#7f8a9e' }]}>
+            {field || "e.g. Data Science, Robotics"}
+          </Text>
+          <Text style={{ color: colors.tint, fontSize: 13, fontWeight: '900' }}>✎</Text>
+        </TouchableOpacity>
  
-        {/* Suggestions List */}
-        {showSuggestions && fieldSuggestions.length > 0 && (
-          <View style={[styles.suggestionsDropdown, { backgroundColor: colors.card, borderColor: colors.border }]}>
-            {fieldSuggestions.map((item, idx) => (
-              <TouchableOpacity 
-                key={idx} 
-                style={[styles.suggestionItem, { borderBottomColor: colors.border }]}
-                onPress={() => handleSelectSuggestion(item)}
+        {/* Floating Modal for Field of Study Search */}
+        <Modal
+          visible={showFieldModal}
+          transparent={true}
+          animationType="fade"
+          onRequestClose={() => setShowFieldModal(false)}
+        >
+          <KeyboardAvoidingView
+            behavior={Platform.OS === 'ios' ? 'padding' : undefined}
+            style={{ flex: 1 }}
+          >
+            <Pressable 
+              style={styles.modalBackdrop} 
+              onPress={() => setShowFieldModal(false)}
+            >
+              <Pressable 
+                style={[styles.modalContent, { backgroundColor: colors.card, borderColor: colors.border }]}
+                onPress={(e) => e.stopPropagation()}
               >
-                <Text style={[styles.suggestionItemText, { color: colors.text }]}>{item}</Text>
-              </TouchableOpacity>
-            ))}
-          </View>
-        )}
+                <View style={styles.modalHeader}>
+                  <Text style={[styles.modalTitle, { color: colors.text }]}>Field of Study</Text>
+                  <TouchableOpacity onPress={() => setShowFieldModal(false)} style={styles.modalCloseButton}>
+                    <Text style={[styles.modalCloseText, { color: colors.tint }]}>✕</Text>
+                  </TouchableOpacity>
+                </View>
+ 
+                <TextInput
+                  style={[styles.modalInput, { borderColor: colors.tint, color: colors.text, backgroundColor: colorScheme === 'dark' ? '#14171f' : '#f9fafb' }]}
+                  value={field}
+                  onChangeText={handleFieldInput}
+                  placeholder="Search fields (e.g. Computer Science)"
+                  placeholderTextColor="#7f8a9e"
+                  autoFocus={true}
+                  autoCorrect={false}
+                  autoCapitalize="words"
+                />
+ 
+                <Text style={{ fontSize: 13, color: colors.text, opacity: 0.6, marginTop: 12, marginBottom: 8, fontWeight: '700' }}>
+                  {field.trim().length > 0 ? "Suggestions" : "Popular Fields"}
+                </Text>
+ 
+                <ScrollView style={styles.modalScroll} keyboardShouldPersistTaps="handled">
+                  {/* Typed Text Direct Selection Option */}
+                  {field.trim().length > 0 && (
+                    <TouchableOpacity
+                      style={[
+                        styles.modalDropdownItem, 
+                        { backgroundColor: 'rgba(204, 255, 0, 0.05)', borderColor: 'rgba(204, 255, 0, 0.25)', borderWidth: 1 }
+                      ]}
+                      onPress={() => setShowFieldModal(false)}
+                    >
+                      <Text style={[styles.modalDropdownItemText, { color: colors.tint, fontWeight: '700' }]}>
+                        Use: "{field}"
+                      </Text>
+                    </TouchableOpacity>
+                  )}
+ 
+                  {fieldSuggestions.map((item, idx) => {
+                    const isSelected = field.toLowerCase().trim() === item.toLowerCase().trim();
+                    return (
+                      <TouchableOpacity
+                        key={idx}
+                        style={[
+                          styles.modalDropdownItem, 
+                          { borderBottomColor: colors.border },
+                          isSelected && { backgroundColor: 'rgba(204, 255, 0, 0.08)' }
+                        ]}
+                        onPress={() => handleSelectSuggestion(item)}
+                      >
+                        <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                          <Text style={[
+                            styles.modalDropdownItemText, 
+                            { color: colors.text },
+                            isSelected && { color: colors.tint, fontWeight: '700' }
+                          ]}>
+                            {item}
+                          </Text>
+                          {isSelected && (
+                            <Text style={{ color: colors.tint, fontWeight: '900', fontSize: 16 }}>✓</Text>
+                          )}
+                        </View>
+                      </TouchableOpacity>
+                    );
+                  })}
+                </ScrollView>
+              </Pressable>
+            </Pressable>
+          </KeyboardAvoidingView>
+        </Modal>
  
         {/* Active Profile Sync (Pill format directly below study field) */}
         {profile && profile.fullName ? (
@@ -558,6 +648,14 @@ const styles = StyleSheet.create({
   modalDropdownItemText: {
     fontSize: 16,
     fontWeight: '600',
+  },
+  modalInput: {
+    height: 52,
+    borderWidth: 1.5,
+    borderRadius: 14,
+    paddingHorizontal: 16,
+    fontSize: 16,
+    marginBottom: 10,
   },
   pillContainer: {
     flexDirection: 'row',
