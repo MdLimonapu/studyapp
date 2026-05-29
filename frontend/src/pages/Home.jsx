@@ -65,8 +65,20 @@ export default function Home() {
   const [showProfilePrompt, setShowProfilePrompt] = useState(false)
   const [profile, setProfile] = useState(null)
   const [useProfile, setUseProfile] = useState(true)
-  const [news, setNews] = useState([])
-  const [newsLoading, setNewsLoading] = useState(true)
+  const [news, setNews] = useState(() => {
+    const cached = localStorage.getItem('cachedNews')
+    if (cached) {
+      try {
+        const parsed = JSON.parse(cached)
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed
+      } catch (e) {}
+    }
+    return FALLBACK_NEWS
+  })
+  const [newsLoading, setNewsLoading] = useState(() => {
+    const cached = localStorage.getItem('cachedNews')
+    return !cached
+  })
   const sugRef = useRef(null)
   const sliderRef = useRef(null)
   const formRef = useRef(null)
@@ -116,10 +128,13 @@ export default function Home() {
 
     fetchNews()
       .then(data => {
-        setNews(data && data.length > 3 ? data : FALLBACK_NEWS)
+        if (data && Array.isArray(data) && data.length > 0) {
+          setNews(data)
+          localStorage.setItem('cachedNews', JSON.stringify(data))
+        }
         setNewsLoading(false)
       })
-      .catch(() => { setNews(FALLBACK_NEWS); setNewsLoading(false) })
+      .catch(() => { setNewsLoading(false) })
   }, [])
 
   // Fetch Clerk user profile and pre-fill search details
