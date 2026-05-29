@@ -83,6 +83,9 @@ body {
   font-family: Inter, Arial, sans-serif;
   background: var(--bg);
   background-image: var(--bg-image);
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
   color: var(--text);
   min-height: 100vh;
 }
@@ -108,34 +111,27 @@ body {
 
 .nav-links {
   display: flex;
-  gap: 4px;
+  gap: 28px;
   align-items: center;
-  background: var(--card);
-  border: 1px solid var(--card-border);
-  padding: 6px 10px;
-  border-radius: 999px;
-  box-shadow: var(--shadow-news);
-  backdrop-filter: blur(10px);
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
   z-index: 10;
 }
 .nav-links a {
-  text-decoration: none; color: var(--muted);
-  font-size: 13.5px; font-weight: 700; transition: all 0.2s ease;
-  padding: 8px 18px;
-  border-radius: 999px;
-  border: 1px solid transparent;
+  text-decoration: none;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  padding: 6px 0;
 }
-.nav-links a:hover:not(.active) {
+.nav-links a:hover {
   color: var(--text);
-  background: var(--glass-glow);
 }
 .nav-links a.active {
   color: var(--text);
-  background: var(--dark2);
-  border-color: var(--card-border);
+  font-weight: 700;
 }
 
 .topbar-profile {
