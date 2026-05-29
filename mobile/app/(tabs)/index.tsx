@@ -196,20 +196,10 @@ export default function SearchScreen() {
 
   return (
     <ScrollView style={[styles.container, { backgroundColor: colors.background }]} keyboardShouldPersistTaps="handled">
-      {/* Header Row with Logo */}
-      <View style={styles.headerRow}>
-        <View style={styles.heroCard}>
-          <Text style={[styles.heroTitlePre, { color: colors.text }]}>Find the right</Text>
-          <Text style={styles.heroTitleMain}>university</Text>
-          <Text style={[styles.heroTitlePost, { color: colors.text }]}>worldwide</Text>
-          <Text style={[styles.heroSubtitle, { color: colors.text, opacity: 0.6 }]}>
-            Match your dream international university program in seconds.
-          </Text>
-        </View>
-        
-        {/* Render Vector Brand SVG Logo */}
-        <View style={styles.logoContainer}>
-          <Svg width="40" height="40" viewBox="0 0 32 32" fill="none">
+      {/* Centered Logo & Brand Header */}
+      <View style={styles.headerContainer}>
+        <View style={styles.logoCenteredContainer}>
+          <Svg width="48" height="48" viewBox="0 0 32 32" fill="none">
             <Path d="M16 2L2 9L16 16L30 9L16 2Z" fill="url(#studplex-grad)" />
             <Path d="M6 14.5V21C6 24.3 10.5 27 16 27C21.5 27 26 24.3 26 21V14.5L16 19.5L6 14.5Z" fill="url(#studplex-grad2)" />
             <Defs>
@@ -224,40 +214,65 @@ export default function SearchScreen() {
             </Defs>
           </Svg>
         </View>
+        
+        <View style={styles.heroCenteredText}>
+          <Text style={[styles.heroTitlePre, { color: colors.text, textAlign: 'center' }]}>Find the right</Text>
+          <Text style={[styles.heroTitleMain, { textAlign: 'center' }]}>university</Text>
+          <Text style={[styles.heroTitlePost, { color: colors.text, textAlign: 'center' }]}>worldwide</Text>
+          <Text style={[styles.heroSubtitle, { color: colors.text, opacity: 0.6, textAlign: 'center' }]}>
+            Match your dream international university program in seconds.
+          </Text>
+        </View>
       </View>
  
-      {/* Form */}
+      {/* Form Card */}
       <View style={[styles.formCard, { backgroundColor: colors.card, borderColor: colors.border }]}>
         <Text style={[styles.label, { color: colors.text }]}>Destination Country</Text>
         
         {/* Custom Dropdown Selector */}
         <TouchableOpacity 
-          style={[styles.dropdownSelector, { borderColor: colors.border, backgroundColor: colorScheme === 'dark' ? '#14171f' : '#f9fafb' }]} 
+          style={[styles.dropdownSelector, { borderColor: showCountryDropdown ? colors.tint : colors.border, backgroundColor: colorScheme === 'dark' ? '#14171f' : '#f9fafb' }]} 
           onPress={() => setShowCountryDropdown(!showCountryDropdown)}
         >
           <Text style={[styles.dropdownSelectorText, { color: selectedCountry ? colors.text : '#7f8a9e' }]}>
-            {selectedCountryData ? `${selectedCountryData.flag} ${selectedCountryData.name}` : "Select country"}
+            {selectedCountryData ? `${selectedCountryData.flag}   ${selectedCountryData.name}` : "Select country"}
           </Text>
-          <Text style={{ color: colors.tint, fontSize: 12 }}>{showCountryDropdown ? "▲" : "▼"}</Text>
+          <Text style={{ color: colors.tint, fontSize: 13, fontWeight: '900' }}>{showCountryDropdown ? "▲" : "▼"}</Text>
         </TouchableOpacity>
  
         {showCountryDropdown && (
-          <View style={[styles.dropdownList, { backgroundColor: colors.card, borderColor: colors.border }]}>
-            <ScrollView nestedScrollEnabled style={{ maxHeight: 200 }}>
-              {countries.map((c) => (
-                <TouchableOpacity
-                  key={c.name}
-                  style={[styles.dropdownItem, { borderBottomColor: colors.border }]}
-                  onPress={() => {
-                    setSelectedCountry(c.name);
-                    setShowCountryDropdown(false);
-                  }}
-                >
-                  <Text style={[styles.dropdownItemText, { color: colors.text }]}>
-                    {c.flag} {c.name}
-                  </Text>
-                </TouchableOpacity>
-              ))}
+          <View style={[styles.dropdownList, { backgroundColor: colorScheme === 'dark' ? '#11131a' : '#f3f4f6', borderColor: colors.tint, borderWidth: 1.5 }]}>
+            <ScrollView nestedScrollEnabled style={{ maxHeight: 220 }}>
+              {countries.map((c) => {
+                const isSelected = selectedCountry === c.name;
+                return (
+                  <TouchableOpacity
+                    key={c.name}
+                    style={[
+                      styles.dropdownItem, 
+                      { borderBottomColor: colors.border },
+                      isSelected && { backgroundColor: 'rgba(204, 255, 0, 0.08)' }
+                    ]}
+                    onPress={() => {
+                      setSelectedCountry(c.name);
+                      setShowCountryDropdown(false);
+                    }}
+                  >
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <Text style={[
+                        styles.dropdownItemText, 
+                        { color: colors.text },
+                        isSelected && { color: colors.tint, fontWeight: '700' }
+                      ]}>
+                        {c.flag}   {c.name}
+                      </Text>
+                      {isSelected && (
+                        <Text style={{ color: colors.tint, fontWeight: '900', fontSize: 14 }}>✓</Text>
+                      )}
+                    </View>
+                  </TouchableOpacity>
+                );
+              })}
             </ScrollView>
           </View>
         )}
@@ -396,92 +411,96 @@ const styles = StyleSheet.create({
     padding: 16,
     paddingTop: 40,
   },
-  headerRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    marginBottom: 10,
-    marginTop: 10,
+  headerContainer: {
+    alignItems: 'center',
+    marginBottom: 16,
+    marginTop: 15,
   },
-  logoContainer: {
-    marginTop: 6,
-    marginRight: 4,
-    width: 40,
-    height: 40,
+  logoCenteredContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: 12,
+    width: 48,
+    height: 48,
   },
-  heroCard: {
-    flex: 1,
-    paddingRight: 16,
+  heroCenteredText: {
+    alignItems: 'center',
+    paddingHorizontal: 10,
   },
   heroTitlePre: {
-    fontSize: 28,
+    fontSize: 26,
     fontWeight: '800',
-    lineHeight: 30,
+    lineHeight: 28,
     letterSpacing: -0.5,
   },
   heroTitleMain: {
-    fontSize: 42,
+    fontSize: 40,
     fontWeight: '900',
     color: '#ccff00',
-    lineHeight: 44,
+    lineHeight: 42,
     letterSpacing: -1,
     textTransform: 'lowercase',
   },
   heroTitlePost: {
-    fontSize: 28,
+    fontSize: 26,
     fontWeight: '800',
-    lineHeight: 30,
+    lineHeight: 28,
     letterSpacing: -0.5,
-    marginBottom: 8,
+    marginBottom: 6,
   },
   heroSubtitle: {
-    fontSize: 14.5,
-    lineHeight: 20,
+    fontSize: 14,
+    lineHeight: 19,
   },
   formCard: {
-    padding: 20,
-    borderRadius: 24,
-    borderWidth: 1,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.05,
-    shadowRadius: 10,
-    elevation: 3,
+    padding: 24,
+    borderRadius: 28,
+    borderWidth: 1.5,
+    shadowColor: '#ccff00',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.08,
+    shadowRadius: 16,
+    elevation: 5,
     marginBottom: 24,
   },
   label: {
-    fontSize: 14,
+    fontSize: 15,
     fontWeight: '700',
-    marginBottom: 8,
-    marginTop: 8,
+    marginBottom: 10,
+    marginTop: 10,
   },
   dropdownSelector: {
-    height: 48,
-    borderWidth: 1,
-    borderRadius: 12,
+    height: 54,
+    borderWidth: 1.5,
+    borderRadius: 14,
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    paddingHorizontal: 12,
+    paddingHorizontal: 16,
     marginBottom: 12,
   },
   dropdownSelectorText: {
-    fontSize: 15,
+    fontSize: 16,
     fontWeight: '600',
   },
   dropdownList: {
-    borderRadius: 12,
-    borderWidth: 1,
-    marginBottom: 12,
+    borderRadius: 14,
+    borderWidth: 1.5,
+    marginBottom: 14,
     overflow: 'hidden',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 8,
+    elevation: 3,
   },
   dropdownItem: {
-    paddingVertical: 12,
-    paddingHorizontal: 14,
+    paddingVertical: 14,
+    paddingHorizontal: 18,
     borderBottomWidth: 1,
   },
   dropdownItemText: {
-    fontSize: 14.5,
+    fontSize: 15.5,
     fontWeight: '600',
   },
   pillContainer: {
@@ -496,21 +515,21 @@ const styles = StyleSheet.create({
   },
   degreePill: {
     flex: 1,
-    paddingVertical: 8,
+    paddingVertical: 11,
     borderRadius: 20,
     borderWidth: 1,
     alignItems: 'center',
   },
   pillText: {
-    fontSize: 13,
-    fontWeight: '600',
+    fontSize: 14,
+    fontWeight: '700',
   },
   input: {
-    height: 48,
-    borderWidth: 1,
-    borderRadius: 12,
-    paddingHorizontal: 12,
-    fontSize: 15,
+    height: 54,
+    borderWidth: 1.5,
+    borderRadius: 14,
+    paddingHorizontal: 16,
+    fontSize: 16,
     marginBottom: 10,
   },
   suggestionsDropdown: {
