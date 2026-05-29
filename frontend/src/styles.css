@@ -92,8 +92,7 @@ body {
 .topbar {
   width: 100%;
   padding: 18px 5%;
-  background: var(--header-bg);
-  backdrop-filter: blur(24px);
+  background: transparent;
   display: flex; justify-content: space-between; align-items: center;
   position: relative;
 }
