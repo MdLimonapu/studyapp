@@ -526,6 +526,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
     paddingTop: 40,
+    marginBottom: Platform.OS === 'ios' ? 100 : 85,
   },
   headerContainer: {
     alignItems: 'center',

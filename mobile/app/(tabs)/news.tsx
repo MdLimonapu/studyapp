@@ -7,7 +7,8 @@ import {
   ActivityIndicator, 
   TouchableOpacity, 
   Image,
-  Linking
+  Linking,
+  Platform
 } from 'react-native';
 import { fetchNews } from '../../services/api';
 import Colors from '@/constants/Colors';
@@ -118,6 +119,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
     paddingTop: 40,
+    marginBottom: Platform.OS === 'ios' ? 100 : 85,
   },
   center: {
     justifyContent: 'center',

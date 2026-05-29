@@ -5,7 +5,8 @@ import {
   View, 
   ScrollView, 
   TouchableOpacity,
-  Dimensions
+  Dimensions,
+  Platform
 } from 'react-native';
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
@@ -186,6 +187,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
     paddingTop: 40,
+    marginBottom: Platform.OS === 'ios' ? 100 : 85,
   },
   header: {
     marginBottom: 20,

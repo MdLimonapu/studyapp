@@ -7,7 +7,8 @@ import {
   TextInput, 
   TouchableOpacity, 
   ActivityIndicator, 
-  Alert 
+  Alert,
+  Platform 
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { fetchProfile, saveProfile } from '../../services/api';
@@ -362,6 +363,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
     paddingTop: 40,
+    marginBottom: Platform.OS === 'ios' ? 100 : 85,
   },
   center: {
     justifyContent: 'center',

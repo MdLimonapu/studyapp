@@ -6,7 +6,8 @@ import {
   ScrollView, 
   ActivityIndicator, 
   TouchableOpacity, 
-  Linking
+  Linking,
+  Platform
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { router } from 'expo-router';
@@ -147,6 +148,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
     paddingTop: 40,
+    marginBottom: Platform.OS === 'ios' ? 100 : 85,
   },
   center: {
     justifyContent: 'center',
