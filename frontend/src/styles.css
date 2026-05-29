@@ -279,10 +279,12 @@ body {
 }
 
 .form-card button[type="submit"] {
-  padding: 16px 18px;
-  font-size: 15.5px;
-  border-radius: 14px;
-  margin-top: 6px;
+  width: fit-content;
+  padding: 12px 32px;
+  font-size: 15px;
+  border-radius: 12px;
+  margin: 16px auto 0 auto;
+  display: block;
 }
 
 .form-card .profile-hint {
