@@ -127,17 +127,17 @@ export default function App() {
           </div>
         </NavLink>
         
+        <nav className="nav-links">
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/university">University Matches</NavLink>
+          <NavLink to="/roadmap">Check Eligibility</NavLink>
+          <NavLink to="/contact">Contact</NavLink>
+          <SignedIn>
+            <NavLink to="/profile">Profile</NavLink>
+          </SignedIn>
+        </nav>
+        
         <div className="topbar-right">
-          <nav className="nav-links">
-            <NavLink to="/">Home</NavLink>
-            <NavLink to="/university">University Matches</NavLink>
-            <NavLink to="/roadmap">Check Eligibility</NavLink>
-            <NavLink to="/contact">Contact</NavLink>
-            <SignedIn>
-              <NavLink to="/profile">Profile</NavLink>
-            </SignedIn>
-          </nav>
-
           <div style={{ display: 'flex', alignItems: 'center', gap: '14px', height: '100%' }}>
             <SignedIn>
               <div style={{ display: 'flex', alignItems: 'center' }}>
