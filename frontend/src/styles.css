@@ -75,7 +75,7 @@
   --shadow-news: 0 6px 16px rgba(0, 0, 0, 0.03);
   --shadow-news-hover: 0 16px 36px rgba(0, 0, 0, 0.08);
   
-  --input-bg: #ffffff;
+  --input-bg: #f5f4eb;
   --border-hover: rgba(0, 0, 0, 0.15);
   
   --btn-gradient: linear-gradient(135deg, #111827 0%, #374151 100%);
@@ -374,9 +374,10 @@ textarea { min-height: 100px; resize: vertical; }
 
 .pill-active,
 .level-btn.active {
-  background: var(--secondary-glow);
-  color: var(--secondary-accent) !important;
-  border-color: var(--secondary-border) !important;
+  background: var(--btn-gradient);
+  color: var(--btn-text) !important;
+  border-color: transparent !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
 }
 
 /* AUTOCOMPLETE */
