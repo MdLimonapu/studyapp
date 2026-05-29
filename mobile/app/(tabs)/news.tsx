@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    paddingTop: 40,
+    paddingTop: Platform.OS === 'ios' ? 60 : 45,
     marginBottom: Platform.OS === 'ios' ? 100 : 85,
   },
   center: {

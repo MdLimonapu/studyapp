@@ -12,7 +12,8 @@ import {
   Modal,
   Pressable,
   KeyboardAvoidingView,
-  Platform
+  Platform,
+  Linking
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { router } from 'expo-router';
@@ -65,13 +66,33 @@ const POPULAR_FIELDS = [
 
 interface Program {
   title: string;
+  course?: string;
   university: string;
   country: string;
   degree: string;
   tuitionFee?: string;
   duration?: string;
   score?: number;
+  match_rating?: number;
+  city?: string;
+  link?: string;
 }
+
+const formatAbbreviation = (val?: string) => {
+  if (!val) return "";
+  return val
+    .replace(/\bBEng\b/g, 'B.Eng.')
+    .replace(/\bMEng\b/g, 'M.Eng.')
+    .replace(/\bBSc\b/g, 'B.Sc.')
+    .replace(/\bMSc\b/g, 'M.Sc.')
+    .replace(/\bBA\b/g, 'B.A.')
+    .replace(/\bMA\b/g, 'M.A.')
+    .replace(/\bPhD\b/g, 'Ph.D.')
+    .replace(/\bbeng\b/g, 'B.Eng.')
+    .replace(/\bmeng\b/g, 'M.Eng.')
+    .replace(/\bbsc\b/g, 'B.Sc.')
+    .replace(/\bmsc\b/g, 'M.Sc.');
+};
 
 export default function SearchScreen() {
   const colorScheme = useColorScheme() ?? 'light';
@@ -188,12 +209,15 @@ export default function SearchScreen() {
         let list = [];
         if (data && Array.isArray(data.courses)) {
           list = data.courses;
+        } else if (data && Array.isArray(data.results)) {
+          list = data.results;
         } else if (Array.isArray(data)) {
           list = data;
         }
         setResults(list);
+        await AsyncStorage.setItem('search_query', JSON.stringify(searchPayload));
         await AsyncStorage.setItem('search_results', JSON.stringify(list));
-        router.push('/(tabs)/mymatches');
+        router.navigate('/(tabs)/mymatches');
       })
       .catch(err => {
         Alert.alert("Search Error", "Could not fetch search results. Please check your network.");
@@ -203,6 +227,11 @@ export default function SearchScreen() {
   };
 
   const selectedCountryData = countries.find(c => c.name === selectedCountry);
+
+  const handleOpenLink = (url?: string) => {
+    if (!url) return;
+    Linking.openURL(url).catch(err => console.error("Couldn't open URL:", err));
+  };
 
   return (
     <ScrollView style={[styles.container, { backgroundColor: colors.background }]} keyboardShouldPersistTaps="handled">
@@ -229,8 +258,8 @@ export default function SearchScreen() {
           <Text style={[styles.heroTitlePre, { color: colors.text, textAlign: 'center' }]}>Find the right</Text>
           <Text style={[styles.heroTitleMain, { textAlign: 'center' }]}>university</Text>
           <Text style={[styles.heroTitlePost, { color: colors.text, textAlign: 'center' }]}>worldwide</Text>
-          <Text style={[styles.heroSubtitle, { color: colors.text, opacity: 0.6, textAlign: 'center' }]}>
-            Match your dream international university program in seconds.
+          <Text style={[styles.heroSubtitle, { color: '#fff8e7', opacity: 0.85, textAlign: 'center' }]}>
+            Match your dream program.
           </Text>
         </View>
       </View>
@@ -391,20 +420,7 @@ export default function SearchScreen() {
                 </Text>
  
                 <ScrollView style={styles.modalScroll} keyboardShouldPersistTaps="handled">
-                  {/* Typed Text Direct Selection Option */}
-                  {field.trim().length > 0 && (
-                    <TouchableOpacity
-                      style={[
-                        styles.modalDropdownItem, 
-                        { backgroundColor: 'rgba(204, 255, 0, 0.05)', borderColor: 'rgba(204, 255, 0, 0.25)', borderWidth: 1 }
-                      ]}
-                      onPress={() => setShowFieldModal(false)}
-                    >
-                      <Text style={[styles.modalDropdownItemText, { color: colors.tint, fontWeight: '700' }]}>
-                        Use: "{field}"
-                      </Text>
-                    </TouchableOpacity>
-                  )}
+
  
                   {fieldSuggestions.map((item, idx) => {
                     const isSelected = field.toLowerCase().trim() === item.toLowerCase().trim();
@@ -476,46 +492,6 @@ export default function SearchScreen() {
         </TouchableOpacity>
       </View>
 
-      {/* Results Section */}
-      {hasSearched && (
-        <View style={styles.resultsSection}>
-          <Text style={[styles.resultsTitle, { color: colors.text }]}>Matching Programs</Text>
-          {loading ? (
-            <ActivityIndicator size="small" color={colors.tint} style={{ marginTop: 20 }} />
-          ) : results.length === 0 ? (
-            <Text style={[styles.noResultsText, { color: colors.text, opacity: 0.6 }]}>
-              No courses match your search criteria. Try adjusting the query.
-            </Text>
-          ) : (
-            results.map((item, index) => (
-              <View 
-                key={index} 
-                style={[styles.programCard, { backgroundColor: colors.card, borderColor: colors.border }]}
-              >
-                <View style={styles.programHeader}>
-                  <Text style={[styles.programTitle, { color: colors.text }]} numberOfLines={2}>
-                    {item.title}
-                  </Text>
-                  {item.score && (
-                    <View style={styles.scoreBadge}>
-                      <Text style={styles.scoreText}>{item.score}% Match</Text>
-                    </View>
-                  )}
-                </View>
-                <Text style={[styles.programUniversity, { color: colors.text, opacity: 0.6 }]}>{item.university}</Text>
-                
-                <View style={styles.programFooter}>
-                  <Text style={styles.programMeta}>{item.country} • {item.degree}</Text>
-                  {item.tuitionFee && (
-                    <Text style={[styles.programFee, { color: colors.tint }]}>{item.tuitionFee}</Text>
-                  )}
-                </View>
-              </View>
-            ))
-          )}
-        </View>
-      )}
-
       <View style={{ height: 40 }} />
     </ScrollView>
   );
@@ -525,7 +501,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    paddingTop: 40,
+    paddingTop: Platform.OS === 'ios' ? 60 : 45,
     marginBottom: Platform.OS === 'ios' ? 100 : 85,
   },
   headerContainer: {
@@ -789,12 +765,12 @@ const styles = StyleSheet.create({
     paddingVertical: 4,
     paddingHorizontal: 10,
     borderRadius: 8,
-    backgroundColor: 'rgba(212, 255, 0, 0.1)',
+    backgroundColor: 'rgba(74, 222, 128, 0.15)',
     borderWidth: 1,
-    borderColor: 'rgba(212, 255, 0, 0.25)',
+    borderColor: 'rgba(74, 222, 128, 0.35)',
   },
   scoreText: {
-    color: '#d4ff00',
+    color: '#4ade80',
     fontSize: 12,
     fontWeight: '800',
   },
@@ -808,12 +784,23 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  programMeta: {
-    fontSize: 12,
-    color: '#9ca3af',
+  metaBadgesRow: {
+    flexDirection: 'row',
+    gap: 6,
   },
-  programFee: {
+  metaBadge: {
+    paddingVertical: 3,
+    paddingHorizontal: 8,
+    borderRadius: 6,
+    borderWidth: 1,
+  },
+  metaBadgeText: {
+    fontSize: 11,
+    fontWeight: '800',
+    textTransform: 'uppercase',
+  },
+  locationText: {
     fontSize: 13,
-    fontWeight: '700',
+    fontWeight: '600',
   },
 });

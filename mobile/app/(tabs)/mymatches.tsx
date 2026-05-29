@@ -16,6 +16,7 @@ import { useColorScheme } from '@/components/useColorScheme';
 
 interface Program {
   title: string;
+  course?: string;
   university: string;
   country: string;
   degree: string;
@@ -27,11 +28,36 @@ interface Program {
   city?: string;
 }
 
+const formatAbbreviation = (val?: string) => {
+  if (!val) return "";
+  return val
+    .replace(/\bBEng\b/g, 'B.Eng.')
+    .replace(/\bMEng\b/g, 'M.Eng.')
+    .replace(/\bBSc\b/g, 'B.Sc.')
+    .replace(/\bMSc\b/g, 'M.Sc.')
+    .replace(/\bBA\b/g, 'B.A.')
+    .replace(/\bMA\b/g, 'M.A.')
+    .replace(/\bPhD\b/g, 'Ph.D.')
+    .replace(/\bbeng\b/g, 'B.Eng.')
+    .replace(/\bmeng\b/g, 'M.Eng.')
+    .replace(/\bbsc\b/g, 'B.Sc.')
+    .replace(/\bmsc\b/g, 'M.Sc.');
+};
+
+interface SearchQuery {
+  country?: string;
+  degree?: string;
+  field?: string;
+}
+
 export default function MyMatchesScreen() {
   const colorScheme = useColorScheme() ?? 'light';
   const colors = Colors[colorScheme];
 
   const [results, setResults] = useState<Program[]>([]);
+  const [favorites, setFavorites] = useState<Program[]>([]);
+  const [showFavoritesOnly, setShowFavoritesOnly] = useState(false);
+  const [searchQuery, setSearchQuery] = useState<SearchQuery | null>(null);
   const [loading, setLoading] = useState(true);
 
   const loadMatches = async () => {
@@ -43,12 +69,44 @@ export default function MyMatchesScreen() {
       } else {
         setResults([]);
       }
+
+      const rawLoved = await AsyncStorage.getItem('loved_programs');
+      if (rawLoved) {
+        setFavorites(JSON.parse(rawLoved));
+      }
+
+      const rawQuery = await AsyncStorage.getItem('search_query');
+      if (rawQuery) {
+        setSearchQuery(JSON.parse(rawQuery));
+      } else {
+        setSearchQuery(null);
+      }
     } catch (err) {
       console.log("Error loading cached matches:", err);
       setResults([]);
     } finally {
       setLoading(false);
     }
+  };
+
+  const toggleFavorite = async (item: Program) => {
+    try {
+      const isFav = favorites.some(p => (p.link === item.link && p.link) || (p.university === item.university && p.course === item.course));
+      let newFav: Program[] = [];
+      if (isFav) {
+        newFav = favorites.filter(p => !((p.link === item.link && p.link) || (p.university === item.university && p.course === item.course)));
+      } else {
+        newFav = [...favorites, item];
+      }
+      setFavorites(newFav);
+      await AsyncStorage.setItem('loved_programs', JSON.stringify(newFav));
+    } catch (err) {
+      console.error("Error saving favorite programs:", err);
+    }
+  };
+
+  const isItemFavorite = (item: Program) => {
+    return favorites.some(p => (p.link === item.link && p.link) || (p.university === item.university && p.course === item.course));
   };
 
   useEffect(() => {
@@ -74,6 +132,54 @@ export default function MyMatchesScreen() {
     );
   }
 
+  const renderCard = (item: Program, index: number) => {
+    const score = item.score || (item.match_rating ? item.match_rating * 33 : 85);
+    const loved = isItemFavorite(item);
+    return (
+      <TouchableOpacity 
+        key={index} 
+        style={[styles.programCard, { backgroundColor: colors.card, borderColor: colors.border }]}
+        onPress={() => handleOpenLink(item.link)}
+        activeOpacity={0.8}
+      >
+        <TouchableOpacity 
+          onPress={(e) => {
+            e.stopPropagation();
+            toggleFavorite(item);
+          }}
+          style={styles.loveButton}
+          activeOpacity={0.7}
+        >
+          <Text style={{ fontSize: 18 }}>{loved ? '❤️' : '🤍'}</Text>
+        </TouchableOpacity>
+
+        <View style={styles.programHeader}>
+          <Text style={[styles.programTitle, { color: colors.text }]} numberOfLines={2}>
+            {formatAbbreviation(item.course || item.title || "Selected Program")}
+          </Text>
+        </View>
+        
+        <Text style={[styles.programUniversity, { color: colors.text, opacity: 0.7 }]}>
+          {item.university}
+        </Text>
+        
+        <View style={styles.programFooter}>
+          <View style={styles.metaBadgesRow}>
+            <View style={styles.scoreBadge}>
+              <Text style={styles.scoreText}>{Math.round(score)}% Match</Text>
+            </View>
+          </View>
+          
+          {item.city ? (
+            <Text style={[styles.locationText, { color: '#8e9aa8' }]}>
+              📍 {item.city}
+            </Text>
+          ) : null}
+        </View>
+      </TouchableOpacity>
+    );
+  };
+
   return (
     <ScrollView 
       style={[styles.container, { backgroundColor: colors.background }]}
@@ -88,56 +194,77 @@ export default function MyMatchesScreen() {
         </Text>
       </View>
 
-      {results.length === 0 ? (
-        <View style={[styles.emptyCard, { backgroundColor: colors.card, borderColor: colors.border }]}>
-          <Text style={styles.emptyIcon}>🔍</Text>
-          <Text style={[styles.emptyTitle, { color: colors.text }]}>No Matches Yet</Text>
-          <Text style={[styles.emptyDesc, { color: colors.text, opacity: 0.6 }]}>
-            Use the Match tab to search and find university programs matching your preferences.
+      {/* Search Query Indicator (Row of styled badges) */}
+      {searchQuery && (
+        <View style={{ flexDirection: 'row', gap: 8, marginBottom: 20 }}>
+          <View style={[styles.indicatorBadge, { backgroundColor: 'rgba(96, 165, 251, 0.08)', borderColor: 'rgba(96, 165, 251, 0.25)' }]}>
+            <Text style={[styles.indicatorBadgeText, { color: '#60a5fa' }]}>
+              🌎 {searchQuery.country || 'All Countries'}
+            </Text>
+          </View>
+          <View style={[styles.indicatorBadge, { backgroundColor: 'rgba(96, 165, 251, 0.08)', borderColor: 'rgba(96, 165, 251, 0.25)' }]}>
+            <Text style={[styles.indicatorBadgeText, { color: '#60a5fa' }]}>
+              🎓 {formatAbbreviation(searchQuery.degree || 'Master')}
+            </Text>
+          </View>
+        </View>
+      )}
+
+      {/* Tab Filter Bar */}
+      <View style={styles.tabBar}>
+        <TouchableOpacity 
+          style={[styles.tabButton, !showFavoritesOnly && styles.tabButtonActive]}
+          onPress={() => setShowFavoritesOnly(false)}
+        >
+          <Text style={[styles.tabButtonText, { color: colors.text }, !showFavoritesOnly && { fontWeight: '800', color: colors.tint }]}>
+            All Matches ({results.length})
           </Text>
-          <TouchableOpacity 
-            style={[styles.emptyButton, { backgroundColor: colors.tint }]}
-            onPress={() => router.push('/(tabs)')}
-          >
-            <Text style={styles.emptyButtonText}>Start Search</Text>
-          </TouchableOpacity>
-        </View>
+        </TouchableOpacity>
+        <TouchableOpacity 
+          style={[styles.tabButton, showFavoritesOnly && styles.tabButtonActive]}
+          onPress={() => setShowFavoritesOnly(true)}
+        >
+          <Text style={[styles.tabButtonText, { color: colors.text }, showFavoritesOnly && { fontWeight: '800', color: '#ff4b80' }]}>
+            Favorites ❤️ ({favorites.length})
+          </Text>
+        </TouchableOpacity>
+      </View>
+
+      {/* Conditional Rendering of Lists */}
+      {showFavoritesOnly ? (
+        favorites.length === 0 ? (
+          <View style={[styles.emptyCard, { backgroundColor: colors.card, borderColor: colors.border }]}>
+            <Text style={styles.emptyIcon}>❤️</Text>
+            <Text style={[styles.emptyTitle, { color: colors.text }]}>No Favorites Yet</Text>
+            <Text style={[styles.emptyDesc, { color: colors.text, opacity: 0.6 }]}>
+              Tap the heart icon on any program card to save it here for future reference.
+            </Text>
+          </View>
+        ) : (
+          <View style={styles.resultsList}>
+            {favorites.map((item, index) => renderCard(item, index))}
+          </View>
+        )
       ) : (
-        <View style={styles.resultsList}>
-          {results.map((item, index) => {
-            const score = item.score || (item.match_rating ? item.match_rating * 33 : 85);
-            return (
-              <TouchableOpacity 
-                key={index} 
-                style={[styles.programCard, { backgroundColor: colors.card, borderColor: colors.border }]}
-                onPress={() => handleOpenLink(item.link)}
-                activeOpacity={0.8}
-              >
-                <View style={styles.programHeader}>
-                  <Text style={[styles.programTitle, { color: colors.text }]} numberOfLines={2}>
-                    {item.title}
-                  </Text>
-                  <View style={styles.scoreBadge}>
-                    <Text style={styles.scoreText}>{Math.round(score)}% Match</Text>
-                  </View>
-                </View>
-                
-                <Text style={[styles.programUniversity, { color: colors.text, opacity: 0.7 }]}>
-                  {item.university}{item.city ? ` • ${item.city}` : ''}
-                </Text>
-                
-                <View style={styles.programFooter}>
-                  <Text style={styles.programMeta}>{item.country} • {item.degree}</Text>
-                  {item.tuitionFee ? (
-                    <Text style={[styles.programFee, { color: colors.tint }]}>{item.tuitionFee}</Text>
-                  ) : (
-                    <Text style={[styles.programFee, { color: colors.tint }]}>No Fees Info</Text>
-                  )}
-                </View>
-              </TouchableOpacity>
-            );
-          })}
-        </View>
+        results.length === 0 ? (
+          <View style={[styles.emptyCard, { backgroundColor: colors.card, borderColor: colors.border }]}>
+            <Text style={styles.emptyIcon}>🔍</Text>
+            <Text style={[styles.emptyTitle, { color: colors.text }]}>No Matches Yet</Text>
+            <Text style={[styles.emptyDesc, { color: colors.text, opacity: 0.6 }]}>
+              Use the Match tab to search and find university programs matching your preferences.
+            </Text>
+            <TouchableOpacity 
+              style={[styles.emptyButton, { backgroundColor: colors.tint }]}
+              onPress={() => router.navigate('/(tabs)')}
+            >
+              <Text style={styles.emptyButtonText}>Start Search</Text>
+            </TouchableOpacity>
+          </View>
+        ) : (
+          <View style={styles.resultsList}>
+            {results.map((item, index) => renderCard(item, index))}
+          </View>
+        )
       )}
     </ScrollView>
   );
@@ -147,7 +274,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    paddingTop: 40,
+    paddingTop: Platform.OS === 'ios' ? 60 : 45,
     marginBottom: Platform.OS === 'ios' ? 100 : 85,
   },
   center: {
@@ -166,6 +293,17 @@ const styles = StyleSheet.create({
   headerSubtitle: {
     fontSize: 14.5,
     lineHeight: 20,
+  },
+  indicatorBadge: {
+    paddingVertical: 5,
+    paddingHorizontal: 12,
+    borderRadius: 8,
+    borderWidth: 1,
+  },
+  indicatorBadgeText: {
+    fontSize: 12,
+    fontWeight: '800',
+    textTransform: 'uppercase',
   },
   emptyCard: {
     padding: 30,
@@ -210,6 +348,28 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: '800',
   },
+  tabBar: {
+    flexDirection: 'row',
+    marginBottom: 20,
+    backgroundColor: 'rgba(255, 255, 255, 0.03)',
+    borderRadius: 14,
+    padding: 4,
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.08)',
+  },
+  tabButton: {
+    flex: 1,
+    paddingVertical: 12,
+    alignItems: 'center',
+    borderRadius: 10,
+  },
+  tabButtonActive: {
+    backgroundColor: 'rgba(255, 255, 255, 0.08)',
+  },
+  tabButtonText: {
+    fontSize: 14,
+    fontWeight: '600',
+  },
   resultsList: {
     gap: 12,
   },
@@ -223,6 +383,22 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.05,
     shadowRadius: 6,
     elevation: 2,
+    position: 'relative',
+  },
+  loveButton: {
+    position: 'absolute',
+    top: 14,
+    right: 14,
+    zIndex: 10,
+    backgroundColor: 'rgba(255, 255, 255, 0.06)',
+    padding: 6,
+    borderRadius: 18,
+    width: 34,
+    height: 34,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.1)',
   },
   programHeader: {
     flexDirection: 'row',
@@ -235,17 +411,18 @@ const styles = StyleSheet.create({
     fontWeight: '700',
     flex: 1,
     lineHeight: 22,
+    marginRight: 24,
   },
   scoreBadge: {
     paddingVertical: 4,
     paddingHorizontal: 10,
     borderRadius: 8,
-    backgroundColor: 'rgba(204, 255, 0, 0.12)',
+    backgroundColor: 'rgba(74, 222, 128, 0.15)',
     borderWidth: 1,
-    borderColor: 'rgba(204, 255, 0, 0.3)',
+    borderColor: 'rgba(74, 222, 128, 0.35)',
   },
   scoreText: {
-    color: '#ccff00',
+    color: '#4ade80',
     fontSize: 12,
     fontWeight: '800',
   },
@@ -259,12 +436,23 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
   },
-  programMeta: {
-    fontSize: 12.5,
-    color: '#8e9aa8',
+  metaBadgesRow: {
+    flexDirection: 'row',
+    gap: 6,
   },
-  programFee: {
-    fontSize: 13.5,
-    fontWeight: '700',
+  metaBadge: {
+    paddingVertical: 3,
+    paddingHorizontal: 8,
+    borderRadius: 6,
+    borderWidth: 1,
+  },
+  metaBadgeText: {
+    fontSize: 11,
+    fontWeight: '800',
+    textTransform: 'uppercase',
+  },
+  locationText: {
+    fontSize: 13,
+    fontWeight: '600',
   },
 });

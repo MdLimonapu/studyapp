@@ -7,8 +7,43 @@ import Roadmap from './pages/Roadmap'
 import Contact from './pages/Contact'
 import Privacy from './pages/Privacy'
 import Terms from './pages/Terms'
-import { SignedIn, SignedOut, UserButton, SignInButton, useUser } from '@clerk/clerk-react'
+import { SignedIn, SignedOut, UserButton, SignInButton, useUser, SignIn } from '@clerk/clerk-react'
 import { fetchProfile, saveProfile, registerUser } from './api'
+
+function MobileAuth() {
+  const { isLoaded, isSignedIn, user } = useUser()
+
+  useEffect(() => {
+    if (isLoaded && isSignedIn && user) {
+      const email = user.primaryEmailAddress?.emailAddress || ""
+      const fullName = user.fullName || user.username || ""
+      const redirectUrl = `mobile://auth?email=${encodeURIComponent(email)}&fullName=${encodeURIComponent(fullName)}`
+      window.location.href = redirectUrl
+    }
+  }, [isLoaded, isSignedIn, user])
+
+  return (
+    <div className="card" style={{ maxWidth: '500px', margin: '80px auto', padding: '40px', textAlign: 'center' }}>
+      <h2>Connecting to mobile app...</h2>
+      <p style={{ color: 'var(--muted)', margin: '12px 0 24px' }}>
+        Once logged in, you will be redirected back to the mobile app automatically.
+      </p>
+      {isSignedIn && user ? (
+        <a 
+          href={`mobile://auth?email=${encodeURIComponent(user.primaryEmailAddress?.emailAddress || "")}&fullName=${encodeURIComponent(user.fullName || "")}`}
+          className="btn-accent"
+          style={{ textDecoration: 'none', padding: '12px 28px', borderRadius: '12px', display: 'inline-block', color: 'var(--btn-text)', fontWeight: 700 }}
+        >
+          Open Studplex App
+        </a>
+      ) : (
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <SignIn forceRedirectUrl="/mobile-auth" signUpForceRedirectUrl="/mobile-auth" />
+        </div>
+      )}
+    </div>
+  )
+}
 
 function NotFound() {
   return (
@@ -205,6 +240,7 @@ export default function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
+          <Route path="/mobile-auth" element={<MobileAuth />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

@@ -577,6 +577,24 @@ GENERIC_BRANCHES = {
 }
 
 
+def format_abbreviation(val):
+    if not val:
+        return ""
+    import re
+    val = re.sub(r'\bBEng\b', 'B.Eng.', val, flags=re.IGNORECASE)
+    val = re.sub(r'\bMEng\b', 'M.Eng.', val, flags=re.IGNORECASE)
+    val = re.sub(r'\bBSc\b', 'B.Sc.', val, flags=re.IGNORECASE)
+    val = re.sub(r'\bMSc\b', 'M.Sc.', val, flags=re.IGNORECASE)
+    val = re.sub(r'\bBA\b', 'B.A.', val, flags=re.IGNORECASE)
+    val = re.sub(r'\bMA\b', 'M.A.', val, flags=re.IGNORECASE)
+    val = re.sub(r'\bPhD\b', 'Ph.D.', val, flags=re.IGNORECASE)
+    val = re.sub(r'\bBBA\b', 'B.B.A.', val, flags=re.IGNORECASE)
+    val = re.sub(r'\bMBA\b', 'M.B.A.', val, flags=re.IGNORECASE)
+    val = re.sub(r'\bLLM\b', 'LL.M.', val, flags=re.IGNORECASE)
+    val = re.sub(r'\bLLB\b', 'LL.B.', val, flags=re.IGNORECASE)
+    return val
+
+
 def fallback_search(country, degree, field, user_grade=None):
     """Search static country JSON data with rating-based relevance sorting and smart links."""
     results = FALLBACK_COURSES
@@ -688,10 +706,10 @@ def fallback_search(country, degree, field, user_grade=None):
             
         formatted.append({
             "university":   uni_name,
-            "course":       course_name,
+            "course":       format_abbreviation(course_name),
             "city":         city,
             "country":      c.get("country", ""),
-            "degree":       c.get("degree", ""),
+            "degree":       format_abbreviation(c.get("degree", "")),
             "link":         link,
             "requirements": f"Minimum GPA: {get_university_gpa_requirement(uni_name, c.get('country', '')):.1f}",
             "match_rating": rating,

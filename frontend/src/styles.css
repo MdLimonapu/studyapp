@@ -78,8 +78,8 @@
   --input-bg: #f5f4eb;
   --border-hover: rgba(0, 0, 0, 0.15);
   
-  --btn-gradient: linear-gradient(135deg, #111827 0%, #374151 100%);
-  --avatar-gradient: linear-gradient(135deg, #1f2937 0%, #4b5563 100%);
+  --btn-gradient: linear-gradient(135deg, var(--accent) 0%, #e07b00 100%);
+  --avatar-gradient: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
   --btn-text: #ffffff;
   --bg-image: radial-gradient(ellipse at 25% 40%, rgba(254, 240, 138, 0.25) 0%, transparent 60%),
     radial-gradient(ellipse at 75% 40%, rgba(254, 240, 138, 0.25) 0%, transparent 60%),

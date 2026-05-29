@@ -1,4 +1,4 @@
-const BASE_URL = "https://studyapp-backend-cal9.onrender.com";
+const BASE_URL = "https://api.studplex.com";
 
 export async function fetchCountries() {
   const res = await fetch(`${BASE_URL}/api/countries`);

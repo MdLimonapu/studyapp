@@ -6,8 +6,11 @@ import {
   ScrollView, 
   TouchableOpacity,
   Dimensions,
-  Platform
+  Platform,
+  Modal,
+  Pressable
 } from 'react-native';
+import { router } from 'expo-router';
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
 
@@ -48,6 +51,60 @@ const ROADMAPS = {
       { id: 3, title: 'Submit Application directly to University', desc: 'Apply directly via the university online portal and pay the application fee ($100-$150 CAD).', critical: true },
       { id: 4, title: 'Purchase GIC & Apply for Study Permit', desc: 'Purchase a GIC of $20,635 CAD from an approved bank and submit your Canadian Study Permit application.', critical: true }
     ]
+  },
+  'Australia': {
+    flag: '🇦🇺',
+    steps: [
+      { id: 1, title: 'Pass IELTS or PTE Academic Test', desc: 'Take a recognized English test. IELTS Academic (6.0 - 6.5) or PTE Academic (50 - 58) is standard.', critical: true },
+      { id: 2, title: 'Complete Genuine Student (GS) Statements', desc: 'Address the Genuine Student requirement by detailing your career goals and course relevance.', critical: true },
+      { id: 3, title: 'Submit Application & Pay Deposit', desc: 'Apply directly or via agent, pay the tuition deposit, and obtain your Confirmation of Enrolment (CoE).', critical: true },
+      { id: 4, title: 'Purchase OSHC Health Cover & Get Visa', desc: 'Purchase Overseas Student Health Cover and apply online for your Student Visa (Subclass 500).', critical: true }
+    ]
+  },
+  'Netherlands': {
+    flag: '🇳🇱',
+    steps: [
+      { id: 1, title: 'Register on Studielink.nl', desc: 'Create an account on the centralized Dutch national student portal and select your target programs.', critical: true },
+      { id: 2, title: 'Upload Documents & Pass English Test', desc: 'Submit transcripts on university portal. Provide IELTS (6.5+) or TOEFL score.', critical: true },
+      { id: 3, title: 'Accept Offer & Deposit Living Funds', desc: 'Once accepted, pay the tuition invoice and deposit living funds (~€12,000) for university verification.', critical: true },
+      { id: 4, title: 'Let University Handle Visa Application', desc: 'The university applies for your student visa (MVV/VVR) on your behalf after checking financial records.', critical: true }
+    ]
+  },
+  'Sweden': {
+    flag: '🇸🇪',
+    steps: [
+      { id: 1, title: 'Register on Universityadmissions.se', desc: 'Create an account on Sweden’s centralized portal. Select up to 4 programs.', critical: true },
+      { id: 2, title: 'Upload Academic Records & English Test', desc: 'Upload certified academic transcripts, diplomas, and English test scores (IELTS Academic 6.5+).', critical: true },
+      { id: 3, title: 'Pay Application Fee (SEK 900)', desc: 'Pay the application fee of SEK 900 online so Swedish admissions will process your files.', critical: true },
+      { id: 4, title: 'Pay First Semester Tuition & Get Visa', desc: 'Accept your offer, pay the first semester fee directly, and apply for your study residence permit.', critical: true }
+    ]
+  },
+  'France': {
+    flag: '🇫🇷',
+    steps: [
+      { id: 1, title: 'France Campus Registration', desc: 'Create an account on the Etudes en France portal for your country to select programs.', critical: true },
+      { id: 2, title: 'Submit Language Test (English/French)', desc: 'Submit DELF/DALF for French programs, or IELTS/TOEFL for English-taught programs.', critical: true },
+      { id: 3, title: 'Attend Campus France Academic Interview', desc: 'Schedule and attend the mandatory academic interview at your local Campus France office.', critical: true },
+      { id: 4, title: 'Accept Offer & Apply for student Visa', desc: 'Confirm your choice on the portal and apply for your student visa showing proof of funds (~€615/month).', critical: true }
+    ]
+  },
+  'Switzerland': {
+    flag: '🇨🇭',
+    steps: [
+      { id: 1, title: 'Verify Course Language & Pass Test', desc: 'Confirm program language and take Goethe/DELF (German/French) or IELTS/TOEFL (English).', critical: true },
+      { id: 2, title: 'Submit Online Application Directly', desc: 'Apply directly via the university online application system and pay fee (CHF 100 - CHF 200).', critical: true },
+      { id: 3, title: 'Confirm Admission & Show Swiss Bank Funds', desc: 'Show CHF 20,000 available in a bank account under your name at a bank recognized in Switzerland.', critical: true },
+      { id: 4, title: 'Apply for National Visa D', desc: 'Book visa appointment at Swiss consulate and bring your registration letter and bank statements.', critical: true }
+    ]
+  },
+  'Japan': {
+    flag: '🇯🇵',
+    steps: [
+      { id: 1, title: 'Language Certification (Japanese/English)', desc: 'Japanese-taught courses require JLPT N2/N1. English-taught courses require TOEFL/IELTS.', critical: true },
+      { id: 2, title: 'Submit Application directly to University', desc: 'Apply directly to the Japanese university online or mail physical documents.', critical: true },
+      { id: 3, title: 'Receive Admission & Request COE', desc: 'Submit documents for the university to apply for your COE (Certificate of Eligibility) at Japan Immigration.', critical: true },
+      { id: 4, title: 'Receive COE & Get Embassy Visa', desc: 'Take your physical COE card and university admission letter to the Japanese embassy to receive your visa.', critical: true }
+    ]
   }
 };
 
@@ -56,11 +113,18 @@ export default function RoadmapScreen() {
   const colors = Colors[colorScheme];
 
   const [selectedCountry, setSelectedCountry] = useState<keyof typeof ROADMAPS>('Germany');
+  const [showCountryDropdown, setShowCountryDropdown] = useState(false);
   const [completedSteps, setCompletedSteps] = useState<Record<string, Record<number, boolean>>>({
     Germany: {},
     UK: {},
     USA: {},
     Canada: {},
+    Australia: {},
+    Netherlands: {},
+    Sweden: {},
+    France: {},
+    Switzerland: {},
+    Japan: {},
   });
 
   const handleToggleStep = (stepId: number) => {
@@ -82,6 +146,13 @@ export default function RoadmapScreen() {
   const completedCount = currentRoadmap.steps.filter(s => currentCompleted[s.id]).length;
   const progressPercent = totalSteps > 0 ? Math.round((completedCount / totalSteps) * 100) : 0;
 
+  const criticalSteps = currentRoadmap.steps.filter(s => s.critical);
+  const isEligible = criticalSteps.length > 0 && criticalSteps.every(s => currentCompleted[s.id]);
+
+  const handleSearchClick = () => {
+    router.navigate('/(tabs)');
+  };
+
   return (
     <ScrollView style={[styles.container, { backgroundColor: colors.background }]}>
       <View style={styles.header}>
@@ -92,42 +163,87 @@ export default function RoadmapScreen() {
           Select a destination country to view your requirements.
         </Text>
       </View>
- 
-      {/* Country Horizontal Selector */}
-      <ScrollView horizontal showsHorizontalScrollIndicator={false} style={styles.countryRow}>
-        {(Object.keys(ROADMAPS) as Array<keyof typeof ROADMAPS>).map((country) => {
-          const isSelected = selectedCountry === country;
-          const countryData = ROADMAPS[country];
-          return (
-            <TouchableOpacity 
-              key={country}
-              style={[
-                styles.countryTab, 
-                { backgroundColor: colors.card, borderColor: colors.border },
-                isSelected && { borderColor: colors.tint, borderWidth: 2, backgroundColor: 'rgba(204, 255, 0, 0.08)' }
-              ]}
-              onPress={() => setSelectedCountry(country)}
-            >
-              <Text style={styles.countryFlag}>{countryData.flag}</Text>
-              <Text style={[styles.countryName, { color: colors.text }]}>{country}</Text>
-            </TouchableOpacity>
-          );
-        })}
-      </ScrollView>
- 
+
+      {/* Country Dropdown Selector */}
+      <TouchableOpacity 
+        style={[styles.dropdownSelector, { borderColor: showCountryDropdown ? colors.tint : colors.border, backgroundColor: colorScheme === 'dark' ? '#14171f' : '#f9fafb' }]} 
+        onPress={() => setShowCountryDropdown(true)}
+      >
+        <Text style={[styles.dropdownSelectorText, { color: colors.text }]}>
+          {currentRoadmap.flag}   {selectedCountry}
+        </Text>
+        <Text style={{ color: colors.tint, fontSize: 13, fontWeight: '900' }}>▼</Text>
+      </TouchableOpacity>
+
+      {/* Floating Backdrop Modal Selector */}
+      <Modal
+        visible={showCountryDropdown}
+        transparent={true}
+        animationType="fade"
+        onRequestClose={() => setShowCountryDropdown(false)}
+      >
+        <Pressable 
+          style={styles.modalBackdrop} 
+          onPress={() => setShowCountryDropdown(false)}
+        >
+          <View style={[styles.modalContent, { backgroundColor: colors.card, borderColor: colors.border }]}>
+            <View style={styles.modalHeader}>
+              <Text style={[styles.modalTitle, { color: colors.text }]}>Select Destination</Text>
+              <TouchableOpacity onPress={() => setShowCountryDropdown(false)} style={styles.modalCloseButton}>
+                <Text style={[styles.modalCloseText, { color: colors.tint }]}>✕</Text>
+              </TouchableOpacity>
+            </View>
+            
+            <ScrollView style={styles.modalScroll} keyboardShouldPersistTaps="handled">
+              {(Object.keys(ROADMAPS) as Array<keyof typeof ROADMAPS>).map((country) => {
+                const isSelected = selectedCountry === country;
+                const countryData = ROADMAPS[country];
+                return (
+                  <TouchableOpacity
+                    key={country}
+                    style={[
+                      styles.modalDropdownItem, 
+                      { borderBottomColor: colors.border },
+                      isSelected && { backgroundColor: 'rgba(204, 255, 0, 0.1)' }
+                    ]}
+                    onPress={() => {
+                      setSelectedCountry(country);
+                      setShowCountryDropdown(false);
+                    }}
+                  >
+                    <View style={{ flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' }}>
+                      <Text style={[
+                        styles.modalDropdownItemText, 
+                        { color: colors.text },
+                        isSelected && { color: colors.tint, fontWeight: '700' }
+                      ]}>
+                        {countryData.flag}   {country}
+                      </Text>
+                      {isSelected && (
+                        <Text style={{ color: colors.tint, fontWeight: '900', fontSize: 16 }}>✓</Text>
+                      )}
+                    </View>
+                  </TouchableOpacity>
+                );
+              })}
+            </ScrollView>
+          </View>
+        </Pressable>
+      </Modal>
+
       {/* Checklist Card */}
       <View style={[styles.checklistCard, { backgroundColor: colors.card, borderColor: colors.border }]}>
         <View style={styles.progressHeader}>
           <Text style={[styles.progressTitle, { color: colors.text }]}>
-            {currentRoadmap.flag} {selectedCountry} Steps
+            Requirements
           </Text>
           <Text style={[styles.progressPct, { color: colors.tint }]}>{completedCount}/{totalSteps}</Text>
         </View>
- 
+
         <View style={styles.progressTrack}>
           <View style={[styles.progressFill, { width: `${progressPercent}%`, backgroundColor: colors.tint }]} />
         </View>
- 
+
         <View style={styles.stepsList}>
           {currentRoadmap.steps.map((step) => {
             const isDone = !!currentCompleted[step.id];
@@ -135,46 +251,66 @@ export default function RoadmapScreen() {
               <TouchableOpacity 
                 key={step.id} 
                 style={[
-                  styles.stepCard, 
+                  styles.stepCardRow, 
                   { backgroundColor: colors.background, borderColor: colors.border },
                   isDone && { borderColor: colors.tint, backgroundColor: 'rgba(204, 255, 0, 0.02)' }
                 ]}
                 onPress={() => handleToggleStep(step.id)}
                 activeOpacity={0.8}
               >
-                <View style={styles.stepHeader}>
-                  <View style={[
-                    styles.checkbox, 
-                    { borderColor: colors.tint },
-                    isDone && { backgroundColor: colors.tint, borderColor: colors.tint }
-                  ]}>
-                    {isDone && <Text style={styles.checkmark}>✓</Text>}
-                  </View>
-                  <View style={styles.stepTitleContainer}>
-                    <Text style={[
-                      styles.stepTitle, 
-                      { color: colors.text },
-                      isDone && { textDecorationLine: 'line-through', opacity: 0.5 }
-                    ]}>
-                      {step.title}
-                    </Text>
-                    {step.critical && (
-                      <View style={styles.requiredTag}>
-                        <Text style={styles.requiredTagText}>Required</Text>
-                      </View>
-                    )}
-                  </View>
-                </View>
-                <Text style={[
-                  styles.stepDesc,
-                  { color: colors.text, opacity: isDone ? 0.4 : 0.6 }
+                <View style={[
+                  styles.checkbox, 
+                  { borderColor: colors.tint },
+                  isDone && { backgroundColor: colors.tint, borderColor: colors.tint }
                 ]}>
-                  {step.desc}
+                  {isDone && <Text style={styles.checkmark}>✓</Text>}
+                </View>
+                <Text 
+                  style={[
+                    styles.stepTitleCompact, 
+                    { color: colors.text },
+                    isDone && { textDecorationLine: 'line-through', opacity: 0.5 }
+                  ]}
+                >
+                  {step.title}
                 </Text>
               </TouchableOpacity>
             );
           })}
         </View>
+      </View>
+
+      {/* Eligibility Status Banner */}
+      <View style={[styles.statusCard, { backgroundColor: colors.card, borderColor: colors.border }]}>
+        {isEligible ? (
+          <View style={styles.statusContent}>
+            <Text style={styles.statusEmoji}>🎉</Text>
+            <Text style={[styles.statusTitle, { color: colors.tint }]}>
+              Eligibility Unlocked for {selectedCountry}!
+            </Text>
+            <Text style={[styles.statusDesc, { color: colors.text, opacity: 0.8 }]}>
+              You have completed all critical preparation requirements. You are fully ready to find courses and start your application process!
+            </Text>
+            <TouchableOpacity 
+              style={[styles.statusButton, { backgroundColor: colors.tint }]}
+              onPress={handleSearchClick}
+            >
+              <Text style={styles.statusButtonText}>🔍 Find Courses in {selectedCountry}</Text>
+            </TouchableOpacity>
+          </View>
+        ) : (
+          <View style={styles.statusContent}>
+            <Text style={[styles.statusDescText, { color: colors.text, opacity: 0.7, marginBottom: 12, textAlign: 'center' }]}>
+              ⚠️ Complete all <Text style={{ color: '#ef4444', fontWeight: 'bold' }}>Required</Text> steps above to verify your eligibility.
+            </Text>
+            <TouchableOpacity 
+              style={[styles.statusButtonSecondary, { borderColor: colors.border }]}
+              onPress={handleSearchClick}
+            >
+              <Text style={[styles.statusButtonTextSecondary, { color: colors.text }]}>🔍 Search Courses Anyway</Text>
+            </TouchableOpacity>
+          </View>
+        )}
       </View>
 
       <View style={{ height: 40 }} />
@@ -186,133 +322,151 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
-    paddingTop: 40,
+    paddingTop: Platform.OS === 'ios' ? 60 : 45,
     marginBottom: Platform.OS === 'ios' ? 100 : 85,
   },
   header: {
-    marginBottom: 20,
-    marginTop: 10,
+    marginBottom: 16,
+    marginTop: 5,
   },
   headerTitle: {
-    fontSize: 28,
+    fontSize: 26,
     fontWeight: '800',
-    marginBottom: 6,
+    marginBottom: 4,
   },
   headerSubtitle: {
-    fontSize: 14,
-    lineHeight: 20,
+    fontSize: 13,
+    lineHeight: 18,
   },
-  countryRow: {
-    flexDirection: 'row',
-    marginBottom: 20,
-    paddingVertical: 4,
-  },
-  countryTab: {
+  dropdownSelector: {
+    height: 52,
+    borderWidth: 1.5,
+    borderRadius: 14,
     flexDirection: 'row',
     alignItems: 'center',
-    paddingVertical: 10,
+    justifyContent: 'space-between',
     paddingHorizontal: 16,
-    borderRadius: 14,
-    borderWidth: 1,
-    marginRight: 10,
+    marginBottom: 16,
+  },
+  dropdownSelectorText: {
+    fontSize: 16,
+    fontWeight: '600',
+  },
+  modalBackdrop: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.75)',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 24,
+  },
+  modalContent: {
+    width: '100%',
+    maxHeight: '70%',
+    borderRadius: 24,
+    borderWidth: 1.5,
+    padding: 20,
     shadowColor: '#000',
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.05,
-    shadowRadius: 4,
-    elevation: 2,
+    shadowOffset: { width: 0, height: 10 },
+    shadowOpacity: 0.3,
+    shadowRadius: 20,
+    elevation: 10,
   },
-  countryFlag: {
+  modalHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 16,
+    paddingBottom: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: 'rgba(255, 255, 255, 0.1)',
+  },
+  modalTitle: {
     fontSize: 18,
-    marginRight: 8,
+    fontWeight: '800',
   },
-  countryName: {
-    fontSize: 14,
+  modalCloseButton: {
+    padding: 4,
+  },
+  modalCloseText: {
+    fontSize: 18,
     fontWeight: '700',
   },
+  modalScroll: {
+    maxHeight: 350,
+  },
+  modalDropdownItem: {
+    paddingVertical: 15,
+    paddingHorizontal: 16,
+    borderBottomWidth: 1,
+    borderRadius: 12,
+    marginVertical: 2,
+  },
+  modalDropdownItemText: {
+    fontSize: 16,
+    fontWeight: '600',
+  },
   checklistCard: {
-    padding: 16,
-    borderRadius: 20,
+    padding: 14,
+    borderRadius: 18,
     borderWidth: 1,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 4 },
-    shadowOpacity: 0.05,
-    shadowRadius: 10,
-    elevation: 3,
   },
   progressHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 12,
+    marginBottom: 10,
   },
   progressTitle: {
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: '800',
   },
   progressPct: {
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: '800',
   },
   progressTrack: {
-    height: 8,
+    height: 6,
     backgroundColor: '#374151',
-    borderRadius: 4,
-    marginBottom: 20,
+    borderRadius: 3,
+    marginBottom: 14,
     overflow: 'hidden',
   },
   progressFill: {
     height: '100%',
-    borderRadius: 4,
+    borderRadius: 3,
   },
   stepsList: {
-    gap: 12,
+    gap: 10,
   },
-  stepCard: {
+  stepCardRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
     borderRadius: 14,
     borderWidth: 1,
-    padding: 14,
-    shadowColor: '#000',
-    shadowOffset: { width: 0, height: 1 },
-    shadowOpacity: 0.02,
-    shadowRadius: 4,
-    elevation: 1,
-  },
-  stepHeader: {
-    flexDirection: 'row',
-    alignItems: 'flex-start',
-    marginBottom: 8,
+    paddingVertical: 14,
+    paddingHorizontal: 16,
   },
   checkbox: {
-    width: 22,
-    height: 22,
+    width: 24,
+    height: 24,
     borderRadius: 6,
     borderWidth: 2,
     justifyContent: 'center',
     alignItems: 'center',
     marginRight: 12,
-    marginTop: 2,
   },
   checkmark: {
     color: '#000',
-    fontSize: 13,
+    fontSize: 14,
     fontWeight: '900',
   },
-  stepTitleContainer: {
-    flex: 1,
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'flex-start',
-    flexWrap: 'wrap',
-    gap: 6,
-  },
-  stepTitle: {
-    fontSize: 14.5,
+  stepTitleCompact: {
+    fontSize: 15.5,
     fontWeight: '700',
     flex: 1,
-    paddingRight: 8,
-    lineHeight: 20,
+    paddingRight: 6,
   },
-  requiredTag: {
+  requiredTagCompact: {
     backgroundColor: 'rgba(239, 68, 68, 0.1)',
     paddingVertical: 2,
     paddingHorizontal: 6,
@@ -326,9 +480,64 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     textTransform: 'uppercase',
   },
-  stepDesc: {
-    fontSize: 13,
-    lineHeight: 18,
-    paddingLeft: 34,
+  statusCard: {
+    padding: 20,
+    borderRadius: 20,
+    borderWidth: 1.5,
+    marginTop: 16,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.1,
+    shadowRadius: 12,
+    elevation: 3,
+  },
+  statusContent: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  statusEmoji: {
+    fontSize: 36,
+    marginBottom: 8,
+  },
+  statusTitle: {
+    fontSize: 18,
+    fontWeight: '800',
+    textAlign: 'center',
+    marginBottom: 8,
+  },
+  statusDesc: {
+    fontSize: 13.5,
+    lineHeight: 20,
+    textAlign: 'center',
+    marginBottom: 16,
+  },
+  statusDescText: {
+    fontSize: 14,
+    lineHeight: 20,
+    textAlign: 'center',
+  },
+  statusButton: {
+    width: '100%',
+    height: 48,
+    borderRadius: 12,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  statusButtonText: {
+    color: '#000',
+    fontSize: 14.5,
+    fontWeight: '800',
+  },
+  statusButtonSecondary: {
+    width: '100%',
+    height: 48,
+    borderRadius: 12,
+    borderWidth: 1.5,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  statusButtonTextSecondary: {
+    fontSize: 14.5,
+    fontWeight: '800',
   },
 });
