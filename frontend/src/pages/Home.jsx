@@ -269,7 +269,6 @@ export default function Home() {
 
       <section className="home-search-grid">
         <div className="card hero-card">
-          <span className="badge">🎓 Studplex Search</span>
           <h2>Find the right<br/><span>university</span><br/>worldwide</h2>
           <p>Match with your dream international university program in seconds.</p>
           <div className="hero-stats">

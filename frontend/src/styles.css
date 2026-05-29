@@ -120,8 +120,8 @@ body {
 }
 .nav-links a {
   text-decoration: none;
-  color: var(--muted);
-  font-size: 14px;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 14.5px;
   font-weight: 700;
   padding: 8px 18px;
   border-radius: 999px;
@@ -129,19 +129,25 @@ body {
   background: var(--glass-glow);
   border: 1px solid var(--card-border);
 }
+:root[data-theme="light"] .nav-links a {
+  color: rgba(0, 0, 0, 0.7);
+}
 .nav-links a:hover {
   color: var(--text);
-  background: rgba(255, 255, 255, 0.06);
-  border-color: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.15);
 }
 :root[data-theme="light"] .nav-links a:hover {
-  background: rgba(0, 0, 0, 0.04);
-  border-color: rgba(0, 0, 0, 0.12);
+  background: rgba(0, 0, 0, 0.05);
+  border-color: rgba(0, 0, 0, 0.15);
 }
 .nav-links a.active {
   color: var(--text);
   background: var(--dark2);
-  border-color: var(--card-border);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+:root[data-theme="light"] .nav-links a.active {
+  border-color: rgba(0, 0, 0, 0.2);
 }
 
 .topbar-profile {
