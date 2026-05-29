@@ -310,6 +310,30 @@ export default function ProfileScreen() {
         )}
       </TouchableOpacity>
 
+      <TouchableOpacity 
+        style={[styles.unlinkButton, { borderColor: colors.border }]}
+        onPress={async () => {
+          await AsyncStorage.removeItem('user_email');
+          await AsyncStorage.removeItem('search_results');
+          setProfile({
+            fullName: '',
+            email: '',
+            currentDegree: '',
+            currentField: '',
+            semester: '',
+            universityName: '',
+            grade: '',
+            notes: '',
+            studplexId: '',
+          });
+          Alert.alert("Session Reset", "All local test data cleared. App is now in guest mode.");
+        }}
+      >
+        <Text style={[styles.unlinkButtonText, { color: colors.text, opacity: 0.6 }]}>
+          Unlink Account & Reset Session
+        </Text>
+      </TouchableOpacity>
+
       <View style={{ height: 40 }} />
     </ScrollView>
   );
@@ -517,6 +541,18 @@ const styles = StyleSheet.create({
   buttonText: {
     color: '#000',
     fontSize: 16,
+    fontWeight: '700',
+  },
+  unlinkButton: {
+    height: 52,
+    borderRadius: 16,
+    borderWidth: 1.5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: 12,
+  },
+  unlinkButtonText: {
+    fontSize: 14.5,
     fontWeight: '700',
   },
 });
