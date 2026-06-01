@@ -231,7 +231,7 @@ export default function University() {
                           <div className="rc-location">
                             <span className="rc-flag">{getCountryFlag(item.country)}</span>
                             <span className="rc-country-name">{item.country}</span>
-                            {item.city && <span className="rc-city">• {item.city}</span>}
+                            {item.city && <span className="rc-city">• 📍 {item.city}</span>}
                           </div>
                           <div className={`rc-rating-badge ${match.class}`} onClick={(e) => e.stopPropagation()}>
                             <span className="rc-stars">{match.stars}</span>

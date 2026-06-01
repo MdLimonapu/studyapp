@@ -275,7 +275,7 @@ export default function Roadmap() {
         <div className="card" style={{ padding: '32px' }}>
           
           {/* Header Info */}
-          <div style={{ 
+          <div className="roadmap-header-card" style={{ 
             display: 'flex', 
             justifyContent: 'space-between', 
             alignItems: 'center', 
