@@ -982,10 +982,11 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   display: flex; align-items: center; justify-content: center; padding: 20px;
 }
 .modal-box {
-  background: #1a1b2e;
+  background: var(--card);
   border: 1px solid var(--card-border);
   border-radius: 24px; padding: 40px;
   max-width: 460px; width: 100%; text-align: center;
+  box-shadow: var(--shadow-card);
 }
 .modal-icon { font-size: 52px; margin-bottom: 16px; }
 .modal-box h2 { font-size: 24px; margin-bottom: 12px; }
@@ -1824,5 +1825,73 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 :root[data-theme="light"] .pf-document-upload-zone:hover {
   background: #e5e7eb !important;
 }
+
+/* Footer text visibility overrides for light & dark themes */
+.footer {
+  background: #111827 !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+}
+.footer-logo {
+  color: #ffffff !important;
+}
+.footer-tagline {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+.footer-col h4 {
+  color: #ffffff !important;
+}
+.footer-col a,
+.footer-dummy-link {
+  color: rgba(255, 255, 255, 0.6) !important;
+}
+.footer-col a:hover,
+.footer-dummy-link:hover {
+  color: #d2f34c !important;
+}
+.footer-bottom p {
+  color: rgba(255, 255, 255, 0.4) !important;
+}
+
+/* Modal box theme & styling overrides */
+:root[data-theme="light"] .modal-overlay {
+  background: rgba(0, 0, 0, 0.4) !important;
+}
+:root[data-theme="light"] .modal-box {
+  background: #ffffff !important;
+  border: 2px solid #111827 !important;
+  box-shadow: 0 8px 0px #111827 !important;
+}
+:root[data-theme="light"] .modal-box h2 {
+  color: #111827 !important;
+}
+:root[data-theme="light"] .modal-box p {
+  color: #4b5563 !important;
+}
+:root[data-theme="light"] .modal-box strong {
+  color: #111827 !important;
+}
+
+/* Modal secondary button style correction */
+:root[data-theme="light"] .btn-ghost {
+  background: transparent !important;
+  color: #111827 !important;
+  border: 2px solid #111827 !important;
+  box-shadow: none !important;
+  transition: background 0.15s ease !important;
+}
+:root[data-theme="light"] .btn-ghost:hover {
+  background: rgba(17, 24, 39, 0.05) !important;
+  color: #111827 !important;
+}
+
+/* Clerk modal styling updates in light theme */
+:root[data-theme="light"] [class*="cl-"] a,
+:root[data-theme="light"] [class*="cl-"] [class*="Link"] {
+  color: #2563eb !important;
+}
+:root[data-theme="light"] [class*="cl-"] [class*="Link"]:hover {
+  color: #1d4ed8 !important;
+}
+
 
 
