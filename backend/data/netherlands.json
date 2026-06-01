@@ -15161,7 +15161,7 @@
     "course": "Communication and Life Sciences",
     "degree": "Bachelor",
     "city": "Wageningen",
-    "link": "http://www.wur.nl",
+    "link": "http://www.wur.nl/bcl",
     "fee": "",
     "source": "DUO Open Onderwijsdata",
     "source_url": "https://onderwijsdata.duo.nl/dataset/7c0686f4-b5c2-418e-8e44-7be0057d8084/resource/ffffa7ad-e6a2-4ba7-9fc2-a09df4128555/download/ho_opleidingsoverzicht.csv",
@@ -15221,7 +15221,7 @@
     "course": "Environmental Sciences",
     "degree": "Bachelor",
     "city": "Wageningen",
-    "link": "http://www.wur.nl",
+    "link": "http://www.wur.nl/bmw",
     "fee": "",
     "source": "DUO Open Onderwijsdata",
     "source_url": "https://onderwijsdata.duo.nl/dataset/7c0686f4-b5c2-418e-8e44-7be0057d8084/resource/ffffa7ad-e6a2-4ba7-9fc2-a09df4128555/download/ho_opleidingsoverzicht.csv",
@@ -15305,7 +15305,7 @@
     "course": "Animal Sciences",
     "degree": "Bachelor",
     "city": "Wageningen",
-    "link": "http://www.wur.nl",
+    "link": "http://www.wur.nl/bdw",
     "fee": "",
     "source": "DUO Open Onderwijsdata",
     "source_url": "https://onderwijsdata.duo.nl/dataset/7c0686f4-b5c2-418e-8e44-7be0057d8084/resource/ffffa7ad-e6a2-4ba7-9fc2-a09df4128555/download/ho_opleidingsoverzicht.csv",
@@ -15341,7 +15341,7 @@
     "course": "Soil, Water, Atmosphere",
     "degree": "Bachelor",
     "city": "Wageningen",
-    "link": "http://www.wur.nl",
+    "link": "http://www.wur.nl/bbw",
     "fee": "",
     "source": "DUO Open Onderwijsdata",
     "source_url": "https://onderwijsdata.duo.nl/dataset/7c0686f4-b5c2-418e-8e44-7be0057d8084/resource/ffffa7ad-e6a2-4ba7-9fc2-a09df4128555/download/ho_opleidingsoverzicht.csv",
@@ -15353,7 +15353,7 @@
     "course": "Food Technology",
     "degree": "Bachelor",
     "city": "Wageningen",
-    "link": "http://www.wur.nl",
+    "link": "http://www.wur.nl/blt",
     "fee": "",
     "source": "DUO Open Onderwijsdata",
     "source_url": "https://onderwijsdata.duo.nl/dataset/7c0686f4-b5c2-418e-8e44-7be0057d8084/resource/ffffa7ad-e6a2-4ba7-9fc2-a09df4128555/download/ho_opleidingsoverzicht.csv",
@@ -15437,7 +15437,7 @@
     "course": "Master's Climate Studies",
     "degree": "Master",
     "city": "Wageningen",
-    "link": "https://http:",
+    "link": "https://http:/www.wur.eu/mcl",
     "fee": "",
     "source": "DUO Open Onderwijsdata",
     "source_url": "https://onderwijsdata.duo.nl/dataset/7c0686f4-b5c2-418e-8e44-7be0057d8084/resource/ffffa7ad-e6a2-4ba7-9fc2-a09df4128555/download/ho_opleidingsoverzicht.csv",
@@ -15509,7 +15509,7 @@
     "course": "Master's Molecular Life Sciences",
     "degree": "Master",
     "city": "Wageningen",
-    "link": "https://http:",
+    "link": "https://http:/www.wur.eu/mml",
     "fee": "",
     "source": "DUO Open Onderwijsdata",
     "source_url": "https://onderwijsdata.duo.nl/dataset/7c0686f4-b5c2-418e-8e44-7be0057d8084/resource/ffffa7ad-e6a2-4ba7-9fc2-a09df4128555/download/ho_opleidingsoverzicht.csv",
@@ -16817,7 +16817,7 @@
     "course": "Psychology",
     "degree": "Bachelor",
     "city": "Maastricht",
-    "link": "https://curriculum.maastrichtuniversity.nl",
+    "link": "https://curriculum.maastrichtuniversity.nl/nl/onderwijs/bachelor-psychologie",
     "fee": "",
     "source": "DUO Open Onderwijsdata",
     "source_url": "https://onderwijsdata.duo.nl/dataset/7c0686f4-b5c2-418e-8e44-7be0057d8084/resource/ffffa7ad-e6a2-4ba7-9fc2-a09df4128555/download/ho_opleidingsoverzicht.csv",
@@ -16901,7 +16901,7 @@
     "course": "Circular Engineering",
     "degree": "Bachelor",
     "city": "Maastricht",
-    "link": "https://curriculum.maastrichtuniversity.nl",
+    "link": "https://curriculum.maastrichtuniversity.nl/education/bachelor/circular-engineering",
     "fee": "",
     "source": "DUO Open Onderwijsdata",
     "source_url": "https://onderwijsdata.duo.nl/dataset/7c0686f4-b5c2-418e-8e44-7be0057d8084/resource/ffffa7ad-e6a2-4ba7-9fc2-a09df4128555/download/ho_opleidingsoverzicht.csv",
@@ -16925,7 +16925,7 @@
     "course": "European Studies on Society, Science and Technology",
     "degree": "Master",
     "city": "Maastricht",
-    "link": "https://curriculum.maastrichtuniversity.nl",
+    "link": "https://curriculum.maastrichtuniversity.nl/education/master/master-european-studies-society-science-and-technology",
     "fee": "",
     "source": "DUO Open Onderwijsdata",
     "source_url": "https://onderwijsdata.duo.nl/dataset/7c0686f4-b5c2-418e-8e44-7be0057d8084/resource/ffffa7ad-e6a2-4ba7-9fc2-a09df4128555/download/ho_opleidingsoverzicht.csv",
@@ -16997,7 +16997,7 @@
     "course": "Business Research (research)",
     "degree": "Master",
     "city": "Maastricht",
-    "link": "https://curriculum.maastrichtuniversity.nl",
+    "link": "https://curriculum.maastrichtuniversity.nl/education/master/master-business-research-track-business-research",
     "fee": "",
     "source": "DUO Open Onderwijsdata",
     "source_url": "https://onderwijsdata.duo.nl/dataset/7c0686f4-b5c2-418e-8e44-7be0057d8084/resource/ffffa7ad-e6a2-4ba7-9fc2-a09df4128555/download/ho_opleidingsoverzicht.csv",
@@ -17117,7 +17117,7 @@
     "course": "Econometrics and Operations Research",
     "degree": "Master",
     "city": "Maastricht",
-    "link": "https://curriculum.maastrichtuniversity.nl",
+    "link": "https://curriculum.maastrichtuniversity.nl/education/master/master-econometrics-and-operations-research",
     "fee": "",
     "source": "DUO Open Onderwijsdata",
     "source_url": "https://onderwijsdata.duo.nl/dataset/7c0686f4-b5c2-418e-8e44-7be0057d8084/resource/ffffa7ad-e6a2-4ba7-9fc2-a09df4128555/download/ho_opleidingsoverzicht.csv",
@@ -17129,7 +17129,7 @@
     "course": "Financial Economics",
     "degree": "Master",
     "city": "Maastricht",
-    "link": "https://curriculum.maastrichtuniversity.nl",
+    "link": "https://curriculum.maastrichtuniversity.nl/education/master/master-financial-economics",
     "fee": "",
     "source": "DUO Open Onderwijsdata",
     "source_url": "https://onderwijsdata.duo.nl/dataset/7c0686f4-b5c2-418e-8e44-7be0057d8084/resource/ffffa7ad-e6a2-4ba7-9fc2-a09df4128555/download/ho_opleidingsoverzicht.csv",
@@ -17357,7 +17357,7 @@
     "course": "Fiscal Economics",
     "degree": "Master",
     "city": "Maastricht",
-    "link": "https://curriculum.maastrichtuniversity.nl",
+    "link": "https://curriculum.maastrichtuniversity.nl/education/master/master-financial-economics",
     "fee": "",
     "source": "DUO Open Onderwijsdata",
     "source_url": "https://onderwijsdata.duo.nl/dataset/7c0686f4-b5c2-418e-8e44-7be0057d8084/resource/ffffa7ad-e6a2-4ba7-9fc2-a09df4128555/download/ho_opleidingsoverzicht.csv",
@@ -17405,7 +17405,7 @@
     "course": "Psychology",
     "degree": "Master",
     "city": "Maastricht",
-    "link": "https://curriculum.maastrichtuniversity.nl",
+    "link": "https://curriculum.maastrichtuniversity.nl/education/master/master-psychology",
     "fee": "",
     "source": "DUO Open Onderwijsdata",
     "source_url": "https://onderwijsdata.duo.nl/dataset/7c0686f4-b5c2-418e-8e44-7be0057d8084/resource/ffffa7ad-e6a2-4ba7-9fc2-a09df4128555/download/ho_opleidingsoverzicht.csv",
@@ -17417,7 +17417,7 @@
     "course": "Tax Law",
     "degree": "Master",
     "city": "Maastricht",
-    "link": "https://curriculum.maastrichtuniversity.nl",
+    "link": "https://curriculum.maastrichtuniversity.nl/nl/onderwijs/master/master-fiscaal-recht",
     "fee": "",
     "source": "DUO Open Onderwijsdata",
     "source_url": "https://onderwijsdata.duo.nl/dataset/7c0686f4-b5c2-418e-8e44-7be0057d8084/resource/ffffa7ad-e6a2-4ba7-9fc2-a09df4128555/download/ho_opleidingsoverzicht.csv",
@@ -17453,7 +17453,7 @@
     "course": "European Studies",
     "degree": "Master",
     "city": "Maastricht",
-    "link": "https://curriculum.maastrichtuniversity.nl",
+    "link": "https://curriculum.maastrichtuniversity.nl/education/master/master-european-studies",
     "fee": "",
     "source": "DUO Open Onderwijsdata",
     "source_url": "https://onderwijsdata.duo.nl/dataset/7c0686f4-b5c2-418e-8e44-7be0057d8084/resource/ffffa7ad-e6a2-4ba7-9fc2-a09df4128555/download/ho_opleidingsoverzicht.csv",
@@ -17501,7 +17501,7 @@
     "course": "Health Professions Education",
     "degree": "Master",
     "city": "Maastricht",
-    "link": "https://curriculum.maastrichtuniversity.nl",
+    "link": "https://curriculum.maastrichtuniversity.nl/research/she/she-educates/master-health-professions-education",
     "fee": "",
     "source": "DUO Open Onderwijsdata",
     "source_url": "https://onderwijsdata.duo.nl/dataset/7c0686f4-b5c2-418e-8e44-7be0057d8084/resource/ffffa7ad-e6a2-4ba7-9fc2-a09df4128555/download/ho_opleidingsoverzicht.csv",
@@ -17609,7 +17609,7 @@
     "course": "Brain Science",
     "degree": "Bachelor",
     "city": "Maastricht",
-    "link": "https://curriculum.maastrichtuniversity.nl",
+    "link": "https://curriculum.maastrichtuniversity.nl/education/bachelor/brain-science",
     "fee": "",
     "source": "DUO Open Onderwijsdata",
     "source_url": "https://onderwijsdata.duo.nl/dataset/7c0686f4-b5c2-418e-8e44-7be0057d8084/resource/ffffa7ad-e6a2-4ba7-9fc2-a09df4128555/download/ho_opleidingsoverzicht.csv",
@@ -18161,7 +18161,7 @@
     "course": "Political Science",
     "degree": "Bachelor",
     "city": "Amsterdam",
-    "link": "https://htp:",
+    "link": "https://htp://www.uva.nl/bsc-politicalscience",
     "fee": "",
     "source": "DUO Open Onderwijsdata",
     "source_url": "https://onderwijsdata.duo.nl/dataset/7c0686f4-b5c2-418e-8e44-7be0057d8084/resource/ffffa7ad-e6a2-4ba7-9fc2-a09df4128555/download/ho_opleidingsoverzicht.csv",
@@ -18581,7 +18581,7 @@
     "course": "Educational Sciences",
     "degree": "Master",
     "city": "Amsterdam",
-    "link": "http://www.uva.nl",
+    "link": "http://www.uva.nl/shared-content/subsites/graduate-school-of-child-development-and-education/nl/masters/onderwijswetenschappen/onderwijswetenschappen.html?origin=znSrDUT%2BQ5uz6dso72fBmw",
     "fee": "",
     "source": "DUO Open Onderwijsdata",
     "source_url": "https://onderwijsdata.duo.nl/dataset/7c0686f4-b5c2-418e-8e44-7be0057d8084/resource/ffffa7ad-e6a2-4ba7-9fc2-a09df4128555/download/ho_opleidingsoverzicht.csv",
@@ -19337,7 +19337,7 @@
     "course": "Pedagogical Sciences",
     "degree": "Master",
     "city": "Amsterdam",
-    "link": "http://www.uva.nl",
+    "link": "http://www.uva.nl/en/eduction/master-s/master-s-programmes/masters-programmes.html?t=fmg",
     "fee": "",
     "source": "DUO Open Onderwijsdata",
     "source_url": "https://onderwijsdata.duo.nl/dataset/7c0686f4-b5c2-418e-8e44-7be0057d8084/resource/ffffa7ad-e6a2-4ba7-9fc2-a09df4128555/download/ho_opleidingsoverzicht.csv",
@@ -19553,7 +19553,7 @@
     "course": "Data Science and Business Analytics",
     "degree": "Master",
     "city": "Amsterdam",
-    "link": "https://www.uva.nl",
+    "link": "https://www.uva.nl/msc-data-science-business-analytics",
     "fee": "",
     "source": "DUO Open Onderwijsdata",
     "source_url": "https://onderwijsdata.duo.nl/dataset/7c0686f4-b5c2-418e-8e44-7be0057d8084/resource/ffffa7ad-e6a2-4ba7-9fc2-a09df4128555/download/ho_opleidingsoverzicht.csv",
@@ -46133,7 +46133,7 @@
     "course": "Environmental Sciences",
     "degree": "Bachelor",
     "city": "Leeuwarden",
-    "link": "https://www.hvhl.nl",
+    "link": "https://www.hvhl.nl/studeren/opleidingen/bachelor+dt/Milieukunde+dt",
     "fee": "",
     "source": "DUO Open Onderwijsdata",
     "source_url": "https://onderwijsdata.duo.nl/dataset/7c0686f4-b5c2-418e-8e44-7be0057d8084/resource/ffffa7ad-e6a2-4ba7-9fc2-a09df4128555/download/ho_opleidingsoverzicht.csv",
@@ -47309,7 +47309,7 @@
     "course": "Entrepreneurship & Retail Management",
     "degree": "Bachelor",
     "city": "Zwolle",
-    "link": "https://www.windesheim.nl",
+    "link": "https://www.windesheim.nl/opleidingen/deeltijd/bachelor/ondernemerschap-en-retail-management-(deeltijd)",
     "fee": "",
     "source": "DUO Open Onderwijsdata",
     "source_url": "https://onderwijsdata.duo.nl/dataset/7c0686f4-b5c2-418e-8e44-7be0057d8084/resource/ffffa7ad-e6a2-4ba7-9fc2-a09df4128555/download/ho_opleidingsoverzicht.csv",
@@ -50081,7 +50081,7 @@
     "course": "BSc in Aerospace Engineering",
     "degree": "Bachelor",
     "city": "Delft",
-    "link": "https://www.tudelft.nl",
+    "link": "https://www.tudelft.nl/en/education/bachelors/aerospace-engineering/bsc-aerospace-engineering",
     "fee": "€16,000 / year"
   },
   {
@@ -50090,7 +50090,7 @@
     "course": "BSc in Computer Science and Engineering",
     "degree": "Bachelor",
     "city": "Delft",
-    "link": "https://www.tudelft.nl",
+    "link": "https://www.tudelft.nl/en/education/bachelors/computer-science-and-engineering/bsc-computer-science-and-engineering",
     "fee": "€16,000 / year"
   },
   {
@@ -50099,7 +50099,7 @@
     "course": "BSc in Nanobiology",
     "degree": "Bachelor",
     "city": "Delft",
-    "link": "https://www.tudelft.nl",
+    "link": "https://www.tudelft.nl/en/education/bachelors/nanobiology/bsc-nanobiology",
     "fee": "€16,000 / year"
   },
   {
@@ -50108,7 +50108,7 @@
     "course": "BSc in Applied Earth Sciences",
     "degree": "Bachelor",
     "city": "Delft",
-    "link": "https://www.tudelft.nl",
+    "link": "https://www.tudelft.nl/en/education/bachelors/applied-earth-sciences/bsc-applied-earth-sciences",
     "fee": "€16,000 / year"
   },
   {
@@ -50117,7 +50117,7 @@
     "course": "MSc in Computer Science",
     "degree": "Master",
     "city": "Delft",
-    "link": "https://www.tudelft.nl",
+    "link": "https://www.tudelft.nl/en/education/master/programmes/computer-science/msc-computer-science",
     "fee": "€20,000 / year"
   },
   {
@@ -50126,7 +50126,7 @@
     "course": "MSc in Aerospace Engineering",
     "degree": "Master",
     "city": "Delft",
-    "link": "https://www.tudelft.nl",
+    "link": "https://www.tudelft.nl/en/education/master/programmes/aerospace-engineering/msc-aerospace-engineering",
     "fee": "€20,000 / year"
   },
   {
@@ -50135,7 +50135,7 @@
     "course": "MSc in Architecture, Urbanism and Building Sciences",
     "degree": "Master",
     "city": "Delft",
-    "link": "https://www.tudelft.nl",
+    "link": "https://www.tudelft.nl/en/education/master/programmes/architecture-urbanism-and-building-sciences/msc-architecture-urbanism-and-building-sciences",
     "fee": "€20,000 / year"
   },
   {
@@ -50144,7 +50144,7 @@
     "course": "MSc in Applied Mathematics",
     "degree": "Master",
     "city": "Delft",
-    "link": "https://www.tudelft.nl",
+    "link": "https://www.tudelft.nl/en/education/master/programmes/applied-mathematics/msc-applied-mathematics",
     "fee": "€20,000 / year"
   },
   {
@@ -50153,7 +50153,7 @@
     "course": "MSc in Civil Engineering",
     "degree": "Master",
     "city": "Delft",
-    "link": "https://www.tudelft.nl",
+    "link": "https://www.tudelft.nl/en/education/master/programmes/civil-engineering/msc-civil-engineering",
     "fee": "€20,000 / year"
   },
   {
@@ -50162,7 +50162,7 @@
     "course": "MSc in Electrical Engineering",
     "degree": "Master",
     "city": "Delft",
-    "link": "https://www.tudelft.nl",
+    "link": "https://www.tudelft.nl/en/education/master/programmes/electrical-engineering/msc-electrical-engineering",
     "fee": "€20,000 / year"
   },
   {
@@ -50171,7 +50171,7 @@
     "course": "MSc in Mechanical Engineering",
     "degree": "Master",
     "city": "Delft",
-    "link": "https://www.tudelft.nl",
+    "link": "https://www.tudelft.nl/en/education/master/programmes/mechanical-engineering/msc-mechanical-engineering",
     "fee": "€20,000 / year"
   },
   {
@@ -50180,7 +50180,7 @@
     "course": "MSc in Biomedical Engineering",
     "degree": "Master",
     "city": "Delft",
-    "link": "https://www.tudelft.nl",
+    "link": "https://www.tudelft.nl/en/education/master/programmes/biomedical-engineering/msc-biomedical-engineering",
     "fee": "€20,000 / year"
   },
   {
@@ -50189,7 +50189,7 @@
     "course": "MSc in Sustainable Energy Technology",
     "degree": "Master",
     "city": "Delft",
-    "link": "https://www.tudelft.nl",
+    "link": "https://www.tudelft.nl/en/education/master/programmes/sustainable-energy-technology/msc-sustainable-energy-technology",
     "fee": "€20,000 / year"
   },
   {
@@ -50198,7 +50198,7 @@
     "course": "MSc in Chemical Engineering",
     "degree": "Master",
     "city": "Delft",
-    "link": "https://www.tudelft.nl",
+    "link": "https://www.tudelft.nl/en/education/master/programmes/chemical-engineering/msc-chemical-engineering",
     "fee": "€20,000 / year"
   },
   {
@@ -50207,7 +50207,7 @@
     "course": "MSc in Systems and Control",
     "degree": "Master",
     "city": "Delft",
-    "link": "https://www.tudelft.nl",
+    "link": "https://www.tudelft.nl/en/education/master/programmes/systems-and-control/msc-systems-and-control",
     "fee": "€20,000 / year"
   },
   {
@@ -50225,7 +50225,7 @@
     "course": "BSc in Economics and Business Economics",
     "degree": "Bachelor",
     "city": "Amsterdam",
-    "link": "https://www.uva.nl",
+    "link": "https://www.uva.nl/en/programmes/bachelors/economics-and-business-economics/economics-and-business-economics.html",
     "fee": "€14,800 per year"
   },
   {
@@ -50243,7 +50243,7 @@
     "course": "BSc in Econometrics and Operations Research",
     "degree": "Bachelor",
     "city": "Amsterdam",
-    "link": "https://www.uva.nl",
+    "link": "https://www.uva.nl/en/programmes/bachelors/econometrics-and-operations-research/econometrics-and-operations-research.html",
     "fee": "€14,800 per year"
   },
   {
@@ -50288,7 +50288,7 @@
     "course": "BSc in Literary and Cultural Analysis",
     "degree": "Bachelor",
     "city": "Amsterdam",
-    "link": "https://www.uva.nl",
+    "link": "https://www.uva.nl/en/programmes/bachelors/literary-and-cultural-analysis/literary-and-cultural-analysis.html",
     "fee": "€14,800 per year"
   },
   {
@@ -50324,7 +50324,7 @@
     "course": "MSc in Business Economics",
     "degree": "Master",
     "city": "Amsterdam",
-    "link": "https://www.uva.nl",
+    "link": "https://www.uva.nl/en/programmes/masters/business-economics/business-economics.html",
     "fee": "€18,000 per year"
   },
   {
@@ -50333,7 +50333,7 @@
     "course": "MSc in Economics",
     "degree": "Master",
     "city": "Amsterdam",
-    "link": "https://www.uva.nl",
+    "link": "https://www.uva.nl/en/programmes/masters/economics/economics.html",
     "fee": "€18,000 per year"
   },
   {
@@ -50360,7 +50360,7 @@
     "course": "MSc in Data Science",
     "degree": "Master",
     "city": "Amsterdam",
-    "link": "https://www.uva.nl",
+    "link": "https://www.uva.nl/en/programmes/masters/data-science/data-science.html",
     "fee": "€18,000 per year"
   },
   {
@@ -50369,7 +50369,7 @@
     "course": "MSc in International Relations",
     "degree": "Master",
     "city": "Amsterdam",
-    "link": "https://www.uva.nl",
+    "link": "https://www.uva.nl/en/programmes/masters/international-relations/international-relations.html",
     "fee": "€18,000 per year"
   },
   {
@@ -50405,7 +50405,7 @@
     "course": "MSc in Physics and Astronomy",
     "degree": "Master",
     "city": "Amsterdam",
-    "link": "https://www.uva.nl",
+    "link": "https://www.uva.nl/en/programmes/masters/physics-and-astronomy/physics-and-astronomy.html",
     "fee": "€18,000 per year"
   },
   {
@@ -50441,7 +50441,7 @@
     "course": "MSc in Finance",
     "degree": "Master",
     "city": "Amsterdam",
-    "link": "https://www.uva.nl",
+    "link": "https://www.uva.nl/en/programmes/masters/finance/finance.html",
     "fee": "€22,000 per year"
   },
   {
@@ -50450,7 +50450,7 @@
     "course": "MSc in Accounting and Control",
     "degree": "Master",
     "city": "Amsterdam",
-    "link": "https://www.uva.nl",
+    "link": "https://www.uva.nl/en/programmes/masters/accounting-and-control/accounting-and-control.html",
     "fee": "€18,000 per year"
   },
   {
@@ -50486,7 +50486,7 @@
     "course": "BSc in Tourism",
     "degree": "Bachelor",
     "city": "Wageningen",
-    "link": "https://www.wur.nl",
+    "link": "https://www.wur.nl/en/education-programmes/bachelor/bachelor-programmes/bsc-tourism.htm",
     "fee": "€16,000 / year"
   },
   {
@@ -50495,7 +50495,7 @@
     "course": "BSc in Animal Sciences",
     "degree": "Bachelor",
     "city": "Wageningen",
-    "link": "https://www.wur.nl",
+    "link": "https://www.wur.nl/en/education-programmes/bachelor/bachelor-programmes/bsc-animal-sciences.htm",
     "fee": "€16,000 / year"
   },
   {
@@ -50504,7 +50504,7 @@
     "course": "BSc in Environmental Sciences",
     "degree": "Bachelor",
     "city": "Wageningen",
-    "link": "https://www.wur.nl",
+    "link": "https://www.wur.nl/en/education-programmes/bachelor/bachelor-programmes/bsc-environmental-sciences.htm",
     "fee": "€16,000 / year"
   },
   {
@@ -50522,7 +50522,7 @@
     "course": "MSc in Nutrition and Health",
     "degree": "Master",
     "city": "Wageningen",
-    "link": "https://www.wur.nl",
+    "link": "https://www.wur.nl/en/education-programmes/master/msc-programmes/msc-nutrition-and-health.htm",
     "fee": "€21,800 / year"
   },
   {
@@ -50612,7 +50612,7 @@
     "course": "MSc in Organic Agriculture",
     "degree": "Master",
     "city": "Wageningen",
-    "link": "https://www.wur.nl",
+    "link": "https://www.wur.nl/en/education-programmes/master/msc-programmes/msc-organic-agriculture.htm",
     "fee": "€21,800 / year"
   },
   {
@@ -50684,7 +50684,7 @@
     "course": "BSc in College of Pharmaceutical Sciences",
     "degree": "Bachelor",
     "city": "Utrecht",
-    "link": "https://www.uu.nl",
+    "link": "https://www.uu.nl/en/bachelors/college-of-pharmaceutical-sciences",
     "fee": "€13,380 / year"
   },
   {
@@ -50693,7 +50693,7 @@
     "course": "BSc in Science and Business Management",
     "degree": "Bachelor",
     "city": "Utrecht",
-    "link": "https://www.uu.nl",
+    "link": "https://www.uu.nl/en/bachelors/science-business-innovation",
     "fee": "€13,380 / year"
   },
   {
@@ -50884,1565 +50884,5 @@
     "city": "Utrecht",
     "link": "https://www.uu.nl/en/masters/applied-ethics",
     "fee": "€18,500 / year"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Erasmus University Rotterdam",
-    "course": "PhD in Telecommunications",
-    "degree": "phd",
-    "city": "Rotterdam",
-    "link": "http://www.eur.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Erasmus University Rotterdam",
-    "course": "PhD in Embedded Systems",
-    "degree": "phd",
-    "city": "Rotterdam",
-    "link": "http://www.eur.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Erasmus University Rotterdam",
-    "course": "PhD in Law",
-    "degree": "phd",
-    "city": "Rotterdam",
-    "link": "http://www.eur.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Erasmus University Rotterdam",
-    "course": "PhD in Architecture",
-    "degree": "phd",
-    "city": "Rotterdam",
-    "link": "http://www.eur.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Erasmus University Rotterdam",
-    "course": "PhD in Physics",
-    "degree": "phd",
-    "city": "Rotterdam",
-    "link": "http://www.eur.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Erasmus University Rotterdam",
-    "course": "PhD in Biomedical Engineering",
-    "degree": "phd",
-    "city": "Rotterdam",
-    "link": "http://www.eur.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Erasmus University Rotterdam",
-    "course": "PhD in Chemistry",
-    "degree": "phd",
-    "city": "Rotterdam",
-    "link": "http://www.eur.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Erasmus University Rotterdam",
-    "course": "PhD in Electrical Engineering",
-    "degree": "phd",
-    "city": "Rotterdam",
-    "link": "http://www.eur.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Erasmus University Rotterdam",
-    "course": "PhD in Cybersecurity",
-    "degree": "phd",
-    "city": "Rotterdam",
-    "link": "http://www.eur.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Erasmus University Rotterdam",
-    "course": "PhD in Business Administration",
-    "degree": "phd",
-    "city": "Rotterdam",
-    "link": "http://www.eur.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Erasmus University Rotterdam",
-    "course": "PhD in Economics",
-    "degree": "phd",
-    "city": "Rotterdam",
-    "link": "http://www.eur.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Erasmus University Rotterdam",
-    "course": "PhD in Robotics",
-    "degree": "phd",
-    "city": "Rotterdam",
-    "link": "http://www.eur.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Erasmus University Rotterdam",
-    "course": "PhD in Medicine",
-    "degree": "phd",
-    "city": "Rotterdam",
-    "link": "http://www.eur.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Erasmus University Rotterdam",
-    "course": "PhD in Data Science",
-    "degree": "phd",
-    "city": "Rotterdam",
-    "link": "http://www.eur.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Erasmus University Rotterdam",
-    "course": "PhD in Environmental Engineering",
-    "degree": "phd",
-    "city": "Rotterdam",
-    "link": "http://www.eur.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Universiteit Leiden",
-    "course": "PhD in Finance",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "https://www.universiteitleiden.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Universiteit Leiden",
-    "course": "PhD in Civil Engineering",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "https://www.universiteitleiden.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Universiteit Leiden",
-    "course": "PhD in Physics",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "https://www.universiteitleiden.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Universiteit Leiden",
-    "course": "PhD in Law",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "https://www.universiteitleiden.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Universiteit Leiden",
-    "course": "PhD in Marketing",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "https://www.universiteitleiden.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Universiteit Leiden",
-    "course": "PhD in Cybersecurity",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "https://www.universiteitleiden.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Universiteit Leiden",
-    "course": "PhD in Computer Science",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "https://www.universiteitleiden.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Universiteit Leiden",
-    "course": "PhD in Embedded Systems",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "https://www.universiteitleiden.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Universiteit Leiden",
-    "course": "PhD in Electrical Engineering",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "https://www.universiteitleiden.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Universiteit Leiden",
-    "course": "PhD in Information Technology",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "https://www.universiteitleiden.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Universiteit Leiden",
-    "course": "PhD in Power Systems",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "https://www.universiteitleiden.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Universiteit Leiden",
-    "course": "PhD in Chemical Engineering",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "https://www.universiteitleiden.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Universiteit Leiden",
-    "course": "PhD in Robotics",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "https://www.universiteitleiden.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Universiteit Leiden",
-    "course": "PhD in Aerospace Engineering",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "https://www.universiteitleiden.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Universiteit Leiden",
-    "course": "PhD in Telecommunications",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "https://www.universiteitleiden.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Groningen",
-    "course": "PhD in Biomedical Engineering",
-    "degree": "phd",
-    "city": "Groningen",
-    "link": "http://www.rug.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Groningen",
-    "course": "PhD in Physics",
-    "degree": "phd",
-    "city": "Groningen",
-    "link": "http://www.rug.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Groningen",
-    "course": "PhD in Law",
-    "degree": "phd",
-    "city": "Groningen",
-    "link": "http://www.rug.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Groningen",
-    "course": "PhD in Power Systems",
-    "degree": "phd",
-    "city": "Groningen",
-    "link": "http://www.rug.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Groningen",
-    "course": "PhD in Economics",
-    "degree": "phd",
-    "city": "Groningen",
-    "link": "http://www.rug.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Groningen",
-    "course": "PhD in Robotics",
-    "degree": "phd",
-    "city": "Groningen",
-    "link": "http://www.rug.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Groningen",
-    "course": "PhD in Cybersecurity",
-    "degree": "phd",
-    "city": "Groningen",
-    "link": "http://www.rug.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Groningen",
-    "course": "PhD in Architecture",
-    "degree": "phd",
-    "city": "Groningen",
-    "link": "http://www.rug.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Groningen",
-    "course": "PhD in Electrical Engineering",
-    "degree": "phd",
-    "city": "Groningen",
-    "link": "http://www.rug.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Groningen",
-    "course": "PhD in Medicine",
-    "degree": "phd",
-    "city": "Groningen",
-    "link": "http://www.rug.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Groningen",
-    "course": "PhD in Psychology",
-    "degree": "phd",
-    "city": "Groningen",
-    "link": "http://www.rug.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Groningen",
-    "course": "PhD in Business Administration",
-    "degree": "phd",
-    "city": "Groningen",
-    "link": "http://www.rug.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Groningen",
-    "course": "PhD in Finance",
-    "degree": "phd",
-    "city": "Groningen",
-    "link": "http://www.rug.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Groningen",
-    "course": "PhD in Computer Science",
-    "degree": "phd",
-    "city": "Groningen",
-    "link": "http://www.rug.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Groningen",
-    "course": "PhD in Aerospace Engineering",
-    "degree": "phd",
-    "city": "Groningen",
-    "link": "http://www.rug.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Radboud University",
-    "course": "PhD in Architecture",
-    "degree": "phd",
-    "city": "Nijmegen",
-    "link": "http://www.ru.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Radboud University",
-    "course": "PhD in Civil Engineering",
-    "degree": "phd",
-    "city": "Nijmegen",
-    "link": "http://www.ru.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Radboud University",
-    "course": "PhD in Nursing",
-    "degree": "phd",
-    "city": "Nijmegen",
-    "link": "http://www.ru.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Radboud University",
-    "course": "PhD in Mathematics",
-    "degree": "phd",
-    "city": "Nijmegen",
-    "link": "http://www.ru.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Radboud University",
-    "course": "PhD in Telecommunications",
-    "degree": "phd",
-    "city": "Nijmegen",
-    "link": "http://www.ru.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Radboud University",
-    "course": "PhD in Power Systems",
-    "degree": "phd",
-    "city": "Nijmegen",
-    "link": "http://www.ru.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Radboud University",
-    "course": "PhD in Physics",
-    "degree": "phd",
-    "city": "Nijmegen",
-    "link": "http://www.ru.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Radboud University",
-    "course": "PhD in Electrical Engineering",
-    "degree": "phd",
-    "city": "Nijmegen",
-    "link": "http://www.ru.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Radboud University",
-    "course": "PhD in Economics",
-    "degree": "phd",
-    "city": "Nijmegen",
-    "link": "http://www.ru.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Radboud University",
-    "course": "PhD in Biomedical Engineering",
-    "degree": "phd",
-    "city": "Nijmegen",
-    "link": "http://www.ru.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Radboud University",
-    "course": "PhD in Business Administration",
-    "degree": "phd",
-    "city": "Nijmegen",
-    "link": "http://www.ru.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Radboud University",
-    "course": "PhD in Medicine",
-    "degree": "phd",
-    "city": "Nijmegen",
-    "link": "http://www.ru.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Radboud University",
-    "course": "PhD in Artificial Intelligence",
-    "degree": "phd",
-    "city": "Nijmegen",
-    "link": "http://www.ru.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Radboud University",
-    "course": "PhD in Aerospace Engineering",
-    "degree": "phd",
-    "city": "Nijmegen",
-    "link": "http://www.ru.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Radboud University",
-    "course": "PhD in Chemical Engineering",
-    "degree": "phd",
-    "city": "Nijmegen",
-    "link": "http://www.ru.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Tilburg University",
-    "course": "PhD in Nursing",
-    "degree": "phd",
-    "city": "Tilburg",
-    "link": "http://www.tilburguniversity.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Tilburg University",
-    "course": "PhD in Power Systems",
-    "degree": "phd",
-    "city": "Tilburg",
-    "link": "http://www.tilburguniversity.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Tilburg University",
-    "course": "PhD in Artificial Intelligence",
-    "degree": "phd",
-    "city": "Tilburg",
-    "link": "http://www.tilburguniversity.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Tilburg University",
-    "course": "PhD in Software Engineering",
-    "degree": "phd",
-    "city": "Tilburg",
-    "link": "http://www.tilburguniversity.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Tilburg University",
-    "course": "PhD in Psychology",
-    "degree": "phd",
-    "city": "Tilburg",
-    "link": "http://www.tilburguniversity.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Tilburg University",
-    "course": "PhD in Architecture",
-    "degree": "phd",
-    "city": "Tilburg",
-    "link": "http://www.tilburguniversity.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Tilburg University",
-    "course": "PhD in Computer Science",
-    "degree": "phd",
-    "city": "Tilburg",
-    "link": "http://www.tilburguniversity.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Tilburg University",
-    "course": "PhD in Medicine",
-    "degree": "phd",
-    "city": "Tilburg",
-    "link": "http://www.tilburguniversity.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Tilburg University",
-    "course": "PhD in Business Administration",
-    "degree": "phd",
-    "city": "Tilburg",
-    "link": "http://www.tilburguniversity.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Tilburg University",
-    "course": "PhD in Electrical Engineering",
-    "degree": "phd",
-    "city": "Tilburg",
-    "link": "http://www.tilburguniversity.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Tilburg University",
-    "course": "PhD in Robotics",
-    "degree": "phd",
-    "city": "Tilburg",
-    "link": "http://www.tilburguniversity.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Tilburg University",
-    "course": "PhD in Mechanical Engineering",
-    "degree": "phd",
-    "city": "Tilburg",
-    "link": "http://www.tilburguniversity.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Tilburg University",
-    "course": "PhD in Biomedical Engineering",
-    "degree": "phd",
-    "city": "Tilburg",
-    "link": "http://www.tilburguniversity.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Tilburg University",
-    "course": "PhD in Telecommunications",
-    "degree": "phd",
-    "city": "Tilburg",
-    "link": "http://www.tilburguniversity.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Tilburg University",
-    "course": "PhD in Aerospace Engineering",
-    "degree": "phd",
-    "city": "Tilburg",
-    "link": "http://www.tilburguniversity.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Delft University of Technology",
-    "course": "PhD in Mathematics",
-    "degree": "phd",
-    "city": "Delft",
-    "link": "http://www.tudelft.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Delft University of Technology",
-    "course": "PhD in Biology",
-    "degree": "phd",
-    "city": "Delft",
-    "link": "http://www.tudelft.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Delft University of Technology",
-    "course": "PhD in Computer Science",
-    "degree": "phd",
-    "city": "Delft",
-    "link": "http://www.tudelft.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Delft University of Technology",
-    "course": "PhD in Finance",
-    "degree": "phd",
-    "city": "Delft",
-    "link": "http://www.tudelft.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Delft University of Technology",
-    "course": "PhD in Embedded Systems",
-    "degree": "phd",
-    "city": "Delft",
-    "link": "http://www.tudelft.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Delft University of Technology",
-    "course": "PhD in Data Science",
-    "degree": "phd",
-    "city": "Delft",
-    "link": "http://www.tudelft.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Delft University of Technology",
-    "course": "PhD in Business Administration",
-    "degree": "phd",
-    "city": "Delft",
-    "link": "http://www.tudelft.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Delft University of Technology",
-    "course": "PhD in Information Technology",
-    "degree": "phd",
-    "city": "Delft",
-    "link": "http://www.tudelft.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Delft University of Technology",
-    "course": "PhD in Software Engineering",
-    "degree": "phd",
-    "city": "Delft",
-    "link": "http://www.tudelft.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Delft University of Technology",
-    "course": "PhD in Aerospace Engineering",
-    "degree": "phd",
-    "city": "Delft",
-    "link": "http://www.tudelft.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Delft University of Technology",
-    "course": "PhD in Environmental Engineering",
-    "degree": "phd",
-    "city": "Delft",
-    "link": "http://www.tudelft.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Delft University of Technology",
-    "course": "PhD in Economics",
-    "degree": "phd",
-    "city": "Delft",
-    "link": "http://www.tudelft.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Delft University of Technology",
-    "course": "PhD in Power Systems",
-    "degree": "phd",
-    "city": "Delft",
-    "link": "http://www.tudelft.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Delft University of Technology",
-    "course": "PhD in Artificial Intelligence",
-    "degree": "phd",
-    "city": "Delft",
-    "link": "http://www.tudelft.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Delft University of Technology",
-    "course": "PhD in Mechanical Engineering",
-    "degree": "phd",
-    "city": "Delft",
-    "link": "http://www.tudelft.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Eindhoven University of Technology",
-    "course": "PhD in Psychology",
-    "degree": "phd",
-    "city": "Eindhoven",
-    "link": "http://www.tue.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Eindhoven University of Technology",
-    "course": "PhD in Software Engineering",
-    "degree": "phd",
-    "city": "Eindhoven",
-    "link": "http://www.tue.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Eindhoven University of Technology",
-    "course": "PhD in Chemical Engineering",
-    "degree": "phd",
-    "city": "Eindhoven",
-    "link": "http://www.tue.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Eindhoven University of Technology",
-    "course": "PhD in Civil Engineering",
-    "degree": "phd",
-    "city": "Eindhoven",
-    "link": "http://www.tue.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Eindhoven University of Technology",
-    "course": "PhD in Electrical Engineering",
-    "degree": "phd",
-    "city": "Eindhoven",
-    "link": "http://www.tue.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Eindhoven University of Technology",
-    "course": "PhD in Mechanical Engineering",
-    "degree": "phd",
-    "city": "Eindhoven",
-    "link": "http://www.tue.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Eindhoven University of Technology",
-    "course": "PhD in Economics",
-    "degree": "phd",
-    "city": "Eindhoven",
-    "link": "http://www.tue.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Eindhoven University of Technology",
-    "course": "PhD in Finance",
-    "degree": "phd",
-    "city": "Eindhoven",
-    "link": "http://www.tue.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Eindhoven University of Technology",
-    "course": "PhD in Robotics",
-    "degree": "phd",
-    "city": "Eindhoven",
-    "link": "http://www.tue.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Eindhoven University of Technology",
-    "course": "PhD in Aerospace Engineering",
-    "degree": "phd",
-    "city": "Eindhoven",
-    "link": "http://www.tue.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Eindhoven University of Technology",
-    "course": "PhD in Marketing",
-    "degree": "phd",
-    "city": "Eindhoven",
-    "link": "http://www.tue.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Eindhoven University of Technology",
-    "course": "PhD in Cybersecurity",
-    "degree": "phd",
-    "city": "Eindhoven",
-    "link": "http://www.tue.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Eindhoven University of Technology",
-    "course": "PhD in Architecture",
-    "degree": "phd",
-    "city": "Eindhoven",
-    "link": "http://www.tue.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Eindhoven University of Technology",
-    "course": "PhD in Computer Science",
-    "degree": "phd",
-    "city": "Eindhoven",
-    "link": "http://www.tue.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Eindhoven University of Technology",
-    "course": "PhD in Biology",
-    "degree": "phd",
-    "city": "Eindhoven",
-    "link": "http://www.tue.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Maastricht University",
-    "course": "PhD in Chemistry",
-    "degree": "phd",
-    "city": "Maastricht",
-    "link": "http://www.unimaas.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Maastricht University",
-    "course": "PhD in Biology",
-    "degree": "phd",
-    "city": "Maastricht",
-    "link": "http://www.unimaas.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Maastricht University",
-    "course": "PhD in Computer Science",
-    "degree": "phd",
-    "city": "Maastricht",
-    "link": "http://www.unimaas.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Maastricht University",
-    "course": "PhD in Information Technology",
-    "degree": "phd",
-    "city": "Maastricht",
-    "link": "http://www.unimaas.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Maastricht University",
-    "course": "PhD in Psychology",
-    "degree": "phd",
-    "city": "Maastricht",
-    "link": "http://www.unimaas.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Maastricht University",
-    "course": "PhD in Electrical Engineering",
-    "degree": "phd",
-    "city": "Maastricht",
-    "link": "http://www.unimaas.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Maastricht University",
-    "course": "PhD in Power Systems",
-    "degree": "phd",
-    "city": "Maastricht",
-    "link": "http://www.unimaas.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Maastricht University",
-    "course": "PhD in Medicine",
-    "degree": "phd",
-    "city": "Maastricht",
-    "link": "http://www.unimaas.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Maastricht University",
-    "course": "PhD in Robotics",
-    "degree": "phd",
-    "city": "Maastricht",
-    "link": "http://www.unimaas.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Maastricht University",
-    "course": "PhD in Physics",
-    "degree": "phd",
-    "city": "Maastricht",
-    "link": "http://www.unimaas.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Maastricht University",
-    "course": "PhD in Artificial Intelligence",
-    "degree": "phd",
-    "city": "Maastricht",
-    "link": "http://www.unimaas.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Maastricht University",
-    "course": "PhD in Data Science",
-    "degree": "phd",
-    "city": "Maastricht",
-    "link": "http://www.unimaas.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Maastricht University",
-    "course": "PhD in Nursing",
-    "degree": "phd",
-    "city": "Maastricht",
-    "link": "http://www.unimaas.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Maastricht University",
-    "course": "PhD in Law",
-    "degree": "phd",
-    "city": "Maastricht",
-    "link": "http://www.unimaas.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Maastricht University",
-    "course": "PhD in Environmental Engineering",
-    "degree": "phd",
-    "city": "Maastricht",
-    "link": "http://www.unimaas.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Twente",
-    "course": "PhD in Business Administration",
-    "degree": "phd",
-    "city": "Enschede",
-    "link": "http://www.utwente.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Twente",
-    "course": "PhD in Robotics",
-    "degree": "phd",
-    "city": "Enschede",
-    "link": "http://www.utwente.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Twente",
-    "course": "PhD in Environmental Engineering",
-    "degree": "phd",
-    "city": "Enschede",
-    "link": "http://www.utwente.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Twente",
-    "course": "PhD in Power Systems",
-    "degree": "phd",
-    "city": "Enschede",
-    "link": "http://www.utwente.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Twente",
-    "course": "PhD in Mathematics",
-    "degree": "phd",
-    "city": "Enschede",
-    "link": "http://www.utwente.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Twente",
-    "course": "PhD in Nursing",
-    "degree": "phd",
-    "city": "Enschede",
-    "link": "http://www.utwente.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Twente",
-    "course": "PhD in Cybersecurity",
-    "degree": "phd",
-    "city": "Enschede",
-    "link": "http://www.utwente.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Twente",
-    "course": "PhD in Aerospace Engineering",
-    "degree": "phd",
-    "city": "Enschede",
-    "link": "http://www.utwente.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Twente",
-    "course": "PhD in Physics",
-    "degree": "phd",
-    "city": "Enschede",
-    "link": "http://www.utwente.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Twente",
-    "course": "PhD in Chemical Engineering",
-    "degree": "phd",
-    "city": "Enschede",
-    "link": "http://www.utwente.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Twente",
-    "course": "PhD in Architecture",
-    "degree": "phd",
-    "city": "Enschede",
-    "link": "http://www.utwente.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Twente",
-    "course": "PhD in Economics",
-    "degree": "phd",
-    "city": "Enschede",
-    "link": "http://www.utwente.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Twente",
-    "course": "PhD in Computer Science",
-    "degree": "phd",
-    "city": "Enschede",
-    "link": "http://www.utwente.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Twente",
-    "course": "PhD in Artificial Intelligence",
-    "degree": "phd",
-    "city": "Enschede",
-    "link": "http://www.utwente.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Twente",
-    "course": "PhD in Law",
-    "degree": "phd",
-    "city": "Enschede",
-    "link": "http://www.utwente.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Utrecht University",
-    "course": "PhD in Mathematics",
-    "degree": "phd",
-    "city": "Utrecht",
-    "link": "http://www.uu.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Utrecht University",
-    "course": "PhD in Embedded Systems",
-    "degree": "phd",
-    "city": "Utrecht",
-    "link": "http://www.uu.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Utrecht University",
-    "course": "PhD in Artificial Intelligence",
-    "degree": "phd",
-    "city": "Utrecht",
-    "link": "http://www.uu.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Utrecht University",
-    "course": "PhD in Biology",
-    "degree": "phd",
-    "city": "Utrecht",
-    "link": "http://www.uu.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Utrecht University",
-    "course": "PhD in Psychology",
-    "degree": "phd",
-    "city": "Utrecht",
-    "link": "http://www.uu.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Utrecht University",
-    "course": "PhD in Physics",
-    "degree": "phd",
-    "city": "Utrecht",
-    "link": "http://www.uu.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Utrecht University",
-    "course": "PhD in Nursing",
-    "degree": "phd",
-    "city": "Utrecht",
-    "link": "http://www.uu.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Utrecht University",
-    "course": "PhD in Robotics",
-    "degree": "phd",
-    "city": "Utrecht",
-    "link": "http://www.uu.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Utrecht University",
-    "course": "PhD in Law",
-    "degree": "phd",
-    "city": "Utrecht",
-    "link": "http://www.uu.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Utrecht University",
-    "course": "PhD in Power Systems",
-    "degree": "phd",
-    "city": "Utrecht",
-    "link": "http://www.uu.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Utrecht University",
-    "course": "PhD in Civil Engineering",
-    "degree": "phd",
-    "city": "Utrecht",
-    "link": "http://www.uu.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Utrecht University",
-    "course": "PhD in Marketing",
-    "degree": "phd",
-    "city": "Utrecht",
-    "link": "http://www.uu.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Utrecht University",
-    "course": "PhD in Aerospace Engineering",
-    "degree": "phd",
-    "city": "Utrecht",
-    "link": "http://www.uu.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Utrecht University",
-    "course": "PhD in Mechanical Engineering",
-    "degree": "phd",
-    "city": "Utrecht",
-    "link": "http://www.uu.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Utrecht University",
-    "course": "PhD in Chemistry",
-    "degree": "phd",
-    "city": "Utrecht",
-    "link": "http://www.uu.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Amsterdam",
-    "course": "PhD in Civil Engineering",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "http://www.uva.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Amsterdam",
-    "course": "PhD in Physics",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "http://www.uva.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Amsterdam",
-    "course": "PhD in Artificial Intelligence",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "http://www.uva.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Amsterdam",
-    "course": "PhD in Environmental Engineering",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "http://www.uva.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Amsterdam",
-    "course": "PhD in Business Administration",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "http://www.uva.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Amsterdam",
-    "course": "PhD in Mechanical Engineering",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "http://www.uva.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Amsterdam",
-    "course": "PhD in Biomedical Engineering",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "http://www.uva.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Amsterdam",
-    "course": "PhD in Robotics",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "http://www.uva.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Amsterdam",
-    "course": "PhD in Finance",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "http://www.uva.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Amsterdam",
-    "course": "PhD in Nursing",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "http://www.uva.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Amsterdam",
-    "course": "PhD in Cybersecurity",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "http://www.uva.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Amsterdam",
-    "course": "PhD in Architecture",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "http://www.uva.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Amsterdam",
-    "course": "PhD in Mathematics",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "http://www.uva.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Amsterdam",
-    "course": "PhD in Aerospace Engineering",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "http://www.uva.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "University of Amsterdam",
-    "course": "PhD in Telecommunications",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "http://www.uva.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Vrije Universiteit Amsterdam",
-    "course": "PhD in Economics",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "http://www.vu.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Vrije Universiteit Amsterdam",
-    "course": "PhD in Electrical Engineering",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "http://www.vu.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Vrije Universiteit Amsterdam",
-    "course": "PhD in Mechanical Engineering",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "http://www.vu.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Vrije Universiteit Amsterdam",
-    "course": "PhD in Chemical Engineering",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "http://www.vu.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Vrije Universiteit Amsterdam",
-    "course": "PhD in Nursing",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "http://www.vu.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Vrije Universiteit Amsterdam",
-    "course": "PhD in Data Science",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "http://www.vu.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Vrije Universiteit Amsterdam",
-    "course": "PhD in Psychology",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "http://www.vu.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Vrije Universiteit Amsterdam",
-    "course": "PhD in Civil Engineering",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "http://www.vu.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Vrije Universiteit Amsterdam",
-    "course": "PhD in Artificial Intelligence",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "http://www.vu.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Vrije Universiteit Amsterdam",
-    "course": "PhD in Information Technology",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "http://www.vu.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Vrije Universiteit Amsterdam",
-    "course": "PhD in Biomedical Engineering",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "http://www.vu.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Vrije Universiteit Amsterdam",
-    "course": "PhD in Chemistry",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "http://www.vu.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Vrije Universiteit Amsterdam",
-    "course": "PhD in Computer Science",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "http://www.vu.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Vrije Universiteit Amsterdam",
-    "course": "PhD in Medicine",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "http://www.vu.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Vrije Universiteit Amsterdam",
-    "course": "PhD in Finance",
-    "degree": "phd",
-    "city": "Amsterdam",
-    "link": "http://www.vu.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Wageningen University",
-    "course": "PhD in Information Technology",
-    "degree": "phd",
-    "city": "Wageningen",
-    "link": "http://www.wageningenuniversity.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Wageningen University",
-    "course": "PhD in Biology",
-    "degree": "phd",
-    "city": "Wageningen",
-    "link": "http://www.wageningenuniversity.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Wageningen University",
-    "course": "PhD in Environmental Engineering",
-    "degree": "phd",
-    "city": "Wageningen",
-    "link": "http://www.wageningenuniversity.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Wageningen University",
-    "course": "PhD in Mechanical Engineering",
-    "degree": "phd",
-    "city": "Wageningen",
-    "link": "http://www.wageningenuniversity.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Wageningen University",
-    "course": "PhD in Medicine",
-    "degree": "phd",
-    "city": "Wageningen",
-    "link": "http://www.wageningenuniversity.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Wageningen University",
-    "course": "PhD in Robotics",
-    "degree": "phd",
-    "city": "Wageningen",
-    "link": "http://www.wageningenuniversity.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Wageningen University",
-    "course": "PhD in Data Science",
-    "degree": "phd",
-    "city": "Wageningen",
-    "link": "http://www.wageningenuniversity.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Wageningen University",
-    "course": "PhD in Software Engineering",
-    "degree": "phd",
-    "city": "Wageningen",
-    "link": "http://www.wageningenuniversity.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Wageningen University",
-    "course": "PhD in Embedded Systems",
-    "degree": "phd",
-    "city": "Wageningen",
-    "link": "http://www.wageningenuniversity.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Wageningen University",
-    "course": "PhD in Biomedical Engineering",
-    "degree": "phd",
-    "city": "Wageningen",
-    "link": "http://www.wageningenuniversity.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Wageningen University",
-    "course": "PhD in Electrical Engineering",
-    "degree": "phd",
-    "city": "Wageningen",
-    "link": "http://www.wageningenuniversity.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Wageningen University",
-    "course": "PhD in Nursing",
-    "degree": "phd",
-    "city": "Wageningen",
-    "link": "http://www.wageningenuniversity.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Wageningen University",
-    "course": "PhD in Law",
-    "degree": "phd",
-    "city": "Wageningen",
-    "link": "http://www.wageningenuniversity.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Wageningen University",
-    "course": "PhD in Finance",
-    "degree": "phd",
-    "city": "Wageningen",
-    "link": "http://www.wageningenuniversity.nl"
-  },
-  {
-    "country": "Netherlands",
-    "uni": "Wageningen University",
-    "course": "PhD in Aerospace Engineering",
-    "degree": "phd",
-    "city": "Wageningen",
-    "link": "http://www.wageningenuniversity.nl"
   }
 ]

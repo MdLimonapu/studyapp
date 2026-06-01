@@ -257,6 +257,19 @@ def clean_link(link, fallback=None):
     if is_placeholder:
         return fallback or "https://www.google.com"
 
+    # Detect generic homepage links (bare domains with no course-specific path).
+    # These are unreliable — a link like "http://www.eap.net" won't take the user
+    # to the actual course page. Fall back to a Google search instead.
+    try:
+        parsed = urllib.parse.urlparse(link)
+        path = parsed.path.rstrip("/")
+        if not path or path in ["/index.html", "/index.htm", "/en", "/de"]:
+            # It's just a homepage — use fallback Google search
+            if fallback:
+                return fallback
+    except Exception:
+        pass
+
     return link
 
 

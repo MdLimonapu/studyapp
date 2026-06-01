@@ -1,45 +1,45 @@
 {
-  "generated_at": "2026-05-26",
+  "generated_at": "2026-06-02",
   "sources": {
-    "Germany": {
+    "Australia": {
       "status": "ok",
-      "rows": 2512
+      "rows": 10894
     },
-    "UK": {
+    "Canada": {
       "status": "ok",
-      "rows": 1618
+      "rows": 287
     },
     "France": {
       "status": "ok",
       "rows": 1753
     },
-    "Australia": {
+    "Germany": {
       "status": "ok",
-      "rows": 10894
-    },
-    "USA": {
-      "status": "ok",
-      "rows": 52128
-    },
-    "Switzerland": {
-      "status": "ok",
-      "rows": 400
-    },
-    "Sweden": {
-      "status": "ok",
-      "rows": 10
-    },
-    "Netherlands": {
-      "status": "ok",
-      "rows": 4542
+      "rows": 2512
     },
     "Japan": {
       "status": "ok",
       "rows": 25
     },
-    "Canada": {
+    "Netherlands": {
       "status": "ok",
-      "rows": 287
+      "rows": 4263
+    },
+    "Sweden": {
+      "status": "ok",
+      "rows": 10
+    },
+    "Switzerland": {
+      "status": "ok",
+      "rows": 400
+    },
+    "UK": {
+      "status": "ok",
+      "rows": 1618
+    },
+    "USA": {
+      "status": "ok",
+      "rows": 52128
     }
   }
 }
