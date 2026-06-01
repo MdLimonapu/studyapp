@@ -581,13 +581,13 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 .result-card {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 8px;
   text-decoration: none;
   color: var(--text);
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   border: 1px solid var(--card-border) !important;
-  padding: 28px !important;
+  padding: 18px 20px !important;
   position: relative;
   overflow: hidden;
 }
@@ -654,34 +654,33 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 }
 
 .rc-uni {
-  font-size: 19px;
-  font-weight: 800;
-  color: var(--text);
-  margin: 0 0 8px 0;
-  line-height: 1.4;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--muted);
+  margin: 0;
+  line-height: 1.3;
   letter-spacing: -0.01em;
 }
 
 .rc-course {
-  font-size: 14.5px;
-  font-weight: 600;
-  color: var(--secondary-accent);
-  margin: 0;
-  line-height: 1.45;
+  font-size: 22px;
+  font-weight: 850;
+  color: var(--text);
+  margin-top: 4px;
+  line-height: 1.25;
 }
 
 .rc-body {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  margin-bottom: auto;
+  gap: 2px;
 }
 
 .rc-meta-section {
   display: flex;
-  padding-top: 14px;
+  padding-top: 8px;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
-  margin-top: auto;
+  margin-top: 4px;
 }
 
 .rc-intake-row {
@@ -748,7 +747,7 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 
 /* Action button CTA */
 .rc-cta-btn {
-  margin-top: 16px;
+  margin-top: 8px;
   display: flex;
   align-items: center;
   justify-content: center;

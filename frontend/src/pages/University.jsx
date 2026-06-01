@@ -263,7 +263,7 @@ export default function University() {
                                 }}
                               />
                             </div>
-                            <h3 className="rc-uni" style={{ margin: 0, fontSize: '18px', fontWeight: 800, color: 'var(--text)', lineHeight: 1.3 }}>{item.university}</h3>
+                            <h3 className="rc-uni">{item.university}</h3>
                           </div>
                           <p className="rc-course">{item.course}</p>
                         </div>
