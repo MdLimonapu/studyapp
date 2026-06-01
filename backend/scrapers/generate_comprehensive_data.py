@@ -425,14 +425,12 @@ def build_country_database(country_name, country_code, hipo_unis):
     # 1. Load existing scraped data (hybrid merger)
     existing_courses = load_existing_scraped_data(country_code)
     
-    # If the country is Germany, rely 100% on the real scraped DAAD database
-    if country_code == "Germany":
-        print(f"  ✓ {country_name} is marked for 100% real scraped data. Preserving all {len(existing_courses)} real records.")
-        # Ensure they are saved as is
-        output_path = os.path.join(DATA_DIR, f"{country_code.lower()}.json")
-        with open(output_path, "w") as f:
-            json.dump(existing_courses, f, indent=2, ensure_ascii=False)
-        return
+    # For all countries, preserve the real scraped/verified database and don't generate generic fallbacks
+    print(f"  ✓ Preserving all {len(existing_courses)} real/scraped records for {country_name}.")
+    output_path = os.path.join(DATA_DIR, f"{country_code.lower()}.json")
+    with open(output_path, "w") as f:
+        json.dump(existing_courses, f, indent=2, ensure_ascii=False)
+    return
         
     existing_unis = set(c.get("uni", "").lower().strip() for c in existing_courses)
     

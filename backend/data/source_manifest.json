@@ -19,7 +19,7 @@
     },
     "Japan": {
       "status": "ok",
-      "rows": 25
+      "rows": 3860
     },
     "Netherlands": {
       "status": "ok",
@@ -27,15 +27,15 @@
     },
     "Sweden": {
       "status": "ok",
-      "rows": 10
+      "rows": 3614
     },
     "Switzerland": {
       "status": "ok",
-      "rows": 400
+      "rows": 890
     },
     "UK": {
       "status": "ok",
-      "rows": 1618
+      "rows": 12667
     },
     "USA": {
       "status": "ok",
