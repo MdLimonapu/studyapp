@@ -100,7 +100,7 @@ body {
 /* TOPBAR */
 .topbar {
   width: 100%;
-  padding: 10px 5% 4px;
+  padding: 16px 5% 10px;
   background: transparent;
   display: flex; justify-content: space-between; align-items: center;
   position: relative;
@@ -202,7 +202,7 @@ body {
 .nav-icon { font-size: 18px; }
 
 /* PAGE */
-.page-wrap { max-width: 100%; padding: 0px 5% 48px; width: 100%; flex: 1; }
+.page-wrap { max-width: 100%; padding: 24px 5% 48px; width: 100%; flex: 1; }
 
 /* CARD */
 .card {
@@ -1929,6 +1929,39 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   box-shadow: 0 5px 0px #111827 !important;
   transform: translateY(-2px) !important;
 }
+
+/* Clerk auth modal elements styling updates */
+.cl-rootBox .cl-card {
+  border: 2px solid var(--card-border) !important;
+  box-shadow: var(--shadow-card) !important;
+  background-color: var(--card) !important;
+}
+.cl-rootBox .cl-formButtonPrimary {
+  background-color: #111827 !important;
+  color: #ffffff !important;
+  border: 2px solid #111827 !important;
+  box-shadow: 0 4px 0px #111827 !important;
+  border-radius: 12px !important;
+  padding: 12px 20px !important;
+  font-weight: 800 !important;
+  font-size: 15px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.02em !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+:root[data-theme="light"] .cl-rootBox .cl-formButtonPrimary {
+  background-color: #d2f34c !important; /* Theme lime-green color */
+  color: #111827 !important;
+}
+.cl-rootBox .cl-formButtonPrimary:hover {
+  transform: translate(-2px, -2px) !important;
+  box-shadow: 0 6px 0px #111827 !important;
+}
+.cl-rootBox .cl-formButtonPrimary:active {
+  transform: translate(0px, 0px) !important;
+  box-shadow: 0 2px 0px #111827 !important;
+}
+
 
 
 
