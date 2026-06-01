@@ -9,7 +9,7 @@ const ROADMAPS = {
     steps: [
       { id: 1, title: 'Check University Admission Qualification', desc: 'Verify if your high school diploma or previous university degrees qualify you for direct admission in Germany.', critical: true },
       { id: 2, title: 'Pass Language Proficiency (English/German)', desc: 'Obtain required scores (e.g. IELTS 6.5+ for English programs, or TestDaF for German programs).', critical: true },
-      { id: 3, title: 'Prepare Transcripts & Motivation Letter', desc: 'Get your academic transcripts translated. Write a compelling Letter of Motivation.', critical: true },
+      { id: 3, title: 'Prepare Transcripts & Motivation Letter', desc: 'Get your academic transcripts. Write a compelling Letter of Motivation.', critical: true },
       { id: 4, title: 'Submit Applications via Uni-Assist or Direct Portal', desc: 'Send your application through the centralized Uni-Assist platform or directly to the university.', critical: true },
       { id: 5, title: 'Secure Blocked Account & Visa', desc: 'Deposit the required living funds (approx. €11,900) into a blocked account and book your visa interview.', critical: true }
     ]
@@ -245,7 +245,7 @@ export default function Roadmap() {
 
       <div className="eligibility-two-col">
         {/* COUNTRY SELECTOR GRID */}
-        <div className="card" style={{ padding: '24px' }}>
+        <div className="card roadmap-left-card" style={{ padding: '24px' }}>
           <h3 style={{ fontSize: '18px', fontWeight: 800, marginBottom: '16px' }}>Select Country</h3>
           <div className="country-grid">
             {Object.keys(ROADMAPS).map(country => {
@@ -272,7 +272,7 @@ export default function Roadmap() {
         </div>
 
         {/* INTERACTIVE ELIGIBILITY CHECKLIST */}
-        <div className="card" style={{ padding: '32px' }}>
+        <div className="card roadmap-right-card" style={{ padding: '32px' }}>
           
           {/* Header Info */}
           <div className="roadmap-header-card" style={{ 

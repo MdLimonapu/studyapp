@@ -1997,6 +1997,15 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   font-weight: 800 !important;
 }
 
+/* Roadmap/Checklist Page Left & Right Card Creme Background Overrides */
+:root[data-theme="light"] .roadmap-left-card,
+:root[data-theme="light"] .roadmap-right-card {
+  background: #fdfaf2 !important; /* Creme background */
+  border: 2px solid #111827 !important;
+  box-shadow: 0 8px 0px #111827 !important;
+}
+
+
 
 
 
