@@ -1083,8 +1083,6 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 .news-slider-wrap {
   overflow: hidden;
   position: relative;
-  mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
 }
 .news-slider {
   display: flex;
@@ -1641,8 +1639,14 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   color: rgba(255, 255, 255, 0.9) !important;
   font-weight: 500;
 }
-:root[data-theme="light"] .hero-card .stat strong {
-  color: #ffffff !important;
+:root[data-theme="light"] .hero-card .stat:nth-child(1) strong {
+  color: #ffe600 !important; /* Vibrant yellow */
+}
+:root[data-theme="light"] .hero-card .stat:nth-child(2) strong {
+  color: #00ff87 !important; /* Electric neon green */
+}
+:root[data-theme="light"] .hero-card .stat:nth-child(3) strong {
+  color: #00f0ff !important; /* Cyan */
 }
 :root[data-theme="light"] .hero-card .stat span {
   color: rgba(255, 255, 255, 0.75) !important;
