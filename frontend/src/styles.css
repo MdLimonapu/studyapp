@@ -685,11 +685,16 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 }
 
 .rc-intake-row {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 8px;
-  font-size: 13px;
+  gap: 6px;
+  font-size: 12.5px;
   color: var(--muted);
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--card-border);
+  padding: 6px 14px;
+  border-radius: 999px;
+  width: fit-content;
 }
 
 .rc-intake-icon {
@@ -2038,6 +2043,19 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   color: #2563eb !important; /* High-contrast blue link */
   font-weight: 700;
 }
+
+/* Light theme intake pill styling */
+:root[data-theme="light"] .rc-intake-row {
+  background: #f3f4f6 !important;
+  border: 2px solid #111827 !important;
+  color: #111827 !important;
+  font-weight: 700 !important;
+  box-shadow: 0 2px 0px #111827 !important;
+}
+:root[data-theme="light"] .rc-intake-value {
+  color: #111827 !important;
+}
+
 
 
 
