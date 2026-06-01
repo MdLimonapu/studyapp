@@ -81,7 +81,7 @@
   --btn-gradient: none;
   --avatar-gradient: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
   --btn-text: #111827;
-  --bg-image: radial-gradient(circle at 50% 0%, #1e8ae7 0%, #0d5cb7 480px, #f9f9fb 481px, #f9f9fb 100%);
+  --bg-image: linear-gradient(to bottom, #1e8ae7 0%, #0d5cb7 480px, #f9f9fb 481px, #f9f9fb 100%);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
