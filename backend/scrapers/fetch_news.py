@@ -287,7 +287,30 @@ def main():
     with open(cache_path, "w") as f:
         json.dump(processed_news, f, indent=2)
         
-    print(f"Successfully updated news cache! Saved {len(processed_news)} items to {cache_path}", flush=True)
+    print(f"Successfully updated local news cache! Saved {len(processed_news)} items to {cache_path}", flush=True)
+
+    # Write to MongoDB Atlas as a fallback/persistent storage
+    mongo_uri = os.environ.get("MONGO_URI")
+    if mongo_uri:
+        try:
+            from pymongo import MongoClient
+            import urllib.parse
+            m_client = MongoClient(mongo_uri, serverSelectionTimeoutMS=5000)
+            db_name = "studplex"
+            parsed_uri = urllib.parse.urlparse(mongo_uri)
+            if parsed_uri.path and parsed_uri.path != "/":
+                db_name = parsed_uri.path.strip("/")
+            m_db = m_client[db_name]
+            
+            news_col = m_db["news"]
+            news_col.update_one(
+                {"key": "latest_news"},
+                {"$set": {"items": processed_news, "updated_at": datetime.datetime.now(datetime.timezone.utc)}},
+                upsert=True
+            )
+            print("💾 Successfully persisted latest news to MongoDB Atlas Cloud Database.", flush=True)
+        except Exception as e:
+            print(f"⚠️ Error writing news to MongoDB Atlas: {e}", flush=True)
 
 if __name__ == "__main__":
     main()

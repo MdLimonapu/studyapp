@@ -831,6 +831,16 @@ NEWS_ITEMS = [
 
 @app.route("/api/news")
 def get_news():
+    # 1. Try to load from Cloud MongoDB Atlas first
+    if db is not None:
+        try:
+            news_doc = db["news"].find_one({"key": "latest_news"})
+            if news_doc and "items" in news_doc:
+                return jsonify(news_doc["items"])
+        except Exception as e:
+            print(f"⚠️ Error loading news from MongoDB: {e}", flush=True)
+
+    # 2. Fallback to local file cache
     cache_path = os.path.join(os.path.dirname(__file__), "data", "news_cache.json")
     if os.path.exists(cache_path):
         try:
@@ -839,7 +849,7 @@ def get_news():
                 if cached_data:
                     return jsonify(cached_data)
         except Exception as e:
-            print(f"⚠️ Error reading news cache: {e}", flush=True)
+            print(f"⚠️ Error reading local news cache: {e}", flush=True)
     return jsonify(NEWS_ITEMS)
 
 
@@ -856,11 +866,16 @@ def trigger_fetch_news():
         from scrapers.fetch_news import main as run_fetch_news
         import threading
         
-        # Run news fetching in the background to avoid timing out HTTP clients (like cron-job.org)
-        thread = threading.Thread(target=run_fetch_news)
-        thread.start()
-        
-        return jsonify({"status": "success", "message": "News update triggered in the background"})
+        sync_mode = request.args.get("sync", "").lower() == "true"
+        if sync_mode:
+            # Sync mode keeps the request open, keeping Render CPU alive
+            run_fetch_news()
+            return jsonify({"status": "success", "message": "News update completed successfully (sync mode)"})
+        else:
+            # Run news fetching in the background
+            thread = threading.Thread(target=run_fetch_news)
+            thread.start()
+            return jsonify({"status": "success", "message": "News update triggered in the background"})
     except Exception as e:
         return jsonify({"status": "error", "message": str(e)}), 500
 
