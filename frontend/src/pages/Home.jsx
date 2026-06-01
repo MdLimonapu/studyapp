@@ -312,7 +312,15 @@ export default function Home() {
         <form ref={formRef} className="card form-card" onSubmit={submit}>
           <div>
             <label>Country</label>
-            <select ref={countryRef} value={form.country} onChange={e => setForm({...form, country: e.target.value})} required>
+            <select ref={countryRef} value={form.country} onChange={e => {
+              const newCountry = e.target.value;
+              const usesDollar = ['usa', 'canada', 'australia'].includes(newCountry.toLowerCase());
+              setForm(prev => ({
+                ...prev,
+                country: newCountry,
+                max_fee: usesDollar ? prev.max_fee : ''
+              }));
+            }} required>
               <option value="">Select country</option>
               {countries.map(c => <option key={c.name} value={c.name}>{c.flag} {c.name}</option>)}
             </select>
@@ -364,15 +372,17 @@ export default function Home() {
               )
             )}
           </div>
-          <div>
-            <label>Max Tuition Fee</label>
-            <select value={form.max_fee} onChange={e => setForm({...form, max_fee: e.target.value})}>
-              <option value="">Any Fee</option>
-              <option value="5000">Under $5,000 USD / year</option>
-              <option value="15000">Under $15,000 USD / year</option>
-              <option value="30000">Under $30,000 USD / year</option>
-            </select>
-          </div>
+          {['usa', 'canada', 'australia'].includes(form.country.toLowerCase()) && (
+            <div>
+              <label>Max Tuition Fee</label>
+              <select value={form.max_fee} onChange={e => setForm({...form, max_fee: e.target.value})}>
+                <option value="">Any Fee</option>
+                <option value="5000">Under $5,000 USD / year</option>
+                <option value="15000">Under $15,000 USD / year</option>
+                <option value="30000">Under $30,000 USD / year</option>
+              </select>
+            </div>
+          )}
           {error && <p className="error-msg">⚠️ {error}</p>}
 
           <button type="submit" disabled={loading}>
