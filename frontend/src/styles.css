@@ -43,47 +43,45 @@
 }
 
 :root[data-theme="light"] {
-  --bg: #fcfbf4;
+  --bg: #ffffff;
   --card: #ffffff;
-  --card-border: rgba(0, 0, 0, 0.08);
-  --text: #0b0f19;
+  --card-border: #111827;
+  --text: #111827;
   --muted: #4b5563;
-  --accent: #ff8c00;
-  --accent2: #4f46e5;
+  --accent: #d2f34c; /* Lime green from Aeline */
+  --accent2: #111827; /* Dark black */
   --blue: #2563eb;
   --dark2: #f3f4f6;
   
   --secondary-accent: #111827;
-  --secondary-glow: rgba(17, 24, 39, 0.04);
-  --secondary-border: rgba(17, 24, 39, 0.15);
-  --stat-1: #d97706;
-  --stat-2: #059669;
-  --stat-3: #2563eb;
-  --hero-sub: #451a03;
+  --secondary-glow: rgba(210, 243, 76, 0.15);
+  --secondary-border: #111827;
+  --stat-1: #111827;
+  --stat-2: #111827;
+  --stat-3: #111827;
+  --hero-sub: rgba(255, 255, 255, 0.9);
   
-  --header-bg: rgba(252, 251, 244, 0.85);
-  --header-border: rgba(0, 0, 0, 0.05);
-  --footer-bg: #f3f4f6;
-  --footer-border: rgba(0, 0, 0, 0.08);
-  --glass-glow: rgba(0, 0, 0, 0.02);
+  --header-bg: transparent;
+  --header-border: transparent;
+  --footer-bg: #111827;
+  --footer-border: rgba(255, 255, 255, 0.1);
+  --glass-glow: rgba(255, 255, 255, 0.15);
   
-  --radial-1: rgba(254, 240, 138, 0.25);
-  --radial-2: rgba(253, 224, 71, 0.15);
-  --radial-3: rgba(254, 243, 199, 0.2);
+  --radial-1: rgba(16, 122, 230, 0.2);
+  --radial-2: rgba(30, 144, 255, 0.15);
+  --radial-3: rgba(255, 255, 255, 0);
   
-  --shadow-card: 0 12px 36px rgba(0, 0, 0, 0.06);
-  --shadow-news: 0 6px 16px rgba(0, 0, 0, 0.03);
-  --shadow-news-hover: 0 16px 36px rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 8px 0px #111827; /* Neo-brutalism flat offset shadow */
+  --shadow-news: 0 6px 0px #111827;
+  --shadow-news-hover: 0 12px 0px #111827;
   
-  --input-bg: #f5f4eb;
-  --border-hover: rgba(0, 0, 0, 0.15);
+  --input-bg: #ffffff;
+  --border-hover: #111827;
   
-  --btn-gradient: linear-gradient(135deg, var(--accent) 0%, #e07b00 100%);
+  --btn-gradient: none;
   --avatar-gradient: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
-  --btn-text: #ffffff;
-  --bg-image: radial-gradient(ellipse at 25% 40%, rgba(254, 240, 138, 0.25) 0%, transparent 60%),
-    radial-gradient(ellipse at 75% 40%, rgba(254, 240, 138, 0.25) 0%, transparent 60%),
-    radial-gradient(ellipse at 50% 90%, rgba(254, 243, 199, 0.2) 0%, transparent 50%);
+  --btn-text: #111827;
+  --bg-image: radial-gradient(circle at 50% 0%, #1e8ae7 0%, #0d5cb7 480px, #f9f9fb 481px, #f9f9fb 100%);
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -1601,4 +1599,222 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   color: var(--secondary-accent);
   box-shadow: 0 4px 16px var(--secondary-glow);
 }
+
+/* ==========================================================================
+   AELINE (WEBFLOW) LIGHT THEME CUSTOM STYLE OVERRIDES
+   ========================================================================== */
+:root[data-theme="light"] {
+  /* Global card and layout style transformation */
+  --card-border-width: 2px;
+}
+
+:root[data-theme="light"] .card {
+  border: 2px solid #111827 !important;
+  box-shadow: 0 8px 0px #111827 !important;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  background: #ffffff !important;
+}
+
+/* Hero card is transparent and text is white to stand out on the blue sky background */
+:root[data-theme="light"] .hero-card {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding-left: 0 !important;
+}
+:root[data-theme="light"] .hero-card h2 {
+  color: #ffffff !important;
+}
+:root[data-theme="light"] .hero-card h2 span {
+  color: #d2f34c !important; /* Aeline highlight text */
+}
+:root[data-theme="light"] .hero-card p {
+  color: rgba(255, 255, 255, 0.9) !important;
+  font-weight: 500;
+}
+:root[data-theme="light"] .hero-card .stat strong {
+  color: #ffffff !important;
+}
+:root[data-theme="light"] .hero-card .stat span {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+
+/* Topbar is white navigation links over the blue background */
+:root[data-theme="light"] .topbar .brand h1 {
+  color: #ffffff !important;
+}
+:root[data-theme="light"] .topbar .brand-tagline {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+:root[data-theme="light"] .topbar .nav-links a {
+  color: rgba(255, 255, 255, 0.9) !important;
+  border: 1.5px solid rgba(255, 255, 255, 0.2) !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  font-weight: 700;
+}
+:root[data-theme="light"] .topbar .nav-links a:hover {
+  color: #ffffff !important;
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+}
+:root[data-theme="light"] .topbar .nav-links a.active {
+  color: #111827 !important;
+  background: #d2f34c !important;
+  border-color: #111827 !important;
+}
+:root[data-theme="light"] .theme-toggle-btn {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-color: rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+}
+:root[data-theme="light"] .theme-toggle-btn:hover {
+  background: rgba(255, 255, 255, 0.2) !important;
+  border-color: #ffffff !important;
+}
+
+/* Form fields inputs and dropdowns styling */
+:root[data-theme="light"] .form-card input,
+:root[data-theme="light"] .form-card select {
+  border: 2px solid #111827 !important;
+  background: #ffffff !important;
+  color: #111827 !important;
+  box-shadow: none !important;
+  font-weight: 600;
+}
+:root[data-theme="light"] .form-card label {
+  font-weight: 800;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  color: #111827;
+}
+
+/* Neo-brutalism Pill Button Controls */
+:root[data-theme="light"] .pill,
+:root[data-theme="light"] .level-btn {
+  background: #ffffff !important;
+  border: 2px solid #111827 !important;
+  color: #111827 !important;
+  box-shadow: none !important;
+  border-radius: 12px !important;
+}
+:root[data-theme="light"] .pill:hover,
+:root[data-theme="light"] .level-btn:hover {
+  background: #f3f4f6 !important;
+}
+:root[data-theme="light"] .pill-active,
+:root[data-theme="light"] .level-btn.active {
+  background: #111827 !important;
+  color: #ffffff !important;
+  border-color: #111827 !important;
+}
+
+/* Primary CTA Submit / Accent Buttons */
+:root[data-theme="light"] button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)) {
+  background: #d2f34c !important;
+  color: #111827 !important;
+  border: 2px solid #111827 !important;
+  box-shadow: 0 6px 0px #111827 !important;
+  font-weight: 800 !important;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  border-radius: 14px !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+:root[data-theme="light"] button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):hover {
+  transform: translate(-3px, -3px) !important;
+  box-shadow: 0 9px 0px #111827 !important;
+  opacity: 1 !important;
+}
+:root[data-theme="light"] button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):active {
+  transform: translate(0px, 0px) !important;
+  box-shadow: 0 3px 0px #111827 !important;
+}
+
+/* Secondary Buttons */
+:root[data-theme="light"] .btn-outline {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border: 2px solid #111827 !important;
+  box-shadow: 0 4px 0px #111827 !important;
+  border-radius: 12px !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+:root[data-theme="light"] .btn-outline:hover {
+  transform: translate(-2px, -2px) !important;
+  box-shadow: 0 6px 0px #111827 !important;
+  background: #ffffff !important;
+}
+
+/* News Section & News cards styling */
+:root[data-theme="light"] .news-card {
+  border: 2px solid #111827 !important;
+  box-shadow: 0 6px 0px #111827 !important;
+  background: #ffffff !important;
+  border-radius: 16px !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+:root[data-theme="light"] .news-card:hover {
+  transform: translate(-3px, -3px) !important;
+  box-shadow: 0 9px 0px #111827 !important;
+}
+:root[data-theme="light"] .news-header h3 {
+  font-weight: 800;
+  font-size: 26px;
+  color: #111827;
+}
+
+/* Search results cards, matching badges */
+:root[data-theme="light"] .badge {
+  border: 1.5px solid #111827 !important;
+  background: #d2f34c !important;
+  color: #111827 !important;
+  font-weight: 700 !important;
+}
+:root[data-theme="light"] .match-score-badge {
+  border: 2px solid #111827 !important;
+  background: #d2f34c !important;
+  color: #111827 !important;
+  font-weight: 800 !important;
+  box-shadow: 0 3px 0px #111827 !important;
+}
+:root[data-theme="light"] .university-card {
+  border: 2px solid #111827 !important;
+  box-shadow: 0 8px 0px #111827 !important;
+}
+:root[data-theme="light"] .university-card:hover {
+  transform: translate(-4px, -4px) !important;
+  box-shadow: 0 12px 0px #111827 !important;
+}
+
+/* Roadmap steps & interactive timelines */
+:root[data-theme="light"] .roadmap-step {
+  border: 2px solid #111827 !important;
+  box-shadow: 0 6px 0px #111827 !important;
+}
+:root[data-theme="light"] .roadmap-icon {
+  background: #d2f34c !important;
+  border: 2px solid #111827 !important;
+  color: #111827 !important;
+}
+
+/* Profile inputs / documents */
+:root[data-theme="light"] .pf-document-item {
+  border: 2px solid #111827 !important;
+  box-shadow: 0 4px 0px #111827 !important;
+  background: #ffffff !important;
+}
+:root[data-theme="light"] .pf-document-item:hover {
+  transform: translate(-2px, -2px) !important;
+  box-shadow: 0 6px 0px #111827 !important;
+}
+:root[data-theme="light"] .pf-document-upload-zone {
+  border: 2.5px dashed #111827 !important;
+  background: #f3f4f6 !important;
+  color: #111827 !important;
+}
+:root[data-theme="light"] .pf-document-upload-zone:hover {
+  background: #e5e7eb !important;
+}
+
 
