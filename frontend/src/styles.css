@@ -2005,6 +2005,41 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   box-shadow: 0 8px 0px #111827 !important;
 }
 
+/* FAQ Accordion & Note Box styling rules */
+.faq-trigger {
+  color: var(--text);
+}
+.faq-trigger.active {
+  color: var(--accent);
+}
+.faq-trigger:hover {
+  color: var(--accent);
+}
+.faq-note {
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid rgba(255, 255, 255, 0.04);
+}
+.faq-note a {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+/* FAQ light theme specific visibility adjustments */
+:root[data-theme="light"] .faq-trigger.active,
+:root[data-theme="light"] .faq-trigger:hover {
+  color: #2563eb !important; /* High-contrast blue */
+}
+:root[data-theme="light"] .faq-note {
+  background: var(--dark2) !important;
+  border: 2px solid #111827 !important;
+  box-shadow: 0 4px 0px #111827 !important;
+}
+:root[data-theme="light"] .faq-note a {
+  color: #2563eb !important; /* High-contrast blue link */
+  font-weight: 700;
+}
+
+
 
 
 

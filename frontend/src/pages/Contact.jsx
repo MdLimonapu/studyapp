@@ -105,10 +105,10 @@ export default function Contact() {
       
       {/* Page Header */}
       <div style={{ marginBottom: '32px', textAlign: 'center' }}>
-        <h2 style={{ fontSize: '36px', fontWeight: '900', marginBottom: '8px', letterSpacing: '-0.02em' }}>
+        <h2 style={{ fontSize: '36px', fontWeight: '900', marginBottom: '8px', letterSpacing: '-0.02em', color: '#ffffff' }}>
           How can we help?
         </h2>
-        <p style={{ color: 'var(--muted)', fontSize: '16px' }}>
+        <p style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '16px' }}>
           Submit a ticket below or browse our frequently asked questions.
         </p>
       </div>
@@ -238,20 +238,21 @@ export default function Contact() {
               return (
                 <div 
                   key={i} 
+                  className="faq-item"
                   style={{ 
-                    borderBottom: '1px solid rgba(255, 255, 255, 0.05)', 
+                    borderBottom: '1px solid var(--card-border)', 
                     paddingBottom: '16px',
                     transition: 'all 0.3s ease'
                   }}
                 >
                   <div
                     onClick={() => toggleFaq(i)}
+                    className={`faq-trigger ${isOpen ? 'active' : ''}`}
                     style={{
                       width: '100%',
                       display: 'flex',
                       justifyContent: 'space-between',
                       alignItems: 'center',
-                      color: isOpen ? 'var(--accent)' : 'var(--text)',
                       cursor: 'pointer',
                       fontSize: '15px',
                       fontWeight: '700',
@@ -260,7 +261,7 @@ export default function Contact() {
                     }}
                   >
                     <span>{faq.q}</span>
-                    <span style={{ 
+                    <span className="faq-arrow" style={{ 
                       transform: isOpen ? 'rotate(180deg)' : 'rotate(0deg)',
                       transition: 'transform 0.2s ease',
                       fontSize: '12px',
@@ -286,17 +287,15 @@ export default function Contact() {
             })}
           </div>
 
-          <div style={{ 
+          <div className="faq-note" style={{ 
             marginTop: '32px', 
             padding: '16px 20px', 
-            background: 'rgba(255, 255, 255, 0.01)', 
-            border: '1px solid rgba(255, 255, 255, 0.03)', 
             borderRadius: '12px',
             fontSize: '13px',
             color: 'var(--muted)',
             lineHeight: '1.5'
           }}>
-            💡 <strong>Note:</strong> We typically respond within 24 hours. You can also reach us directly at <a href="mailto:support@studplex.com" style={{ color: 'var(--accent)', textDecoration: 'underline' }}>support@studplex.com</a>.
+            💡 <strong>Note:</strong> We typically respond within 24 hours. You can also reach us directly at <a href="mailto:support@studplex.com">support@studplex.com</a>.
           </div>
         </div>
 
