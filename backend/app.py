@@ -829,28 +829,79 @@ NEWS_ITEMS = [
     {"title": "KTH Stockholm opens applications for 60+ English Master programs", "source": "kth.se", "date": "Jan 2026", "summary": "KTH offers world-class engineering and technology programs in English.", "country": "Sweden", "link": "https://www.kth.se"}
 ]
 
+import threading
+from datetime import datetime, timezone
+import time
+
+_is_fetching_news = False
+_fetching_lock = threading.Lock()
+
 @app.route("/api/news")
 def get_news():
+    global _is_fetching_news
+    should_update = False
+    news_items = None
+    
     # 1. Try to load from Cloud MongoDB Atlas first
     if db is not None:
         try:
             news_doc = db["news"].find_one({"key": "latest_news"})
             if news_doc and "items" in news_doc:
-                return jsonify(news_doc["items"])
+                news_items = news_doc["items"]
+                updated_at = news_doc.get("updated_at")
+                if updated_at:
+                    if updated_at.tzinfo is None:
+                        updated_at = updated_at.replace(tzinfo=timezone.utc)
+                    age_seconds = (datetime.now(timezone.utc) - updated_at).total_seconds()
+                    if age_seconds > 86400:  # 24 hours
+                        should_update = True
+                else:
+                    should_update = True
+            else:
+                should_update = True
         except Exception as e:
             print(f"⚠️ Error loading news from MongoDB: {e}", flush=True)
 
     # 2. Fallback to local file cache
-    cache_path = os.path.join(os.path.dirname(__file__), "data", "news_cache.json")
-    if os.path.exists(cache_path):
-        try:
-            with open(cache_path, "r") as f:
-                cached_data = json.load(f)
-                if cached_data:
-                    return jsonify(cached_data)
-        except Exception as e:
-            print(f"⚠️ Error reading local news cache: {e}", flush=True)
-    return jsonify(NEWS_ITEMS)
+    if not news_items:
+        cache_path = os.path.join(os.path.dirname(__file__), "data", "news_cache.json")
+        if os.path.exists(cache_path):
+            try:
+                mtime = os.path.getmtime(cache_path)
+                if (time.time() - mtime) > 86400:
+                    should_update = True
+                with open(cache_path, "r") as f:
+                    news_items = json.load(f)
+            except Exception as e:
+                print(f"⚠️ Error reading local news cache: {e}", flush=True)
+                should_update = True
+
+    if not news_items:
+        news_items = NEWS_ITEMS
+        should_update = True
+
+    # If cache is stale and not currently fetching, spawn a background thread to update the news
+    if should_update and not _is_fetching_news:
+        with _fetching_lock:
+            if not _is_fetching_news:
+                _is_fetching_news = True
+                def run_update():
+                    global _is_fetching_news
+                    try:
+                        from scrapers.fetch_news import main as run_fetch_news
+                        run_fetch_news()
+                    except Exception as err:
+                        print(f"⚠️ Stale news auto-fetch thread error: {err}", flush=True)
+                    finally:
+                        _is_fetching_news = False
+                
+                t = threading.Thread(target=run_update)
+                t.daemon = True
+                t.start()
+                print("🔄 Stale news detected. Triggered auto-update in the background.", flush=True)
+
+    return jsonify(news_items)
+
 
 
 @app.route("/api/news/fetch", methods=["GET", "POST"])
