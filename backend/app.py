@@ -491,6 +491,62 @@ def get_estimated_fee(country, degree, uni_name):
     return "See website"
 
 
+def parse_fee_to_usd(fee_str, country="", degree=""):
+    if not fee_str or not isinstance(fee_str, str):
+        return None
+        
+    fee_str_lower = fee_str.lower().strip()
+    if "none" in fee_str_lower or "free" in fee_str_lower:
+        return 0.0
+        
+    rates = {
+        "usd": 1.0,
+        "$": 1.0,
+        "sek": 0.096,
+        "gbp": 1.28,
+        "£": 1.28,
+        "eur": 1.08,
+        "€": 1.08,
+        "jpy": 0.0064,
+        "¥": 0.0064,
+        "cad": 0.73,
+        "aud": 0.66,
+        "chf": 1.12
+    }
+    
+    currency_rate = 1.0
+    for cur, rate in rates.items():
+        if cur in fee_str_lower:
+            currency_rate = rate
+            break
+            
+    if currency_rate == 1.0 and country:
+        c_lower = country.lower().strip()
+        if "sweden" in c_lower:
+            currency_rate = rates["sek"]
+        elif "uk" in c_lower or "united kingdom" in c_lower:
+            currency_rate = rates["gbp"]
+        elif "france" in c_lower or "germany" in c_lower or "netherlands" in c_lower or "europe" in c_lower:
+            currency_rate = rates["eur"]
+        elif "japan" in c_lower:
+            currency_rate = rates["jpy"]
+        elif "canada" in c_lower:
+            currency_rate = rates["cad"]
+        elif "australia" in c_lower:
+            currency_rate = rates["aud"]
+        elif "switzerland" in c_lower:
+            currency_rate = rates["chf"]
+
+    clean_str = re.sub(r'(?<=\d)[,\s](?=\d)', '', fee_str_lower)
+    numbers = [float(n) for n in re.findall(r'\d+', clean_str)]
+    
+    if not numbers:
+        return None
+        
+    max_val = max(numbers)
+    return max_val * currency_rate
+
+
 def parse_user_gpa(grade_str):
     if not grade_str:
         return None
@@ -608,7 +664,7 @@ def format_abbreviation(val):
     return val
 
 
-def fallback_search(country, degree, field, user_grade=None):
+def fallback_search(country, degree, field, user_grade=None, max_fee=None):
     """Search static country JSON data with rating-based relevance sorting and smart links."""
     results = FALLBACK_COURSES
     if country:
@@ -625,6 +681,13 @@ def fallback_search(country, degree, field, user_grade=None):
         course_title = c.get("course", "").lower()
         uni_name = c.get("uni", "").lower()
         
+        # Filter by max tuition fee if specified
+        if max_fee is not None:
+            fee = c.get("fee") if c.get("fee") else get_estimated_fee(c.get("country", ""), c.get("degree", ""), c.get("uni", ""))
+            usd_val = parse_fee_to_usd(fee, c.get("country", ""), c.get("degree", ""))
+            if usd_val is not None and usd_val > max_fee:
+                continue
+                
         if field:
             field_lower = field.lower().strip()
             rating = 0
@@ -952,13 +1015,20 @@ def search():
     field   = body.get("field", "").strip()
     profile = body.get("profile", {})
     user_grade = profile.get("grade", "").strip() if profile else ""
+    
+    max_fee = body.get("max_fee")
+    if max_fee is not None:
+        try:
+            max_fee = float(max_fee)
+        except (ValueError, TypeError):
+            max_fee = None
 
     # ── Caching ──────────────────────────────────────────────────────────────
-    cache_key = (country.lower(), degree.lower(), field.lower(), user_grade.lower())
+    cache_key = (country.lower(), degree.lower(), field.lower(), user_grade.lower(), max_fee)
     if cache_key in SEARCH_CACHE:
         return jsonify(SEARCH_CACHE[cache_key])
 
-    formatted, total = fallback_search(country, degree, field, user_grade)
+    formatted, total = fallback_search(country, degree, field, user_grade, max_fee)
     response_data = {
         "results":        formatted,
         "total":          total,

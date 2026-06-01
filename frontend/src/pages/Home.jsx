@@ -50,12 +50,13 @@ export default function Home() {
           return {
             country: parsed.country || '',
             degree: parsed.degree || 'master',
-            field: parsed.field || ''
+            field: parsed.field || '',
+            max_fee: parsed.max_fee !== undefined ? parsed.max_fee : ''
           }
         }
       } catch (e) {}
     }
-    return { country: '', degree: 'master', field: '' }
+    return { country: '', degree: 'master', field: '', max_fee: '' }
   })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -95,7 +96,8 @@ export default function Home() {
       setForm({
         country: focus === 'country' ? val : '',
         degree: focus === 'degree' ? val : '',
-        field: focus === 'field' ? val : ''
+        field: focus === 'field' ? val : '',
+        max_fee: focus === 'max_fee' ? val : ''
       })
 
       setTimeout(() => {
@@ -361,6 +363,15 @@ export default function Home() {
                 </p>
               )
             )}
+          </div>
+          <div>
+            <label>Max Tuition Fee</label>
+            <select value={form.max_fee} onChange={e => setForm({...form, max_fee: e.target.value})}>
+              <option value="">Any Fee</option>
+              <option value="5000">Under $5,000 USD / year</option>
+              <option value="15000">Under $15,000 USD / year</option>
+              <option value="30000">Under $30,000 USD / year</option>
+            </select>
           </div>
           {error && <p className="error-msg">⚠️ {error}</p>}
 
