@@ -1646,7 +1646,7 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   color: #00ff87 !important; /* Electric neon green */
 }
 :root[data-theme="light"] .hero-card .stat:nth-child(3) strong {
-  color: #00f0ff !important; /* Cyan */
+  color: #d2f34c !important; /* Theme lime green */
 }
 :root[data-theme="light"] .hero-card .stat span {
   color: rgba(255, 255, 255, 0.75) !important;
@@ -1965,6 +1965,38 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   transform: translate(0px, 0px) !important;
   box-shadow: 0 2px 0px #111827 !important;
 }
+
+/* Clerk Social (Continue with Google) Button Overrides */
+.cl-rootBox .cl-socialButtonsBlockButton {
+  background-color: #ffffff !important;
+  color: #111827 !important;
+  border: 2px solid #111827 !important;
+  box-shadow: 0 4px 0px #111827 !important;
+  border-radius: 12px !important;
+  font-weight: 800 !important;
+  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
+}
+:root[data-theme="light"] .cl-rootBox .cl-socialButtonsBlockButton {
+  background-color: #d2f34c !important; /* Theme lime green */
+  color: #111827 !important;
+}
+.cl-rootBox .cl-socialButtonsBlockButton:hover {
+  transform: translate(-2px, -2px) !important;
+  box-shadow: 0 6px 0px #111827 !important;
+}
+.cl-rootBox .cl-socialButtonsBlockButton:active {
+  transform: translate(0px, 0px) !important;
+  box-shadow: 0 2px 0px #111827 !important;
+}
+
+/* Germany Eligibility Checklist "Required" Badge Overrides */
+:root[data-theme="light"] .roadmap-badge-required {
+  background: #d2f34c !important; /* Theme lime green */
+  color: #111827 !important;
+  border: 2px solid #111827 !important;
+  font-weight: 800 !important;
+}
+
 
 
 

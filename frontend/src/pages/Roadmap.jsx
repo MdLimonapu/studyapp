@@ -355,7 +355,7 @@ export default function Roadmap() {
                         {step.title}
                       </h4>
                       {step.critical && (
-                        <span style={{ 
+                        <span className="roadmap-badge-required" style={{ 
                           fontSize: '9px', 
                           fontWeight: 800, 
                           color: checked ? 'var(--secondary-accent)' : 'var(--accent)',
