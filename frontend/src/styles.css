@@ -100,7 +100,7 @@ body {
 /* TOPBAR */
 .topbar {
   width: 100%;
-  padding: 18px 5%;
+  padding: 10px 5% 4px;
   background: transparent;
   display: flex; justify-content: space-between; align-items: center;
   position: relative;
@@ -202,7 +202,7 @@ body {
 .nav-icon { font-size: 18px; }
 
 /* PAGE */
-.page-wrap { max-width: 100%; padding: 24px 5% 48px; width: 100%; flex: 1; }
+.page-wrap { max-width: 100%; padding: 0px 5% 48px; width: 100%; flex: 1; }
 
 /* CARD */
 .card {
