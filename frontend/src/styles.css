@@ -202,7 +202,7 @@ body {
 .nav-icon { font-size: 18px; }
 
 /* PAGE */
-.page-wrap { max-width: 100%; padding: 0px 5% 48px; width: 100%; flex: 1; }
+.page-wrap { max-width: 100%; padding: 40px 5% 48px; width: 100%; flex: 1; }
 
 /* CARD */
 .card {
@@ -234,7 +234,7 @@ body {
   border: none;
   box-shadow: none;
 }
-.hero-card h2 { font-size: 42px; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; color: var(--text); }
+.hero-card h2 { font-size: 56px; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; color: var(--text); }
 .hero-card h2 span { color: var(--accent); }
 .hero-card p { color: var(--hero-sub); font-size: 15.5px; max-width: 100%; line-height: 1.5; margin: 0; }
 .hero-stats { display: flex; gap: 24px; margin-top: 4px; }
