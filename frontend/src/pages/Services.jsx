@@ -97,18 +97,19 @@ function StripePaymentForm({ clientSecret, selectedService, docType, file, comme
           // 2. Call backend /api/payment/confirm to send transaction details email
           try {
             const backendUrl = import.meta.env.VITE_API_URL || "http://127.0.0.1:5001"
+            const formData = new FormData()
+            formData.append('txn_id', paymentResult.paymentIntent.id)
+            formData.append('email', user?.primaryEmailAddress?.emailAddress || 'student@example.com')
+            formData.append('service_title', selectedService.title)
+            formData.append('doc_type', docType)
+            formData.append('comment', comment)
+            formData.append('price', selectedService.price)
+            if (file) {
+              formData.append('file', file)
+            }
             await fetch(`${backendUrl}/api/payment/confirm`, {
               method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                txn_id: paymentResult.paymentIntent.id,
-                email: user?.primaryEmailAddress?.emailAddress || 'student@example.com',
-                service_title: selectedService.title,
-                doc_type: docType,
-                filename: file?.name || 'document.pdf',
-                comment: comment,
-                price: selectedService.price
-              })
+              body: formData,
             })
           } catch (confirmErr) {
             console.error("⚠️ Failed to record transaction:", confirmErr)

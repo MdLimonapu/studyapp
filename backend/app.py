@@ -1126,68 +1126,101 @@ def create_payment_intent():
         return jsonify({"error": str(e)}), 400
 
 
-import smtplib
-from email.mime.multipart import MIMEMultipart
-from email.mime.text import MIMEText
+import urllib.request as url_req
 
 def send_audit_email(student_email, service_title, doc_type, filename, comment, price, txn_id):
-    admin_email = os.environ.get("ADMIN_EMAIL", "info@studplex.com")
-    smtp_server = os.environ.get("SMTP_SERVER", "smtp.gmail.com")
-    smtp_port = int(os.environ.get("SMTP_PORT", 587))
-    smtp_user = os.environ.get("SMTP_USER", "")
-    smtp_pass = os.environ.get("SMTP_PASS", "")
+    admin_email = "support@studplex.com"
 
-    if not smtp_user or not smtp_pass:
-        print("⚠️ SMTP credentials not set. Email notification skipped.", flush=True)
-        return False
+    # Build a nicely formatted message body
+    message_body = f"""
+🔔 New Premium Service Booking Received!
 
-    msg = MIMEMultipart()
-    msg['From'] = smtp_user
-    msg['To'] = admin_email
-    msg['Subject'] = f"🔔 New Service Booking: {service_title} ({price})"
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📌 Service: {service_title}
+💰 Amount Paid: {price}
+🧾 Stripe Transaction ID: {txn_id}
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-    body = f"""
-    <h3>New Premium Audit Request Received</h3>
-    <p><strong>Student Email:</strong> {student_email}</p>
-    <p><strong>Service Purchased:</strong> {service_title}</p>
-    <p><strong>Paid Amount:</strong> {price}</p>
-    <p><strong>Stripe Transaction ID:</strong> {txn_id}</p>
-    <br/>
-    <p><strong>Document Category:</strong> {doc_type}</p>
-    <p><strong>Uploaded File:</strong> {filename}</p>
-    <p><strong>Student Comment:</strong> {comment if comment else 'No comments provided.'}</p>
-    """
-    msg.attach(MIMEText(body, 'html'))
+👤 Student Email: {student_email}
+📄 Document Category: {doc_type}
+📎 Uploaded File: {filename}
+💬 Student Comment: {comment if comment else 'No comments provided.'}
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+This is an automated notification from StudPlex.
+Please review and respond to the student within 24 hours.
+"""
 
     try:
-        server = smtplib.SMTP(smtp_server, smtp_port)
-        server.starttls()
-        server.login(smtp_user, smtp_pass)
-        server.sendmail(smtp_user, admin_email, msg.as_string())
-        server.quit()
-        print("📧 Notification email sent to admin successfully.", flush=True)
+        # Use FormSubmit.co API (same service as contact form)
+        import json as json_lib
+        payload = json_lib.dumps({
+            "name": f"StudPlex Payment System",
+            "email": student_email,
+            "message": message_body,
+            "_subject": f"🔔 New Service Booking: {service_title} ({price})",
+            "_template": "box"
+        }).encode("utf-8")
+
+        req = url_req.Request(
+            f"https://formsubmit.co/ajax/{admin_email}",
+            data=payload,
+            headers={
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            method="POST"
+        )
+
+        resp = url_req.urlopen(req, timeout=10)
+        result = resp.read().decode()
+        print(f"📧 Payment notification sent via FormSubmit: {result}", flush=True)
         return True
     except Exception as e:
-        print(f"⚠️ Failed to send notification email: {e}", flush=True)
+        print(f"⚠️ Failed to send payment notification: {e}", flush=True)
         return False
 
 @app.route("/api/payment/confirm", methods=["POST"])
 def confirm_payment():
     try:
-        body = request.json or {}
-        txn_id = body.get("txn_id", "STX_MOCK")
-        email = body.get("email", "student@example.com")
-        service_title = body.get("service_title", "Document Audit")
-        doc_type = body.get("doc_type", "Transcript")
-        filename = body.get("filename", "document.pdf")
-        comment = body.get("comment", "")
-        price = body.get("price", "$49.00")
+        # Support both JSON and FormData
+        if request.content_type and "multipart/form-data" in request.content_type:
+            txn_id = request.form.get("txn_id", "STX_UNKNOWN")
+            email = request.form.get("email", "student@example.com")
+            service_title = request.form.get("service_title", "Document Audit")
+            doc_type = request.form.get("doc_type", "Transcript")
+            comment = request.form.get("comment", "")
+            price = request.form.get("price", "$49.00")
+            
+            # Handle file upload
+            uploaded_file = request.files.get("file")
+            filename = "No file uploaded"
+            if uploaded_file and uploaded_file.filename:
+                filename = uploaded_file.filename
+                # Save to uploads directory
+                uploads_dir = os.path.join(os.path.dirname(__file__), "uploads")
+                os.makedirs(uploads_dir, exist_ok=True)
+                # Prefix with txn_id for uniqueness
+                safe_name = re.sub(r'[^a-zA-Z0-9._-]', '_', filename)
+                save_path = os.path.join(uploads_dir, f"{txn_id}_{safe_name}")
+                uploaded_file.save(save_path)
+                print(f"📎 File saved: {save_path}", flush=True)
+        else:
+            body = request.json or {}
+            txn_id = body.get("txn_id", "STX_UNKNOWN")
+            email = body.get("email", "student@example.com")
+            service_title = body.get("service_title", "Document Audit")
+            doc_type = body.get("doc_type", "Transcript")
+            filename = body.get("filename", "document.pdf")
+            comment = body.get("comment", "")
+            price = body.get("price", "$49.00")
         
         # Send notification email to admin
         send_audit_email(email, service_title, doc_type, filename, comment, price, txn_id)
         
         return jsonify({"status": "confirmed", "message": "Booking request recorded and email sent."}), 200
     except Exception as e:
+        print(f"⚠️ Payment confirm error: {e}", flush=True)
         return jsonify({"error": str(e)}), 500
 
 
