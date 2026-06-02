@@ -1,0 +1,887 @@
+[
+  {
+    "name": "Champlain College Saint-Lambert",
+    "url": "https://www.idp.com/universities-and-colleges/champlain-college-saint-lambert/IID-CA-01102/",
+    "description": "Study abroad at Champlain College Saint-Lambert located in Canada"
+  },
+  {
+    "name": "Nova Scotia Community College",
+    "url": "https://www.idp.com/universities-and-colleges/nova-scotia-community-college/IID-CA-01070/",
+    "description": "Study abroad at Nova Scotia Community College located in Canada"
+  },
+  {
+    "name": "Assiniboine Community College",
+    "url": "https://www.idp.com/universities-and-colleges/assiniboine-community-college/IID-CA-01194/",
+    "description": "Study abroad at Assiniboine Community College located in Canada"
+  },
+  {
+    "name": "CLLC Language School",
+    "url": "https://www.idp.com/universities-and-colleges/cllc-language-school/IID-CA-01036/",
+    "description": "Study abroad at CLLC Language School located in Canada"
+  },
+  {
+    "name": "LCI Language Schools",
+    "url": "https://www.idp.com/universities-and-colleges/lci-language-schools/IID-CA-02512/",
+    "description": "Study abroad at LCI Language Schools located in Canada"
+  },
+  {
+    "name": "Mount Royal University",
+    "url": "https://www.idp.com/universities-and-colleges/mount-royal-university/IID-CA-00738/",
+    "description": "Study abroad at Mount Royal University located in Canada"
+  },
+  {
+    "name": "College of New Caledonia",
+    "url": "https://www.idp.com/universities-and-colleges/college-of-new-caledonia/IID-CA-01057/",
+    "description": "Study abroad at College of New Caledonia located in Canada"
+  },
+  {
+    "name": "Saskatchewan Polytechnic",
+    "url": "https://www.idp.com/universities-and-colleges/saskatchewan-polytechnic/IID-CA-00639/",
+    "description": "Study abroad at Saskatchewan Polytechnic located in Canada"
+  },
+  {
+    "name": "Canada College",
+    "url": "https://www.idp.com/universities-and-colleges/canada-college/IID-CA-01264/",
+    "description": "Study abroad at Canada College located in Canada"
+  },
+  {
+    "name": "Keyano College",
+    "url": "https://www.idp.com/universities-and-colleges/keyano-college/IID-CA-01460/",
+    "description": "Study abroad at Keyano College located in Canada"
+  },
+  {
+    "name": "New Brunswick Community College",
+    "url": "https://www.idp.com/universities-and-colleges/new-brunswick-community-college/IID-CA-01073/",
+    "description": "Study abroad at New Brunswick Community College located in Canada"
+  },
+  {
+    "name": "Wilfrid Laurier International College",
+    "url": "https://www.idp.com/universities-and-colleges/wilfrid-laurier-international-college/IID-CA-01386/",
+    "description": "Study abroad at Wilfrid Laurier International College located in Canada"
+  },
+  {
+    "name": "Camosun College",
+    "url": "https://www.idp.com/universities-and-colleges/camosun-college/IID-CA-00642/",
+    "description": "Study abroad at Camosun College located in Canada"
+  },
+  {
+    "name": "Acadia University",
+    "url": "https://www.idp.com/universities-and-colleges/acadia-university/IID-CA-00637/",
+    "description": "Study abroad at Acadia University located in Canada"
+  },
+  {
+    "name": "Trent University",
+    "url": "https://www.idp.com/universities-and-colleges/trent-university/IID-CA-00640/",
+    "description": "Study abroad at Trent University located in Canada"
+  },
+  {
+    "name": "York University",
+    "url": "https://www.idp.com/universities-and-colleges/york-university/IID-CA-00712/",
+    "description": "Study abroad at York University located in Canada"
+  },
+  {
+    "name": "Justice Institute of British Columbia",
+    "url": "https://www.idp.com/universities-and-colleges/justice-institute-of-british-columbia/IID-CA-02591/",
+    "description": "Study abroad at Justice Institute of British Columbia located in Canada"
+  },
+  {
+    "name": "University Of British Columbia - Okanagan Campus",
+    "url": "https://www.idp.com/universities-and-colleges/university-of-british-columbia-okanagan-campus/IID-CA-03522/",
+    "description": "Study abroad at University Of British Columbia - Okanagan Campus located in Canada"
+  },
+  {
+    "name": "Fanshawe College",
+    "url": "https://www.idp.com/universities-and-colleges/fanshawe-college/IID-CA-00725/",
+    "description": "Study abroad at Fanshawe College located in Canada"
+  },
+  {
+    "name": "University of Northern British Columbia",
+    "url": "https://www.idp.com/universities-and-colleges/university-of-northern-british-columbia/IID-CA-00760/",
+    "description": "Study abroad at University of Northern British Columbia located in Canada"
+  },
+  {
+    "name": "Bishop's University",
+    "url": "https://www.idp.com/universities-and-colleges/bishop's-university/IID-CA-00714/",
+    "description": "Study abroad at Bishop's University located in Canada"
+  },
+  {
+    "name": "Confederation College of Applied Arts and Technology",
+    "url": "https://www.idp.com/universities-and-colleges/confederation-college-of-applied-arts-and-technology/IID-CA-00723/",
+    "description": "Study abroad at Confederation College of Applied Arts and Technology located in Canada"
+  },
+  {
+    "name": "Royal Roads University",
+    "url": "https://www.idp.com/universities-and-colleges/royal-roads-university/IID-CA-00648/",
+    "description": "Study abroad at Royal Roads University located in Canada"
+  },
+  {
+    "name": "Medicine Hat College",
+    "url": "https://www.idp.com/universities-and-colleges/medicine-hat-college/IID-CA-03588/",
+    "description": "Study abroad at Medicine Hat College located in Canada"
+  },
+  {
+    "name": "Mount Allison University",
+    "url": "https://www.idp.com/universities-and-colleges/mount-allison-university/IID-CA-01093/",
+    "description": "Study abroad at Mount Allison University located in Canada"
+  },
+  {
+    "name": "International Language Academy of Canada (ILAC)",
+    "url": "https://www.idp.com/universities-and-colleges/international-language-academy-of-canada-(ilac)/IID-CA-00913/",
+    "description": "Study abroad at International Language Academy of Canada (ILAC) located in Canada"
+  },
+  {
+    "name": "University of Niagara Falls",
+    "url": "https://www.idp.com/universities-and-colleges/university-of-niagara-falls/IID-CA-01569/",
+    "description": "Study abroad at University of Niagara Falls located in Canada"
+  },
+  {
+    "name": "Nipissing University",
+    "url": "https://www.idp.com/universities-and-colleges/nipissing-university/IID-CA-01325/",
+    "description": "Study abroad at Nipissing University located in Canada"
+  },
+  {
+    "name": "University of Windsor",
+    "url": "https://www.idp.com/universities-and-colleges/university-of-windsor/IID-CA-00767/",
+    "description": "Study abroad at University of Windsor located in Canada"
+  },
+  {
+    "name": "Sault College",
+    "url": "https://www.idp.com/universities-and-colleges/sault-college/IID-CA-01063/",
+    "description": "Study abroad at Sault College located in Canada"
+  },
+  {
+    "name": "MacEwan University",
+    "url": "https://www.idp.com/universities-and-colleges/macewan-university/IID-CA-00729/",
+    "description": "Study abroad at MacEwan University located in Canada"
+  },
+  {
+    "name": "Lakeland College",
+    "url": "https://www.idp.com/universities-and-colleges/lakeland-college/IID-CA-01062/",
+    "description": "Study abroad at Lakeland College located in Canada"
+  },
+  {
+    "name": "North Island College",
+    "url": "https://www.idp.com/universities-and-colleges/north-island-college/IID-CA-01011/",
+    "description": "Study abroad at North Island College located in Canada"
+  },
+  {
+    "name": "Aviron Quebec College Technique",
+    "url": "https://www.idp.com/universities-and-colleges/aviron-quebec-college-technique/IID-CA-01351/",
+    "description": "Study abroad at Aviron Quebec College Technique located in Canada"
+  },
+  {
+    "name": "Selkirk College",
+    "url": "https://www.idp.com/universities-and-colleges/selkirk-college/IID-CA-00747/",
+    "description": "Study abroad at Selkirk College located in Canada"
+  },
+  {
+    "name": "Thompson Rivers University",
+    "url": "https://www.idp.com/universities-and-colleges/thompson-rivers-university/IID-CA-00752/",
+    "description": "Study abroad at Thompson Rivers University located in Canada"
+  },
+  {
+    "name": "University of Manitoba",
+    "url": "https://www.idp.com/universities-and-colleges/university-of-manitoba/IID-CA-00758/",
+    "description": "Study abroad at University of Manitoba located in Canada"
+  },
+  {
+    "name": "Simon Fraser University",
+    "url": "https://www.idp.com/universities-and-colleges/simon-fraser-university/IID-CA-00749/",
+    "description": "Study abroad at Simon Fraser University located in Canada"
+  },
+  {
+    "name": "The  Professional Flight Centre",
+    "url": "https://www.idp.com/universities-and-colleges/the-professional-flight-centre/IID-CA-04758/",
+    "description": "Study abroad at The  Professional Flight Centre located in Canada"
+  },
+  {
+    "name": "St Lawrence College",
+    "url": "https://www.idp.com/universities-and-colleges/st-lawrence-college/IID-CA-00649/",
+    "description": "Study abroad at St Lawrence College located in Canada"
+  },
+  {
+    "name": "Ontario Tech University",
+    "url": "https://www.idp.com/universities-and-colleges/ontario-tech-university/IID-CA-00694/",
+    "description": "Study abroad at Ontario Tech University located in Canada"
+  },
+  {
+    "name": "Cape Breton University",
+    "url": "https://www.idp.com/universities-and-colleges/cape-breton-university/IID-CA-00921/",
+    "description": "Study abroad at Cape Breton University located in Canada"
+  },
+  {
+    "name": "Nova Scotia College of Art and Design (NSCAD) University",
+    "url": "https://www.idp.com/universities-and-colleges/nova-scotia-college-of-art-and-design-(nscad)-university/IID-CA-01009/",
+    "description": "Study abroad at Nova Scotia College of Art and Design (NSCAD) University located in Canada"
+  },
+  {
+    "name": "University of New Brunswick",
+    "url": "https://www.idp.com/universities-and-colleges/university-of-new-brunswick/IID-CA-00759/",
+    "description": "Study abroad at University of New Brunswick located in Canada"
+  },
+  {
+    "name": "Humber Polytechnic",
+    "url": "https://www.idp.com/universities-and-colleges/humber-polytechnic/IID-CA-00730/",
+    "description": "Study abroad at Humber Polytechnic located in Canada"
+  },
+  {
+    "name": "Olds College of Agriculture & Technology",
+    "url": "https://www.idp.com/universities-and-colleges/olds-college-of-agriculture-technology/IID-CA-03489/",
+    "description": "Study abroad at Olds College of Agriculture & Technology located in Canada"
+  },
+  {
+    "name": "Cegep de la Gaspesie et des Iles",
+    "url": "https://www.idp.com/universities-and-colleges/cegep-de-la-gaspesie-et-des-iles/IID-CA-01108/",
+    "description": "Study abroad at Cegep de la Gaspesie et des Iles located in Canada"
+  },
+  {
+    "name": "Toronto Film School",
+    "url": "https://www.idp.com/universities-and-colleges/toronto-film-school/IID-CA-01071/",
+    "description": "Study abroad at Toronto Film School located in Canada"
+  },
+  {
+    "name": "Emily Carr University of Art and Design",
+    "url": "https://www.idp.com/universities-and-colleges/emily-carr-university-of-art-and-design/IID-CA-00724/",
+    "description": "Study abroad at Emily Carr University of Art and Design located in Canada"
+  },
+  {
+    "name": "Laurentian University",
+    "url": "https://www.idp.com/universities-and-colleges/laurentian-university/IID-CA-00645/",
+    "description": "Study abroad at Laurentian University located in Canada"
+  },
+  {
+    "name": "Queen's University",
+    "url": "https://www.idp.com/universities-and-colleges/queen's-university/IID-CA-00744/",
+    "description": "Study abroad at Queen's University located in Canada"
+  },
+  {
+    "name": "McGill University (Continuing Education)",
+    "url": "https://www.idp.com/universities-and-colleges/mcgill-university-(continuing-education)/IID-CA-00734/",
+    "description": "Study abroad at McGill University (Continuing Education) located in Canada"
+  },
+  {
+    "name": "International College of Manitoba (Navitas) at University of Manitoba",
+    "url": "https://www.idp.com/universities-and-colleges/international-college-of-manitoba-(navitas)-at-university-of-manitoba/IID-CA-00740/",
+    "description": "Study abroad at International College of Manitoba (Navitas) at University of Manitoba located in Canada"
+  },
+  {
+    "name": "Canadore College",
+    "url": "https://www.idp.com/universities-and-colleges/canadore-college/IID-CA-00716/",
+    "description": "Study abroad at Canadore College located in Canada"
+  },
+  {
+    "name": "Niagara College",
+    "url": "https://www.idp.com/universities-and-colleges/niagara-college/IID-CA-00741/",
+    "description": "Study abroad at Niagara College located in Canada"
+  },
+  {
+    "name": "Saskatchewan Colleges",
+    "url": "https://www.idp.com/universities-and-colleges/saskatchewan-colleges/IID-CA-03861/",
+    "description": "Study abroad at Saskatchewan Colleges located in Canada"
+  },
+  {
+    "name": "St. Clair College",
+    "url": "https://www.idp.com/universities-and-colleges/st.-clair-college/IID-CA-01010/",
+    "description": "Study abroad at St. Clair College located in Canada"
+  },
+  {
+    "name": "Georgian College",
+    "url": "https://www.idp.com/universities-and-colleges/georgian-college/IID-CA-00728/",
+    "description": "Study abroad at Georgian College located in Canada"
+  },
+  {
+    "name": "Northern Lights College",
+    "url": "https://www.idp.com/universities-and-colleges/northern-lights-college/IID-CA-01056/",
+    "description": "Study abroad at Northern Lights College located in Canada"
+  },
+  {
+    "name": "Vancouver Community College",
+    "url": "https://www.idp.com/universities-and-colleges/vancouver-community-college/IID-CA-01064/",
+    "description": "Study abroad at Vancouver Community College located in Canada"
+  },
+  {
+    "name": "Seneca Polytechnic",
+    "url": "https://www.idp.com/universities-and-colleges/seneca-polytechnic/IID-CA-00652/",
+    "description": "Study abroad at Seneca Polytechnic located in Canada"
+  },
+  {
+    "name": "University of Regina",
+    "url": "https://www.idp.com/universities-and-colleges/university-of-regina/IID-CA-00762/",
+    "description": "Study abroad at University of Regina located in Canada"
+  },
+  {
+    "name": "International Business University",
+    "url": "https://www.idp.com/universities-and-colleges/international-business-university/IID-CA-03931/",
+    "description": "Study abroad at International Business University located in Canada"
+  },
+  {
+    "name": "Toronto Metropolitan University",
+    "url": "https://www.idp.com/universities-and-colleges/toronto-metropolitan-university/IID-CA-00650/",
+    "description": "Study abroad at Toronto Metropolitan University located in Canada"
+  },
+  {
+    "name": "The University of Winnipeg",
+    "url": "https://www.idp.com/universities-and-colleges/the-university-of-winnipeg/IID-CA-00641/",
+    "description": "Study abroad at The University of Winnipeg located in Canada"
+  },
+  {
+    "name": "Vancouver Film School",
+    "url": "https://www.idp.com/universities-and-colleges/vancouver-film-school/IID-CA-01066/",
+    "description": "Study abroad at Vancouver Film School located in Canada"
+  },
+  {
+    "name": "George Brown College",
+    "url": "https://www.idp.com/universities-and-colleges/george-brown-college/IID-CA-00727/",
+    "description": "Study abroad at George Brown College located in Canada"
+  },
+  {
+    "name": "Fairleigh Dickinson University – Vancouver Campus",
+    "url": "https://www.idp.com/universities-and-colleges/fairleigh-dickinson-university-–-vancouver-campus/IID-CA-00866/",
+    "description": "Study abroad at Fairleigh Dickinson University – Vancouver Campus located in Canada"
+  },
+  {
+    "name": "The Michener Institute for Applied Health Science",
+    "url": "https://www.idp.com/universities-and-colleges/the-michener-institute-for-applied-health-science/IID-CA-00750/",
+    "description": "Study abroad at The Michener Institute for Applied Health Science located in Canada"
+  },
+  {
+    "name": "New York Institute of Technology - Vancouver",
+    "url": "https://www.idp.com/universities-and-colleges/new-york-institute-of-technology-vancouver/IID-CA-01097/",
+    "description": "Study abroad at New York Institute of Technology - Vancouver located in Canada"
+  },
+  {
+    "name": "King's University College at Western University",
+    "url": "https://www.idp.com/universities-and-colleges/king's-university-college-at-western-university/IID-CA-00849/",
+    "description": "Study abroad at King's University College at Western University located in Canada"
+  },
+  {
+    "name": "EC English Language Centres - Canada",
+    "url": "https://www.idp.com/universities-and-colleges/ec-english-language-centres-canada/IID-CA-00915/",
+    "description": "Study abroad at EC English Language Centres - Canada located in Canada"
+  },
+  {
+    "name": "Toronto Metropolitan University International College",
+    "url": "https://www.idp.com/universities-and-colleges/toronto-metropolitan-university-international-college/IID-CA-01319/",
+    "description": "Study abroad at Toronto Metropolitan University International College located in Canada"
+  },
+  {
+    "name": "College of the Rockies",
+    "url": "https://www.idp.com/universities-and-colleges/college-of-the-rockies/IID-CA-01061/",
+    "description": "Study abroad at College of the Rockies located in Canada"
+  },
+  {
+    "name": "Kwantlen Polytechnic University",
+    "url": "https://www.idp.com/universities-and-colleges/kwantlen-polytechnic-university/IID-CA-00731/",
+    "description": "Study abroad at Kwantlen Polytechnic University located in Canada"
+  },
+  {
+    "name": "Georgian College at ILAC",
+    "url": "https://www.idp.com/universities-and-colleges/georgian-college-at-ilac/IID-CA-01345/",
+    "description": "Study abroad at Georgian College at ILAC located in Canada"
+  },
+  {
+    "name": "Lakehead University",
+    "url": "https://www.idp.com/universities-and-colleges/lakehead-university/IID-CA-00732/",
+    "description": "Study abroad at Lakehead University located in Canada"
+  },
+  {
+    "name": "University of Victoria - Kaplan",
+    "url": "https://www.idp.com/universities-and-colleges/university-of-victoria-kaplan/IID-CA-01544/",
+    "description": "Study abroad at University of Victoria - Kaplan located in Canada"
+  },
+  {
+    "name": "Oxford International Education Group - North America",
+    "url": "https://www.idp.com/universities-and-colleges/oxford-international-education-group-north-america/IID-CA-02869/",
+    "description": "Study abroad at Oxford International Education Group - North America located in Canada"
+  },
+  {
+    "name": "Western University",
+    "url": "https://www.idp.com/universities-and-colleges/western-university/IID-CA-00766/",
+    "description": "Study abroad at Western University located in Canada"
+  },
+  {
+    "name": "Carleton University",
+    "url": "https://www.idp.com/universities-and-colleges/carleton-university/IID-CA-00718/",
+    "description": "Study abroad at Carleton University located in Canada"
+  },
+  {
+    "name": "NorQuest College",
+    "url": "https://www.idp.com/universities-and-colleges/norquest-college/IID-CA-01112/",
+    "description": "Study abroad at NorQuest College located in Canada"
+  },
+  {
+    "name": "Centennial College of Applied Arts and Technology",
+    "url": "https://www.idp.com/universities-and-colleges/centennial-college-of-applied-arts-and-technology/IID-CA-00719/",
+    "description": "Study abroad at Centennial College of Applied Arts and Technology located in Canada"
+  },
+  {
+    "name": "Oxford International Halifax",
+    "url": "https://www.idp.com/universities-and-colleges/oxford-international-halifax/IID-CA-00887/",
+    "description": "Study abroad at Oxford International Halifax located in Canada"
+  },
+  {
+    "name": "Coast Mountain College",
+    "url": "https://www.idp.com/universities-and-colleges/coast-mountain-college/IID-CA-01058/",
+    "description": "Study abroad at Coast Mountain College located in Canada"
+  },
+  {
+    "name": "Northern College",
+    "url": "https://www.idp.com/universities-and-colleges/northern-college/IID-CA-01043/",
+    "description": "Study abroad at Northern College located in Canada"
+  },
+  {
+    "name": "Douglas College",
+    "url": "https://www.idp.com/universities-and-colleges/douglas-college/IID-CA-00993/",
+    "description": "Study abroad at Douglas College located in Canada"
+  },
+  {
+    "name": "Crandall University",
+    "url": "https://www.idp.com/universities-and-colleges/crandall-university/IID-CA-01177/",
+    "description": "Study abroad at Crandall University located in Canada"
+  },
+  {
+    "name": "Brock University",
+    "url": "https://www.idp.com/universities-and-colleges/brock-university/IID-CA-00653/",
+    "description": "Study abroad at Brock University located in Canada"
+  },
+  {
+    "name": "Columbia College",
+    "url": "https://www.idp.com/universities-and-colleges/columbia-college/IID-CA-00720/",
+    "description": "Study abroad at Columbia College located in Canada"
+  },
+  {
+    "name": "Tamwood - Canada",
+    "url": "https://www.idp.com/universities-and-colleges/tamwood-canada/IID-CA-01522/",
+    "description": "Study abroad at Tamwood - Canada located in Canada"
+  },
+  {
+    "name": "University of Montreal",
+    "url": "https://www.idp.com/universities-and-colleges/university-of-montreal/IID-CA-04573/",
+    "description": "Study abroad at University of Montreal located in Canada"
+  },
+  {
+    "name": "Sheridan College Institute of Technology and Advanced Learning",
+    "url": "https://www.idp.com/universities-and-colleges/sheridan-college-institute-of-technology-and-advanced-learning/IID-CA-00748/",
+    "description": "Study abroad at Sheridan College Institute of Technology and Advanced Learning located in Canada"
+  },
+  {
+    "name": "Wilfrid Laurier University",
+    "url": "https://www.idp.com/universities-and-colleges/wilfrid-laurier-university/IID-CA-00647/",
+    "description": "Study abroad at Wilfrid Laurier University located in Canada"
+  },
+  {
+    "name": "University of Guelph",
+    "url": "https://www.idp.com/universities-and-colleges/university-of-guelph/IID-CA-00757/",
+    "description": "Study abroad at University of Guelph located in Canada"
+  },
+  {
+    "name": "Dawson College",
+    "url": "https://www.idp.com/universities-and-colleges/dawson-college/IID-CA-01103/",
+    "description": "Study abroad at Dawson College located in Canada"
+  },
+  {
+    "name": "Northwestern Polytechnic",
+    "url": "https://www.idp.com/universities-and-colleges/northwestern-polytechnic/IID-CA-01402/",
+    "description": "Study abroad at Northwestern Polytechnic located in Canada"
+  },
+  {
+    "name": "Holland College",
+    "url": "https://www.idp.com/universities-and-colleges/holland-college/IID-CA-01109/",
+    "description": "Study abroad at Holland College located in Canada"
+  },
+  {
+    "name": "Canadian College of English Language",
+    "url": "https://www.idp.com/universities-and-colleges/canadian-college-of-english-language/IID-CA-00889/",
+    "description": "Study abroad at Canadian College of English Language located in Canada"
+  },
+  {
+    "name": "Kaplan - University of Alberta",
+    "url": "https://www.idp.com/universities-and-colleges/kaplan-university-of-alberta/IID-CA-02500/",
+    "description": "Study abroad at Kaplan - University of Alberta located in Canada"
+  },
+  {
+    "name": "University of Ottawa",
+    "url": "https://www.idp.com/universities-and-colleges/university-of-ottawa/IID-CA-00761/",
+    "description": "Study abroad at University of Ottawa located in Canada"
+  },
+  {
+    "name": "University of Guelph-Humber",
+    "url": "https://www.idp.com/universities-and-colleges/university-of-guelph-humber/IID-CA-01059/",
+    "description": "Study abroad at University of Guelph-Humber located in Canada"
+  },
+  {
+    "name": "Trinity Western University",
+    "url": "https://www.idp.com/universities-and-colleges/trinity-western-university/IID-CA-00753/",
+    "description": "Study abroad at Trinity Western University located in Canada"
+  },
+  {
+    "name": "Capilano University",
+    "url": "https://www.idp.com/universities-and-colleges/capilano-university/IID-CA-00717/",
+    "description": "Study abroad at Capilano University located in Canada"
+  },
+  {
+    "name": "Cambrian College",
+    "url": "https://www.idp.com/universities-and-colleges/cambrian-college/IID-CA-00715/",
+    "description": "Study abroad at Cambrian College located in Canada"
+  },
+  {
+    "name": "Loyalist College of Applied Arts and Technology",
+    "url": "https://www.idp.com/universities-and-colleges/loyalist-college-of-applied-arts-and-technology/IID-CA-00695/",
+    "description": "Study abroad at Loyalist College of Applied Arts and Technology located in Canada"
+  },
+  {
+    "name": "Trebas Institute",
+    "url": "https://www.idp.com/universities-and-colleges/trebas-institute/IID-CA-01340/",
+    "description": "Study abroad at Trebas Institute located in Canada"
+  },
+  {
+    "name": "Huron University College",
+    "url": "https://www.idp.com/universities-and-colleges/huron-university-college/IID-CA-01608/",
+    "description": "Study abroad at Huron University College located in Canada"
+  },
+  {
+    "name": "Conestoga College",
+    "url": "https://www.idp.com/universities-and-colleges/conestoga-college/IID-CA-00722/",
+    "description": "Study abroad at Conestoga College located in Canada"
+  },
+  {
+    "name": "Dalhousie University",
+    "url": "https://www.idp.com/universities-and-colleges/dalhousie-university/IID-CA-00644/",
+    "description": "Study abroad at Dalhousie University located in Canada"
+  },
+  {
+    "name": "LaSalle College Vancouver",
+    "url": "https://www.idp.com/universities-and-colleges/lasalle-college-vancouver/IID-CA-01413/",
+    "description": "Study abroad at LaSalle College Vancouver located in Canada"
+  },
+  {
+    "name": "University of Toronto",
+    "url": "https://www.idp.com/universities-and-colleges/university-of-toronto/IID-CA-00764/",
+    "description": "Study abroad at University of Toronto located in Canada"
+  },
+  {
+    "name": "Concordia University",
+    "url": "https://www.idp.com/universities-and-colleges/concordia-university/IID-CA-00721/",
+    "description": "Study abroad at Concordia University located in Canada"
+  },
+  {
+    "name": "ILAC International College",
+    "url": "https://www.idp.com/universities-and-colleges/ilac-international-college/IID-CA-01346/",
+    "description": "Study abroad at ILAC International College located in Canada"
+  },
+  {
+    "name": "Greystone College",
+    "url": "https://www.idp.com/universities-and-colleges/greystone-college/IID-CA-01029/",
+    "description": "Study abroad at Greystone College located in Canada"
+  },
+  {
+    "name": "Vanier College",
+    "url": "https://www.idp.com/universities-and-colleges/vanier-college/IID-CA-01105/",
+    "description": "Study abroad at Vanier College located in Canada"
+  },
+  {
+    "name": "Alberta University of the Arts",
+    "url": "https://www.idp.com/universities-and-colleges/alberta-university-of-the-arts/IID-CA-02590/",
+    "description": "Study abroad at Alberta University of the Arts located in Canada"
+  },
+  {
+    "name": "Hanson College of Business, Health, and Technology",
+    "url": "https://www.idp.com/universities-and-colleges/hanson-college-of-business-health-and-technology/IID-CA-01538/",
+    "description": "Study abroad at Hanson College of Business, Health, and Technology located in Canada"
+  },
+  {
+    "name": "Alexander College",
+    "url": "https://www.idp.com/universities-and-colleges/alexander-college/IID-CA-01201/",
+    "description": "Study abroad at Alexander College located in Canada"
+  },
+  {
+    "name": "Centre of English Studies Toronto",
+    "url": "https://www.idp.com/universities-and-colleges/centre-of-english-studies-toronto/IID-CA-01184/",
+    "description": "Study abroad at Centre of English Studies Toronto located in Canada"
+  },
+  {
+    "name": "Yorkville University",
+    "url": "https://www.idp.com/universities-and-colleges/yorkville-university/IID-CA-01556/",
+    "description": "Study abroad at Yorkville University located in Canada"
+  },
+  {
+    "name": "Western International College",
+    "url": "https://www.idp.com/universities-and-colleges/western-international-college/IID-CA-03894/",
+    "description": "Study abroad at Western International College located in Canada"
+  },
+  {
+    "name": "Vancouver Island University",
+    "url": "https://www.idp.com/universities-and-colleges/vancouver-island-university/IID-CA-00768/",
+    "description": "Study abroad at Vancouver Island University located in Canada"
+  },
+  {
+    "name": "Portage College",
+    "url": "https://www.idp.com/universities-and-colleges/portage-college/IID-CA-02632/",
+    "description": "Study abroad at Portage College located in Canada"
+  },
+  {
+    "name": "Lambton College",
+    "url": "https://www.idp.com/universities-and-colleges/lambton-college/IID-CA-01004/",
+    "description": "Study abroad at Lambton College located in Canada"
+  },
+  {
+    "name": "University of Waterloo",
+    "url": "https://www.idp.com/universities-and-colleges/university-of-waterloo/IID-CA-00667/",
+    "description": "Study abroad at University of Waterloo located in Canada"
+  },
+  {
+    "name": "Okanagan College",
+    "url": "https://www.idp.com/universities-and-colleges/okanagan-college/IID-CA-01054/",
+    "description": "Study abroad at Okanagan College located in Canada"
+  },
+  {
+    "name": "British Columbia Institute of Technology (BCIT)",
+    "url": "https://www.idp.com/universities-and-colleges/british-columbia-institute-of-technology-(bcit)/IID-CA-00907/",
+    "description": "Study abroad at British Columbia Institute of Technology (BCIT) located in Canada"
+  },
+  {
+    "name": "LaSalle College Montreal",
+    "url": "https://www.idp.com/universities-and-colleges/lasalle-college-montreal/IID-CA-01005/",
+    "description": "Study abroad at LaSalle College Montreal located in Canada"
+  },
+  {
+    "name": "Red River College",
+    "url": "https://www.idp.com/universities-and-colleges/red-river-college/IID-CA-00745/",
+    "description": "Study abroad at Red River College located in Canada"
+  },
+  {
+    "name": "Millennium Aviation",
+    "url": "https://www.idp.com/universities-and-colleges/millennium-aviation/IID-CA-04688/",
+    "description": "Study abroad at Millennium Aviation located in Canada"
+  },
+  {
+    "name": "Algonquin College",
+    "url": "https://www.idp.com/universities-and-colleges/algonquin-college/IID-CA-00698/",
+    "description": "Study abroad at Algonquin College located in Canada"
+  },
+  {
+    "name": "McGill University",
+    "url": "https://www.idp.com/universities-and-colleges/mcgill-university/IID-CA-04241/",
+    "description": "Study abroad at McGill University located in Canada"
+  },
+  {
+    "name": "University of Saskatchewan",
+    "url": "https://www.idp.com/universities-and-colleges/university-of-saskatchewan/IID-CA-00763/",
+    "description": "Study abroad at University of Saskatchewan located in Canada"
+  },
+  {
+    "name": "Bow Valley College",
+    "url": "https://www.idp.com/universities-and-colleges/bow-valley-college/IID-CA-01060/",
+    "description": "Study abroad at Bow Valley College located in Canada"
+  },
+  {
+    "name": "Saint Mary's University",
+    "url": "https://www.idp.com/universities-and-colleges/saint-mary's-university/IID-CA-00746/",
+    "description": "Study abroad at Saint Mary's University located in Canada"
+  },
+  {
+    "name": "Concordia University of Edmonton",
+    "url": "https://www.idp.com/universities-and-colleges/concordia-university-of-edmonton/IID-CA-01065/",
+    "description": "Study abroad at Concordia University of Edmonton located in Canada"
+  },
+  {
+    "name": "St. Francis Xavier University",
+    "url": "https://www.idp.com/universities-and-colleges/st.-francis-xavier-university/IID-CA-00646/",
+    "description": "Study abroad at St. Francis Xavier University located in Canada"
+  },
+  {
+    "name": "Marianopolis College",
+    "url": "https://www.idp.com/universities-and-colleges/marianopolis-college/IID-CA-01106/",
+    "description": "Study abroad at Marianopolis College located in Canada"
+  },
+  {
+    "name": "Kaplan International English",
+    "url": "https://www.idp.com/universities-and-colleges/kaplan-international-english/IID-CA-00743/",
+    "description": "Study abroad at Kaplan International English located in Canada"
+  },
+  {
+    "name": "Fraser International College (FIC)",
+    "url": "https://www.idp.com/universities-and-colleges/fraser-international-college-(fic)/IID-CA-00739/",
+    "description": "Study abroad at Fraser International College (FIC) located in Canada"
+  },
+  {
+    "name": "University of Lethbridge International College",
+    "url": "https://www.idp.com/universities-and-colleges/university-of-lethbridge-international-college/IID-CA-01553/",
+    "description": "Study abroad at University of Lethbridge International College located in Canada"
+  },
+  {
+    "name": "Coquitlam College",
+    "url": "https://www.idp.com/universities-and-colleges/coquitlam-college/IID-CA-01023/",
+    "description": "Study abroad at Coquitlam College located in Canada"
+  },
+  {
+    "name": "University of Prince Edward Island",
+    "url": "https://www.idp.com/universities-and-colleges/university-of-prince-edward-island/IID-CA-00638/",
+    "description": "Study abroad at University of Prince Edward Island located in Canada"
+  },
+  {
+    "name": "University of Alberta",
+    "url": "https://www.idp.com/universities-and-colleges/university-of-alberta/IID-CA-00754/",
+    "description": "Study abroad at University of Alberta located in Canada"
+  },
+  {
+    "name": "University of the Fraser Valley",
+    "url": "https://www.idp.com/universities-and-colleges/university-of-the-fraser-valley/IID-CA-00756/",
+    "description": "Study abroad at University of the Fraser Valley located in Canada"
+  },
+  {
+    "name": "Sprott Shaw College",
+    "url": "https://www.idp.com/universities-and-colleges/sprott-shaw-college/IID-CA-04100/",
+    "description": "Study abroad at Sprott Shaw College located in Canada"
+  },
+  {
+    "name": "Stenberg College",
+    "url": "https://www.idp.com/universities-and-colleges/stenberg-college/IID-CA-01198/",
+    "description": "Study abroad at Stenberg College located in Canada"
+  },
+  {
+    "name": "University of Calgary",
+    "url": "https://www.idp.com/universities-and-colleges/university-of-calgary/IID-CA-00755/",
+    "description": "Study abroad at University of Calgary located in Canada"
+  },
+  {
+    "name": "HEC Montreal",
+    "url": "https://www.idp.com/universities-and-colleges/hec-montreal/IID-CA-04607/",
+    "description": "Study abroad at HEC Montreal located in Canada"
+  },
+  {
+    "name": "University of Lethbridge",
+    "url": "https://www.idp.com/universities-and-colleges/university-of-lethbridge/IID-CA-01095/",
+    "description": "Study abroad at University of Lethbridge located in Canada"
+  },
+  {
+    "name": "Manitoba Institute of Trades and Technology",
+    "url": "https://www.idp.com/universities-and-colleges/manitoba-institute-of-trades-and-technology/IID-CA-01114/",
+    "description": "Study abroad at Manitoba Institute of Trades and Technology located in Canada"
+  },
+  {
+    "name": "McMaster University",
+    "url": "https://www.idp.com/universities-and-colleges/mcmaster-university/IID-CA-00735/",
+    "description": "Study abroad at McMaster University located in Canada"
+  },
+  {
+    "name": "OCAD University",
+    "url": "https://www.idp.com/universities-and-colleges/ocad-university/IID-CA-00742/",
+    "description": "Study abroad at OCAD University located in Canada"
+  },
+  {
+    "name": "SAIT Polytechnic",
+    "url": "https://www.idp.com/universities-and-colleges/sait-polytechnic/IID-CA-01072/",
+    "description": "Study abroad at SAIT Polytechnic located in Canada"
+  },
+  {
+    "name": "John Abbott College",
+    "url": "https://www.idp.com/universities-and-colleges/john-abbott-college/IID-CA-01104/",
+    "description": "Study abroad at John Abbott College located in Canada"
+  },
+  {
+    "name": "Algoma University",
+    "url": "https://www.idp.com/universities-and-colleges/algoma-university/IID-CA-00713/",
+    "description": "Study abroad at Algoma University located in Canada"
+  },
+  {
+    "name": "Ascent College",
+    "url": "https://www.idp.com/universities-and-colleges/ascent-college/IID-CA-01331/",
+    "description": "Study abroad at Ascent College located in Canada"
+  },
+  {
+    "name": "Memorial University of Newfoundland",
+    "url": "https://www.idp.com/universities-and-colleges/memorial-university-of-newfoundland/IID-CA-00736/",
+    "description": "Study abroad at Memorial University of Newfoundland located in Canada"
+  },
+  {
+    "name": "Sterling College",
+    "url": "https://www.idp.com/universities-and-colleges/sterling-college/IID-CA-01293/",
+    "description": "Study abroad at Sterling College located in Canada"
+  },
+  {
+    "name": "Alpha College",
+    "url": "https://www.idp.com/universities-and-colleges/alpha-college/IID-CA-01205/",
+    "description": "Study abroad at Alpha College located in Canada"
+  },
+  {
+    "name": "Langara College",
+    "url": "https://www.idp.com/universities-and-colleges/langara-college/IID-CA-00733/",
+    "description": "Study abroad at Langara College located in Canada"
+  },
+  {
+    "name": "Durham College",
+    "url": "https://www.idp.com/universities-and-colleges/durham-college/IID-CA-00643/",
+    "description": "Study abroad at Durham College located in Canada"
+  },
+  {
+    "name": "ILSC - Canada",
+    "url": "https://www.idp.com/universities-and-colleges/ilsc-canada/IID-CA-00711/",
+    "description": "Study abroad at ILSC - Canada located in Canada"
+  },
+  {
+    "name": "University Canada West",
+    "url": "https://www.idp.com/universities-and-colleges/university-canada-west/IID-CA-01032/",
+    "description": "Study abroad at University Canada West located in Canada"
+  },
+  {
+    "name": "Lethbridge Polytechnic (formerly Lethbridge College)",
+    "url": "https://www.idp.com/universities-and-colleges/lethbridge-polytechnic-(formerly-lethbridge-college)/IID-CA-03928/",
+    "description": "Study abroad at Lethbridge Polytechnic (formerly Lethbridge College) located in Canada"
+  },
+  {
+    "name": "Mohawk College of Applied Arts and Technology",
+    "url": "https://www.idp.com/universities-and-colleges/mohawk-college-of-applied-arts-and-technology/IID-CA-00737/",
+    "description": "Study abroad at Mohawk College of Applied Arts and Technology located in Canada"
+  },
+  {
+    "name": "St. Thomas University",
+    "url": "https://www.idp.com/universities-and-colleges/st.-thomas-university/IID-CA-02733/",
+    "description": "Study abroad at St. Thomas University located in Canada"
+  },
+  {
+    "name": "Northern Alberta Institute of Technology",
+    "url": "https://www.idp.com/universities-and-colleges/northern-alberta-institute-of-technology/IID-CA-00651/",
+    "description": "Study abroad at Northern Alberta Institute of Technology located in Canada"
+  },
+  {
+    "name": "Red Deer Polytechnic",
+    "url": "https://www.idp.com/universities-and-colleges/red-deer-polytechnic/IID-CA-01282/",
+    "description": "Study abroad at Red Deer Polytechnic located in Canada"
+  },
+  {
+    "name": "Fleming College",
+    "url": "https://www.idp.com/universities-and-colleges/fleming-college/IID-CA-00726/",
+    "description": "Study abroad at Fleming College located in Canada"
+  },
+  {
+    "name": "University of British Columbia",
+    "url": "https://www.idp.com/universities-and-colleges/university-of-british-columbia/IID-CA-00751/",
+    "description": "Study abroad at University of British Columbia located in Canada"
+  },
+  {
+    "name": "Global Village",
+    "url": "https://www.idp.com/universities-and-colleges/global-village/IID-CA-00868/",
+    "description": "Study abroad at Global Village located in Canada"
+  },
+  {
+    "name": "York School of Continuing Studies",
+    "url": "https://www.idp.com/universities-and-colleges/york-school-of-continuing-studies/IID-CA-02503/",
+    "description": "Study abroad at York School of Continuing Studies located in Canada"
+  },
+  {
+    "name": "Northeastern University - Canada",
+    "url": "https://www.idp.com/universities-and-colleges/northeastern-university-canada/IID-CA-01602/",
+    "description": "Study abroad at Northeastern University - Canada located in Canada"
+  },
+  {
+    "name": "Kaplan Canada",
+    "url": "https://www.idp.com/universities-and-colleges/kaplan-canada/IID-CA-02516/",
+    "description": "Study abroad at Kaplan Canada located in Canada"
+  },
+  {
+    "name": "Navitas Canada",
+    "url": "https://www.idp.com/universities-and-colleges/navitas-canada/IID-CA-01594/",
+    "description": "Study abroad at Navitas Canada located in Canada"
+  }
+]

@@ -144,6 +144,13 @@ export default function ServicesScreen() {
       const { error: initError } = await initPaymentSheet({
         paymentIntentClientSecret: clientSecret,
         merchantDisplayName: 'Studplex',
+        googlePay: {
+          merchantCountryCode: 'US',
+          testEnv: false,
+        },
+        applePay: {
+          merchantCountryCode: 'US',
+        },
         style: colorScheme === 'dark' ? 'alwaysDark' : 'alwaysLight',
         defaultBillingDetails: {
           name: 'Student User',

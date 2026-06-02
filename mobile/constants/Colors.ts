@@ -1,5 +1,5 @@
-const tintColorLight = '#ff8000';
-const tintColorDark = '#ccff00'; // Neon Lime Green
+const tintColorLight = '#6366f1'; // Premium Indigo
+const tintColorDark = '#818cf8';  // Premium Soft Indigo
 
 export default {
   light: {
@@ -10,20 +10,20 @@ export default {
     tabIconSelected: tintColorLight,
     card: '#ffffff',
     border: '#e1e5eb',
-    neonLime: '#ccff00',
-    neonOrange: '#ff5e00',
+    neonLime: '#ccff00',  // Corrected to real neon lime color
+    neonOrange: '#ff8a65', // Softer coral-orange accent
     mutedText: '#6b7280',
   },
   dark: {
     text: '#ffffff',
-    background: '#0a0c10', // Deep black/slate background
+    background: '#000000', // Premium pitch-black graded background
     tint: tintColorDark,
     tabIconDefault: '#4e5564',
     tabIconSelected: tintColorDark,
-    card: '#131620', // Darker slate card background
-    border: '#1f2433', // Subtle elegant border
-    neonLime: '#ccff00',
-    neonOrange: '#ff6b00', // Vibrant neon orange
+    card: '#121620', // Premium slate card background
+    border: '#1e2333', // Sleek high-contrast border
+    neonLime: '#ccff00',  // Corrected to real neon lime color
+    neonOrange: '#ff8a65', // Softer coral-orange accent
     mutedText: '#8e9aa8',
   },
 };

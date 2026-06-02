@@ -9,16 +9,22 @@ import {
   ActivityIndicator, 
   Alert,
   Platform,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  Modal,
+  SafeAreaView,
+  Image
 } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { WebView } from 'react-native-webview';
 import * as WebBrowser from 'expo-web-browser';
 import * as Linking from 'expo-linking';
 import { fetchProfile, saveProfile, registerUser } from '../../services/api';
-import { FontAwesome, Ionicons } from '@expo/vector-icons';
+import { FontAwesome, Ionicons, Feather } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
-import Svg, { Path, Defs, LinearGradient, Stop } from 'react-native-svg';
+import Svg, { Path, Defs, LinearGradient, Stop, Circle } from 'react-native-svg';
+import { useOAuth, useUser, useAuth } from '@clerk/expo';
+import { GradedBackground } from '@/components/GradedBackground';
 
 // Enable WebBrowser redirects
 WebBrowser.maybeCompleteAuthSession();
@@ -37,8 +43,14 @@ export default function ProfileScreen() {
   const colorScheme = useColorScheme() ?? 'light';
   const colors = Colors[colorScheme];
 
+  const { isLoaded: clerkLoaded, isSignedIn, user } = useUser();
+  const { startOAuthFlow } = useOAuth({ strategy: 'oauth_google' });
+  const { signOut } = useAuth();
+
   const [profile, setProfile] = useState({
     fullName: '',
+    firstName: '',
+    lastName: '',
     email: '',
     currentDegree: '',
     currentField: '',
@@ -59,11 +71,94 @@ export default function ProfileScreen() {
   const [fullNameInput, setFullNameInput] = useState('');
   const [passwordInput, setPasswordInput] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [showAuthWebView, setShowAuthWebView] = useState(false);
+
+  // Modal Editing States
+  const [activeEditField, setActiveEditField] = useState<'firstName' | 'lastName' | 'currentDegree' | 'currentField' | 'grade' | null>(null);
+  const [tempEditValue, setTempEditValue] = useState('');
+
+  const startEditing = (field: 'firstName' | 'lastName' | 'currentDegree' | 'currentField' | 'grade') => {
+    setActiveEditField(field);
+    setTempEditValue(profile[field] || '');
+  };
 
   // Load cached email and profile on mount
   useEffect(() => {
     loadCachedProfile();
   }, []);
+
+  // Sync profile when Clerk finishes loading and user is signed in
+  useEffect(() => {
+    if (clerkLoaded && isSignedIn && user) {
+      const email = user.primaryEmailAddress?.emailAddress;
+      const fullName = user.fullName || `${user.firstName || ''} ${user.lastName || ''}`.trim() || 'Google User';
+      if (email) {
+        handleBackendProfileSync(email, fullName);
+      }
+    }
+  }, [clerkLoaded, isSignedIn, user]);
+
+  const handleBackendProfileSync = async (email: string, fullName: string) => {
+    setLoading(true);
+    try {
+      const data = await fetchProfile(email);
+      if (data && Object.keys(data).length && data.email) {
+        const nameParts = (data.fullName || fullName).trim().split(/\s+/);
+        setProfile({
+          fullName: data.fullName || fullName,
+          firstName: data.firstName || nameParts[0] || '',
+          lastName: data.lastName || nameParts.slice(1).join(' ') || '',
+          email: data.email,
+          currentDegree: data.currentDegree || 'Bachelor',
+          currentField: data.currentField || '',
+          semester: String(data.semester || ''),
+          universityName: data.universityName || '',
+          grade: String(data.grade || ''),
+          notes: data.notes || '',
+          studplexId: data.studplexId || '',
+        });
+        await AsyncStorage.setItem('user_email', data.email);
+      } else {
+        // Auto register on backend
+        const regResult = await registerUser({
+          email,
+          fullName,
+          method: 'google_mobile'
+        });
+        const nameParts = fullName.trim().split(/\s+/);
+        const initialProfile = {
+          email,
+          fullName,
+          firstName: nameParts[0] || '',
+          lastName: nameParts.slice(1).join(' ') || '',
+          currentDegree: 'Bachelor',
+          currentField: '',
+          grade: '',
+          notes: '',
+          studplexId: regResult.studplexId || ''
+        };
+        await saveProfile({
+          email: initialProfile.email,
+          fullName: initialProfile.fullName,
+          currentDegree: initialProfile.currentDegree,
+          currentField: initialProfile.currentField,
+          grade: initialProfile.grade,
+          notes: initialProfile.notes,
+          studplexId: initialProfile.studplexId,
+        });
+        setProfile({
+          ...initialProfile,
+          semester: '',
+          universityName: '',
+        });
+        await AsyncStorage.setItem('user_email', email);
+      }
+    } catch (err) {
+      console.error("Backend sync error:", err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   const loadCachedProfile = async () => {
     setLoading(true);
@@ -84,6 +179,8 @@ export default function ProfileScreen() {
   const clearLocalProfileState = () => {
     setProfile({
       fullName: '',
+      firstName: '',
+      lastName: '',
       email: '',
       currentDegree: '',
       currentField: '',
@@ -99,8 +196,11 @@ export default function ProfileScreen() {
     try {
       const data = await fetchProfile(emailToSync);
       if (data && Object.keys(data).length && data.email) {
+        const nameParts = (data.fullName || '').trim().split(/\s+/);
         setProfile({
           fullName: data.fullName || '',
+          firstName: data.firstName || nameParts[0] || '',
+          lastName: data.lastName || nameParts.slice(1).join(' ') || '',
           email: data.email || emailToSync,
           currentDegree: data.currentDegree || '',
           currentField: data.currentField || '',
@@ -112,7 +212,6 @@ export default function ProfileScreen() {
         });
         await AsyncStorage.setItem('user_email', data.email);
       } else {
-        // Fallback if not in MongoDB yet
         setProfile(p => ({ ...p, email: emailToSync }));
       }
     } catch (err) {
@@ -131,8 +230,11 @@ export default function ProfileScreen() {
       const data = await fetchProfile(email);
       if (data && Object.keys(data).length && data.email) {
         await AsyncStorage.setItem('user_email', data.email);
+        const nameParts = (data.fullName || '').trim().split(/\s+/);
         setProfile({
           fullName: data.fullName || '',
+          firstName: data.firstName || nameParts[0] || '',
+          lastName: data.lastName || nameParts.slice(1).join(' ') || '',
           email: data.email,
           currentDegree: data.currentDegree || '',
           currentField: data.currentField || '',
@@ -189,8 +291,11 @@ export default function ProfileScreen() {
       await AsyncStorage.setItem('user_email', email);
       
       // 3. Sync state
+      const nameParts = fullName.trim().split(/\s+/);
       setProfile({
         fullName,
+        firstName: nameParts[0] || '',
+        lastName: nameParts.slice(1).join(' ') || '',
         email,
         currentDegree: 'Bachelor',
         currentField: '',
@@ -213,28 +318,21 @@ export default function ProfileScreen() {
   const handleGoogleSignIn = async () => {
     setAuthLoading(true);
     try {
-      // Directs user to the website's mobile-auth redirect page
-      const authUrl = "https://studplex.com/mobile-auth";
-      const result = await WebBrowser.openAuthSessionAsync(authUrl, "mobile://");
+      const redirectUrl = Linking.createURL('/oauth-redirect');
+      console.log("[OAuth] Using redirect URL:", redirectUrl);
       
-      if (result.type === 'success' && result.url) {
-        // Parse parameters returned via deep link schema
-        const parsed = Linking.parse(result.url);
-        const email = parsed.queryParams?.email as string;
-        const fullName = parsed.queryParams?.fullName as string;
-        
-        if (email) {
-          await AsyncStorage.setItem('user_email', email);
-          await syncProfileFromServer(email);
-          Alert.alert("Welcome Back!", `Successfully signed in as ${fullName || email}`);
-        } else {
-          Alert.alert("Error", "Authentication succeeded but email was not found.");
-        }
+      const { createdSessionId, setActive } = await startOAuthFlow({
+        redirectUrl,
+      });
+      
+      if (createdSessionId && setActive) {
+        await setActive({ session: createdSessionId });
+      } else {
+        setAuthLoading(false);
       }
     } catch (err) {
-      console.error("Google login session error:", err);
-      Alert.alert("Connection Error", "Google login portal could not be launched.");
-    } finally {
+      console.error("Google sign in error:", err);
+      Alert.alert("Authentication Failed", "Google OAuth session could not be completed.");
       setAuthLoading(false);
     }
   };
@@ -245,9 +343,18 @@ export default function ProfileScreen() {
       return;
     }
     setSaving(true);
-    saveProfile(profile)
+    
+    // Construct fullName from firstName and lastName dynamically
+    const combinedName = `${profile.firstName} ${profile.lastName}`.trim();
+    const updatedProfile = {
+      ...profile,
+      fullName: combinedName
+    };
+    
+    saveProfile(updatedProfile)
       .then(async () => {
-        Alert.alert("Success", "Profile updated and saved to server!");
+        setProfile(prev => ({ ...prev, fullName: combinedName }));
+        Alert.alert("Success", "Profile updated and saved!");
       })
       .catch(err => {
         Alert.alert("Error", "Failed to update profile. Please try again.");
@@ -266,6 +373,7 @@ export default function ProfileScreen() {
           text: "Log Out", 
           style: "destructive",
           onPress: async () => {
+            await signOut();
             await AsyncStorage.removeItem('user_email');
             await AsyncStorage.removeItem('search_results');
             clearLocalProfileState();
@@ -278,7 +386,7 @@ export default function ProfileScreen() {
   };
 
   const getCompletionPercentage = () => {
-    const keys = ['fullName', 'email', 'currentDegree', 'currentField', 'grade'];
+    const keys = ['firstName', 'lastName', 'email', 'currentDegree', 'currentField', 'grade'];
     const filled = keys.filter(k => profile[k as keyof typeof profile]?.trim() !== '');
     return Math.round((filled.length / keys.length) * 100);
   };
@@ -286,7 +394,7 @@ export default function ProfileScreen() {
   if (loading) {
     return (
       <View style={[styles.container, styles.center, { backgroundColor: colors.background }]}>
-        <ActivityIndicator size="large" color="#ccff00" />
+        <ActivityIndicator size="large" color="#ff6b00" />
       </View>
     );
   }
@@ -299,6 +407,7 @@ export default function ProfileScreen() {
       behavior={Platform.OS === 'ios' ? 'padding' : 'height'} 
       style={{ flex: 1, backgroundColor: colors.background }}
     >
+      <GradedBackground />
       {!hasLoggedIn ? (
         <View style={styles.centerContainer}>
           <ScrollView 
@@ -312,17 +421,19 @@ export default function ProfileScreen() {
                 <Path d="M6 14.5V21C6 24.3 10.5 27 16 27C21.5 27 26 24.3 26 21V14.5L16 19.5L6 14.5Z" fill="url(#studplex-grad2)" />
                 <Defs>
                   <LinearGradient id="studplex-grad" x1="2" y1="2" x2="30" y2="16" gradientUnits="userSpaceOnUse">
-                    <Stop offset="0" stopColor="#ccff00" />
-                    <Stop offset="1" stopColor="#ff6b00" />
+                    <Stop offset="0" stopColor="#6366f1" />
+                    <Stop offset="0.6" stopColor="#ff6b00" />
+                    <Stop offset="1" stopColor="#ccff00" />
                   </LinearGradient>
                   <LinearGradient id="studplex-grad2" x1="6" y1="14.5" x2="26" y2="27" gradientUnits="userSpaceOnUse">
                     <Stop offset="0" stopColor="#ff6b00" />
+                    <Stop offset="0.6" stopColor="#6366f1" />
                     <Stop offset="1" stopColor="#ccff00" />
                   </LinearGradient>
                 </Defs>
               </Svg>
               <Text style={[styles.brandingTitle, { color: colors.text }]}>
-                Stud<Text style={{ color: '#ccff00' }}>plex</Text>
+                Stud<Text style={{ color: '#ff6b00' }}>plex</Text>
               </Text>
               <Text style={styles.brandingTagline}>MATCH YOUR FUTURE</Text>
             </View>
@@ -462,7 +573,7 @@ export default function ProfileScreen() {
                 style={{ marginTop: 20, alignItems: 'center' }}
                 onPress={() => setAuthMode(authMode === 'login' ? 'register' : 'login')}
               >
-                <Text style={{ color: '#ccff00', fontWeight: '700', fontSize: 13 }}>
+                <Text style={{ color: '#ff6b00', fontWeight: '700', fontSize: 13 }}>
                   {authMode === 'login' ? "Don't have an account? Sign Up" : "Already have an account? Sign In"}
                 </Text>
               </TouchableOpacity>
@@ -472,178 +583,288 @@ export default function ProfileScreen() {
       ) : (
         /* Logged In Content */
         <ScrollView 
-          style={[styles.container, { backgroundColor: colors.background }]} 
+          style={[styles.container, { backgroundColor: 'transparent' }]} 
           keyboardShouldPersistTaps="handled"
           contentContainerStyle={{ paddingBottom: 120 }}
+          showsVerticalScrollIndicator={false}
         >
-          {/* Top Header Icon & Branding */}
-          <View style={styles.brandingHeader}>
-            <Svg width="40" height="40" viewBox="0 0 32 32" fill="none">
-              <Path d="M16 2L2 9L16 16L30 9L16 2Z" fill="url(#studplex-grad)" />
-              <Path d="M6 14.5V21C6 24.3 10.5 27 16 27C21.5 27 26 24.3 26 21V14.5L16 19.5L6 14.5Z" fill="url(#studplex-grad2)" />
-              <Defs>
-                <LinearGradient id="studplex-grad" x1="2" y1="2" x2="30" y2="16" gradientUnits="userSpaceOnUse">
-                  <Stop offset="0" stopColor="#ccff00" />
-                  <Stop offset="1" stopColor="#ff6b00" />
-                </LinearGradient>
-                <LinearGradient id="studplex-grad2" x1="6" y1="14.5" x2="26" y2="27" gradientUnits="userSpaceOnUse">
-                  <Stop offset="0" stopColor="#ff6b00" />
-                  <Stop offset="1" stopColor="#ccff00" />
-                </LinearGradient>
-              </Defs>
-            </Svg>
-            <Text style={[styles.brandingTitle, { color: colors.text }]}>
-              Stud<Text style={{ color: '#ccff00' }}>plex</Text>
-            </Text>
-            <Text style={styles.brandingTagline}>MATCH YOUR FUTURE</Text>
-          </View>
-
-          {/* Upper Profile Identity Info */}
-          <View style={styles.header}>
-            <View style={styles.identityRow}>
-              <View style={[styles.avatarCircle, { backgroundColor: '#ccff00' }]}>
-                {profile.fullName ? (
-                  <Text style={[styles.avatarText, { color: '#000' }]}>
-                    {profile.fullName.split(' ').map(n => n[0]).join('').slice(0, 2).toUpperCase()}
+          {/* Upper Profile Identity Info - Centered (Twitter Style) */}
+          <View style={styles.twitterHeaderContainer}>
+            {/* Avatar inside Svg circular progress wrapper */}
+            <View style={styles.avatarProgressWrapper}>
+              <Svg width="100" height="100" viewBox="0 0 100 100" style={styles.absoluteSvg}>
+                {/* Background circle */}
+                <Circle
+                  cx="50"
+                  cy="50"
+                  r="44"
+                  fill="none"
+                  stroke={colorScheme === 'dark' ? '#161a26' : '#e1e5eb'}
+                  strokeWidth="4"
+                />
+                {/* Progress circle */}
+                <Circle
+                  cx="50"
+                  cy="50"
+                  r="44"
+                  fill="none"
+                  stroke="#6366f1"
+                  strokeWidth="4"
+                  strokeDasharray={`${(completionPct / 100) * 276.4}, 276.4`}
+                  strokeLinecap="round"
+                  transform="rotate(-90 50 50)"
+                />
+              </Svg>
+              
+              <View style={[styles.twitterAvatarCircle, { backgroundColor: '#6366f1', width: 76, height: 76, borderRadius: 38, margin: 0, justifyContent: 'center', alignItems: 'center', overflow: 'hidden' }]}>
+                {user?.imageUrl ? (
+                  <Image source={{ uri: user.imageUrl }} style={{ width: 76, height: 76 }} />
+                ) : profile.fullName ? (
+                  <Text style={[styles.twitterAvatarText, { color: '#fff', fontSize: 28 }]}>
+                    {profile.fullName.split(' ').map((n: string) => n[0]).join('').slice(0, 2).toUpperCase()}
                   </Text>
                 ) : (
-                  <FontAwesome name="user" size={32} color="#000" />
+                  <FontAwesome name="user" size={36} color="#fff" />
                 )}
               </View>
-              <View style={styles.identityInfo}>
-                <Text style={[styles.identityName, { color: colors.text }]}>
-                  {profile.fullName || "Student Account"}
-                </Text>
-                <Text style={[styles.identityEmail, { color: colors.text, opacity: 0.6 }]}>
-                  {profile.email}
-                </Text>
-                {profile.studplexId ? (
-                  <View style={[styles.studplexIdBadge, { backgroundColor: 'rgba(255, 107, 0, 0.12)', borderColor: 'rgba(255, 107, 0, 0.35)' }]}>
-                    <Text style={[styles.studplexIdText, { color: '#ff6b00' }]}>ID: {profile.studplexId}</Text>
-                  </View>
-                ) : null}
+
+              {/* Completion badge overlay */}
+              <View style={styles.avatarProgressBadge}>
+                <Text style={styles.avatarProgressBadgeText}>{completionPct}%</Text>
               </View>
             </View>
-          </View>
-     
-          {/* Profile Completion Card */}
-          <View style={[styles.card, { backgroundColor: colors.card, borderColor: colors.border }]}>
-            <View style={styles.completionHeader}>
-              <Text style={[styles.completionTitle, { color: colors.text }]}>Completion: {completionPct}%</Text>
-              <View style={[styles.progressContainer, { backgroundColor: colorScheme === 'dark' ? '#374151' : '#e5e7eb' }]}>
-                <View style={[styles.progressBar, { width: `${completionPct}%`, backgroundColor: '#ccff00' }]} />
-              </View>
-            </View>
-            <Text style={[styles.completionHint, { color: colorScheme === 'dark' ? '#8e9aa8' : '#6b7280' }]}>
-              {completionPct === 100 
-                ? "Your profile is fully complete! You are ready for AI university matches." 
-                : "Complete all fields to sync custom eligibility guidelines for study abroad."}
+
+            <Text style={[styles.twitterName, { color: colors.text }]}>
+              {profile.fullName || "Student Account"}
             </Text>
-     
-            {/* Visual Checklist */}
-            <View style={styles.checklist}>
-              {[
-                { label: 'Full name', done: !!profile.fullName },
-                { label: 'Email address', done: !!profile.email },
-                { label: 'Degree level', done: !!profile.currentDegree },
-                { label: 'Field of study', done: !!profile.currentField },
-                { label: 'GPA / Grade', done: !!profile.grade },
-              ].map((item, idx) => (
-                <View key={idx} style={styles.checkItem}>
-                  <View style={[
-                    styles.checkDot, 
-                    { backgroundColor: item.done ? '#ccff00' : '#6b7280' }
-                  ]} />
-                  <Text style={[
-                    styles.checkLabel, 
-                    { color: colors.text, opacity: item.done ? 0.9 : 0.5 }
-                  ]}>
-                    {item.label}
+            <Text style={[styles.twitterEmail, { color: colors.text, opacity: 0.6 }]}>
+              {profile.email}
+            </Text>
+            {profile.studplexId ? (
+              <View style={[styles.studplexIdBadge, { backgroundColor: 'rgba(99, 102, 241, 0.12)', borderColor: 'rgba(99, 102, 241, 0.35)', marginTop: 8, alignSelf: 'center' }]}>
+                <Text style={[styles.studplexIdText, { color: '#6366f1' }]}>ID: {profile.studplexId}</Text>
+              </View>
+            ) : null}
+          </View>
+
+          {/* Academic Details Section (Mockup pastel row buttons) */}
+          <Text style={[styles.sectionHeading, { color: colors.text }]}>My Profile Details</Text>
+          <Text style={[styles.sectionSubheading, { color: colors.mutedText }]}>Tap any field to update your academic details</Text>
+
+          {/* SINGLE Details Card container grouping all pastel info rows */}
+          <View style={[styles.detailsCard, { backgroundColor: colors.card, borderColor: colors.border }]}>
+            <Text style={[styles.detailsCardTitle, { color: colors.text }]}>Profile Information</Text>
+            
+            <View style={styles.pastelPillsContainer}>
+              {/* First Name Row (Lavender) */}
+              <TouchableOpacity 
+                style={[styles.pastelPillRow, { backgroundColor: '#c7d2fe' }]} 
+                onPress={() => startEditing('firstName')}
+                activeOpacity={0.85}
+              >
+                <View style={styles.pastelPillTextContainer}>
+                  <Text style={[styles.pastelPillLabel, { color: '#1e1b4b', opacity: 0.6 }]}>FIRST NAME</Text>
+                  <Text style={[styles.pastelPillValue, { color: '#1e1b4b' }]} numberOfLines={1}>
+                    {profile.firstName || "Tap to set first name"}
                   </Text>
                 </View>
-              ))}
+                <View style={styles.arrowCircle}>
+                  <Feather name="arrow-up-right" size={18} color="#1e1b4b" />
+                </View>
+              </TouchableOpacity>
+
+              {/* Last Name Row (Lavender) */}
+              <TouchableOpacity 
+                style={[styles.pastelPillRow, { backgroundColor: '#c7d2fe' }]} 
+                onPress={() => startEditing('lastName')}
+                activeOpacity={0.85}
+              >
+                <View style={styles.pastelPillTextContainer}>
+                  <Text style={[styles.pastelPillLabel, { color: '#1e1b4b', opacity: 0.6 }]}>LAST NAME</Text>
+                  <Text style={[styles.pastelPillValue, { color: '#1e1b4b' }]} numberOfLines={1}>
+                    {profile.lastName || "Tap to set last name"}
+                  </Text>
+                </View>
+                <View style={styles.arrowCircle}>
+                  <Feather name="arrow-up-right" size={18} color="#1e1b4b" />
+                </View>
+              </TouchableOpacity>
+
+              {/* Degree Level Row (Lavender) */}
+              <TouchableOpacity 
+                style={[styles.pastelPillRow, { backgroundColor: '#c7d2fe' }]} 
+                onPress={() => startEditing('currentDegree')}
+                activeOpacity={0.85}
+              >
+                <View style={styles.pastelPillTextContainer}>
+                  <Text style={[styles.pastelPillLabel, { color: '#1e1b4b', opacity: 0.6 }]}>DEGREE LEVEL</Text>
+                  <Text style={[styles.pastelPillValue, { color: '#1e1b4b' }]} numberOfLines={1}>
+                    {profile.currentDegree || "Tap to select degree"}
+                  </Text>
+                </View>
+                <View style={styles.arrowCircle}>
+                  <Feather name="arrow-up-right" size={18} color="#1e1b4b" />
+                </View>
+              </TouchableOpacity>
+
+              {/* Field of Study Row (Lavender) */}
+              <TouchableOpacity 
+                style={[styles.pastelPillRow, { backgroundColor: '#c7d2fe' }]} 
+                onPress={() => startEditing('currentField')}
+                activeOpacity={0.85}
+              >
+                <View style={styles.pastelPillTextContainer}>
+                  <Text style={[styles.pastelPillLabel, { color: '#1e1b4b', opacity: 0.6 }]}>FIELD OF STUDY</Text>
+                  <Text style={[styles.pastelPillValue, { color: '#1e1b4b' }]} numberOfLines={1}>
+                    {profile.currentField || "Tap to set field"}
+                  </Text>
+                </View>
+                <View style={styles.arrowCircle}>
+                  <Feather name="arrow-up-right" size={18} color="#1e1b4b" />
+                </View>
+              </TouchableOpacity>
+
+              {/* GPA / Academic Grade Row (Lavender) */}
+              <TouchableOpacity 
+                style={[styles.pastelPillRow, { backgroundColor: '#c7d2fe' }]} 
+                onPress={() => startEditing('grade')}
+                activeOpacity={0.85}
+              >
+                <View style={styles.pastelPillTextContainer}>
+                  <Text style={[styles.pastelPillLabel, { color: '#1e1b4b', opacity: 0.6 }]}>GPA / ACADEMIC GRADE</Text>
+                  <Text style={[styles.pastelPillValue, { color: '#1e1b4b' }]} numberOfLines={1}>
+                    {profile.grade || "Tap to set grade"}
+                  </Text>
+                </View>
+                <View style={styles.arrowCircle}>
+                  <Feather name="arrow-up-right" size={18} color="#1e1b4b" />
+                </View>
+              </TouchableOpacity>
             </View>
           </View>
 
-          {/* Form Fields */}
-          <View style={[styles.section, { backgroundColor: colors.card, borderColor: colors.border }]}>
-            <Text style={[styles.sectionTitle, { color: '#ccff00' }]}>Personal Details</Text>
-            
-            <Text style={[styles.label, { color: colors.text }]}>Full Name</Text>
-            <TextInput 
-              style={[styles.input, { borderColor: colors.border, color: colors.text, backgroundColor: colorScheme === 'dark' ? '#14171f' : '#f9fafb' }]}
-              value={profile.fullName}
-              onChangeText={(text) => setProfile(p => ({ ...p, fullName: text }))}
-              placeholder="e.g. James Anderson"
-              placeholderTextColor="#9ca3af"
-            />
-          </View>
-     
-          <View style={[styles.section, { backgroundColor: colors.card, borderColor: colors.border }]}>
-            <Text style={[styles.sectionTitle, { color: '#ccff00' }]}>Academic Information</Text>
-     
-            <Text style={[styles.label, { color: colors.text }]}>Degree Level</Text>
-            <View style={styles.degreeRow}>
-              {DEGREE_OPTIONS.map((deg) => {
-                const isSelected = profile.currentDegree === deg;
-                return (
-                  <TouchableOpacity 
-                    key={deg}
-                    style={[
-                      styles.degreeBadge, 
-                      { borderColor: colors.border, backgroundColor: colorScheme === 'dark' ? '#14171f' : '#f9fafb' },
-                      isSelected && { backgroundColor: '#ccff00', borderColor: '#ccff00' }
-                    ]}
-                    onPress={() => setProfile(p => ({ ...p, currentDegree: deg }))}
-                  >
-                    <Text style={[styles.degreeBadgeText, { color: isSelected ? '#000' : colors.text }]}>{deg}</Text>
-                  </TouchableOpacity>
-                );
-              })}
-            </View>
-     
-            <Text style={[styles.label, { color: colors.text }]}>Field of Study</Text>
-            <TextInput 
-              style={[styles.input, { borderColor: colors.border, color: colors.text, backgroundColor: colorScheme === 'dark' ? '#14171f' : '#f9fafb' }]}
-              value={profile.currentField}
-              onChangeText={(text) => setProfile(p => ({ ...p, currentField: text }))}
-              placeholder="e.g. Computer Science"
-              placeholderTextColor="#9ca3af"
-            />
-     
-            <Text style={[styles.label, { color: colors.text }]}>GPA / Academic Grade</Text>
-            <TextInput 
-              style={[styles.input, { borderColor: colors.border, color: colors.text, backgroundColor: colorScheme === 'dark' ? '#14171f' : '#f9fafb' }]}
-              value={profile.grade}
-              onChangeText={(text) => setProfile(p => ({ ...p, grade: text }))}
-              placeholder="e.g. 3.5 or 85"
-              placeholderTextColor="#9ca3af"
-              keyboardType="numeric"
-            />
-          </View>
-     
+          {/* Action button to save to backend */}
           <TouchableOpacity 
-            style={[styles.button, { backgroundColor: '#ccff00' }]}
+            style={[styles.button, { backgroundColor: '#ff6b00', marginTop: 12, marginBottom: 28 }]}
             onPress={handleSave}
             disabled={saving}
+            activeOpacity={0.9}
           >
             {saving ? (
-              <ActivityIndicator color="#000" />
+              <ActivityIndicator color="#ffffff" />
             ) : (
-              <Text style={[styles.buttonText, { color: '#000' }]}>Save Changes</Text>
+              <Text style={[styles.buttonText, { color: '#ffffff' }]}>Save</Text>
             )}
           </TouchableOpacity>
 
-          <TouchableOpacity 
-            style={[styles.unlinkButton, { borderColor: colors.border }]}
-            onPress={handleLogout}
-          >
-            <Text style={[styles.unlinkButtonText, { color: colors.text, opacity: 0.6 }]}>
-              🔑 Log Out & Reset Session
-            </Text>
-          </TouchableOpacity>
+          {/* Settings / Options card menu */}
+          <View style={[styles.settingsCard, { backgroundColor: colors.card, borderColor: colors.border }]}>
+            {/* Log Out */}
+            <TouchableOpacity 
+              style={styles.settingsRow}
+              activeOpacity={0.7}
+              onPress={handleLogout}
+            >
+              <View style={styles.settingsRowLeft}>
+                <View style={[styles.settingsIconWrapper, { backgroundColor: 'rgba(255, 75, 75, 0.1)' }]}>
+                  <Ionicons name="log-out-outline" size={18} color="#ff4b4b" />
+                </View>
+                <Text style={[styles.settingsText, { color: '#ff4b4b', fontWeight: '700' }]}>Log Out & Reset Session</Text>
+              </View>
+              <Ionicons name="chevron-forward" size={16} color="#ff4b4b" />
+            </TouchableOpacity>
+          </View>
         </ScrollView>
       )}
+
+      {/* Edit Field Modal */}
+      <Modal
+        visible={activeEditField !== null}
+        animationType="slide"
+        transparent={true}
+        onRequestClose={() => setActiveEditField(null)}
+      >
+        <View style={styles.modalOverlay}>
+          <KeyboardAvoidingView
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            style={{ width: '100%' }}
+          >
+            <View style={[styles.modalContentContainer, { backgroundColor: colors.card, borderColor: colors.border }]}>
+              <View style={styles.modalHeaderRow}>
+                <Text style={[styles.modalHeaderTitle, { color: colors.text }]}>
+                  {activeEditField === 'firstName' ? 'Edit First Name' :
+                   activeEditField === 'lastName' ? 'Edit Last Name' :
+                   activeEditField === 'currentDegree' ? 'Select Degree Level' :
+                   activeEditField === 'currentField' ? 'Edit Field of Study' :
+                   activeEditField === 'grade' ? 'Edit GPA / Grade' : ''}
+                </Text>
+                <TouchableOpacity 
+                  onPress={() => setActiveEditField(null)}
+                  style={styles.modalCloseButton}
+                >
+                  <Ionicons name="close" size={24} color={colors.text} />
+                </TouchableOpacity>
+              </View>
+
+              <View style={styles.modalBody}>
+                {activeEditField === 'currentDegree' ? (
+                  <View style={styles.degreeOptionsContainer}>
+                    {DEGREE_OPTIONS.map((deg) => {
+                      const isSelected = tempEditValue === deg;
+                      return (
+                        <TouchableOpacity
+                          key={deg}
+                          style={[
+                            styles.modalDegreeOption,
+                            { borderColor: colors.border, backgroundColor: colorScheme === 'dark' ? '#14171f' : '#f9fafb' },
+                            isSelected && { backgroundColor: '#ff6b00', borderColor: '#ff6b00' }
+                          ]}
+                          onPress={() => setTempEditValue(deg)}
+                        >
+                          <Text style={[styles.modalDegreeOptionText, { color: isSelected ? '#fff' : colors.text }]}>
+                            {deg}
+                          </Text>
+                          {isSelected && <Ionicons name="checkmark-circle" size={20} color="#fff" />}
+                        </TouchableOpacity>
+                      );
+                    })}
+                  </View>
+                ) : (
+                  <TextInput
+                    style={[styles.modalTextInput, { borderColor: colors.border, color: colors.text, backgroundColor: colorScheme === 'dark' ? '#14171f' : '#f9fafb' }]}
+                    value={tempEditValue}
+                    onChangeText={setTempEditValue}
+                    placeholder={
+                      activeEditField === 'firstName' ? 'e.g. Sarah' :
+                      activeEditField === 'lastName' ? 'e.g. Wilson' :
+                      activeEditField === 'currentField' ? 'e.g. Computer Science' :
+                      activeEditField === 'grade' ? 'e.g. 3.5 or 85' : ''
+                    }
+                    placeholderTextColor="#8e9aa8"
+                    keyboardType={activeEditField === 'grade' ? 'numeric' : 'default'}
+                    autoFocus={true}
+                  />
+                )}
+              </View>
+
+              <TouchableOpacity
+                style={[styles.modalSubmitButton, { backgroundColor: '#ff6b00' }]}
+                onPress={() => {
+                  if (activeEditField) {
+                    setProfile(prev => ({
+                      ...prev,
+                      [activeEditField]: tempEditValue
+                    }));
+                    setActiveEditField(null);
+                  }
+                }}
+              >
+                <Text style={[styles.modalSubmitButtonText, { color: '#fff' }]}>Done</Text>
+              </TouchableOpacity>
+            </View>
+          </KeyboardAvoidingView>
+        </View>
+      </Modal>
     </KeyboardAvoidingView>
   );
 }
@@ -881,7 +1102,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 10,
-    shadowColor: '#ccff00',
+    shadowColor: '#ff6b00',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.2,
     shadowRadius: 8,
@@ -990,6 +1211,249 @@ const styles = StyleSheet.create({
     color: '#ffffff',
     fontSize: 16,
     fontWeight: '800',
+  },
+  twitterHeaderContainer: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  avatarProgressWrapper: {
+    width: 100,
+    height: 100,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 16,
+    position: 'relative',
+  },
+  absoluteSvg: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+  },
+  avatarProgressBadge: {
+    position: 'absolute',
+    bottom: -2,
+    backgroundColor: '#ccff00',
+    borderRadius: 10,
+    paddingHorizontal: 6,
+    paddingVertical: 2,
+    borderWidth: 1.5,
+    borderColor: '#06080c',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    elevation: 2,
+  },
+  avatarProgressBadgeText: {
+    color: '#000',
+    fontSize: 10,
+    fontWeight: '800',
+  },
+  twitterAvatarCircle: {
+    shadowColor: '#6366f1',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 4,
+  },
+  twitterAvatarText: {
+    fontWeight: '900',
+  },
+  twitterName: {
+    fontSize: 22,
+    fontWeight: '800',
+    textAlign: 'center',
+  },
+  twitterEmail: {
+    fontSize: 14.5,
+    marginTop: 4,
+    textAlign: 'center',
+  },
+  sectionHeading: {
+    fontSize: 18,
+    fontWeight: '800',
+    marginBottom: 4,
+    marginTop: 16,
+    paddingHorizontal: 4,
+  },
+  sectionSubheading: {
+    fontSize: 13,
+    marginBottom: 16,
+    paddingHorizontal: 4,
+  },
+  pastelPillsContainer: {
+    gap: 12,
+    marginBottom: 16,
+  },
+  pastelPillRow: {
+    height: 72,
+    borderRadius: 20,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 18,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 3 },
+    shadowOpacity: 0.08,
+    shadowRadius: 6,
+    elevation: 2,
+  },
+  pastelPillTextContainer: {
+    flex: 1,
+    justifyContent: 'center',
+  },
+  pastelPillLabel: {
+    fontSize: 10,
+    fontWeight: '800',
+    letterSpacing: 0.7,
+    marginBottom: 4,
+  },
+  pastelPillValue: {
+    fontSize: 16,
+    fontWeight: '700',
+  },
+  arrowCircle: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    backgroundColor: '#ffffff',
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 2,
+  },
+  settingsCard: {
+    borderRadius: 24,
+    borderWidth: 1.5,
+    paddingVertical: 8,
+    paddingHorizontal: 16,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.05,
+    shadowRadius: 10,
+    elevation: 3,
+    marginBottom: 30,
+  },
+  settingsRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingVertical: 14,
+  },
+  settingsRowLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    flex: 1,
+  },
+  settingsIconWrapper: {
+    width: 34,
+    height: 34,
+    borderRadius: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginRight: 14,
+  },
+  settingsText: {
+    fontSize: 15,
+    fontWeight: '600',
+  },
+  settingsDivider: {
+    height: 1,
+    opacity: 0.4,
+  },
+  modalOverlay: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
+    justifyContent: 'flex-end',
+  },
+  modalContentContainer: {
+    borderTopLeftRadius: 28,
+    borderTopRightRadius: 28,
+    borderTopWidth: 1.5,
+    borderLeftWidth: 1.5,
+    borderRightWidth: 1.5,
+    padding: 24,
+    paddingBottom: Platform.OS === 'ios' ? 44 : 24,
+    maxHeight: '80%',
+  },
+  modalHeaderRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginBottom: 20,
+  },
+  modalCloseButton: {
+    width: 40,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'flex-end',
+  },
+  modalHeaderTitle: {
+    fontSize: 18,
+    fontWeight: '800',
+  },
+  modalBody: {
+    marginBottom: 24,
+  },
+  modalTextInput: {
+    height: 52,
+    borderWidth: 1.5,
+    borderRadius: 16,
+    paddingHorizontal: 16,
+    fontSize: 16,
+  },
+  degreeOptionsContainer: {
+    gap: 10,
+  },
+  modalDegreeOption: {
+    height: 52,
+    borderWidth: 1.5,
+    borderRadius: 16,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    paddingHorizontal: 16,
+  },
+  modalDegreeOptionText: {
+    fontSize: 15,
+    fontWeight: '700',
+  },
+  modalSubmitButton: {
+    height: 52,
+    borderRadius: 16,
+    justifyContent: 'center',
+    alignItems: 'center',
+    shadowColor: '#ff6b00',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.15,
+    shadowRadius: 8,
+    elevation: 3,
+  },
+  modalSubmitButtonText: {
+    fontSize: 16,
+    fontWeight: '800',
+  },
+  detailsCard: {
+    borderRadius: 24,
+    borderWidth: 1.5,
+    padding: 18,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.05,
+    shadowRadius: 10,
+    elevation: 3,
+    marginBottom: 20,
+  },
+  detailsCardTitle: {
+    fontSize: 16,
+    fontWeight: '800',
+    marginBottom: 16,
+    letterSpacing: 0.3,
   },
 });
 

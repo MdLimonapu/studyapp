@@ -13,6 +13,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { router } from 'expo-router';
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
+import { GradedBackground } from '@/components/GradedBackground';
 
 interface Program {
   title: string;
@@ -181,10 +182,12 @@ export default function MyMatchesScreen() {
   };
 
   return (
-    <ScrollView 
-      style={[styles.container, { backgroundColor: colors.background }]}
-      contentContainerStyle={{ paddingBottom: 100 }}
-    >
+    <View style={{ flex: 1, backgroundColor: colors.background }}>
+      <GradedBackground />
+      <ScrollView 
+        style={[styles.container, { backgroundColor: 'transparent' }]}
+        contentContainerStyle={{ paddingBottom: 100 }}
+      >
       <View style={styles.header}>
         <Text style={[styles.headerTitle, { color: colors.text }]}>
           My <Text style={{ color: colors.tint }}>Matches</Text>
@@ -267,6 +270,7 @@ export default function MyMatchesScreen() {
         )
       )}
     </ScrollView>
+    </View>
   );
 }
 
@@ -337,7 +341,7 @@ const styles = StyleSheet.create({
     paddingVertical: 12,
     paddingHorizontal: 28,
     borderRadius: 14,
-    shadowColor: '#ccff00',
+    shadowColor: '#ff6b00',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.2,
     shadowRadius: 8,

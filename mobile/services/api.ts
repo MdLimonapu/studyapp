@@ -1,4 +1,4 @@
-const BASE_URL = "https://api.studplex.com";
+const BASE_URL = "http://192.168.178.116:5001";
 
 export async function fetchCountries() {
   const res = await fetch(`${BASE_URL}/api/countries`);

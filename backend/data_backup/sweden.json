@@ -1,0 +1,122 @@
+[
+  {
+    "country": "Sweden",
+    "uni": "Högskolan i Borås",
+    "course": "Polisutbildningen",
+    "degree": "Bachelor",
+    "city": "",
+    "link": "https://api.skolverket.se/susa-navet/emil3",
+    "fee": "",
+    "source": "Skolverket SUSA-navet",
+    "source_url": "https://api.skolverket.se/susa-navet/emil3",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Linnéuniversitet",
+    "course": "Polisutbildningen",
+    "degree": "Bachelor",
+    "city": "",
+    "link": "https://api.skolverket.se/susa-navet/emil3",
+    "fee": "",
+    "source": "Skolverket SUSA-navet",
+    "source_url": "https://api.skolverket.se/susa-navet/emil3",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Malmö universitet",
+    "course": "Polisutbildningen",
+    "degree": "Bachelor",
+    "city": "",
+    "link": "https://api.skolverket.se/susa-navet/emil3",
+    "fee": "",
+    "source": "Skolverket SUSA-navet",
+    "source_url": "https://api.skolverket.se/susa-navet/emil3",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Södertörns högskola",
+    "course": "Polisutbildningen",
+    "degree": "Bachelor",
+    "city": "",
+    "link": "https://api.skolverket.se/susa-navet/emil3",
+    "fee": "",
+    "source": "Skolverket SUSA-navet",
+    "source_url": "https://api.skolverket.se/susa-navet/emil3",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Umeå universitet, Enheten för polisutbildning",
+    "course": "Polisutbildningen",
+    "degree": "Bachelor",
+    "city": "",
+    "link": "https://api.skolverket.se/susa-navet/emil3",
+    "fee": "",
+    "source": "Skolverket SUSA-navet",
+    "source_url": "https://api.skolverket.se/susa-navet/emil3",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Beckmans - College of Design",
+    "course": "Bachelor Programme in Product Design",
+    "degree": "Bachelor",
+    "city": "",
+    "link": "https://beckmans.se/studera/kandidatutbildning/form/",
+    "fee": "SEK 780000",
+    "source": "Skolverket SUSA-navet",
+    "source_url": "https://api.skolverket.se/susa-navet/emil3",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Beckmans - College of Design",
+    "course": "Bachelor Programme in Fashion Design",
+    "degree": "Bachelor",
+    "city": "",
+    "link": "https://beckmans.se/studera/kandidatutbildning/mode/",
+    "fee": "SEK 780000",
+    "source": "Skolverket SUSA-navet",
+    "source_url": "https://api.skolverket.se/susa-navet/emil3",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Beckmans - College of Design",
+    "course": "Bachelor Programme in Visual Communication",
+    "degree": "Bachelor",
+    "city": "",
+    "link": "https://beckmans.se/studera/kandidatutbildning/visuell-kommunikation/",
+    "fee": "SEK 780000",
+    "source": "Skolverket SUSA-navet",
+    "source_url": "https://api.skolverket.se/susa-navet/emil3",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Brunnsviks Enskilda Musikhögskola BEMU",
+    "course": "Music Creating",
+    "degree": "Bachelor",
+    "city": "",
+    "link": "https://bemu.se/",
+    "fee": "SEK 528000",
+    "source": "Skolverket SUSA-navet",
+    "source_url": "https://api.skolverket.se/susa-navet/emil3",
+    "verified_at": "2026-05-26"
+  },
+  {
+    "country": "Sweden",
+    "uni": "Blekinge Institute of Technology",
+    "course": "Master of Science in Engineering: AI and Machine Learning",
+    "degree": "Master",
+    "city": "",
+    "link": "https://www.bth.se/DVAAM26h",
+    "fee": "SEK 700000",
+    "source": "Skolverket SUSA-navet",
+    "source_url": "https://api.skolverket.se/susa-navet/emil3",
+    "verified_at": "2026-05-26"
+  }
+]
