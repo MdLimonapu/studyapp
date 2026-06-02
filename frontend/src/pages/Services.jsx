@@ -213,6 +213,20 @@ function StripePaymentForm({ clientSecret, selectedService, docType, file, comme
   )
 }
 
+const ColorfulText = ({ text }) => {
+  const words = text.split(' ')
+  const colors = ['#ff8c00', '#10b981', '#3b82f6', '#ec4899', '#8b5cf6', '#ef4444', '#06b6d4', '#14b8a6', '#f59e0b', '#6366f1']
+  return (
+    <>
+      {words.map((word, idx) => (
+        <span key={idx} style={{ color: colors[idx % colors.length], marginRight: '4px', display: 'inline-block' }}>
+          {word}
+        </span>
+      ))}
+    </>
+  )
+}
+
 export default function Services() {
   const navigate = useNavigate()
   const { user } = useUser()
@@ -292,11 +306,11 @@ export default function Services() {
     <div className="services-page" style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px 0' }}>
       {/* Hero Header */}
       <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-        <h2 style={{ fontSize: '38px', fontWeight: 800, marginBottom: '12px', color: 'var(--text)' }}>
-          Our Premium Services
+        <h2 style={{ fontSize: '38px', fontWeight: 800, marginBottom: '12px' }}>
+          <ColorfulText text="Our Premium Services" />
         </h2>
-        <p style={{ color: 'var(--muted)', fontSize: '16px', maxWidth: '600px', margin: '0 auto', lineHeight: 1.6 }}>
-          Get expert human assistance and academic audits alongside our search engine to guarantee a smooth entry into your dream university abroad.
+        <p style={{ fontSize: '16px', maxWidth: '600px', margin: '0 auto', lineHeight: 1.6 }}>
+          <ColorfulText text="Get expert human assistance and academic audits alongside our search engine to guarantee a smooth entry into your dream university abroad." />
         </p>
       </div>
 
@@ -438,7 +452,7 @@ export default function Services() {
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '18px', paddingRight: '24px' }}>
               <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
                 <span style={{ fontSize: '24px' }}>{selectedService.icon}</span>
-                <h3 style={{ fontSize: '20px', fontWeight: 850 }}>{selectedService.title}</h3>
+                <h3 style={{ fontSize: '20px', fontWeight: 850, color: '#ffffff' }}>{selectedService.title}</h3>
               </div>
               <span style={{ color: '#ff8c00', fontWeight: 800, fontSize: '15px', background: 'rgba(255, 140, 0, 0.1)', padding: '4px 10px', borderRadius: '8px' }}>{selectedService.price}</span>
             </div>
@@ -481,14 +495,14 @@ export default function Services() {
             {bookingStep === 'form' && (
               <form onSubmit={handleContinueToPayment} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 <div>
-                  <p style={{ color: 'var(--muted)', fontSize: '13.5px', lineHeight: 1.5 }}>
+                  <p style={{ color: '#e2e8f0', fontSize: '13.5px', lineHeight: 1.5 }}>
                     Please select the document category and upload the copy to proceed with the audit booking payment.
                   </p>
                 </div>
 
                 {/* Dropdown Options */}
                 <div>
-                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--muted)', marginBottom: '8px' }}>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#94a3b8', marginBottom: '8px' }}>
                     What kind of document are you uploading?
                   </label>
                   <select 
@@ -504,7 +518,7 @@ export default function Services() {
                       borderRadius: '12px',
                       border: '1.5px solid var(--card-border)',
                       backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                      color: 'var(--text)',
+                      color: '#ffffff',
                       fontSize: '14px',
                       fontWeight: '600',
                       outline: 'none',
@@ -521,7 +535,7 @@ export default function Services() {
                 {/* Upload File Input */}
                 {docType && (
                   <div style={{ animation: 'fadeIn 0.2s ease' }}>
-                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--muted)', marginBottom: '8px' }}>
+                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#94a3b8', marginBottom: '8px' }}>
                       Select File to Upload
                     </label>
                     <div style={{
@@ -550,10 +564,10 @@ export default function Services() {
                         }}
                       />
                       <span style={{ fontSize: '32px', display: 'block', marginBottom: '8px' }}>📤</span>
-                      <span style={{ fontSize: '14px', fontWeight: '700', display: 'block', color: 'var(--text)', marginBottom: '4px' }}>
+                      <span style={{ fontSize: '14px', fontWeight: '700', display: 'block', color: '#ffffff', marginBottom: '4px' }}>
                         {file ? 'File selected:' : 'Choose file / Drag & Drop'}
                       </span>
-                      <span style={{ fontSize: '12px', color: 'var(--muted)' }}>
+                      <span style={{ fontSize: '12px', color: '#94a3b8' }}>
                         {file ? file.name : 'PDF, DOCX, JPG or PNG up to 10MB'}
                       </span>
                     </div>
@@ -562,7 +576,7 @@ export default function Services() {
 
                 {/* Comment Option */}
                 <div>
-                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--muted)', marginBottom: '8px' }}>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: '#94a3b8', marginBottom: '8px' }}>
                     Additional Comment (Optional)
                   </label>
                   <textarea
@@ -576,7 +590,7 @@ export default function Services() {
                       borderRadius: '12px',
                       border: '1.5px solid var(--card-border)',
                       backgroundColor: 'rgba(255, 255, 255, 0.03)',
-                      color: 'var(--text)',
+                      color: '#ffffff',
                       fontSize: '13.5px',
                       resize: 'none',
                       outline: 'none',
