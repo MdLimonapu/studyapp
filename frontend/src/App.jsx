@@ -172,14 +172,14 @@ export default function App() {
         <div className="topbar-right">
           <div style={{ display: 'flex', alignItems: 'center', gap: '14px', height: '100%' }}>
             <SignedIn>
-              <div style={{ display: 'flex', alignItems: 'center' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '3px', transform: 'translateY(4px)' }}>
                 <UserButton 
                   afterSignOutUrl="/"
                   appearance={{
                     elements: {
                       avatarBox: {
-                        width: '46px',
-                        height: '46px'
+                        width: '34px',
+                        height: '34px'
                       }
                     }
                   }}
@@ -197,6 +197,7 @@ export default function App() {
                     />
                   </UserButton.MenuItems>
                 </UserButton>
+                <span style={{ fontSize: '10px', fontWeight: 800, color: 'var(--text)', textTransform: 'uppercase', letterSpacing: '0.05em', opacity: 0.85 }}>Profile</span>
               </div>
             </SignedIn>
             <SignedOut>

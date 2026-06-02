@@ -40,6 +40,7 @@
   --bg-image: radial-gradient(ellipse at 20% 50%, var(--radial-1) 0%, transparent 60%),
     radial-gradient(ellipse at 80% 10%, var(--radial-2) 0%, transparent 50%),
     radial-gradient(ellipse at 60% 90%, var(--radial-3) 0%, transparent 50%);
+  --bg-attachment: fixed;
 }
 
 :root[data-theme="light"] {
@@ -82,6 +83,7 @@
   --avatar-gradient: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
   --btn-text: #111827;
   --bg-image: linear-gradient(to bottom, #1e8ae7 0%, #0d5cb7 480px, #f9f9fb 481px, #f9f9fb 100%);
+  --bg-attachment: scroll;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
@@ -89,7 +91,7 @@ body {
   font-family: Inter, Arial, sans-serif;
   background: var(--bg);
   background-image: var(--bg-image);
-  background-attachment: fixed;
+  background-attachment: var(--bg-attachment);
   background-repeat: no-repeat;
   background-size: cover;
   color: var(--text);
