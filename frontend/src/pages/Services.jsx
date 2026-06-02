@@ -208,8 +208,7 @@ export default function Services() {
             position: 'relative',
             animation: 'fadeIn 0.25s ease-out',
           }} onClick={(e) => e.stopPropagation()}>
-            {/* Close Button */}
-            <button 
+            <span 
               onClick={handleCloseBooking}
               style={{
                 position: 'absolute',
@@ -218,15 +217,17 @@ export default function Services() {
                 border: 'none',
                 background: 'transparent',
                 color: 'var(--muted)',
-                fontSize: '24px',
+                fontSize: '28px',
                 cursor: 'pointer',
                 transition: 'color 0.2s',
+                display: 'inline-block',
+                lineHeight: '1',
               }}
               onMouseEnter={(e) => e.target.style.color = '#ffffff'}
               onMouseLeave={(e) => e.target.style.color = 'var(--muted)'}
             >
               &times;
-            </button>
+            </span>
 
             {!submitSuccess ? (
               <form onSubmit={handleSubmitBooking} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
