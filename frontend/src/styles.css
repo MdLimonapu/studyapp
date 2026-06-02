@@ -228,7 +228,7 @@ body {
   margin-top: -10px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 8px;
   background: transparent;
   border: none;
