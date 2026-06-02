@@ -2,6 +2,7 @@ import { useEffect, useState, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useUser } from '@clerk/clerk-react'
 import { fetchCountries, fetchFields, fetchProfile, fetchNews, searchCourses } from '../api'
+import { AppStoreButtons } from '../App'
 
 const FALLBACK_NEWS = [
   {title:"Germany extends student visa processing to 8 weeks for 2026 intake", source:"daad.de", date:"May 2026", summary:"DAAD reports increased demand. Apply early for German student visas.", country:"Germany", link: "https://www.daad.de"},
@@ -299,11 +300,17 @@ export default function Home() {
       <section className="home-search-grid">
         <div className="hero-card">
           <h2>Find the right<br/><span>university</span><br/>worldwide</h2>
-          <p>Match with your dream international university program in seconds.</p>
+          <p style={{ marginBottom: '12px' }}>Match with your dream international university program in seconds.</p>
           <div className="hero-stats">
             <div className="stat"><strong>10+</strong><span>Countries</span></div>
             <div className="stat"><strong>Live</strong><span>Real Data</span></div>
             <div className="stat"><strong>Free</strong><span>To Use</span></div>
+          </div>
+          <div style={{ marginTop: '24px' }}>
+            <span style={{ fontSize: '11px', color: 'var(--muted)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '2px' }}>
+              Download Studplex App
+            </span>
+            <AppStoreButtons onClick={() => window.dispatchEvent(new Event('show-app-soon'))} />
           </div>
         </div>
 

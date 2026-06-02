@@ -66,6 +66,66 @@ const getInitials = (name) => {
   return (parts[0][0] + parts[parts.length - 1][0]).toUpperCase()
 }
 
+export function AppStoreButtons({ onClick }) {
+  return (
+    <div style={{ display: 'flex', gap: '10px', marginTop: '14px', flexWrap: 'wrap' }}>
+      {/* App Store */}
+      <button 
+        onClick={onClick}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          background: '#000000',
+          border: '1px solid rgba(255,255,255,0.15)',
+          borderRadius: '10px',
+          padding: '6px 14px',
+          color: '#ffffff',
+          width: 'auto',
+          cursor: 'pointer',
+          margin: 0,
+        }}
+        className="store-btn"
+      >
+        <svg width="16" height="18" viewBox="0 0 170 170" fill="currentColor">
+          <path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.34.13-9.13-1.9-14.35-6.09-3.23-2.62-7.14-7.23-11.73-13.82-5.46-7.81-9.92-17.15-13.4-28.03-3.48-10.88-5.21-21.22-5.21-31.03 0-14.63 3.69-26.6 11.07-35.9 7.39-9.3 16.59-13.97 27.6-13.97 5.02 0 10.37 1.34 16.03 4.02 5.66 2.68 9.53 4.02 11.61 4.02 1.9 0 5.46-1.23 10.7-3.69 6.25-2.9 11.61-4.24 16.07-4.02 17.51.78 30.68 7.25 39.52 19.41-14.84 9.04-22.1 21.03-21.78 35.95.34 11.5 4.8 21.1 13.4 28.79 8.6 7.7 18.57 11.83 29.91 12.39-2.46 7.15-5.91 14.18-10.35 21.09zm-26.24-118.84c0 10.94-3.9 20.3-11.71 28.1-7.8 7.8-17.18 11.8-28.1 11.8-1.01 0-2.34-.1-4.02-.34.34-11.5 4.35-21.1 12.05-28.8 7.7-7.7 17.08-11.7 28.1-12 1.23.89 2.12 1.68 2.68 2.35.67 1.12 1 2.23 1 3.35z"/>
+        </svg>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', lineHeight: 1.1 }}>
+          <span style={{ fontSize: '8px', textTransform: 'uppercase', opacity: 0.7 }}>Download on the</span>
+          <span style={{ fontSize: '11px', fontWeight: 700 }}>App Store</span>
+        </div>
+      </button>
+
+      {/* Play Store */}
+      <button 
+        onClick={onClick}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: '8px',
+          background: '#000000',
+          border: '1px solid rgba(255,255,255,0.15)',
+          borderRadius: '10px',
+          padding: '6px 14px',
+          color: '#ffffff',
+          width: 'auto',
+          cursor: 'pointer',
+          margin: 0,
+        }}
+        className="store-btn"
+      >
+        <svg width="16" height="18" viewBox="0 0 170 170" fill="currentColor">
+          <path d="M12.9 2.5C11.5 4 10.7 6.3 10.7 9.1v151.7c0 2.8.8 5.1 2.2 6.6l.8.8L90 91.8V90v-1.8L13.7 1.7l-.8.8zM116.2 118L90 91.8v1.8l26.2 26.2 31.1-17.8c8.9-5.1 8.9-13.4 0-18.5L116.2 118zM90 90L13.7 13.7c4.6 4.6 86.3 86.3 86.3 86.3v-10zM90 90l26.2-26.2c3.4-2 7.7-2 11.1 0l18.4 10.5c8.9 5.1 8.9 13.4 0 18.5L116.2 118z"/>
+        </svg>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', lineHeight: 1.1 }}>
+          <span style={{ fontSize: '8px', textTransform: 'uppercase', opacity: 0.7 }}>Get it on</span>
+          <span style={{ fontSize: '11px', fontWeight: 700 }}>Google Play</span>
+        </div>
+      </button>
+    </div>
+  )
+}
+
 export default function App() {
   const navigate = useNavigate()
   const [profile, setProfile] = useState(null)
@@ -73,6 +133,13 @@ export default function App() {
   const [theme, setTheme] = useState(() => {
     return localStorage.getItem('theme') || 'dark'
   })
+  const [showSoonModal, setShowSoonModal] = useState(false)
+
+  useEffect(() => {
+    const handleShowSoon = () => setShowSoonModal(true)
+    window.addEventListener('show-app-soon', handleShowSoon)
+    return () => window.removeEventListener('show-app-soon', handleShowSoon)
+  }, [])
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
@@ -165,9 +232,9 @@ export default function App() {
         
         <nav className="nav-links">
           <NavLink to="/">Home</NavLink>
-          <NavLink to="/services">Services</NavLink>
           <NavLink to="/university">University Matches</NavLink>
           <NavLink to="/roadmap">Check Eligibility</NavLink>
+          <NavLink to="/services">Services</NavLink>
           <NavLink to="/contact">Contact</NavLink>
         </nav>
         
@@ -263,6 +330,7 @@ export default function App() {
           <div className="footer-brand">
             <span className="footer-logo">Stud<span style={{ color: 'var(--accent)' }}>plex</span></span>
             <p className="footer-tagline">Personalised international university matches in seconds.</p>
+            <AppStoreButtons onClick={() => setShowSoonModal(true)} />
           </div>
           <div className="footer-links-group">
             <div className="footer-col">
@@ -286,6 +354,24 @@ export default function App() {
           <p>&copy; {new Date().getFullYear()} Studplex. All rights reserved.</p>
         </div>
       </footer>
+      {showSoonModal && (
+        <div className="modal-overlay" style={{ zIndex: 2000 }}>
+          <div className="modal-box" style={{ maxWidth: '400px', textAlign: 'center', padding: '32px' }}>
+            <div style={{ fontSize: '48px', marginBottom: '16px' }}>📱</div>
+            <h2 style={{ fontSize: '22px', fontWeight: 800, marginBottom: '12px' }}>Mobile App Coming Soon</h2>
+            <p style={{ color: 'var(--muted)', fontSize: '14px', lineHeight: 1.6, marginBottom: '24px' }}>
+              We're putting the finishing touches on the Studplex mobile app. It will be available for iOS and Android soon!
+            </p>
+            <button 
+              className="btn-accent" 
+              onClick={() => setShowSoonModal(false)}
+              style={{ width: '100%', padding: '12px', borderRadius: '12px', fontWeight: 700 }}
+            >
+              Great, Can't Wait!
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

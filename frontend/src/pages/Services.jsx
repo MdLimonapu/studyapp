@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js'
-import { useUser } from '@clerk/clerk-react'
+import { useUser, useAuth, SignInButton } from '@clerk/clerk-react'
 
 // Initialize Stripe publishable key from environment variables with safe fallback
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || 'pk_test_51Pyourplaceholderkey')
@@ -132,12 +132,18 @@ function StripePaymentForm({ clientSecret, selectedService, docType, file, comme
         <h4 style={{ fontSize: '13px', fontWeight: 700, color: 'var(--muted)' }}>Order Summary</h4>
         <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px' }}>
           <span style={{ color: 'var(--text)' }}>{selectedService.title}</span>
-          <strong style={{ color: 'var(--text)' }}>{selectedService.price}</strong>
+          <strong style={{ color: '#ff8c00', fontWeight: 800 }}>{selectedService.price}</strong>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', color: 'var(--muted)', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '6px', marginTop: '4px' }}>
           <span>Document:</span>
           <span>{file?.name} ({docType})</span>
         </div>
+        {comment && (
+          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', color: 'var(--muted)', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '6px', marginTop: '4px' }}>
+            <span>Comment:</span>
+            <span style={{ maxWidth: '70%', textAlign: 'right', wordBreak: 'break-all' }}>{comment}</span>
+          </div>
+        )}
       </div>
 
       {/* Real Stripe Payment Element (Displays Card, Apple Pay, Google Pay, Link automatically) */}
@@ -210,6 +216,7 @@ function StripePaymentForm({ clientSecret, selectedService, docType, file, comme
 export default function Services() {
   const navigate = useNavigate()
   const { user } = useUser()
+  const { isSignedIn } = useAuth()
 
   const [selectedService, setSelectedService] = useState(null)
   const [bookingStep, setBookingStep] = useState('form')
@@ -220,6 +227,11 @@ export default function Services() {
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleOpenBooking = (service) => {
+    if (!isSignedIn) {
+      setSelectedService({ ...service, _needsLogin: true })
+      document.body.style.overflow = 'hidden'
+      return
+    }
     setSelectedService(service)
     setBookingStep('form')
     setDocType('')
@@ -280,10 +292,10 @@ export default function Services() {
     <div className="services-page" style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px 0' }}>
       {/* Hero Header */}
       <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-        <h2 style={{ fontSize: '38px', fontWeight: 800, marginBottom: '12px', background: 'linear-gradient(to right, #ffffff, #e2e8f0)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+        <h2 style={{ fontSize: '38px', fontWeight: 800, marginBottom: '12px', color: 'var(--text)' }}>
           Our Premium Services
         </h2>
-        <p style={{ color: '#e2e8f0', fontSize: '16px', maxWidth: '600px', margin: '0 auto', lineHeight: 1.6, textShadow: '0 1px 2px rgba(0,0,0,0.1)' }}>
+        <p style={{ color: 'var(--muted)', fontSize: '16px', maxWidth: '600px', margin: '0 auto', lineHeight: 1.6 }}>
           Get expert human assistance and academic audits alongside our search engine to guarantee a smooth entry into your dream university abroad.
         </p>
       </div>
@@ -311,7 +323,7 @@ export default function Services() {
                 <span style={{ fontSize: '32px' }}>{s.icon}</span>
                 <h3 style={{ fontSize: '18px', fontWeight: 800, color: 'var(--text)' }}>{s.title}</h3>
               </div>
-              <span style={{ color: 'var(--accent)', fontWeight: 800, fontSize: '16px', background: 'rgba(210, 243, 76, 0.1)', padding: '4px 10px', borderRadius: '8px' }}>
+              <span style={{ color: '#ff8c00', fontWeight: 800, fontSize: '16px', background: 'rgba(255, 140, 0, 0.1)', padding: '4px 10px', borderRadius: '8px' }}>
                 {s.price}
               </span>
             </div>
@@ -321,13 +333,13 @@ export default function Services() {
             </p>
 
             <div style={{ borderTop: '1px solid var(--card-border)', paddingTop: '14px', marginTop: 'auto' }}>
-              <h4 style={{ fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', color: 'var(--accent)', letterSpacing: '0.05em', marginBottom: '8px' }}>
+              <h4 style={{ fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', color: '#ff8c00', letterSpacing: '0.05em', marginBottom: '8px' }}>
                 Key Inclusions
               </h4>
               <ul style={{ listStyleType: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '6px' }}>
                 {s.features.map((f, idx) => (
                   <li key={idx} style={{ fontSize: '13px', color: 'var(--text)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span style={{ color: 'var(--accent)' }}>✔</span> {f}
+                    <span style={{ color: '#ff8c00' }}>✔</span> {f}
                   </li>
                 ))}
               </ul>
@@ -428,8 +440,36 @@ export default function Services() {
                 <span style={{ fontSize: '24px' }}>{selectedService.icon}</span>
                 <h3 style={{ fontSize: '20px', fontWeight: 850 }}>{selectedService.title}</h3>
               </div>
-              <span style={{ color: 'var(--accent)', fontWeight: 800, fontSize: '15px' }}>{selectedService.price}</span>
+              <span style={{ color: '#ff8c00', fontWeight: 800, fontSize: '15px', background: 'rgba(255, 140, 0, 0.1)', padding: '4px 10px', borderRadius: '8px' }}>{selectedService.price}</span>
             </div>
+
+            {/* LOGIN REQUIRED PROMPT */}
+            {selectedService._needsLogin ? (
+              <div style={{ textAlign: 'center', padding: '32px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', animation: 'fadeIn 0.3s ease' }}>
+                <span style={{ fontSize: '56px' }}>🔒</span>
+                <div>
+                  <h3 style={{ fontSize: '22px', fontWeight: 800, marginBottom: '8px' }}>Sign In Required</h3>
+                  <p style={{ color: 'var(--muted)', fontSize: '14px', lineHeight: 1.6, maxWidth: '360px' }}>
+                    You need to sign in to your account before uploading documents and booking services. This ensures we can track your orders and communicate with you.
+                  </p>
+                </div>
+                <SignInButton mode="modal">
+                  <button
+                    className="btn-accent"
+                    style={{ width: '100%', padding: '14px', borderRadius: '12px', fontWeight: 700, cursor: 'pointer', fontSize: '15px' }}
+                  >
+                    Sign In to Continue
+                  </button>
+                </SignInButton>
+                <button
+                  onClick={handleCloseBooking}
+                  style={{ background: 'transparent', border: '1px solid var(--card-border)', color: 'var(--text)', padding: '12px 24px', borderRadius: '12px', fontWeight: 600, cursor: 'pointer', width: '100%' }}
+                >
+                  Cancel
+                </button>
+              </div>
+            ) : (
+            <>
 
             {/* PROGRESS BAR */}
             <div style={{ display: 'flex', gap: '8px', marginBottom: '24px' }}>

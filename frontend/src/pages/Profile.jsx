@@ -26,6 +26,8 @@ export default function Profile() {
     semester: '', universityName: '', grade: '', notes: '', avatarUrl: '',
     studplexId: '', documents: []
   })
+  const [orders, setOrders] = useState([])
+  const [ordersLoading, setOrdersLoading] = useState(false)
   const [initialLoaded, setInitialLoaded] = useState(false)
   const [saved, setSaved]         = useState(false)
   const [saving, setSaving]       = useState(false)
@@ -54,6 +56,24 @@ export default function Profile() {
         setInitialLoaded(true)
       })
       .catch(() => setInitialLoaded(true))
+  }, [user, isLoaded])
+
+  useEffect(() => {
+    if (!isLoaded || !user) return
+    const email = user.primaryEmailAddress?.emailAddress || ""
+    if (email) {
+      setOrdersLoading(true)
+      const backendUrl = import.meta.env.VITE_API_URL || "http://127.0.0.1:5001"
+      fetch(`${backendUrl}/api/orders?email=${encodeURIComponent(email)}`)
+        .then(res => res.json())
+        .then(data => {
+          if (Array.isArray(data)) {
+            setOrders(data)
+          }
+          setOrdersLoading(false)
+        })
+        .catch(() => setOrdersLoading(false))
+    }
   }, [user, isLoaded])
 
   useEffect(() => {
@@ -425,6 +445,54 @@ export default function Profile() {
                   </div>
                 )
               })}
+            </div>
+          )}
+        </div>
+
+        {/* Section 04: Ordered Services */}
+        <div className="pf-section-card">
+          <div className="pf-section-head">
+            <span className="pf-section-num">04</span>
+            <div>
+              <h2 className="pf-section-title">Ordered Services</h2>
+              <p className="pf-section-desc">Track and view academic audits or evaluation packages you have purchased.</p>
+            </div>
+          </div>
+          <div className="pf-divider" />
+          
+          {ordersLoading ? (
+            <p style={{ color: 'var(--muted)', fontSize: '13.5px' }}>Loading orders...</p>
+          ) : orders.length > 0 ? (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              {orders.map((order, idx) => (
+                <div key={idx} style={{ 
+                  display: 'flex', 
+                  flexDirection: 'column',
+                  gap: '8px',
+                  padding: '16px', 
+                  background: 'rgba(255, 255, 255, 0.01)', 
+                  border: '1px solid var(--card-border)', 
+                  borderRadius: '14px' 
+                }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <span style={{ fontSize: '14.5px', fontWeight: 700, color: 'var(--text)' }}>
+                      {order.service_title}
+                    </span>
+                    <span style={{ fontSize: '13px', fontWeight: 800, color: '#ff8c00', background: 'rgba(255, 140, 0, 0.1)', padding: '4px 8px', borderRadius: '6px' }}>
+                      {order.price}
+                    </span>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '4px', fontSize: '12px', color: 'var(--muted)' }}>
+                    <div><strong>Txn ID:</strong> {order.txn_id}</div>
+                    <div><strong>Document:</strong> {order.filename} ({order.doc_type})</div>
+                    {order.date && <div><strong>Ordered On:</strong> {new Date(order.date).toLocaleDateString(undefined, { year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit' })}</div>}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div style={{ textAlign: 'center', padding: '24px', color: 'var(--muted)', fontSize: '13.5px' }}>
+              No orders found. Purchase a premium service to get started!
             </div>
           )}
         </div>
