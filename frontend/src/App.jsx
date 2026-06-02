@@ -167,9 +167,6 @@ export default function App() {
           <NavLink to="/university">University Matches</NavLink>
           <NavLink to="/roadmap">Check Eligibility</NavLink>
           <NavLink to="/contact">Contact</NavLink>
-          <SignedIn>
-            <NavLink to="/profile">Profile</NavLink>
-          </SignedIn>
         </nav>
         
         <div className="topbar-right">
