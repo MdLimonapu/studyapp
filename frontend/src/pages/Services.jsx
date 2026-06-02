@@ -8,7 +8,8 @@ const SERVICES = [
     title: 'Academic Document Evaluation',
     desc: 'Comprehensive review of your transcripts, certificates, and GPA conversions. We verify international equivalence and highlight matching parameters to fit university admissions criteria.',
     features: ['GPA Equivalence Audits', 'Credential Verification', 'Prerequisites Mapping'],
-    docOptions: ['Academic Transcript', 'Graduation Certificate', 'GPA Report', 'Other']
+    docOptions: ['Academic Transcript', 'Graduation Certificate', 'GPA Report', 'Other'],
+    ctaText: 'Start Document Evaluation'
   },
   {
     id: 'visa-guide',
@@ -16,7 +17,8 @@ const SERVICES = [
     title: 'Visa & Immigration Guidance',
     desc: 'Step-by-step navigation through visa applications. We help organize your visa portfolios, prepare financial proofs, and audit documents to maximize approval odds.',
     features: ['Document Checklist Audits', 'Financial Statement Review', 'Interview Preparation Tips'],
-    docOptions: ['Financial/Bank Statement', 'Passport Copy', 'Sponsorship Letter', 'Visa Application Draft', 'Other']
+    docOptions: ['Financial/Bank Statement', 'Passport Copy', 'Sponsorship Letter', 'Visa Application Draft', 'Other'],
+    ctaText: 'Request Visa Review'
   },
   {
     id: 'app-strategy',
@@ -24,7 +26,8 @@ const SERVICES = [
     title: 'University Application Strategy',
     desc: 'Professional review of your university application folders. Get structural feedback on your Personal Statement, CV, and letters of recommendation to stand out to admissions boards.',
     features: ['SOP / Essay Review', 'Letter of Recommendation Audits', 'Portfolio Alignment'],
-    docOptions: ['Statement of Purpose (SOP)', 'CV / Resume', 'Letter of Recommendation', 'Other']
+    docOptions: ['Statement of Purpose (SOP)', 'CV / Resume', 'Letter of Recommendation', 'Other'],
+    ctaText: 'Submit Application Files'
   },
   {
     id: 'admissions',
@@ -32,7 +35,8 @@ const SERVICES = [
     title: 'Admissions & Matching Consult',
     desc: 'In-depth review of your academic background to map out specific courses and admission roadmaps across Europe, North America, and beyond.',
     features: ['Custom Eligibility Checklists', 'Direct Admission Entry Audits', 'Deadline Management'],
-    docOptions: ['Detailed CV', 'Transcripts Overview', 'Target University List', 'Other']
+    docOptions: ['Detailed CV', 'Transcripts Overview', 'Target University List', 'Other'],
+    ctaText: 'Request Admissions Review'
   },
   {
     id: 'scholarship',
@@ -40,7 +44,8 @@ const SERVICES = [
     title: 'Scholarship & Funding Advisory',
     desc: 'Discover and align with compatible government, university, and private scholarship programs that fit your profile credentials.',
     features: ['Scholarship Eligibility Checks', 'Funding Document Verification', 'Application Alignment'],
-    docOptions: ['Scholarship Application Essay', 'Income Statement', 'Awards Portfolio', 'Other']
+    docOptions: ['Scholarship Application Essay', 'Income Statement', 'Awards Portfolio', 'Other'],
+    ctaText: 'Request Funding Audit'
   },
   {
     id: 'departure',
@@ -48,7 +53,8 @@ const SERVICES = [
     title: 'Departure & Integration Support',
     desc: 'Pre-departure assistance, including accommodation guidance, health insurance alignment, and student enrollment verification steps.',
     features: ['Accommodation Sourcing Tips', 'Health Insurance Alignment', 'Enrollment Portals Setup'],
-    docOptions: ['Enrollment Offer Letter', 'Accommodation Application', 'Health Insurance Policy', 'Other']
+    docOptions: ['Enrollment Offer Letter', 'Accommodation Application', 'Health Insurance Policy', 'Other'],
+    ctaText: 'Request Departure Review'
   }
 ]
 
@@ -148,21 +154,13 @@ export default function Services() {
                 fontWeight: 700,
                 cursor: 'pointer',
                 marginTop: '12px',
-                background: 'rgba(255, 255, 255, 0.05)',
-                border: '1px solid var(--card-border)',
-                color: 'var(--text)',
-                transition: 'all 0.2s ease'
-              }}
-              onMouseEnter={(e) => {
-                e.target.style.background = 'var(--accent)'
-                e.target.style.color = '#000000'
-              }}
-              onMouseLeave={(e) => {
-                e.target.style.background = 'rgba(255, 255, 255, 0.05)'
-                e.target.style.color = 'var(--text)'
+                background: 'var(--accent)',
+                border: 'none',
+                color: '#000000',
+                transition: 'transform 0.1s ease'
               }}
             >
-              Book Service
+              {s.ctaText}
             </button>
           </div>
         ))}
