@@ -247,10 +247,11 @@ export default function App() {
                   appearance={{
                     elements: {
                       avatarBox: {
-                        width: '32px',
-                        height: '32px',
-                        border: '1.5px solid rgba(255, 255, 255, 0.15)',
-                        boxShadow: '0 0 8px rgba(255, 255, 255, 0.1)'
+                        width: '40px',
+                        height: '40px',
+                        borderRadius: '10px',
+                        border: '2px solid var(--card-border)',
+                        boxShadow: '0 0 10px rgba(0,0,0,0.1)'
                       }
                     }
                   }}
@@ -298,7 +299,7 @@ export default function App() {
               className="theme-toggle-btn"
               onClick={() => setTheme(prev => prev === 'dark' ? 'light' : 'dark')}
               title={`Switch to ${theme === 'dark' ? 'light' : 'dark'} mode`}
-              style={{ margin: 0, marginLeft: '24px', height: '36px', width: '36px', borderRadius: '50%' }}
+              style={{ margin: 0, marginLeft: '32px', height: '40px', width: '40px', borderRadius: '10px' }}
             >
               {theme === 'dark' ? (
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
@@ -330,7 +331,6 @@ export default function App() {
           <div className="footer-brand">
             <span className="footer-logo">Stud<span style={{ color: 'var(--accent)' }}>plex</span></span>
             <p className="footer-tagline">Personalised international university matches in seconds.</p>
-            <AppStoreButtons onClick={() => setShowSoonModal(true)} />
           </div>
           <div className="footer-links-group">
             <div className="footer-col">
@@ -342,6 +342,9 @@ export default function App() {
             <div className="footer-col">
               <h4>Support</h4>
               <NavLink to="/contact">Contact Support</NavLink>
+              <div style={{ marginTop: '16px' }}>
+                <AppStoreButtons onClick={() => setShowSoonModal(true)} />
+              </div>
             </div>
             <div className="footer-col">
               <h4>Legal</h4>

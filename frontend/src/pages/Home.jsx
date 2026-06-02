@@ -300,17 +300,11 @@ export default function Home() {
       <section className="home-search-grid">
         <div className="hero-card">
           <h2>Find the right<br/><span>university</span><br/>worldwide</h2>
-          <p style={{ marginBottom: '12px' }}>Match with your dream international university program in seconds.</p>
+          <p>Match with your dream international university program in seconds.</p>
           <div className="hero-stats">
             <div className="stat"><strong>10+</strong><span>Countries</span></div>
             <div className="stat"><strong>Live</strong><span>Real Data</span></div>
             <div className="stat"><strong>Free</strong><span>To Use</span></div>
-          </div>
-          <div style={{ marginTop: '24px' }}>
-            <span style={{ fontSize: '11px', color: 'var(--muted)', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.08em', display: 'block', marginBottom: '2px' }}>
-              Download Studplex App
-            </span>
-            <AppStoreButtons onClick={() => window.dispatchEvent(new Event('show-app-soon'))} />
           </div>
         </div>
 

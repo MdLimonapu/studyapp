@@ -70,8 +70,8 @@
   --glass-glow: rgba(255, 255, 255, 0.15);
   --news-bg: #f1f5f9;
   
-  --radial-1: rgba(14, 165, 233, 0.2);
-  --radial-2: rgba(125, 211, 252, 0.15);
+  --radial-1: rgba(37, 99, 235, 0.2);
+  --radial-2: rgba(29, 78, 216, 0.15);
   --radial-3: rgba(255, 255, 255, 0);
   
   --shadow-card: 0 8px 0px #111827; /* Neo-brutalism flat offset shadow */
@@ -84,7 +84,7 @@
   --btn-gradient: none;
   --avatar-gradient: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
   --btn-text: #111827;
-  --bg-image: linear-gradient(to bottom, #7dd3fc 0%, #0ea5e9 480px, #f9f9fb 481px, #f9f9fb 100%);
+  --bg-image: linear-gradient(to bottom, #2563eb 0%, #1d4ed8 480px, #f9f9fb 481px, #f9f9fb 100%);
   --bg-attachment: scroll;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
