@@ -12,6 +12,8 @@ import {
 } from 'react-native';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
+import { useStripe } from '@stripe/stripe-react-native';
+import { useUser } from '@clerk/expo';
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
 import { GradedBackground } from '@/components/GradedBackground';
@@ -76,6 +78,8 @@ const SERVICES = [
 export default function ServicesScreen() {
   const colorScheme = useColorScheme() ?? 'light';
   const colors = Colors[colorScheme];
+  const { initPaymentSheet, presentPaymentSheet } = useStripe();
+  const { user } = useUser();
 
   // Booking states
   const [selectedService, setSelectedService] = useState<any | null>(null);
@@ -105,13 +109,86 @@ export default function ServicesScreen() {
     setFileName(`my_${cleanDocName}_draft.pdf`);
   };
 
-  const handleSubmitBooking = () => {
+  const handleSubmitBooking = async () => {
     if (!docType || !fileName) return;
     setIsSubmitting(true);
-    setTimeout(() => {
+
+    try {
+      // 1. Request Payment Intent clientSecret from backend
+      const backendUrl = "http://127.0.0.1:5001"; // Fallback URL for development
+      const response = await fetch(`${backendUrl}/api/payment/create-intent`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          price: selectedService.price || "49.00",
+          service_id: selectedService.title,
+          doc_type: docType
+        })
+      });
+
+      const resData = await response.json();
+      if (resData.error) {
+        alert(`Server Error: ${resData.error}`);
+        setIsSubmitting(false);
+        return;
+      }
+
+      const clientSecret = resData.clientSecret;
+      if (!clientSecret) {
+        alert("Failed to initialize payment intent. Please check backend configuration.");
+        setIsSubmitting(false);
+        return;
+      }
+
+      // 2. Init native mobile Stripe payment sheet
+      const { error: initError } = await initPaymentSheet({
+        paymentIntentClientSecret: clientSecret,
+        merchantDisplayName: 'Studplex',
+        style: colorScheme === 'dark' ? 'alwaysDark' : 'alwaysLight',
+        defaultBillingDetails: {
+          name: 'Student User',
+        }
+      });
+
+      if (initError) {
+        alert(`Payment initialization failed: ${initError.message}`);
+        setIsSubmitting(false);
+        return;
+      }
+
+      // 3. Prompt Stripe's native checkout interface
+      const { error: presentError } = await presentPaymentSheet();
+      if (presentError) {
+        alert(`Payment failed: ${presentError.message}`);
+        setIsSubmitting(false);
+      } else {
+        // Send confirmation request to backend to send email notification
+        try {
+          await fetch(`${backendUrl}/api/payment/confirm`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              txn_id: 'STX_NATIVE_CONFIRMED', // Mobile SDK confirms natively
+              email: user?.primaryEmailAddress?.emailAddress || 'student@example.com',
+              service_title: selectedService.title,
+              doc_type: docType,
+              filename: fileName || 'document.pdf',
+              comment: comment,
+              price: selectedService.price || '$49.00'
+            })
+          });
+        } catch (confirmErr) {
+          console.error("⚠️ Failed to trigger payment confirm mail on mobile:", confirmErr);
+        }
+
+        setIsSubmitting(false);
+        setSubmitSuccess(true);
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Failed to communicate with the payment server.");
       setIsSubmitting(false);
-      setSubmitSuccess(true);
-    }, 1500);
+    }
   };
 
   return (

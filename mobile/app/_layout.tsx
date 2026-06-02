@@ -51,17 +51,21 @@ export default function RootLayout() {
   return <RootLayoutNav />;
 }
 
+import { StripeProvider } from '@stripe/stripe-react-native';
+
 function RootLayoutNav() {
   const colorScheme = useColorScheme();
 
   return (
     <ClerkProvider publishableKey={CLERK_PUBLISHABLE_KEY} tokenCache={tokenCache}>
-      <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
-        <Stack>
-          <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
-        </Stack>
-      </ThemeProvider>
+      <StripeProvider publishableKey="pk_live_Y2xlcmsuc3R1ZHBsZXguY29tJA">
+        <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
+          <Stack>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen name="modal" options={{ presentation: 'modal' }} />
+          </Stack>
+        </ThemeProvider>
+      </StripeProvider>
     </ClerkProvider>
   );
 }

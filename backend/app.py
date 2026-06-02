@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-import json, os, re
+import json, os, re, stripe
 import urllib.parse
 import urllib.request
 from bs4 import BeautifulSoup
@@ -852,6 +852,20 @@ def get_profile():
                     local_data = json.load(f)
             except Exception:
                 pass
+        
+        # In offline mode, if no file exists or if the cached email doesn't match the requested one,
+        # return a default initialized profile so the login succeeds immediately
+        if not local_data or local_data.get("email", "").lower() != email.lower():
+            local_data = {
+                "email": email.lower(),
+                "fullName": email.split("@")[0].capitalize(),
+                "currentDegree": "Master",
+                "currentField": "Computer Science",
+                "grade": "3.5",
+                "semester": "1",
+                "universityName": "Technical University of Munich",
+                "notes": ""
+            }
         local_data["studplexId"] = generate_user_id(email)
     return jsonify(local_data)
 
@@ -1076,6 +1090,105 @@ def register_user():
     else:
         print(f"⚠️ User sign-up bypass (MongoDB disconnected): {email}", flush=True)
         return jsonify({"status": "saved_offline", "studplexId": generate_user_id(email)})
+
+
+# Initialize Stripe key from environment variable
+stripe.api_key = os.environ.get("STRIPE_SECRET_KEY")
+
+@app.route("/api/payment/create-intent", methods=["POST"])
+def create_payment_intent():
+    try:
+        body = request.json or {}
+        price_str = body.get("price", "49.00")
+        
+        # Parse price numeric value to cents
+        clean_price = float(re.sub(r'[^\d.]', '', price_str))
+        amount_cents = int(clean_price * 100)
+        
+        # Create PaymentIntent with automated payment methods enabled (supports card, wallets, etc)
+        intent = stripe.PaymentIntent.create(
+            amount=amount_cents,
+            currency="usd",
+            automatic_payment_methods={
+                "enabled": True,
+            },
+            metadata={
+                "service_id": body.get("service_id", ""),
+                "email": body.get("email", ""),
+                "doc_type": body.get("doc_type", "")
+            }
+        )
+        return jsonify({
+            "clientSecret": intent["client_secret"]
+        }), 200
+    except Exception as e:
+        print(f"⚠️ Stripe Error: {e}", flush=True)
+        return jsonify({"error": str(e)}), 400
+
+
+import smtplib
+from email.mime.multipart import MIMEMultipart
+from email.mime.text import MIMEText
+
+def send_audit_email(student_email, service_title, doc_type, filename, comment, price, txn_id):
+    admin_email = os.environ.get("ADMIN_EMAIL", "info@studplex.com")
+    smtp_server = os.environ.get("SMTP_SERVER", "smtp.gmail.com")
+    smtp_port = int(os.environ.get("SMTP_PORT", 587))
+    smtp_user = os.environ.get("SMTP_USER", "")
+    smtp_pass = os.environ.get("SMTP_PASS", "")
+
+    if not smtp_user or not smtp_pass:
+        print("⚠️ SMTP credentials not set. Email notification skipped.", flush=True)
+        return False
+
+    msg = MIMEMultipart()
+    msg['From'] = smtp_user
+    msg['To'] = admin_email
+    msg['Subject'] = f"🔔 New Service Booking: {service_title} ({price})"
+
+    body = f"""
+    <h3>New Premium Audit Request Received</h3>
+    <p><strong>Student Email:</strong> {student_email}</p>
+    <p><strong>Service Purchased:</strong> {service_title}</p>
+    <p><strong>Paid Amount:</strong> {price}</p>
+    <p><strong>Stripe Transaction ID:</strong> {txn_id}</p>
+    <br/>
+    <p><strong>Document Category:</strong> {doc_type}</p>
+    <p><strong>Uploaded File:</strong> {filename}</p>
+    <p><strong>Student Comment:</strong> {comment if comment else 'No comments provided.'}</p>
+    """
+    msg.attach(MIMEText(body, 'html'))
+
+    try:
+        server = smtplib.SMTP(smtp_server, smtp_port)
+        server.starttls()
+        server.login(smtp_user, smtp_pass)
+        server.sendmail(smtp_user, admin_email, msg.as_string())
+        server.quit()
+        print("📧 Notification email sent to admin successfully.", flush=True)
+        return True
+    except Exception as e:
+        print(f"⚠️ Failed to send notification email: {e}", flush=True)
+        return False
+
+@app.route("/api/payment/confirm", methods=["POST"])
+def confirm_payment():
+    try:
+        body = request.json or {}
+        txn_id = body.get("txn_id", "STX_MOCK")
+        email = body.get("email", "student@example.com")
+        service_title = body.get("service_title", "Document Audit")
+        doc_type = body.get("doc_type", "Transcript")
+        filename = body.get("filename", "document.pdf")
+        comment = body.get("comment", "")
+        price = body.get("price", "$49.00")
+        
+        # Send notification email to admin
+        send_audit_email(email, service_title, doc_type, filename, comment, price, txn_id)
+        
+        return jsonify({"status": "confirmed", "message": "Booking request recorded and email sent."}), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 
 if __name__ == "__main__":

@@ -1,11 +1,18 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { loadStripe } from '@stripe/stripe-js'
+import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
+import { useUser } from '@clerk/clerk-react'
+
+// Initialize Stripe publishable key from environment variables with safe fallback
+const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || 'pk_test_51Pyourplaceholderkey')
 
 const SERVICES = [
   {
     id: 'doc-eval',
     icon: '📄',
     title: 'Academic Document Evaluation',
+    price: '$49.00',
     desc: 'Comprehensive review of your transcripts, certificates, and GPA conversions. We verify international equivalence and highlight matching parameters to fit university admissions criteria.',
     features: ['GPA Equivalence Audits', 'Credential Verification', 'Prerequisites Mapping'],
     docOptions: ['Academic Transcript', 'Graduation Certificate', 'GPA Report', 'Other'],
@@ -15,6 +22,7 @@ const SERVICES = [
     id: 'visa-guide',
     icon: '🛂',
     title: 'Visa & Immigration Guidance',
+    price: '$99.00',
     desc: 'Step-by-step navigation through visa applications. We help organize your visa portfolios, prepare financial proofs, and audit documents to maximize approval odds.',
     features: ['Document Checklist Audits', 'Financial Statement Review', 'Interview Preparation Tips'],
     docOptions: ['Financial/Bank Statement', 'Passport Copy', 'Sponsorship Letter', 'Visa Application Draft', 'Other'],
@@ -24,6 +32,7 @@ const SERVICES = [
     id: 'app-strategy',
     icon: '🎓',
     title: 'University Application Strategy',
+    price: '$79.00',
     desc: 'Professional review of your university application folders. Get structural feedback on your Personal Statement, CV, and letters of recommendation to stand out to admissions boards.',
     features: ['SOP / Essay Review', 'Letter of Recommendation Audits', 'Portfolio Alignment'],
     docOptions: ['Statement of Purpose (SOP)', 'CV / Resume', 'Letter of Recommendation', 'Other'],
@@ -33,6 +42,7 @@ const SERVICES = [
     id: 'admissions',
     icon: '💡',
     title: 'Admissions & Matching Consult',
+    price: '$59.00',
     desc: 'In-depth review of your academic background to map out specific courses and admission roadmaps across Europe, North America, and beyond.',
     features: ['Custom Eligibility Checklists', 'Direct Admission Entry Audits', 'Deadline Management'],
     docOptions: ['Detailed CV', 'Transcripts Overview', 'Target University List', 'Other'],
@@ -42,6 +52,7 @@ const SERVICES = [
     id: 'scholarship',
     icon: '💰',
     title: 'Scholarship & Funding Advisory',
+    price: '$39.00',
     desc: 'Discover and align with compatible government, university, and private scholarship programs that fit your profile credentials.',
     features: ['Scholarship Eligibility Checks', 'Funding Document Verification', 'Application Alignment'],
     docOptions: ['Scholarship Application Essay', 'Income Statement', 'Awards Portfolio', 'Other'],
@@ -51,6 +62,7 @@ const SERVICES = [
     id: 'departure',
     icon: '🌍',
     title: 'Departure & Integration Support',
+    price: '$29.00',
     desc: 'Pre-departure assistance, including accommodation guidance, health insurance alignment, and student enrollment verification steps.',
     features: ['Accommodation Sourcing Tips', 'Health Insurance Alignment', 'Enrollment Portals Setup'],
     docOptions: ['Enrollment Offer Letter', 'Accommodation Application', 'Health Insurance Policy', 'Other'],
@@ -58,35 +70,116 @@ const SERVICES = [
   }
 ]
 
-export default function Services() {
+function ServicesContent() {
   const navigate = useNavigate()
+  const stripe = useStripe()
+  const elements = useElements()
+  const { user } = useUser()
+
   const [selectedService, setSelectedService] = useState(null)
+  
+  // Modal Navigation Step: 'form' | 'payment' | 'success'
+  const [bookingStep, setBookingStep] = useState('form')
+  
+  // Form fields
   const [docType, setDocType] = useState('')
   const [file, setFile] = useState(null)
   const [comment, setComment] = useState('')
+  
+  // State indicators
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [submitSuccess, setSubmitSuccess] = useState(false)
 
   const handleOpenBooking = (service) => {
     setSelectedService(service)
+    setBookingStep('form')
     setDocType('')
     setFile(null)
     setComment('')
-    setSubmitSuccess(false)
   }
 
   const handleCloseBooking = () => {
     setSelectedService(null)
   }
 
-  const handleSubmitBooking = (e) => {
+  const handleContinueToPayment = (e) => {
     e.preventDefault()
+    if (!docType || !file) return
+    setBookingStep('payment')
+  }
+
+  const handlePayAndSubmit = async (e) => {
+    e.preventDefault()
+    if (!stripe || !elements) return
+    
     setIsSubmitting(true)
-    // Simulate API request/uploading delay
-    setTimeout(() => {
+    
+    try {
+      // 1. Fetch clientSecret from Python backend PaymentIntent API
+      const backendUrl = import.meta.env.VITE_API_URL || "http://127.0.0.1:5001"
+      const res = await fetch(`${backendUrl}/api/payment/create-intent`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          price: selectedService.price,
+          service_id: selectedService.id,
+          doc_type: docType
+        })
+      })
+      
+      const resData = await res.json()
+      if (resData.error) {
+        alert(`Backend Error: ${resData.error}`)
+        setIsSubmitting(false)
+        return
+      }
+
+      const clientSecret = resData.clientSecret
+      if (!clientSecret) {
+        alert("Failed to create Stripe checkout session. Please check your backend STRIPE_SECRET_KEY.")
+        setIsSubmitting(false)
+        return
+      }
+
+      // 2. Confirm payment using Stripe Elements CardElement
+      const paymentResult = await stripe.confirmCardPayment(clientSecret, {
+        payment_method: {
+          card: elements.getElement(CardElement),
+        }
+      })
+
+      if (paymentResult.error) {
+        alert(`Payment Failed: ${paymentResult.error.message}`)
+        setIsSubmitting(false)
+      } else {
+        if (paymentResult.paymentIntent.status === 'succeeded') {
+          // Send confirmation request to record transaction and trigger email notification
+          try {
+            await fetch(`${backendUrl}/api/payment/confirm`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                txn_id: paymentResult.paymentIntent.id,
+                email: user?.primaryEmailAddress?.emailAddress || 'student@example.com',
+                service_title: selectedService.title,
+                doc_type: docType,
+                filename: file?.name || 'document.pdf',
+                comment: comment,
+                price: selectedService.price
+              })
+            })
+          } catch (confirmErr) {
+            console.error("⚠️ Failed to record transaction / send email:", confirmErr)
+          }
+
+          setIsSubmitting(false)
+          setBookingStep('success')
+        }
+      }
+    } catch (err) {
+      console.error(err)
+      alert("An unexpected error occurred while communicating with the server.")
       setIsSubmitting(false)
-      setSubmitSuccess(true)
-    }, 1500)
+    }
   }
 
   return (
@@ -119,9 +212,14 @@ export default function Services() {
               position: 'relative'
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-              <span style={{ fontSize: '32px' }}>{s.icon}</span>
-              <h3 style={{ fontSize: '18px', fontWeight: 800, color: 'var(--text)' }}>{s.title}</h3>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+                <span style={{ fontSize: '32px' }}>{s.icon}</span>
+                <h3 style={{ fontSize: '18px', fontWeight: 800, color: 'var(--text)' }}>{s.title}</h3>
+              </div>
+              <span style={{ color: 'var(--accent)', fontWeight: 800, fontSize: '16px', background: 'rgba(210, 243, 76, 0.1)', padding: '4px 10px', borderRadius: '8px' }}>
+                {s.price}
+              </span>
             </div>
             
             <p style={{ color: 'var(--muted)', fontSize: '14px', lineHeight: 1.6, flexGrow: 1 }}>
@@ -181,7 +279,7 @@ export default function Services() {
         </button>
       </div>
 
-      {/* Booking Modal Popup */}
+      {/* Booking & Checkout Modal */}
       {selectedService && (
         <div style={{
           position: 'fixed',
@@ -208,6 +306,7 @@ export default function Services() {
             position: 'relative',
             animation: 'fadeIn 0.25s ease-out',
           }} onClick={(e) => e.stopPropagation()}>
+            {/* Close Button */}
             <span 
               onClick={handleCloseBooking}
               style={{
@@ -229,28 +328,40 @@ export default function Services() {
               &times;
             </span>
 
-            {!submitSuccess ? (
-              <form onSubmit={handleSubmitBooking} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+            {/* Header info */}
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '18px', paddingRight: '24px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <span style={{ fontSize: '24px' }}>{selectedService.icon}</span>
+                <h3 style={{ fontSize: '20px', fontWeight: 850 }}>{selectedService.title}</h3>
+              </div>
+              <span style={{ color: 'var(--accent)', fontWeight: 800, fontSize: '15px' }}>{selectedService.price}</span>
+            </div>
+
+            {/* PROGRESS BAR */}
+            <div style={{ display: 'flex', gap: '8px', marginBottom: '24px' }}>
+              <div style={{ flex: 1, height: '4px', borderRadius: '2px', backgroundColor: 'var(--accent)' }} />
+              <div style={{ flex: 1, height: '4px', borderRadius: '2px', backgroundColor: bookingStep === 'payment' || bookingStep === 'success' ? 'var(--accent)' : 'rgba(255,255,255,0.1)' }} />
+              <div style={{ flex: 1, height: '4px', borderRadius: '2px', backgroundColor: bookingStep === 'success' ? 'var(--accent)' : 'rgba(255,255,255,0.1)' }} />
+            </div>
+
+            {bookingStep === 'form' && (
+              <form onSubmit={handleContinueToPayment} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 <div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '8px' }}>
-                    <span style={{ fontSize: '24px' }}>{selectedService.icon}</span>
-                    <h3 style={{ fontSize: '22px', fontWeight: 800 }}>Book {selectedService.title}</h3>
-                  </div>
                   <p style={{ color: 'var(--muted)', fontSize: '13.5px', lineHeight: 1.5 }}>
-                    Upload your profile documents to request a premium evaluation session with our coordinators.
+                    Please select the document category and upload the copy to proceed with the audit booking payment.
                   </p>
                 </div>
 
                 {/* Dropdown Options */}
                 <div>
-                  <label style={{ display: 'block', fontSize: '13px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--muted)', marginBottom: '8px' }}>
-                    What kind of data are you uploading?
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--muted)', marginBottom: '8px' }}>
+                    What kind of document are you uploading?
                   </label>
                   <select 
                     value={docType}
                     onChange={(e) => {
                       setDocType(e.target.value)
-                      setFile(null) // Reset file when type changes
+                      setFile(null)
                     }}
                     required
                     style={{
@@ -276,7 +387,7 @@ export default function Services() {
                 {/* Upload File Input */}
                 {docType && (
                   <div style={{ animation: 'fadeIn 0.2s ease' }}>
-                    <label style={{ display: 'block', fontSize: '13px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--muted)', marginBottom: '8px' }}>
+                    <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--muted)', marginBottom: '8px' }}>
                       Select File to Upload
                     </label>
                     <div style={{
@@ -317,16 +428,16 @@ export default function Services() {
 
                 {/* Comment Option */}
                 <div>
-                  <label style={{ display: 'block', fontSize: '13px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--muted)', marginBottom: '8px' }}>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--muted)', marginBottom: '8px' }}>
                     Additional Comment (Optional)
                   </label>
                   <textarea
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
-                    placeholder="Enter any details or questions for our auditors..."
+                    placeholder="E.g. Targets, universities, or specific request details..."
                     style={{
                       width: '100%',
-                      height: '90px',
+                      height: '80px',
                       padding: '12px 16px',
                       borderRadius: '12px',
                       border: '1.5px solid var(--card-border)',
@@ -340,10 +451,9 @@ export default function Services() {
                   />
                 </div>
 
-                {/* Submit button */}
+                {/* Continue button */}
                 <button
                   type="submit"
-                  disabled={isSubmitting}
                   className="btn-accent"
                   style={{
                     width: '100%',
@@ -352,22 +462,104 @@ export default function Services() {
                     fontWeight: 700,
                     cursor: 'pointer',
                     fontSize: '15px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '10px',
                   }}
                 >
-                  {isSubmitting ? 'Uploading Documents...' : 'Confirm & Request Audit'}
+                  Continue to Checkout
                 </button>
               </form>
-            ) : (
+            )}
+
+            {bookingStep === 'payment' && (
+              <form onSubmit={handlePayAndSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px', animation: 'fadeIn 0.25s ease' }}>
+                <div style={{ backgroundColor: 'rgba(255,255,255,0.02)', border: '1px solid var(--card-border)', borderRadius: '14px', padding: '16px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+                  <h4 style={{ fontSize: '13px', fontWeight: 700, color: 'var(--muted)' }}>Order Summary</h4>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px' }}>
+                    <span style={{ color: 'var(--text)' }}>{selectedService.title}</span>
+                    <strong style={{ color: 'var(--text)' }}>{selectedService.price}</strong>
+                  </div>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', color: 'var(--muted)', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '6px', marginTop: '4px' }}>
+                    <span>Document:</span>
+                    <span>{file?.name} ({docType})</span>
+                  </div>
+                </div>
+
+                {/* Real Stripe Card Element Wrapper */}
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--muted)' }}>
+                    Payment Details (Stripe Card Checkout)
+                  </label>
+                  
+                  <div style={{ 
+                    padding: '16px', 
+                    borderRadius: '12px', 
+                    border: '1.5px solid var(--card-border)', 
+                    backgroundColor: 'rgba(255, 255, 255, 0.03)' 
+                  }}>
+                    <CardElement options={{
+                      style: {
+                        base: {
+                          fontSize: '14px',
+                          color: '#ffffff',
+                          fontFamily: 'Inter, system-ui, sans-serif',
+                          '::placeholder': {
+                            color: '#a1a1aa',
+                          },
+                        },
+                        invalid: {
+                          color: '#ef4444',
+                        },
+                      },
+                    }} />
+                  </div>
+                </div>
+
+                <div style={{ display: 'flex', gap: '10px' }}>
+                  <button 
+                    type="button" 
+                    onClick={() => setBookingStep('form')}
+                    style={{
+                      flex: 1,
+                      padding: '14px',
+                      borderRadius: '12px',
+                      fontWeight: 700,
+                      cursor: 'pointer',
+                      border: '1px solid var(--card-border)',
+                      background: 'transparent',
+                      color: 'var(--text)'
+                    }}
+                  >
+                    Back
+                  </button>
+                  <button
+                    type="submit"
+                    disabled={isSubmitting || !stripe}
+                    className="btn-accent"
+                    style={{
+                      flex: 2,
+                      padding: '14px',
+                      borderRadius: '12px',
+                      fontWeight: 700,
+                      cursor: 'pointer',
+                      fontSize: '15px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '8px'
+                    }}
+                  >
+                    {isSubmitting ? 'Processing Payment...' : `Confirm & Pay ${selectedService.price}`}
+                  </button>
+                </div>
+              </form>
+            )}
+
+            {bookingStep === 'success' && (
               <div style={{ textAlign: 'center', padding: '20px 0', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px', animation: 'fadeIn 0.3s ease' }}>
-                <span style={{ fontSize: '64px' }}>✅</span>
+                <span style={{ fontSize: '64px' }}>🛡️</span>
                 <div>
-                  <h3 style={{ fontSize: '24px', fontWeight: 800, marginBottom: '8px' }}>Request Received!</h3>
+                  <h3 style={{ fontSize: '24px', fontWeight: 800, marginBottom: '8px' }}>Payment Approved!</h3>
                   <p style={{ color: 'var(--muted)', fontSize: '14px', lineHeight: 1.6 }}>
-                    Your document <strong style={{ color: 'var(--text)' }}>{file?.name}</strong> has been successfully uploaded and categorized under <strong>{docType}</strong>. Our academic coordinators will review it and contact you within 24 hours.
+                    Your transaction for <strong style={{ color: 'var(--text)' }}>{selectedService.price}</strong> succeeded. We categorized your uploaded file <strong style={{ color: 'var(--text)' }}>{file?.name}</strong> under <strong style={{ color: 'var(--text)' }}>{docType}</strong>. Our academic coordinators will evaluate it and reach out shortly.
                   </p>
                 </div>
                 <button 
@@ -375,7 +567,7 @@ export default function Services() {
                   className="btn-accent"
                   style={{ width: '100%', padding: '12px', borderRadius: '12px', fontWeight: 700 }}
                 >
-                  Done
+                  Dismiss
                 </button>
               </div>
             )}
@@ -383,5 +575,13 @@ export default function Services() {
         </div>
       )}
     </div>
+  )
+}
+
+export default function Services() {
+  return (
+    <Elements stripe={stripePromise}>
+      <ServicesContent />
+    </Elements>
   )
 }
