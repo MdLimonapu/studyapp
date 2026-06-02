@@ -3,6 +3,7 @@ import { NavLink, Routes, Route, useNavigate } from 'react-router-dom'
 import Home from './pages/Home'
 import University from './pages/University'
 import Profile from './pages/Profile'
+import Services from './pages/Services'
 import Roadmap from './pages/Roadmap'
 import Contact from './pages/Contact'
 import Privacy from './pages/Privacy'
@@ -164,6 +165,7 @@ export default function App() {
         
         <nav className="nav-links">
           <NavLink to="/">Home</NavLink>
+          <NavLink to="/services">Services</NavLink>
           <NavLink to="/university">University Matches</NavLink>
           <NavLink to="/roadmap">Check Eligibility</NavLink>
           <NavLink to="/contact">Contact</NavLink>
@@ -172,14 +174,16 @@ export default function App() {
         <div className="topbar-right">
           <div style={{ display: 'flex', alignItems: 'center', gap: '14px', height: '100%' }}>
             <SignedIn>
-              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '3px', transform: 'translateY(4px)' }}>
+              <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '3px', transform: 'none', alignSelf: 'center' }}>
                 <UserButton 
                   afterSignOutUrl="/"
                   appearance={{
                     elements: {
                       avatarBox: {
-                        width: '34px',
-                        height: '34px'
+                        width: '32px',
+                        height: '32px',
+                        border: '1.5px solid rgba(255, 255, 255, 0.15)',
+                        boxShadow: '0 0 8px rgba(255, 255, 255, 0.1)'
                       }
                     }
                   }}
@@ -197,7 +201,7 @@ export default function App() {
                     />
                   </UserButton.MenuItems>
                 </UserButton>
-                <span style={{ fontSize: '10px', fontWeight: 800, color: 'var(--text)', textTransform: 'uppercase', letterSpacing: '0.05em', opacity: 0.85 }}>Profile</span>
+                <span style={{ fontSize: '9px', fontWeight: 700, color: 'var(--text)', textTransform: 'uppercase', letterSpacing: '0.06em', opacity: 0.65 }}>Profile</span>
               </div>
             </SignedIn>
             <SignedOut>
@@ -242,6 +246,7 @@ export default function App() {
       <main className="page-wrap">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/services" element={<Services />} />
           <Route path="/university" element={<University />} />
           <Route path="/roadmap" element={<Roadmap />} />
           <Route path="/profile" element={<Profile />} />
