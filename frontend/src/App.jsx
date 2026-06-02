@@ -173,7 +173,17 @@ export default function App() {
           <div style={{ display: 'flex', alignItems: 'center', gap: '14px', height: '100%' }}>
             <SignedIn>
               <div style={{ display: 'flex', alignItems: 'center' }}>
-                <UserButton afterSignOutUrl="/">
+                <UserButton 
+                  afterSignOutUrl="/"
+                  appearance={{
+                    elements: {
+                      avatarBox: {
+                        width: '46px',
+                        height: '46px'
+                      }
+                    }
+                  }}
+                >
                   <UserButton.MenuItems>
                     <UserButton.Action 
                       label="My Profile" 
