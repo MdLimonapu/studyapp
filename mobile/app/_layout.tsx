@@ -58,7 +58,7 @@ function RootLayoutNav() {
 
   return (
     <ClerkProvider publishableKey={CLERK_PUBLISHABLE_KEY} tokenCache={tokenCache}>
-      <StripeProvider publishableKey="pk_live_Y2xlcmsuc3R1ZHBsZXguY29tJA">
+      <StripeProvider publishableKey="pk_live_51TdyLrBLpfHfOimIrYN3BJxfxaGsCo5rupohqcjuvcLhSgB1Mz4AQyO3AzuFhsr6KMyWorEmzLVBfrFOByTVkIeY00K9CPUpuI">
         <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>
           <Stack>
             <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
