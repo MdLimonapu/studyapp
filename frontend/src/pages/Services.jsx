@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { loadStripe } from '@stripe/stripe-js'
-import { Elements, CardElement, useStripe, useElements } from '@stripe/react-stripe-js'
+import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { useUser } from '@clerk/clerk-react'
 
 // Initialize Stripe publishable key from environment variables with safe fallback
@@ -70,23 +70,152 @@ const SERVICES = [
   }
 ]
 
-function ServicesContent() {
-  const navigate = useNavigate()
+// Separate component for the Stripe PaymentElement Form
+function StripePaymentForm({ clientSecret, selectedService, docType, file, comment, setBookingStep, onCancel }) {
   const stripe = useStripe()
   const elements = useElements()
   const { user } = useUser()
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const handlePayAndSubmit = async (e) => {
+    e.preventDefault()
+    if (!stripe || !elements) return
+    setIsSubmitting(true)
+    
+    try {
+      // 1. Confirm payment using Stripe PaymentElement (automatically triggers Google Pay/Apple Pay if enabled)
+      const paymentResult = await stripe.confirmPayment({
+        elements,
+        redirect: 'if_required',
+      })
+
+      if (paymentResult.error) {
+        alert(`Payment Failed: ${paymentResult.error.message}`)
+        setIsSubmitting(false)
+      } else {
+        if (paymentResult.paymentIntent.status === 'succeeded') {
+          // 2. Call backend /api/payment/confirm to send transaction details email
+          try {
+            const backendUrl = import.meta.env.VITE_API_URL || "http://127.0.0.1:5001"
+            await fetch(`${backendUrl}/api/payment/confirm`, {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                txn_id: paymentResult.paymentIntent.id,
+                email: user?.primaryEmailAddress?.emailAddress || 'student@example.com',
+                service_title: selectedService.title,
+                doc_type: docType,
+                filename: file?.name || 'document.pdf',
+                comment: comment,
+                price: selectedService.price
+              })
+            })
+          } catch (confirmErr) {
+            console.error("⚠️ Failed to record transaction:", confirmErr)
+          }
+
+          setIsSubmitting(false)
+          setBookingStep('success')
+        }
+      }
+    } catch (err) {
+      console.error(err)
+      alert("An unexpected error occurred during checkout.")
+      setIsSubmitting(false)
+    }
+  }
+
+  return (
+    <form onSubmit={handlePayAndSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px', animation: 'fadeIn 0.25s ease' }}>
+      <div style={{ backgroundColor: 'rgba(255,255,255,0.02)', border: '1px solid var(--card-border)', borderRadius: '14px', padding: '16px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
+        <h4 style={{ fontSize: '13px', fontWeight: 700, color: 'var(--muted)' }}>Order Summary</h4>
+        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px' }}>
+          <span style={{ color: 'var(--text)' }}>{selectedService.title}</span>
+          <strong style={{ color: 'var(--text)' }}>{selectedService.price}</strong>
+        </div>
+        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', color: 'var(--muted)', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '6px', marginTop: '4px' }}>
+          <span>Document:</span>
+          <span>{file?.name} ({docType})</span>
+        </div>
+      </div>
+
+      {/* Real Stripe Payment Element (Displays Card, Apple Pay, Google Pay, Link automatically) */}
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+        <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--muted)' }}>
+          Payment Method
+        </label>
+        
+        <div style={{ 
+          padding: '16px', 
+          borderRadius: '12px', 
+          border: '1.5px solid var(--card-border)', 
+          backgroundColor: 'rgba(255, 255, 255, 0.03)' 
+        }}>
+          <PaymentElement options={{
+            layout: {
+              type: 'tabs',
+              defaultCollapsed: false,
+            },
+            wallets: {
+              applePay: 'auto',
+              googlePay: 'auto',
+            },
+            paymentMethodOrder: ['apple_pay', 'google_pay', 'link', 'card'],
+          }} />
+        </div>
+      </div>
+
+      <div style={{ display: 'flex', gap: '10px' }}>
+        <button 
+          type="button" 
+          onClick={onCancel}
+          style={{
+            flex: 1,
+            padding: '14px',
+            borderRadius: '12px',
+            fontWeight: 700,
+            cursor: 'pointer',
+            border: '1px solid var(--card-border)',
+            background: 'transparent',
+            color: 'var(--text)'
+          }}
+        >
+          Back
+        </button>
+        <button
+          type="submit"
+          disabled={isSubmitting || !stripe}
+          className="btn-accent"
+          style={{
+            flex: 2,
+            padding: '14px',
+            borderRadius: '12px',
+            fontWeight: 700,
+            cursor: 'pointer',
+            fontSize: '15px',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            gap: '8px'
+          }}
+        >
+          {isSubmitting ? 'Processing Payment...' : `Confirm & Pay ${selectedService.price}`}
+        </button>
+      </div>
+    </form>
+  )
+}
+
+export default function Services() {
+  const navigate = useNavigate()
+  const { user } = useUser()
 
   const [selectedService, setSelectedService] = useState(null)
-  
-  // Modal Navigation Step: 'form' | 'payment' | 'success'
   const [bookingStep, setBookingStep] = useState('form')
-  
-  // Form fields
   const [docType, setDocType] = useState('')
   const [file, setFile] = useState(null)
   const [comment, setComment] = useState('')
-  
-  // State indicators
+  const [clientSecret, setClientSecret] = useState('')
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleOpenBooking = (service) => {
@@ -95,26 +224,20 @@ function ServicesContent() {
     setDocType('')
     setFile(null)
     setComment('')
+    setClientSecret('')
   }
 
   const handleCloseBooking = () => {
     setSelectedService(null)
   }
 
-  const handleContinueToPayment = (e) => {
+  const handleContinueToPayment = async (e) => {
     e.preventDefault()
     if (!docType || !file) return
-    setBookingStep('payment')
-  }
-
-  const handlePayAndSubmit = async (e) => {
-    e.preventDefault()
-    if (!stripe || !elements) return
-    
     setIsSubmitting(true)
     
     try {
-      // 1. Fetch clientSecret from Python backend PaymentIntent API
+      // Fetch clientSecret from Python backend PaymentIntent API
       const backendUrl = import.meta.env.VITE_API_URL || "http://127.0.0.1:5001"
       const res = await fetch(`${backendUrl}/api/payment/create-intent`, {
         method: 'POST',
@@ -133,51 +256,19 @@ function ServicesContent() {
         return
       }
 
-      const clientSecret = resData.clientSecret
-      if (!clientSecret) {
-        alert("Failed to create Stripe checkout session. Please check your backend STRIPE_SECRET_KEY.")
+      const secret = resData.clientSecret
+      if (!secret) {
+        alert("Failed to initialize Stripe session. Check backend STRIPE_SECRET_KEY.")
         setIsSubmitting(false)
         return
       }
 
-      // 2. Confirm payment using Stripe Elements CardElement
-      const paymentResult = await stripe.confirmCardPayment(clientSecret, {
-        payment_method: {
-          card: elements.getElement(CardElement),
-        }
-      })
-
-      if (paymentResult.error) {
-        alert(`Payment Failed: ${paymentResult.error.message}`)
-        setIsSubmitting(false)
-      } else {
-        if (paymentResult.paymentIntent.status === 'succeeded') {
-          // Send confirmation request to record transaction and trigger email notification
-          try {
-            await fetch(`${backendUrl}/api/payment/confirm`, {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                txn_id: paymentResult.paymentIntent.id,
-                email: user?.primaryEmailAddress?.emailAddress || 'student@example.com',
-                service_title: selectedService.title,
-                doc_type: docType,
-                filename: file?.name || 'document.pdf',
-                comment: comment,
-                price: selectedService.price
-              })
-            })
-          } catch (confirmErr) {
-            console.error("⚠️ Failed to record transaction / send email:", confirmErr)
-          }
-
-          setIsSubmitting(false)
-          setBookingStep('success')
-        }
-      }
+      setClientSecret(secret)
+      setIsSubmitting(false)
+      setBookingStep('payment')
     } catch (err) {
       console.error(err)
-      alert("An unexpected error occurred while communicating with the server.")
+      alert("Failed to reach backend payment server.")
       setIsSubmitting(false)
     }
   }
@@ -454,6 +545,7 @@ function ServicesContent() {
                 {/* Continue button */}
                 <button
                   type="submit"
+                  disabled={isSubmitting}
                   className="btn-accent"
                   style={{
                     width: '100%',
@@ -464,93 +556,40 @@ function ServicesContent() {
                     fontSize: '15px',
                   }}
                 >
-                  Continue to Checkout
+                  {isSubmitting ? 'Initializing Checkout...' : 'Continue to Checkout'}
                 </button>
               </form>
             )}
 
-            {bookingStep === 'payment' && (
-              <form onSubmit={handlePayAndSubmit} style={{ display: 'flex', flexDirection: 'column', gap: '20px', animation: 'fadeIn 0.25s ease' }}>
-                <div style={{ backgroundColor: 'rgba(255,255,255,0.02)', border: '1px solid var(--card-border)', borderRadius: '14px', padding: '16px', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                  <h4 style={{ fontSize: '13px', fontWeight: 700, color: 'var(--muted)' }}>Order Summary</h4>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px' }}>
-                    <span style={{ color: 'var(--text)' }}>{selectedService.title}</span>
-                    <strong style={{ color: 'var(--text)' }}>{selectedService.price}</strong>
-                  </div>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', color: 'var(--muted)', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '6px', marginTop: '4px' }}>
-                    <span>Document:</span>
-                    <span>{file?.name} ({docType})</span>
-                  </div>
-                </div>
-
-                {/* Real Stripe Card Element Wrapper */}
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
-                  <label style={{ display: 'block', fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--muted)' }}>
-                    Payment Details (Stripe Card Checkout)
-                  </label>
-                  
-                  <div style={{ 
-                    padding: '16px', 
-                    borderRadius: '12px', 
-                    border: '1.5px solid var(--card-border)', 
-                    backgroundColor: 'rgba(255, 255, 255, 0.03)' 
-                  }}>
-                    <CardElement options={{
-                      style: {
-                        base: {
-                          fontSize: '14px',
-                          color: '#ffffff',
-                          fontFamily: 'Inter, system-ui, sans-serif',
-                          '::placeholder': {
-                            color: '#a1a1aa',
-                          },
-                        },
-                        invalid: {
-                          color: '#ef4444',
-                        },
-                      },
-                    }} />
-                  </div>
-                </div>
-
-                <div style={{ display: 'flex', gap: '10px' }}>
-                  <button 
-                    type="button" 
-                    onClick={() => setBookingStep('form')}
-                    style={{
-                      flex: 1,
-                      padding: '14px',
-                      borderRadius: '12px',
-                      fontWeight: 700,
-                      cursor: 'pointer',
-                      border: '1px solid var(--card-border)',
-                      background: 'transparent',
-                      color: 'var(--text)'
-                    }}
-                  >
-                    Back
-                  </button>
-                  <button
-                    type="submit"
-                    disabled={isSubmitting || !stripe}
-                    className="btn-accent"
-                    style={{
-                      flex: 2,
-                      padding: '14px',
-                      borderRadius: '12px',
-                      fontWeight: 700,
-                      cursor: 'pointer',
-                      fontSize: '15px',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '8px'
-                    }}
-                  >
-                    {isSubmitting ? 'Processing Payment...' : `Confirm & Pay ${selectedService.price}`}
-                  </button>
-                </div>
-              </form>
+            {bookingStep === 'payment' && clientSecret && (
+              <Elements stripe={stripePromise} options={{ 
+                clientSecret, 
+                appearance: { 
+                  theme: 'night',
+                  variables: {
+                    colorPrimary: '#d2f34c',
+                    colorBackground: '#0d0f17',
+                    colorText: '#e2e8f0',
+                    borderRadius: '12px',
+                    fontFamily: 'Inter, system-ui, sans-serif',
+                  },
+                  rules: {
+                    '.Tab': { border: '1.5px solid #242936' },
+                    '.Tab--selected': { borderColor: '#d2f34c', backgroundColor: 'rgba(210,243,76,0.08)' },
+                  }
+                },
+                paymentMethodOrder: ['apple_pay', 'google_pay', 'link', 'card'],
+              }}>
+                <StripePaymentForm 
+                  clientSecret={clientSecret}
+                  selectedService={selectedService}
+                  docType={docType}
+                  file={file}
+                  comment={comment}
+                  setBookingStep={setBookingStep}
+                  onCancel={() => setBookingStep('form')}
+                />
+              </Elements>
             )}
 
             {bookingStep === 'success' && (
@@ -575,13 +614,5 @@ function ServicesContent() {
         </div>
       )}
     </div>
-  )
-}
-
-export default function Services() {
-  return (
-    <Elements stripe={stripePromise}>
-      <ServicesContent />
-    </Elements>
   )
 }
