@@ -4,7 +4,6 @@ import { Platform } from 'react-native';
 
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
-import { useClientOnlyValue } from '@/components/useClientOnlyValue';
 
 export default function TabLayout() {
   const colorScheme = useColorScheme() ?? 'light';
@@ -28,7 +27,7 @@ export default function TabLayout() {
           paddingBottom: Platform.OS === 'ios' ? 14 : 8,
           paddingTop: 8,
           elevation: 10,
-          shadowColor: colorScheme === 'dark' ? '#ccff00' : '#000',
+          shadowColor: colorScheme === 'dark' ? '#6366f1' : '#000',
           shadowOffset: { width: 0, height: 6 },
           shadowOpacity: colorScheme === 'dark' ? 0.12 : 0.08,
           shadowRadius: 16,
@@ -43,46 +42,65 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Match',
+          title: 'Home',
+          tabBarIcon: ({ color, focused }) => (
+            <FontAwesome name="home" size={focused ? 24 : 22} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="search"
+        options={{
+          title: 'My Matches',
           tabBarIcon: ({ color, focused }) => (
             <FontAwesome name="search" size={focused ? 24 : 22} color={color} />
           ),
         }}
       />
       <Tabs.Screen
-        name="mymatches"
-        options={{
-          title: 'My Match',
-          tabBarIcon: ({ color, focused }) => (
-            <FontAwesome name="heart-o" size={focused ? 24 : 22} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="news"
-        options={{
-          title: 'News',
-          tabBarIcon: ({ color, focused }) => (
-            <FontAwesome name="newspaper-o" size={focused ? 24 : 22} color={color} />
-          ),
-        }}
-      />
-      <Tabs.Screen
         name="roadmap"
         options={{
-          title: 'Checklist',
+          title: 'Eligibility',
           tabBarIcon: ({ color, focused }) => (
             <FontAwesome name="check-square-o" size={focused ? 24 : 22} color={color} />
           ),
         }}
       />
       <Tabs.Screen
+        name="services"
+        options={{
+          title: 'Services',
+          tabBarIcon: ({ color, focused }) => (
+            <FontAwesome name="graduation-cap" size={focused ? 24 : 22} color={color} />
+          ),
+        }}
+      />
+      <Tabs.Screen
+        name="contact"
+        options={{
+          title: 'Contact',
+          tabBarIcon: ({ color, focused }) => (
+            <FontAwesome name="envelope-o" size={focused ? 24 : 22} color={color} />
+          ),
+        }}
+      />
+      {/* Hidden tabs - these exist as files but are not shown in the tab bar */}
+      <Tabs.Screen
+        name="news"
+        options={{
+          href: null,
+        }}
+      />
+      <Tabs.Screen
         name="profile"
         options={{
-          title: 'Profile',
-          tabBarIcon: ({ color, focused }) => (
-            <FontAwesome name="user" size={focused ? 24 : 22} color={color} />
-          ),
+          href: null,
+        }}
+      />
+      <Tabs.Screen
+        name="mymatches"
+        options={{
+          href: null,
         }}
       />
     </Tabs>
