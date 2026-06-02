@@ -93,10 +93,10 @@ export default function Services() {
     <div className="services-page" style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px 0' }}>
       {/* Hero Header */}
       <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-        <h2 style={{ fontSize: '38px', fontWeight: 800, marginBottom: '12px', background: 'linear-gradient(to right, #ffffff, var(--muted))', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+        <h2 style={{ fontSize: '38px', fontWeight: 800, marginBottom: '12px', background: 'linear-gradient(to right, #ffffff, #e2e8f0)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
           Our Premium Services
         </h2>
-        <p style={{ color: 'var(--muted)', fontSize: '16px', maxWidth: '600px', margin: '0 auto', lineHeight: 1.6 }}>
+        <p style={{ color: '#e2e8f0', fontSize: '16px', maxWidth: '600px', margin: '0 auto', lineHeight: 1.6, textShadow: '0 1px 2px rgba(0,0,0,0.1)' }}>
           Get expert human assistance and academic audits alongside our search engine to guarantee a smooth entry into your dream university abroad.
         </p>
       </div>
