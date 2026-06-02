@@ -226,10 +226,12 @@ export default function Services() {
     setFile(null)
     setComment('')
     setClientSecret('')
+    document.body.style.overflow = 'hidden'
   }
 
   const handleCloseBooking = () => {
     setSelectedService(null)
+    document.body.style.overflow = ''
   }
 
   const handleContinueToPayment = async (e) => {
