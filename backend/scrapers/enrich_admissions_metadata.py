@@ -101,22 +101,111 @@ def normalize_degree(value: str) -> str:
     return value or ""
 
 
-def estimate_fee(country: str, degree: str) -> str:
+BW_CITIES = {
+    "karlsruhe", "stuttgart", "heidelberg", "tübingen", "tuebingen", 
+    "freiburg", "mannheim", "ulm", "konstanz", "heilbronn", "reutlingen",
+    "esslingen", "pforzheim", "offenburg", "furtwangen", "ravensburg",
+    "ludwigsburg", "nürtingen", "nuertingen", "rottenburg", "schwäbisch gmünd"
+}
+
+PRIVATE_GERMANY = [
+    "private", "international school", "business school", "gisma", "bsbi", 
+    "hhl", "luxembourg", "srh", "macromedia", "fresenius", "munich business school",
+    "whu", "ebs", "jacobs", "constructor"
+]
+
+IVY_USA = [
+    "harvard", "yale", "princeton", "columbia", "pennsylvania", "dartmouth", "brown", "cornell",
+    "stanford", "massachusetts institute of technology", "mit", "caltech", "california institute of technology",
+    "nyu", "new york university", "usc", "university of southern california", "northwestern", "chicago",
+    "carnegie mellon", "johns hopkins", "duke"
+]
+
+OXBRIDGE_UK = [
+    "oxford", "cambridge", "imperial college", "ucl", "university college london", "lse",
+    "london school of economics", "king's college", "kcl"
+]
+
+BUSINESS_FRANCE = [
+    "business", "hec", "essec", "esc", "edhec", "emlyon", "skema", "audencia", "grenoble ecole", "ieseg"
+]
+
+PRIVATE_SWITZERLAND = [
+    "private", "business school", "imd", "glion", "les roches", "geneva business", "eu business"
+]
+
+PRIVATE_JAPAN = [
+    "private", "waseda", "keio", "sophia", "meiji", "doshisha", "ritsumeikan", "chuo", "rikkyo"
+]
+
+
+def estimate_fee(item: dict) -> str:
+    country = item.get("country", "")
+    degree = item.get("degree", "")
     level = normalize_degree(degree)
-    table = {
-        "Germany": "EUR 0-3,000/year at many public universities; higher at private universities",
-        "France": "EUR 2,770-3,770/year at public universities for many non-EU students; higher at private schools",
-        "Sweden": "SEK 80,000-295,000/year for many non-EU students",
-        "Netherlands": "EUR 8,000-25,000/year for many non-EU students",
-        "Switzerland": "CHF 1,000-8,000/year at many public universities; higher at some institutions",
-        "Japan": "JPY 535,800/year at many national universities; private universities vary",
-        "Canada": "CAD 20,000-45,000/year for many international students",
-        "Australia": "AUD 25,000-50,000/year for many international students",
-        "UK": "GBP 15,000-35,000/year for many international students",
-        "USA": "USD 20,000-60,000/year depending on institution",
-    }
+    uni = (item.get("uni") or "").lower()
+    city = (item.get("city") or "").lower()
+    
     if level == "PhD" and country in {"Germany", "Switzerland", "Sweden", "Netherlands"}:
         return "Often funded/employed; verify funding and tuition status on the official program page"
+        
+    if country == "Germany":
+        is_private = any(k in uni for k in PRIVATE_GERMANY)
+        is_bw = any(city.strip() == bw or bw in uni for bw in BW_CITIES)
+        is_tum = "munich" in city and ("technical university" in uni or "tum" in uni)
+        if is_private:
+            return "EUR 8,000-15,000/year (Private university estimate)"
+        elif is_tum:
+            return "EUR 4,000-6,000/year (TUM tuition for non-EU students)"
+        elif is_bw:
+            return "EUR 3,000/year (EUR 1,500/semester estimate for non-EU)"
+        else:
+            return "EUR 0/year (semester contribution ~EUR 200-400)"
+            
+    elif country in ["USA", "United States"]:
+        is_ivy = any(k in uni for k in IVY_USA)
+        if is_ivy:
+            return "USD 55,000-65,000/year (Ivy League / elite private estimate)"
+        else:
+            return "USD 25,000-45,000/year (Private/out-of-state tuition estimate)"
+            
+    elif country in ["UK", "United Kingdom"]:
+        is_oxbridge = any(k in uni for k in OXBRIDGE_UK)
+        if is_oxbridge:
+            return "GBP 25,000-38,000/year (Oxbridge / elite university estimate)"
+        else:
+            return "GBP 16,000-26,000/year (Standard international tuition estimate)"
+            
+    elif country == "France":
+        is_business = any(k in uni for k in BUSINESS_FRANCE)
+        if is_business:
+            return "EUR 12,000-22,000/year (Grande École / business school estimate)"
+        elif "bachelor" in level.lower():
+            return "EUR 2,770/year (National rate estimate for non-EU students)"
+        else:
+            return "EUR 3,770/year (National rate estimate for non-EU students)"
+            
+    elif country == "Switzerland":
+        is_private = any(k in uni for k in PRIVATE_SWITZERLAND)
+        if is_private:
+            return "CHF 15,000-30,000/year (Private university estimate)"
+        else:
+            return "CHF 1,000-2,000/year (Public university tuition estimate)"
+            
+    elif country == "Japan":
+        is_private = any(k in uni for k in PRIVATE_JAPAN)
+        if is_private:
+            return "JPY 800,000-1,400,000/year (Private university estimate)"
+        else:
+            return "JPY 535,800/year (Standard national university fee)"
+            
+    # Generic table defaults
+    table = {
+        "Sweden": "SEK 80,000-295,000/year for non-EU students",
+        "Netherlands": "EUR 8,000-25,000/year for non-EU students",
+        "Canada": "CAD 20,000-45,000/year for international students",
+        "Australia": "AUD 25,000-50,000/year for international students",
+    }
     return table.get(country, "Varies by university; verify the official course page")
 
 
@@ -158,7 +247,7 @@ def enrich(item: dict) -> dict:
     confidence_label, confidence_score = source_confidence(item)
     existing_fee = (item.get("fee") or "").strip()
     fee_status = "listed_by_source" if existing_fee else "country_estimate"
-    fee = existing_fee or estimate_fee(country, degree)
+    fee = existing_fee or estimate_fee(item)
     duration = item.get("duration") or defaults.get("duration", {}).get(degree, "")
     language = item.get("language") or defaults.get("language", "Verify on course page")
     intake = item.get("intake") or defaults.get("intake", "Verify on course page")
