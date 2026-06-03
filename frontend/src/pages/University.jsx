@@ -17,6 +17,38 @@ const countryFlags = {
   'japan': '🇯🇵',
 }
 
+const getShortFee = (feeText) => {
+  if (!feeText) return 'Verify';
+  return feeText.split(/ at | for | depending |; |,/i)[0].trim();
+}
+
+const getShortDeadline = (deadlineText) => {
+  if (!deadlineText) return 'Verify';
+  const text = deadlineText.toLowerCase();
+  
+  if (text.includes('january-july') && text.includes('july-january')) {
+    return 'Jan-July / July-Jan';
+  }
+  if (text.includes('december-march')) return 'Dec - March';
+  if (text.includes('january-may')) return 'Jan - May';
+  if (text.includes('december-april')) return 'Dec - April';
+  if (text.includes('november-march')) return 'Nov - March';
+  if (text.includes('january') && text.includes('august')) return 'Jan (Autumn) / Aug (Spring)';
+  if (text.includes('6-10 months')) return '6-10 months before';
+  
+  const monthRegex = /(january|february|march|april|may|june|july|august|september|october|november|december)/gi;
+  const matches = deadlineText.match(monthRegex);
+  if (matches && matches.length > 0) {
+    const unique = [...new Set(matches.map(m => m.slice(0, 3)))];
+    return unique.join(' - ');
+  }
+  
+  if (deadlineText.length > 30) {
+    return 'Verify on site';
+  }
+  return deadlineText;
+}
+
 const getCountryFlag = (country) => {
   if (!country) return '🌍';
   return countryFlags[country.toLowerCase().trim()] || '🌍';
@@ -138,6 +170,7 @@ const parseStoredJson = (key, fallback) => {
 }
 
 export default function University() {
+  const [activeInfoCourse, setActiveInfoCourse] = useState(null)
   const raw    = localStorage.getItem('searchResults')
   const result = parseStoredJson('searchResults', { results: [], related_fields: [], source: null })
   const form   = parseStoredJson('searchForm', {})
@@ -233,9 +266,37 @@ export default function University() {
                             <span className="rc-country-name">{item.country}</span>
                             {item.city && <span className="rc-city">• 📍 {item.city}</span>}
                           </div>
-                          <div className={`rc-rating-badge ${match.class}`} onClick={(e) => e.stopPropagation()}>
-                            <span className="rc-stars">{match.stars}</span>
-                            <span className="rc-label">{match.label}</span>
+                          <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                            <button 
+                              type="button"
+                              className="rc-info-btn"
+                              title="Show detailed course admissions info"
+                              onClick={(e) => {
+                                e.preventDefault()
+                                e.stopPropagation()
+                                setActiveInfoCourse(item)
+                              }}
+                              style={{
+                                background: 'rgba(255, 255, 255, 0.08)',
+                                border: '1px solid rgba(255, 255, 255, 0.1)',
+                                borderRadius: '50%',
+                                width: '24px',
+                                height: '24px',
+                                display: 'inline-flex',
+                                alignItems: 'center',
+                                justifyContent: 'center',
+                                cursor: 'pointer',
+                                fontSize: '12px',
+                                color: 'var(--text)',
+                                fontWeight: 'bold'
+                              }}
+                            >
+                              ?
+                            </button>
+                            <div className={`rc-rating-badge ${match.class}`} onClick={(e) => e.stopPropagation()}>
+                              <span className="rc-stars">{match.stars}</span>
+                              <span className="rc-label">{match.label}</span>
+                            </div>
                           </div>
                         </div>
 
@@ -290,21 +351,14 @@ export default function University() {
                             <div className="rc-detail-item">
                               <span className="rc-detail-icon">💰</span>
                               <span className="rc-detail-label">Fee:</span>
-                              <span className="rc-detail-value">{item.fee || 'Verify on course page'}</span>
+                              <span className="rc-detail-value">{getShortFee(item.fee)}</span>
                             </div>
                             <div className="rc-detail-item">
                               <span className="rc-detail-icon">📌</span>
                               <span className="rc-detail-label">Deadline:</span>
-                              <span className="rc-detail-value">{item.deadline || 'Verify on course page'}</span>
+                              <span className="rc-detail-value">{getShortDeadline(item.deadline)}</span>
                             </div>
                           </div>
-
-                          {item.source_confidence && (
-                            <div className="rc-source-confidence">
-                              <span>{item.source_confidence.replaceAll('_', ' ')}</span>
-                              {item.source_confidence_score ? <strong>{item.source_confidence_score}%</strong> : null}
-                            </div>
-                          )}
                         </div>
 
                         <div className="rc-cta-btn">
@@ -347,6 +401,101 @@ export default function University() {
             )}
           </div>
         </>
+      )}
+      {activeInfoCourse && (
+        <div className="modal-overlay" onClick={() => setActiveInfoCourse(null)}>
+          <div className="modal-box" onClick={e => e.stopPropagation()} style={{ maxWidth: '600px', width: '90%' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '16px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <span style={{ fontSize: '24px' }}>🎓</span>
+                <h3 style={{ fontSize: '20px', fontWeight: 800, margin: 0 }}>Admissions Details</h3>
+              </div>
+              <button 
+                type="button" 
+                onClick={() => setActiveInfoCourse(null)}
+                style={{ 
+                  background: 'none', 
+                  border: 'none', 
+                  color: 'var(--muted)', 
+                  fontSize: '20px', 
+                  cursor: 'pointer',
+                  padding: '4px'
+                }}
+              >
+                ✕
+              </button>
+            </div>
+            
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', textAlign: 'left' }}>
+              <div>
+                <strong style={{ display: 'block', fontSize: '12px', textTransform: 'uppercase', color: 'var(--muted)', letterSpacing: '0.05em' }}>Program</strong>
+                <span style={{ fontSize: '16px', fontWeight: 700, color: 'var(--text)' }}>{activeInfoCourse.course}</span>
+              </div>
+              <div>
+                <strong style={{ display: 'block', fontSize: '12px', textTransform: 'uppercase', color: 'var(--muted)', letterSpacing: '0.05em' }}>University</strong>
+                <span style={{ fontSize: '15px', color: 'var(--text)' }}>{activeInfoCourse.university}</span>
+              </div>
+              
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px', marginTop: '4px' }}>
+                <div>
+                  <strong style={{ display: 'block', fontSize: '12px', textTransform: 'uppercase', color: 'var(--muted)', letterSpacing: '0.05em' }}>🗓️ Intake</strong>
+                  <span style={{ fontSize: '14px', color: 'var(--text)' }}>{activeInfoCourse.intake || 'Verify'}</span>
+                </div>
+                <div>
+                  <strong style={{ display: 'block', fontSize: '12px', textTransform: 'uppercase', color: 'var(--muted)', letterSpacing: '0.05em' }}>⏱️ Duration</strong>
+                  <span style={{ fontSize: '14px', color: 'var(--text)' }}>{activeInfoCourse.duration || 'Verify'}</span>
+                </div>
+                <div>
+                  <strong style={{ display: 'block', fontSize: '12px', textTransform: 'uppercase', color: 'var(--muted)', letterSpacing: '0.05em' }}>🌐 Language</strong>
+                  <span style={{ fontSize: '14px', color: 'var(--text)' }}>{activeInfoCourse.language || 'Verify'}</span>
+                </div>
+              </div>
+
+              <div style={{ borderTop: '1px solid var(--card-border)', paddingTop: '12px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                <div>
+                  <strong style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', textTransform: 'uppercase', color: 'var(--muted)', letterSpacing: '0.05em' }}>
+                    💰 Tuition Fee
+                  </strong>
+                  <span style={{ fontSize: '14px', color: 'var(--text)', display: 'block', marginTop: '2px', lineHeight: 1.4 }}>
+                    {activeInfoCourse.fee}
+                  </span>
+                </div>
+                <div>
+                  <strong style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '12px', textTransform: 'uppercase', color: 'var(--muted)', letterSpacing: '0.05em' }}>
+                    📌 Application Deadline
+                  </strong>
+                  <span style={{ fontSize: '14px', color: 'var(--text)', display: 'block', marginTop: '2px', lineHeight: 1.4 }}>
+                    {activeInfoCourse.deadline}
+                  </span>
+                </div>
+              </div>
+
+              {activeInfoCourse.requirements && activeInfoCourse.requirements.length > 0 && (
+                <div style={{ borderTop: '1px solid var(--card-border)', paddingTop: '12px' }}>
+                  <strong style={{ display: 'block', fontSize: '12px', textTransform: 'uppercase', color: 'var(--muted)', letterSpacing: '0.05em', marginBottom: '6px' }}>📋 Basic Requirements</strong>
+                  <ul style={{ paddingLeft: '20px', margin: 0, fontSize: '13.5px', color: 'var(--text)', lineHeight: 1.5 }}>
+                    {activeInfoCourse.requirements.map((req, idx) => (
+                      <li key={idx} style={{ marginBottom: '4px' }}>{req}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+            
+            <div className="modal-actions" style={{ marginTop: '24px' }}>
+              <button 
+                className="btn-accent" 
+                onClick={() => {
+                  if (activeInfoCourse.link) window.open(activeInfoCourse.link, '_blank')
+                  setActiveInfoCourse(null)
+                }}
+                style={{ width: '100%' }}
+              >
+                Go to Official Course Website
+              </button>
+            </div>
+          </div>
+        </div>
       )}
     </section>
   )
