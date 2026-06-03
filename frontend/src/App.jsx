@@ -146,6 +146,16 @@ export default function App() {
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
     localStorage.setItem('theme', theme)
+
+    // Update theme-color meta tag for mobile status bar coloring
+    let metaThemeColor = document.querySelector('meta[name="theme-color"]')
+    if (!metaThemeColor) {
+      metaThemeColor = document.createElement('meta')
+      metaThemeColor.setAttribute('name', 'theme-color')
+      document.getElementsByTagName('head')[0].appendChild(metaThemeColor)
+    }
+    // In light mode the top header is blue (#5e92f3); in dark mode it is dark (#16171a)
+    metaThemeColor.setAttribute('content', theme === 'dark' ? '#16171a' : '#5e92f3')
   }, [theme])
 
   useEffect(() => {
