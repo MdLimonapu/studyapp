@@ -118,6 +118,13 @@ export default function Home() {
     document.title = 'Studplex — Discover the Right University, Worldwide'
   }, [])
 
+  const focusSearchForm = () => {
+    formRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+    setTimeout(() => {
+      if (countryRef.current) countryRef.current.focus()
+    }, 400)
+  }
+
   useEffect(() => {
     fetchCountries()
       .then(setCountries)
@@ -289,6 +296,30 @@ export default function Home() {
           gap: 10%;
           align-items: stretch;
         }
+        .interactive-feature-card {
+          padding: 28px 24px; 
+          border-radius: 16px; 
+          background: var(--card); 
+          border: 1px solid var(--card-border);
+          cursor: pointer;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .interactive-feature-card:hover {
+          transform: translateY(-5px);
+          border-color: var(--accent) !important;
+          box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+        }
+        .interactive-feature-card:hover .feature-icon {
+          transform: scale(1.15);
+        }
+        :root[data-theme="light"] .interactive-feature-card {
+          border: 2px solid #111827 !important;
+          box-shadow: 0 6px 0px #111827 !important;
+        }
+        :root[data-theme="light"] .interactive-feature-card:hover {
+          box-shadow: 0 9px 0px #111827 !important;
+          transform: translate(-3px, -3px);
+        }
         @media (max-width: 900px) {
           .home-search-grid {
             grid-template-columns: 1fr;
@@ -386,26 +417,35 @@ export default function Home() {
         </p>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
-          <div style={{ padding: '20px', borderRadius: '16px', background: 'var(--glass-glow)', border: '1px solid var(--card-border)' }}>
-            <div style={{ fontSize: '32px', marginBottom: '12px' }}>🔍</div>
-            <h3 style={{ fontSize: '18px', fontWeight: 700, marginBottom: '8px' }}>Smart University Search</h3>
-            <p style={{ color: 'var(--muted)', fontSize: '14px', lineHeight: 1.5 }}>
+          <div 
+            onClick={focusSearchForm}
+            className="interactive-feature-card"
+          >
+            <div style={{ fontSize: '36px', marginBottom: '16px', transition: 'transform 0.3s ease' }} className="feature-icon">🔍</div>
+            <h3 style={{ fontSize: '18px', fontWeight: 800, marginBottom: '10px', color: 'var(--text)' }}>Smart University Search</h3>
+            <p style={{ color: 'var(--muted)', fontSize: '13.5px', lineHeight: 1.6, margin: 0 }}>
               Filter through thousands of English-taught bachelor, master, and PhD programs across Europe, USA, UK, Canada, and Australia.
             </p>
           </div>
 
-          <div style={{ padding: '20px', borderRadius: '16px', background: 'var(--glass-glow)', border: '1px solid var(--card-border)' }}>
-            <div style={{ fontSize: '32px', marginBottom: '12px' }}>📊</div>
-            <h3 style={{ fontSize: '18px', fontWeight: 700, marginBottom: '8px' }}>Admission Eligibility Checker</h3>
-            <p style={{ color: 'var(--muted)', fontSize: '14px', lineHeight: 1.5 }}>
+          <div 
+            onClick={() => navigate('/roadmap')}
+            className="interactive-feature-card"
+          >
+            <div style={{ fontSize: '36px', marginBottom: '16px', transition: 'transform 0.3s ease' }} className="feature-icon">📊</div>
+            <h3 style={{ fontSize: '18px', fontWeight: 800, marginBottom: '10px', color: 'var(--text)' }}>Admission Eligibility Checker</h3>
+            <p style={{ color: 'var(--muted)', fontSize: '13.5px', lineHeight: 1.6, margin: 0 }}>
               Compare your academic background, GPA conversions, and language proficiency scores against official university entry requirements.
             </p>
           </div>
 
-          <div style={{ padding: '20px', borderRadius: '16px', background: 'var(--glass-glow)', border: '1px solid var(--card-border)' }}>
-            <div style={{ fontSize: '32px', marginBottom: '12px' }}>🗺️</div>
-            <h3 style={{ fontSize: '18px', fontWeight: 700, marginBottom: '8px' }}>Step-by-Step Study Roadmap</h3>
-            <p style={{ color: 'var(--muted)', fontSize: '14px', lineHeight: 1.5 }}>
+          <div 
+            onClick={() => navigate('/roadmap')}
+            className="interactive-feature-card"
+          >
+            <div style={{ fontSize: '36px', marginBottom: '16px', transition: 'transform 0.3s ease' }} className="feature-icon">🗺️</div>
+            <h3 style={{ fontSize: '18px', fontWeight: 800, marginBottom: '10px', color: 'var(--text)' }}>Step-by-Step Study Roadmap</h3>
+            <p style={{ color: 'var(--muted)', fontSize: '13.5px', lineHeight: 1.6, margin: 0 }}>
               Track visa guidelines, blocked bank account requirements, and document preparations with custom timelines tailored per country.
             </p>
           </div>
