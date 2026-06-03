@@ -403,7 +403,6 @@ export default function Roadmap() {
                             d => d.country === selectedCountry && d.stepId === step.id
                           );
                           const isExpanded = !!expandedSteps[step.id];
-                          const isMinimized = !!minimizedUploads[step.id];
                           
                           return (
                             <div>
