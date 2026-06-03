@@ -401,18 +401,24 @@ export default function Roadmap() {
                             <div>
                               {stepDocs.length === 0 ? (
                                 isMinimized ? (
-                                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                                  <div style={{ display: 'flex', alignItems: 'center', marginTop: '4px' }}>
                                     <button
                                       type="button"
-                                      onClick={() => setMinimizedUploads(prev => ({ ...prev, [step.id]: false }))}
+                                      onClick={() => {
+                                        setMinimizedUploads(prev => ({ ...prev, [step.id]: false }));
+                                        setTimeout(() => {
+                                          const fileInput = document.getElementById(`doc-upload-${step.id}`);
+                                          if (fileInput) fileInput.click();
+                                        }, 50);
+                                      }}
                                       style={{
-                                        background: 'rgba(255,255,255,0.03)',
+                                        background: 'rgba(255,255,255,0.02)',
                                         border: '1px dashed var(--card-border)',
                                         borderRadius: '8px',
                                         padding: '8px 16px',
-                                        color: 'var(--accent)',
+                                        color: 'var(--muted)',
                                         fontSize: '12.5px',
-                                        fontWeight: 700,
+                                        fontWeight: 600,
                                         cursor: 'pointer',
                                         display: 'inline-flex',
                                         alignItems: 'center',
@@ -445,25 +451,10 @@ export default function Roadmap() {
                                         accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" 
                                         style={{ display: 'none' }} 
                                         onChange={(e) => handleDocumentUpload(e, step.id)} 
-                                      />
-                                    </div>
-                                    <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '8px' }}>
-                                      <button
-                                        type="button"
-                                        onClick={() => setMinimizedUploads(prev => ({ ...prev, [step.id]: true }))}
-                                        style={{
-                                          background: 'transparent',
-                                          border: 'none',
-                                          color: 'var(--muted)',
-                                          fontSize: '11.5px',
-                                          fontWeight: 500,
-                                          cursor: 'pointer',
-                                          padding: '4px 8px',
-                                          textDecoration: 'underline'
+                                        onCancel={() => {
+                                          setMinimizedUploads(prev => ({ ...prev, [step.id]: true }));
                                         }}
-                                      >
-                                        Upload later
-                                      </button>
+                                      />
                                     </div>
                                   </div>
                                 )
