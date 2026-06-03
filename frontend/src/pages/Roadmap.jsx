@@ -101,7 +101,7 @@ export default function Roadmap() {
   const [selectedCountry, setSelectedCountry] = useState('Germany')
   const [completedSteps, setCompletedSteps] = useState({})
   const [expandedSteps, setExpandedSteps] = useState({})
-  const [minimizedUploads, setMinimizedUploads] = useState({})
+  const [activeUploaderId, setActiveUploaderId] = useState(null)
   const navigate = useNavigate()
   
   const { user, isLoaded } = useUser()
@@ -196,10 +196,18 @@ export default function Roadmap() {
   const handleToggleStep = (stepId) => {
     const isNowChecked = !currentCompleted[stepId];
     if (isNowChecked) {
-      setMinimizedUploads(prev => ({
-        ...prev,
-        [stepId]: false
-      }))
+      setActiveUploaderId(stepId);
+      // Auto open file picker
+      setTimeout(() => {
+        const fileInput = document.getElementById(`doc-upload-${stepId}`);
+        if (fileInput) {
+          fileInput.click();
+        }
+      }, 50);
+    } else {
+      if (activeUploaderId === stepId) {
+        setActiveUploaderId(null);
+      }
     }
     const updatedCountryCompleted = {
       ...currentCompleted,
@@ -400,12 +408,12 @@ export default function Roadmap() {
                           return (
                             <div>
                               {stepDocs.length === 0 ? (
-                                isMinimized ? (
+                                activeUploaderId !== step.id ? (
                                   <div style={{ display: 'flex', alignItems: 'center', marginTop: '4px' }}>
                                     <button
                                       type="button"
                                       onClick={() => {
-                                        setMinimizedUploads(prev => ({ ...prev, [step.id]: false }));
+                                        setActiveUploaderId(step.id);
                                         setTimeout(() => {
                                           const fileInput = document.getElementById(`doc-upload-${step.id}`);
                                           if (fileInput) fileInput.click();
@@ -426,7 +434,7 @@ export default function Roadmap() {
                                         transition: 'all 0.2s'
                                       }}
                                     >
-                                      <span>📎 Upload documents later</span>
+                                      <span>📎 Upload documents</span>
                                       <span style={{ fontSize: '10px' }}>▼</span>
                                     </button>
                                   </div>
@@ -452,7 +460,7 @@ export default function Roadmap() {
                                         style={{ display: 'none' }} 
                                         onChange={(e) => handleDocumentUpload(e, step.id)} 
                                         onCancel={() => {
-                                          setMinimizedUploads(prev => ({ ...prev, [step.id]: true }));
+                                          setActiveUploaderId(null);
                                         }}
                                       />
                                     </div>
