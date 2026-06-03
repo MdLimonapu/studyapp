@@ -603,7 +603,7 @@ export default function Roadmap() {
               }}
             >
               <p style={{ color: 'var(--muted)', fontSize: '13px', lineHeight: 1.5, margin: 0 }}>
-                ⚠️ Complete all <strong style={{ color: 'var(--accent)' }}>Required</strong> steps above to verify your eligibility.
+                ⚠️ Complete all <strong style={{ color: '#ef4444' }}>Required</strong> steps above to verify your eligibility.
               </p>
               <button 
                 type="button" 
