@@ -65,7 +65,81 @@
     <script src="https://accounts.google.com/gsi/client" async defer></script>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <!-- Performance Optimization: Static HTML Shell for instant paint (FCP/LCP) -->
+      <style>
+        .shell-container {
+          min-height: 100vh;
+          background: #121316;
+          color: #ffffff;
+          font-family: 'Inter', Arial, sans-serif;
+          padding: 24px;
+          box-sizing: border-box;
+        }
+        .shell-header {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          height: 60px;
+          max-width: 1200px;
+          margin: 0 auto 40px auto;
+        }
+        .shell-logo {
+          font-size: 20px;
+          font-weight: 800;
+          color: #ffffff;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+        .shell-grid {
+          max-width: 1200px;
+          margin: 0 auto;
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 32px;
+        }
+        @media (min-width: 900px) {
+          .shell-grid {
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 8%;
+          }
+        }
+        .shell-hero h1 {
+          font-size: 42px;
+          line-height: 1.1;
+          font-weight: 800;
+          margin-bottom: 16px;
+        }
+        .shell-hero h1 span {
+          color: #ff8c00;
+        }
+        .shell-hero p {
+          color: #94a3b8;
+          font-size: 16px;
+          margin-bottom: 24px;
+        }
+        .shell-card {
+          background: rgba(28, 29, 34, 0.65);
+          border: 1px solid rgba(255, 255, 255, 0.05);
+          border-radius: 24px;
+          padding: 24px;
+          height: 320px;
+        }
+      </style>
+      <div class="shell-container">
+        <header class="shell-header">
+          <div class="shell-logo">🎓 Studplex</div>
+        </header>
+        <main class="shell-grid">
+          <div class="shell-hero">
+            <h1>Find the right<br><span>university</span><br>worldwide</h1>
+            <p>Match with your dream international university program in seconds.</p>
+          </div>
+          <div class="shell-card"></div>
+        </main>
+      </div>
+    </div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>
