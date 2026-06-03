@@ -1208,6 +1208,20 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   }
   .hero-card h2 { font-size: 30px; }
   .form-row { grid-template-columns: 1fr; }
+  
+  /* Reset checkbox styling on mobile to prevent stretching and circle deformation */
+  input[type="checkbox"] {
+    width: 18px !important;
+    height: 18px !important;
+    border-radius: 4px !important;
+    padding: 0 !important;
+    box-shadow: none !important;
+    background: transparent !important;
+    appearance: checkbox !important;
+    -webkit-appearance: checkbox !important;
+    -moz-appearance: checkbox !important;
+    margin: 0 !important;
+  }
 }
 
 /* Mobile Drawer Styling */
