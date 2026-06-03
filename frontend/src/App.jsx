@@ -343,16 +343,14 @@ export default function App() {
                 className="user-country-badge" 
                 title={`Visiting from ${countryName}`}
                 style={{
-                  fontSize: '22px',
+                  fontSize: '24px',
                   height: '40px',
                   width: '40px',
                   display: 'inline-flex',
                   alignItems: 'center',
                   justifyContent: 'center',
-                  background: 'var(--card)',
-                  border: '1px solid var(--card-border)',
-                  borderRadius: '10px',
-                  boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
+                  background: 'transparent',
+                  border: 'none',
                   cursor: 'default',
                   userSelect: 'none'
                 }}
@@ -370,15 +368,14 @@ export default function App() {
               className="user-country-badge" 
               title={`Visiting from ${countryName}`}
               style={{
-                fontSize: '22px',
+                fontSize: '24px',
                 height: '40px',
                 width: '40px',
                 display: 'inline-flex',
                 alignItems: 'center',
                 justifyContent: 'center',
-                background: 'var(--card)',
-                border: '1px solid var(--card-border)',
-                borderRadius: '10px',
+                background: 'transparent',
+                border: 'none',
                 userSelect: 'none',
                 cursor: 'default'
               }}
