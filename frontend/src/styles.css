@@ -1242,8 +1242,7 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 .mobile-drawer {
   width: 290px;
   height: 100%;
-  background: var(--bg-image);
-  background-color: var(--bg);
+  background: var(--bg);
   border-left: 1px solid var(--card-border);
   padding: 32px 24px;
   display: flex;
@@ -1821,14 +1820,61 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   border-color: #111827 !important;
 }
 :root[data-theme="light"] .theme-toggle-btn {
-  background: rgba(255, 255, 255, 0.1) !important;
-  border-color: rgba(255, 255, 255, 0.2) !important;
-  color: #ffffff !important;
+  background: #ffffff !important;
+  color: #111827 !important;
+  border: 2px solid #111827 !important;
+  box-shadow: none !important;
+  border-radius: 10px !important;
+  transform: none !important;
+  padding: 0 !important;
 }
 :root[data-theme="light"] .theme-toggle-btn:hover {
+  background: #f3f4f6 !important;
+  color: #111827 !important;
+  border-color: #111827 !important;
+  transform: scale(1.05) !important;
+  box-shadow: none !important;
+}
+:root[data-theme="light"] .topbar-right .theme-toggle-btn {
+  background: rgba(255, 255, 255, 0.1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #ffffff !important;
+  box-shadow: none !important;
+}
+:root[data-theme="light"] .topbar-right .theme-toggle-btn:hover {
   background: rgba(255, 255, 255, 0.2) !important;
   border-color: #ffffff !important;
 }
+
+:root[data-theme="light"] .drawer-close,
+:root[data-theme="light"] .hamburger-btn {
+  background: #ffffff !important;
+  color: #111827 !important;
+  border: 2px solid #111827 !important;
+  box-shadow: none !important;
+  border-radius: 10px !important;
+  transform: none !important;
+  padding: 0 !important;
+}
+:root[data-theme="light"] .drawer-close:hover,
+:root[data-theme="light"] .hamburger-btn:hover {
+  background: #f3f4f6 !important;
+  color: #111827 !important;
+  border-color: #111827 !important;
+  transform: scale(1.05) !important;
+  box-shadow: none !important;
+}
+
+:root[data-theme="light"] .drawer-nav a {
+  color: #4b5563;
+}
+:root[data-theme="light"] .drawer-nav a.active,
+:root[data-theme="light"] .drawer-nav a:hover {
+  color: #111827 !important;
+  background: #d2f34c !important;
+  border-color: #111827 !important;
+}
+
 
 /* Form fields inputs and dropdowns styling */
 :root[data-theme="light"] .form-card input,
