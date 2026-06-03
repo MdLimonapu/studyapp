@@ -109,7 +109,7 @@ body {
 }
 .brand { display: flex; align-items: center; gap: 12px; }
 .brand-icon { font-size: 28px; }
-.brand h1 { font-size: 24px; font-weight: 800; color: var(--text); letter-spacing: -0.02em; }
+.brand h1, .brand-text div { font-size: 24px; font-weight: 800; color: var(--text); letter-spacing: -0.02em; }
 
 .topbar-right {
   display: flex;
@@ -236,8 +236,8 @@ body {
   border: none;
   box-shadow: none;
 }
-.hero-card h2 { font-size: 56px; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; color: var(--text); }
-.hero-card h2 span { color: var(--accent); }
+.hero-card h2, .hero-card h1 { font-size: 56px; font-weight: 800; line-height: 1.1; letter-spacing: -0.02em; color: var(--text); }
+.hero-card h2 span, .hero-card h1 span { color: var(--accent); }
 .hero-card p { color: var(--hero-sub); font-size: 15.5px; max-width: 100%; line-height: 1.5; margin: 0; }
 .hero-stats { display: flex; gap: 24px; margin-top: 4px; }
 .stat strong { font-size: 22px; font-weight: 800; display: block; }
@@ -1206,7 +1206,7 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
     z-index: 1001;
     padding: 0;
   }
-  .hero-card h2 { font-size: 30px; }
+  .hero-card h2, .hero-card h1 { font-size: 30px; }
   .form-row { grid-template-columns: 1fr; }
   
   /* Reset checkbox styling on mobile to prevent stretching and circle deformation */
@@ -1773,10 +1773,12 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   box-shadow: none !important;
   padding-left: 0 !important;
 }
-:root[data-theme="light"] .hero-card h2 {
+:root[data-theme="light"] .hero-card h2,
+:root[data-theme="light"] .hero-card h1 {
   color: #ffffff !important;
 }
-:root[data-theme="light"] .hero-card h2 span {
+:root[data-theme="light"] .hero-card h2 span,
+:root[data-theme="light"] .hero-card h1 span {
   color: #d2f34c !important; /* Aeline highlight text */
 }
 :root[data-theme="light"] .hero-card p {
@@ -1797,7 +1799,8 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 }
 
 /* Topbar is white navigation links over the blue background */
-:root[data-theme="light"] .topbar .brand h1 {
+:root[data-theme="light"] .topbar .brand h1,
+:root[data-theme="light"] .topbar .brand-text div {
   color: #ffffff !important;
 }
 :root[data-theme="light"] .topbar .brand-tagline {

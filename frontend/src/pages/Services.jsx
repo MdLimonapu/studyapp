@@ -217,7 +217,9 @@ export default function Services() {
   const navigate = useNavigate()
   const { user } = useUser()
   const { isSignedIn } = useAuth()
-
+  React.useEffect(() => {
+    document.title = 'University Admissions Services & Support | Studplex'
+  }, [])
   const [selectedService, setSelectedService] = useState(null)
   const [bookingStep, setBookingStep] = useState('form')
   const [docType, setDocType] = useState('')
@@ -292,9 +294,9 @@ export default function Services() {
     <div className="services-page" style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px 0' }}>
       {/* Hero Header */}
       <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-        <h2 style={{ fontSize: '38px', fontWeight: 800, marginBottom: '12px', color: 'var(--text)' }}>
+        <h1 style={{ fontSize: '38px', fontWeight: 800, marginBottom: '12px', color: 'var(--text)' }}>
           Our Services
-        </h2>
+        </h1>
         <p style={{ color: 'var(--muted)', fontSize: '16px', maxWidth: '600px', margin: '0 auto', lineHeight: 1.6 }}>
           Get expert human assistance and academic evaluations alongside our search engine to guarantee a smooth entry into your dream university abroad.
         </p>

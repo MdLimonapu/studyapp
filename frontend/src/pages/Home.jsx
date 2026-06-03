@@ -299,7 +299,7 @@ export default function Home() {
 
       <section className="home-search-grid">
         <div className="hero-card">
-          <h2>Find the right<br/><span>university</span><br/>worldwide</h2>
+          <h1>Find the right<br/><span>university</span><br/>worldwide</h1>
           <p>Match with your dream international university program in seconds.</p>
           <div className="hero-stats">
             <div className="stat"><strong>10+</strong><span>Countries</span></div>

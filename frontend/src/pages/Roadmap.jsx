@@ -241,7 +241,7 @@ export default function Roadmap() {
       {/* HEADER BANNER */}
       <div className="card search-summary">
         <div className="summary-left">
-          <h2>Check Eligibility</h2>
+          <h1>Check Eligibility</h1>
           <p style={{ color: 'var(--muted)', fontSize: '15px', marginTop: '6px' }}>
             Track your preparation progress step-by-step. Select a country to view custom guidelines and check your application eligibility.
           </p>

@@ -178,7 +178,7 @@ export default function University() {
         <>
           <div className="card search-summary">
             <div className="summary-left">
-              <h2>University matches</h2>
+              <h1>University matches</h1>
               <div className="summary-chips">
                 <span className="chip" onClick={() => navigate(`/?focus=country&val=${encodeURIComponent(form.country || '')}`)} title="Click to edit country search">{getCountryFlag(form.country)} {form.country || '-'}</span>
                 <span className="chip" onClick={() => navigate(`/?focus=degree&val=${encodeURIComponent(form.degree || '')}`)} title="Click to edit degree search">🎓 {form.degree || '-'}</span>
