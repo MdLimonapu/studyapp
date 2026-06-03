@@ -101,6 +101,7 @@ export default function Roadmap() {
   const [selectedCountry, setSelectedCountry] = useState('Germany')
   const [completedSteps, setCompletedSteps] = useState({})
   const [expandedSteps, setExpandedSteps] = useState({})
+  const [minimizedUploads, setMinimizedUploads] = useState({})
   const navigate = useNavigate()
   
   const { user, isLoaded } = useUser()
@@ -193,6 +194,13 @@ export default function Roadmap() {
   const currentCompleted = completedSteps[selectedCountry] || {}
 
   const handleToggleStep = (stepId) => {
+    const isNowChecked = !currentCompleted[stepId];
+    if (isNowChecked) {
+      setMinimizedUploads(prev => ({
+        ...prev,
+        [stepId]: false
+      }))
+    }
     const updatedCountryCompleted = {
       ...currentCompleted,
       [stepId]: !currentCompleted[stepId]
@@ -387,28 +395,78 @@ export default function Roadmap() {
                             d => d.country === selectedCountry && d.stepId === step.id
                           );
                           const isExpanded = !!expandedSteps[step.id];
+                          const isMinimized = !!minimizedUploads[step.id];
                           
                           return (
                             <div>
                               {stepDocs.length === 0 ? (
-                                <div 
-                                  className="pf-document-upload-zone" 
-                                  style={{ padding: '16px 12px' }} 
-                                  onClick={() => document.getElementById(`doc-upload-${step.id}`).click()}
-                                >
-                                  <div style={{ fontSize: '20px', marginBottom: '4px' }}>📤</div>
-                                  <p style={{ margin: 0, fontWeight: 700, fontSize: '12px', color: 'var(--text)' }}>
-                                    Upload certificates or transcripts here
-                                  </p>
-                                  <input 
-                                    id={`doc-upload-${step.id}`}
-                                    type="file" 
-                                    multiple 
-                                    accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" 
-                                    style={{ display: 'none' }} 
-                                    onChange={(e) => handleDocumentUpload(e, step.id)} 
-                                  />
-                                </div>
+                                isMinimized ? (
+                                  <div style={{ display: 'flex', alignItems: 'center' }}>
+                                    <button
+                                      type="button"
+                                      onClick={() => setMinimizedUploads(prev => ({ ...prev, [step.id]: false }))}
+                                      style={{
+                                        background: 'rgba(255,255,255,0.03)',
+                                        border: '1px dashed var(--card-border)',
+                                        borderRadius: '8px',
+                                        padding: '8px 16px',
+                                        color: 'var(--accent)',
+                                        fontSize: '12.5px',
+                                        fontWeight: 700,
+                                        cursor: 'pointer',
+                                        display: 'inline-flex',
+                                        alignItems: 'center',
+                                        gap: '6px',
+                                        transition: 'all 0.2s'
+                                      }}
+                                    >
+                                      <span>📎 Upload documents later</span>
+                                      <span style={{ fontSize: '10px' }}>▼</span>
+                                    </button>
+                                  </div>
+                                ) : (
+                                  <div style={{ position: 'relative' }}>
+                                    <div 
+                                      className="pf-document-upload-zone" 
+                                      style={{ padding: '20px 12px' }} 
+                                      onClick={() => document.getElementById(`doc-upload-${step.id}`).click()}
+                                    >
+                                      <div style={{ fontSize: '22px', marginBottom: '6px' }}>📤</div>
+                                      <p style={{ margin: '0 0 4px', fontWeight: 700, fontSize: '13px', color: 'var(--text)' }}>
+                                        Upload certificates or transcripts here
+                                      </p>
+                                      <span style={{ fontSize: '11px', color: 'var(--muted)' }}>
+                                        Drag & drop or click to browse
+                                      </span>
+                                      <input 
+                                        id={`doc-upload-${step.id}`}
+                                        type="file" 
+                                        multiple 
+                                        accept=".pdf,.doc,.docx,.png,.jpg,.jpeg" 
+                                        style={{ display: 'none' }} 
+                                        onChange={(e) => handleDocumentUpload(e, step.id)} 
+                                      />
+                                    </div>
+                                    <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '8px' }}>
+                                      <button
+                                        type="button"
+                                        onClick={() => setMinimizedUploads(prev => ({ ...prev, [step.id]: true }))}
+                                        style={{
+                                          background: 'transparent',
+                                          border: 'none',
+                                          color: 'var(--muted)',
+                                          fontSize: '11.5px',
+                                          fontWeight: 500,
+                                          cursor: 'pointer',
+                                          padding: '4px 8px',
+                                          textDecoration: 'underline'
+                                        }}
+                                      >
+                                        Upload later
+                                      </button>
+                                    </div>
+                                  </div>
+                                )
                               ) : (
                                 <div>
                                   <button
