@@ -7,6 +7,45 @@ import { useUser, useAuth, SignInButton } from '@clerk/clerk-react'
 // Initialize Stripe publishable key from environment variables with safe fallback
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || 'pk_test_51Pyourplaceholderkey')
 
+const getLocalPrice = (usdPriceStr, countryName) => {
+  const usdPrice = parseFloat(usdPriceStr.replace('$', ''));
+  const country = countryName ? countryName.trim() : '';
+
+  // Exchange rates from USD to other currencies
+  const rates = {
+    'Germany': { code: 'EUR', symbol: '€', rate: 0.92 },
+    'France': { code: 'EUR', symbol: '€', rate: 0.92 },
+    'Netherlands': { code: 'EUR', symbol: '€', rate: 0.92 },
+    'Sweden': { code: 'SEK', symbol: 'kr ', rate: 10.50 },
+    'Switzerland': { code: 'CHF', symbol: 'CHF ', rate: 0.90 },
+    'Japan': { code: 'JPY', symbol: '¥', rate: 155.00 },
+    'United Kingdom': { code: 'GBP', symbol: '£', rate: 0.79 },
+    'UK': { code: 'GBP', symbol: '£', rate: 0.79 },
+    'Canada': { code: 'CAD', symbol: 'C$', rate: 1.37 },
+    'Australia': { code: 'AUD', symbol: 'A$', rate: 1.50 },
+  };
+
+  const config = rates[country];
+  if (!config) {
+    return {
+      priceStr: usdPriceStr,
+      code: 'USD',
+      amount: usdPrice
+    };
+  }
+
+  const converted = usdPrice * config.rate;
+  const formatted = config.code === 'JPY' 
+    ? Math.round(converted).toString() 
+    : converted.toFixed(2);
+
+  return {
+    priceStr: `${config.symbol}${formatted}`,
+    code: config.code,
+    amount: parseFloat(formatted)
+  };
+}
+
 const SERVICES = [
   {
     id: 'doc-eval',
@@ -132,7 +171,7 @@ function StripePaymentForm({ clientSecret, selectedService, docType, file, comme
         <h4 style={{ fontSize: '13px', fontWeight: 700, color: 'var(--muted)' }}>Order Summary</h4>
         <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '14px' }}>
           <span style={{ color: 'var(--text)' }}>{selectedService.title}</span>
-          <strong style={{ color: '#ff8c00', fontWeight: 800 }}>{selectedService.price}</strong>
+          <strong style={{ color: '#22c55e', fontWeight: 800 }}>{selectedService.price}</strong>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '12px', color: 'var(--muted)', borderTop: '1px solid rgba(255,255,255,0.05)', paddingTop: '6px', marginTop: '4px' }}>
           <span>Document:</span>
@@ -229,12 +268,19 @@ export default function Services() {
   const [isSubmitting, setIsSubmitting] = useState(false)
 
   const handleOpenBooking = (service) => {
+    const userCountry = localStorage.getItem('user_country_name') || '';
+    const priceInfo = getLocalPrice(service.price, userCountry);
+    const convertedService = {
+      ...service,
+      price: priceInfo.priceStr,
+      currency: priceInfo.code
+    };
     if (!isSignedIn) {
-      setSelectedService({ ...service, _needsLogin: true })
+      setSelectedService({ ...convertedService, _needsLogin: true })
       document.body.style.overflow = 'hidden'
       return
     }
-    setSelectedService(service)
+    setSelectedService(convertedService)
     setBookingStep('form')
     setDocType('')
     setFile(null)
@@ -261,6 +307,7 @@ export default function Services() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           price: selectedService.price,
+          currency: selectedService.currency || 'usd',
           service_id: selectedService.id,
           doc_type: docType
         })
@@ -304,53 +351,56 @@ export default function Services() {
 
       {/* Services Grid */}
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '24px', marginBottom: '56px' }}>
-        {SERVICES.map((s, i) => (
-          <div 
-            key={i} 
-            className="card hover-card" 
-            onClick={() => handleOpenBooking(s)}
-            style={{ 
-              display: 'flex', 
-              flexDirection: 'column', 
-              gap: '16px', 
-              padding: '28px', 
-              borderRadius: '20px',
-              transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)', 
-              border: '1px solid var(--card-border)',
-              cursor: 'pointer',
-              position: 'relative',
-              background: 'var(--card)',
-              backdropFilter: 'blur(16px)',
-              boxShadow: 'var(--shadow-card)',
-              overflow: 'hidden'
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'translateY(-6px)'
-              e.currentTarget.style.borderColor = 'var(--accent)'
-              e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.3)'
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'none'
-              e.currentTarget.style.borderColor = 'var(--card-border)'
-              e.currentTarget.style.boxShadow = 'var(--shadow-card)'
-            }}
-          >
-            {/* Absolute positioned price tag */}
-            <span style={{ 
-              position: 'absolute',
-              top: '24px',
-              right: '24px',
-              color: '#ff8c00', 
-              fontWeight: 800, 
-              fontSize: '15px', 
-              background: 'rgba(255, 140, 0, 0.1)', 
-              padding: '6px 12px', 
-              borderRadius: '8px',
-              backdropFilter: 'blur(4px)',
-              border: '1px solid rgba(255, 140, 0, 0.25)'
-            }}>
-              {s.price}
-            </span>
+        {SERVICES.map((s, i) => {
+          const userCountry = localStorage.getItem('user_country_name') || '';
+          const localPriceInfo = getLocalPrice(s.price, userCountry);
+          return (
+            <div 
+              key={i} 
+              className="card hover-card" 
+              onClick={() => handleOpenBooking(s)}
+              style={{ 
+                display: 'flex', 
+                flexDirection: 'column', 
+                gap: '16px', 
+                padding: '28px', 
+                borderRadius: '20px',
+                transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)', 
+                border: '1px solid var(--card-border)',
+                cursor: 'pointer',
+                position: 'relative',
+                background: 'var(--card)',
+                backdropFilter: 'blur(16px)',
+                boxShadow: 'var(--shadow-card)',
+                overflow: 'hidden'
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform = 'translateY(-6px)'
+                e.currentTarget.style.borderColor = 'var(--accent)'
+                e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.3)'
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform = 'none'
+                e.currentTarget.style.borderColor = 'var(--card-border)'
+                e.currentTarget.style.boxShadow = 'var(--shadow-card)'
+              }}
+            >
+              {/* Absolute positioned price tag */}
+              <span style={{ 
+                position: 'absolute',
+                top: '24px',
+                right: '24px',
+                color: '#22c55e', 
+                fontWeight: 800, 
+                fontSize: '15px', 
+                background: 'rgba(34, 197, 94, 0.1)', 
+                padding: '6px 12px', 
+                borderRadius: '8px',
+                backdropFilter: 'blur(4px)',
+                border: '1px solid rgba(34, 197, 94, 0.25)'
+              }}>
+                {localPriceInfo.priceStr}
+              </span>
 
             <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px', paddingRight: '75px' }}>
               <span style={{ fontSize: '32px', flexShrink: 0 }}>{s.icon}</span>
@@ -396,7 +446,8 @@ export default function Services() {
               {s.ctaText}
             </button>
           </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* Call to Action */}
@@ -469,7 +520,7 @@ export default function Services() {
                 <span style={{ fontSize: '24px' }}>{selectedService.icon}</span>
                 <h3 style={{ fontSize: '20px', fontWeight: 850, color: '#ffffff' }}>{selectedService.title}</h3>
               </div>
-              <span style={{ color: '#ff8c00', fontWeight: 800, fontSize: '15px', background: 'rgba(255, 140, 0, 0.1)', padding: '4px 10px', borderRadius: '8px' }}>{selectedService.price}</span>
+              <span style={{ color: '#22c55e', fontWeight: 800, fontSize: '15px', background: 'rgba(34, 197, 94, 0.1)', padding: '4px 10px', borderRadius: '8px', border: '1px solid rgba(34, 197, 94, 0.25)' }}>{selectedService.price}</span>
             </div>
 
             {/* LOGIN REQUIRED PROMPT */}

@@ -1131,15 +1131,19 @@ def create_payment_intent():
     try:
         body = request.json or {}
         price_str = body.get("price", "49.00")
+        currency = body.get("currency", "usd").lower()
         
-        # Parse price numeric value to cents
+        # Parse price numeric value
         clean_price = float(re.sub(r'[^\d.]', '', price_str))
-        amount_cents = int(clean_price * 100)
+        if currency == "jpy":
+            amount_cents = int(clean_price)
+        else:
+            amount_cents = int(clean_price * 100)
         
         # Create PaymentIntent with automated payment methods enabled (supports card, wallets, etc)
         intent = stripe.PaymentIntent.create(
             amount=amount_cents,
-            currency="usd",
+            currency=currency,
             automatic_payment_methods={
                 "enabled": True,
             },
