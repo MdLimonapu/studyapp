@@ -402,10 +402,6 @@ export default function Roadmap() {
                                       type="button"
                                       onClick={() => {
                                         setActiveUploaderId(step.id);
-                                        setTimeout(() => {
-                                          const fileInput = document.getElementById(`doc-upload-${step.id}`);
-                                          if (fileInput) fileInput.click();
-                                        }, 50);
                                       }}
                                       style={{
                                         background: 'rgba(255,255,255,0.02)',
