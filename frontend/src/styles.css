@@ -1656,7 +1656,7 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   gap: 10px;
 }
 
-.footer-col h4 {
+.footer-col-title {
   font-size: 13px;
   font-weight: 800;
   color: var(--text);
@@ -2040,7 +2040,7 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 .footer-tagline {
   color: rgba(255, 255, 255, 0.6) !important;
 }
-.footer-col h4 {
+.footer-col-title {
   color: #ffffff !important;
 }
 .footer-col a,

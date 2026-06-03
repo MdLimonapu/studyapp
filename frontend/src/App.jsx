@@ -142,16 +142,31 @@ export default function App() {
   const [countryName, setCountryName] = useState('')
 
   useEffect(() => {
+    const cachedFlag = localStorage.getItem('user_country_flag')
+    const cachedName = localStorage.getItem('user_country_name')
+    if (cachedFlag && cachedName) {
+      setCountryFlag(cachedFlag)
+      setCountryName(cachedName)
+      return
+    }
+
     fetch('https://ipapi.co/json/')
-      .then(res => res.json())
+      .then(res => {
+        if (!res.ok) throw new Error('status ' + res.status)
+        return res.json()
+      })
       .then(data => {
         if (data && data.country_code) {
           const codePoints = data.country_code
             .toUpperCase()
             .split('')
             .map(char => 127397 + char.charCodeAt(0))
-          setCountryFlag(String.fromCodePoint(...codePoints))
-          setCountryName(data.country_name || '')
+          const flag = String.fromCodePoint(...codePoints)
+          const name = data.country_name || ''
+          setCountryFlag(flag)
+          setCountryName(name)
+          localStorage.setItem('user_country_flag', flag)
+          localStorage.setItem('user_country_name', name)
         }
       })
       .catch(() => {})
@@ -500,7 +515,7 @@ export default function App() {
           </div>
           <div className="footer-links-group">
             <div className="footer-col">
-              <h4>Navigation</h4>
+              <div className="footer-col-title">Navigation</div>
               <NavLink to="/">Home</NavLink>
               <NavLink to="/about">About Us</NavLink>
               <NavLink to="/university">University Matches</NavLink>
@@ -508,7 +523,7 @@ export default function App() {
               <NavLink to="/services">Services</NavLink>
             </div>
             <div className="footer-col">
-              <h4>Support</h4>
+              <div className="footer-col-title">Support</div>
               <NavLink to="/contact">Contact Support</NavLink>
               <NavLink to="/services">Book a Session</NavLink>
               <NavLink to="/contact">Help & FAQ</NavLink>
@@ -517,7 +532,7 @@ export default function App() {
               </div>
             </div>
             <div className="footer-col">
-              <h4>Legal</h4>
+              <div className="footer-col-title">Legal</div>
               <NavLink to="/privacy">Privacy Policy</NavLink>
               <NavLink to="/terms">Terms of Service</NavLink>
             </div>
