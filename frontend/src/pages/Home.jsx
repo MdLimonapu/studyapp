@@ -378,7 +378,7 @@ export default function Home() {
 
       <section className="news-section">
         <div className="news-header">
-          <h3>📰 Latest study abroad &amp; visa news</h3>
+          <h2>📰 Latest study abroad &amp; visa news</h2>
           <span className="live-dot"><span></span>Live updates</span>
         </div>
         {newsLoading ? (
