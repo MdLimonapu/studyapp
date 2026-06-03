@@ -150,6 +150,15 @@ export default function App() {
       return
     }
 
+    const parseFlag = (countryCode) => {
+      if (!countryCode) return ''
+      const codePoints = countryCode
+        .toUpperCase()
+        .split('')
+        .map(char => 127397 + char.charCodeAt(0))
+      return String.fromCodePoint(...codePoints)
+    }
+
     fetch('https://ipapi.co/json/')
       .then(res => {
         if (!res.ok) throw new Error('status ' + res.status)
@@ -157,11 +166,7 @@ export default function App() {
       })
       .then(data => {
         if (data && data.country_code) {
-          const codePoints = data.country_code
-            .toUpperCase()
-            .split('')
-            .map(char => 127397 + char.charCodeAt(0))
-          const flag = String.fromCodePoint(...codePoints)
+          const flag = parseFlag(data.country_code)
           const name = data.country_name || ''
           setCountryFlag(flag)
           setCountryName(name)
@@ -169,7 +174,25 @@ export default function App() {
           localStorage.setItem('user_country_name', name)
         }
       })
-      .catch(() => {})
+      .catch(() => {
+        // Fallback: ipapi.co is blocked/rate-limited. Try ipinfo.io.
+        fetch('https://ipinfo.io/json')
+          .then(res => {
+            if (!res.ok) throw new Error('status ' + res.status)
+            return res.json()
+          })
+          .then(data => {
+            if (data && data.country) {
+              const flag = parseFlag(data.country)
+              const name = data.country || ''
+              setCountryFlag(flag)
+              setCountryName(name)
+              localStorage.setItem('user_country_flag', flag)
+              localStorage.setItem('user_country_name', name)
+            }
+          })
+          .catch(() => {})
+      })
   }, [])
 
   useEffect(() => {
