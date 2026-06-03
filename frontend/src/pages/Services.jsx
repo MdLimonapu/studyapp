@@ -71,7 +71,7 @@ const getLocalPrice = (usdPriceStr, countryName) => {
 
   const config = rates[country];
   if (!config) {
-    const roundedUsd = Math.ceil(usdPrice);
+    const roundedUsd = Math.ceil(usdPrice / 5) * 5;
     return {
       priceStr: `$${roundedUsd}`,
       code: 'USD',
@@ -80,7 +80,7 @@ const getLocalPrice = (usdPriceStr, countryName) => {
   }
 
   const converted = usdPrice * config.rate;
-  const rounded = Math.ceil(converted);
+  const rounded = Math.ceil(converted / 5) * 5;
 
   return {
     priceStr: `${config.symbol}${rounded}`,
