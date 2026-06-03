@@ -5,4 +5,14 @@ __pycache__/
 data/*
 !data/resolved_links_cache.json
 !data/news_cache.json
+!data/australia.json
+!data/canada.json
+!data/france.json
+!data/germany.json
+!data/japan.json
+!data/netherlands.json
+!data/sweden.json
+!data/switzerland.json
+!data/uk.json
+!data/usa_part*.json
 

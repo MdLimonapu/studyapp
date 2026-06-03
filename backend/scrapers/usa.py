@@ -169,12 +169,22 @@ def scrape_usa(api_key=None, max_schools=500):
             page += 1
 
     # Save
-    output_path = os.path.join(os.path.dirname(__file__), "..", "data", "usa.json")
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
-    with open(output_path, "w") as f:
-        json.dump(courses, f, indent=2, ensure_ascii=False)
+    data_dir = os.path.join(os.path.dirname(__file__), "..", "data")
+    os.makedirs(data_dir, exist_ok=True)
+    chunk_size = 20000
+    part_idx = 1
+    for i in range(0, len(courses), chunk_size):
+        chunk = courses[i:i+chunk_size]
+        part_path = os.path.join(data_dir, f"usa_part{part_idx}.json")
+        with open(part_path, "w", encoding="utf-8") as f:
+            json.dump(chunk, f, indent=2, ensure_ascii=False)
+        print(f"Saved USA part {part_idx} to {part_path}")
+        part_idx += 1
+    old_path = os.path.join(data_dir, "usa.json")
+    if os.path.exists(old_path):
+        os.remove(old_path)
 
-    print(f"\n✅ USA Done! {len(seen_schools)} schools, {len(courses)} courses saved to data/usa.json")
+    print(f"\n✅ USA Done! {len(seen_schools)} schools, {len(courses)} courses saved to split parts in data/")
     return courses
 
 

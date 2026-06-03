@@ -111,7 +111,6 @@ def row(country: str, uni: str, course: str, degree: str, city: str, link: str, 
 
 def save(country: str, rows: list[dict[str, str]]) -> None:
     os.makedirs(DATA_DIR, exist_ok=True)
-    path = os.path.join(DATA_DIR, f"{country.lower()}.json")
     seen = set()
     unique = []
     for item in rows:
@@ -119,9 +118,24 @@ def save(country: str, rows: list[dict[str, str]]) -> None:
         if item["uni"] and item["course"] and key not in seen:
             seen.add(key)
             unique.append(item)
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(unique, f, ensure_ascii=False, indent=2)
-    print(f"{country:12s} {len(unique):5d} rows -> {path}")
+    if country.lower() == "usa":
+        chunk_size = 20000
+        part_idx = 1
+        for i in range(0, len(unique), chunk_size):
+            chunk = unique[i:i+chunk_size]
+            part_path = os.path.join(DATA_DIR, f"usa_part{part_idx}.json")
+            with open(part_path, "w", encoding="utf-8") as f:
+                json.dump(chunk, f, ensure_ascii=False, indent=2)
+            print(f"USA part {part_idx} {len(chunk):5d} rows -> {part_path}")
+            part_idx += 1
+        old_path = os.path.join(DATA_DIR, "usa.json")
+        if os.path.exists(old_path):
+            os.remove(old_path)
+    else:
+        path = os.path.join(DATA_DIR, f"{country.lower()}.json")
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(unique, f, ensure_ascii=False, indent=2)
+        print(f"{country:12s} {len(unique):5d} rows -> {path}")
 
 
 def scrape_germany(max_pages: int = 20) -> list[dict[str, str]]:
@@ -249,17 +263,32 @@ def scrape_australia() -> list[dict[str, str]]:
 
 
 def scrape_usa(max_pages: int = 5) -> list[dict[str, str]]:
-    candidates = [
-        os.path.join(DATA_DIR, "usa.json"),
-        os.path.join(ROOT, "data_backup", "usa.json"),
-    ]
     existing = []
-    for existing_path in candidates:
-        if os.path.exists(existing_path):
-            with open(existing_path, encoding="utf-8") as f:
-                data = json.load(f)
-            if len(data) > len(existing):
-                existing = data
+    # Try split files first
+    part_idx = 1
+    while True:
+        part_path = os.path.join(DATA_DIR, f"usa_part{part_idx}.json")
+        if os.path.exists(part_path):
+            try:
+                with open(part_path, encoding="utf-8") as f:
+                    existing.extend(json.load(f))
+            except Exception as e:
+                print(f"Error loading {part_path}: {e}")
+            part_idx += 1
+        else:
+            break
+            
+    if not existing:
+        candidates = [
+            os.path.join(DATA_DIR, "usa.json"),
+            os.path.join(ROOT, "data_backup", "usa.json"),
+        ]
+        for existing_path in candidates:
+            if os.path.exists(existing_path):
+                with open(existing_path, encoding="utf-8") as f:
+                    data = json.load(f)
+                if len(data) > len(existing):
+                    existing = data
     if existing:
         return [
             row(

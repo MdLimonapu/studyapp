@@ -70,6 +70,10 @@ def load_all_country_data():
         for filename in sorted(os.listdir(data_dir)):
             if not filename.endswith(".json") or filename in loaded_files:
                 continue
+            if filename == "usa.json" and any(f.startswith("usa_part") for f in loaded_files):
+                continue
+            if filename.startswith("usa_part") and "usa.json" in loaded_files:
+                continue
             try:
                 filepath = os.path.join(data_dir, filename)
                 with open(filepath) as f:
@@ -692,8 +696,8 @@ def fallback_search(country, degree, field, user_grade=None, max_fee=None):
         
         # Filter by max tuition fee if specified
         if max_fee is not None:
-            fee = c.get("fee") if c.get("fee") else get_estimated_fee(c.get("country", ""), c.get("degree", ""), c.get("uni", ""))
-            usd_val = parse_fee_to_usd(fee, c.get("country", ""), c.get("degree", ""))
+            fee = c.get("fee") if c.get("fee") else ""
+            usd_val = parse_fee_to_usd(fee, c.get("country", ""), c.get("degree", "")) if c.get("has_real_fee") else None
             if usd_val is not None and usd_val > max_fee:
                 continue
                 
@@ -786,8 +790,8 @@ def fallback_search(country, degree, field, user_grade=None, max_fee=None):
         db_link = c.get("link", "")
         link = clean_link(db_link, fallback_link)
             
-        # Get estimated or existing fee data
-        fee = c.get("fee") if c.get("fee") else get_estimated_fee(c.get("country", ""), c.get("degree", ""), uni_name)
+        # Show real/source-listed fees when available. Estimates stay clearly labelled.
+        fee = c.get("fee") if c.get("has_real_fee") else ""
         requirements = get_course_requirements(c, uni_name)
         admissions = c.get("admissions") if isinstance(c.get("admissions"), dict) else {}
             
@@ -803,7 +807,15 @@ def fallback_search(country, degree, field, user_grade=None, max_fee=None):
             "match_rating": rating,
             "intake":       c.get("intake") or admissions.get("intake") or "Verify on course page",
             "fee":          fee,
-            "fee_status":   c.get("fee_status") or admissions.get("fee_status") or ("listed_by_source" if c.get("fee") else "estimated"),
+            "fee_status":   c.get("fee_status") or admissions.get("fee_status") or "missing",
+            "fee_source_type": c.get("fee_source_type") or admissions.get("fee_source_type") or "estimate_or_missing",
+            "has_real_fee": bool(c.get("has_real_fee") or admissions.get("has_real_fee")),
+            "real_fee_amount": c.get("real_fee_amount") or admissions.get("real_fee_amount"),
+            "real_fee_amount_min": c.get("real_fee_amount_min") or admissions.get("real_fee_amount_min"),
+            "real_fee_amount_max": c.get("real_fee_amount_max") or admissions.get("real_fee_amount_max"),
+            "real_fee_currency": c.get("real_fee_currency") or admissions.get("real_fee_currency"),
+            "real_fee_period": c.get("real_fee_period") or admissions.get("real_fee_period"),
+            "real_fee_is_range": bool(c.get("real_fee_is_range") or admissions.get("real_fee_is_range")),
             "deadline":     c.get("deadline") or admissions.get("deadline") or "Verify on course page",
             "language":     c.get("language") or admissions.get("language") or "Verify on course page",
             "duration":     c.get("duration") or admissions.get("duration") or "",

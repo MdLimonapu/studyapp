@@ -321,7 +321,7 @@ export default function University() {
                           <div className="rc-details-list">
                             <div className="rc-detail-item">
                               <span className="rc-detail-icon">💰</span>
-                              <span className="rc-detail-label">Fee:</span>
+                              <span className="rc-detail-label">{item.fee_source_type === 'source_listed' ? 'Real fee:' : 'Fee:'}</span>
                               <span className="rc-detail-value">{getShortFee(item.fee)}</span>
                             </div>
                             <div className="rc-detail-item">

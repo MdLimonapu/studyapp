@@ -15,8 +15,7 @@ FILE_TO_COUNTRY = {
     "netherlands.json": "Netherlands",
     "sweden.json": "Sweden",
     "switzerland.json": "Switzerland",
-    "uk.json": "UK",
-    "usa.json": "USA"
+    "uk.json": "UK"
 }
 
 def main():
@@ -39,6 +38,23 @@ def main():
                     }
                     total_courses += count
                     print(f"  ✓ {country_name:12s}: {count:5d} courses")
+            except Exception as e:
+                print(f"  ⚠️ Error reading {filename}: {e}")
+        elif filename.startswith("usa_part") and filename.endswith(".json"):
+            filepath = os.path.join(DATA_DIR, filename)
+            try:
+                with open(filepath, "r", encoding="utf-8") as f:
+                    data = json.load(f)
+                if isinstance(data, list):
+                    count = len(data)
+                    if "USA" not in sources:
+                        sources["USA"] = {
+                            "status": "ok",
+                            "rows": 0
+                        }
+                    sources["USA"]["rows"] += count
+                    total_courses += count
+                    print(f"  ✓ {filename:12s} (USA): {count:5d} courses")
             except Exception as e:
                 print(f"  ⚠️ Error reading {filename}: {e}")
 
