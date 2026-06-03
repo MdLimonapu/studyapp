@@ -1,13 +1,13 @@
 :root {
-  --bg: #1e222b;
-  --card: rgba(28, 32, 43, 0.65);
+  --bg: #000000;
+  --card: rgba(20, 22, 28, 0.7);
   --card-border: rgba(255, 255, 255, 0.05);
   --text: #ffffff;
   --muted: #94a3b8;
   --accent: #ff8c00;
   --accent2: #f59e0b;
   --blue: #475569;
-  --dark2: #282c37;
+  --dark2: #161920;
   
   --secondary-accent: #60a5fa;
   --secondary-glow: rgba(59, 130, 246, 0.08);
@@ -17,9 +17,9 @@
   --stat-3: #3b82f6;
   --hero-sub: #ffedd5;
   
-  --header-bg: rgba(30, 34, 43, 0.8);
+  --header-bg: rgba(0, 0, 0, 0.8);
   --header-border: rgba(255, 255, 255, 0.05);
-  --footer-bg: rgba(30, 34, 43, 0.9);
+  --footer-bg: rgba(10, 11, 14, 0.9);
   --footer-border: rgba(255, 255, 255, 0.05);
   --glass-glow: rgba(255, 255, 255, 0.03);
   --news-bg: rgba(255, 255, 255, 0.02);
@@ -32,15 +32,13 @@
   --shadow-news: 0 8px 24px rgba(0,0,0,0.25), inset 0 1px 0 rgba(255,255,255,0.04);
   --shadow-news-hover: 0 16px 32px rgba(0,0,0,0.45), inset 0 1px 0 rgba(255,255,255,0.05);
   
-  --input-bg: rgba(0, 0, 0, 0.2);
+  --input-bg: rgba(0, 0, 0, 0.4);
   --border-hover: rgba(255, 255, 255, 0.15);
   
   --btn-gradient: linear-gradient(135deg, var(--accent) 0%, #d97706 100%);
   --avatar-gradient: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 100%);
   --btn-text: #ffffff;
-  --bg-image: radial-gradient(ellipse at 20% 50%, var(--radial-1) 0%, transparent 60%),
-    radial-gradient(ellipse at 80% 10%, var(--radial-2) 0%, transparent 50%),
-    radial-gradient(ellipse at 60% 90%, var(--radial-3) 0%, transparent 50%);
+  --bg-image: linear-gradient(to bottom, #000000 0%, #0c0e12 100%);
   --bg-attachment: fixed;
 }
 
