@@ -1192,6 +1192,7 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   .grid.two-col { grid-template-columns: 1fr; }
   .topbar { flex-direction: row; justify-content: space-between; align-items: center; }
   .nav-links, .topbar-right { display: none !important; }
+  .mobile-header-right { display: flex !important; }
   .hamburger-btn {
     display: flex !important;
     align-items: center;

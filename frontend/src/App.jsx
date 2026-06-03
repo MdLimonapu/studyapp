@@ -136,6 +136,24 @@ export default function App() {
   })
   const [showSoonModal, setShowSoonModal] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  const [countryFlag, setCountryFlag] = useState('')
+  const [countryName, setCountryName] = useState('')
+
+  useEffect(() => {
+    fetch('https://ipapi.co/json/')
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.country_code) {
+          const codePoints = data.country_code
+            .toUpperCase()
+            .split('')
+            .map(char => 127397 + char.charCodeAt(0))
+          setCountryFlag(String.fromCodePoint(...codePoints))
+          setCountryName(data.country_name || '')
+        }
+      })
+      .catch(() => {})
+  }, [])
 
   useEffect(() => {
     const handleShowSoon = () => setShowSoonModal(true)
@@ -235,7 +253,7 @@ export default function App() {
             </svg>
           </div>
           <div className="brand-text" style={{ display: 'flex', flexDirection: 'column', gap: '1px' }}>
-            <h1 style={{ margin: 0, fontSize: '24px', fontWeight: 800, color: 'var(--text)', letterSpacing: '-0.02em', lineHeight: 1.1 }}>Stud<span style={{color: 'var(--accent)'}}>plex</span></h1>
+            <div style={{ margin: 0, fontSize: '24px', fontWeight: 800, color: 'var(--text)', letterSpacing: '-0.02em', lineHeight: 1.1 }}>Stud<span style={{color: 'var(--accent)'}}>plex</span></div>
             <span className="brand-tagline" style={{ fontSize: '9px', color: 'var(--muted)', fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase' }}>
               Match Your Future
             </span>
@@ -319,22 +337,67 @@ export default function App() {
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
               )}
             </button>
+
+            {countryFlag && (
+              <span 
+                className="user-country-badge" 
+                title={`Visiting from ${countryName}`}
+                style={{
+                  fontSize: '22px',
+                  height: '40px',
+                  width: '40px',
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  background: 'var(--card)',
+                  border: '1px solid var(--card-border)',
+                  borderRadius: '10px',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.05)',
+                  cursor: 'default',
+                  userSelect: 'none'
+                }}
+              >
+                {countryFlag}
+              </span>
+            )}
           </div>
         </div>
 
-        {/* Hamburger Toggle Button */}
-        <button 
-          className="hamburger-btn"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label="Toggle menu"
-          style={{ display: 'none' }}
-        >
-          {menuOpen ? (
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
-          ) : (
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        {/* Mobile Header Right Controls */}
+        <div className="mobile-header-right" style={{ display: 'none', alignItems: 'center', gap: '10px', zIndex: 1001 }}>
+          {countryFlag && (
+            <span 
+              className="user-country-badge" 
+              title={`Visiting from ${countryName}`}
+              style={{
+                fontSize: '22px',
+                height: '40px',
+                width: '40px',
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                background: 'var(--card)',
+                border: '1px solid var(--card-border)',
+                borderRadius: '10px',
+                userSelect: 'none',
+                cursor: 'default'
+              }}
+            >
+              {countryFlag}
+            </span>
           )}
-        </button>
+          <button 
+            className="hamburger-btn"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label="Toggle menu"
+          >
+            {menuOpen ? (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            ) : (
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+            )}
+          </button>
+        </div>
       </header>
 
       {/* Mobile Drawer Menu Overlay */}
