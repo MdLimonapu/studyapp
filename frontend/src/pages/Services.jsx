@@ -213,20 +213,6 @@ function StripePaymentForm({ clientSecret, selectedService, docType, file, comme
   )
 }
 
-const ColorfulText = ({ text }) => {
-  const words = text.split(' ')
-  const colors = ['#ff8c00', '#10b981', '#3b82f6', '#ec4899', '#8b5cf6', '#ef4444', '#06b6d4', '#14b8a6', '#f59e0b', '#6366f1']
-  return (
-    <>
-      {words.map((word, idx) => (
-        <span key={idx} style={{ color: colors[idx % colors.length], marginRight: '4px', display: 'inline-block' }}>
-          {word}
-        </span>
-      ))}
-    </>
-  )
-}
-
 export default function Services() {
   const navigate = useNavigate()
   const { user } = useUser()
@@ -306,11 +292,11 @@ export default function Services() {
     <div className="services-page" style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px 0' }}>
       {/* Hero Header */}
       <div style={{ textAlign: 'center', marginBottom: '48px' }}>
-        <h2 style={{ fontSize: '38px', fontWeight: 800, marginBottom: '12px' }}>
-          <ColorfulText text="Our Premium Services" />
+        <h2 style={{ fontSize: '38px', fontWeight: 800, marginBottom: '12px', color: 'var(--text)' }}>
+          Our Premium Services
         </h2>
-        <p style={{ fontSize: '16px', maxWidth: '600px', margin: '0 auto', lineHeight: 1.6 }}>
-          <ColorfulText text="Get expert human assistance and academic audits alongside our search engine to guarantee a smooth entry into your dream university abroad." />
+        <p style={{ color: 'var(--muted)', fontSize: '16px', maxWidth: '600px', margin: '0 auto', lineHeight: 1.6 }}>
+          Get expert human assistance and academic audits alongside our search engine to guarantee a smooth entry into your dream university abroad.
         </p>
       </div>
 
