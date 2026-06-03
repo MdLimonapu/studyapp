@@ -1,14 +1,16 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, lazy, Suspense } from 'react'
 import { NavLink, Routes, Route, useNavigate } from 'react-router-dom'
 import Home from './pages/Home'
-import About from './pages/About'
-import University from './pages/University'
-import Profile from './pages/Profile'
-import Services from './pages/Services'
-import Roadmap from './pages/Roadmap'
-import Contact from './pages/Contact'
-import Privacy from './pages/Privacy'
-import Terms from './pages/Terms'
+
+const About = lazy(() => import('./pages/About'))
+const University = lazy(() => import('./pages/University'))
+const Profile = lazy(() => import('./pages/Profile'))
+const Services = lazy(() => import('./pages/Services'))
+const Roadmap = lazy(() => import('./pages/Roadmap'))
+const Contact = lazy(() => import('./pages/Contact'))
+const Privacy = lazy(() => import('./pages/Privacy'))
+const Terms = lazy(() => import('./pages/Terms'))
+
 import { SignedIn, SignedOut, UserButton, SignInButton, useUser, SignIn } from '@clerk/clerk-react'
 import { fetchProfile, saveProfile, registerUser } from './api'
 
@@ -473,19 +475,21 @@ export default function App() {
       )}
 
       <main className="page-wrap">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/services" element={<Services />} />
-          <Route path="/university" element={<University />} />
-          <Route path="/roadmap" element={<Roadmap />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/privacy" element={<Privacy />} />
-          <Route path="/terms" element={<Terms />} />
-          <Route path="/mobile-auth" element={<MobileAuth />} />
-          <Route path="*" element={<NotFound />} />
-        </Routes>
+        <Suspense fallback={<div style={{ display: 'flex', justifyContent: 'center', padding: '100px 20px', color: 'var(--muted)' }}>Loading...</div>}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/services" element={<Services />} />
+            <Route path="/university" element={<University />} />
+            <Route path="/roadmap" element={<Roadmap />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="/mobile-auth" element={<MobileAuth />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
       </main>
 
       <footer className="footer">
