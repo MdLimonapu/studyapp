@@ -272,7 +272,7 @@ export default function Home() {
         <div className="modal-overlay">
           <div className="modal-box">
             <div className="modal-icon">👤</div>
-            <h2>Complete your profile first</h2>
+            <h3>Complete your profile first</h3>
             <p>To get accurate university matches based on your <strong>grade, field and degree</strong> — please fill in your profile first.</p>
             <div className="modal-actions">
               <button className="btn-accent" onClick={() => navigate('/profile')}>Complete profile</button>
@@ -310,8 +310,8 @@ export default function Home() {
 
         <form ref={formRef} className="card form-card" onSubmit={submit}>
           <div>
-            <label>Country</label>
-            <select ref={countryRef} value={form.country} onChange={e => setForm({...form, country: e.target.value})} required>
+            <label htmlFor="country-select">Country</label>
+            <select id="country-select" ref={countryRef} value={form.country} onChange={e => setForm({...form, country: e.target.value})} required>
               <option value="">Select country</option>
               {countries.map(c => <option key={c.name} value={c.name}>{c.flag} {c.name}</option>)}
             </select>
@@ -332,9 +332,9 @@ export default function Home() {
             </div>
           </div>
           <div>
-            <label>Field of study</label>
+            <label htmlFor="field-input">Field of study</label>
             <div className="autocomplete-wrap" ref={sugRef}>
-              <input ref={fieldInputRef} type="text" placeholder="e.g. Electrical Engineering"
+              <input id="field-input" ref={fieldInputRef} type="text" placeholder="e.g. Electrical Engineering"
                 value={form.field}
                 onChange={e => handleFieldChange(e.target.value)}
                 onFocus={() => form.field && setShowSug(true)}

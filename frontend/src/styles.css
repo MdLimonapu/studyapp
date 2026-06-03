@@ -110,6 +110,7 @@ body {
 .brand { display: flex; align-items: center; gap: 12px; }
 .brand-icon { font-size: 28px; }
 .brand h1, .brand-text div { font-size: 24px; font-weight: 800; color: var(--text); letter-spacing: -0.02em; }
+.brand-plex { color: var(--accent); }
 
 .topbar-right {
   display: flex;
@@ -1803,6 +1804,9 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 :root[data-theme="light"] .topbar .brand h1,
 :root[data-theme="light"] .topbar .brand-text div {
   color: #ffffff !important;
+}
+:root[data-theme="light"] .topbar .brand-plex {
+  color: #ffe600 !important; /* High contrast yellow on blue topbar background */
 }
 :root[data-theme="light"] .topbar .brand-tagline {
   color: rgba(255, 255, 255, 0.75) !important;
