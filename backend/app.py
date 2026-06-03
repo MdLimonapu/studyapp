@@ -1,6 +1,6 @@
 from flask import Flask, jsonify, request
 from flask_cors import CORS
-import json, os, re, stripe
+import json, os, re, stripe, datetime
 import urllib.parse
 import urllib.request
 from bs4 import BeautifulSoup
@@ -1218,10 +1218,83 @@ def confirm_payment():
         # Send notification email to admin
         send_audit_email(email, service_title, doc_type, filename, comment, price, txn_id)
         
+        # Save order to orders.json
+        try:
+            orders_file = os.path.join(os.path.dirname(__file__), "data", "orders.json")
+            os.makedirs(os.path.dirname(orders_file), exist_ok=True)
+            if os.path.exists(orders_file):
+                with open(orders_file, "r") as f:
+                    orders_data = json.load(f)
+            else:
+                orders_data = {"orders": []}
+            orders_data["orders"].append({
+                "email": email,
+                "service_title": service_title,
+                "price": price,
+                "doc_type": doc_type,
+                "filename": filename,
+                "txn_id": txn_id,
+                "date": datetime.datetime.now(datetime.timezone.utc).isoformat()
+            })
+            with open(orders_file, "w") as f:
+                json.dump(orders_data, f, indent=2)
+            print(f"📦 Order saved for {email}", flush=True)
+        except Exception as oe:
+            print(f"⚠️ Failed to save order: {oe}", flush=True)
+        
         return jsonify({"status": "confirmed", "message": "Booking request recorded and email sent."}), 200
     except Exception as e:
         print(f"⚠️ Payment confirm error: {e}", flush=True)
         return jsonify({"error": str(e)}), 500
+
+
+# ── Orders endpoints ─────────────────────────────────────────────────────────
+ORDERS_FILE = os.path.join(os.path.dirname(__file__), "data", "orders.json")
+
+
+def _load_orders():
+    """Load orders from the JSON file."""
+    if os.path.exists(ORDERS_FILE):
+        try:
+            with open(ORDERS_FILE, "r") as f:
+                return json.load(f)
+        except Exception:
+            pass
+    return {"orders": []}
+
+
+def _save_orders(data):
+    """Save orders to the JSON file."""
+    os.makedirs(os.path.dirname(ORDERS_FILE), exist_ok=True)
+    with open(ORDERS_FILE, "w") as f:
+        json.dump(data, f, indent=2)
+
+
+@app.route("/api/orders", methods=["GET"])
+def get_orders():
+    """Return orders for a given email."""
+    email = request.args.get("email", "").strip().lower()
+    if not email:
+        return jsonify({"error": "email query parameter is required"}), 400
+    orders_data = _load_orders()
+    user_orders = [o for o in orders_data.get("orders", []) if o.get("email", "").lower() == email]
+    return jsonify(user_orders)
+
+
+@app.route("/api/orders", methods=["POST"])
+def create_order():
+    """Save a new order."""
+    body = request.json or {}
+    required_fields = ["email", "service_title", "price", "doc_type", "filename", "txn_id", "date"]
+    missing = [f for f in required_fields if f not in body]
+    if missing:
+        return jsonify({"error": f"Missing fields: {', '.join(missing)}"}), 400
+    order = {f: body[f] for f in required_fields}
+    orders_data = _load_orders()
+    orders_data["orders"].append(order)
+    _save_orders(orders_data)
+    print(f"📦 Order created via POST for {order['email']}", flush=True)
+    return jsonify({"status": "saved", "order": order}), 201
 
 
 if __name__ == "__main__":

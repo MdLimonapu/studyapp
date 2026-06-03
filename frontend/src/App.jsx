@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { NavLink, Routes, Route, useNavigate } from 'react-router-dom'
 import Home from './pages/Home'
+import About from './pages/About'
 import University from './pages/University'
 import Profile from './pages/Profile'
 import Services from './pages/Services'
@@ -314,6 +315,7 @@ export default function App() {
       <main className="page-wrap">
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
           <Route path="/university" element={<University />} />
           <Route path="/roadmap" element={<Roadmap />} />
@@ -336,6 +338,7 @@ export default function App() {
             <div className="footer-col">
               <h4>Navigation</h4>
               <NavLink to="/">Home</NavLink>
+              <NavLink to="/about">About Us</NavLink>
               <NavLink to="/university">University Matches</NavLink>
               <NavLink to="/roadmap">Check Eligibility</NavLink>
               <NavLink to="/services">Premium Services</NavLink>
