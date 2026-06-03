@@ -27,22 +27,21 @@ const getLocalPrice = (usdPriceStr, countryName) => {
 
   const config = rates[country];
   if (!config) {
+    const roundedUsd = Math.round(usdPrice);
     return {
-      priceStr: usdPriceStr,
+      priceStr: `$${roundedUsd}`,
       code: 'USD',
-      amount: usdPrice
+      amount: roundedUsd
     };
   }
 
   const converted = usdPrice * config.rate;
-  const formatted = config.code === 'JPY' 
-    ? Math.round(converted).toString() 
-    : converted.toFixed(2);
+  const rounded = Math.round(converted);
 
   return {
-    priceStr: `${config.symbol}${formatted}`,
+    priceStr: `${config.symbol}${rounded}`,
     code: config.code,
-    amount: parseFloat(formatted)
+    amount: rounded
   };
 }
 
