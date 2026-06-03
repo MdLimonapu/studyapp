@@ -338,10 +338,13 @@ export default function App() {
               <NavLink to="/">Home</NavLink>
               <NavLink to="/university">University Matches</NavLink>
               <NavLink to="/roadmap">Check Eligibility</NavLink>
+              <NavLink to="/services">Premium Services</NavLink>
             </div>
             <div className="footer-col">
               <h4>Support</h4>
               <NavLink to="/contact">Contact Support</NavLink>
+              <NavLink to="/services">Book a Session</NavLink>
+              <NavLink to="/contact">Help & FAQ</NavLink>
               <div style={{ marginTop: '16px' }}>
                 <AppStoreButtons onClick={() => setShowSoonModal(true)} />
               </div>

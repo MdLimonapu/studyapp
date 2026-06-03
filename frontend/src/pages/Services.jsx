@@ -14,7 +14,7 @@ const SERVICES = [
     title: 'Academic Document Evaluation',
     price: '$49.00',
     desc: 'Comprehensive review of your transcripts, certificates, and GPA conversions. We verify international equivalence and highlight matching parameters to fit university admissions criteria.',
-    features: ['GPA Equivalence Audits', 'Credential Verification', 'Prerequisites Mapping'],
+    features: ['GPA Equivalence Evaluations', 'Credential Verification', 'Prerequisites Mapping'],
     docOptions: ['Academic Transcript', 'Graduation Certificate', 'GPA Report', 'Other'],
     ctaText: 'Start Document Evaluation'
   },
@@ -23,8 +23,8 @@ const SERVICES = [
     icon: '🛂',
     title: 'Visa & Immigration Guidance',
     price: '$99.00',
-    desc: 'Step-by-step navigation through visa applications. We help organize your visa portfolios, prepare financial proofs, and audit documents to maximize approval odds.',
-    features: ['Document Checklist Audits', 'Financial Statement Review', 'Interview Preparation Tips'],
+    desc: 'Step-by-step navigation through visa applications. We help organize your visa portfolios, prepare financial proofs, and review documents to maximize approval odds.',
+    features: ['Document Checklist Reviews', 'Financial Statement Review', 'Interview Preparation Tips'],
     docOptions: ['Financial/Bank Statement', 'Passport Copy', 'Sponsorship Letter', 'Visa Application Draft', 'Other'],
     ctaText: 'Request Visa Review'
   },
@@ -34,7 +34,7 @@ const SERVICES = [
     title: 'University Application Strategy',
     price: '$79.00',
     desc: 'Professional review of your university application folders. Get structural feedback on your Personal Statement, CV, and letters of recommendation to stand out to admissions boards.',
-    features: ['SOP / Essay Review', 'Letter of Recommendation Audits', 'Portfolio Alignment'],
+    features: ['SOP / Essay Review', 'Letter of Recommendation Reviews', 'Portfolio Alignment'],
     docOptions: ['Statement of Purpose (SOP)', 'CV / Resume', 'Letter of Recommendation', 'Other'],
     ctaText: 'Submit Application Files'
   },
@@ -44,7 +44,7 @@ const SERVICES = [
     title: 'Admissions & Matching Consult',
     price: '$59.00',
     desc: 'In-depth review of your academic background to map out specific courses and admission roadmaps across Europe, North America, and beyond.',
-    features: ['Custom Eligibility Checklists', 'Direct Admission Entry Audits', 'Deadline Management'],
+    features: ['Custom Eligibility Checklists', 'Direct Admission Entry Reviews', 'Deadline Management'],
     docOptions: ['Detailed CV', 'Transcripts Overview', 'Target University List', 'Other'],
     ctaText: 'Request Admissions Review'
   },
@@ -56,7 +56,7 @@ const SERVICES = [
     desc: 'Discover and align with compatible government, university, and private scholarship programs that fit your profile credentials.',
     features: ['Scholarship Eligibility Checks', 'Funding Document Verification', 'Application Alignment'],
     docOptions: ['Scholarship Application Essay', 'Income Statement', 'Awards Portfolio', 'Other'],
-    ctaText: 'Request Funding Audit'
+    ctaText: 'Request Funding Check'
   },
   {
     id: 'departure',
@@ -296,7 +296,7 @@ export default function Services() {
           Our Premium Services
         </h2>
         <p style={{ color: 'var(--muted)', fontSize: '16px', maxWidth: '600px', margin: '0 auto', lineHeight: 1.6 }}>
-          Get expert human assistance and academic audits alongside our search engine to guarantee a smooth entry into your dream university abroad.
+          Get expert human assistance and academic evaluations alongside our search engine to guarantee a smooth entry into your dream university abroad.
         </p>
       </div>
 
@@ -374,14 +374,14 @@ export default function Services() {
       <div className="card" style={{ textAlign: 'center', padding: '48px 32px', border: '1px solid var(--card-border)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
         <h3 style={{ fontSize: '24px', fontWeight: 800 }}>Need Personalized Assistance?</h3>
         <p style={{ color: 'var(--muted)', fontSize: '15px', maxWidth: '600px', lineHeight: 1.6 }}>
-          Whether you need a complete document audit, scholarship guidance, or step-by-step visa assistance, our specialized academic coordinators are here to guide you.
+          Whether you need a complete document evaluation, scholarship guidance, or step-by-step visa assistance, our specialized academic coordinators are here to guide you.
         </p>
         <button 
           className="btn-accent" 
           onClick={() => navigate('/contact')}
           style={{ width: 'auto', padding: '14px 36px', borderRadius: '12px', fontWeight: 700, cursor: 'pointer' }}
         >
-          Book an Audit Session
+          Book a Session
         </button>
       </div>
 
@@ -482,7 +482,7 @@ export default function Services() {
               <form onSubmit={handleContinueToPayment} style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 <div>
                   <p style={{ color: '#e2e8f0', fontSize: '13.5px', lineHeight: 1.5 }}>
-                    Please select the document category and upload the copy to proceed with the audit booking payment.
+                    Please select the document category and upload the copy to proceed with the booking payment.
                   </p>
                 </div>
 
