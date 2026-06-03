@@ -13,7 +13,7 @@ const SERVICES = [
     icon: '📄',
     title: 'Academic Document Evaluation',
     price: '$49.00',
-    desc: 'Comprehensive review of your transcripts, certificates, and GPA conversions. We verify international equivalence and highlight matching parameters to fit university admissions criteria.',
+    desc: 'Verify international GPA equivalence and map academic transcripts against university admission requirements.',
     features: ['GPA Equivalence Evaluations', 'Credential Verification', 'Prerequisites Mapping'],
     docOptions: ['Academic Transcript', 'Graduation Certificate', 'GPA Report', 'Other'],
     ctaText: 'Start Document Evaluation'
@@ -23,7 +23,7 @@ const SERVICES = [
     icon: '🛂',
     title: 'Visa & Immigration Guidance',
     price: '$99.00',
-    desc: 'Step-by-step navigation through visa applications. We help organize your visa portfolios, prepare financial proofs, and review documents to maximize approval odds.',
+    desc: 'Step-by-step guidance to organize visa portfolios, verify financial statements, and maximize approval rates.',
     features: ['Document Checklist Reviews', 'Financial Statement Review', 'Interview Preparation Tips'],
     docOptions: ['Financial/Bank Statement', 'Passport Copy', 'Sponsorship Letter', 'Visa Application Draft', 'Other'],
     ctaText: 'Request Visa Review'
@@ -33,7 +33,7 @@ const SERVICES = [
     icon: '🎓',
     title: 'University Application Strategy',
     price: '$79.00',
-    desc: 'Professional review of your university application folders. Get structural feedback on your Personal Statement, CV, and letters of recommendation to stand out to admissions boards.',
+    desc: 'Get expert structural feedback on your Personal Statement, CV, and recommendations to stand out to admissions.',
     features: ['SOP / Essay Review', 'Letter of Recommendation Reviews', 'Portfolio Alignment'],
     docOptions: ['Statement of Purpose (SOP)', 'CV / Resume', 'Letter of Recommendation', 'Other'],
     ctaText: 'Submit Application Files'
@@ -43,7 +43,7 @@ const SERVICES = [
     icon: '💡',
     title: 'Admissions & Matching Consult',
     price: '$59.00',
-    desc: 'In-depth review of your academic background to map out specific courses and admission roadmaps across Europe, North America, and beyond.',
+    desc: 'In-depth academic profile review to match specific courses and admission roadmaps across regions.',
     features: ['Custom Eligibility Checklists', 'Direct Admission Entry Reviews', 'Deadline Management'],
     docOptions: ['Detailed CV', 'Transcripts Overview', 'Target University List', 'Other'],
     ctaText: 'Request Admissions Review'
@@ -53,7 +53,7 @@ const SERVICES = [
     icon: '💰',
     title: 'Scholarship & Funding Advisory',
     price: '$39.00',
-    desc: 'Discover and align with compatible government, university, and private scholarship programs that fit your profile credentials.',
+    desc: 'Align academic profiles with matching government, institutional, and private scholarship programs.',
     features: ['Scholarship Eligibility Checks', 'Funding Document Verification', 'Application Alignment'],
     docOptions: ['Scholarship Application Essay', 'Income Statement', 'Awards Portfolio', 'Other'],
     ctaText: 'Request Funding Check'
@@ -63,7 +63,7 @@ const SERVICES = [
     icon: '🌍',
     title: 'Departure & Integration Support',
     price: '$29.00',
-    desc: 'Pre-departure assistance, including accommodation guidance, health insurance alignment, and student enrollment verification steps.',
+    desc: 'Pre-departure assistance covering local health insurance, housing advice, and enrollment verification.',
     features: ['Accommodation Sourcing Tips', 'Health Insurance Alignment', 'Enrollment Portals Setup'],
     docOptions: ['Enrollment Offer Letter', 'Accommodation Application', 'Health Insurance Policy', 'Other'],
     ctaText: 'Request Departure Review'
@@ -311,35 +311,62 @@ export default function Services() {
               display: 'flex', 
               flexDirection: 'column', 
               gap: '16px', 
-              padding: '32px', 
-              transition: 'all 0.3s ease', 
+              padding: '28px', 
+              borderRadius: '20px',
+              transition: 'all 0.25s cubic-bezier(0.16, 1, 0.3, 1)', 
               border: '1px solid var(--card-border)',
               cursor: 'pointer',
-              position: 'relative'
+              position: 'relative',
+              background: 'var(--card)',
+              backdropFilter: 'blur(16px)',
+              boxShadow: 'var(--shadow-card)',
+              overflow: 'hidden'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-6px)'
+              e.currentTarget.style.borderColor = 'var(--accent)'
+              e.currentTarget.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.3)'
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'none'
+              e.currentTarget.style.borderColor = 'var(--card-border)'
+              e.currentTarget.style.boxShadow = 'var(--shadow-card)'
             }}
           >
-            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
-                <span style={{ fontSize: '32px' }}>{s.icon}</span>
-                <h3 style={{ fontSize: '18px', fontWeight: 800, color: 'var(--text)' }}>{s.title}</h3>
-              </div>
-              <span style={{ color: '#ff8c00', fontWeight: 800, fontSize: '16px', background: 'rgba(255, 140, 0, 0.1)', padding: '4px 10px', borderRadius: '8px' }}>
-                {s.price}
-              </span>
+            {/* Absolute positioned price tag */}
+            <span style={{ 
+              position: 'absolute',
+              top: '24px',
+              right: '24px',
+              color: '#ff8c00', 
+              fontWeight: 800, 
+              fontSize: '15px', 
+              background: 'rgba(255, 140, 0, 0.1)', 
+              padding: '6px 12px', 
+              borderRadius: '8px',
+              backdropFilter: 'blur(4px)',
+              border: '1px solid rgba(255, 140, 0, 0.25)'
+            }}>
+              {s.price}
+            </span>
+
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px', paddingRight: '75px' }}>
+              <span style={{ fontSize: '32px', flexShrink: 0 }}>{s.icon}</span>
+              <h3 style={{ fontSize: '18px', fontWeight: 800, color: 'var(--text)', margin: 0, lineHeight: 1.25 }}>{s.title}</h3>
             </div>
             
-            <p style={{ color: 'var(--muted)', fontSize: '14px', lineHeight: 1.6, flexGrow: 1 }}>
+            <p style={{ color: 'var(--muted)', fontSize: '13.5px', lineHeight: 1.5, flexGrow: 1, margin: 0 }}>
               {s.desc}
             </p>
 
-            <div style={{ borderTop: '1px solid var(--card-border)', paddingTop: '14px', marginTop: 'auto' }}>
-              <h4 style={{ fontSize: '12px', fontWeight: 700, textTransform: 'uppercase', color: '#ff8c00', letterSpacing: '0.05em', marginBottom: '8px' }}>
+            <div style={{ borderTop: '1px solid var(--card-border)', paddingTop: '16px', marginTop: 'auto' }}>
+              <h4 style={{ fontSize: '11px', fontWeight: 700, textTransform: 'uppercase', color: '#ff8c00', letterSpacing: '0.08em', marginBottom: '10px' }}>
                 Key Inclusions
               </h4>
-              <ul style={{ listStyleType: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '6px' }}>
+              <ul style={{ listStyleType: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 {s.features.map((f, idx) => (
                   <li key={idx} style={{ fontSize: '13px', color: 'var(--text)', display: 'flex', alignItems: 'center', gap: '8px' }}>
-                    <span style={{ color: '#ff8c00' }}>✔</span> {f}
+                    <span style={{ color: '#ff8c00', fontWeight: 'bold' }}>✓</span> <span>{f}</span>
                   </li>
                 ))}
               </ul>
