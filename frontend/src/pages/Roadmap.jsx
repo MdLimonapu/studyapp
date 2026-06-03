@@ -195,19 +195,8 @@ export default function Roadmap() {
 
   const handleToggleStep = (stepId) => {
     const isNowChecked = !currentCompleted[stepId];
-    if (isNowChecked) {
-      setActiveUploaderId(stepId);
-      // Auto open file picker
-      setTimeout(() => {
-        const fileInput = document.getElementById(`doc-upload-${stepId}`);
-        if (fileInput) {
-          fileInput.click();
-        }
-      }, 50);
-    } else {
-      if (activeUploaderId === stepId) {
-        setActiveUploaderId(null);
-      }
+    if (!isNowChecked && activeUploaderId === stepId) {
+      setActiveUploaderId(null);
     }
     const updatedCountryCompleted = {
       ...currentCompleted,
