@@ -135,6 +135,7 @@ export default function App() {
     return localStorage.getItem('theme') || 'dark'
   })
   const [showSoonModal, setShowSoonModal] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false)
 
   useEffect(() => {
     const handleShowSoon = () => setShowSoonModal(true)
@@ -310,7 +311,96 @@ export default function App() {
             </button>
           </div>
         </div>
+
+        {/* Hamburger Toggle Button */}
+        <button 
+          className="hamburger-btn"
+          onClick={() => setMenuOpen(!menuOpen)}
+          aria-label="Toggle menu"
+          style={{ display: 'none' }}
+        >
+          {menuOpen ? (
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          ) : (
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          )}
+        </button>
       </header>
+
+      {/* Mobile Drawer Menu Overlay */}
+      {menuOpen && (
+        <div className="mobile-drawer-backdrop" onClick={() => setMenuOpen(false)}>
+          <div className="mobile-drawer" onClick={e => e.stopPropagation()}>
+            <div className="drawer-header">
+              <span className="drawer-logo">Stud<span style={{ color: 'var(--accent)' }}>plex</span></span>
+              <button className="drawer-close" onClick={() => setMenuOpen(false)}>
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </button>
+            </div>
+            
+            <nav className="drawer-nav">
+              <NavLink to="/" onClick={() => setMenuOpen(false)}>Home</NavLink>
+              <NavLink to="/university" onClick={() => setMenuOpen(false)}>University Matches</NavLink>
+              <NavLink to="/roadmap" onClick={() => setMenuOpen(false)}>Check Eligibility</NavLink>
+              <NavLink to="/services" onClick={() => setMenuOpen(false)}>Services</NavLink>
+              <NavLink to="/contact" onClick={() => setMenuOpen(false)}>Contact</NavLink>
+            </nav>
+
+            <div className="drawer-footer">
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', width: '100%', gap: '16px' }}>
+                <SignedIn>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', cursor: 'pointer' }} onClick={() => { setMenuOpen(false); navigate('/profile'); }}>
+                    <UserButton 
+                      afterSignOutUrl="/"
+                      appearance={{
+                        elements: {
+                          avatarBox: {
+                            width: '38px',
+                            height: '38px',
+                            borderRadius: '50%',
+                            border: '2px solid var(--card-border)'
+                          }
+                        }
+                      }}
+                    />
+                    <span style={{ fontSize: '13.5px', fontWeight: 700, color: 'var(--text)' }}>My Profile</span>
+                  </div>
+                </SignedIn>
+                <SignedOut>
+                  <SignInButton mode="modal">
+                    <button 
+                      className="btn-accent" 
+                      onClick={() => setMenuOpen(false)}
+                      style={{ 
+                        padding: '10px 20px', 
+                        fontSize: '13px', 
+                        width: 'auto', 
+                        margin: 0,
+                        borderRadius: '10px',
+                        fontWeight: 700
+                      }}
+                    >
+                      Sign In
+                    </button>
+                  </SignInButton>
+                </SignedOut>
+
+                <button 
+                  className="theme-toggle-btn"
+                  onClick={() => setTheme(prev => prev === 'dark' ? 'light' : 'dark')}
+                  style={{ margin: 0, height: '40px', width: '40px', borderRadius: '10px' }}
+                >
+                  {theme === 'dark' ? (
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+                  ) : (
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+                  )}
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <main className="page-wrap">
         <Routes>

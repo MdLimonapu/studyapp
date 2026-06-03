@@ -1190,10 +1190,117 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 /* RESPONSIVE */
 @media (max-width: 900px) {
   .grid.two-col { grid-template-columns: 1fr; }
-  .topbar { flex-direction: column; gap: 16px; align-items: center; text-align: center; }
-  .nav-links { position: static; transform: none; margin: 8px 0; max-width: 100%; flex-wrap: wrap; justify-content: center; }
+  .topbar { flex-direction: row; justify-content: space-between; align-items: center; }
+  .nav-links, .topbar-right { display: none !important; }
+  .hamburger-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    width: 40px;
+    height: 40px;
+    color: var(--text);
+    cursor: pointer;
+    z-index: 1001;
+    padding: 0;
+  }
   .hero-card h2 { font-size: 30px; }
   .form-row { grid-template-columns: 1fr; }
+}
+
+/* Mobile Drawer Styling */
+.mobile-drawer-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(12px);
+  z-index: 9999;
+  display: flex;
+  justify-content: flex-end;
+  animation: fadeIn 0.25s ease;
+}
+
+.mobile-drawer {
+  width: 290px;
+  height: 100%;
+  background: var(--bg-image);
+  background-color: var(--bg);
+  border-left: 1px solid var(--card-border);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.4);
+  animation: slideInLeft 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes slideInLeft {
+  from { transform: translateX(100%); }
+  to { transform: translateX(0); }
+}
+
+.drawer-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--card-border);
+  padding-bottom: 16px;
+}
+
+.drawer-logo {
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+}
+
+.drawer-close {
+  background: transparent;
+  border: 1px solid var(--card-border);
+  border-radius: 8px;
+  color: var(--text);
+  cursor: pointer;
+  padding: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+}
+
+.drawer-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.drawer-nav a {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 12px 16px;
+  border-radius: 10px;
+  transition: all 0.2s;
+  background: rgba(255, 255, 255, 0.01);
+  border: 1px solid transparent;
+}
+
+.drawer-nav a.active,
+.drawer-nav a:hover {
+  color: var(--accent);
+  background: var(--glass-glow);
+  border-color: var(--card-border);
+}
+
+.drawer-footer {
+  margin-top: auto;
+  border-top: 1px solid var(--card-border);
+  padding-top: 24px;
 }
 
 @media (max-width: 768px) {
