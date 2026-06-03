@@ -11,18 +11,62 @@ const getLocalPrice = (usdPriceStr, countryName) => {
   const usdPrice = parseFloat(usdPriceStr.replace('$', ''));
   const country = countryName ? countryName.trim() : '';
 
-  // Exchange rates from USD to other currencies
+  // Exchange rates from USD to other currencies (covering major global markets & student hubs)
   const rates = {
+    // Europe (EUR)
     'Germany': { code: 'EUR', symbol: '€', rate: 0.92 },
     'France': { code: 'EUR', symbol: '€', rate: 0.92 },
     'Netherlands': { code: 'EUR', symbol: '€', rate: 0.92 },
+    'Spain': { code: 'EUR', symbol: '€', rate: 0.92 },
+    'Italy': { code: 'EUR', symbol: '€', rate: 0.92 },
+    'Ireland': { code: 'EUR', symbol: '€', rate: 0.92 },
+    'Finland': { code: 'EUR', symbol: '€', rate: 0.92 },
+    'Belgium': { code: 'EUR', symbol: '€', rate: 0.92 },
+    'Portugal': { code: 'EUR', symbol: '€', rate: 0.92 },
+    'Austria': { code: 'EUR', symbol: '€', rate: 0.92 },
+    'Greece': { code: 'EUR', symbol: '€', rate: 0.92 },
+    
+    // Europe (Non-EUR)
     'Sweden': { code: 'SEK', symbol: 'kr ', rate: 10.50 },
     'Switzerland': { code: 'CHF', symbol: 'CHF ', rate: 0.90 },
-    'Japan': { code: 'JPY', symbol: '¥', rate: 155.00 },
     'United Kingdom': { code: 'GBP', symbol: '£', rate: 0.79 },
     'UK': { code: 'GBP', symbol: '£', rate: 0.79 },
+    'Turkey': { code: 'TRY', symbol: '₺', rate: 32.50 },
+
+    // North America & Oceania
     'Canada': { code: 'CAD', symbol: 'C$', rate: 1.37 },
     'Australia': { code: 'AUD', symbol: 'A$', rate: 1.50 },
+    'United States': { code: 'USD', symbol: '$', rate: 1.00 },
+    'USA': { code: 'USD', symbol: '$', rate: 1.00 },
+
+    // South Asia
+    'Bangladesh': { code: 'BDT', symbol: '৳', rate: 117.00 },
+    'India': { code: 'INR', symbol: '₹', rate: 83.50 },
+    'Pakistan': { code: 'PKR', symbol: '₨ ', rate: 278.00 },
+    'Nepal': { code: 'NPR', symbol: '₨ ', rate: 133.00 },
+    'Sri Lanka': { code: 'LKR', symbol: 'Rs ', rate: 300.00 },
+
+    // East Asia & Southeast Asia
+    'Japan': { code: 'JPY', symbol: '¥', rate: 155.00 },
+    'China': { code: 'CNY', symbol: '¥', rate: 7.25 },
+    'South Korea': { code: 'KRW', symbol: '₩', rate: 1370.00 },
+    'Singapore': { code: 'SGD', symbol: 'S$', rate: 1.35 },
+    'Malaysia': { code: 'MYR', symbol: 'RM ', rate: 4.70 },
+    'Indonesia': { code: 'IDR', symbol: 'Rp ', rate: 16200.00 },
+    'Vietnam': { code: 'VND', symbol: '₫', rate: 25400.00 },
+
+    // Middle East & Africa
+    'Nigeria': { code: 'NGN', symbol: '₦', rate: 1480.00 },
+    'Saudi Arabia': { code: 'SAR', symbol: 'SR ', rate: 3.75 },
+    'United Arab Emirates': { code: 'AED', symbol: 'AED ', rate: 3.67 },
+    'Egypt': { code: 'EGP', symbol: 'E£ ', rate: 47.50 },
+    'South Africa': { code: 'ZAR', symbol: 'R ', rate: 18.50 },
+    'Ghana': { code: 'GHS', symbol: 'GH₵ ', rate: 15.00 },
+    'Kenya': { code: 'KES', symbol: 'KSh ', rate: 130.00 },
+    'Morocco': { code: 'MAD', symbol: 'DH ', rate: 10.00 },
+    
+    // South America
+    'Brazil': { code: 'BRL', symbol: 'R$', rate: 5.25 },
   };
 
   const config = rates[country];

@@ -1135,7 +1135,7 @@ def create_payment_intent():
         
         # Parse price numeric value
         clean_price = float(re.sub(r'[^\d.]', '', price_str))
-        if currency == "jpy":
+        if currency in ["jpy", "krw", "vnd"]:
             amount_cents = int(clean_price)
         else:
             amount_cents = int(clean_price * 100)
