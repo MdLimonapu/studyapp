@@ -664,6 +664,15 @@ def format_abbreviation(val):
     return val
 
 
+def get_course_requirements(c, uni_name):
+    reqs = c.get("requirements")
+    if isinstance(reqs, list) and reqs:
+        return reqs
+    if isinstance(reqs, str) and reqs.strip():
+        return [reqs.strip()]
+    return [f"Minimum GPA: {get_university_gpa_requirement(uni_name, c.get('country', '')):.1f}"]
+
+
 def fallback_search(country, degree, field, user_grade=None, max_fee=None):
     """Search static country JSON data with rating-based relevance sorting and smart links."""
     results = FALLBACK_COURSES
@@ -779,6 +788,8 @@ def fallback_search(country, degree, field, user_grade=None, max_fee=None):
             
         # Get estimated or existing fee data
         fee = c.get("fee") if c.get("fee") else get_estimated_fee(c.get("country", ""), c.get("degree", ""), uni_name)
+        requirements = get_course_requirements(c, uni_name)
+        admissions = c.get("admissions") if isinstance(c.get("admissions"), dict) else {}
             
         formatted.append({
             "university":   uni_name,
@@ -787,10 +798,18 @@ def fallback_search(country, degree, field, user_grade=None, max_fee=None):
             "country":      c.get("country", ""),
             "degree":       format_abbreviation(c.get("degree", "")),
             "link":         link,
-            "requirements": f"Minimum GPA: {get_university_gpa_requirement(uni_name, c.get('country', '')):.1f}",
+            "requirements": requirements,
+            "requirements_summary": " • ".join(requirements[:2]),
             "match_rating": rating,
-            "intake":       "Winter / Summer",
+            "intake":       c.get("intake") or admissions.get("intake") or "Verify on course page",
             "fee":          fee,
+            "fee_status":   c.get("fee_status") or admissions.get("fee_status") or ("listed_by_source" if c.get("fee") else "estimated"),
+            "deadline":     c.get("deadline") or admissions.get("deadline") or "Verify on course page",
+            "language":     c.get("language") or admissions.get("language") or "Verify on course page",
+            "duration":     c.get("duration") or admissions.get("duration") or "",
+            "source_confidence": c.get("source_confidence") or admissions.get("source_confidence") or "unverified",
+            "source_confidence_score": c.get("source_confidence_score") or admissions.get("source_confidence_score") or 0,
+            "admissions":   admissions,
             "source":       c.get("source", ""),
             "source_url":   c.get("source_url", ""),
             "verified_at":  c.get("verified_at", ""),

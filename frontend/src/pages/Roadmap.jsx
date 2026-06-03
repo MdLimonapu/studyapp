@@ -7,47 +7,48 @@ const ROADMAPS = {
   'Germany': {
     flag: '🇩🇪',
     steps: [
-      { id: 1, title: 'Check University Admission Qualification', desc: 'Verify if your high school diploma or previous university degrees qualify you for direct admission in Germany.', critical: true },
-      { id: 2, title: 'Pass Language Proficiency (English/German)', desc: 'Obtain required scores (e.g. IELTS 6.5+ for English programs, or TestDaF for German programs).', critical: true },
-      { id: 3, title: 'Prepare Transcripts & Motivation Letter', desc: 'Get your academic transcripts. Write a compelling Letter of Motivation.', critical: true },
-      { id: 4, title: 'Submit Applications via Uni-Assist or Direct Portal', desc: 'Send your application through the centralized Uni-Assist platform or directly to the university.', critical: true },
-      { id: 5, title: 'Secure Blocked Account & Visa', desc: 'Deposit the required living funds (approx. €11,900) into a blocked account and book your visa interview.', critical: true }
+      { id: 1, title: 'Check University Admission Qualification', desc: 'Verify if your HSC / bachelor certificate qualifies you for direct admission via DAAD / Anabin database.', critical: true },
+      { id: 2, title: 'Apply for APS Certificate (Mandatory for BD)', desc: 'Bangleshi students must obtain an APS Certificate from the German Embassy Dhaka before submitting university applications.', critical: true },
+      { id: 3, title: 'Pass Language Proficiency (IELTS/TOEFL)', desc: 'Obtain required English (IELTS 6.5+) or German (TestDaF/Goethe C1) scores for your target program.', critical: true },
+      { id: 4, title: 'Prepare Transcripts & Motivation Letter', desc: 'Gather attested academic transcripts and certificates. Write a strong Statement of Purpose (SOP).', critical: true },
+      { id: 5, title: 'Submit Applications via Uni-Assist or Direct Portal', desc: 'Apply through Uni-Assist (requires APS certificate) or directly to the German university portals.', critical: true },
+      { id: 6, title: 'Secure Blocked Account & Visa Interview', desc: 'Deposit required living funds into a German Blocked Account (Expatrio/Fintiba) and book your visa slot at German Embassy Dhaka.', critical: true }
     ]
   },
   'UK': {
     flag: '🇬🇧',
     steps: [
-      { id: 1, title: 'Take English Language Test (IELTS/PTE)', desc: 'Take a recognized English proficiency test. Usually, an IELTS score of 6.0 - 7.0 is required.', critical: true },
-      { id: 2, title: 'Write Personal Statement & Request References', desc: 'Draft an essay explaining your academic interest. Ask teachers or employers for reference letters.', critical: true },
-      { id: 3, title: 'Submit Application via UCAS or Portal', desc: 'Apply through UCAS for Bachelor courses, or apply directly on the university portal for Master/PhD programs.', critical: true },
-      { id: 4, title: 'Receive CAS Certificate & Apply for Visa', desc: 'Accept your offer, pay the deposit to receive your CAS letter, and submit your student visa application.', critical: true }
+      { id: 1, title: 'Take English Language Test (IELTS/PTE)', desc: 'Take IELTS Academic (6.0 - 7.0 required) or secure an IELTS waiver if your bachelor medium of instruction was English.', critical: true },
+      { id: 2, title: 'Prepare Statement of Purpose & References', desc: 'Write an SOP detailing your career goals. Gather 2 academic recommendation letters.', critical: true },
+      { id: 3, title: 'Submit Application & Secure CAS Offer', desc: 'Apply directly or via UCAS. Pay deposit to receive your Confirmation of Acceptance for Studies (CAS).', critical: true },
+      { id: 4, title: 'Verify Bank Solvency & Apply for Visa', desc: 'Prepare bank solvency statements (funds held for 28 consecutive days in acceptable bank) and submit UK Student Visa.', critical: true }
     ]
   },
   'USA': {
     flag: '🇺🇸',
     steps: [
-      { id: 1, title: 'Take TOEFL/IELTS English Exam', desc: 'Take an English proficiency test. US universities widely prefer TOEFL but accept IELTS (6.5+).', critical: true },
-      { id: 2, title: 'Draft Essays & Request Recommendations', desc: 'Write your Statement of Purpose (SOP). Request letters of recommendation from 2-3 academic referees.', critical: true },
-      { id: 3, title: 'Submit Applications & Pay Fees', desc: 'Submit applications via Common App or direct portals. Pay university application fees ($50-$100 per school).', critical: true },
-      { id: 4, title: 'Obtain Form I-20 & Book Visa Interview', desc: 'Submit bank statements to prove financial support, get your Form I-20, and attend the student visa interview.', critical: true }
+      { id: 1, title: 'Take IELTS/TOEFL English Exam', desc: 'Secure required English scores (IELTS 6.5+ or TOEFL 80+). Some universities may accept Duolingo.', critical: true },
+      { id: 2, title: 'Draft SOP & Obtain Recommendation Letters', desc: 'Write your Statement of Purpose (SOP) and gather recommendation letters from academic referees.', critical: true },
+      { id: 3, title: 'Submit Applications & Pay Fees', desc: 'Apply via Common App or direct portals. Pay university application fees.', critical: true },
+      { id: 4, title: 'Secure I-20 Form & Book Interview at Dhaka', desc: 'Provide sponsor bank solvency certificates to get your I-20, pay SEVIS fee, and attend visa interview at US Embassy Dhaka.', critical: true }
     ]
   },
   'Canada': {
     flag: '🇨🇦',
     steps: [
-      { id: 1, title: 'Take IELTS Academic Test', desc: 'For streamlined visa processing (SDS stream), you must score a minimum of 6.0 in all bands of IELTS Academic.', critical: true },
-      { id: 2, title: 'Prepare Transcripts & Study Plan (SOP)', desc: 'Gather certified academic records and write a detailed Study Plan explaining your academic intentions in Canada.', critical: true },
-      { id: 3, title: 'Submit Application directly to University', desc: 'Apply directly via the university online portal and pay the application fee ($100-$150 CAD).', critical: true },
-      { id: 4, title: 'Purchase GIC & Apply for Study Permit', desc: 'Purchase a GIC of $20,635 CAD from an approved bank and submit your Canadian Study Permit application.', critical: true }
+      { id: 1, title: 'Take IELTS Academic Test', desc: 'Score a minimum of 6.0 in all bands of IELTS Academic to qualify for visa processing.', critical: true },
+      { id: 2, title: 'Prepare Attested Transcripts & Study Plan', desc: 'Gather attested academic transcripts and write a detailed Study Plan explaining your ties to Bangladesh.', critical: true },
+      { id: 3, title: 'Submit University Applications', desc: 'Apply directly via the university portal and pay the application fee.', critical: true },
+      { id: 4, title: 'Purchase GIC & Apply for Study Permit', desc: 'Purchase a GIC of $20,635 CAD from an approved bank, arrange sponsor bank solvency statements, and submit Study Permit.', critical: true }
     ]
   },
   'Australia': {
     flag: '🇦🇺',
     steps: [
-      { id: 1, title: 'Pass IELTS or PTE Academic Test', desc: 'Take a recognized English test. IELTS Academic (6.0 - 6.5) or PTE Academic (50 - 58) is standard.', critical: true },
-      { id: 2, title: 'Complete Genuine Student (GS) Statements', desc: 'Address the Genuine Student requirement by detailing your career goals and course relevance.', critical: true },
-      { id: 3, title: 'Submit Application & Pay Deposit', desc: 'Apply directly or via agent, pay the tuition deposit, and obtain your Confirmation of Enrolment (CoE).', critical: true },
-      { id: 4, title: 'Purchase OSHC Health Cover & Get Visa', desc: 'Purchase Overseas Student Health Cover and apply online for your Student Visa (Subclass 500).', critical: true }
+      { id: 1, title: 'Pass IELTS or PTE Academic Test', desc: 'Secure IELTS Academic (6.0 - 6.5) or PTE Academic (50 - 58) scores.', critical: true },
+      { id: 2, title: 'Satisfy Genuine Student (GS) Requirements', desc: 'Draft statement details answering GS criteria, including your ties to Bangladesh and career benefits.', critical: true },
+      { id: 3, title: 'Submit Application & Pay Deposit', desc: 'Apply directly or via agent, pay tuition deposit, and get your Confirmation of Enrolment (CoE).', critical: true },
+      { id: 4, title: 'OSHC Health Cover & Submit Sponsor Bank Statements', desc: 'Purchase Overseas Student Health Cover, prepare 3 months of bank statements/solvency, and apply for Visa 500.', critical: true }
     ]
   },
   'Netherlands': {

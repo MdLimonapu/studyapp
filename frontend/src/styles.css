@@ -682,6 +682,8 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 
 .rc-meta-section {
   display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
   padding-top: 8px;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
   margin-top: 4px;
@@ -698,6 +700,7 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   padding: 6px 14px;
   border-radius: 999px;
   width: fit-content;
+  max-width: 100%;
 }
 
 .rc-intake-icon {
@@ -711,6 +714,30 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 .rc-intake-value {
   color: var(--text);
   font-weight: 750;
+  overflow-wrap: anywhere;
+}
+
+.rc-wide-row {
+  width: 100%;
+}
+
+.rc-source-confidence {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  max-width: 100%;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid var(--secondary-border);
+  background: var(--secondary-glow);
+  color: var(--secondary-accent);
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: capitalize;
+}
+
+.rc-source-confidence strong {
+  color: var(--text);
 }
 
 /* Rating Badge */
@@ -2249,7 +2276,6 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 :root[data-theme="light"] .rc-intake-value {
   color: #111827 !important;
 }
-
 
 
 
