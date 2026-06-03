@@ -23,8 +23,9 @@ const SERVICES = [
     icon: 'file-text-o',
     iconColor: '#ff6b00',
     title: 'Academic Document Evaluation',
-    desc: 'Comprehensive review of your transcripts, certificates, and GPA conversions. We verify international equivalence to fit university admissions criteria.',
-    features: ['GPA Equivalence Audits', 'Credential Verification', 'Prerequisites Mapping'],
+    price: '$49.00',
+    desc: 'Verify international GPA equivalence and map academic transcripts against university admission requirements.',
+    features: ['GPA Equivalence Evaluations', 'Credential Verification', 'Prerequisites Mapping'],
     docOptions: ['Academic Transcript', 'Graduation Certificate', 'GPA Report', 'Other'],
     ctaText: 'Start Document Evaluation'
   },
@@ -32,8 +33,9 @@ const SERVICES = [
     icon: 'vcard-o',
     iconColor: '#00f0ff',
     title: 'Visa & Immigration Guidance',
-    desc: 'Step-by-step navigation through visa applications. We help organize your visa portfolios, prepare financial proofs, and audit documents to maximize approval odds.',
-    features: ['Document Checklist Audits', 'Financial Portfolios Review', 'Interview Prep Tips'],
+    price: '$45.00',
+    desc: 'Step-by-step guidance to organize visa portfolios, verify financial statements, and maximize approval rates.',
+    features: ['Document Checklist Reviews', 'Financial Statement Review', 'Interview Preparation Tips'],
     docOptions: ['Financial/Bank Statement', 'Passport Copy', 'Sponsorship Letter', 'Visa Application Draft', 'Other'],
     ctaText: 'Request Visa Review'
   },
@@ -41,8 +43,9 @@ const SERVICES = [
     icon: 'graduation-cap',
     iconColor: '#a855f7',
     title: 'University Application Strategy',
-    desc: 'Professional review of your university application folders. Get structural feedback on your Personal Statement, CV, and letters of recommendation to stand out.',
-    features: ['SOP / Essay Review', 'Letter of Recommendation Audits', 'Portfolio Alignment'],
+    price: '$39.00',
+    desc: 'Get expert structural feedback on your Personal Statement, CV, and recommendations to stand out to admissions.',
+    features: ['SOP / Essay Review', 'Letter of Recommendation Reviews', 'Portfolio Alignment'],
     docOptions: ['Statement of Purpose (SOP)', 'CV / Resume', 'Letter of Recommendation', 'Other'],
     ctaText: 'Submit Application Files'
   },
@@ -50,8 +53,9 @@ const SERVICES = [
     icon: 'lightbulb-o',
     iconColor: '#eab308',
     title: 'Admissions & Matching Consult',
-    desc: 'In-depth review of your academic background to map out specific courses and admission roadmaps across Europe, North America, and beyond.',
-    features: ['Custom Eligibility Checklists', 'Direct Admission Entry Audits', 'Deadline Management'],
+    price: '$35.00',
+    desc: 'In-depth academic profile review to match specific courses and admission roadmaps across regions.',
+    features: ['Custom Eligibility Checklists', 'Direct Admission Entry Reviews', 'Deadline Management'],
     docOptions: ['Detailed CV', 'Transcripts Overview', 'Target University List', 'Other'],
     ctaText: 'Request Admissions Review'
   },
@@ -59,16 +63,18 @@ const SERVICES = [
     icon: 'money',
     iconColor: '#ccff00',
     title: 'Scholarship & Funding Advisory',
-    desc: 'Discover and align with compatible government, university, and private scholarship programs that fit your profile credentials.',
+    price: '$25.00',
+    desc: 'Align academic profiles with matching government, institutional, and private scholarship programs.',
     features: ['Scholarship Eligibility Checks', 'Funding Document Verification', 'Application Alignment'],
     docOptions: ['Scholarship Application Essay', 'Income Statement', 'Awards Portfolio', 'Other'],
-    ctaText: 'Request Funding Audit'
+    ctaText: 'Request Funding Check'
   },
   {
     icon: 'globe',
     iconColor: '#10b981',
     title: 'Departure & Integration Support',
-    desc: 'Pre-departure assistance, including accommodation guidance, health insurance alignment, and student enrollment verification steps.',
+    price: '$19.00',
+    desc: 'Pre-departure assistance covering local health insurance, housing advice, and enrollment verification.',
     features: ['Accommodation Sourcing Tips', 'Health Insurance Alignment', 'Enrollment Portals Setup'],
     docOptions: ['Enrollment Offer Letter', 'Accommodation Application', 'Health Insurance Policy', 'Other'],
     ctaText: 'Request Departure Review'
@@ -220,9 +226,9 @@ export default function ServicesScreen() {
         showsVerticalScrollIndicator={false}
       >
         <View style={styles.heroSection}>
-          <Text style={[styles.heroTitle, { color: colors.text }]}>Premium Services</Text>
+          <Text style={[styles.heroTitle, { color: colors.text }]}>Our Services</Text>
           <Text style={[styles.heroSubtitle, { color: colors.mutedText }]}>
-            Expert human assistance and academic audits alongside our search engine to guarantee a smooth entry into your dream university.
+            Expert human assistance and academic evaluations alongside our search engine to guarantee a smooth entry into your dream university.
           </Text>
         </View>
 
@@ -238,13 +244,22 @@ export default function ServicesScreen() {
                 { backgroundColor: colors.card, borderColor: colors.border }
               ]}
             >
+              {/* Absolute positioned price tag */}
+              <View style={[styles.priceTag, { backgroundColor: `${item.iconColor}15`, borderColor: `${item.iconColor}30` }]}>
+                <Text style={[styles.priceText, { color: item.iconColor === '#ccff00' ? '#d97706' : item.iconColor }]}>
+                  {item.price}
+                </Text>
+              </View>
+
               <View style={styles.cardHeader}>
                 <View style={[styles.iconWrapper, { backgroundColor: `${item.iconColor}15` }]}>
                   <FontAwesome name={item.icon as any} size={22} color={item.iconColor} />
                 </View>
-                <Text style={[styles.cardTitle, { color: colors.text }]} numberOfLines={2}>
-                  {item.title}
-                </Text>
+                <View style={{ flex: 1, paddingRight: 64 }}>
+                  <Text style={[styles.cardTitle, { color: colors.text }]} numberOfLines={2}>
+                    {item.title}
+                  </Text>
+                </View>
               </View>
 
               <Text style={[styles.cardDesc, { color: colors.mutedText }]}>
@@ -278,13 +293,13 @@ export default function ServicesScreen() {
         <View style={[styles.ctaCard, { backgroundColor: colors.card, borderColor: colors.border }]}>
           <Text style={[styles.ctaTitle, { color: colors.text }]}>Need Personalized Assistance?</Text>
           <Text style={[styles.ctaDesc, { color: colors.mutedText }]}>
-            Whether you need a complete document audit, scholarship guidance, or step-by-step visa assistance, our specialized academic coordinators are here to guide you.
+            Whether you need a complete document evaluation, scholarship guidance, or step-by-step visa assistance, our specialized academic coordinators are here to guide you.
           </Text>
           <TouchableOpacity 
             style={[styles.ctaButton, { backgroundColor: '#ccff00', shadowColor: '#ccff00' }]}
             onPress={() => router.push('/(tabs)/contact')}
           >
-            <Text style={styles.ctaButtonText}>Book an Audit Session</Text>
+            <Text style={styles.ctaButtonText}>Book a Session</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
@@ -327,7 +342,7 @@ export default function ServicesScreen() {
                   contentContainerStyle={{ gap: 18, paddingBottom: 24 }}
                 >
                   <Text style={[styles.modalDesc, { color: colors.mutedText }]}>
-                    Select your document type and upload files to request auditing from our advisors.
+                    Select your document type and upload files to request evaluation from our advisors.
                   </Text>
 
                   {/* Dropdown Selector */}
@@ -433,7 +448,7 @@ export default function ServicesScreen() {
                   <FontAwesome name="check-circle" size={54} color="#10b981" />
                   <Text style={[styles.successTitle, { color: colors.text }]}>Upload Complete!</Text>
                   <Text style={[styles.successDesc, { color: colors.mutedText }]}>
-                    Your file <Text style={{ color: colors.text, fontWeight: '700' }}>{fileName}</Text> has been successfully categorized as a {docType} audit request.
+                    Your file <Text style={{ color: colors.text, fontWeight: '700' }}>{fileName}</Text> has been successfully categorized as a {docType} request.
                   </Text>
                   <TouchableOpacity 
                     style={[styles.submitBtn, { backgroundColor: '#10b981', marginTop: 14 }]}
@@ -505,6 +520,21 @@ const styles: any = StyleSheet.create({
     shadowOpacity: 0.05,
     shadowRadius: 10,
     elevation: 3,
+    position: 'relative',
+  },
+  priceTag: {
+    position: 'absolute',
+    top: 22,
+    right: 22,
+    paddingVertical: 4,
+    paddingHorizontal: 10,
+    borderRadius: 8,
+    borderWidth: 1,
+    zIndex: 10,
+  },
+  priceText: {
+    fontSize: 12.5,
+    fontWeight: '800',
   },
   cardHeader: {
     flexDirection: 'row',
