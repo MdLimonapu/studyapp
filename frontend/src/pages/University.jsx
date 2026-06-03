@@ -269,33 +269,36 @@ export default function University() {
                         </div>
 
                         <div className="rc-meta-section">
-                          <div className="rc-intake-row">
-                            <span className="rc-intake-icon">🗓️</span>
-                            <span className="rc-intake-label">Intake:</span>
-                            <span className="rc-intake-value">{item.intake || 'Verify on course page'}</span>
-                          </div>
-                          {item.duration && (
+                          <div className="rc-meta-pills">
                             <div className="rc-intake-row">
-                              <span className="rc-intake-icon">⏱️</span>
-                              <span className="rc-intake-label">Duration:</span>
-                              <span className="rc-intake-value">{item.duration}</span>
+                              <span className="rc-intake-icon">🗓️</span>
+                              <span className="rc-intake-value">{item.intake || 'Verify'}</span>
                             </div>
-                          )}
-                          <div className="rc-intake-row">
-                            <span className="rc-intake-icon">🌐</span>
-                            <span className="rc-intake-label">Language:</span>
-                            <span className="rc-intake-value">{item.language || 'Verify'}</span>
+                            {item.duration && (
+                              <div className="rc-intake-row">
+                                <span className="rc-intake-icon">⏱️</span>
+                                <span className="rc-intake-value">{item.duration}</span>
+                              </div>
+                            )}
+                            <div className="rc-intake-row">
+                              <span className="rc-intake-icon">🌐</span>
+                              <span className="rc-intake-value">{item.language || 'Verify'}</span>
+                            </div>
                           </div>
-                          <div className="rc-intake-row rc-wide-row">
-                            <span className="rc-intake-icon">💰</span>
-                            <span className="rc-intake-label">Fee:</span>
-                            <span className="rc-intake-value">{item.fee || 'Verify on course page'}</span>
+
+                          <div className="rc-details-list">
+                            <div className="rc-detail-item">
+                              <span className="rc-detail-icon">💰</span>
+                              <span className="rc-detail-label">Fee:</span>
+                              <span className="rc-detail-value">{item.fee || 'Verify on course page'}</span>
+                            </div>
+                            <div className="rc-detail-item">
+                              <span className="rc-detail-icon">📌</span>
+                              <span className="rc-detail-label">Deadline:</span>
+                              <span className="rc-detail-value">{item.deadline || 'Verify on course page'}</span>
+                            </div>
                           </div>
-                          <div className="rc-intake-row rc-wide-row">
-                            <span className="rc-intake-icon">📌</span>
-                            <span className="rc-intake-label">Deadline:</span>
-                            <span className="rc-intake-value">{item.deadline || 'Verify on course page'}</span>
-                          </div>
+
                           {item.source_confidence && (
                             <div className="rc-source-confidence">
                               <span>{item.source_confidence.replaceAll('_', ' ')}</span>
