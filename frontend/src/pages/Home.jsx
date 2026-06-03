@@ -376,6 +376,42 @@ export default function Home() {
         </form>
       </section>
 
+      {/* HOW IT WORKS / SEO KEYWORDS SECTION */}
+      <section className="card" style={{ marginTop: '32px', padding: '40px' }}>
+        <h2 style={{ fontSize: '28px', fontWeight: 800, marginBottom: '16px', textAlign: 'center' }}>
+          Your Ultimate Study Abroad &amp; University Search Engine
+        </h2>
+        <p style={{ color: 'var(--muted)', textAlign: 'center', maxWidth: '700px', margin: '0 auto 40px auto', lineHeight: 1.6 }}>
+          Studplex simplifies international higher education by matching students with perfect university programs worldwide. Discover courses, evaluate admissions criteria, and plan your degree roadmap in seconds.
+        </p>
+
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
+          <div style={{ padding: '20px', borderRadius: '16px', background: 'var(--glass-glow)', border: '1px solid var(--card-border)' }}>
+            <div style={{ fontSize: '32px', marginBottom: '12px' }}>🔍</div>
+            <h3 style={{ fontSize: '18px', fontWeight: 700, marginBottom: '8px' }}>Smart University Search</h3>
+            <p style={{ color: 'var(--muted)', fontSize: '14px', lineHeight: 1.5 }}>
+              Filter through thousands of English-taught bachelor, master, and PhD programs across Europe, USA, UK, Canada, and Australia.
+            </p>
+          </div>
+
+          <div style={{ padding: '20px', borderRadius: '16px', background: 'var(--glass-glow)', border: '1px solid var(--card-border)' }}>
+            <div style={{ fontSize: '32px', marginBottom: '12px' }}>📊</div>
+            <h3 style={{ fontSize: '18px', fontWeight: 700, marginBottom: '8px' }}>Admission Eligibility Checker</h3>
+            <p style={{ color: 'var(--muted)', fontSize: '14px', lineHeight: 1.5 }}>
+              Compare your academic background, GPA conversions, and language proficiency scores against official university entry requirements.
+            </p>
+          </div>
+
+          <div style={{ padding: '20px', borderRadius: '16px', background: 'var(--glass-glow)', border: '1px solid var(--card-border)' }}>
+            <div style={{ fontSize: '32px', marginBottom: '12px' }}>🗺️</div>
+            <h3 style={{ fontSize: '18px', fontWeight: 700, marginBottom: '8px' }}>Step-by-Step Study Roadmap</h3>
+            <p style={{ color: 'var(--muted)', fontSize: '14px', lineHeight: 1.5 }}>
+              Track visa guidelines, blocked bank account requirements, and document preparations with custom timelines tailored per country.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section className="news-section">
         <div className="news-header">
           <h3>📰 Latest study abroad &amp; visa news</h3>
