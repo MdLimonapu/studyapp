@@ -250,7 +250,7 @@ export default function App() {
                       avatarBox: {
                         width: '40px',
                         height: '40px',
-                        borderRadius: '10px',
+                        borderRadius: '50%',
                         border: '2px solid var(--card-border)',
                         boxShadow: '0 0 10px rgba(0,0,0,0.1)'
                       }
@@ -341,7 +341,7 @@ export default function App() {
               <NavLink to="/about">About Us</NavLink>
               <NavLink to="/university">University Matches</NavLink>
               <NavLink to="/roadmap">Check Eligibility</NavLink>
-              <NavLink to="/services">Premium Services</NavLink>
+              <NavLink to="/services">Services</NavLink>
             </div>
             <div className="footer-col">
               <h4>Support</h4>

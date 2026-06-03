@@ -293,7 +293,7 @@ export default function Services() {
       {/* Hero Header */}
       <div style={{ textAlign: 'center', marginBottom: '48px' }}>
         <h2 style={{ fontSize: '38px', fontWeight: 800, marginBottom: '12px', color: 'var(--text)' }}>
-          Our Premium Services
+          Our Services
         </h2>
         <p style={{ color: 'var(--muted)', fontSize: '16px', maxWidth: '600px', margin: '0 auto', lineHeight: 1.6 }}>
           Get expert human assistance and academic evaluations alongside our search engine to guarantee a smooth entry into your dream university abroad.

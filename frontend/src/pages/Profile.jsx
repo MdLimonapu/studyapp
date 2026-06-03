@@ -492,7 +492,7 @@ export default function Profile() {
             </div>
           ) : (
             <div style={{ textAlign: 'center', padding: '24px', color: 'var(--muted)', fontSize: '13.5px' }}>
-              No orders found. Purchase a premium service to get started!
+              No orders found. Purchase a service to get started!
             </div>
           )}
         </div>
