@@ -120,10 +120,20 @@ export default function Contact() {
           gap: 10%;
           align-items: start;
         }
+        .contact-form-row-responsive {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 16px;
+        }
         @media (max-width: 900px) {
           .contact-grid-custom {
             grid-template-columns: 1fr;
             gap: 32px;
+          }
+        }
+        @media (max-width: 600px) {
+          .contact-form-row-responsive {
+            grid-template-columns: 1fr;
           }
         }
       `}</style>
@@ -151,7 +161,7 @@ export default function Contact() {
             <div>
               <h3 style={{ fontSize: '20px', fontWeight: '800', marginBottom: '24px' }}>Submit a Message</h3>
               <form onSubmit={handleSubmit} className="grid one-col-gap">
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+                <div className="contact-form-row-responsive">
                   <div className="form-group">
                     <label htmlFor="name" style={{ fontSize: '11px', fontWeight: '700', textTransform: 'uppercase', color: 'var(--muted)' }}>Full Name</label>
                     <input 
