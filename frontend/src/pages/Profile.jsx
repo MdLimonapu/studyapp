@@ -252,10 +252,6 @@ export default function Profile() {
               </div>
             ))}
           </div>
-
-          <div style={{marginTop: 16, fontSize: 13, fontWeight: 600, color: saving ? 'var(--muted)' : (saved ? 'var(--accent)' : 'transparent'), transition: 'color 0.3s'}}>
-            {saving ? 'Saving changes...' : (saved ? '✓ All changes saved' : ' ')}
-          </div>
         </div>
 
         <div className="pf-tip-card">
