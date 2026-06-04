@@ -42,6 +42,17 @@ export default function Profile() {
   useEffect(() => {
     if (!isLoaded) return
     const email = user?.primaryEmailAddress?.emailAddress || ""
+    const fullName = user?.fullName || ""
+    const avatarUrl = user?.imageUrl || ""
+
+    // Pre-autofill with Google/Clerk credentials
+    setProfile(p => ({
+      ...p,
+      email: p.email || email,
+      fullName: p.fullName || fullName,
+      avatarUrl: p.avatarUrl || avatarUrl
+    }))
+
     fetchProfile(email)
       .then(data => {
         if (data && Object.keys(data).length) {
