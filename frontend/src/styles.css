@@ -2244,14 +2244,6 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   border-color: rgba(255, 255, 255, 0.15) !important;
 }
 
-/* Hide optional First Name and Last Name fields to simplify sign up */
-.cl-signUp-root [data-field="firstName"],
-.cl-signUp-root [data-field="lastName"],
-.cl-signUp-root .cl-formFieldRow,
-.cl-rootBox [class*="-formFieldRow"] {
-  display: none !important;
-}
-
 /* Hide optional label helper text */
 .cl-formFieldLabelHelper,
 .cl-rootBox .cl-formFieldLabelHelper {
