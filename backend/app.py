@@ -47,6 +47,25 @@ if mongo_uri:
 else:
     print("⚠️ Warning: MONGO_URI not found in environment. Cloud database storage is disabled.", flush=True)
 
+import hashlib
+
+def hash_password(password: str) -> str:
+    salt = os.urandom(16)
+    pwd_hash = hashlib.pbkdf2_hmac('sha256', password.encode('utf-8'), salt, 100000)
+    return f"{salt.hex()}:{pwd_hash.hex()}"
+
+def verify_password(stored_password_hash: str, provided_password: str) -> bool:
+    if not stored_password_hash or ":" not in stored_password_hash:
+        return False
+    try:
+        salt_hex, hash_hex = stored_password_hash.split(":")
+        salt = bytes.fromhex(salt_hex)
+        expected_hash = bytes.fromhex(hash_hex)
+        provided_hash = hashlib.pbkdf2_hmac('sha256', provided_password.encode('utf-8'), salt, 100000)
+        return provided_hash == expected_hash
+    except Exception:
+        return False
+
 
 # ── Static course data (all countries) ────────────────────────────────────────
 FALLBACK_COURSES = []
@@ -872,6 +891,8 @@ def get_profile():
                 if "lastActive" in user_doc:
                     user_doc["lastActive"] = user_doc["lastActive"].isoformat()
                 return jsonify(user_doc)
+            else:
+                return jsonify({"error": "Profile not found"}), 404
         except Exception as e:
             print(f"⚠️ Error fetching profile from MongoDB: {e}", flush=True)
 
@@ -1090,19 +1111,33 @@ def register_user():
     data = request.json or {}
     email = data.get("email", "").strip()
     full_name = data.get("fullName", "").strip()
+    password = data.get("password", "").strip()
     method = data.get("method", "email").strip()
     avatar_url = data.get("avatarUrl", "")
 
     if not email:
         return jsonify({"error": "Email is required"}), 400
 
+    if method == "email" and not password:
+        return jsonify({"error": "Password is required"}), 400
+
     # If MongoDB is connected, save the user
     if users_col is not None:
         try:
+            # Check duplicate email
+            existing_user = users_col.find_one({"email": email.lower()})
+            if existing_user:
+                if method == "email":
+                    return jsonify({"error": "An account with this email already exists"}), 400
+                else:
+                    return jsonify({"status": "saved", "database": "mongodb", "studplexId": existing_user.get("studplexId", "")})
+
             import datetime
+            password_hash = hash_password(password) if password else ""
             user_doc = {
                 "email": email.lower(),
                 "fullName": full_name,
+                "password_hash": password_hash,
                 "method": method,
                 "avatarUrl": avatar_url,
                 "studplexId": generate_user_id(email),
@@ -1121,6 +1156,51 @@ def register_user():
     else:
         print(f"⚠️ User sign-up bypass (MongoDB disconnected): {email}", flush=True)
         return jsonify({"status": "saved_offline", "studplexId": generate_user_id(email)})
+
+
+@app.route("/api/login", methods=["POST"])
+def login_user():
+    data = request.json or {}
+    email = data.get("email", "").strip()
+    password = data.get("password", "").strip()
+
+    if not email or not password:
+        return jsonify({"error": "Email and password are required"}), 400
+
+    if users_col is not None:
+        try:
+            user_doc = users_col.find_one({"email": email.lower()})
+            if not user_doc:
+                return jsonify({"error": "Account not found"}), 404
+            
+            stored_hash = user_doc.get("password_hash")
+            if not stored_hash:
+                # If they signed up with Google OAuth first, tell them to use Google
+                if user_doc.get("method") == "google_mobile" or "google" in user_doc.get("method", ""):
+                    return jsonify({"error": "This account was created using Google. Please log in with Google."}), 400
+                return jsonify({"error": "No password set for this account. Please register first."}), 400
+
+            if verify_password(stored_hash, password):
+                user_doc["_id"] = str(user_doc["_id"])
+                # Remove password hash from response for security
+                user_doc.pop("password_hash", None)
+                if "signUpDate" in user_doc:
+                    user_doc["signUpDate"] = user_doc["signUpDate"].isoformat()
+                if "lastActive" in user_doc:
+                    user_doc["lastActive"] = user_doc["lastActive"].isoformat()
+                return jsonify({"status": "success", "user": user_doc})
+            else:
+                return jsonify({"error": "Incorrect password"}), 401
+        except Exception as e:
+            print(f"⚠️ Login error: {e}", flush=True)
+            return jsonify({"error": "Database error"}), 500
+    else:
+        # Fallback offline mode login
+        return jsonify({"status": "success", "user": {
+            "email": email,
+            "fullName": email.split("@")[0].capitalize(),
+            "studplexId": generate_user_id(email)
+        }})
 
 
 # Initialize Stripe key from environment variable

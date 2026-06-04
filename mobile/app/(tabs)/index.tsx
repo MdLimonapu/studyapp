@@ -106,7 +106,7 @@ export default function HomeScreen() {
       setUserEmail(email);
       if (email && email.trim() !== '') {
         const data = await fetchProfile(email);
-        if (data && Object.keys(data).length > 0) {
+        if (data && data.email) {
           setProfile(data);
           if (data.currentField && !field) {
             setField(data.currentField);
@@ -196,7 +196,7 @@ export default function HomeScreen() {
           'Search Error',
           'Could not fetch search results. Please check your network.'
         );
-        console.error(err);
+        console.warn(err);
       })
       .finally(() => setLoading(false));
   };
@@ -722,11 +722,12 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    marginBottom: Platform.OS === 'ios' ? 104 : 86,
   },
   scrollContent: {
     padding: 16,
     paddingTop: Platform.OS === 'ios' ? 60 : 45,
-    paddingBottom: Platform.OS === 'ios' ? 120 : 100,
+    paddingBottom: 24,
   },
   flex: {
     flex: 1,

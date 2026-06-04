@@ -212,7 +212,7 @@ export default function ServicesScreen() {
             await AsyncStorage.setItem('user_country_name', name);
           }
         } catch (fallbackErr) {
-          console.error("Failed to detect country on mobile:", fallbackErr);
+          console.warn("Failed to detect country on mobile:", fallbackErr);
         }
       }
     };
@@ -249,7 +249,7 @@ export default function ServicesScreen() {
 
     try {
       // 1. Request Payment Intent clientSecret from backend
-      const backendUrl = "https://api.studplex.com";
+      const backendUrl = "https://studyapp-backend-cal9.onrender.com";
       const response = await fetch(`${backendUrl}/api/payment/create-intent`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -321,14 +321,14 @@ export default function ServicesScreen() {
             })
           });
         } catch (confirmErr) {
-          console.error("⚠️ Failed to trigger payment confirm mail on mobile:", confirmErr);
+          console.warn("⚠️ Failed to trigger payment confirm mail on mobile:", confirmErr);
         }
 
         setIsSubmitting(false);
         setSubmitSuccess(true);
       }
     } catch (err) {
-      console.error(err);
+      console.warn(err);
       alert("Failed to communicate with the payment server.");
       setIsSubmitting(false);
     }
@@ -338,17 +338,7 @@ export default function ServicesScreen() {
     <View style={{ flex: 1, backgroundColor: colors.background }}>
       <GradedBackground />
       
-      {/* Custom Header */}
-      <View style={[styles.header, { borderBottomColor: colors.border }]}>
-        <TouchableOpacity 
-          style={styles.backButton}
-          onPress={() => router.back()}
-        >
-          <Ionicons name="arrow-back" size={24} color={colors.text} />
-        </TouchableOpacity>
-        <Text style={[styles.headerTitle, { color: colors.text }]}>Our Services</Text>
-        <View style={{ width: 40 }} />
-      </View>
+
 
       <ScrollView 
         style={styles.container}
@@ -599,27 +589,13 @@ export default function ServicesScreen() {
 const styles: any = StyleSheet.create({
   container: {
     flex: 1,
+    paddingHorizontal: 20,
+    paddingTop: Platform.OS === 'ios' ? 60 : 45,
+    marginBottom: Platform.OS === 'ios' ? 104 : 86,
   },
   scrollContent: {
-    padding: 16,
     paddingTop: 12,
-    paddingBottom: 160, // Large padding to avoid navigation overlay blocking the bottom card!
-  },
-  header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: 12,
-    height: Platform.OS === 'ios' ? 100 : 70,
-    paddingTop: Platform.OS === 'ios' ? 44 : 20,
-    borderBottomWidth: 1,
-  },
-  backButton: {
-    padding: 8,
-  },
-  headerTitle: {
-    fontSize: 18,
-    fontWeight: '800',
+    paddingBottom: 24,
   },
   heroSection: {
     alignItems: 'center',

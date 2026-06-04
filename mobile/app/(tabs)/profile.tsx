@@ -18,7 +18,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { WebView } from 'react-native-webview';
 import * as WebBrowser from 'expo-web-browser';
 import * as Linking from 'expo-linking';
-import { fetchProfile, saveProfile, registerUser } from '../../services/api';
+import { fetchProfile, saveProfile, registerUser, fetchOrders } from '../../services/api';
 import { FontAwesome, Ionicons, Feather } from '@expo/vector-icons';
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
@@ -38,6 +38,141 @@ const DEGREE_OPTIONS = [
   "Diploma",
   "Other"
 ];
+
+const FIELD_OPTIONS = [
+  "Artificial Intelligence", "Aerospace Engineering", "Architecture",
+  "Biomedical Engineering", "Business Administration", "Chemical Engineering",
+  "Civil Engineering", "Computer Science", "Cybersecurity",
+  "Data Science", "Economics", "Electrical Engineering",
+  "Environmental Engineering", "Finance", "Information Technology",
+  "Law", "Marketing", "Mathematics", "Mechanical Engineering",
+  "Medicine", "Nursing", "Physics", "Psychology", "Robotics",
+  "Software Engineering", "Telecommunications", "Urban Planning",
+  "International Relations", "Public Health", "Supply Chain Management",
+];
+
+interface Program {
+  title: string;
+  course?: string;
+  university: string;
+  country: string;
+  degree: string;
+  tuitionFee?: string;
+  duration?: string;
+  score?: number;
+  match_rating?: number;
+  link?: string;
+  city?: string;
+  deadline?: string;
+  language?: string;
+  fee?: string;
+}
+
+const formatAbbreviation = (val?: string) => {
+  if (!val) return "";
+  return val
+    .replace(/\bBEng\b/g, 'B.Eng.')
+    .replace(/\bMEng\b/g, 'M.Eng.')
+    .replace(/\bBSc\b/g, 'B.Sc.')
+    .replace(/\bMSc\b/g, 'M.Sc.')
+    .replace(/\bBA\b/g, 'B.A.')
+    .replace(/\bMA\b/g, 'M.A.')
+    .replace(/\bPhD\b/g, 'Ph.D.')
+    .replace(/\bbeng\b/g, 'B.Eng.')
+    .replace(/\bmeng\b/g, 'M.Eng.')
+    .replace(/\bbsc\b/g, 'B.Sc.')
+    .replace(/\bmsc\b/g, 'M.Sc.');
+};
+
+const getShortDeadline = (deadlineText?: string) => {
+  if (!deadlineText) return 'Verify';
+  const text = deadlineText.toLowerCase();
+  
+  if (text.includes('january-july') && text.includes('july-january')) {
+    return 'Jan-July / July-Jan';
+  }
+  if (text.includes('december-march')) return 'Dec - March';
+  if (text.includes('january-may')) return 'Jan - May';
+  if (text.includes('december-april')) return 'Dec - April';
+  if (text.includes('november-march')) return 'Nov - March';
+  if (text.includes('january') && text.includes('august')) return 'Jan (Autumn) / Aug (Spring)';
+  if (text.includes('6-10 months')) return '6-10 months before';
+  
+  const monthRegex = /(january|february|march|april|may|june|july|august|september|october|november|december)/gi;
+  const matches = deadlineText.match(monthRegex);
+  if (matches && matches.length > 0) {
+    const unique = [...new Set(matches.map(m => m.slice(0, 3)))];
+    return unique.join(' - ');
+  }
+  
+  if (deadlineText.length > 30) {
+    return 'Verify on site';
+  }
+  return deadlineText;
+};
+
+const formatDegree = (degree?: string) => {
+  if (!degree) return '';
+  const d = degree.toLowerCase().trim();
+  if (d === 'master') return "Master";
+  if (d === 'bachelor') return "Bachelor";
+  if (d === 'phd') return "PhD";
+  return degree.charAt(0).toUpperCase() + degree.slice(1);
+};
+
+const getUniDomain = (uni?: string, city?: string) => {
+  if (!uni) return 'daad.de';
+  const u = uni.toLowerCase().trim();
+  const c = city ? city.toLowerCase().trim() : '';
+
+  if (u.includes('köln') || u.includes('cologne')) {
+    if (u.includes('th') || u.includes('hochschule')) return 'th-koeln.de';
+    return 'uni-koeln.de';
+  }
+  if (u.includes('paderborn')) return 'uni-paderborn.de';
+  if (u.includes('würzburg') || u.includes('wuerzburg')) return 'uni-wuerzburg.de';
+  if (u.includes('dresden')) return 'tu-dresden.de';
+  if (u.includes('chemnitz')) return 'tu-chemnitz.de';
+  if (u.includes('south westphalia') || u.includes('südwestfalen')) return 'fh-swf.de';
+  if (u.includes('frankfurt')) {
+    if (u.includes('applied sciences')) return 'frankfurt-university.de';
+    return 'uni-frankfurt.de';
+  }
+  if (u.includes('munich') || u.includes('münchen')) {
+    if (u.includes('technical') || u.includes('tu')) return 'tum.de';
+    return 'lmu.de';
+  }
+  if (u.includes('german international')) return 'giu-berlin.de';
+  if (u.includes('karlsruhe') || u.includes('kit')) return 'kit.edu';
+  if (u.includes('aachen') || u.includes('rwth')) return 'rwth-aachen.de';
+  if (u.includes('berlin')) {
+    if (u.includes('tu') || u.includes('technical')) return 'tu-berlin.de';
+    if (u.includes('free') || u.includes('freie')) return 'fu-berlin.de';
+    return 'hu-berlin.de';
+  }
+  if (u.includes('heidelberg')) return 'uni-heidelberg.de';
+  if (u.includes('bonn')) return 'uni-bonn.de';
+  if (u.includes('hamburg')) return 'uni-hamburg.de';
+  if (u.includes('stuttgart')) return 'uni-stuttgart.de';
+  if (u.includes('darmstadt')) return 'tu-darmstadt.de';
+  if (u.includes('freiburg')) return 'uni-freiburg.de';
+  if (u.includes('tübingen') || u.includes('tuebingen')) return 'uni-tuebingen.de';
+  if (u.includes('göttingen') || u.includes('goettingen')) return 'uni-goettingen.de';
+  if (u.includes('erlangen') || u.includes('nürnberg') || u.includes('fau')) return 'fau.de';
+
+  if (c) {
+    const cleanCity = c.split(/\s+/)[0].replace(/[^a-z-]/g, '');
+    if (u.includes('technical') || u.includes('tu ') || u.includes('technische')) {
+      return `tu-${cleanCity}.de`;
+    }
+    if (u.includes('applied sciences') || u.includes('fh ') || u.includes('fachhochschule') || u.includes('hochschule')) {
+      return `hs-${cleanCity}.de`;
+    }
+    return `uni-${cleanCity}.de`;
+  }
+
+  return 'daad.de';
+};
 
 export default function ProfileScreen() {
   const colorScheme = useColorScheme() ?? 'light';
@@ -76,15 +211,35 @@ export default function ProfileScreen() {
   // Modal Editing States
   const [activeEditField, setActiveEditField] = useState<'firstName' | 'lastName' | 'currentDegree' | 'currentField' | 'grade' | null>(null);
   const [tempEditValue, setTempEditValue] = useState('');
+  const [fieldSuggestions, setFieldSuggestions] = useState<string[]>([]);
+
+  // Orders State
+  const [orders, setOrders] = useState<any[]>([]);
+  const [ordersLoading, setOrdersLoading] = useState(false);
+
+  // Favourites State
+  const [favorites, setFavorites] = useState<Program[]>([]);
 
   const startEditing = (field: 'firstName' | 'lastName' | 'currentDegree' | 'currentField' | 'grade') => {
     setActiveEditField(field);
     setTempEditValue(profile[field] || '');
+    if (field === 'currentField') {
+      const val = profile[field] || '';
+      setFieldSuggestions(val.length > 0
+        ? FIELD_OPTIONS.filter(f => f.toLowerCase().includes(val.toLowerCase())).slice(0, 6)
+        : FIELD_OPTIONS.slice(0, 6)
+      );
+    }
   };
 
-  // Load cached email and profile on mount
+  // Load cached email, profile and favorites on mount
   useEffect(() => {
     loadCachedProfile();
+    loadFavorites();
+    const interval = setInterval(() => {
+      loadFavorites();
+    }, 2000);
+    return () => clearInterval(interval);
   }, []);
 
   // Sync profile when Clerk finishes loading and user is signed in
@@ -94,9 +249,85 @@ export default function ProfileScreen() {
       const fullName = user.fullName || `${user.firstName || ''} ${user.lastName || ''}`.trim() || 'Google User';
       if (email) {
         handleBackendProfileSync(email, fullName);
+        loadOrders(email);
       }
     }
   }, [clerkLoaded, isSignedIn, user]);
+
+  const loadOrders = async (email: string) => {
+    setOrdersLoading(true);
+    try {
+      const data = await fetchOrders(email);
+      if (Array.isArray(data)) {
+        setOrders(data);
+      }
+    } catch (err) {
+      console.warn("Failed to load orders:", err);
+    } finally {
+      setOrdersLoading(false);
+    }
+  };
+
+  const loadFavorites = async () => {
+    try {
+      const rawLoved = await AsyncStorage.getItem('loved_programs');
+      if (rawLoved) {
+        setFavorites(JSON.parse(rawLoved));
+      } else {
+        setFavorites([]);
+      }
+    } catch (err) {
+      console.warn("Failed to load favorites in profile:", err);
+    }
+  };
+
+  const toggleFavorite = async (item: Program) => {
+    try {
+      const isFav = favorites.some(
+        (p) =>
+          (p.link === item.link && p.link) ||
+          (p.university === item.university && p.course === item.course)
+      );
+      let newFav: Program[] = [];
+      if (isFav) {
+        newFav = favorites.filter(
+          (p) =>
+            !(
+              (p.link === item.link && p.link) ||
+              (p.university === item.university && p.course === item.course)
+            )
+        );
+      } else {
+        newFav = [...favorites, item];
+      }
+      setFavorites(newFav);
+      await AsyncStorage.setItem('loved_programs', JSON.stringify(newFav));
+    } catch (err) {
+      console.warn('Error saving favorite programs:', err);
+    }
+  };
+
+  const isItemFavorite = (item: Program) => {
+    return favorites.some(
+      (p) =>
+        (p.link === item.link && p.link) ||
+        (p.university === item.university && p.course === item.course)
+    );
+  };
+
+  const handleOpenLink = async (url?: string) => {
+    if (!url) return;
+    try {
+      await WebBrowser.openBrowserAsync(url, {
+        presentationStyle: WebBrowser.WebBrowserPresentationStyle.FULL_SCREEN,
+      });
+    } catch (err) {
+      console.warn("Couldn't open URL in-app browser:", err);
+      Linking.openURL(url).catch((e) =>
+        console.warn("Couldn't open URL externally:", e)
+      );
+    }
+  };
 
   const handleBackendProfileSync = async (email: string, fullName: string) => {
     setLoading(true);
@@ -118,6 +349,19 @@ export default function ProfileScreen() {
           studplexId: data.studplexId || '',
         });
         await AsyncStorage.setItem('user_email', data.email);
+        await AsyncStorage.setItem('cached_profile', JSON.stringify({
+          fullName: data.fullName || fullName,
+          firstName: data.firstName || nameParts[0] || '',
+          lastName: data.lastName || nameParts.slice(1).join(' ') || '',
+          email: data.email,
+          currentDegree: data.currentDegree || 'Bachelor',
+          currentField: data.currentField || '',
+          semester: String(data.semester || ''),
+          universityName: data.universityName || '',
+          grade: String(data.grade || ''),
+          notes: data.notes || '',
+          studplexId: data.studplexId || '',
+        }));
       } else {
         // Auto register on backend
         const regResult = await registerUser({
@@ -146,15 +390,35 @@ export default function ProfileScreen() {
           notes: initialProfile.notes,
           studplexId: initialProfile.studplexId,
         });
-        setProfile({
+        const finalProfile = {
           ...initialProfile,
           semester: '',
           universityName: '',
+        };
+        setProfile(finalProfile);
+        await AsyncStorage.setItem('user_email', email);
+        await AsyncStorage.setItem('cached_profile', JSON.stringify(finalProfile));
+      }
+    } catch (err) {
+      console.warn("Backend sync error:", err);
+      // Fallback: use Clerk data so profile screen still shows even if backend is unreachable
+      if (!profile.email && email) {
+        const nameParts = fullName.trim().split(/\s+/);
+        setProfile({
+          fullName,
+          firstName: nameParts[0] || '',
+          lastName: nameParts.slice(1).join(' ') || '',
+          email,
+          currentDegree: 'Bachelor',
+          currentField: '',
+          semester: '',
+          universityName: '',
+          grade: '',
+          notes: '',
+          studplexId: '',
         });
         await AsyncStorage.setItem('user_email', email);
       }
-    } catch (err) {
-      console.error("Backend sync error:", err);
     } finally {
       setLoading(false);
     }
@@ -166,11 +430,20 @@ export default function ProfileScreen() {
       const email = await AsyncStorage.getItem('user_email');
       if (email && email.trim() !== '') {
         await syncProfileFromServer(email);
+        loadOrders(email);
       } else {
-        clearLocalProfileState();
+        // Try loading cached profile even without email
+        const cachedProfile = await AsyncStorage.getItem('cached_profile');
+        if (cachedProfile) {
+          const parsed = JSON.parse(cachedProfile);
+          setProfile(parsed);
+          if (parsed.email) loadOrders(parsed.email);
+        } else {
+          clearLocalProfileState();
+        }
       }
     } catch (err) {
-      console.error("Error loading cached email:", err);
+      console.warn("Error loading cached email:", err);
     } finally {
       setLoading(false);
     }
@@ -197,7 +470,7 @@ export default function ProfileScreen() {
       const data = await fetchProfile(emailToSync);
       if (data && Object.keys(data).length && data.email) {
         const nameParts = (data.fullName || '').trim().split(/\s+/);
-        setProfile({
+        const fetchedProfile = {
           fullName: data.fullName || '',
           firstName: data.firstName || nameParts[0] || '',
           lastName: data.lastName || nameParts.slice(1).join(' ') || '',
@@ -209,13 +482,15 @@ export default function ProfileScreen() {
           grade: String(data.grade || ''),
           notes: data.notes || '',
           studplexId: data.studplexId || '',
-        });
+        };
+        setProfile(fetchedProfile);
         await AsyncStorage.setItem('user_email', data.email);
+        await AsyncStorage.setItem('cached_profile', JSON.stringify(fetchedProfile));
       } else {
         setProfile(p => ({ ...p, email: emailToSync }));
       }
     } catch (err) {
-      console.error("Sync error:", err);
+      console.warn("Sync error:", err);
     }
   };
 
@@ -231,7 +506,7 @@ export default function ProfileScreen() {
       if (data && Object.keys(data).length && data.email) {
         await AsyncStorage.setItem('user_email', data.email);
         const nameParts = (data.fullName || '').trim().split(/\s+/);
-        setProfile({
+        const loggedProfile = {
           fullName: data.fullName || '',
           firstName: data.firstName || nameParts[0] || '',
           lastName: data.lastName || nameParts.slice(1).join(' ') || '',
@@ -243,17 +518,28 @@ export default function ProfileScreen() {
           grade: String(data.grade || ''),
           notes: data.notes || '',
           studplexId: data.studplexId || '',
-        });
+        };
+        setProfile(loggedProfile);
+        await AsyncStorage.setItem('cached_profile', JSON.stringify(loggedProfile));
         Alert.alert("Welcome Back!", `Successfully signed in as ${data.fullName || data.email}`);
       } else {
         Alert.alert(
           "Account Not Found",
-          "We couldn't find an account matching this email. Please switch to the Register tab to create a new profile."
+          "We couldn't find an account matching this email. Would you like to register and create a new profile?",
+          [
+            { text: "Cancel", style: "cancel" },
+            { 
+              text: "Create Account", 
+              onPress: () => {
+                setAuthMode('register');
+              } 
+            }
+          ]
         );
       }
     } catch (err) {
       Alert.alert("Connection Error", "Could not connect to the database server.");
-      console.error(err);
+      console.warn(err);
     } finally {
       setAuthLoading(false);
     }
@@ -292,7 +578,7 @@ export default function ProfileScreen() {
       
       // 3. Sync state
       const nameParts = fullName.trim().split(/\s+/);
-      setProfile({
+      const registeredProfile = {
         fullName,
         firstName: nameParts[0] || '',
         lastName: nameParts.slice(1).join(' ') || '',
@@ -304,12 +590,14 @@ export default function ProfileScreen() {
         grade: '',
         notes: '',
         studplexId: regResult.studplexId || '',
-      });
+      };
+      setProfile(registeredProfile);
+      await AsyncStorage.setItem('cached_profile', JSON.stringify(registeredProfile));
 
       Alert.alert("Registration Complete", "Your Studplex profile has been successfully created!");
     } catch (err) {
       Alert.alert("Registration Failed", "Unable to create your profile. Please try again.");
-      console.error(err);
+      console.warn(err);
     } finally {
       setAuthLoading(false);
     }
@@ -318,6 +606,17 @@ export default function ProfileScreen() {
   const handleGoogleSignIn = async () => {
     setAuthLoading(true);
     try {
+      // If Clerk already has a session (stale from previous run), just sync profile
+      if (isSignedIn && user) {
+        const email = user.primaryEmailAddress?.emailAddress;
+        const fullName = user.fullName || `${user.firstName || ''} ${user.lastName || ''}`.trim() || 'Google User';
+        if (email) {
+          await handleBackendProfileSync(email, fullName);
+        }
+        setAuthLoading(false);
+        return;
+      }
+
       const redirectUrl = Linking.createURL('/oauth-redirect');
       console.log("[OAuth] Using redirect URL:", redirectUrl);
       
@@ -330,8 +629,28 @@ export default function ProfileScreen() {
       } else {
         setAuthLoading(false);
       }
-    } catch (err) {
-      console.error("Google sign in error:", err);
+    } catch (err: any) {
+      const errMsg = err?.message || err?.toString?.() || '';
+      console.warn("Google sign in error:", err);
+      
+      // Handle "already signed in" — sign out stale session and retry
+      if (errMsg.toLowerCase().includes('already signed in')) {
+        try {
+          await signOut();
+          // Retry OAuth after clearing stale session
+          const redirectUrl = Linking.createURL('/oauth-redirect');
+          const { createdSessionId, setActive } = await startOAuthFlow({
+            redirectUrl,
+          });
+          if (createdSessionId && setActive) {
+            await setActive({ session: createdSessionId });
+            return;
+          }
+        } catch (retryErr) {
+          console.warn("OAuth retry failed:", retryErr);
+        }
+      }
+      
       Alert.alert("Authentication Failed", "Google OAuth session could not be completed.");
       setAuthLoading(false);
     }
@@ -354,11 +673,12 @@ export default function ProfileScreen() {
     saveProfile(updatedProfile)
       .then(async () => {
         setProfile(prev => ({ ...prev, fullName: combinedName }));
+        await AsyncStorage.setItem('cached_profile', JSON.stringify(updatedProfile));
         Alert.alert("Success", "Profile updated and saved!");
       })
       .catch(err => {
         Alert.alert("Error", "Failed to update profile. Please try again.");
-        console.error(err);
+        console.warn(err);
       })
       .finally(() => setSaving(false));
   };
@@ -376,7 +696,9 @@ export default function ProfileScreen() {
             await signOut();
             await AsyncStorage.removeItem('user_email');
             await AsyncStorage.removeItem('search_results');
+            await AsyncStorage.removeItem('cached_profile');
             clearLocalProfileState();
+            setOrders([]);
             setEmailInput('');
             setFullNameInput('');
           }
@@ -398,6 +720,113 @@ export default function ProfileScreen() {
       </View>
     );
   }
+
+  const renderCard = (item: Program, index: number) => {
+    const score = item.score || (item.match_rating ? item.match_rating * 33 : 85);
+    const loved = isItemFavorite(item);
+    const domainName = getUniDomain(item.university, item.city);
+    const faviconUrl = `https://www.google.com/s2/favicons?domain=${domainName}&sz=64`;
+
+    return (
+      <TouchableOpacity
+        key={index}
+        style={[
+          styles.programCard,
+          { 
+            backgroundColor: colorScheme === 'dark' ? 'rgba(25, 29, 41, 0.55)' : '#ffffff',
+            borderColor: colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.06)' : colors.border
+          },
+        ]}
+        onPress={() => handleOpenLink(item.link)}
+        activeOpacity={0.8}
+      >
+        {/* Card Header Row (City, Love Button & Match Score Box) */}
+        <View style={styles.cardHeaderRow}>
+          <View style={styles.locationRow}>
+            {item.city ? (
+              <Text style={[styles.cityText, { color: '#ff6b00' }]}>📍 {item.city}</Text>
+            ) : (
+              <View />
+            )}
+          </View>
+          
+          <View style={styles.headerActions}>
+            <TouchableOpacity
+              onPress={(e) => {
+                e.stopPropagation();
+                toggleFavorite(item);
+              }}
+              style={styles.loveButton}
+              activeOpacity={0.7}
+            >
+              <FontAwesome
+                name={loved ? 'heart' : 'heart-o'}
+                size={15}
+                color={loved ? '#ff4b6e' : colors.mutedText}
+              />
+            </TouchableOpacity>
+
+            <View style={[styles.scoreBox, { backgroundColor: colorScheme === 'dark' ? 'rgba(74, 222, 128, 0.12)' : '#e6fbf1', borderColor: colorScheme === 'dark' ? 'rgba(74, 222, 128, 0.25)' : 'rgba(74, 222, 128, 0.15)' }]}>
+              <Text style={styles.scoreText}>{Math.round(score)}% Match</Text>
+            </View>
+          </View>
+        </View>
+
+        {/* Title */}
+        <Text
+          style={[styles.programTitle, { color: colors.text }]}
+          numberOfLines={2}
+        >
+          {formatAbbreviation(item.course || item.title || 'Selected Program')}
+        </Text>
+
+        {/* University Info Row (Logo + Uni Name) */}
+        <View style={styles.uniRow}>
+          <View style={[styles.uniLogoWrapper, { borderColor: colorScheme === 'dark' ? 'rgba(255,255,255,0.06)' : '#e1e5eb' }]}>
+            <Image 
+              source={{ uri: faviconUrl }} 
+              style={styles.uniLogo}
+            />
+          </View>
+          <Text style={[styles.programUniversity, { color: colors.mutedText }]} numberOfLines={1}>
+            {item.university}
+          </Text>
+        </View>
+
+        {/* Badges Row (Deadline) */}
+        {item.deadline ? (
+          <View style={styles.badgesWrapper}>
+            <View style={[styles.deadlineBadge, { backgroundColor: colorScheme === 'dark' ? 'rgba(245, 158, 11, 0.12)' : '#fffbeb', borderColor: colorScheme === 'dark' ? 'rgba(245, 158, 11, 0.25)' : 'rgba(245, 158, 11, 0.15)' }]}>
+              <Text style={[styles.deadlineText, { color: '#f59e0b' }]}>
+                Deadline: {getShortDeadline(item.deadline)}
+              </Text>
+            </View>
+          </View>
+        ) : null}
+
+        {/* Separator and Bottom Meta Row (Duration, Language) */}
+        {item.duration || item.language ? (
+          <>
+            <View style={[styles.cardSeparator, { backgroundColor: colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.05)' : '#e1e5eb' }]} />
+            <View style={styles.programMetaRow}>
+              {item.duration ? (
+                <View style={styles.metaItemCompact}>
+                  <Text style={styles.metaItemIcon}>⏱️</Text>
+                  <Text style={[styles.metaItemText, { color: colors.mutedText }]} numberOfLines={1}>{item.duration}</Text>
+                </View>
+              ) : null}
+              {item.language ? (
+                <View style={styles.metaItemCompact}>
+                  <Text style={styles.metaItemIcon}>🌐</Text>
+                  <Text style={[styles.metaItemText, { color: colors.mutedText }]} numberOfLines={1}>{item.language}</Text>
+                </View>
+              ) : null}
+            </View>
+          </>
+        ) : null}
+      </TouchableOpacity>
+    );
+  };
 
   const hasLoggedIn = !!profile.email;
   const completionPct = getCompletionPercentage();
@@ -757,6 +1186,92 @@ export default function ProfileScreen() {
             )}
           </TouchableOpacity>
 
+          {/* Service Orders Section */}
+          <Text style={[styles.sectionHeading, { color: colors.text, marginTop: 24 }]}>My Ordered Services</Text>
+          <Text style={[styles.sectionSubheading, { color: colors.mutedText }]}>Track your purchased academic audits</Text>
+          
+          <View style={[styles.detailsCard, { backgroundColor: colors.card, borderColor: colors.border, marginBottom: 20 }]}>
+            {ordersLoading ? (
+              <View style={{ padding: 24, alignItems: 'center' }}>
+                <ActivityIndicator color="#ff6b00" size="small" />
+              </View>
+            ) : orders.length > 0 ? (
+              <View style={{ gap: 12 }}>
+                {orders.map((order, idx) => (
+                  <View 
+                    key={idx} 
+                    style={[
+                      styles.orderCard, 
+                      { 
+                        backgroundColor: colorScheme === 'dark' ? '#14171f' : '#f9fafb',
+                        borderColor: colors.border,
+                      }
+                    ]}
+                  >
+                    <View style={styles.orderHeader}>
+                      <Text style={[styles.orderTitle, { color: colors.text }]} numberOfLines={1}>
+                        {order.service_title}
+                      </Text>
+                      <View style={[styles.priceTag, { backgroundColor: colorScheme === 'dark' ? 'rgba(255, 107, 0, 0.15)' : 'rgba(255, 107, 0, 0.1)' }]}>
+                        <Text style={styles.priceTagText}>{order.price}</Text>
+                      </View>
+                    </View>
+                    
+                    <View style={styles.orderDetailRow}>
+                      <Text style={[styles.orderDetailLabel, { color: '#8e9aa8' }]}>Txn ID</Text>
+                      <Text style={[styles.orderDetailValue, { color: colors.text }]} numberOfLines={1}>{order.txn_id}</Text>
+                    </View>
+                    <View style={styles.orderDetailRow}>
+                      <Text style={[styles.orderDetailLabel, { color: '#8e9aa8' }]}>Document</Text>
+                      <Text style={[styles.orderDetailValue, { color: colors.text }]} numberOfLines={1}>
+                        {order.filename} ({order.doc_type})
+                      </Text>
+                    </View>
+                    {order.date && (
+                      <View style={styles.orderDetailRow}>
+                        <Text style={[styles.orderDetailLabel, { color: '#8e9aa8' }]}>Ordered On</Text>
+                        <Text style={[styles.orderDetailValue, { color: colors.text }]}>
+                          {new Date(order.date).toLocaleDateString(undefined, { 
+                            year: 'numeric', 
+                            month: 'short', 
+                            day: 'numeric',
+                            hour: '2-digit',
+                            minute: '2-digit'
+                          })}
+                        </Text>
+                      </View>
+                    )}
+                  </View>
+                ))}
+              </View>
+            ) : (
+              <View style={{ alignItems: 'center', padding: 24 }}>
+                <Feather name="shopping-bag" size={24} color="#8e9aa8" style={{ marginBottom: 8 }} />
+                <Text style={{ color: '#8e9aa8', fontSize: 13.5, fontWeight: '600', textAlign: 'center' }}>
+                  No orders found. Purchase a service to get started!
+                </Text>
+              </View>
+            )}
+          </View>
+          {/* Favourites Section */}
+          <Text style={[styles.sectionHeading, { color: colors.text, marginTop: 24 }]}>My Favourites</Text>
+          <Text style={[styles.sectionSubheading, { color: colors.mutedText }]}>Your shortlisted programs</Text>
+          
+          <View style={{ marginBottom: 20 }}>
+            {favorites.length > 0 ? (
+              <View style={styles.resultsList}>
+                {favorites.map((item, index) => renderCard(item, index))}
+              </View>
+            ) : (
+              <View style={[styles.detailsCard, { backgroundColor: colors.card, borderColor: colors.border, alignItems: 'center', padding: 24 }]}>
+                <FontAwesome name="heart-o" size={24} color="#8e9aa8" style={{ marginBottom: 8 }} />
+                <Text style={{ color: '#8e9aa8', fontSize: 13.5, fontWeight: '600', textAlign: 'center' }}>
+                  No saved programs yet. Tap the heart icon on any match card to add it here.
+                </Text>
+              </View>
+            )}
+          </View>
+
           {/* Settings / Options card menu */}
           <View style={[styles.settingsCard, { backgroundColor: colors.card, borderColor: colors.border }]}>
             {/* Log Out */}
@@ -830,20 +1345,52 @@ export default function ProfileScreen() {
                     })}
                   </View>
                 ) : (
-                  <TextInput
-                    style={[styles.modalTextInput, { borderColor: colors.border, color: colors.text, backgroundColor: colorScheme === 'dark' ? '#14171f' : '#f9fafb' }]}
-                    value={tempEditValue}
-                    onChangeText={setTempEditValue}
-                    placeholder={
-                      activeEditField === 'firstName' ? 'e.g. Sarah' :
-                      activeEditField === 'lastName' ? 'e.g. Wilson' :
-                      activeEditField === 'currentField' ? 'e.g. Computer Science' :
-                      activeEditField === 'grade' ? 'e.g. 3.5 or 85' : ''
-                    }
-                    placeholderTextColor="#8e9aa8"
-                    keyboardType={activeEditField === 'grade' ? 'numeric' : 'default'}
-                    autoFocus={true}
-                  />
+                  <View>
+                    <TextInput
+                      style={[styles.modalTextInput, { borderColor: colors.border, color: colors.text, backgroundColor: colorScheme === 'dark' ? '#14171f' : '#f9fafb' }]}
+                      value={tempEditValue}
+                      onChangeText={(val) => {
+                        setTempEditValue(val);
+                        if (activeEditField === 'currentField') {
+                          setFieldSuggestions(val.length > 0
+                            ? FIELD_OPTIONS.filter(f => f.toLowerCase().includes(val.toLowerCase())).slice(0, 6)
+                            : FIELD_OPTIONS.slice(0, 6)
+                          );
+                        }
+                      }}
+                      placeholder={
+                        activeEditField === 'firstName' ? 'e.g. Sarah' :
+                        activeEditField === 'lastName' ? 'e.g. Wilson' :
+                        activeEditField === 'currentField' ? 'e.g. Computer Science' :
+                        activeEditField === 'grade' ? 'e.g. 3.5 or 85' : ''
+                      }
+                      placeholderTextColor="#8e9aa8"
+                      keyboardType={activeEditField === 'grade' ? 'numeric' : 'default'}
+                      autoFocus={true}
+                    />
+                    {activeEditField === 'currentField' && fieldSuggestions.length > 0 && (
+                      <View style={styles.suggestionsContainer}>
+                        {fieldSuggestions.map((suggestion) => (
+                          <TouchableOpacity
+                            key={suggestion}
+                            style={[
+                              styles.suggestionChip,
+                              { 
+                                backgroundColor: colorScheme === 'dark' ? '#14171f' : '#f9fafb',
+                                borderColor: colors.border
+                              }
+                            ]}
+                            onPress={() => {
+                              setTempEditValue(suggestion);
+                              setFieldSuggestions([]);
+                            }}
+                          >
+                            <Text style={[styles.suggestionText, { color: colors.text }]}>{suggestion}</Text>
+                          </TouchableOpacity>
+                        ))}
+                      </View>
+                    )}
+                  </View>
                 )}
               </View>
 
@@ -873,9 +1420,9 @@ export default function ProfileScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    padding: 16,
+    paddingHorizontal: 20,
     paddingTop: Platform.OS === 'ios' ? 60 : 45,
-    marginBottom: Platform.OS === 'ios' ? 100 : 85,
+    marginBottom: Platform.OS === 'ios' ? 104 : 86,
   },
   center: {
     justifyContent: 'center',
@@ -1454,6 +2001,203 @@ const styles = StyleSheet.create({
     fontWeight: '800',
     marginBottom: 16,
     letterSpacing: 0.3,
+  },
+  suggestionsContainer: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 8,
+    marginTop: 12,
+  },
+  suggestionChip: {
+    paddingHorizontal: 12,
+    paddingVertical: 8,
+    borderRadius: 20,
+    borderWidth: 1.5,
+  },
+  suggestionText: {
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  orderCard: {
+    borderRadius: 16,
+    borderWidth: 1.5,
+    padding: 14,
+    marginBottom: 8,
+  },
+  orderHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+  orderTitle: {
+    fontSize: 15,
+    fontWeight: '700',
+    flex: 1,
+    marginRight: 8,
+  },
+  priceTag: {
+    paddingHorizontal: 8,
+    paddingVertical: 4,
+    borderRadius: 8,
+  },
+  priceTagText: {
+    color: '#ff6b00',
+    fontSize: 13,
+    fontWeight: '800',
+  },
+  orderDetailRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 4,
+  },
+  orderDetailLabel: {
+    fontSize: 12.5,
+    fontWeight: '600',
+  },
+  orderDetailValue: {
+    fontSize: 12.5,
+    fontWeight: '700',
+    maxWidth: '70%',
+  },
+  programCard: {
+    borderRadius: 24,
+    borderWidth: 1.5,
+    paddingVertical: 14,
+    paddingHorizontal: 16,
+    marginBottom: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 6 },
+    shadowOpacity: 0.08,
+    shadowRadius: 16,
+    elevation: 3,
+  },
+  cardHeaderRow: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 8,
+  },
+  headerActions: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 8,
+  },
+  scoreBox: {
+    paddingVertical: 4,
+    paddingHorizontal: 8,
+    borderRadius: 8,
+    borderWidth: 1,
+  },
+  locationRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  cityText: {
+    fontSize: 12.5,
+    fontWeight: '600',
+  },
+  loveButton: {
+    backgroundColor: 'rgba(255, 255, 255, 0.04)',
+    padding: 6,
+    borderRadius: 18,
+    width: 32,
+    height: 32,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: 'rgba(255, 255, 255, 0.06)',
+  },
+  programTitle: {
+    fontSize: 16.5,
+    fontWeight: '800',
+    lineHeight: 22,
+    marginBottom: 6,
+  },
+  uniRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+    gap: 8,
+  },
+  uniLogoWrapper: {
+    width: 26,
+    height: 26,
+    borderRadius: 6,
+    backgroundColor: '#ffffff',
+    borderWidth: 1,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    overflow: 'hidden',
+  },
+  uniLogo: {
+    width: 16,
+    height: 16,
+    resizeMode: 'contain',
+  },
+  programUniversity: {
+    fontSize: 13.5,
+    fontWeight: '600',
+    flex: 1,
+  },
+  badgesWrapper: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 6,
+    marginBottom: 10,
+  },
+  scoreText: {
+    color: '#4ade80',
+    fontSize: 12,
+    fontWeight: '800',
+  },
+  cardDegreeBadge: {
+    paddingVertical: 4,
+    paddingHorizontal: 8,
+    borderRadius: 8,
+    borderWidth: 1,
+  },
+  cardDegreeBadgeText: {
+    fontSize: 11.5,
+    fontWeight: '800',
+  },
+  deadlineBadge: {
+    paddingVertical: 4,
+    paddingHorizontal: 8,
+    borderRadius: 8,
+    borderWidth: 1,
+    borderColor: 'rgba(245, 158, 11, 0.15)',
+  },
+  deadlineText: {
+    fontSize: 11.5,
+    fontWeight: '800',
+  },
+  cardSeparator: {
+    height: 1,
+    marginVertical: 8,
+  },
+  programMetaRow: {
+    flexDirection: 'row',
+    gap: 12,
+    marginTop: 2,
+  },
+  metaItemCompact: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    flex: 1,
+  },
+  metaItemIcon: {
+    fontSize: 13.5,
+  },
+  metaItemText: {
+    fontSize: 12,
+    fontWeight: '600',
+  },
+  resultsList: {
+    gap: 12,
   },
 });
 

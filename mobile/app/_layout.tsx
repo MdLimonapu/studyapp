@@ -39,7 +39,7 @@ export default function RootLayout() {
     if (loaded) {
       SplashScreen.hideAsync();
       AsyncStorage.multiRemove(['search_results', 'search_query']).catch((err) =>
-        console.error('Error clearing search cache on startup:', err)
+        console.warn('Error clearing search cache on startup:', err)
       );
     }
   }, [loaded]);

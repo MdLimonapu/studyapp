@@ -12,24 +12,24 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: colors.tint,
-        tabBarInactiveTintColor: colors.tabIconDefault,
+        tabBarActiveTintColor: colorScheme === 'dark' ? '#ffffff' : '#12131a',
+        tabBarInactiveTintColor: colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.45)' : 'rgba(18, 19, 26, 0.45)',
         tabBarStyle: {
           position: 'absolute',
           bottom: Platform.OS === 'ios' ? 28 : 20,
           left: 16,
           right: 16,
-          backgroundColor: colorScheme === 'dark' ? 'rgba(19, 22, 32, 0.96)' : 'rgba(255, 255, 255, 0.96)',
+          backgroundColor: colorScheme === 'dark' ? 'rgba(18, 22, 32, 0.82)' : 'rgba(255, 255, 255, 0.85)',
           borderWidth: 1.5,
-          borderColor: colors.border,
+          borderColor: colorScheme === 'dark' ? 'rgba(255, 255, 255, 0.08)' : 'rgba(18, 19, 26, 0.08)',
           borderRadius: 24,
           height: Platform.OS === 'ios' ? 76 : 66,
           paddingBottom: Platform.OS === 'ios' ? 14 : 8,
           paddingTop: 8,
-          elevation: 10,
-          shadowColor: colorScheme === 'dark' ? '#6366f1' : '#000',
-          shadowOffset: { width: 0, height: 6 },
-          shadowOpacity: colorScheme === 'dark' ? 0.12 : 0.08,
+          elevation: 12,
+          shadowColor: '#000',
+          shadowOffset: { width: 0, height: 8 },
+          shadowOpacity: colorScheme === 'dark' ? 0.4 : 0.1,
           shadowRadius: 16,
         },
         tabBarLabelStyle: {

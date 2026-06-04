@@ -1,4 +1,4 @@
-const BASE_URL = "https://api.studplex.com";
+const BASE_URL = "https://studyapp-backend-cal9.onrender.com";
 
 export async function fetchCountries() {
   const res = await fetch(`${BASE_URL}/api/countries`);
@@ -18,6 +18,13 @@ export async function fetchProfile(email?: string) {
     ? `${BASE_URL}/api/profile?email=${encodeURIComponent(email)}` 
     : `${BASE_URL}/api/profile`;
   const res = await fetch(url);
+  if (!res.ok) {
+    try {
+      return await res.json();
+    } catch {
+      return { error: 'Profile not found', status: res.status };
+    }
+  }
   return res.json();
 }
 
@@ -46,6 +53,20 @@ export async function searchCourses(form: any, profile?: any) {
 
 export async function registerUser(data: any) {
   const res = await fetch(`${BASE_URL}/api/register`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
+  });
+  return res.json();
+}
+
+export async function fetchOrders(email: string) {
+  const res = await fetch(`${BASE_URL}/api/orders?email=${encodeURIComponent(email)}`);
+  return res.json();
+}
+
+export async function loginUser(data: any) {
+  const res = await fetch(`${BASE_URL}/api/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),

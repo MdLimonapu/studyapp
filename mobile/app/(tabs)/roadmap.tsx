@@ -363,7 +363,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 16,
     paddingTop: Platform.OS === 'ios' ? 60 : 45,
-    marginBottom: Platform.OS === 'ios' ? 100 : 85,
+    marginBottom: Platform.OS === 'ios' ? 104 : 86,
   },
   header: {
     marginBottom: 16,
