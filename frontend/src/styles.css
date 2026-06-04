@@ -2201,57 +2201,61 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 
 /* Clerk auth modal elements styling updates */
 .cl-rootBox .cl-card {
-  border: 2px solid var(--card-border) !important;
+  border: 1px solid var(--card-border) !important;
   box-shadow: var(--shadow-card) !important;
   background-color: var(--card) !important;
+  border-radius: 24px !important;
 }
 .cl-rootBox .cl-formButtonPrimary {
-  background-color: #111827 !important;
-  color: #ffffff !important;
-  border: 2px solid #111827 !important;
-  box-shadow: 0 4px 0px #111827 !important;
-  border-radius: 12px !important;
+  background: var(--btn-gradient) !important;
+  color: var(--btn-text) !important;
+  border: none !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  border-radius: 9999px !important;
   padding: 12px 20px !important;
-  font-weight: 800 !important;
+  font-weight: 700 !important;
   font-size: 15px !important;
-  text-transform: uppercase !important;
-  letter-spacing: 0.02em !important;
-  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
-}
-:root[data-theme="light"] .cl-rootBox .cl-formButtonPrimary {
-  background-color: #d2f34c !important; /* Theme lime-green color */
-  color: #111827 !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  transition: all 0.2s ease !important;
 }
 .cl-rootBox .cl-formButtonPrimary:hover {
-  transform: translate(-2px, -2px) !important;
-  box-shadow: 0 6px 0px #111827 !important;
+  opacity: 0.9 !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15) !important;
 }
 .cl-rootBox .cl-formButtonPrimary:active {
-  transform: translate(0px, 0px) !important;
-  box-shadow: 0 2px 0px #111827 !important;
+  transform: translateY(0px) !important;
 }
 
 /* Clerk Social (Continue with Google) Button Overrides */
 .cl-rootBox .cl-socialButtonsBlockButton {
-  background-color: #ffffff !important;
-  color: #111827 !important;
-  border: 2px solid #111827 !important;
-  box-shadow: 0 4px 0px #111827 !important;
-  border-radius: 12px !important;
-  font-weight: 800 !important;
-  transition: transform 0.15s ease, box-shadow 0.15s ease !important;
-}
-:root[data-theme="light"] .cl-rootBox .cl-socialButtonsBlockButton {
-  background-color: #d2f34c !important; /* Theme lime green */
-  color: #111827 !important;
+  background-color: var(--card) !important;
+  color: var(--text) !important;
+  border: 1px solid var(--card-border) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
+  border-radius: 9999px !important;
+  font-weight: 600 !important;
+  transition: all 0.2s ease !important;
 }
 .cl-rootBox .cl-socialButtonsBlockButton:hover {
-  transform: translate(-2px, -2px) !important;
-  box-shadow: 0 6px 0px #111827 !important;
+  background-color: var(--glass-glow) !important;
+  transform: translateY(-1px) !important;
+  border-color: rgba(255, 255, 255, 0.15) !important;
 }
-.cl-rootBox .cl-socialButtonsBlockButton:active {
-  transform: translate(0px, 0px) !important;
-  box-shadow: 0 2px 0px #111827 !important;
+
+/* Hide optional First Name and Last Name fields to simplify sign up */
+.cl-signUp-root [data-field="firstName"],
+.cl-signUp-root [data-field="lastName"],
+.cl-signUp-root .cl-formFieldRow,
+.cl-rootBox [class*="-formFieldRow"] {
+  display: none !important;
+}
+
+/* Hide optional label helper text */
+.cl-formFieldLabelHelper,
+.cl-rootBox .cl-formFieldLabelHelper {
+  display: none !important;
 }
 
 /* Germany Eligibility Checklist "Required" Badge Overrides */
