@@ -34,57 +34,68 @@ def parse_and_format_date(pub_date_str):
     except Exception:
         return "Today"
 
+from concurrent.futures import ThreadPoolExecutor, as_completed
+
+def fetch_country_rss(country):
+    urls = [
+        f"https://news.google.com/rss/search?q=student+visa+study+abroad+{country}+when:7d&hl=en-US&gl=US&ceid=US:en",
+        f"https://news.google.com/rss/search?q=student+visa+study+abroad+{country}&hl=en-US&gl=US&ceid=US:en"
+    ]
+    
+    candidates = []
+    for url in urls:
+        try:
+            print(f"Fetching RSS feed for {country}: {url}", flush=True)
+            req = urllib.request.Request(
+                url, 
+                headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
+            )
+            with urllib.request.urlopen(req, timeout=8) as response:
+                xml_data = response.read()
+            
+            root = ET.fromstring(xml_data)
+            for item in root.findall('.//item')[:10]:  # Inspect top 10 candidates
+                title = item.find('title').text if item.find('title') is not None else ""
+                link = item.find('link').text if item.find('link') is not None else ""
+                pub_date = item.find('pubDate').text if item.find('pubDate') is not None else ""
+                
+                clean_title = title.rsplit(" - ", 1)[0].strip().lower() if " - " in title else title.strip().lower()
+                candidates.append({
+                    "raw_title": title,
+                    "link": link,
+                    "pub_date": pub_date,
+                    "search_country": country,
+                    "clean_title": clean_title
+                })
+            if candidates:
+                break
+        except Exception as e:
+            print(f"Error fetching RSS for {country} from {url}: {e}", flush=True)
+    return country, candidates
+
 def fetch_rss_news():
     all_items = []
     seen_links = set()
     seen_titles = set()
     
+    country_candidates = {}
+    with ThreadPoolExecutor(max_workers=10) as executor:
+        futures = {executor.submit(fetch_country_rss, country): country for country in COUNTRIES}
+        for future in as_completed(futures):
+            country, candidates = future.result()
+            country_candidates[country] = candidates
+            
     for country in COUNTRIES:
-        urls = [
-            f"https://news.google.com/rss/search?q=student+visa+study+abroad+{country}+when:7d&hl=en-US&gl=US&ceid=US:en",
-            f"https://news.google.com/rss/search?q=student+visa+study+abroad+{country}&hl=en-US&gl=US&ceid=US:en"
-        ]
-        
-        candidates = []
-        for url in urls:
-            try:
-                print(f"Fetching RSS feed for {country}: {url}", flush=True)
-                req = urllib.request.Request(
-                    url, 
-                    headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
-                )
-                with urllib.request.urlopen(req) as response:
-                    xml_data = response.read()
-                
-                root = ET.fromstring(xml_data)
-                for item in root.findall('.//item')[:10]:  # Inspect top 10 candidates
-                    title = item.find('title').text if item.find('title') is not None else ""
-                    link = item.find('link').text if item.find('link') is not None else ""
-                    pub_date = item.find('pubDate').text if item.find('pubDate') is not None else ""
-                    
-                    clean_title = title.rsplit(" - ", 1)[0].strip().lower() if " - " in title else title.strip().lower()
-                    if link in seen_links or clean_title in seen_titles:
-                        continue
-                        
-                    candidates.append({
-                        "raw_title": title,
-                        "link": link,
-                        "pub_date": pub_date,
-                        "search_country": country,
-                        "clean_title": clean_title
-                    })
-                if candidates:
-                    break
-            except Exception as e:
-                print(f"Error fetching RSS for {country} from {url}: {e}", flush=True)
+        candidates = country_candidates.get(country, [])
         
         # Filter candidates by age. Try strictly last 2 days first.
         country_selected = []
         for c in candidates:
             if is_within_days(c["pub_date"], 2):
-                country_selected.append(c)
-                seen_links.add(c["link"])
-                seen_titles.add(c["clean_title"])
+                if c["link"] not in seen_links and c["clean_title"] not in seen_titles:
+                    country_selected.append(c)
+                    seen_links.add(c["link"])
+                    seen_titles.add(c["clean_title"])
                 if len(country_selected) >= 2:
                     break
                     
@@ -92,9 +103,10 @@ def fetch_rss_news():
         if len(country_selected) < 2:
             for c in candidates:
                 if c not in country_selected and is_within_days(c["pub_date"], 7):
-                    country_selected.append(c)
-                    seen_links.add(c["link"])
-                    seen_titles.add(c["clean_title"])
+                    if c["link"] not in seen_links and c["clean_title"] not in seen_titles:
+                        country_selected.append(c)
+                        seen_links.add(c["link"])
+                        seen_titles.add(c["clean_title"])
                     if len(country_selected) >= 2:
                         break
                         
@@ -102,9 +114,10 @@ def fetch_rss_news():
         if len(country_selected) < 2:
             for c in candidates:
                 if c not in country_selected:
-                    country_selected.append(c)
-                    seen_links.add(c["link"])
-                    seen_titles.add(c["clean_title"])
+                    if c["link"] not in seen_links and c["clean_title"] not in seen_titles:
+                        country_selected.append(c)
+                        seen_links.add(c["link"])
+                        seen_titles.add(c["clean_title"])
                     if len(country_selected) >= 2:
                         break
                         
@@ -113,6 +126,7 @@ def fetch_rss_news():
         
     print(f"Total unique articles selected across all countries: {len(all_items)}", flush=True)
     return all_items
+
 
 def summarize_with_gemini(raw_news):
     if not API_KEYS:
