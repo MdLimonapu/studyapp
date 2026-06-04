@@ -249,7 +249,7 @@ export default function ServicesScreen() {
 
     try {
       // 1. Request Payment Intent clientSecret from backend
-      const backendUrl = "http://127.0.0.1:5001"; // Fallback URL for development
+      const backendUrl = "https://api.studplex.com";
       const response = await fetch(`${backendUrl}/api/payment/create-intent`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
