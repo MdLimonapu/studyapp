@@ -2482,6 +2482,67 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   }
 }
 
+/* Custom Profile Dashboard subtle card background colors */
+:root[data-theme="light"] .pf-avatar-card {
+  background-color: #fdf4ff !important; /* light violet/pink */
+  border-color: #f3d9fa !important;
+}
+:root[data-theme="light"] .pf-completion-card {
+  background-color: #f0f9ff !important; /* light sky-blue */
+  border-color: #d0e7ff !important;
+}
+:root[data-theme="light"] .pf-tip-card {
+  background-color: #f7fee7 !important; /* light lime-green */
+  border-color: #e2f8d3 !important;
+}
+:root[data-theme="light"] .pf-card-personal {
+  background-color: #f5f3ff !important; /* light indigo */
+  border-color: #e9e3ff !important;
+}
+:root[data-theme="light"] .pf-card-academic {
+  background-color: #fffbeb !important; /* light gold/yellow */
+  border-color: #fef08a !important;
+}
+:root[data-theme="light"] .pf-card-documents {
+  background-color: #f0fdf4 !important; /* light emerald/green */
+  border-color: #bbf7d0 !important;
+}
+:root[data-theme="light"] .pf-card-services {
+  background-color: #faf5ff !important; /* light purple */
+  border-color: #f3e8ff !important;
+}
+
+/* Dark Mode Subtle Card Overlay Background Colors */
+:root[data-theme="dark"] .pf-avatar-card {
+  background-color: #24162e !important; /* dark purple */
+  border-color: #49285c !important;
+}
+:root[data-theme="dark"] .pf-completion-card {
+  background-color: #122138 !important; /* dark sky-blue */
+  border-color: #243e69 !important;
+}
+:root[data-theme="dark"] .pf-tip-card {
+  background-color: #1b2612 !important; /* dark lime */
+  border-color: #314a21 !important;
+}
+:root[data-theme="dark"] .pf-card-personal {
+  background-color: #17162b !important; /* dark indigo */
+  border-color: #2c2957 !important;
+}
+:root[data-theme="dark"] .pf-card-academic {
+  background-color: #2b2315 !important; /* dark gold */
+  border-color: #524223 !important;
+}
+:root[data-theme="dark"] .pf-card-documents {
+  background-color: #12291b !important; /* dark emerald */
+  border-color: #1e4d30 !important;
+}
+:root[data-theme="dark"] .pf-card-services {
+  background-color: #211529 !important; /* dark violet */
+  border-color: #3f2252 !important;
+}
+
+
 
 
 

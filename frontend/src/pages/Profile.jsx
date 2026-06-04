@@ -271,7 +271,7 @@ export default function Profile() {
       <form className="pf-form" onSubmit={e => e.preventDefault()} noValidate>
 
         {/* Section 01 */}
-        <div className="pf-section-card">
+        <div className="pf-section-card pf-card-personal">
           <div className="pf-section-head">
             <span className="pf-section-num">01</span>
             <div>
@@ -300,7 +300,7 @@ export default function Profile() {
         </div>
 
         {/* Section 02 */}
-        <div className="pf-section-card">
+        <div className="pf-section-card pf-card-academic">
           <div className="pf-section-head">
             <span className="pf-section-num">02</span>
             <div>
@@ -386,7 +386,7 @@ export default function Profile() {
         </div>
         
         {/* Section 03 */}
-        <div className="pf-section-card">
+        <div className="pf-section-card pf-card-documents">
           <div className="pf-section-head">
             <span className="pf-section-num">03</span>
             <div>
@@ -461,7 +461,7 @@ export default function Profile() {
         </div>
 
         {/* Section 04: Ordered Services */}
-        <div className="pf-section-card">
+        <div className="pf-section-card pf-card-services">
           <div className="pf-section-head">
             <span className="pf-section-num">04</span>
             <div>
