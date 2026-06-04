@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   Text,
@@ -14,9 +14,91 @@ import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import { router } from 'expo-router';
 import { useStripe } from '@stripe/stripe-react-native';
 import { useUser } from '@clerk/expo';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import Colors from '@/constants/Colors';
 import { useColorScheme } from '@/components/useColorScheme';
 import { GradedBackground } from '@/components/GradedBackground';
+
+const getLocalPrice = (usdPriceStr: string, countryName: string) => {
+  const usdPrice = parseFloat(usdPriceStr.replace('$', ''));
+  const country = countryName ? countryName.trim() : '';
+
+  const rates: Record<string, { code: string; symbol: string; rate: number }> = {
+    // Europe (EUR)
+    'Germany': { code: 'EUR', symbol: '€', rate: 0.92 },
+    'France': { code: 'EUR', symbol: '€', rate: 0.92 },
+    'Netherlands': { code: 'EUR', symbol: '€', rate: 0.92 },
+    'Spain': { code: 'EUR', symbol: '€', rate: 0.92 },
+    'Italy': { code: 'EUR', symbol: '€', rate: 0.92 },
+    'Ireland': { code: 'EUR', symbol: '€', rate: 0.92 },
+    'Finland': { code: 'EUR', symbol: '€', rate: 0.92 },
+    'Belgium': { code: 'EUR', symbol: '€', rate: 0.92 },
+    'Portugal': { code: 'EUR', symbol: '€', rate: 0.92 },
+    'Austria': { code: 'EUR', symbol: '€', rate: 0.92 },
+    'Greece': { code: 'EUR', symbol: '€', rate: 0.92 },
+    
+    // Europe (Non-EUR)
+    'Sweden': { code: 'SEK', symbol: 'kr ', rate: 10.50 },
+    'Switzerland': { code: 'CHF', symbol: 'CHF ', rate: 0.90 },
+    'United Kingdom': { code: 'GBP', symbol: '£', rate: 0.79 },
+    'UK': { code: 'GBP', symbol: '£', rate: 0.79 },
+    'Turkey': { code: 'TRY', symbol: '₺', rate: 32.50 },
+
+    // North America & Oceania
+    'Canada': { code: 'CAD', symbol: 'C$', rate: 1.37 },
+    'Australia': { code: 'AUD', symbol: 'A$', rate: 1.50 },
+    'United States': { code: 'USD', symbol: '$', rate: 1.00 },
+    'USA': { code: 'USD', symbol: '$', rate: 1.00 },
+
+    // South Asia
+    'Bangladesh': { code: 'BDT', symbol: '৳', rate: 117.00 },
+    'India': { code: 'INR', symbol: '₹', rate: 83.50 },
+    'Pakistan': { code: 'PKR', symbol: '₨ ', rate: 278.00 },
+    'Nepal': { code: 'NPR', symbol: '₨ ', rate: 133.00 },
+    'Sri Lanka': { code: 'LKR', symbol: 'Rs ', rate: 300.00 },
+
+    // East Asia & Southeast Asia
+    'Japan': { code: 'JPY', symbol: '¥', rate: 155.00 },
+    'China': { code: 'CNY', symbol: '¥', rate: 7.25 },
+    'South Korea': { code: 'KRW', symbol: '₩', rate: 1370.00 },
+    'Singapore': { code: 'SGD', symbol: 'S$', rate: 1.35 },
+    'Malaysia': { code: 'MYR', symbol: 'RM ', rate: 4.70 },
+    'Indonesia': { code: 'IDR', symbol: 'Rp ', rate: 16200.00 },
+    'Vietnam': { code: 'VND', symbol: '₫', rate: 25400.00 },
+
+    // Middle East & Africa
+    'Nigeria': { code: 'NGN', symbol: '₦', rate: 1480.00 },
+    'Saudi Arabia': { code: 'SAR', symbol: 'SR ', rate: 3.75 },
+    'United Arab Emirates': { code: 'AED', symbol: 'AED ', rate: 3.67 },
+    'Egypt': { code: 'EGP', symbol: 'E£ ', rate: 47.50 },
+    'South Africa': { code: 'ZAR', symbol: 'R ', rate: 18.50 },
+    'Ghana': { code: 'GHS', symbol: 'GH₵ ', rate: 15.00 },
+    'Kenya': { code: 'KES', symbol: 'KSh ', rate: 130.00 },
+    'Morocco': { code: 'MAD', symbol: 'DH ', rate: 10.00 },
+    
+    // South America
+    'Brazil': { code: 'BRL', symbol: 'R$', rate: 5.25 },
+  };
+
+  const config = rates[country];
+  if (!config) {
+    const roundedUsd = Math.ceil(usdPrice / 5) * 5;
+    return {
+      priceStr: `$${roundedUsd}`,
+      code: 'USD',
+      amount: roundedUsd
+    };
+  }
+
+  const converted = usdPrice * config.rate;
+  const rounded = Math.ceil(converted / 5) * 5;
+
+  return {
+    priceStr: `${config.symbol}${rounded}`,
+    code: config.code,
+    amount: rounded
+  };
+}
 
 const SERVICES = [
   {
@@ -95,9 +177,55 @@ export default function ServicesScreen() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [userCountry, setUserCountry] = useState('');
+
+  useEffect(() => {
+    const detectCountry = async () => {
+      try {
+        const cached = await AsyncStorage.getItem('user_country_name');
+        if (cached) {
+          setUserCountry(cached);
+          return;
+        }
+
+        const res = await fetch('https://ipapi.co/json/');
+        if (!res.ok) throw new Error('status ' + res.status);
+        const data = await res.json();
+        if (data && data.country_name) {
+          setUserCountry(data.country_name);
+          await AsyncStorage.setItem('user_country_name', data.country_name);
+        }
+      } catch (err) {
+        try {
+          const res = await fetch('https://ipinfo.io/json');
+          if (!res.ok) throw new Error('status ' + res.status);
+          const data = await res.json();
+          if (data && data.country) {
+            const codeToName: Record<string, string> = {
+              'BD': 'Bangladesh', 'IN': 'India', 'PK': 'Pakistan', 'NP': 'Nepal', 'LK': 'Sri Lanka',
+              'DE': 'Germany', 'FR': 'France', 'NL': 'Netherlands', 'GB': 'United Kingdom', 'US': 'United States',
+              'CA': 'Canada', 'AU': 'Australia', 'JP': 'Japan', 'CN': 'China', 'KR': 'South Korea',
+              'SG': 'Singapore', 'MY': 'Malaysia', 'ID': 'Indonesia', 'VN': 'Vietnam'
+            };
+            const name = codeToName[data.country.toUpperCase()] || data.country;
+            setUserCountry(name);
+            await AsyncStorage.setItem('user_country_name', name);
+          }
+        } catch (fallbackErr) {
+          console.error("Failed to detect country on mobile:", fallbackErr);
+        }
+      }
+    };
+    detectCountry();
+  }, []);
 
   const handleOpenBooking = (service: any) => {
-    setSelectedService(service);
+    const priceInfo = getLocalPrice(service.price, userCountry);
+    setSelectedService({
+      ...service,
+      price: priceInfo.priceStr,
+      currency: priceInfo.code
+    });
     setDocType('');
     setFileName('');
     setComment('');
@@ -127,8 +255,10 @@ export default function ServicesScreen() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           price: selectedService.price || "49.00",
+          currency: selectedService.currency || "usd",
           service_id: selectedService.title,
-          doc_type: docType
+          doc_type: docType,
+          email: user?.primaryEmailAddress?.emailAddress || 'student@example.com'
         })
       });
 
@@ -245,9 +375,9 @@ export default function ServicesScreen() {
               ]}
             >
               {/* Absolute positioned price tag */}
-              <View style={[styles.priceTag, { backgroundColor: `${item.iconColor}15`, borderColor: `${item.iconColor}30` }]}>
-                <Text style={[styles.priceText, { color: item.iconColor === '#ccff00' ? '#d97706' : item.iconColor }]}>
-                  {item.price}
+              <View style={[styles.priceTag, { backgroundColor: 'rgba(34, 197, 94, 0.08)', borderColor: 'rgba(34, 197, 94, 0.25)' }]}>
+                <Text style={[styles.priceText, { color: '#22c55e' }]}>
+                  {getLocalPrice(item.price, userCountry).priceStr}
                 </Text>
               </View>
 
