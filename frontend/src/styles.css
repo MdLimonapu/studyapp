@@ -2208,21 +2208,28 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 }
 .cl-rootBox .cl-formButtonPrimary {
   background: var(--btn-gradient) !important;
+  background-color: var(--accent) !important;
   color: var(--btn-text) !important;
   border: none !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15) !important;
   border-radius: 9999px !important;
-  padding: 12px 20px !important;
-  font-weight: 700 !important;
-  font-size: 15px !important;
+  padding: 14px 28px !important;
+  font-weight: 800 !important;
+  font-size: 16px !important;
   text-transform: none !important;
   letter-spacing: normal !important;
+  height: 52px !important;
   transition: all 0.2s ease !important;
 }
+:root[data-theme="light"] .cl-rootBox .cl-formButtonPrimary {
+  background: #d2f34c !important; /* Theme Neo Lime-Green color */
+  background-color: #d2f34c !important;
+  color: #111827 !important;
+}
 .cl-rootBox .cl-formButtonPrimary:hover {
-  opacity: 0.9 !important;
-  transform: translateY(-1px) !important;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15) !important;
+  opacity: 0.95 !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2) !important;
 }
 .cl-rootBox .cl-formButtonPrimary:active {
   transform: translateY(0px) !important;
@@ -2235,18 +2242,22 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   border: 1px solid var(--card-border) !important;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05) !important;
   border-radius: 9999px !important;
-  font-weight: 600 !important;
+  font-weight: 700 !important;
+  font-size: 15px !important;
+  height: 52px !important;
   transition: all 0.2s ease !important;
 }
 .cl-rootBox .cl-socialButtonsBlockButton:hover {
   background-color: var(--glass-glow) !important;
-  transform: translateY(-1px) !important;
+  transform: translateY(-2px) !important;
   border-color: rgba(255, 255, 255, 0.15) !important;
 }
 
-/* Hide optional label helper text */
+/* Hide optional label helper text robustly */
 .cl-formFieldLabelHelper,
-.cl-rootBox .cl-formFieldLabelHelper {
+.cl-rootBox .cl-formFieldLabelHelper,
+[class*="-formFieldLabelHelper"],
+.cl-rootBox [class*="-formFieldLabelHelper"] {
   display: none !important;
 }
 
