@@ -2204,18 +2204,44 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   border: 2px solid var(--card-border) !important;
   box-shadow: var(--shadow-card) !important;
   background-color: var(--card) !important;
+  width: 420px !important; /* Compact card width */
+  max-width: 100% !important;
+  padding: 28px 24px !important; /* Compact padding */
+  box-sizing: border-box !important;
 }
+
+/* Compact spacing inside the card */
+.cl-rootBox .cl-header {
+  margin-bottom: 16px !important;
+}
+.cl-rootBox .cl-formFieldRow,
+.cl-rootBox [class*="-formFieldRow"] {
+  margin-bottom: 12px !important;
+}
+.cl-rootBox .cl-dividerRow {
+  margin-top: 14px !important;
+  margin-bottom: 14px !important;
+}
+
+/* Compact rectangular inputs */
+.cl-rootBox .cl-formFieldInput {
+  height: 40px !important; /* Shorter inputs */
+  padding: 8px 12px !important;
+  font-size: 14px !important;
+}
+
 .cl-rootBox .cl-formButtonPrimary {
   background-color: #111827 !important;
   color: #ffffff !important;
   border: 2px solid #111827 !important;
   box-shadow: 0 4px 0px #111827 !important;
   border-radius: 12px !important;
-  padding: 12px 20px !important;
+  padding: 8px 16px !important;
   font-weight: 800 !important;
-  font-size: 15px !important;
+  font-size: 14px !important;
   text-transform: uppercase !important;
   letter-spacing: 0.02em !important;
+  height: 42px !important; /* Shorter button */
   transition: transform 0.15s ease, box-shadow 0.15s ease !important;
 }
 :root[data-theme="light"] .cl-rootBox .cl-formButtonPrimary {
@@ -2239,6 +2265,9 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   box-shadow: 0 4px 0px #111827 !important;
   border-radius: 12px !important;
   font-weight: 800 !important;
+  height: 42px !important; /* Shorter button */
+  padding: 8px 16px !important;
+  font-size: 14px !important;
   transition: transform 0.15s ease, box-shadow 0.15s ease !important;
 }
 :root[data-theme="light"] .cl-rootBox .cl-socialButtonsBlockButton {
