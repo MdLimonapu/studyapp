@@ -2206,25 +2206,29 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   background-color: var(--card) !important;
   width: 420px !important; /* Compact card width */
   max-width: 100% !important;
-  padding: 32px 28px !important; /* Balanced compact padding */
+  padding: 20px 24px !important; /* Very tight padding */
   box-sizing: border-box !important;
 }
 
 /* Compact spacing inside the card */
 .cl-rootBox .cl-header {
-  margin-bottom: 20px !important;
+  margin-bottom: 12px !important;
 }
 .cl-rootBox .cl-formFields {
-  gap: 12px !important; /* Uniform gap between form inputs */
+  gap: 8px !important; /* Extremely tight gap between fields */
+}
+.cl-rootBox .cl-formFieldLabel {
+  margin-bottom: 2px !important; /* Tight margin below labels */
 }
 .cl-rootBox .cl-formFieldRow,
 .cl-rootBox [class*="-formFieldRow"] {
   margin-bottom: 0px !important; /* Let gap handle spacing */
 }
 .cl-rootBox .cl-dividerRow {
-  margin-top: 16px !important;
-  margin-bottom: 16px !important;
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
 }
+
 
 
 /* Compact rectangular inputs */
