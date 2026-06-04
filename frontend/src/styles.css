@@ -2205,9 +2205,9 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4) !important;
   background-color: #1e1d24 !important; /* Dark purple/slate background */
   border-radius: 16px !important;
-  width: 500px !important;
+  width: 420px !important; /* More compact width */
   max-width: 100% !important;
-  padding: 44px 36px !important;
+  padding: 32px 28px !important; /* Compact padding */
   box-sizing: border-box !important;
 }
 
@@ -2220,24 +2220,25 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 /* Header typography styling */
 .cl-rootBox .cl-headerTitle {
   color: #ffffff !important;
-  font-size: 26px !important;
+  font-size: 22px !important; /* Compact font size */
   font-weight: 700 !important;
 }
 .cl-rootBox .cl-headerSubtitle {
   color: #9ca3af !important;
+  font-size: 13.5px !important;
 }
 
-/* Better spacing inside the card */
+/* Compact spacing inside the card */
 .cl-rootBox .cl-header {
-  margin-bottom: 24px !important;
+  margin-bottom: 18px !important;
 }
 .cl-rootBox .cl-formFieldRow,
 .cl-rootBox [class*="-formFieldRow"] {
-  margin-bottom: 16px !important;
+  margin-bottom: 12px !important;
 }
 .cl-rootBox .cl-dividerRow {
-  margin-top: 20px !important;
-  margin-bottom: 20px !important;
+  margin-top: 14px !important;
+  margin-bottom: 14px !important;
 }
 .cl-rootBox .cl-dividerText {
   color: #9ca3af !important;
@@ -2254,9 +2255,9 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 /* Rectangular inputs with dark backgrounds and clean borders */
 .cl-rootBox .cl-formFieldInput {
   border-radius: 8px !important; /* Rectangular corners */
-  height: 46px !important;
-  padding: 12px 16px !important;
-  font-size: 15px !important;
+  height: 42px !important; /* Compact height */
+  padding: 10px 14px !important;
+  font-size: 14.5px !important;
   background-color: rgba(255, 255, 255, 0.06) !important;
   border: 1px solid rgba(255, 255, 255, 0.12) !important;
   color: #ffffff !important;
@@ -2280,12 +2281,12 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   border: none !important;
   box-shadow: none !important;
   border-radius: 8px !important;
-  padding: 12px 24px !important;
+  padding: 10px 20px !important;
   font-weight: 600 !important;
-  font-size: 15px !important;
+  font-size: 14.5px !important;
   text-transform: none !important;
   letter-spacing: normal !important;
-  height: 46px !important;
+  height: 42px !important; /* Compact height */
   transition: all 0.25s ease !important;
   cursor: pointer !important;
 }
@@ -2307,8 +2308,12 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   border-radius: 8px !important;
   font-weight: 600 !important;
   font-size: 14px !important;
-  height: 46px !important;
+  height: 42px !important; /* Compact height */
   transition: all 0.2s ease !important;
+}
+.cl-rootBox .cl-socialButtonsBlockButtonText,
+.cl-rootBox [class*="-socialButtonsBlockButtonText"] {
+  color: #ffffff !important; /* Force readable white text */
 }
 .cl-rootBox .cl-socialButtonsBlockButton:hover {
   background-color: rgba(255, 255, 255, 0.05) !important;
@@ -2319,6 +2324,10 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   background-color: transparent !important;
   color: #ffffff !important;
   border: 1px solid rgba(255, 255, 255, 0.15) !important;
+}
+:root[data-theme="light"] .cl-rootBox .cl-socialButtonsBlockButtonText,
+:root[data-theme="light"] .cl-rootBox [class*="-socialButtonsBlockButtonText"] {
+  color: #ffffff !important;
 }
 :root[data-theme="light"] .cl-rootBox .cl-socialButtonsBlockButton:hover {
   background-color: rgba(255, 255, 255, 0.05) !important;
