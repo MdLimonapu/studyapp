@@ -263,7 +263,8 @@ export default function Home() {
     Germany:"🇩🇪", UK:"🇬🇧", USA:"🇺🇸", Canada:"🇨🇦",
     Australia:"🇦🇺", Netherlands:"🇳🇱", Sweden:"🇸🇪",
     France:"🇫🇷", Switzerland:"🇨🇭", Japan:"🇯🇵",
-    Europe:"🇪🇺", Global:"🌍", Visa:"📋"
+    Europe:"🇪🇺", Global:"🌍", Visa:"📋",
+    "All Countries":"🌍"
   }
 
   return (
@@ -312,7 +313,8 @@ export default function Home() {
           <div>
             <label htmlFor="country-select">Country</label>
             <select id="country-select" ref={countryRef} value={form.country} onChange={e => setForm({...form, country: e.target.value})} required>
-              <option value="">Select country</option>
+              <option value="" disabled>Select country</option>
+              <option value="All Countries">🌍 All Countries</option>
               {countries.map(c => <option key={c.name} value={c.name}>{c.flag} {c.name}</option>)}
             </select>
           {isGermanyOnly && (

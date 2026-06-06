@@ -1077,6 +1077,9 @@ def trigger_fetch_news():
 def search():
     body    = request.json or {}
     country = body.get("country", "").strip()
+    # "All Countries" means search across all countries (treat as empty)
+    if country.lower() == "all countries":
+        country = ""
     degree  = body.get("degree", "master").strip()
     field   = body.get("field", "").strip()
     profile = body.get("profile", {})
