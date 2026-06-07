@@ -2,6 +2,11 @@ import os
 import json
 import urllib.parse
 from pymongo import MongoClient
+try:
+    from dotenv import load_dotenv
+    load_dotenv()
+except ImportError:
+    pass
 
 def main():
     print("Writing 20 new rewritten visa articles (2 per country)...")
