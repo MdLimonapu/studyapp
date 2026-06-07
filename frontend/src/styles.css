@@ -1523,20 +1523,20 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 /* COUNTRY GRID & BOXES */
 .country-grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 10px;
   width: 100%;
 }
 
 @media (max-width: 1200px) {
   .country-grid {
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
 @media (max-width: 960px) {
   .country-grid {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(5, 1fr);
   }
 }
 
@@ -1562,12 +1562,12 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   background: var(--input-bg);
   border: 1px solid var(--card-border);
   border-radius: 12px;
-  padding: 10px 8px;
+  padding: 8px;
   cursor: pointer;
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   text-align: center;
   width: 100%;
-  aspect-ratio: 1 / 1;
+  aspect-ratio: 1.2 / 1;
   box-sizing: border-box;
 }
 
@@ -1584,13 +1584,13 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 }
 
 .country-box-flag {
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1;
   margin-bottom: 4px;
 }
 
 .country-box-name {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   color: var(--text);
   transition: color 0.2s;
@@ -1604,7 +1604,7 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 }
 
 .country-box-status {
-  font-size: 9.5px;
+  font-size: 9px;
   font-weight: 600;
   color: var(--muted);
 }
@@ -1612,6 +1612,7 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 .country-box.active .country-box-status {
   color: var(--muted);
 }
+
 
 /* BLUR GATE STYLES FOR SEARCH RESULTS */
 .result-card.blurred-card {
