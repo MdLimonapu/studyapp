@@ -1052,30 +1052,31 @@ PTE is a fully computer-based test graded entirely by artificial intelligence (A
     if not mongo_uri:
         print("⚠️ Error: MONGO_URI environment variable is not set. Database synchronization skipped.")
         return
-        try:
-            m_client = MongoClient(
-                mongo_uri, 
-                serverSelectionTimeoutMS=5000,
-                tlsAllowInvalidCertificates=True
-            )
-            # Find DB name from URI path
-            db_name = "studyapp"
-            parsed_uri = urllib.parse.urlparse(mongo_uri)
-            if parsed_uri.path and parsed_uri.path != "/":
-                db_name = parsed_uri.path.strip("/")
-                
-            m_db = m_client[db_name]
-            articles_col = m_db["articles"]
+        
+    try:
+        m_client = MongoClient(
+            mongo_uri, 
+            serverSelectionTimeoutMS=5000,
+            tlsAllowInvalidCertificates=True
+        )
+        # Find DB name from URI path
+        db_name = "studyapp"
+        parsed_uri = urllib.parse.urlparse(mongo_uri)
+        if parsed_uri.path and parsed_uri.path != "/":
+            db_name = parsed_uri.path.strip("/")
             
-            # Write each article, using slug as the unique identifier
-            inserted_mongo = 0
-            for art in existing_articles:
-                articles_col.replace_one({"slug": art["slug"]}, art, upsert=True)
-                inserted_mongo += 1
-                
-            print(f"✅ Successfully synchronized all {inserted_mongo} articles into Cloud MongoDB Atlas.")
-        except Exception as e:
-            print(f"⚠️ Error writing articles to MongoDB Atlas: {e}")
+        m_db = m_client[db_name]
+        articles_col = m_db["articles"]
+        
+        # Write each article, using slug as the unique identifier
+        inserted_mongo = 0
+        for art in existing_articles:
+            articles_col.replace_one({"slug": art["slug"]}, art, upsert=True)
+            inserted_mongo += 1
+            
+        print(f"✅ Successfully synchronized all {inserted_mongo} articles into Cloud MongoDB Atlas.")
+    except Exception as e:
+        print(f"⚠️ Error writing articles to MongoDB Atlas: {e}")
 
 if __name__ == "__main__":
     main()
