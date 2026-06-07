@@ -353,7 +353,9 @@ export default function Roadmap() {
 
   const handleToggleStep = (stepId) => {
     const isNowChecked = !currentCompleted[stepId];
-    if (!isNowChecked && activeUploaderId === stepId) {
+    if (activeUploaderId !== stepId) {
+      setActiveUploaderId(null);
+    } else if (!isNowChecked) {
       setActiveUploaderId(null);
     }
     const updatedCountryCompleted = {
