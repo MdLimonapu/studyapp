@@ -409,7 +409,7 @@ textarea { min-height: 100px; resize: vertical; }
 .suggestion-item span { color: var(--secondary-accent); }
 
 /* BUTTON */
-button:not(.btn-plain):not(.theme-toggle-btn):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)) {
+button:not(.btn-plain):not(.theme-toggle-btn):not(.pill):not(.level-btn):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)) {
   width: 100%;
   border-radius: 16px;
   border: none;
@@ -2093,7 +2093,7 @@ button:not(.btn-plain):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] 
 }
 
 /* Primary CTA Submit / Accent Buttons */
-:root[data-theme="light"] button:not(.btn-plain):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)) {
+:root[data-theme="light"] button:not(.btn-plain):not(.theme-toggle-btn):not(.pill):not(.level-btn):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)) {
   background: #d2f34c !important;
   color: #111827 !important;
   border: 2px solid #111827 !important;
@@ -2104,12 +2104,12 @@ button:not(.btn-plain):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] 
   border-radius: 14px !important;
   transition: transform 0.15s ease, box-shadow 0.15s ease !important;
 }
-:root[data-theme="light"] button:not(.btn-plain):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):hover {
+:root[data-theme="light"] button:not(.btn-plain):not(.theme-toggle-btn):not(.pill):not(.level-btn):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):hover {
   transform: translate(-3px, -3px) !important;
   box-shadow: 0 9px 0px #111827 !important;
   opacity: 1 !important;
 }
-:root[data-theme="light"] button:not(.btn-plain):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):active {
+:root[data-theme="light"] button:not(.btn-plain):not(.theme-toggle-btn):not(.pill):not(.level-btn):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):active {
   transform: translate(0px, 0px) !important;
   box-shadow: 0 3px 0px #111827 !important;
 }
