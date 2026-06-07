@@ -28,7 +28,11 @@ mongo_uri = os.environ.get("MONGO_URI")
 if mongo_uri:
     try:
         from pymongo import MongoClient
-        mongo_client = MongoClient(mongo_uri, serverSelectionTimeoutMS=5000)
+        mongo_client = MongoClient(
+            mongo_uri, 
+            serverSelectionTimeoutMS=5000,
+            tlsAllowInvalidCertificates=True
+        )
         db_name = "studplex"
         parsed_uri = urllib.parse.urlparse(mongo_uri)
         if parsed_uri.path and parsed_uri.path != "/":
