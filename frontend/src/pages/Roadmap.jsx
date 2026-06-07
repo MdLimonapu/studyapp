@@ -8,7 +8,7 @@ const ROADMAPS = {
     flag: '🇩🇪',
     steps: [
       { id: 1, title: 'Check University Admission Qualification', desc: 'Verify if your HSC / bachelor certificate qualifies you for direct admission via DAAD / Anabin database.', critical: true },
-      { id: 2, title: 'Apply for APS Certificate (India, China & Vietnam only)', desc: 'Students from India, China, and Vietnam must obtain an APS Certificate before submitting university applications. Bangladeshi students are exempt from APS.', critical: true },
+      { id: 2, title: 'Apply for APS Certificate', desc: 'You must obtain an APS Certificate before submitting university applications.', critical: true, apsOnly: true },
       { id: 3, title: 'Pass Language Proficiency (IELTS/TOEFL)', desc: 'Obtain required English (IELTS 6.5+) or German (TestDaF/Goethe C1) scores for your target program.', critical: true },
       { id: 4, title: 'Prepare Transcripts & Motivation Letter', desc: 'Gather attested academic transcripts and certificates. Write a strong Statement of Purpose (SOP).', critical: true },
       { id: 5, title: 'Submit Applications via Uni-Assist or Direct Portal', desc: 'Apply through Uni-Assist (requires APS certificate) or directly to the German university portals.', critical: true },
@@ -190,8 +190,18 @@ export default function Roadmap() {
     })
     setCompletedSteps(loaded)
   }, [])
+  // Detect user's home country from IP (stored by App.jsx)
+  const APS_COUNTRIES = ['india', 'china', 'vietnam']
+  const userHomeCountry = (localStorage.getItem('user_country_name') || '').toLowerCase()
+  const needsAPS = APS_COUNTRIES.some(c => userHomeCountry.includes(c))
+
+  // Filter steps: hide APS step if user doesn't need it
+  const getVisibleSteps = (country) => {
+    return ROADMAPS[country].steps.filter(step => !step.apsOnly || needsAPS)
+  }
 
   const currentRoadmap = ROADMAPS[selectedCountry]
+  const visibleSteps = getVisibleSteps(selectedCountry)
   const currentCompleted = completedSteps[selectedCountry] || {}
 
   const handleToggleStep = (stepId) => {
@@ -214,12 +224,12 @@ export default function Roadmap() {
   }
 
   // Calculate progress
-  const totalSteps = currentRoadmap.steps.length
-  const completedCount = currentRoadmap.steps.filter(step => currentCompleted[step.id]).length
+  const totalSteps = visibleSteps.length
+  const completedCount = visibleSteps.filter(step => currentCompleted[step.id]).length
   const progressPercent = totalSteps > 0 ? Math.round((completedCount / totalSteps) * 100) : 0
 
   // Check if critical steps are all completed
-  const criticalSteps = currentRoadmap.steps.filter(s => s.critical)
+  const criticalSteps = visibleSteps.filter(s => s.critical)
   const isEligible = criticalSteps.every(s => currentCompleted[s.id])
 
   const handleSearchClick = () => {
@@ -229,11 +239,11 @@ export default function Roadmap() {
 
   const getCountryCompletedCount = (country) => {
     const completed = completedSteps[country] || {}
-    return ROADMAPS[country].steps.filter(step => completed[step.id]).length
+    return getVisibleSteps(country).filter(step => completed[step.id]).length
   }
 
   const getCountryTotalSteps = (country) => {
-    return ROADMAPS[country].steps.length
+    return getVisibleSteps(country).length
   }
 
   return (
@@ -314,7 +324,7 @@ export default function Roadmap() {
 
           {/* Steps List */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '16px', marginBottom: '24px' }}>
-            {currentRoadmap.steps.map(step => {
+            {visibleSteps.map(step => {
               const checked = !!currentCompleted[step.id]
               return (
                 <div 
