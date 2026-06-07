@@ -23,6 +23,7 @@ if os.path.exists(dotenv_path):
 mongo_client = None
 db = None
 users_col = None
+articles_col = None
 
 mongo_uri = os.environ.get("MONGO_URI")
 if mongo_uri:
@@ -41,6 +42,8 @@ if mongo_uri:
         db = mongo_client[db_name]
         users_col = db["users"]
         users_col.create_index("email", unique=True)
+        articles_col = db["articles"]
+        articles_col.create_index("slug", unique=True)
         mongo_client.admin.command('ping')
         print(f"✅ Connected to Cloud MongoDB Atlas successfully (DB: {db_name}).", flush=True)
     except Exception as e:
@@ -48,6 +51,7 @@ if mongo_uri:
         mongo_client = None
         db = None
         users_col = None
+        articles_col = None
 else:
     print("⚠️ Warning: MONGO_URI not found in environment. Cloud database storage is disabled.", flush=True)
 
@@ -1411,6 +1415,137 @@ def create_order():
     _save_orders(orders_data)
     print(f"📦 Order created via POST for {order['email']}", flush=True)
     return jsonify({"status": "saved", "order": order}), 201
+
+
+def _load_local_articles():
+    local_path = os.path.join(os.path.dirname(__file__), "data", "articles_backup.json")
+    if os.path.exists(local_path):
+        try:
+            with open(local_path, "r") as f:
+                return json.load(f)
+        except Exception:
+            pass
+    return []
+
+
+@app.route("/api/articles", methods=["GET"])
+def get_articles():
+    """Return all articles from MongoDB or local fallback cache (excluding contents to keep it light)."""
+    if db is not None and articles_col is not None:
+        try:
+            cursor = articles_col.find({}, {"_id": 0, "content": 0})
+            items = list(cursor)
+            if items:
+                return jsonify(items)
+        except Exception as e:
+            print(f"⚠️ Error querying MongoDB articles: {e}", flush=True)
+    
+    local_items = _load_local_articles()
+    for item in local_items:
+        if "content" in item:
+            del item["content"]
+    return jsonify(local_items)
+
+
+@app.route("/api/articles/<slug>", methods=["GET"])
+def get_article_detail(slug):
+    """Return the detailed content of a single article by slug and increment views."""
+    if db is not None and articles_col is not None:
+        try:
+            articles_col.update_one({"slug": slug}, {"$inc": {"views": 1}})
+            art = articles_col.find_one({"slug": slug}, {"_id": 0})
+            if art:
+                return jsonify(art)
+        except Exception as e:
+            print(f"⚠️ Error querying MongoDB article detail: {e}", flush=True)
+            
+    local_items = _load_local_articles()
+    for item in local_items:
+        if item.get("slug") == slug:
+            item["views"] = item.get("views", 0) + 1
+            return jsonify(item)
+            
+    return jsonify({"error": "Article not found"}), 404
+
+
+@app.route("/api/articles/generate", methods=["POST"])
+def generate_custom_article():
+    """Trigger generation of a custom article using the Gemini API and save it."""
+    body = request.json or {}
+    topic_title = body.get("title", "").strip()
+    topic_prompt = body.get("prompt", "").strip()
+    topic_id = body.get("id", "").strip()
+    
+    if not topic_title or not topic_prompt:
+        return jsonify({"error": "title and prompt are required"}), 400
+        
+    if not topic_id:
+        topic_id = re.sub(r'[^a-zA-Z0-9]+', '-', topic_title.lower()).strip('-')
+        
+    api_key = os.environ.get("GEMINI_API_KEY")
+    if not api_key:
+        return jsonify({"error": "GEMINI_API_KEY environment variable not set on server"}), 500
+        
+    try:
+        from google import genai
+        from google.genai import types
+        client = genai.Client(api_key=api_key)
+        
+        prompt = f"""You are an elite academic copywriter and SEO expert. Write a comprehensive, high-quality, and deeply informative guide/article on the following topic:
+Title: {topic_title}
+Description: {topic_prompt}
+
+Make sure the article has these attributes:
+1. Long-form and extremely thorough (at least 1000-1500 words).
+2. Well-structured in Markdown using H2 (##) and H3 (###) headers, bullet points, numbered lists, and bold text.
+3. Contains a detailed HTML or Markdown table summarizing key steps, costs, or requirements.
+4. Includes internal linking references back to the main website domain (e.g., 'Use the Studplex Matching Engine to find matching courses' or 'check your detailed eligibility on the Studplex Roadmap page').
+5. SEO optimized.
+
+You must return your response EXACTLY as a JSON object (no markdown code fences, no text outside the JSON). The JSON must have these exact keys:
+{{
+  "slug": "{topic_id}",
+  "title": "A highly engaging SEO-optimized title",
+  "meta_title": "Meta title tag (maximum 60 characters)",
+  "meta_description": "A compelling meta description to drive search clicks (maximum 160 characters)",
+  "category": "The main category (e.g. Germany, Visa, SOP, Scholarships)",
+  "tags": ["tag1", "tag2"],
+  "read_time": 6,
+  "content": "The complete, detailed article content in Markdown format."
+}}
+"""
+        response = client.models.generate_content(
+            model="gemini-2.5-flash",
+            contents=prompt,
+            config=types.GenerateContentConfig(
+                response_mime_type="application/json"
+            )
+        )
+        text = response.text.strip()
+        if text.startswith("```"):
+            text = text.split("```")[1]
+            if text.startswith("json"):
+                text = text[4:]
+                
+        art_data = json.loads(text.strip())
+        art_data["views"] = 0
+        art_data["date"] = datetime.datetime.now().strftime("%Y-%m-%d")
+        
+        if db is not None and articles_col is not None:
+            articles_col.replace_one({"slug": art_data["slug"]}, art_data, upsert=True)
+            
+        local_items = _load_local_articles()
+        local_items = [item for item in local_items if item.get("slug") != art_data["slug"]]
+        local_items.append(art_data)
+        
+        local_path = os.path.join(os.path.dirname(__file__), "data", "articles_backup.json")
+        os.makedirs(os.path.dirname(local_path), exist_ok=True)
+        with open(local_path, "w") as f:
+            json.dump(local_items, f, indent=2, ensure_ascii=False)
+            
+        return jsonify({"status": "success", "article": {k: art_data[k] for k in art_data if k != "content"}})
+    except Exception as e:
+        return jsonify({"error": f"Failed to generate article: {e}"}), 500
 
 
 if __name__ == "__main__":
