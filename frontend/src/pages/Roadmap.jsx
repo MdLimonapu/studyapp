@@ -12,7 +12,7 @@ const ROADMAPS = {
       { id: 3, title: 'Pass Language Proficiency (IELTS/TOEFL)', desc: 'Obtain required English (IELTS 6.5+) or German (TestDaF/Goethe C1) scores for your target program.', critical: true },
       { id: 4, title: 'Prepare Transcripts & Motivation Letter', desc: 'Gather attested academic transcripts and certificates. Write a strong Statement of Purpose (SOP).', critical: true },
       { id: 5, title: 'Submit Applications via Uni-Assist or Direct Portal', desc: 'Apply through Uni-Assist or directly to the German university portals.', critical: true },
-      { id: 6, title: 'Secure Blocked Account & Visa Interview', desc: 'Deposit required living funds into a German Blocked Account (Expatrio/Fintiba) and book your visa slot at German Embassy Dhaka.', critical: true }
+      { id: 6, title: 'Secure Blocked Account & Visa Interview', desc: 'Deposit required living funds into a German Blocked Account (Expatrio/Fintiba) and book your visa slot at the German Embassy or Consulate.', critical: true }
     ]
   },
   'UK': {
@@ -30,14 +30,14 @@ const ROADMAPS = {
       { id: 1, title: 'Take IELTS/TOEFL English Exam', desc: 'Secure required English scores (IELTS 6.5+ or TOEFL 80+). Some universities may accept Duolingo.', critical: true },
       { id: 2, title: 'Draft SOP & Obtain Recommendation Letters', desc: 'Write your Statement of Purpose (SOP) and gather recommendation letters from academic referees.', critical: true },
       { id: 3, title: 'Submit Applications & Pay Fees', desc: 'Apply via Common App or direct portals. Pay university application fees.', critical: true },
-      { id: 4, title: 'Secure I-20 Form & Book Interview at Dhaka', desc: 'Provide sponsor bank solvency certificates to get your I-20, pay SEVIS fee, and attend visa interview at US Embassy Dhaka.', critical: true }
+      { id: 4, title: 'Secure I-20 Form & Book Visa Interview', desc: 'Provide sponsor bank solvency certificates to get your I-20, pay SEVIS fee, and attend the visa interview at the US Embassy or Consulate.', critical: true }
     ]
   },
   'Canada': {
     flag: '🇨🇦',
     steps: [
       { id: 1, title: 'Take IELTS Academic Test', desc: 'Score a minimum of 6.0 in all bands of IELTS Academic to qualify for visa processing.', critical: true },
-      { id: 2, title: 'Prepare Attested Transcripts & Study Plan', desc: 'Gather attested academic transcripts and write a detailed Study Plan explaining your ties to Bangladesh.', critical: true },
+      { id: 2, title: 'Prepare Attested Transcripts & Study Plan', desc: 'Gather attested academic transcripts and write a detailed Study Plan explaining your ties to your home country.', critical: true },
       { id: 3, title: 'Submit University Applications', desc: 'Apply directly via the university portal and pay the application fee.', critical: true },
       { id: 4, title: 'Purchase GIC & Apply for Study Permit', desc: 'Purchase a GIC of $20,635 CAD from an approved bank, arrange sponsor bank solvency statements, and submit Study Permit.', critical: true }
     ]
@@ -46,7 +46,7 @@ const ROADMAPS = {
     flag: '🇦🇺',
     steps: [
       { id: 1, title: 'Pass IELTS or PTE Academic Test', desc: 'Secure IELTS Academic (6.0 - 6.5) or PTE Academic (50 - 58) scores.', critical: true },
-      { id: 2, title: 'Satisfy Genuine Student (GS) Requirements', desc: 'Draft statement details answering GS criteria, including your ties to Bangladesh and career benefits.', critical: true },
+      { id: 2, title: 'Satisfy Genuine Student (GS) Requirements', desc: 'Draft statement details answering GS criteria, including your ties to your home country and career benefits.', critical: true },
       { id: 3, title: 'Submit Application & Pay Deposit', desc: 'Apply directly or via agent, pay tuition deposit, and get your Confirmation of Enrolment (CoE).', critical: true },
       { id: 4, title: 'OSHC Health Cover & Submit Sponsor Bank Statements', desc: 'Purchase Overseas Student Health Cover, prepare 3 months of bank statements/solvency, and apply for Visa 500.', critical: true }
     ]
@@ -112,7 +112,7 @@ const COUNTRY_RESOURCES = {
       { name: 'Visa Solvency / Funding', value: 'Blocked Account (€11,904/year)' },
       { name: 'Application Cost', value: 'Uni-Assist: €75 first course, €30 each add-on' }
     ],
-    embassyLink: { label: 'German Embassy Dhaka Visa Guidelines', url: 'https://dhaka.diplo.de/bd-en/service/visa-einreise' }
+    embassyLink: { label: 'German Embassy Finder', url: 'https://www.auswaertiges-amt.de/en/about-us/auslandsvertretungen-node' }
   },
   'UK': {
     links: [
@@ -125,20 +125,20 @@ const COUNTRY_RESOURCES = {
       { name: 'Visa Solvency / Funding', value: 'Tuition Balance + Living funds (£9,207 - £12,006) held for 28 days' },
       { name: 'CAS Deposit', value: 'Usually £2,000 - £5,000 upfront to issue visa letter' }
     ],
-    embassyLink: { label: 'UK Visa Application Centre Dhaka', url: 'https://visa.vfsglobal.com/bgd/en/gbr/' }
+    embassyLink: { label: 'Find Your UK Visa Application Centre', url: 'https://www.gov.uk/find-a-visa-application-centre' }
   },
   'USA': {
     links: [
       { label: 'Common App Portal', url: 'https://www.commonapp.org/', icon: '📤' },
       { label: 'SEVIS Fee Payment (FMJfee)', url: 'https://www.fmjfee.com/', icon: '💵' },
-      { label: 'US Visa Scheduling Portal', url: 'https://www.ustraveldocs.com/bd/', icon: '🗓️' }
+      { label: 'US Visa Scheduling Portal', url: 'https://www.ustraveldocs.com/', icon: '🗓️' }
     ],
     requirements: [
       { name: 'Language Requirement', value: 'IELTS 6.5+, TOEFL 80+, or Duolingo 110+' },
       { name: 'Visa Solvency / Funding', value: 'I-20 Form required; Sponsor bank solvency showing 1st year expenses' },
       { name: 'SEVIS & Visa Fees', value: 'SEVIS fee ($350) + DS-160 visa fee ($185)' }
     ],
-    embassyLink: { label: 'US Embassy Dhaka Student Visa Info', url: 'https://bd.usembassy.gov/visas/nonimmigrant-visas/' }
+    embassyLink: { label: 'Find Your Local US Embassy / Consulate', url: 'https://www.usembassy.gov/' }
   },
   'Canada': {
     links: [
@@ -151,7 +151,7 @@ const COUNTRY_RESOURCES = {
       { name: 'Visa Solvency / Funding', value: 'GIC of $20,635 CAD + tuition fee payment proof' },
       { name: 'Visa Pathways', value: 'Student Direct Stream (SDS) for faster processing' }
     ],
-    embassyLink: { label: 'Canada Visa Application Centre Dhaka', url: 'https://visa.vfsglobal.com/bgd/en/can/' }
+    embassyLink: { label: 'Find Your Canada Visa Application Centre', url: 'https://www.canada.ca/en/immigration-refugees-citizenship/corporate/contact-ircc/offices/find-visa-application-centre.html' }
   },
   'Australia': {
     links: [
@@ -164,7 +164,7 @@ const COUNTRY_RESOURCES = {
       { name: 'Visa Solvency / Funding', value: '12 months tuition + Living costs (~$29,710 AUD) + travel funds' },
       { name: 'Health Cover', value: 'OSHC (Overseas Student Health Cover) is mandatory' }
     ],
-    embassyLink: { label: 'VFS Global Australia Bangladesh', url: 'https://visa.vfsglobal.com/bgd/en/aus/' }
+    embassyLink: { label: 'Find Your Australian Visa Office', url: 'https://immi.homeaffairs.gov.uk/help-support/contact-us/offices-and-locations-list' }
   },
   'Netherlands': {
     links: [
@@ -177,7 +177,7 @@ const COUNTRY_RESOURCES = {
       { name: 'Visa Solvency / Funding', value: 'Living funds deposit (~€12,180/year) + tuition paid upfront' },
       { name: 'Visa Procedure', value: 'Host university handles visa application on your behalf' }
     ],
-    embassyLink: { label: 'Netherlands Embassy Dhaka Student Info', url: 'https://www.netherlandsandyou.nl/web/bangladesh' }
+    embassyLink: { label: 'Netherlands Worldwide Embassy Portal', url: 'https://www.netherlandsandyou.nl/' }
   },
   'Sweden': {
     links: [
@@ -190,7 +190,7 @@ const COUNTRY_RESOURCES = {
       { name: 'Visa Solvency / Funding', value: 'Migration Agency requires proof of ~SEK 10,380/month' },
       { name: 'Application Cost', value: 'SEK 900 application fee paid online at portal' }
     ],
-    embassyLink: { label: 'Sweden Embassy Dhaka Visa Guidelines', url: 'https://www.swedenabroad.se/en/embassies/bangladesh-dhaka/' }
+    embassyLink: { label: 'Sweden Abroad Official Embassy Portal', url: 'https://www.swedenabroad.se/' }
   },
   'France': {
     links: [
@@ -202,7 +202,7 @@ const COUNTRY_RESOURCES = {
       { name: 'Visa Solvency / Funding', value: 'Minimum €615/month proof of funds for 1 year' },
       { name: 'Mandatory Process', value: 'Campus France Interview and file validation required' }
     ],
-    embassyLink: { label: 'France Embassy Dhaka Visa Center', url: 'https://bd.ambafrance.org/Applying-for-a-French-visa-in-Bangladesh' }
+    embassyLink: { label: 'France-Visas Official Portal', url: 'https://france-visas.gouv.fr/' }
   },
   'Switzerland': {
     links: [
@@ -214,7 +214,7 @@ const COUNTRY_RESOURCES = {
       { name: 'Visa Solvency / Funding', value: 'Proof of CHF 20,000 held in a Swiss-recognized bank' },
       { name: 'Application Cost', value: 'Direct application fee: CHF 100 - 200 per university' }
     ],
-    embassyLink: { label: 'Embassy of Switzerland in Bangladesh', url: 'https://www.eda.admin.ch/dhaka' }
+    embassyLink: { label: 'Swiss Representations Finder', url: 'https://www.eda.admin.ch/eda/en/home/representations-and-travel-advice/representations.html' }
   },
   'Japan': {
     links: [
@@ -226,7 +226,7 @@ const COUNTRY_RESOURCES = {
       { name: 'Visa Solvency / Funding', value: 'Sponsor bank balance showing around 2,000,000 JPY per year' },
       { name: 'Certificate of Eligibility', value: 'COE must be approved by Japan Immigration beforehand' }
     ],
-    embassyLink: { label: 'Embassy of Japan in Bangladesh', url: 'https://www.bd.emb-japan.go.jp/' }
+    embassyLink: { label: 'Embassy of Japan Overseas Directory', url: 'https://www.mofa.go.jp/about/emb_cons/overseas/index.html' }
   }
 }
 
