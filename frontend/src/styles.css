@@ -409,7 +409,7 @@ textarea { min-height: 100px; resize: vertical; }
 .suggestion-item span { color: var(--secondary-accent); }
 
 /* BUTTON */
-button:not(.btn-plain):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)) {
+button:not(.btn-plain):not(.theme-toggle-btn):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)) {
   width: 100%;
   border-radius: 16px;
   border: none;
