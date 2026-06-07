@@ -8,7 +8,7 @@ const ROADMAPS = {
     flag: '🇩🇪',
     steps: [
       { id: 1, title: 'Check University Admission Qualification', desc: 'Verify if your HSC / bachelor certificate qualifies you for direct admission via DAAD / Anabin database.', critical: true },
-      { id: 2, title: 'Apply for APS Certificate (Mandatory for BD)', desc: 'Bangleshi students must obtain an APS Certificate from the German Embassy Dhaka before submitting university applications.', critical: true },
+      { id: 2, title: 'Apply for APS Certificate (India, China & Vietnam only)', desc: 'Students from India, China, and Vietnam must obtain an APS Certificate before submitting university applications. Bangladeshi students are exempt from APS.', critical: true },
       { id: 3, title: 'Pass Language Proficiency (IELTS/TOEFL)', desc: 'Obtain required English (IELTS 6.5+) or German (TestDaF/Goethe C1) scores for your target program.', critical: true },
       { id: 4, title: 'Prepare Transcripts & Motivation Letter', desc: 'Gather attested academic transcripts and certificates. Write a strong Statement of Purpose (SOP).', critical: true },
       { id: 5, title: 'Submit Applications via Uni-Assist or Direct Portal', desc: 'Apply through Uni-Assist (requires APS certificate) or directly to the German university portals.', critical: true },
