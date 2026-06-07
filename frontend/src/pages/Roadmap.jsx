@@ -11,7 +11,7 @@ const ROADMAPS = {
       { id: 2, title: 'Apply for APS Certificate', desc: 'You must obtain an APS Certificate before submitting university applications.', critical: true, apsOnly: true },
       { id: 3, title: 'Pass Language Proficiency (IELTS/TOEFL)', desc: 'Obtain required English (IELTS 6.5+) or German (TestDaF/Goethe C1) scores for your target program.', critical: true },
       { id: 4, title: 'Prepare Transcripts & Motivation Letter', desc: 'Gather attested academic transcripts and certificates. Write a strong Statement of Purpose (SOP).', critical: true },
-      { id: 5, title: 'Submit Applications via Uni-Assist or Direct Portal', desc: 'Apply through Uni-Assist (requires APS certificate) or directly to the German university portals.', critical: true },
+      { id: 5, title: 'Submit Applications via Uni-Assist or Direct Portal', desc: 'Apply through Uni-Assist or directly to the German university portals.', critical: true },
       { id: 6, title: 'Secure Blocked Account & Visa Interview', desc: 'Deposit required living funds into a German Blocked Account (Expatrio/Fintiba) and book your visa slot at German Embassy Dhaka.', critical: true }
     ]
   },
