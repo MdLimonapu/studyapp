@@ -1043,8 +1043,10 @@ PTE is a fully computer-based test graded entirely by artificial intelligence (A
         return
         
     # Write to MongoDB Atlas
-    mongo_uri = os.environ.get("MONGO_URI") or "mongodb+srv://mdlimon2466_db_user:KKH3Ke1mDkOgSWCe@cluster0.7jkgj2m.mongodb.net/?appName=Cluster0"
-    if mongo_uri:
+    mongo_uri = os.environ.get("MONGO_URI")
+    if not mongo_uri:
+        print("⚠️ Error: MONGO_URI environment variable is not set. Database synchronization skipped.")
+        return
         try:
             m_client = MongoClient(
                 mongo_uri, 
