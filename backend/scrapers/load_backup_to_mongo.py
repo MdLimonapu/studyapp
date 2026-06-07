@@ -24,7 +24,7 @@ def main():
             import urllib.parse
             
             mongo_client = MongoClient(MONGO_URI, serverSelectionTimeoutMS=5000, tlsAllowInvalidCertificates=True)
-            db_name = "studplex"
+            db_name = "studyapp"
             parsed_uri = urllib.parse.urlparse(MONGO_URI)
             if parsed_uri.path and parsed_uri.path != "/":
                 db_name = parsed_uri.path.strip("/")
