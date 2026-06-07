@@ -112,7 +112,7 @@ const COUNTRY_RESOURCES = {
       { name: 'Visa Solvency / Funding', value: 'Blocked Account (€11,904/year)' },
       { name: 'Application Cost', value: 'Uni-Assist: €75 first course, €30 each add-on' }
     ],
-    embassyLink: { label: 'German Embassy Finder', url: 'https://www.auswaertiges-amt.de/en/about-us/auslandsvertretungen-node' }
+    embassyLink: { label: 'German Embassy Finder', url: 'https://www.auswaertiges-amt.de/en/about-auswaertiges-amt/auslandsvertretungen' }
   },
   'UK': {
     links: [
