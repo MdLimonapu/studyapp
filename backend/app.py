@@ -81,38 +81,10 @@ DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
 DATA_BACKUP_DIR = os.path.join(os.path.dirname(__file__), "data_backup")
 
 def load_all_country_data():
-    """Load course data from all JSON files in the data directory."""
+    """No-op to save memory on free tier."""
     global FALLBACK_COURSES
-    all_courses = []
-    loaded_files = set()
-    data_dirs = [DATA_DIR]  # Skip data_backup to save memory on free tier
-
-    if not any(os.path.isdir(data_dir) for data_dir in data_dirs):
-        print("Warning: no course data directories found.", flush=True)
-        return
-
-    for data_dir in data_dirs:
-        if not os.path.isdir(data_dir):
-            continue
-        for filename in sorted(os.listdir(data_dir)):
-            if not filename.endswith(".json") or filename in loaded_files:
-                continue
-            if filename == "usa.json" and any(f.startswith("usa_part") for f in loaded_files):
-                continue
-            if filename.startswith("usa_part") and "usa.json" in loaded_files:
-                continue
-            try:
-                filepath = os.path.join(data_dir, filename)
-                with open(filepath) as f:
-                    data = json.load(f)
-                if isinstance(data, list):
-                    all_courses.extend(data)
-                    print(f"  📂 Loaded {len(data):5d} courses from {filename}", flush=True)
-                    loaded_files.add(filename)
-            except Exception as e:
-                print(f"  ⚠️  Failed to load {filename}: {e}", flush=True)
-    FALLBACK_COURSES = all_courses
-    print(f"✅ Total courses loaded: {len(FALLBACK_COURSES)}", flush=True)
+    FALLBACK_COURSES = []
+    print("✅ Skipped full database load on startup to conserve memory.", flush=True)
 
 load_all_country_data()
 
@@ -704,14 +676,117 @@ def get_course_requirements(c, uni_name):
     return [f"Minimum GPA: {get_university_gpa_requirement(uni_name, c.get('country', '')):.1f}"]
 
 
+def load_courses_filtered(country, degree, field, max_fee=None):
+    """Load course data dynamically from JSON files and filter them one-by-one to prevent OOM."""
+    norm_country = normalize_country(country) if country else ""
+    
+    COUNTRY_FILE_MAP = {
+        "germany": ["germany.json"],
+        "usa": ["usa_part1.json", "usa_part2.json"],
+        "uk": ["uk.json"],
+        "canada": ["canada.json"],
+        "australia": ["australia.json"],
+        "netherlands": ["netherlands.json"],
+        "sweden": ["sweden.json"],
+        "france": ["france.json"],
+        "switzerland": ["switzerland.json"],
+        "japan": ["japan.json"]
+    }
+    
+    files_to_load = []
+    if norm_country in COUNTRY_FILE_MAP:
+        files_to_load = COUNTRY_FILE_MAP[norm_country]
+    else:
+        # Load all files
+        for flist in COUNTRY_FILE_MAP.values():
+            for f in flist:
+                if f not in files_to_load:
+                    files_to_load.append(f)
+                    
+    filtered_courses = []
+    for filename in files_to_load:
+        try:
+            filepath = os.path.join(DATA_DIR, filename)
+            if not os.path.exists(filepath):
+                filepath = os.path.join(DATA_BACKUP_DIR, filename)
+            if not os.path.exists(filepath):
+                continue
+                
+            with open(filepath) as f:
+                data = json.load(f)
+            if not isinstance(data, list):
+                continue
+                
+            for c in data:
+                # 1. Country filter
+                if norm_country:
+                    if normalize_country(c.get("country", "")) != norm_country:
+                        continue
+                        
+                # 2. Degree filter
+                if degree:
+                    if degree.lower() not in c.get("degree", "").lower():
+                        continue
+                        
+                # 3. Max fee filter
+                if max_fee is not None:
+                    fee = c.get("fee") if c.get("fee") else ""
+                    usd_val = parse_fee_to_usd(fee, c.get("country", ""), c.get("degree", "")) if c.get("has_real_fee") else None
+                    if usd_val is not None and usd_val > max_fee:
+                        continue
+                        
+                # 4. Field filter
+                if field:
+                    field_lower = field.lower().strip()
+                    course_title = c.get("course", "").lower()
+                    uni_name = c.get("uni", "").lower()
+                    
+                    is_generic = False
+                    for gen_key, gen_cfg in GENERIC_BRANCHES.items():
+                        if field_lower == gen_key:
+                            is_generic = True
+                            break
+                            
+                    if is_generic:
+                        gen_cfg = GENERIC_BRANCHES[field_lower]
+                        has_sub_term = False
+                        for sub_term in gen_cfg["sub"]:
+                            if len(sub_term) <= 2:
+                                if re.search(r'\b' + re.escape(sub_term) + r'\b', course_title):
+                                    has_sub_term = True
+                                    break
+                            else:
+                                if sub_term in course_title:
+                                    has_sub_term = True
+                                    break
+                        if not (field_lower in course_title or has_sub_term):
+                            continue
+                    else:
+                        alternatives = get_search_alternatives(field_lower)
+                        keywords = get_search_keywords(field_lower)
+                        
+                        has_match = False
+                        if any(alt in course_title for alt in alternatives):
+                            has_match = True
+                        elif any(len(kw) >= 3 and kw in course_title for kw in keywords):
+                            has_match = True
+                        elif any(alt in uni_name for alt in alternatives):
+                            has_match = True
+                            
+                        if not has_match:
+                            continue
+                            
+                filtered_courses.append(c)
+            del data
+        except Exception as e:
+            print(f"  ⚠️ Error dynamically loading/filtering {filename}: {e}", flush=True)
+            
+    return filtered_courses
+
+
 def fallback_search(country, degree, field, user_grade=None, max_fee=None):
     """Search static country JSON data with rating-based relevance sorting and smart links."""
-    results = FALLBACK_COURSES
-    if country:
-        norm_country = normalize_country(country)
-        results = [c for c in results if normalize_country(c.get("country", "")) == norm_country]
-    if degree:
-        results = [c_match for c_match in results if degree.lower() in c_match.get("degree", "").lower()]
+    results = load_courses_filtered(country, degree, field, max_fee)
         
     user_gpa = parse_user_gpa(user_grade) if user_grade else None
     scored_results = []
