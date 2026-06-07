@@ -112,7 +112,7 @@ const COUNTRY_RESOURCES = {
       { name: 'Visa Solvency / Funding', value: 'Blocked Account (€11,904/year)' },
       { name: 'Application Cost', value: 'Uni-Assist: €75 first course, €30 each add-on' }
     ],
-    embassyLink: { label: 'German Embassy Finder', url: 'https://www.auswaertiges-amt.de/en/about-auswaertiges-amt/auslandsvertretungen' }
+    embassyLink: { label: 'German Embassy Finder', url: 'https://www.auswaertiges-amt.de/en/about-us/auslandsvertretungen/deutsche-auslandsvertretungen' }
   },
   'UK': {
     links: [
@@ -336,8 +336,106 @@ export default function Roadmap() {
   const visibleSteps = getVisibleSteps(selectedCountry)
   const currentCompleted = completedSteps[selectedCountry] || {}
 
+  // Helper to dynamically get local embassy links based on user's home country
+  const getDynamicEmbassyLink = (destinationCountry, homeCountryLower) => {
+    const defaultLink = COUNTRY_RESOURCES[destinationCountry]?.embassyLink;
+    if (!defaultLink) return null;
+    if (!homeCountryLower) return defaultLink;
+
+    const homeCountryCapitalized = homeCountryLower.charAt(0).toUpperCase() + homeCountryLower.slice(1);
+
+    if (destinationCountry === 'Germany') {
+      const specificMissions = {
+        'india': { label: 'German Embassy / Consulates in India', url: 'https://india.diplo.de/' },
+        'bangladesh': { label: 'German Embassy Dhaka', url: 'https://dhaka.diplo.de/' },
+        'vietnam': { label: 'German Embassy / Consulates in Vietnam', url: 'https://vietnam.diplo.de/' },
+        'china': { label: 'German Embassy / Consulates in China', url: 'https://china.diplo.de/' },
+        'pakistan': { label: 'German Embassy / Consulates in Pakistan', url: 'https://pakistan.diplo.de/' },
+        'nepal': { label: 'German Embassy Kathmandu', url: 'https://kathmandu.diplo.de/' },
+        'nigeria': { label: 'German Embassy Abuja', url: 'https://nigeria.diplo.de/' },
+        'ghana': { label: 'German Embassy Accra', url: 'https://accra.diplo.de/' },
+        'kenya': { label: 'German Embassy Nairobi', url: 'https://nairobi.diplo.de/' },
+        'egypt': { label: 'German Embassy Cairo', url: 'https://kairo.diplo.de/' },
+        'sri lanka': { label: 'German Embassy Colombo', url: 'https://colombo.diplo.de/' },
+        'brazil': { label: 'German Embassy / Consulates in Brazil', url: 'https://brasil.diplo.de/' }
+      };
+      return specificMissions[homeCountryLower] || {
+        label: 'German Embassy Finder',
+        url: 'https://www.auswaertiges-amt.de/en/about-us/auslandsvertretungen/deutsche-auslandsvertretungen'
+      };
+    }
+
+    if (destinationCountry === 'UK') {
+      const vfsCodes = {
+        'india': 'ind',
+        'bangladesh': 'bgd',
+        'pakistan': 'pak',
+        'vietnam': 'vnm',
+        'china': 'chn',
+        'nigeria': 'nga',
+        'ghana': 'gha',
+        'kenya': 'ken',
+        'egypt': 'egy',
+        'sri lanka': 'lka',
+        'brazil': 'bra'
+      };
+      const code = vfsCodes[homeCountryLower];
+      if (code) {
+        return {
+          label: `UK Visa Application Centre in ${homeCountryCapitalized}`,
+          url: `https://visa.vfsglobal.com/${code}/en/gbr/`
+        };
+      }
+    }
+
+    if (destinationCountry === 'USA') {
+      const traveldocsCountries = {
+        'india': 'in',
+        'bangladesh': 'bd',
+        'pakistan': 'pk',
+        'vietnam': 'vn',
+        'china': 'cn',
+        'nepal': 'np',
+        'sri lanka': 'lk'
+      };
+      const code = traveldocsCountries[homeCountryLower];
+      if (code) {
+        return {
+          label: `US Student Visa Scheduling (${homeCountryCapitalized})`,
+          url: `https://www.ustraveldocs.com/${code}/`
+        };
+      }
+    }
+
+    if (destinationCountry === 'Canada') {
+      const vfsCodes = {
+        'india': 'ind',
+        'bangladesh': 'bgd',
+        'pakistan': 'pak',
+        'vietnam': 'vnm',
+        'china': 'chn',
+        'nigeria': 'nga',
+        'ghana': 'gha',
+        'kenya': 'ken',
+        'egypt': 'egy',
+        'sri lanka': 'lka',
+        'brazil': 'bra'
+      };
+      const code = vfsCodes[homeCountryLower];
+      if (code) {
+        return {
+          label: `Canada Visa Application Centre in ${homeCountryCapitalized}`,
+          url: `https://visa.vfsglobal.com/${code}/en/can/`
+        };
+      }
+    }
+
+    return defaultLink;
+  };
+
   // Fetch quick links & requirements
   const selectedCountryResources = COUNTRY_RESOURCES[selectedCountry] || { links: [], requirements: [], embassyLink: null }
+  const dynamicEmbassyLink = getDynamicEmbassyLink(selectedCountry, userHomeCountry);
   
   // Customise Germany links if user is from India/Vietnam/China (needs APS)
   let customLinks = [...selectedCountryResources.links]
@@ -553,10 +651,10 @@ export default function Roadmap() {
             </div>
             
             {/* Embassy Contact Link */}
-            {selectedCountryResources.embassyLink && (
+            {dynamicEmbassyLink && (
               <div style={{ textAlign: 'center', marginTop: '4px' }}>
                 <a
-                  href={selectedCountryResources.embassyLink.url}
+                  href={dynamicEmbassyLink.url}
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
@@ -566,7 +664,7 @@ export default function Roadmap() {
                     fontWeight: 700
                   }}
                 >
-                  {selectedCountryResources.embassyLink.label}
+                  {dynamicEmbassyLink.label}
                 </a>
               </div>
             )}
