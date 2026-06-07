@@ -79,7 +79,7 @@ def fetch_rss_news():
     seen_titles = set()
     
     country_candidates = {}
-    with ThreadPoolExecutor(max_workers=10) as executor:
+    with ThreadPoolExecutor(max_workers=3) as executor:
         futures = {executor.submit(fetch_country_rss, country): country for country in COUNTRIES}
         for future in as_completed(futures):
             country, candidates = future.result()

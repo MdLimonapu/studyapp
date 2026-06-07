@@ -77,7 +77,7 @@ def load_all_country_data():
     global FALLBACK_COURSES
     all_courses = []
     loaded_files = set()
-    data_dirs = [DATA_DIR, DATA_BACKUP_DIR]
+    data_dirs = [DATA_DIR]  # Skip data_backup to save memory on free tier
 
     if not any(os.path.isdir(data_dir) for data_dir in data_dirs):
         print("Warning: no course data directories found.", flush=True)
