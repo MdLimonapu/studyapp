@@ -379,9 +379,33 @@ export default function Home() {
       </section>
 
       <section className="news-section">
-        <div className="news-header">
-          <h2>📰 Latest study abroad &amp; visa news</h2>
-          <span className="live-dot"><span></span>Live updates</span>
+        <div className="news-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '100%', flexWrap: 'wrap', gap: '12px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+            <h2>📰 Latest study abroad &amp; visa news</h2>
+            <span className="live-dot"><span></span>Live updates</span>
+          </div>
+          <a 
+            href="https://news.studplex.com" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '6px',
+              fontSize: '13px',
+              fontWeight: 700,
+              color: 'var(--secondary-accent)',
+              textDecoration: 'none',
+              padding: '6px 14px',
+              borderRadius: '8px',
+              background: 'var(--secondary-glow)',
+              border: '1px solid var(--secondary-border)',
+              transition: 'all 0.2s ease',
+              cursor: 'pointer'
+            }}
+          >
+            More News &amp; Guides →
+          </a>
         </div>
         {newsLoading ? (
           <p className="news-loading">Loading latest news...</p>

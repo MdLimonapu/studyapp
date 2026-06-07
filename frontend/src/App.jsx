@@ -544,6 +544,7 @@ export default function App() {
               <NavLink to="/university">University Matches</NavLink>
               <NavLink to="/roadmap">Check Eligibility</NavLink>
               <NavLink to="/services">Services</NavLink>
+              <a href="https://news.studplex.com" target="_blank" rel="noopener noreferrer">Guides &amp; News</a>
             </div>
             <div className="footer-col">
               <div className="footer-col-title">Support</div>
