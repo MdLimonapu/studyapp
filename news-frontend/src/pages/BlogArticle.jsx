@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import { ArrowLeft, Clock, Eye, Calendar, BookOpen } from 'lucide-react'
 import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 
-const BASE_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:5001";
+const BASE_URL = import.meta.env.VITE_API_URL || "";
 
 export default function BlogArticle() {
   const { slug } = useParams()
@@ -111,6 +112,7 @@ export default function BlogArticle() {
 
           <div className="article-body-content">
             <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
               components={{
                 h2: ({ node, ...props }) => {
                   const rawText = props.children;

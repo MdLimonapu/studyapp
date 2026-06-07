@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams, useNavigate, Link } from 'react-router-dom'
 import { ArrowLeft, BookOpen } from 'lucide-react'
 
-const BASE_URL = import.meta.env.VITE_API_URL || "http://127.0.0.1:5001";
+const BASE_URL = import.meta.env.VITE_API_URL || "";
 
 export default function CountryPage() {
   const { countryName } = useParams()
@@ -95,21 +95,35 @@ export default function CountryPage() {
             <div
               key={art.slug}
               className="article-card"
-              onClick={() => navigate(`/${art.slug}`)}
             >
               <div className="article-card-header">
                 <span className="category-badge">{art.category}</span>
                 <span className="article-date">{art.date}</span>
               </div>
               
-              <div className="article-card-body">
+              <div className="article-card-body" onClick={() => navigate(`/${art.slug}`)}>
                 <h2 className="article-card-title">{art.title}</h2>
                 <p className="article-card-desc">{art.meta_description}</p>
               </div>
 
               <div className="article-card-footer">
-                <span>⏱️ {art.read_time} min read</span>
-                <span>👁️ {art.views || 0} views</span>
+                <div style={{ display: 'flex', gap: '12px', color: 'var(--text-muted)' }}>
+                  <span>⏱️ {art.read_time} min read</span>
+                  <span>👁️ {art.views || 0} views</span>
+                </div>
+                <Link 
+                  to={`/${art.slug}`}
+                  style={{ 
+                    color: 'var(--secondary-accent)', 
+                    textDecoration: 'none', 
+                    fontWeight: 700,
+                    fontSize: '11px',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em'
+                  }}
+                >
+                  Read More →
+                </Link>
               </div>
             </div>
           ))}
