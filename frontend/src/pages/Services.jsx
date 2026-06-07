@@ -387,7 +387,14 @@ export default function Services() {
         <h1 style={{ fontSize: '38px', fontWeight: 800, marginBottom: '12px', color: 'var(--text)' }}>
           Our Services
         </h1>
-        <p style={{ color: 'var(--muted)', fontSize: '16px', maxWidth: '600px', margin: '0 auto', lineHeight: 1.6 }}>
+        <p style={{ 
+          color: '#ffffff', 
+          fontSize: '16px', 
+          margin: '0 auto', 
+          lineHeight: 1.6,
+          whiteSpace: 'nowrap',
+          textShadow: '0 0 10px rgba(255, 255, 255, 0.5), 0 0 2px rgba(255, 255, 255, 0.2)'
+        }}>
           Get expert human assistance and academic evaluations alongside our search engine to guarantee a smooth entry into your dream university abroad.
         </p>
       </div>
