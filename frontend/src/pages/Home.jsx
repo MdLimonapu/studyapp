@@ -239,27 +239,18 @@ export default function Home() {
 
   const isGermanyOnly = false
 
-  const [loadingMsg, setLoadingMsg] = useState('')
-
   const doSearch = async (bypassProfile = false) => {
     setShowProfilePrompt(false)
     setLoading(true)
-    setLoadingMsg('Searching programs...')
     setError('')
-
-    // After 5s show cold-start message
-    const slowTimer = setTimeout(() => {
-      setLoadingMsg('Server is waking up — this can take up to 30s on first visit...')
-    }, 5000)
-
     try {
       const activeProfile = bypassProfile ? null : (useProfile ? profile : null)
       const data = await searchCourses(form, activeProfile)
       localStorage.setItem('searchResults', JSON.stringify(data))
       localStorage.setItem('searchForm', JSON.stringify(form))
       navigate('/university')
-    } catch { setError('Search failed. The backend may still be starting — please try again in a moment.') }
-    finally { clearTimeout(slowTimer); setLoading(false); setLoadingMsg('') }
+    } catch { setError('Search failed. Please try again.') }
+    finally { setLoading(false) }
   }
 
   const submit = async (e) => {
@@ -378,7 +369,7 @@ export default function Home() {
           {error && <p className="error-msg">⚠️ {error}</p>}
 
           <button type="submit" disabled={loading}>
-            {loading ? <><span className="spinner"></span> {loadingMsg}</> : 'Find My Perfect Program'}
+            {loading ? <span className="spinner"></span> : 'Find My Perfect Program'}
           </button>
           
           {user && !isProfileComplete(profile) && (
