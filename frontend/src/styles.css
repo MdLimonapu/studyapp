@@ -1512,6 +1512,9 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   gap: 24px;
   align-items: start;
 }
+.eligibility-two-col > * {
+  min-width: 0;
+}
 
 @media (max-width: 960px) {
   .eligibility-two-col {

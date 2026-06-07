@@ -407,7 +407,7 @@ export default function Roadmap() {
       </div>
 
       <div className="eligibility-two-col">
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px', minWidth: 0 }}>
           {/* COUNTRY SELECTOR GRID */}
           <div className="card roadmap-left-card" style={{ padding: '24px' }}>
             <h3 style={{ fontSize: '18px', fontWeight: 800, marginBottom: '16px' }}>Select Country</h3>
