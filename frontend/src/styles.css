@@ -2619,6 +2619,18 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   border-color: #3f2252 !important;
 }
 
+.quick-link-item {
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.quick-link-item:hover {
+  border-color: var(--secondary-border) !important;
+  background: var(--secondary-glow) !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--secondary-glow);
+}
+
+
 
 
 

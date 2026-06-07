@@ -98,6 +98,138 @@ const ROADMAPS = {
   }
 }
 
+const COUNTRY_RESOURCES = {
+  'Germany': {
+    links: [
+      { label: 'DAAD Requirements Database', url: 'https://www.daad.de/en/study-and-research-in-germany/requirements/', icon: '🔍' },
+      { label: 'Anabin Database (Accreditation)', url: 'https://anabin.kmk.org/', icon: '🏛️' },
+      { label: 'Uni-Assist Portal', url: 'https://www.uni-assist.de/en/', icon: '📤' },
+      { label: 'Expatrio Blocked Account', url: 'https://www.expatrio.com/', icon: '💳' },
+      { label: 'Fintiba Blocked Account', url: 'https://www.fintiba.com/', icon: '🏦' }
+    ],
+    requirements: [
+      { name: 'Language Requirement', value: 'IELTS 6.5+ or German B2/C1' },
+      { name: 'Visa Solvency / Funding', value: 'Blocked Account (€11,904/year)' },
+      { name: 'Application Cost', value: 'Uni-Assist: €75 first course, €30 each add-on' }
+    ],
+    embassyLink: { label: 'German Embassy Dhaka Visa Guidelines', url: 'https://dhaka.diplo.de/bd-en/service/visa-einreise' }
+  },
+  'UK': {
+    links: [
+      { label: 'UCAS Official Application Portal', url: 'https://www.ucas.com/', icon: '📤' },
+      { label: 'UK Gov Student Visa Guidance', url: 'https://www.gov.uk/student-visa', icon: '🇬🇧' },
+      { label: 'IELTS Official Registration', url: 'https://www.ielts.org/', icon: '📝' }
+    ],
+    requirements: [
+      { name: 'Language Requirement', value: 'IELTS Academic 6.0 - 7.0 (or MOI English waiver)' },
+      { name: 'Visa Solvency / Funding', value: 'Tuition Balance + Living funds (£9,207 - £12,006) held for 28 days' },
+      { name: 'CAS Deposit', value: 'Usually £2,000 - £5,000 upfront to issue visa letter' }
+    ],
+    embassyLink: { label: 'UK Visa Application Centre Dhaka', url: 'https://visa.vfsglobal.com/bgd/en/gbr/' }
+  },
+  'USA': {
+    links: [
+      { label: 'Common App Portal', url: 'https://www.commonapp.org/', icon: '📤' },
+      { label: 'SEVIS Fee Payment (FMJfee)', url: 'https://www.fmjfee.com/', icon: '💵' },
+      { label: 'US Visa Scheduling Portal', url: 'https://www.ustraveldocs.com/bd/', icon: '🗓️' }
+    ],
+    requirements: [
+      { name: 'Language Requirement', value: 'IELTS 6.5+, TOEFL 80+, or Duolingo 110+' },
+      { name: 'Visa Solvency / Funding', value: 'I-20 Form required; Sponsor bank solvency showing 1st year expenses' },
+      { name: 'SEVIS & Visa Fees', value: 'SEVIS fee ($350) + DS-160 visa fee ($185)' }
+    ],
+    embassyLink: { label: 'US Embassy Dhaka Student Visa Info', url: 'https://bd.usembassy.gov/visas/nonimmigrant-visas/' }
+  },
+  'Canada': {
+    links: [
+      { label: 'IRCC Canada Study Permit Guide', url: 'https://www.canada.ca/en/immigration-refugees-citizenship/services/study-canada/study-permit.html', icon: '🍁' },
+      { label: 'Scotiabank GIC Program', url: 'https://www.scotiabank.com/ca/en/personal/bank-accounts/students/student-gic.html', icon: '💰' },
+      { label: 'CIBC Student GIC Program', url: 'https://www.cibc.com/en/personal-banking/student-banking/student-gic.html', icon: '🏦' }
+    ],
+    requirements: [
+      { name: 'Language Requirement', value: 'IELTS Academic: minimum 6.0 in all bands' },
+      { name: 'Visa Solvency / Funding', value: 'GIC of $20,635 CAD + tuition fee payment proof' },
+      { name: 'Visa Pathways', value: 'Student Direct Stream (SDS) for faster processing' }
+    ],
+    embassyLink: { label: 'Canada Visa Application Centre Dhaka', url: 'https://visa.vfsglobal.com/bgd/en/can/' }
+  },
+  'Australia': {
+    links: [
+      { label: 'Study in Australia Portal', url: 'https://www.studyaustralia.gov.au/', icon: '🐨' },
+      { label: 'OSHC Australia Health Insurance', url: 'https://www.oshcaustralia.com.au/', icon: '🏥' },
+      { label: 'Home Affairs Visa 500 Guide', url: 'https://immi.homeaffairs.gov.uk/visas/getting-a-visa/visa-listing/student-500', icon: '🇦🇺' }
+    ],
+    requirements: [
+      { name: 'Language Requirement', value: 'IELTS Academic (6.0-6.5) or PTE Academic (50-58)' },
+      { name: 'Visa Solvency / Funding', value: '12 months tuition + Living costs (~$29,710 AUD) + travel funds' },
+      { name: 'Health Cover', value: 'OSHC (Overseas Student Health Cover) is mandatory' }
+    ],
+    embassyLink: { label: 'VFS Global Australia Bangladesh', url: 'https://visa.vfsglobal.com/bgd/en/aus/' }
+  },
+  'Netherlands': {
+    links: [
+      { label: 'Studielink Application Portal', url: 'https://www.studielink.nl/', icon: '🌷' },
+      { label: 'Study in NL Official Guide', url: 'https://www.studyinnl.org/', icon: 'ℹ️' },
+      { label: 'IND Student Residence Permit', url: 'https://ind.nl/en/residence-permits/study/student-residence-permit', icon: '🏛️' }
+    ],
+    requirements: [
+      { name: 'Language Requirement', value: 'IELTS Academic 6.5+ or TOEFL iBT 90+' },
+      { name: 'Visa Solvency / Funding', value: 'Living funds deposit (~€12,180/year) + tuition paid upfront' },
+      { name: 'Visa Procedure', value: 'Host university handles visa application on your behalf' }
+    ],
+    embassyLink: { label: 'Netherlands Embassy Dhaka Student Info', url: 'https://www.netherlandsandyou.nl/web/bangladesh' }
+  },
+  'Sweden': {
+    links: [
+      { label: 'University Admissions Sweden', url: 'https://www.universityadmissions.se/', icon: '🇸🇪' },
+      { label: 'Study in Sweden Portal', url: 'https://studyinsweden.se/', icon: 'ℹ️' },
+      { label: 'Migrationsverket Student Permit', url: 'https://www.migrationsverket.se/English/Private-individuals/Studying-in-Sweden.html', icon: '🏛️' }
+    ],
+    requirements: [
+      { name: 'Language Requirement', value: 'IELTS Academic 6.5+ (no band below 5.5)' },
+      { name: 'Visa Solvency / Funding', value: 'Migration Agency requires proof of ~SEK 10,380/month' },
+      { name: 'Application Cost', value: 'SEK 900 application fee paid online at portal' }
+    ],
+    embassyLink: { label: 'Sweden Embassy Dhaka Visa Guidelines', url: 'https://www.swedenabroad.se/en/embassies/bangladesh-dhaka/' }
+  },
+  'France': {
+    links: [
+      { label: 'Campus France Portal', url: 'https://www.campusfrance.org/', icon: '🇫🇷' },
+      { label: 'France-Visas Official Site', url: 'https://france-visas.gouv.fr/', icon: '🛂' }
+    ],
+    requirements: [
+      { name: 'Language Requirement', value: 'IELTS 6.0+ (English taught) or DELF/DALF B2/C1 (French taught)' },
+      { name: 'Visa Solvency / Funding', value: 'Minimum €615/month proof of funds for 1 year' },
+      { name: 'Mandatory Process', value: 'Campus France Interview and file validation required' }
+    ],
+    embassyLink: { label: 'France Embassy Dhaka Visa Center', url: 'https://bd.ambafrance.org/Applying-for-a-French-visa-in-Bangladesh' }
+  },
+  'Switzerland': {
+    links: [
+      { label: 'Swissuniversities Portal', url: 'https://www.swissuniversities.ch/', icon: '🇨🇭' },
+      { label: 'Study in Switzerland Guide', url: 'https://www.studyinswitzerland.ch/', icon: 'ℹ️' }
+    ],
+    requirements: [
+      { name: 'Language Requirement', value: 'IELTS 6.5+ or French/German B2/C1 depending on program' },
+      { name: 'Visa Solvency / Funding', value: 'Proof of CHF 20,000 held in a Swiss-recognized bank' },
+      { name: 'Application Cost', value: 'Direct application fee: CHF 100 - 200 per university' }
+    ],
+    embassyLink: { label: 'Embassy of Switzerland in Bangladesh', url: 'https://www.eda.admin.ch/dhaka' }
+  },
+  'Japan': {
+    links: [
+      { label: 'Study in Japan Information', url: 'https://www.studyinjapan.go.jp/', icon: '🌸' },
+      { label: 'JLPT Official Website', url: 'https://www.jlpt.jp/e/', icon: '🇯🇵' }
+    ],
+    requirements: [
+      { name: 'Language Requirement', value: 'Japanese-taught: JLPT N2/N1; English-taught: IELTS 6.0+ / TOEFL 80+' },
+      { name: 'Visa Solvency / Funding', value: 'Sponsor bank balance showing around 2,000,000 JPY per year' },
+      { name: 'Certificate of Eligibility', value: 'COE must be approved by Japan Immigration beforehand' }
+    ],
+    embassyLink: { label: 'Embassy of Japan in Bangladesh', url: 'https://www.bd.emb-japan.go.jp/' }
+  }
+}
+
 export default function Roadmap() {
   const [selectedCountry, setSelectedCountry] = useState('Germany')
   const [completedSteps, setCompletedSteps] = useState({})
@@ -204,6 +336,21 @@ export default function Roadmap() {
   const visibleSteps = getVisibleSteps(selectedCountry)
   const currentCompleted = completedSteps[selectedCountry] || {}
 
+  // Fetch quick links & requirements
+  const selectedCountryResources = COUNTRY_RESOURCES[selectedCountry] || { links: [], requirements: [], embassyLink: null }
+  
+  // Customise Germany links if user is from India/Vietnam/China (needs APS)
+  let customLinks = [...selectedCountryResources.links]
+  if (selectedCountry === 'Germany' && needsAPS) {
+    let apsLink = { label: 'APS India Certificate Portal', url: 'https://www.aps-india.de/', icon: '🎓' }
+    if (userHomeCountry.includes('vietnam')) {
+      apsLink = { label: 'APS Vietnam (German Embassy Hanoi)', url: 'https://vietnam.diplo.de/vn-vi/dich-vu-lanh-su/aps', icon: '🎓' }
+    } else if (userHomeCountry.includes('china')) {
+      apsLink = { label: 'APS China Portal', url: 'https://www.aps.org.cn/', icon: '🎓' }
+    }
+    customLinks.unshift(apsLink)
+  }
+
   const handleToggleStep = (stepId) => {
     const isNowChecked = !currentCompleted[stepId];
     if (!isNowChecked && activeUploaderId === stepId) {
@@ -260,30 +407,167 @@ export default function Roadmap() {
       </div>
 
       <div className="eligibility-two-col">
-        {/* COUNTRY SELECTOR GRID */}
-        <div className="card roadmap-left-card" style={{ padding: '24px' }}>
-          <h3 style={{ fontSize: '18px', fontWeight: 800, marginBottom: '16px' }}>Select Country</h3>
-          <div className="country-grid">
-            {Object.keys(ROADMAPS).map(country => {
-              const active = selectedCountry === country
-              const count = getCountryCompletedCount(country)
-              const total = getCountryTotalSteps(country)
-              const done = count === total
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+          {/* COUNTRY SELECTOR GRID */}
+          <div className="card roadmap-left-card" style={{ padding: '24px' }}>
+            <h3 style={{ fontSize: '18px', fontWeight: 800, marginBottom: '16px' }}>Select Country</h3>
+            <div className="country-grid">
+              {Object.keys(ROADMAPS).map(country => {
+                const active = selectedCountry === country
+                const count = getCountryCompletedCount(country)
+                const total = getCountryTotalSteps(country)
+                const done = count === total
 
-              return (
-                <div
-                  key={country}
-                  onClick={() => setSelectedCountry(country)}
-                  className={`country-box ${active ? 'active' : ''}`}
+                return (
+                  <div
+                    key={country}
+                    onClick={() => setSelectedCountry(country)}
+                    className={`country-box ${active ? 'active' : ''}`}
+                  >
+                    <span className="country-box-flag">{ROADMAPS[country].flag}</span>
+                    <span className="country-box-name">{country}</span>
+                    <span className="country-box-status">
+                      {done ? '✅ Eligible' : `${count}/${total} Steps`}
+                    </span>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* QUICK LINKS & RESOURCES CARD */}
+          <div className="card" style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '16px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <span style={{ fontSize: '20px' }}>🔗</span>
+              <h3 style={{ fontSize: '18px', fontWeight: 900, margin: 0 }}>Quick Links & Resources</h3>
+            </div>
+            
+            <p style={{ color: 'var(--muted)', fontSize: '13px', lineHeight: 1.5, margin: 0 }}>
+              Official portals and key eligibility guidelines for <strong>{selectedCountry}</strong>.
+            </p>
+            
+            {/* Quick Links List */}
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+              {customLinks.map((link, idx) => (
+                <a
+                  key={idx}
+                  href={link.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '12px',
+                    padding: '12px 16px',
+                    background: 'var(--dark2)',
+                    border: '1px solid var(--card-border)',
+                    borderRadius: '12px',
+                    textDecoration: 'none',
+                    color: 'var(--text)',
+                    fontSize: '13.5px',
+                    fontWeight: 700,
+                    transition: 'all 0.2s ease',
+                  }}
+                  className="quick-link-item"
                 >
-                  <span className="country-box-flag">{ROADMAPS[country].flag}</span>
-                  <span className="country-box-name">{country}</span>
-                  <span className="country-box-status">
-                    {done ? '✅ Eligible' : `${count}/${total} Steps`}
-                  </span>
+                  <span style={{ fontSize: '16px' }}>{link.icon}</span>
+                  <span style={{ flex: 1 }}>{link.label}</span>
+                  <span style={{ fontSize: '12px', opacity: 0.6 }}>↗</span>
+                </a>
+              ))}
+            </div>
+
+            {/* General Country info */}
+            <div style={{
+              background: 'var(--dark2)',
+              border: '1px solid var(--card-border)',
+              borderRadius: '16px',
+              padding: '16px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '12px'
+            }}>
+              <h4 style={{ fontSize: '12px', fontWeight: 900, margin: 0, textTransform: 'uppercase', letterSpacing: '0.05em', color: 'var(--muted)' }}>
+                📋 General Requirements
+              </h4>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
+                {selectedCountryResources.requirements.map((req, idx) => (
+                  <div key={idx} style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+                    <span style={{ fontSize: '11px', color: 'var(--muted)', fontWeight: 600 }}>{req.name}</span>
+                    <span style={{ fontSize: '13px', color: 'var(--text)', fontWeight: 700 }}>{req.value}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Profile Context / Requirements Used */}
+            <div style={{
+              borderTop: '1px solid var(--card-border)',
+              paddingTop: '16px',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '8px'
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <span style={{ fontSize: '14px' }}>👤</span>
+                <span style={{ fontSize: '11px', fontWeight: 900, color: 'var(--muted)', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
+                  Your Matching Credentials
+                </span>
+              </div>
+              
+              {profile ? (
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                  {profile.currentDegree && (
+                    <span style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--card-border)', borderRadius: '8px', padding: '6px 10px', fontSize: '11.5px', color: 'var(--text)' }}>
+                      🎓 <strong>Degree:</strong> {profile.currentDegree}
+                    </span>
+                  )}
+                  {profile.currentField && (
+                    <span style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--card-border)', borderRadius: '8px', padding: '6px 10px', fontSize: '11.5px', color: 'var(--text)' }}>
+                      💼 <strong>Field:</strong> {profile.currentField}
+                    </span>
+                  )}
+                  {profile.grade && (
+                    <span style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--card-border)', borderRadius: '8px', padding: '6px 10px', fontSize: '11.5px', color: 'var(--text)' }}>
+                      📊 <strong>Grade:</strong> {profile.grade}
+                    </span>
+                  )}
+                  {userHomeCountry && (
+                    <span style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid var(--card-border)', borderRadius: '8px', padding: '6px 10px', fontSize: '11.5px', color: 'var(--text)' }}>
+                      📍 <strong>Origin:</strong> {userHomeCountry.charAt(0).toUpperCase() + userHomeCountry.slice(1)}
+                    </span>
+                  )}
+                  {!profile.currentDegree && !profile.currentField && !profile.grade && (
+                    <span style={{ fontSize: '12px', color: 'var(--muted)', fontStyle: 'italic' }}>
+                      Profile empty. Complete it on the Profile page to customize matches.
+                    </span>
+                  )}
                 </div>
-              )
-            })}
+              ) : (
+                <span style={{ fontSize: '12.5px', color: 'var(--muted)', fontStyle: 'italic' }}>
+                  Sign in to see how your credentials match.
+                </span>
+              )}
+            </div>
+            
+            {/* Embassy Contact Link */}
+            {selectedCountryResources.embassyLink && (
+              <div style={{ textAlign: 'center', marginTop: '4px' }}>
+                <a
+                  href={selectedCountryResources.embassyLink.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    fontSize: '12.5px',
+                    color: 'var(--secondary-accent)',
+                    textDecoration: 'underline',
+                    fontWeight: 700
+                  }}
+                >
+                  {selectedCountryResources.embassyLink.label}
+                </a>
+              </div>
+            )}
           </div>
         </div>
 
