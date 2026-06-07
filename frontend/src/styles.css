@@ -409,7 +409,7 @@ textarea { min-height: 100px; resize: vertical; }
 .suggestion-item span { color: var(--secondary-accent); }
 
 /* BUTTON */
-button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)) {
+button:not(.btn-plain):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)) {
   width: 100%;
   border-radius: 16px;
   border: none;
@@ -423,8 +423,32 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)) {
   transition: all 0.2s;
   margin-top: 8px;
 }
-button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):hover { opacity: 0.95; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.15); }
-button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+button:not(.btn-plain):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):hover { opacity: 0.95; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.15); }
+button:not(.btn-plain):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+
+.btn-plain {
+  width: auto !important;
+  height: auto !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  font-weight: inherit !important;
+  font-size: inherit !important;
+  color: inherit !important;
+  text-transform: none !important;
+  letter-spacing: normal !important;
+  transform: none !important;
+}
+.btn-plain:hover, .btn-plain:active, .btn-plain:focus {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  transform: none !important;
+  opacity: 1 !important;
+}
 .btn-saved { background: #22c55e !important; }
 .btn-outline {
   background: rgba(255, 255, 255, 0.03);
@@ -2069,7 +2093,7 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
 }
 
 /* Primary CTA Submit / Accent Buttons */
-:root[data-theme="light"] button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)) {
+:root[data-theme="light"] button:not(.btn-plain):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)) {
   background: #d2f34c !important;
   color: #111827 !important;
   border: 2px solid #111827 !important;
@@ -2080,12 +2104,12 @@ button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { o
   border-radius: 14px !important;
   transition: transform 0.15s ease, box-shadow 0.15s ease !important;
 }
-:root[data-theme="light"] button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):hover {
+:root[data-theme="light"] button:not(.btn-plain):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):hover {
   transform: translate(-3px, -3px) !important;
   box-shadow: 0 9px 0px #111827 !important;
   opacity: 1 !important;
 }
-:root[data-theme="light"] button:not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):active {
+:root[data-theme="light"] button:not(.btn-plain):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):active {
   transform: translate(0px, 0px) !important;
   box-shadow: 0 3px 0px #111827 !important;
 }

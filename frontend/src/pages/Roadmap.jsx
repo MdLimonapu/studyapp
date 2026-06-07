@@ -695,6 +695,7 @@ export default function Roadmap() {
                                   <div style={{ display: 'flex', alignItems: 'center', marginTop: '4px' }}>
                                     <button
                                       type="button"
+                                      className="btn-plain"
                                       onClick={() => {
                                         setActiveUploaderId(step.id);
                                       }}
@@ -749,6 +750,7 @@ export default function Roadmap() {
                                 <div>
                                   <button
                                     type="button"
+                                    className="btn-plain"
                                     onClick={() => toggleExpandStep(step.id)}
                                     style={{
                                       display: 'inline-flex',
@@ -793,6 +795,7 @@ export default function Roadmap() {
                                               </div>
                                               <button 
                                                 type="button" 
+                                                className="btn-plain"
                                                 onClick={() => deleteDocument(doc.id)} 
                                                 style={{ 
                                                   background: 'transparent', 
@@ -816,6 +819,7 @@ export default function Roadmap() {
                                       <div style={{ marginTop: '4px' }}>
                                         <button
                                           type="button"
+                                          className="btn-plain"
                                           onClick={() => document.getElementById(`doc-upload-${step.id}`).click()}
                                           style={{
                                             background: 'transparent',
