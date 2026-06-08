@@ -45,16 +45,18 @@ MODELS = ["gemini-2.5-flash", "gemini-flash-latest", "gemini-2.0-flash"]
 
 def generate_article_with_retry(client, topic, model_name):
     print(f"✍️ Generating article: '{topic['title']}' using model '{model_name}'...", flush=True)
-    prompt = f"""You are an elite academic copywriter and SEO expert. Write a comprehensive, high-quality, and deeply informative guide/article on the following topic:
+    prompt = f"""You are an experienced study abroad advisor, elite academic copywriter, and SEO expert. Write a comprehensive, high-quality, and deeply informative guide/article on the following topic:
 Title: {topic['title']}
 Description: {topic['prompt']}
 
 Make sure the article has these attributes:
 1. Long-form and extremely thorough (at least 1000-1500 words).
-2. Well-structured in Markdown using H2 (##) and H3 (###) headers, bullet points, numbered lists, and bold text.
-3. Contains a detailed HTML or Markdown table summarizing key steps, costs, or requirements (e.g. document checklists or timelines).
-4. Includes internal linking references back to the main website domain (e.g., 'Use the Studplex Matching Engine to find matching courses' or 'check your detailed eligibility on the Studplex Roadmap page').
-5. SEO optimized.
+2. Humanlike Tone & Empathy: Write in a warm, expert, conversational, and highly natural human voice. Do NOT sound like an AI. Avoid robotic transition phrases or corporate buzzwords (do not use words like "delve", "tapestry", "testament", "moreover", "furthermore", "in conclusion", "it is important to note"). Use varying sentence lengths, personal pronouns, and realistic student-focused scenarios.
+3. Well-structured in Markdown using H2 (##) and H3 (###) headers, bullet points, numbered lists, and bold text.
+4. Contains a detailed HTML or Markdown table summarizing key steps, costs, or requirements (e.g. document checklists or timelines).
+5. Includes internal linking references back to the main website domain (e.g., 'Use the Studplex Matching Engine to find matching courses' or 'check your detailed eligibility on the Studplex Roadmap page').
+6. SEO optimized with natural keyword integration.
+
 
 You must format your response EXACTLY as text with the following delimiters:
 
