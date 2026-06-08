@@ -1,4 +1,5 @@
 import os
+import sys
 import json
 import time
 import datetime
@@ -126,8 +127,8 @@ You must format your response EXACTLY as text with the following delimiters:
     
     # Parse delimited text
     def extract_block(name, text_content):
-        pattern = r'(?i)---' + name + r'---\s*\n(.*?)(?=\n(?i)---[A-Z_]+---| \Z)'
-        match = re.search(pattern, text_content, re.DOTALL)
+        pattern = r'---' + name + r'---\s*\n(.*?)(?=\n---[A-Z_]+---| \Z)'
+        match = re.search(pattern, text_content, re.DOTALL | re.IGNORECASE)
         if match:
             return match.group(1).strip()
         return ""
@@ -182,8 +183,16 @@ def main():
     # 1. Fetch existing slugs
     existing_slugs = get_existing_slugs()
     
-    # 2. Brainstorm 50 new topics
-    topics = brainstorm_topics(client, existing_slugs, count=50)
+    # Parse custom article count from command line arguments
+    count = 50
+    if len(sys.argv) > 1:
+        try:
+            count = int(sys.argv[1])
+        except ValueError:
+            pass
+
+    # 2. Brainstorm new topics
+    topics = brainstorm_topics(client, existing_slugs, count=count)
     
     # 3. Connect to database
     try:
@@ -201,7 +210,7 @@ def main():
     # 4. Generate articles & upload to MongoDB
     success_count = 0
     for idx, topic in enumerate(topics):
-        print(f"[{idx + 1}/50] Processing topic...")
+        print(f"[{idx + 1}/{count}] Processing topic...")
         
         # Try different models in case of transient issues
         article = None
@@ -228,7 +237,7 @@ def main():
         # Avoid API rate limits (15 RPM -> 4s sleep is safe)
         time.sleep(5)
 
-    print(f"🎉 Auto-Agent run finished. Successfully wrote and published {success_count}/50 articles.")
+    print(f"🎉 Auto-Agent run finished. Successfully wrote and published {success_count}/{count} articles.")
 
 if __name__ == "__main__":
     main()
