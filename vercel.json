@@ -1,6 +1,8 @@
 {
   "outputDirectory": "dist",
   "rewrites": [
+    { "source": "/news", "destination": "https://news.studplex.com" },
+    { "source": "/news/:path*", "destination": "https://news.studplex.com/:path*" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
