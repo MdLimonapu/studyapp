@@ -7,8 +7,8 @@
     { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
     { "source": "/robots.txt", "destination": "/robots.txt" },
     { "source": "/ads.txt", "destination": "/ads.txt" },
-    { "source": "/news", "destination": "https://news.studplex.com" },
-    { "source": "/news/:path*", "destination": "https://news.studplex.com/:path*" },
+    { "source": "/news", "destination": "https://news.studplex.com/?proxied=true" },
+    { "source": "/news/:path*", "destination": "https://news.studplex.com/:path*?proxied=true" },
     { "source": "/(.*)", "destination": "/index.html" }
   ]
 }
