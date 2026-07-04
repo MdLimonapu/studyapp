@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://studplex.com/sitemap.xml
+Sitemap: https://www.studplex.com/sitemap.xml
+Sitemap: https://www.studplex.com/news/sitemap.xml
