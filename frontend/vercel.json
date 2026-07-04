@@ -8,6 +8,6 @@
     { "source": "/ads.txt", "destination": "/ads.txt" },
     { "source": "/news", "destination": "https://news.studplex.com/?proxied=true" },
     { "source": "/news/:path*", "destination": "https://news.studplex.com/:path*?proxied=true" },
-    { "source": "/(.*)", "destination": "/index.html" }
+    { "source": "/:path*", "destination": "/index.html" }
   ]
 }
