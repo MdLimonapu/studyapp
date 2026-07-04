@@ -2,13 +2,12 @@
   "cleanUrls": true,
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
-  "routes": [
-    { "src": "/sitemap.xml", "dest": "/sitemap.xml" },
-    { "src": "/robots.txt", "dest": "/robots.txt" },
-    { "src": "/ads.txt", "dest": "/ads.txt" },
-    { "src": "/news", "dest": "https://news.studplex.com/?proxied=true" },
-    { "src": "/news/(.*)", "dest": "https://news.studplex.com/$1?proxied=true" },
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/index.html" }
+  "rewrites": [
+    { "source": "/sitemap.xml", "destination": "/sitemap.xml" },
+    { "source": "/robots.txt", "destination": "/robots.txt" },
+    { "source": "/ads.txt", "destination": "/ads.txt" },
+    { "source": "/news", "destination": "https://news.studplex.com/?proxied=true" },
+    { "source": "/news/:path*", "destination": "https://news.studplex.com/:path*?proxied=true" },
+    { "source": "/((?!assets/|favicon.ico|sitemap.xml|robots.txt|index.html|index).*)", "destination": "/index.html" }
   ]
 }

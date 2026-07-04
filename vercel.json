@@ -1,9 +1,8 @@
 {
   "outputDirectory": "dist",
-  "routes": [
-    { "src": "/news", "dest": "https://news.studplex.com?proxied=true" },
-    { "src": "/news/(.*)", "dest": "https://news.studplex.com/$1?proxied=true" },
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/index.html" }
+  "rewrites": [
+    { "source": "/news", "destination": "https://news.studplex.com?proxied=true" },
+    { "source": "/news/:path*", "destination": "https://news.studplex.com/:path*?proxied=true" },
+    { "source": "/((?!assets/|favicon.ico|sitemap.xml|robots.txt|index.html|index).*)", "destination": "/index.html" }
   ]
 }
