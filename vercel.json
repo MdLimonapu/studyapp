@@ -3,6 +3,6 @@
   "rewrites": [
     { "source": "/news", "destination": "https://news.studplex.com?proxied=true" },
     { "source": "/news/:path*", "destination": "https://news.studplex.com/:path*?proxied=true" },
-    { "source": "/:path*", "destination": "/index.html" }
+    { "source": "/:path*", "destination": "/" }
   ]
 }
