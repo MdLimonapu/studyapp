@@ -8,14 +8,6 @@
     { "source": "/ads.txt", "destination": "/ads.txt" },
     { "source": "/news", "destination": "https://news.studplex.com/?proxied=true" },
     { "source": "/news/:path*", "destination": "https://news.studplex.com/:path*?proxied=true" },
-    { "source": "/about", "destination": "/index.html" },
-    { "source": "/services", "destination": "/index.html" },
-    { "source": "/university", "destination": "/index.html" },
-    { "source": "/roadmap", "destination": "/index.html" },
-    { "source": "/profile", "destination": "/index.html" },
-    { "source": "/contact", "destination": "/index.html" },
-    { "source": "/privacy", "destination": "/index.html" },
-    { "source": "/terms", "destination": "/index.html" },
-    { "source": "/mobile-auth", "destination": "/index.html" }
+    { "source": "/:path*", "destination": "/index.html" }
   ]
 }
