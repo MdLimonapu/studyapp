@@ -24,94 +24,45 @@ export default function Products() {
   }, [selectedCategory, searchQuery, selectedCountry])
 
   return (
-    <div className="products-page-container" style={{ paddingBottom: '80px', maxWidth: '1240px', margin: '0 auto' }}>
+    <div className="products-page-container" style={{ paddingBottom: '80px', maxWidth: '1280px', margin: '0 auto', fontFamily: 'system-ui, -apple-system, sans-serif' }}>
       
-      {/* Clean Professional Store Header */}
-      <div style={{ textAlign: 'center', margin: '40px 0 32px' }}>
-        <h1 style={{ fontSize: '36px', fontWeight: 900, color: 'var(--text)', marginBottom: '10px', letterSpacing: '-0.02em' }}>
-          Student Essentials &amp; Gear
-        </h1>
-        <p style={{ color: 'var(--muted)', fontSize: '16px', maxWidth: '640px', margin: '0 auto 20px' }}>
-          Recommended travel gear, tech, and dorm supplies for international students worldwide.
-        </p>
-        
-        {/* Official Mandatory Amazon Affiliate Disclosure */}
-        <div 
-          style={{
-            background: 'rgba(255, 140, 0, 0.08)',
-            border: '1px solid rgba(255, 140, 0, 0.25)',
-            padding: '12px 20px',
-            borderRadius: '12px',
-            fontSize: '13px',
-            color: 'var(--muted)',
-            lineHeight: 1.5,
-            maxWidth: '800px',
-            margin: '0 auto'
-          }}
-        >
-          <strong>Amazon Associates Disclosure:</strong> As an Amazon Associate, <strong>Studplex</strong> earns from qualifying purchases. Prices and availability are accurate as of the date/time indicated and are subject to change on Amazon.
-        </div>
-      </div>
-
-      {/* Clean Search & Category Filter Bar */}
-      <div 
-        style={{ 
-          background: 'var(--card)', 
-          border: '1px solid var(--card-border)',
-          borderRadius: '20px',
-          padding: '20px 24px',
-          marginBottom: '36px',
-          boxShadow: 'var(--shadow-card)'
-        }}
-      >
-        <div style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', marginBottom: '20px' }}>
-          {/* Search Input */}
-          <div style={{ flex: 1, minWidth: '260px' }}>
-            <input 
-              type="text"
-              placeholder="Search products..."
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              style={{
-                width: '100%',
-                padding: '12px 18px',
-                borderRadius: '12px',
-                border: '1px solid var(--card-border)',
-                background: 'rgba(0, 0, 0, 0.15)',
-                color: 'var(--text)',
-                fontSize: '14px'
-              }}
-            />
+      {/* Clean Minimalist Header */}
+      <div style={{ padding: '24px 0 16px', borderBottom: '1px solid var(--card-border)', marginBottom: '24px' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
+          <div>
+            <h1 style={{ fontSize: '24px', fontWeight: 700, color: 'var(--text)', margin: 0 }}>
+              Student Essentials &amp; Tech Gear
+            </h1>
+            <p style={{ fontSize: '13px', color: 'var(--muted)', margin: '4px 0 0' }}>
+              Handpicked travel essentials, laptops, and study gear for international students.
+            </p>
           </div>
 
-          {/* Destination Country Filter */}
-          <div style={{ width: '220px' }}>
-            <select
-              value={selectedCountry}
-              onChange={(e) => setSelectedCountry(e.target.value)}
-              style={{
-                width: '100%',
-                padding: '12px 16px',
-                borderRadius: '12px',
-                border: '1px solid var(--card-border)',
-                background: 'rgba(0, 0, 0, 0.15)',
-                color: 'var(--text)',
-                fontSize: '14px',
-                cursor: 'pointer'
-              }}
-            >
-              <option value="all">🌍 All Destinations</option>
-              <option value="Germany">🇩🇪 Germany</option>
-              <option value="UK">🇬🇧 United Kingdom</option>
-              <option value="USA">🇺🇸 United States</option>
-              <option value="Canada">🇨🇦 Canada</option>
-              <option value="Australia">🇦🇺 Australia</option>
-            </select>
-          </div>
+          {/* Destination Selector */}
+          <select
+            value={selectedCountry}
+            onChange={(e) => setSelectedCountry(e.target.value)}
+            style={{
+              padding: '8px 14px',
+              borderRadius: '8px',
+              border: '1px solid var(--card-border)',
+              background: 'var(--card)',
+              color: 'var(--text)',
+              fontSize: '13px',
+              cursor: 'pointer'
+            }}
+          >
+            <option value="all">🌍 All Destinations</option>
+            <option value="Germany">🇩🇪 Germany</option>
+            <option value="UK">🇬🇧 United Kingdom</option>
+            <option value="USA">🇺🇸 United States</option>
+            <option value="Canada">🇨🇦 Canada</option>
+            <option value="Australia">🇦🇺 Australia</option>
+          </select>
         </div>
 
-        {/* Category Pills */}
-        <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+        {/* Categories Bar */}
+        <div style={{ display: 'flex', gap: '8px', overflowX: 'auto', marginTop: '16px', paddingBottom: '4px' }}>
           {PRODUCT_CATEGORIES.map((cat) => {
             const isActive = selectedCategory === cat.id
             return (
@@ -119,42 +70,52 @@ export default function Products() {
                 key={cat.id}
                 onClick={() => setSelectedCategory(cat.id)}
                 style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  padding: '9px 18px',
-                  borderRadius: '10px',
+                  padding: '6px 14px',
+                  borderRadius: '6px',
                   border: isActive ? '1px solid var(--accent)' : '1px solid var(--card-border)',
-                  background: isActive ? 'var(--accent)' : 'rgba(255, 255, 255, 0.04)',
+                  background: isActive ? 'var(--accent)' : 'transparent',
                   color: isActive ? '#000000' : 'var(--text)',
-                  fontWeight: isActive ? 800 : 600,
+                  fontWeight: isActive ? 700 : 500,
                   fontSize: '13px',
                   cursor: 'pointer',
+                  whiteSpace: 'nowrap',
                   width: 'auto',
                   margin: 0
                 }}
               >
-                <span>{cat.icon}</span>
-                <span>{cat.name}</span>
+                {cat.icon} {cat.name}
               </button>
             )
           })}
         </div>
       </div>
 
-      {/* Clean Product Grid */}
+      {/* Official Amazon Affiliate Disclosure */}
+      <div 
+        style={{
+          fontSize: '11px',
+          color: 'var(--muted)',
+          marginBottom: '20px',
+          padding: '8px 12px',
+          background: 'rgba(255, 255, 255, 0.02)',
+          borderRadius: '6px',
+          border: '1px solid var(--card-border)'
+        }}
+      >
+        <strong>Amazon Associate Disclosure:</strong> As an Amazon Associate, Studplex earns from qualifying purchases. Prices &amp; availability subject to change on Amazon.
+      </div>
+
+      {/* Compact Grid Layout (Matching Reference Screenshot) */}
       {filteredProducts.length === 0 ? (
-        <div style={{ textAlign: 'center', padding: '60px 20px', background: 'var(--card)', borderRadius: '20px', border: '1px solid var(--card-border)' }}>
-          <div style={{ fontSize: '48px', marginBottom: '16px' }}>🔍</div>
-          <h3 style={{ fontSize: '18px', fontWeight: 700, marginBottom: '8px' }}>No products found</h3>
-          <p style={{ color: 'var(--muted)', fontSize: '14px' }}>Try searching with different terms or selecting another category.</p>
+        <div style={{ textAlign: 'center', padding: '60px 20px', background: 'var(--card)', borderRadius: '8px', border: '1px solid var(--card-border)' }}>
+          <p style={{ color: 'var(--muted)', fontSize: '14px' }}>No products found matching your search criteria.</p>
         </div>
       ) : (
         <div 
           style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
-            gap: '24px'
+            gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))',
+            gap: '12px'
           }}
         >
           {filteredProducts.map((product) => {
@@ -165,113 +126,110 @@ export default function Products() {
                 key={product.id}
                 style={{
                   display: 'flex',
-                  flexDirection: 'column',
-                  borderRadius: '20px',
-                  border: '1px solid var(--card-border)',
                   background: 'var(--card)',
-                  padding: '24px',
-                  boxShadow: 'var(--shadow-card)',
-                  position: 'relative'
+                  border: '1px solid var(--card-border)',
+                  borderRadius: '8px',
+                  padding: '16px',
+                  gap: '16px',
+                  position: 'relative',
+                  transition: 'border-color 0.15s ease'
                 }}
               >
-                {/* Product Badge */}
-                {product.badge && (
-                  <div 
-                    style={{
-                      position: 'absolute',
-                      top: '20px',
-                      left: '20px',
-                      background: 'rgba(255, 140, 0, 0.9)',
-                      color: '#ffffff',
-                      fontSize: '11px',
-                      fontWeight: 800,
-                      padding: '4px 12px',
-                      borderRadius: '14px',
-                      zIndex: 2
-                    }}
-                  >
-                    {product.badge}
-                  </div>
-                )}
-
-                {/* Product Image Frame */}
-                <div 
+                {/* Left Side: Product Image */}
+                <a 
+                  href={productAffiliateUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   style={{
-                    height: '210px',
-                    width: '100%',
-                    borderRadius: '16px',
+                    width: '120px',
+                    height: '120px',
+                    flexShrink: 0,
                     background: '#ffffff',
+                    borderRadius: '6px',
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    marginBottom: '20px',
-                    padding: '20px',
-                    boxSizing: 'border-box'
+                    padding: '8px',
+                    boxSizing: 'border-box',
+                    textDecoration: 'none'
                   }}
                 >
                   <img 
                     src={product.image} 
                     alt={product.name}
-                    style={{ maxHeight: '100%', maxWidth: '100%', objectFit: 'contain' }}
+                    style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
                   />
-                </div>
+                </a>
 
-                {/* Rating & Reviews */}
-                <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '10px' }}>
-                  <span style={{ color: '#f59e0b', fontSize: '13px', fontWeight: 800 }}>★ {product.rating}</span>
-                  <span style={{ fontSize: '12px', color: 'var(--muted)' }}>({product.reviewsCount.toLocaleString()})</span>
-                </div>
+                {/* Right Side: Info & Price */}
+                <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0 }}>
+                  <a 
+                    href={productAffiliateUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{
+                      fontSize: '14px',
+                      fontWeight: 600,
+                      color: 'var(--text)',
+                      textDecoration: 'none',
+                      lineHeight: 1.3,
+                      marginBottom: '6px',
+                      overflow: 'hidden',
+                      textOverflow: 'ellipsis',
+                      display: '-webkit-box',
+                      WebkitLineClamp: 2,
+                      WebkitBoxOrient: 'vertical'
+                    }}
+                    title={product.name}
+                  >
+                    {product.name}
+                  </a>
 
-                {/* Product Title */}
-                <h3 style={{ fontSize: '17px', fontWeight: 800, lineHeight: 1.35, marginBottom: '10px', color: 'var(--text)', minHeight: '46px' }}>
-                  {product.name}
-                </h3>
+                  {/* Price Row */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
+                    <span style={{ fontSize: '18px', fontWeight: 800, color: 'var(--text)' }}>
+                      {product.price}
+                    </span>
+                    <span style={{ color: '#10b981', fontSize: '13px', fontWeight: 700 }}>✓</span>
+                  </div>
 
-                {/* Short Description */}
-                <p style={{ fontSize: '13px', color: 'var(--muted)', lineHeight: 1.5, marginBottom: '20px', flex: 1 }}>
-                  {product.shortDesc}
-                </p>
+                  {/* Rating / Free Shipping label */}
+                  <div style={{ fontSize: '11px', color: 'var(--muted)', marginBottom: '10px' }}>
+                    <span>⭐ {product.rating} ({product.reviewsCount.toLocaleString()})</span>
+                    <span style={{ margin: '0 6px' }}>•</span>
+                    <span>Free Shipping Eligible</span>
+                  </div>
 
-                {/* Price & Amazon Referral Button */}
-                <div style={{ marginTop: 'auto', paddingTop: '16px', borderTop: '1px solid var(--card-border)' }}>
-                  <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '14px' }}>
-                    <span style={{ fontSize: '22px', fontWeight: 900, color: 'var(--text)' }}>{product.price}</span>
+                  {/* Action Link */}
+                  <div style={{ marginTop: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <a 
+                      href={productAffiliateUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{
+                        fontSize: '12px',
+                        fontWeight: 700,
+                        color: 'var(--accent)',
+                        textDecoration: 'none'
+                      }}
+                    >
+                      View on Amazon ↗
+                    </a>
+
                     <button 
                       onClick={() => setActiveModalProduct(product)}
                       style={{
                         background: 'transparent',
                         border: 'none',
                         color: 'var(--muted)',
-                        fontSize: '12px',
-                        fontWeight: 600,
+                        fontSize: '11px',
                         cursor: 'pointer',
                         padding: 0
                       }}
                     >
-                      View Specs ℹ️
+                      Specs ℹ️
                     </button>
                   </div>
-
-                  <a 
-                    href={productAffiliateUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      gap: '8px',
-                      background: 'linear-gradient(135deg, #ff9900 0%, #ff8c00 100%)',
-                      color: '#000000',
-                      fontWeight: 800,
-                      fontSize: '14px',
-                      padding: '12px 18px',
-                      borderRadius: '12px',
-                      textDecoration: 'none'
-                    }}
-                  >
-                    View on Amazon ↗
-                  </a>
                 </div>
               </div>
             )
@@ -282,32 +240,30 @@ export default function Products() {
       {/* Specs Modal */}
       {activeModalProduct && (
         <div className="modal-overlay" style={{ zIndex: 2000 }}>
-          <div className="modal-box" style={{ maxWidth: '580px', padding: '32px', borderRadius: '20px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
-              <h3 style={{ fontSize: '18px', fontWeight: 800, margin: 0 }}>Product Specifications</h3>
+          <div className="modal-box" style={{ maxWidth: '540px', padding: '28px', borderRadius: '12px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
+              <h3 style={{ fontSize: '16px', fontWeight: 700, margin: 0 }}>Product Specifications</h3>
               <button 
                 onClick={() => setActiveModalProduct(null)}
-                style={{ background: 'transparent', border: 'none', fontSize: '20px', cursor: 'pointer', color: 'var(--text)' }}
+                style={{ background: 'transparent', border: 'none', fontSize: '18px', cursor: 'pointer', color: 'var(--text)' }}
               >
                 ✕
               </button>
             </div>
 
-            <div style={{ display: 'flex', gap: '20px', marginBottom: '20px', flexWrap: 'wrap' }}>
-              <div style={{ width: '140px', height: '140px', background: '#ffffff', borderRadius: '14px', padding: '12px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ display: 'flex', gap: '16px', marginBottom: '16px' }}>
+              <div style={{ width: '100px', height: '100px', background: '#ffffff', borderRadius: '6px', padding: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <img src={activeModalProduct.image} alt={activeModalProduct.name} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
               </div>
-              <div style={{ flex: 1, minWidth: '200px' }}>
-                <h4 style={{ fontSize: '18px', fontWeight: 800, marginBottom: '8px' }}>{activeModalProduct.name}</h4>
-                <div style={{ fontSize: '22px', fontWeight: 900, color: 'var(--text)', marginBottom: '6px' }}>{activeModalProduct.price}</div>
-                <div style={{ color: '#f59e0b', fontSize: '13px' }}>★ {activeModalProduct.rating} / 5.0 ({activeModalProduct.reviewsCount.toLocaleString()} reviews)</div>
+              <div>
+                <h4 style={{ fontSize: '15px', fontWeight: 700, marginBottom: '6px' }}>{activeModalProduct.name}</h4>
+                <div style={{ fontSize: '18px', fontWeight: 800, color: 'var(--text)' }}>{activeModalProduct.price}</div>
               </div>
             </div>
 
-            <h5 style={{ fontSize: '14px', fontWeight: 700, marginBottom: '10px' }}>Highlights:</h5>
-            <ul style={{ paddingLeft: '20px', fontSize: '13.5px', color: 'var(--muted)', lineHeight: 1.6, marginBottom: '24px' }}>
+            <ul style={{ paddingLeft: '18px', fontSize: '13px', color: 'var(--muted)', lineHeight: 1.6, marginBottom: '20px' }}>
               {activeModalProduct.highlights.map((item, idx) => (
-                <li key={idx} style={{ marginBottom: '6px' }}>{item}</li>
+                <li key={idx} style={{ marginBottom: '4px' }}>{item}</li>
               ))}
             </ul>
 
@@ -316,16 +272,13 @@ export default function Products() {
               target="_blank"
               rel="noopener noreferrer"
               style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                gap: '8px',
-                background: 'linear-gradient(135deg, #ff9900 0%, #ff8c00 100%)',
+                display: 'block',
+                background: 'var(--accent)',
                 color: '#000000',
-                fontWeight: 800,
-                fontSize: '14px',
-                padding: '14px',
-                borderRadius: '12px',
+                fontWeight: 700,
+                fontSize: '13px',
+                padding: '10px',
+                borderRadius: '6px',
                 textDecoration: 'none',
                 textAlign: 'center'
               }}
