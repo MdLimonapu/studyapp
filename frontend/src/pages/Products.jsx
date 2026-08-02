@@ -5,7 +5,6 @@ export default function Products() {
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCountry, setSelectedCountry] = useState('all')
-  const [activeModalProduct, setActiveModalProduct] = useState(null)
 
   const filteredProducts = useMemo(() => {
     return PRODUCTS_DATA.filter((p) => {
@@ -34,7 +33,7 @@ export default function Products() {
               Student Essentials &amp; Tech Gear
             </h1>
             <p style={{ fontSize: '13px', color: 'var(--muted)', margin: '4px 0 0' }}>
-              Handpicked travel essentials, laptops, and study gear for international students.
+              Handpicked travel essentials, laptops, and study gear for international students. Click any product to view directly on Amazon.
             </p>
           </div>
 
@@ -105,7 +104,7 @@ export default function Products() {
         <strong>Amazon Associate Disclosure:</strong> As an Amazon Associate, Studplex earns from qualifying purchases. Prices &amp; availability subject to change on Amazon.
       </div>
 
-      {/* Compact Grid Layout (Matching Reference Screenshot) */}
+      {/* Compact Grid Layout */}
       {filteredProducts.length === 0 ? (
         <div style={{ textAlign: 'center', padding: '60px 20px', background: 'var(--card)', borderRadius: '8px', border: '1px solid var(--card-border)' }}>
           <p style={{ color: 'var(--muted)', fontSize: '14px' }}>No products found matching your search criteria.</p>
@@ -122,8 +121,11 @@ export default function Products() {
             const productAffiliateUrl = buildAmazonUrl(product.asin, AMAZON_ASSOCIATE_TAG)
 
             return (
-              <div 
+              <a
                 key={product.id}
+                href={productAffiliateUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{
                   display: 'flex',
                   background: 'var(--card)',
@@ -132,14 +134,15 @@ export default function Products() {
                   padding: '16px',
                   gap: '16px',
                   position: 'relative',
-                  transition: 'border-color 0.15s ease'
+                  transition: 'all 0.15s ease',
+                  textDecoration: 'none',
+                  color: 'inherit',
+                  cursor: 'pointer'
                 }}
+                className="product-card-link"
               >
                 {/* Left Side: Product Image */}
-                <a 
-                  href={productAffiliateUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <div 
                   style={{
                     width: '120px',
                     height: '120px',
@@ -151,27 +154,23 @@ export default function Products() {
                     justifyContent: 'center',
                     padding: '8px',
                     boxSizing: 'border-box',
-                    textDecoration: 'none'
+                    overflow: 'hidden'
                   }}
                 >
                   <img 
                     src={product.image} 
                     alt={product.name}
-                    style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }}
+                    style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'cover', borderRadius: '4px' }}
                   />
-                </a>
+                </div>
 
                 {/* Right Side: Info & Price */}
                 <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0 }}>
-                  <a 
-                    href={productAffiliateUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <div 
                     style={{
                       fontSize: '14px',
                       fontWeight: 600,
                       color: 'var(--text)',
-                      textDecoration: 'none',
                       lineHeight: 1.3,
                       marginBottom: '6px',
                       overflow: 'hidden',
@@ -183,7 +182,7 @@ export default function Products() {
                     title={product.name}
                   >
                     {product.name}
-                  </a>
+                  </div>
 
                   {/* Price Row */}
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px' }}>
@@ -197,95 +196,25 @@ export default function Products() {
                   <div style={{ fontSize: '11px', color: 'var(--muted)', marginBottom: '10px' }}>
                     <span>⭐ {product.rating} ({product.reviewsCount.toLocaleString()})</span>
                     <span style={{ margin: '0 6px' }}>•</span>
-                    <span>Free Shipping Eligible</span>
+                    <span>Free Shipping</span>
                   </div>
 
-                  {/* Action Link */}
-                  <div style={{ marginTop: 'auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                    <a 
-                      href={productAffiliateUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                  {/* Direct Buy Link Indicator */}
+                  <div style={{ marginTop: 'auto', display: 'flex', alignItems: 'center', gap: '4px' }}>
+                    <span 
                       style={{
                         fontSize: '12px',
                         fontWeight: 700,
-                        color: 'var(--accent)',
-                        textDecoration: 'none'
+                        color: 'var(--accent)'
                       }}
                     >
-                      View on Amazon ↗
-                    </a>
-
-                    <button 
-                      onClick={() => setActiveModalProduct(product)}
-                      style={{
-                        background: 'transparent',
-                        border: 'none',
-                        color: 'var(--muted)',
-                        fontSize: '11px',
-                        cursor: 'pointer',
-                        padding: 0
-                      }}
-                    >
-                      Specs ℹ️
-                    </button>
+                      Buy on Amazon ↗
+                    </span>
                   </div>
                 </div>
-              </div>
+              </a>
             )
           })}
-        </div>
-      )}
-
-      {/* Specs Modal */}
-      {activeModalProduct && (
-        <div className="modal-overlay" style={{ zIndex: 2000 }}>
-          <div className="modal-box" style={{ maxWidth: '540px', padding: '28px', borderRadius: '12px' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '16px' }}>
-              <h3 style={{ fontSize: '16px', fontWeight: 700, margin: 0 }}>Product Specifications</h3>
-              <button 
-                onClick={() => setActiveModalProduct(null)}
-                style={{ background: 'transparent', border: 'none', fontSize: '18px', cursor: 'pointer', color: 'var(--text)' }}
-              >
-                ✕
-              </button>
-            </div>
-
-            <div style={{ display: 'flex', gap: '16px', marginBottom: '16px' }}>
-              <div style={{ width: '100px', height: '100px', background: '#ffffff', borderRadius: '6px', padding: '8px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                <img src={activeModalProduct.image} alt={activeModalProduct.name} style={{ maxWidth: '100%', maxHeight: '100%', objectFit: 'contain' }} />
-              </div>
-              <div>
-                <h4 style={{ fontSize: '15px', fontWeight: 700, marginBottom: '6px' }}>{activeModalProduct.name}</h4>
-                <div style={{ fontSize: '18px', fontWeight: 800, color: 'var(--text)' }}>{activeModalProduct.price}</div>
-              </div>
-            </div>
-
-            <ul style={{ paddingLeft: '18px', fontSize: '13px', color: 'var(--muted)', lineHeight: 1.6, marginBottom: '20px' }}>
-              {activeModalProduct.highlights.map((item, idx) => (
-                <li key={idx} style={{ marginBottom: '4px' }}>{item}</li>
-              ))}
-            </ul>
-
-            <a 
-              href={buildAmazonUrl(activeModalProduct.asin, AMAZON_ASSOCIATE_TAG)}
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: 'block',
-                background: 'var(--accent)',
-                color: '#000000',
-                fontWeight: 700,
-                fontSize: '13px',
-                padding: '10px',
-                borderRadius: '6px',
-                textDecoration: 'none',
-                textAlign: 'center'
-              }}
-            >
-              Check Price on Amazon ↗
-            </a>
-          </div>
         </div>
       )}
     </div>
