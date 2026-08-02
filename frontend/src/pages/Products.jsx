@@ -35,10 +35,22 @@ export default function Products() {
           Recommended travel gear, tech, and dorm supplies for international students worldwide.
         </p>
         
-        {/* Subtle Legal Affiliate Footnote */}
-        <p style={{ fontSize: '12px', color: 'var(--muted)', opacity: 0.8 }}>
-          As an Amazon Associate, Studplex earns from qualifying purchases. Prices &amp; availability are subject to change on Amazon.
-        </p>
+        {/* Official Mandatory Amazon Affiliate Disclosure */}
+        <div 
+          style={{
+            background: 'rgba(255, 140, 0, 0.08)',
+            border: '1px solid rgba(255, 140, 0, 0.25)',
+            padding: '12px 20px',
+            borderRadius: '12px',
+            fontSize: '13px',
+            color: 'var(--muted)',
+            lineHeight: 1.5,
+            maxWidth: '800px',
+            margin: '0 auto'
+          }}
+        >
+          <strong>Amazon Associates Disclosure:</strong> As an Amazon Associate, <strong>Studplex</strong> earns from qualifying purchases. Prices and availability are accurate as of the date/time indicated and are subject to change on Amazon.
+        </div>
       </div>
 
       {/* Clean Search & Category Filter Bar */}
