@@ -10,6 +10,7 @@ const Roadmap = lazy(() => import('./pages/Roadmap'))
 const Contact = lazy(() => import('./pages/Contact'))
 const Privacy = lazy(() => import('./pages/Privacy'))
 const Terms = lazy(() => import('./pages/Terms'))
+const Products = lazy(() => import('./pages/Products'))
 
 import { SignedIn, SignedOut, UserButton, SignInButton, useUser, SignIn } from '@clerk/clerk-react'
 import { fetchProfile, saveProfile, registerUser } from './api'
@@ -304,6 +305,7 @@ export default function App() {
           <NavLink to="/">Home</NavLink>
           <NavLink to="/university">University Matches</NavLink>
           <NavLink to="/roadmap">Check Eligibility</NavLink>
+          <NavLink to="/products">Essentials Store</NavLink>
           <NavLink to="/services">Services</NavLink>
           <NavLink to="/contact">Contact</NavLink>
         </nav>
@@ -452,6 +454,7 @@ export default function App() {
               <NavLink to="/" onClick={() => setMenuOpen(false)}>Home</NavLink>
               <NavLink to="/university" onClick={() => setMenuOpen(false)}>University Matches</NavLink>
               <NavLink to="/roadmap" onClick={() => setMenuOpen(false)}>Check Eligibility</NavLink>
+              <NavLink to="/products" onClick={() => setMenuOpen(false)}>Essentials Store</NavLink>
               <NavLink to="/services" onClick={() => setMenuOpen(false)}>Services</NavLink>
               <NavLink to="/contact" onClick={() => setMenuOpen(false)}>Contact</NavLink>
             </nav>
@@ -520,6 +523,8 @@ export default function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/university" element={<University />} />
             <Route path="/roadmap" element={<Roadmap />} />
+            <Route path="/products" element={<Products />} />
+            <Route path="/essentials" element={<Products />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy" element={<Privacy />} />

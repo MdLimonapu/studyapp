@@ -1,0 +1,10 @@
+node_modules
+.venv
+backend/.venv
+frontend/node_modules
+news-frontend/node_modules
+dist
+frontend/dist
+news-frontend/dist
+.git
+.vercel
