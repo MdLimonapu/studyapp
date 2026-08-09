@@ -1,259 +1,229 @@
 import { useState, useMemo } from 'react'
 import { PRODUCTS_DATA, PRODUCT_CATEGORIES, AMAZON_ASSOCIATE_TAG, buildAmazonUrl } from '../data/productsData'
 
-const StarRating = ({ rating }) => {
-  const full = Math.floor(rating)
-  const hasHalf = rating % 1 >= 0.5
-  return (
-    <span style={{ display: 'inline-flex', gap: '1px', fontSize: '12px' }}>
-      {[...Array(5)].map((_, i) => (
-        <span key={i} style={{ color: i < full ? '#f59e0b' : (i === full && hasHalf ? '#f59e0b' : 'rgba(255,255,255,0.15)') }}>★</span>
-      ))}
-    </span>
-  )
-}
+/* ── Tiny star component ─────────────────────── */
+const Stars = ({ rating }) => (
+  <span style={{ display: 'inline-flex', gap: '1px' }}>
+    {[...Array(5)].map((_, i) => (
+      <svg key={i} width="13" height="13" viewBox="0 0 20 20" fill={i < Math.round(rating) ? '#facc15' : '#334155'}>
+        <path d="M10 1l2.39 4.84 5.34.78-3.87 3.77.91 5.32L10 13.27l-4.77 2.51.91-5.32L2.27 6.69l5.34-.78z" />
+      </svg>
+    ))}
+  </span>
+)
 
+/* ── Fallback placeholder ────────────────────── */
+const FALLBACK_IMG = 'data:image/svg+xml;base64,' + btoa(
+  '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300" fill="%23111827"><rect width="300" height="300" fill="%23f1f5f9"/><text x="150" y="160" text-anchor="middle" font-family="sans-serif" font-size="18" fill="%2394a3b8">Image</text></svg>'
+)
+
+/* ═══════════════════════════════════════════════ */
 export default function Products() {
-  const [selectedCategory, setSelectedCategory] = useState('all')
-  const [searchQuery, setSearchQuery] = useState('')
-  const [selectedCountry, setSelectedCountry] = useState('all')
-  const [hoveredId, setHoveredId] = useState(null)
+  const [cat, setCat] = useState('all')
+  const [q, setQ] = useState('')
+  const [country, setCountry] = useState('all')
+  const [hover, setHover] = useState(null)
 
-  const filteredProducts = useMemo(() => {
-    return PRODUCTS_DATA.filter((p) => {
-      const matchCat = selectedCategory === 'all' || p.category === selectedCategory
-      const matchSearch =
-        p.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        p.shortDesc.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        (p.badge && p.badge.toLowerCase().includes(searchQuery.toLowerCase()))
-      const matchCountry =
-        selectedCountry === 'all' ||
-        p.targetCountries.includes('Global') ||
-        p.targetCountries.includes(selectedCountry)
-      return matchCat && matchSearch && matchCountry
-    })
-  }, [selectedCategory, searchQuery, selectedCountry])
+  const items = useMemo(() => PRODUCTS_DATA.filter(p => {
+    if (cat !== 'all' && p.category !== cat) return false
+    if (q && !(p.name + p.shortDesc + (p.badge || '')).toLowerCase().includes(q.toLowerCase())) return false
+    if (country !== 'all' && !p.targetCountries.includes('Global') && !p.targetCountries.includes(country)) return false
+    return true
+  }), [cat, q, country])
 
-  const resultCount = filteredProducts.length
+  /* ── Page-scoped inline styles ──────────────── */
+  const page = {
+    maxWidth: 1200,
+    margin: '0 auto',
+    padding: '40px 20px 120px',
+    fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif"
+  }
 
   return (
-    <div style={{ maxWidth: '1300px', margin: '0 auto', paddingBottom: '100px' }}>
+    <div style={page}>
 
-      {/* ═══ SHOP HEADER ═══ */}
-      <div style={{ padding: '32px 0 0' }}>
-        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '16px', marginBottom: '28px' }}>
-          <div>
-            <p style={{ fontSize: '12px', fontWeight: 700, color: 'var(--accent)', textTransform: 'uppercase', letterSpacing: '0.12em', marginBottom: '6px' }}>
-              Studplex Store
-            </p>
-            <h1 style={{ fontSize: '32px', fontWeight: 900, color: 'var(--text)', margin: 0, letterSpacing: '-0.03em', lineHeight: 1.1 }}>
-              Student Essentials
-            </h1>
-          </div>
+      {/* ──── HEADER ──── */}
+      <header style={{ marginBottom: 32 }}>
+        <span style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: '#818cf8' }}>Studplex</span>
+        <h1 style={{ fontSize: 34, fontWeight: 800, letterSpacing: '-0.04em', margin: '4px 0 0', color: 'var(--text)' }}>Student Essentials</h1>
+      </header>
 
-          <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
-            <select
-              value={selectedCountry}
-              onChange={(e) => setSelectedCountry(e.target.value)}
-              style={{
-                padding: '10px 16px', borderRadius: '10px',
-                border: '1px solid var(--card-border)', background: 'var(--card)',
-                color: 'var(--text)', fontSize: '13px', cursor: 'pointer', fontWeight: 600
-              }}
-            >
-              <option value="all">🌍 All</option>
-              <option value="Germany">🇩🇪 Germany</option>
-              <option value="UK">🇬🇧 UK</option>
-              <option value="USA">🇺🇸 USA</option>
-              <option value="Canada">🇨🇦 Canada</option>
-              <option value="Australia">🇦🇺 Australia</option>
-            </select>
-          </div>
-        </div>
-
+      {/* ──── TOOLBAR ──── */}
+      <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap', alignItems: 'center', marginBottom: 24 }}>
         {/* Search */}
-        <div style={{ position: 'relative', marginBottom: '20px' }}>
-          <svg style={{ position: 'absolute', left: '16px', top: '50%', transform: 'translateY(-50%)', opacity: 0.4 }} width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <div style={{ position: 'relative', flex: '1 1 260px', minWidth: 200 }}>
+          <svg style={{ position: 'absolute', left: 14, top: '50%', transform: 'translateY(-50%)', color: '#64748b' }} width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
           <input
-            type="text"
-            placeholder="Search laptops, adapters, luggage..."
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            value={q} onChange={e => setQ(e.target.value)}
+            placeholder="Search products…"
             style={{
-              width: '100%', padding: '14px 16px 14px 44px', borderRadius: '14px',
-              border: '1px solid var(--card-border)', background: 'var(--card)',
-              color: 'var(--text)', fontSize: '14px', outline: 'none'
+              width: '100%', padding: '11px 14px 11px 40px',
+              borderRadius: 10, fontSize: 13, fontWeight: 500,
+              border: '1.5px solid rgba(148,163,184,0.2)',
+              background: 'rgba(15,23,42,0.5)', color: 'var(--text)',
+              outline: 'none', transition: 'border-color .2s'
             }}
           />
         </div>
 
-        {/* Category Tabs */}
-        <div style={{ display: 'flex', gap: '6px', overflowX: 'auto', paddingBottom: '6px' }}>
-          {PRODUCT_CATEGORIES.map((cat) => {
-            const isActive = selectedCategory === cat.id
-            return (
-              <button
-                key={cat.id}
-                onClick={() => setSelectedCategory(cat.id)}
-                style={{
-                  padding: '8px 16px', borderRadius: '10px',
-                  border: isActive ? '1.5px solid var(--accent)' : '1px solid var(--card-border)',
-                  background: isActive ? 'rgba(255, 140, 0, 0.12)' : 'transparent',
-                  color: isActive ? 'var(--accent)' : 'var(--muted)',
-                  fontWeight: isActive ? 700 : 500, fontSize: '13px',
-                  cursor: 'pointer', whiteSpace: 'nowrap', width: 'auto', margin: 0,
-                  transition: 'all 0.15s ease'
-                }}
-              >
-                {cat.icon} {cat.name}
-              </button>
-            )
-          })}
-        </div>
+        {/* Country */}
+        <select value={country} onChange={e => setCountry(e.target.value)} style={{
+          padding: '11px 14px', borderRadius: 10, fontSize: 13, fontWeight: 600,
+          border: '1.5px solid rgba(148,163,184,0.2)', cursor: 'pointer',
+          background: 'rgba(15,23,42,0.5)', color: 'var(--text)'
+        }}>
+          <option value="all">🌍 All Regions</option>
+          <option value="Germany">🇩🇪 Germany</option>
+          <option value="UK">🇬🇧 UK</option>
+          <option value="USA">🇺🇸 USA</option>
+          <option value="Canada">🇨🇦 Canada</option>
+          <option value="Australia">🇦🇺 Australia</option>
+        </select>
       </div>
 
-      {/* ═══ RESULTS BAR ═══ */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 0 16px' }}>
-        <span style={{ fontSize: '13px', color: 'var(--muted)' }}>
-          {resultCount} {resultCount === 1 ? 'product' : 'products'} found
-        </span>
-        <span style={{ fontSize: '11px', color: 'var(--muted)', opacity: 0.7, fontStyle: 'italic' }}>
-          As an Amazon Associate, Studplex earns from qualifying purchases.
-        </span>
+      {/* ──── CATEGORY CHIPS ──── */}
+      <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap', marginBottom: 28 }}>
+        {PRODUCT_CATEGORIES.map(c => {
+          const on = cat === c.id
+          return (
+            <button key={c.id} onClick={() => setCat(c.id)} style={{
+              padding: '7px 16px', borderRadius: 20, fontSize: 13, fontWeight: on ? 700 : 500,
+              cursor: 'pointer', whiteSpace: 'nowrap', margin: 0, width: 'auto',
+              border: 'none',
+              background: on ? '#818cf8' : 'rgba(100,116,139,0.12)',
+              color: on ? '#fff' : '#94a3b8',
+              transition: 'all .2s'
+            }}>
+              {c.icon} {c.name}
+            </button>
+          )
+        })}
       </div>
 
-      {/* ═══ PRODUCT GRID ═══ */}
-      {resultCount === 0 ? (
-        <div style={{ textAlign: 'center', padding: '80px 20px', background: 'var(--card)', borderRadius: '20px', border: '1px solid var(--card-border)' }}>
-          <div style={{ fontSize: '48px', marginBottom: '16px', opacity: 0.5 }}>📦</div>
-          <h3 style={{ fontSize: '18px', fontWeight: 700, marginBottom: '6px' }}>No products found</h3>
-          <p style={{ color: 'var(--muted)', fontSize: '14px' }}>Try adjusting your filters or search terms.</p>
+      {/* ──── RESULTS INFO ──── */}
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
+        <span style={{ fontSize: 13, color: '#64748b', fontWeight: 500 }}>{items.length} product{items.length !== 1 ? 's' : ''}</span>
+        <span style={{ fontSize: 11, color: '#475569', fontStyle: 'italic' }}>As an Amazon Associate, Studplex earns from qualifying purchases.</span>
+      </div>
+
+      {/* ──── GRID ──── */}
+      {items.length === 0 ? (
+        <div style={{ textAlign: 'center', padding: '80px 20px', background: 'rgba(30,41,59,0.4)', borderRadius: 16 }}>
+          <p style={{ fontSize: 40, marginBottom: 12 }}>🔍</p>
+          <p style={{ fontSize: 16, fontWeight: 600, color: 'var(--text)' }}>No products match your filters</p>
+          <p style={{ fontSize: 13, color: '#64748b', marginTop: 4 }}>Try a different search or category.</p>
         </div>
       ) : (
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '20px' }}>
-          {filteredProducts.map((product) => {
-            const productAffiliateUrl = product.customUrl || buildAmazonUrl(product.asin, AMAZON_ASSOCIATE_TAG, product.domain || 'com')
-            const isHovered = hoveredId === product.id
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: 18 }}>
+          {items.map(p => {
+            const url = p.customUrl || buildAmazonUrl(p.asin, AMAZON_ASSOCIATE_TAG, p.domain || 'com')
+            const on = hover === p.id
 
             return (
               <a
-                key={product.id}
-                href={productAffiliateUrl}
+                key={p.id}
+                href={url}
                 target="_blank"
                 rel="noopener noreferrer"
-                onMouseEnter={() => setHoveredId(product.id)}
-                onMouseLeave={() => setHoveredId(null)}
+                onMouseEnter={() => setHover(p.id)}
+                onMouseLeave={() => setHover(null)}
                 style={{
                   display: 'flex', flexDirection: 'column',
-                  background: 'var(--card)',
-                  border: isHovered ? '1px solid rgba(255, 140, 0, 0.4)' : '1px solid var(--card-border)',
-                  borderRadius: '16px',
+                  borderRadius: 14, overflow: 'hidden',
                   textDecoration: 'none', color: 'inherit',
-                  transition: 'all 0.25s cubic-bezier(0.4, 0, 0.2, 1)',
-                  transform: isHovered ? 'translateY(-4px)' : 'translateY(0)',
-                  boxShadow: isHovered
-                    ? '0 20px 40px -12px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,140,0,0.15)'
-                    : '0 2px 8px rgba(0,0,0,0.15)',
-                  overflow: 'hidden',
+                  background: 'rgba(30, 41, 59, 0.45)',
+                  backdropFilter: 'blur(12px)',
+                  border: on ? '1px solid rgba(129,140,248,0.5)' : '1px solid rgba(148,163,184,0.08)',
+                  transform: on ? 'translateY(-5px) scale(1.01)' : 'none',
+                  boxShadow: on
+                    ? '0 24px 48px -12px rgba(0,0,0,0.55), 0 0 0 1px rgba(129,140,248,0.2)'
+                    : '0 1px 4px rgba(0,0,0,0.15)',
+                  transition: 'all .3s cubic-bezier(.4,0,.2,1)',
                   cursor: 'pointer'
                 }}
               >
-                {/* Image Container */}
+                {/* ── Image ── */}
                 <div style={{
-                  position: 'relative',
-                  width: '100%', height: '220px',
-                  background: 'linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%)',
+                  position: 'relative', width: '100%', aspectRatio: '4/3',
+                  background: '#f8fafc',
                   display: 'flex', alignItems: 'center', justifyContent: 'center',
                   overflow: 'hidden'
                 }}>
                   <img
-                    src={product.image}
-                    alt={product.name}
+                    src={p.image}
+                    alt={p.name}
                     loading="lazy"
                     referrerPolicy="no-referrer"
+                    onError={e => { e.currentTarget.src = FALLBACK_IMG }}
                     style={{
-                      width: '100%', height: '100%', objectFit: 'cover',
-                      transition: 'transform 0.4s ease',
-                      transform: isHovered ? 'scale(1.05)' : 'scale(1)'
+                      maxWidth: '80%', maxHeight: '80%', objectFit: 'contain',
+                      transition: 'transform .4s ease',
+                      transform: on ? 'scale(1.08)' : 'scale(1)'
                     }}
                   />
 
-                  {/* Badge */}
-                  {product.badge && (
-                    <div style={{
-                      position: 'absolute', top: '12px', left: '12px',
-                      background: 'rgba(0, 0, 0, 0.75)', backdropFilter: 'blur(8px)',
-                      color: '#ffffff', fontSize: '11px', fontWeight: 700,
-                      padding: '5px 10px', borderRadius: '8px',
-                      letterSpacing: '0.02em'
+                  {/* Badge pill */}
+                  {p.badge && (
+                    <span style={{
+                      position: 'absolute', top: 10, left: 10,
+                      background: '#818cf8', color: '#fff',
+                      fontSize: 10, fontWeight: 700, padding: '3px 9px',
+                      borderRadius: 6, letterSpacing: '0.03em'
                     }}>
-                      {product.badge}
-                    </div>
+                      {p.badge}
+                    </span>
                   )}
-
-                  {/* Amazon Tag */}
-                  <div style={{
-                    position: 'absolute', bottom: '12px', right: '12px',
-                    background: 'rgba(255, 153, 0, 0.9)',
-                    color: '#000', fontSize: '10px', fontWeight: 800,
-                    padding: '4px 8px', borderRadius: '6px',
-                    textTransform: 'uppercase', letterSpacing: '0.05em'
-                  }}>
-                    Amazon
-                  </div>
                 </div>
 
-                {/* Card Body */}
-                <div style={{ padding: '18px 18px 20px', display: 'flex', flexDirection: 'column', flex: 1 }}>
-
-                  {/* Category Label */}
-                  <span style={{ fontSize: '11px', fontWeight: 700, color: 'var(--accent)', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '8px' }}>
-                    {PRODUCT_CATEGORIES.find(c => c.id === product.category)?.name || product.category}
-                  </span>
+                {/* ── Body ── */}
+                <div style={{ padding: '16px 18px 20px', display: 'flex', flexDirection: 'column', flex: 1, gap: 6 }}>
 
                   {/* Title */}
                   <h3 style={{
-                    fontSize: '15px', fontWeight: 700, color: 'var(--text)',
-                    lineHeight: 1.35, marginBottom: '10px', minHeight: '40px',
+                    fontSize: 14, fontWeight: 700, color: 'var(--text)', lineHeight: 1.4,
+                    margin: 0,
                     overflow: 'hidden', textOverflow: 'ellipsis',
                     display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical'
                   }}>
-                    {product.name}
+                    {p.name}
                   </h3>
 
-                  {/* Rating */}
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '12px' }}>
-                    <StarRating rating={product.rating} />
-                    <span style={{ fontSize: '12px', color: 'var(--muted)' }}>
-                      {product.rating} ({product.reviewsCount.toLocaleString()})
-                    </span>
+                  {/* Rating row */}
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                    <Stars rating={p.rating} />
+                    <span style={{ fontSize: 12, color: '#94a3b8' }}>{p.rating}</span>
+                    <span style={{ fontSize: 11, color: '#475569' }}>({p.reviewsCount.toLocaleString()})</span>
                   </div>
 
-                  {/* Description */}
+                  {/* Short desc */}
                   <p style={{
-                    fontSize: '13px', color: 'var(--muted)', lineHeight: 1.5,
-                    marginBottom: '16px', flex: 1,
+                    fontSize: 12, color: '#94a3b8', lineHeight: 1.55, margin: 0,
                     overflow: 'hidden', textOverflow: 'ellipsis',
-                    display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical'
+                    display: '-webkit-box', WebkitLineClamp: 2, WebkitBoxOrient: 'vertical',
+                    flex: 1
                   }}>
-                    {product.shortDesc}
+                    {p.shortDesc}
                   </p>
 
-                  {/* Price & CTA */}
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: '14px', borderTop: '1px solid var(--card-border)' }}>
-                    <span style={{ fontSize: '20px', fontWeight: 900, color: 'var(--text)' }}>
-                      {product.price}
+                  {/* Price + CTA */}
+                  <div style={{
+                    display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                    marginTop: 10, paddingTop: 12,
+                    borderTop: '1px solid rgba(148,163,184,0.1)'
+                  }}>
+                    <span style={{ fontSize: 20, fontWeight: 800, color: 'var(--text)', letterSpacing: '-0.02em' }}>
+                      {p.price}
                     </span>
                     <span style={{
-                      display: 'inline-flex', alignItems: 'center', gap: '4px',
-                      background: isHovered ? 'var(--accent)' : 'rgba(255, 140, 0, 0.12)',
-                      color: isHovered ? '#000' : 'var(--accent)',
-                      fontSize: '12px', fontWeight: 700,
-                      padding: '8px 14px', borderRadius: '8px',
-                      transition: 'all 0.2s ease'
+                      display: 'inline-flex', alignItems: 'center', gap: 5,
+                      padding: '7px 14px', borderRadius: 8,
+                      fontSize: 12, fontWeight: 700,
+                      background: on ? '#818cf8' : 'rgba(129,140,248,0.12)',
+                      color: on ? '#fff' : '#818cf8',
+                      transition: 'all .2s'
                     }}>
-                      View Deal
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"></line><polyline points="7 7 17 7 17 17"></polyline></svg>
+                      View on Amazon
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
                     </span>
                   </div>
                 </div>
