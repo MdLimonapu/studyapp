@@ -1,25 +1,67 @@
 // Default Amazon Associate Tag (Your actual Amazon Tracking Tag)
 export const AMAZON_ASSOCIATE_TAG = 'limison-21';
 
-export const buildAmazonUrl = (asin, tag = AMAZON_ASSOCIATE_TAG, domain = 'com') => {
+export const buildAmazonUrl = (asin, tag = AMAZON_ASSOCIATE_TAG, domain = 'de') => {
   return `https://www.amazon.${domain}/dp/${asin}?tag=${tag}`;
 };
 
 export const PRODUCT_CATEGORIES = [
   { id: 'all', name: 'All Essentials', icon: '🎒' },
   { id: 'tech', name: 'Laptops & Tech', icon: '💻' },
+  { id: 'dorm', name: 'Dorm & Household', icon: '🧺' },
   { id: 'travel', name: 'Luggage & Travel', icon: '🧳' },
-  { id: 'dorm', name: 'Dorm & Living', icon: '🛏️' },
   { id: 'supplies', name: 'Study & Office', icon: '📝' },
   { id: 'adapters', name: 'Adapters & Power', icon: '🔌' }
 ];
 
 export const PRODUCTS_DATA = [
   {
+    id: 'siemens-iq300-washer',
+    name: 'Siemens iQ300 WM14N225 Frontlader Waschmaschine (8 kg, 1400 U/Min)',
+    category: 'dorm',
+    asin: 'B0CH31SQH8',
+    domain: 'de',
+    customUrl: 'https://www.amazon.de/dp/B0CH31SQH8?tag=limison-21&linkCode=ll2&linkId=f76e721ec804841647a55bd66d53f4f2',
+    image: 'https://m.media-amazon.com/images/I/71rI4aP0-xL._AC_SL1500_.jpg',
+    rating: 4.6,
+    reviewsCount: 3850,
+    price: '€414.90',
+    badge: 'Student Household Essential',
+    shortDesc: 'Siemens iQ300 front-load washing machine (8kg capacity, 1400 RPM). Quiet iQdrive motor, speedPack L & smartFinish for student apartments & dorms.',
+    highlights: [
+      '8 kg capacity & 1400 RPM spin speed',
+      'speedPack L for accelerated wash cycles',
+      'iQdrive motor - long-lasting and quiet',
+      'Energy Efficiency Class A'
+    ],
+    targetCountries: ['Germany', 'Global']
+  },
+  {
+    id: 'amazon-de-product-g65',
+    name: 'Amazon Student & Apartment Special Selection',
+    category: 'tech',
+    asin: 'B0G65FW24B',
+    domain: 'de',
+    customUrl: 'https://www.amazon.de/dp/B0G65FW24B?th=1&tag=limison-21&linkCode=ll2&linkId=0e2928837942fcd169c86b5b8f680e8d',
+    image: 'https://m.media-amazon.com/images/I/71TPda7cwUL._AC_SL1500_.jpg',
+    rating: 4.7,
+    reviewsCount: 1250,
+    price: 'Check on Amazon',
+    badge: 'Recommended Deal',
+    shortDesc: 'Curated tech and apartment essential on Amazon Germany with direct affiliate partner tracking.',
+    highlights: [
+      'Direct partner offer on Amazon Germany',
+      'Fast delivery across EU',
+      'Student friendly deal'
+    ],
+    targetCountries: ['Germany', 'Global']
+  },
+  {
     id: 'macbook-air-m2',
     name: 'Apple 2022 MacBook Air Laptop with M2 Chip',
     category: 'tech',
     asin: 'B0B3C5A11S',
+    domain: 'com',
     image: 'https://m.media-amazon.com/images/I/71TPda7cwUL._AC_SL1500_.jpg',
     rating: 4.8,
     reviewsCount: 14200,
@@ -39,6 +81,7 @@ export const PRODUCTS_DATA = [
     name: 'EPICKA Universal All-in-One Travel Power Adapter',
     category: 'adapters',
     asin: 'B078S3M2NX',
+    domain: 'com',
     image: 'https://m.media-amazon.com/images/I/61gR7l+f4pL._AC_SL1500_.jpg',
     rating: 4.7,
     reviewsCount: 22800,
@@ -58,6 +101,7 @@ export const PRODUCTS_DATA = [
     name: 'Samsonite Omni 2 Hardside Expandable Luggage Set',
     category: 'travel',
     asin: 'B08BX8TDB3',
+    domain: 'com',
     image: 'https://m.media-amazon.com/images/I/81fH+1T92UL._AC_SL1500_.jpg',
     rating: 4.6,
     reviewsCount: 18900,
@@ -77,6 +121,7 @@ export const PRODUCTS_DATA = [
     name: 'Sony WH-1000XM4 Wireless Noise Canceling Headphones',
     category: 'tech',
     asin: 'B08F25MLF9',
+    domain: 'com',
     image: 'https://m.media-amazon.com/images/I/71o8Q5XJS5L._AC_SL1500_.jpg',
     rating: 4.7,
     reviewsCount: 56100,
@@ -96,6 +141,7 @@ export const PRODUCTS_DATA = [
     name: 'Anker 737 Power Bank (PowerCore 24K 140W)',
     category: 'adapters',
     asin: 'B09VPHVT2Z',
+    domain: 'com',
     image: 'https://m.media-amazon.com/images/I/61NbfmX-UUL._AC_SL1500_.jpg',
     rating: 4.6,
     reviewsCount: 8400,
@@ -115,6 +161,7 @@ export const PRODUCTS_DATA = [
     name: 'Amazon Kindle Paperwhite (16 GB) – 6.8" Display',
     category: 'supplies',
     asin: 'B09TMN58Y2',
+    domain: 'com',
     image: 'https://m.media-amazon.com/images/I/61bK6PMOC3L._AC_SL1500_.jpg',
     rating: 4.7,
     reviewsCount: 31200,
@@ -134,6 +181,7 @@ export const PRODUCTS_DATA = [
     name: 'Matein Travel Laptop Backpack with USB Charging Port',
     category: 'travel',
     asin: 'B06XZTZ7GB',
+    domain: 'com',
     image: 'https://m.media-amazon.com/images/I/8106aLqRVAL._AC_SL1500_.jpg',
     rating: 4.7,
     reviewsCount: 89000,
@@ -153,6 +201,7 @@ export const PRODUCTS_DATA = [
     name: 'Utopia Bedding Twin XL Sheet Set (Dorm Size)',
     category: 'dorm',
     asin: 'B00N17M9M8',
+    domain: 'com',
     image: 'https://m.media-amazon.com/images/I/61f2xN6k9DL._AC_SL1500_.jpg',
     rating: 4.5,
     reviewsCount: 124000,

@@ -118,7 +118,7 @@ export default function Products() {
           }}
         >
           {filteredProducts.map((product) => {
-            const productAffiliateUrl = buildAmazonUrl(product.asin, AMAZON_ASSOCIATE_TAG)
+            const productAffiliateUrl = product.customUrl || buildAmazonUrl(product.asin, AMAZON_ASSOCIATE_TAG, product.domain || 'com')
 
             return (
               <a
