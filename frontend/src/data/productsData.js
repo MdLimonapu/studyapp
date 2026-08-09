@@ -5,6 +5,13 @@ export const buildAmazonUrl = (asin, tag = AMAZON_ASSOCIATE_TAG, domain = 'de') 
   return `https://www.amazon.${domain}/dp/${asin}?tag=${tag}`;
 };
 
+// Amazon Associates official image widget — always serves real product photos
+const amzImg = (asin, marketplace = 'DE') =>
+  `https://ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=${asin}&Format=_SL500_&ID=AsinImage&MarketPlace=${marketplace}&ServiceVersion=20070822&WS=1&tag=${AMAZON_ASSOCIATE_TAG}`;
+
+const amzImgUS = (asin) =>
+  `https://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=${asin}&Format=_SL500_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=${AMAZON_ASSOCIATE_TAG}`;
+
 export const PRODUCT_CATEGORIES = [
   { id: 'all', name: 'All', icon: '🛍️' },
   { id: 'tech', name: 'Tech', icon: '💻' },
@@ -22,7 +29,7 @@ export const PRODUCTS_DATA = [
     asin: 'B0CH31SQH8',
     domain: 'de',
     customUrl: 'https://www.amazon.de/dp/B0CH31SQH8?tag=limison-21&linkCode=ll2&linkId=f76e721ec804841647a55bd66d53f4f2',
-    image: 'https://images.unsplash.com/photo-1626806787461-102c1bfaaea1?w=400&auto=format&fit=crop&q=80',
+    image: amzImg('B0CH31SQH8', 'DE'),
     rating: 4.6,
     reviewsCount: 3850,
     price: '€414.90',
@@ -43,7 +50,7 @@ export const PRODUCTS_DATA = [
     asin: 'B0G65FW24B',
     domain: 'de',
     customUrl: 'https://www.amazon.de/dp/B0G65FW24B?th=1&tag=limison-21&linkCode=ll2&linkId=0e2928837942fcd169c86b5b8f680e8d',
-    image: 'https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=400&auto=format&fit=crop&q=80',
+    image: amzImg('B0G65FW24B', 'DE'),
     rating: 4.7,
     reviewsCount: 1250,
     price: 'See Price',
@@ -62,7 +69,7 @@ export const PRODUCTS_DATA = [
     category: 'tech',
     asin: 'B0B3C5A11S',
     domain: 'com',
-    image: 'https://images.unsplash.com/photo-1611186871348-b1ce696e52c9?w=400&auto=format&fit=crop&q=80',
+    image: amzImgUS('B0B3C5A11S'),
     rating: 4.8,
     reviewsCount: 14200,
     price: '$999',
@@ -82,7 +89,7 @@ export const PRODUCTS_DATA = [
     category: 'adapters',
     asin: 'B078S3M2NX',
     domain: 'com',
-    image: 'https://images.unsplash.com/photo-1621600411688-4be93cd68504?w=400&auto=format&fit=crop&q=80',
+    image: amzImgUS('B078S3M2NX'),
     rating: 4.7,
     reviewsCount: 22800,
     price: '$22.99',
@@ -102,7 +109,7 @@ export const PRODUCTS_DATA = [
     category: 'travel',
     asin: 'B08BX8TDB3',
     domain: 'com',
-    image: 'https://images.unsplash.com/photo-1565026057447-ba90a3d07d66?w=400&auto=format&fit=crop&q=80',
+    image: amzImgUS('B08BX8TDB3'),
     rating: 4.6,
     reviewsCount: 18900,
     price: '$149.99',
@@ -122,7 +129,7 @@ export const PRODUCTS_DATA = [
     category: 'tech',
     asin: 'B08F25MLF9',
     domain: 'com',
-    image: 'https://images.unsplash.com/photo-1618366712010-f4ae9c647dcb?w=400&auto=format&fit=crop&q=80',
+    image: amzImgUS('B08F25MLF9'),
     rating: 4.7,
     reviewsCount: 56100,
     price: '$348',
@@ -142,7 +149,7 @@ export const PRODUCTS_DATA = [
     category: 'adapters',
     asin: 'B09VPHVT2Z',
     domain: 'com',
-    image: 'https://images.unsplash.com/photo-1609592424109-dd9892f1b177?w=400&auto=format&fit=crop&q=80',
+    image: amzImgUS('B09VPHVT2Z'),
     rating: 4.6,
     reviewsCount: 8400,
     price: '$109.99',
@@ -162,7 +169,7 @@ export const PRODUCTS_DATA = [
     category: 'supplies',
     asin: 'B09TMN58Y2',
     domain: 'com',
-    image: 'https://images.unsplash.com/photo-1592496001020-d31bd830651f?w=400&auto=format&fit=crop&q=80',
+    image: amzImgUS('B09TMN58Y2'),
     rating: 4.7,
     reviewsCount: 31200,
     price: '$149.99',
@@ -182,7 +189,7 @@ export const PRODUCTS_DATA = [
     category: 'travel',
     asin: 'B06XZTZ7GB',
     domain: 'com',
-    image: 'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=400&auto=format&fit=crop&q=80',
+    image: amzImgUS('B06XZTZ7GB'),
     rating: 4.7,
     reviewsCount: 89000,
     price: '$29.96',
@@ -202,7 +209,7 @@ export const PRODUCTS_DATA = [
     category: 'dorm',
     asin: 'B00N17M9M8',
     domain: 'com',
-    image: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=400&auto=format&fit=crop&q=80',
+    image: amzImgUS('B00N17M9M8'),
     rating: 4.5,
     reviewsCount: 124000,
     price: '$16.99',
