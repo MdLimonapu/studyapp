@@ -170,8 +170,8 @@ export default function Products() {
                 >
                   {/* Image */}
                   <div style={{
-                    position: 'relative', width: '100%', aspectRatio: '1/1',
-                    background: '#ffffff', padding: '12px',
+                    position: 'relative', width: '100%', aspectRatio: '4/3',
+                    background: '#f8fafc',
                     display: 'flex', alignItems: 'center', justifyContent: 'center',
                     overflow: 'hidden',
                     borderBottom: `1px solid ${C.border}`
@@ -181,7 +181,7 @@ export default function Products() {
                       referrerPolicy="no-referrer"
                       onError={e => { e.currentTarget.src = FALLBACK }}
                       style={{
-                        maxWidth: '90%', maxHeight: '90%', objectFit: 'contain',
+                        width: '100%', height: '100%', objectFit: 'cover',
                         transition: 'transform .3s ease',
                         transform: on ? 'scale(1.05)' : 'scale(1)'
                       }}
