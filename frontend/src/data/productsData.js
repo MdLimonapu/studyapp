@@ -8,7 +8,7 @@ export const buildAmazonUrl = (asin, tag = AMAZON_ASSOCIATE_TAG, domain = 'de') 
 export const PRODUCT_CATEGORIES = [
   { id: 'all', name: 'All', icon: '🛍️' },
   { id: 'tech', name: 'Tech', icon: '💻' },
-  { id: 'dorm', name: 'Household', icon: '🏠' },
+  { id: 'dorm', name: 'Household & Dorm', icon: '🏠' },
   { id: 'travel', name: 'Travel', icon: '✈️' },
   { id: 'supplies', name: 'Study', icon: '📚' },
   { id: 'adapters', name: 'Power', icon: '⚡' }
@@ -17,7 +17,7 @@ export const PRODUCT_CATEGORIES = [
 export const PRODUCTS_DATA = [
   {
     id: 'siemens-iq300-washer',
-    name: 'Siemens iQ300 WM14N225 Waschmaschine 8kg 1400 U/Min',
+    name: 'Siemens iQ300 WM14N225 Frontlader Waschmaschine (8 kg, 1400 U/Min)',
     category: 'dorm',
     asin: 'B0CH31SQH8',
     domain: 'de',
@@ -26,33 +26,34 @@ export const PRODUCTS_DATA = [
     rating: 4.6,
     reviewsCount: 3850,
     price: '€414.90',
-    badge: 'Top Rated',
-    shortDesc: 'Front-load washing machine with iQdrive motor, speedPack L and smartFinish. Energy Class A.',
+    badge: 'DE Student Essential',
+    shortDesc: 'Siemens iQ300 front-load washing machine with iQdrive motor, speedPack L and smartFinish. Energy Efficiency Class A.',
     highlights: [
       '8 kg capacity & 1400 RPM spin speed',
       'speedPack L for accelerated wash cycles',
-      'iQdrive motor - long-lasting and quiet',
+      'iQdrive motor - quiet & long-lasting',
       'Energy Efficiency Class A'
     ],
     targetCountries: ['Germany', 'Global']
   },
   {
-    id: 'amazon-de-product-g65',
-    name: 'Student Apartment Tech Essential – DE Exclusive',
-    category: 'tech',
+    id: 'bosch-serie4-washer',
+    name: 'Bosch Serie 4 WAN282K4 Waschmaschine (8 kg, 1400 U/Min)',
+    category: 'dorm',
     asin: 'B0G65FW24B',
     domain: 'de',
     customUrl: 'https://www.amazon.de/dp/B0G65FW24B?th=1&tag=limison-21&linkCode=ll2&linkId=0e2928837942fcd169c86b5b8f680e8d',
-    image: '/products/de-exclusive.jpg',
+    image: '/products/bosch-washer.jpg',
     rating: 4.7,
     reviewsCount: 1250,
-    price: 'See Price',
-    badge: 'DE Deal',
-    shortDesc: 'Exclusive tech deal on Amazon Germany. Fast EU delivery with student-friendly pricing.',
+    price: '€429.00',
+    badge: 'DE Best Seller',
+    shortDesc: 'Bosch Serie 4 front-load washing machine with Iron Assist steam program, SpeedPerfect (65% faster wash) and ActiveWater Plus.',
     highlights: [
-      'Direct partner offer on Amazon Germany',
-      'Fast delivery across EU',
-      'Student friendly deal'
+      '8 kg capacity & 1400 RPM spin speed',
+      'Iron Assist steam program reduces wrinkles',
+      'SpeedPerfect washes up to 65% faster',
+      'EcoSilence Drive motor & Energy Class A'
     ],
     targetCountries: ['Germany', 'Global']
   },
@@ -65,9 +66,9 @@ export const PRODUCTS_DATA = [
     image: '/products/macbook-air.jpg',
     rating: 4.8,
     reviewsCount: 14200,
-    price: '$999',
+    price: '$999.00',
     badge: 'Best Seller',
-    shortDesc: '18-hour battery, fanless design, Liquid Retina Display. The gold standard for students.',
+    shortDesc: '18-hour battery, fanless design, Liquid Retina Display. The gold standard for university coursework.',
     highlights: [
       '13.6-inch Liquid Retina Display',
       '8GB Unified Memory, 256GB SSD Storage',
@@ -125,7 +126,7 @@ export const PRODUCTS_DATA = [
     image: '/products/sony-headphones.jpg',
     rating: 4.7,
     reviewsCount: 56100,
-    price: '$348',
+    price: '$348.00',
     badge: 'Editor Pick',
     shortDesc: 'Industry-leading noise cancellation. 30-hour battery. Perfect for libraries and flights.',
     highlights: [
