@@ -273,6 +273,17 @@ export default function App() {
     }
   }, [user, isLoaded])
 
+  // Check if we're on the products/essentials route — render standalone
+  const isProductsPage = window.location.pathname === '/products' || window.location.pathname === '/essentials'
+
+  if (isProductsPage) {
+    return (
+      <Suspense fallback={<div style={{ display: 'flex', justifyContent: 'center', padding: '100px 20px', color: '#666' }}>Loading...</div>}>
+        <Products />
+      </Suspense>
+    )
+  }
+
   return (
     <div className="app-shell">
       <header className="topbar">
@@ -523,8 +534,6 @@ export default function App() {
             <Route path="/services" element={<Services />} />
             <Route path="/university" element={<University />} />
             <Route path="/roadmap" element={<Roadmap />} />
-            <Route path="/products" element={<Products />} />
-            <Route path="/essentials" element={<Products />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy" element={<Privacy />} />

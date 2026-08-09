@@ -61,10 +61,19 @@ export default function Products() {
       {/* ═══ TOP BAR / HEADER ═══ */}
       <div style={{
         background: 'linear-gradient(135deg, #1a3faa 0%, #2851c5 60%, #3b6de0 100%)',
-        padding: '40px 20px 48px',
+        padding: '0 20px 48px',
         marginBottom: 0
       }}>
         <div style={{ maxWidth: 1100, margin: '0 auto' }}>
+          {/* Nav bar */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '16px 0 28px' }}>
+            <a href="/" style={{ display: 'inline-flex', alignItems: 'center', gap: 8, color: 'rgba(255,255,255,0.8)', textDecoration: 'none', fontSize: 13, fontWeight: 600, transition: 'color .15s' }}>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+              Back to Studplex
+            </a>
+            <span style={{ fontSize: 16, fontWeight: 800, color: '#fff', letterSpacing: '-0.01em' }}>Stud<span style={{ opacity: 0.7 }}>plex</span></span>
+          </div>
+
           <p style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', margin: '0 0 6px' }}>Studplex Store</p>
           <h1 style={{ fontSize: 30, fontWeight: 800, color: '#fff', margin: '0 0 20px', letterSpacing: '-0.02em' }}>Student Essentials</h1>
 
