@@ -14,6 +14,7 @@ export const PRODUCT_CATEGORIES = [
   { id: 'adapters', name: 'Power', icon: '⚡' }
 ];
 
+// DESIGN RULE: All product images MUST be isolated front-facing product cutouts on a clean white background. No lifestyle/ambient backgrounds.
 export const PRODUCTS_DATA = [
   {
     id: 'siemens-iq300-washer',
