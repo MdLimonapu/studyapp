@@ -5,13 +5,6 @@ export const buildAmazonUrl = (asin, tag = AMAZON_ASSOCIATE_TAG, domain = 'de') 
   return `https://www.amazon.${domain}/dp/${asin}?tag=${tag}`;
 };
 
-// Amazon Associates official image widget — always serves real product photos
-const amzImg = (asin, marketplace = 'DE') =>
-  `https://ws-eu.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=${asin}&Format=_SL500_&ID=AsinImage&MarketPlace=${marketplace}&ServiceVersion=20070822&WS=1&tag=${AMAZON_ASSOCIATE_TAG}`;
-
-const amzImgUS = (asin) =>
-  `https://ws-na.amazon-adsystem.com/widgets/q?_encoding=UTF8&ASIN=${asin}&Format=_SL500_&ID=AsinImage&MarketPlace=US&ServiceVersion=20070822&WS=1&tag=${AMAZON_ASSOCIATE_TAG}`;
-
 export const PRODUCT_CATEGORIES = [
   { id: 'all', name: 'All', icon: '🛍️' },
   { id: 'tech', name: 'Tech', icon: '💻' },
@@ -29,7 +22,7 @@ export const PRODUCTS_DATA = [
     asin: 'B0CH31SQH8',
     domain: 'de',
     customUrl: 'https://www.amazon.de/dp/B0CH31SQH8?tag=limison-21&linkCode=ll2&linkId=f76e721ec804841647a55bd66d53f4f2',
-    image: amzImg('B0CH31SQH8', 'DE'),
+    image: '/products/siemens-washer.jpg',
     rating: 4.6,
     reviewsCount: 3850,
     price: '€414.90',
@@ -50,7 +43,7 @@ export const PRODUCTS_DATA = [
     asin: 'B0G65FW24B',
     domain: 'de',
     customUrl: 'https://www.amazon.de/dp/B0G65FW24B?th=1&tag=limison-21&linkCode=ll2&linkId=0e2928837942fcd169c86b5b8f680e8d',
-    image: amzImg('B0G65FW24B', 'DE'),
+    image: '/products/de-exclusive.jpg',
     rating: 4.7,
     reviewsCount: 1250,
     price: 'See Price',
@@ -69,7 +62,7 @@ export const PRODUCTS_DATA = [
     category: 'tech',
     asin: 'B0B3C5A11S',
     domain: 'com',
-    image: amzImgUS('B0B3C5A11S'),
+    image: '/products/macbook-air.jpg',
     rating: 4.8,
     reviewsCount: 14200,
     price: '$999',
@@ -89,7 +82,7 @@ export const PRODUCTS_DATA = [
     category: 'adapters',
     asin: 'B078S3M2NX',
     domain: 'com',
-    image: amzImgUS('B078S3M2NX'),
+    image: '/products/epicka-adapter.jpg',
     rating: 4.7,
     reviewsCount: 22800,
     price: '$22.99',
@@ -109,7 +102,7 @@ export const PRODUCTS_DATA = [
     category: 'travel',
     asin: 'B08BX8TDB3',
     domain: 'com',
-    image: amzImgUS('B08BX8TDB3'),
+    image: '/products/samsonite-luggage.jpg',
     rating: 4.6,
     reviewsCount: 18900,
     price: '$149.99',
@@ -129,7 +122,7 @@ export const PRODUCTS_DATA = [
     category: 'tech',
     asin: 'B08F25MLF9',
     domain: 'com',
-    image: amzImgUS('B08F25MLF9'),
+    image: '/products/sony-headphones.jpg',
     rating: 4.7,
     reviewsCount: 56100,
     price: '$348',
@@ -149,7 +142,7 @@ export const PRODUCTS_DATA = [
     category: 'adapters',
     asin: 'B09VPHVT2Z',
     domain: 'com',
-    image: amzImgUS('B09VPHVT2Z'),
+    image: '/products/anker-powerbank.jpg',
     rating: 4.6,
     reviewsCount: 8400,
     price: '$109.99',
@@ -169,7 +162,7 @@ export const PRODUCTS_DATA = [
     category: 'supplies',
     asin: 'B09TMN58Y2',
     domain: 'com',
-    image: amzImgUS('B09TMN58Y2'),
+    image: '/products/kindle-paperwhite.jpg',
     rating: 4.7,
     reviewsCount: 31200,
     price: '$149.99',
@@ -189,7 +182,7 @@ export const PRODUCTS_DATA = [
     category: 'travel',
     asin: 'B06XZTZ7GB',
     domain: 'com',
-    image: amzImgUS('B06XZTZ7GB'),
+    image: '/products/matein-backpack.jpg',
     rating: 4.7,
     reviewsCount: 89000,
     price: '$29.96',
@@ -209,7 +202,7 @@ export const PRODUCTS_DATA = [
     category: 'dorm',
     asin: 'B00N17M9M8',
     domain: 'com',
-    image: amzImgUS('B00N17M9M8'),
+    image: '/products/utopia-bedding.jpg',
     rating: 4.5,
     reviewsCount: 124000,
     price: '$16.99',
