@@ -56,10 +56,17 @@ export async function registerUser(data) {
 export async function fetchCustomProducts() {
   try {
     const res = await fetch(`${BASE_URL}/api/products`);
-    if (!res.ok) return [];
-    return await res.json();
+    if (!res.ok) return { products: [], deletedIds: [] };
+    const data = await res.json();
+    if (Array.isArray(data)) {
+      return { products: data, deletedIds: [] };
+    }
+    return {
+      products: Array.isArray(data.products) ? data.products : [],
+      deletedIds: Array.isArray(data.deletedIds) ? data.deletedIds : []
+    };
   } catch (e) {
-    return [];
+    return { products: [], deletedIds: [] };
   }
 }
 

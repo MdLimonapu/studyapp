@@ -76,47 +76,74 @@ export default function Products() {
   const [region, setRegion] = useState('all')
   const [hov, setHov] = useState(null)
 
-  // Products state (custom items placed FIRST at top, followed by defaults)
+  // Products state (custom items placed FIRST at top, followed by defaults, filtering out deleted)
   const [products, setProducts] = useState(() => {
     try {
+      const deletedLocal = JSON.parse(localStorage.getItem('sp_deleted_product_ids') || '[]')
+      const deletedSet = new Set(Array.isArray(deletedLocal) ? deletedLocal : [])
       const saved = localStorage.getItem('custom_products_store')
+      const customMap = new Map()
       if (saved) {
         const parsed = JSON.parse(saved)
-        if (Array.isArray(parsed) && parsed.length > 0) {
-          const existingIds = new Set(PRODUCTS_DATA.map(p => p.id))
-          const uniqueCustom = parsed.filter(p => !existingIds.has(p.id)).map(fixProductImage)
-          return [...uniqueCustom, ...PRODUCTS_DATA.map(fixProductImage)]
+        if (Array.isArray(parsed)) {
+          parsed.forEach(p => {
+            if (!deletedSet.has(p.id)) customMap.set(p.id, fixProductImage(p))
+          })
         }
       }
+      PRODUCTS_DATA.forEach(p => {
+        if (!deletedSet.has(p.id) && !customMap.has(p.id)) {
+          customMap.set(p.id, fixProductImage(p))
+        }
+      })
+      return Array.from(customMap.values())
     } catch (e) {}
     return PRODUCTS_DATA.map(fixProductImage)
   })
 
-  // Sync custom products from API backend on mount (place custom items at TOP)
+  // Sync custom products & deleted IDs from API backend on mount
   useEffect(() => {
-    fetchCustomProducts().then(customItems => {
-      if (Array.isArray(customItems) && customItems.length > 0) {
-        setProducts(prev => {
-          const customMap = new Map()
-          
-          // 1. Add remote custom items
-          customItems.map(fixProductImage).forEach(p => customMap.set(p.id, p))
+    fetchCustomProducts().then(res => {
+      const customItems = Array.isArray(res) ? res : (res?.products || [])
+      const remoteDeleted = Array.isArray(res?.deletedIds) ? res.deletedIds : []
+      
+      let localDeleted = []
+      try {
+        localDeleted = JSON.parse(localStorage.getItem('sp_deleted_product_ids') || '[]')
+      } catch (e) {}
+      const deletedSet = new Set([...remoteDeleted, ...localDeleted])
 
-          // 2. Add local custom items
-          const savedLocal = localStorage.getItem('custom_products_store')
-          if (savedLocal) {
-            try {
-              JSON.parse(savedLocal).map(fixProductImage).forEach(p => customMap.set(p.id, p))
-            } catch (e) {}
+      setProducts(() => {
+        const customMap = new Map()
+
+        // 1. Add remote custom items
+        customItems.forEach(p => {
+          if (!deletedSet.has(p.id)) {
+            customMap.set(p.id, fixProductImage(p))
           }
-
-          const customList = Array.from(customMap.values())
-          const customIds = new Set(customList.map(c => c.id))
-          const filteredDefaults = PRODUCTS_DATA.map(fixProductImage).filter(d => !customIds.has(d.id))
-
-          return [...customList, ...filteredDefaults]
         })
-      }
+
+        // 2. Add local custom items
+        const savedLocal = localStorage.getItem('custom_products_store')
+        if (savedLocal) {
+          try {
+            JSON.parse(savedLocal).forEach(p => {
+              if (!deletedSet.has(p.id) && !customMap.has(p.id)) {
+                customMap.set(p.id, fixProductImage(p))
+              }
+            })
+          } catch (e) {}
+        }
+
+        // 3. Add default items (only if not deleted)
+        PRODUCTS_DATA.forEach(d => {
+          if (!deletedSet.has(d.id) && !customMap.has(d.id)) {
+            customMap.set(d.id, fixProductImage(d))
+          }
+        })
+
+        return Array.from(customMap.values())
+      })
     }).catch(() => {})
   }, [])
 

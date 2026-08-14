@@ -41,10 +41,27 @@ export default function AdminProducts() {
   const loadData = useCallback(async () => {
     setLoading(true)
     try {
-      const custom = await fetchCustomProducts()
+      const res = await fetchCustomProducts()
+      const custom = Array.isArray(res) ? res : (res?.products || [])
+      const remoteDeleted = Array.isArray(res?.deletedIds) ? res.deletedIds : []
+      
+      let localDeleted = []
+      try {
+        localDeleted = JSON.parse(localStorage.getItem('sp_deleted_product_ids') || '[]')
+      } catch (e) {}
+      const deletedSet = new Set([...remoteDeleted, ...localDeleted])
+
       const map = new Map()
-      if (Array.isArray(custom)) custom.forEach(p => map.set(p.id, p))
-      PRODUCTS_DATA.forEach(p => { if (!map.has(p.id)) map.set(p.id, p) })
+      if (Array.isArray(custom)) {
+        custom.forEach(p => {
+          if (!deletedSet.has(p.id)) map.set(p.id, p)
+        })
+      }
+      PRODUCTS_DATA.forEach(p => {
+        if (!deletedSet.has(p.id) && !map.has(p.id)) {
+          map.set(p.id, p)
+        }
+      })
       setProducts(Array.from(map.values()))
     } catch {
       setProducts([...PRODUCTS_DATA])
@@ -179,6 +196,13 @@ export default function AdminProducts() {
       id: draft.id || `prod_${Date.now()}`
     }
     try {
+      // Remove from local deleted set if previously deleted
+      try {
+        let localDeleted = JSON.parse(localStorage.getItem('sp_deleted_product_ids') || '[]')
+        localDeleted = localDeleted.filter(id => id !== payload.id)
+        localStorage.setItem('sp_deleted_product_ids', JSON.stringify(localDeleted))
+      } catch (e) {}
+
       await addCustomProduct(payload)
       setToast({ type: 'success', text: `Saved "${payload.name}"!` })
       setModalOpen(false)
@@ -193,6 +217,27 @@ export default function AdminProducts() {
   const handleDeleteProduct = async p => {
     if (!window.confirm(`Are you sure you want to delete "${p.name}"?`)) return
     try {
+      // 1. Record in local deleted set immediately
+      let localDeleted = []
+      try {
+        localDeleted = JSON.parse(localStorage.getItem('sp_deleted_product_ids') || '[]')
+      } catch (e) {}
+      if (!localDeleted.includes(p.id)) {
+        localDeleted.push(p.id)
+        localStorage.setItem('sp_deleted_product_ids', JSON.stringify(localDeleted))
+      }
+
+      // 2. Remove from custom_products_store
+      try {
+        const saved = localStorage.getItem('custom_products_store')
+        if (saved) {
+          const parsed = JSON.parse(saved)
+          const filtered = parsed.filter(item => item.id !== p.id)
+          localStorage.setItem('custom_products_store', JSON.stringify(filtered))
+        }
+      } catch (e) {}
+
+      // 3. Inform API backend
       await deleteCustomProduct(p.id)
       setToast({ type: 'success', text: `Deleted "${p.name}"` })
       await loadData()

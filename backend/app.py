@@ -1630,15 +1630,19 @@ You must return your response EXACTLY as a JSON object (no markdown code fences,
 
 @app.route("/api/products", methods=["GET"])
 def get_custom_products():
-    """Get custom added products from MongoDB."""
+    """Get custom added products and deleted IDs from MongoDB."""
     items = []
+    deleted_ids = []
     if products_col is not None:
         try:
-            cursor = products_col.find({}, {"_id": 0})
+            db = products_col.database
+            del_col = db["deleted_products"]
+            deleted_ids = [d["id"] for d in del_col.find({}, {"_id": 0, "id": 1})]
+            cursor = products_col.find({"id": {"$nin": deleted_ids}}, {"_id": 0})
             items = list(cursor)
         except Exception as e:
             print("DB products fetch error:", e)
-    return jsonify(items)
+    return jsonify({"products": items, "deletedIds": deleted_ids})
 
 
 @app.route("/api/products/extract", methods=["POST"])
@@ -1783,6 +1787,9 @@ def add_custom_product():
 
     if products_col is not None:
         try:
+            db = products_col.database
+            del_col = db["deleted_products"]
+            del_col.delete_one({"id": product["id"]})  # Un-delete if previously deleted
             products_col.replace_one({"id": product["id"]}, product, upsert=True)
             return jsonify({"status": "success", "product": product})
         except Exception as e:
@@ -1792,9 +1799,16 @@ def add_custom_product():
 
 @app.route("/api/products/<product_id>", methods=["DELETE"])
 def delete_custom_product(product_id):
-    """Delete a custom product from MongoDB."""
+    """Delete a custom or default product from MongoDB and mark ID as deleted."""
     if products_col is not None:
         try:
+            db = products_col.database
+            del_col = db["deleted_products"]
+            del_col.replace_one(
+                {"id": product_id},
+                {"id": product_id, "deleted_at": datetime.datetime.now().isoformat()},
+                upsert=True
+            )
             products_col.delete_one({"id": product_id})
             return jsonify({"status": "success", "deleted_id": product_id})
         except Exception as e:
