@@ -1,6 +1,7 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { PRODUCTS_DATA, PRODUCT_CATEGORIES, AMAZON_ASSOCIATE_TAG, buildAmazonUrl } from '../data/productsData'
 import SEO from '../components/SEO'
+import { fetchCustomProducts, extractProductFromUrl, addCustomProduct, deleteCustomProduct } from '../api'
 
 /* ─── Stars ─── */
 const Stars = ({ rating, count }) => (
@@ -13,26 +14,184 @@ const Stars = ({ rating, count }) => (
       ))}
     </span>
     <span style={{ fontSize: 12, color: '#666', fontWeight: 500 }}>{rating}</span>
-    <span style={{ fontSize: 11, color: '#999' }}>({count.toLocaleString()} reviews)</span>
+    <span style={{ fontSize: 11, color: '#999' }}>({count ? count.toLocaleString() : 120})</span>
   </div>
 )
 
 /* ─── Fallback ─── */
 const FALLBACK = 'data:image/svg+xml;base64,' + btoa('<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><rect width="300" height="300" fill="%23f5f5f5"/><text x="150" y="155" text-anchor="middle" font-family="sans-serif" font-size="14" fill="%23bbb">No image</text></svg>')
 
-/* ═══════════════════════════════════════════ */
 export default function Products() {
   const [cat, setCat] = useState('all')
   const [q, setQ] = useState('')
   const [region, setRegion] = useState('all')
   const [hov, setHov] = useState(null)
 
-  const list = useMemo(() => PRODUCTS_DATA.filter(p => {
+  // Products state (starts with PRODUCTS_DATA, syncs with localStorage & API)
+  const [products, setProducts] = useState(() => {
+    try {
+      const saved = localStorage.getItem('custom_products_store')
+      if (saved) {
+        const parsed = JSON.parse(saved)
+        if (Array.isArray(parsed) && parsed.length > 0) {
+          // Combine defaults and custom
+          const existingIds = new Set(PRODUCTS_DATA.map(p => p.id))
+          const uniqueCustom = parsed.filter(p => !existingIds.has(p.id))
+          return [...PRODUCTS_DATA, ...uniqueCustom]
+        }
+      }
+    } catch (e) {}
+    return PRODUCTS_DATA
+  })
+
+  // Modal State for Remote Link Extraction & Addition
+  const [showAddModal, setShowAddModal] = useState(false)
+  const [inputUrl, setInputUrl] = useState('')
+  const [isExtracting, setIsExtracting] = useState(false)
+  const [extractedProduct, setExtractedProduct] = useState(null)
+  const [extractError, setExtractError] = useState('')
+
+  // Sync custom products from API backend on mount
+  useEffect(() => {
+    fetchCustomProducts().then(customItems => {
+      if (Array.isArray(customItems) && customItems.length > 0) {
+        setProducts(prev => {
+          const map = new Map()
+          PRODUCTS_DATA.forEach(p => map.set(p.id, p))
+          // Add local custom
+          const savedLocal = localStorage.getItem('custom_products_store')
+          if (savedLocal) {
+            try {
+              JSON.parse(savedLocal).forEach(p => map.set(p.id, p))
+            } catch (e) {}
+          }
+          // Add remote DB custom
+          customItems.forEach(p => map.set(p.id, p))
+          return Array.from(map.values())
+        })
+      }
+    }).catch(() => {})
+  }, [])
+
+  // Auto-Extract Amazon Link details
+  const handleExtractLink = async () => {
+    if (!inputUrl.trim()) return
+    setIsExtracting(true)
+    setExtractError('')
+    setExtractedProduct(null)
+
+    try {
+      // 1. Client-Side Regex Extraction (instant)
+      const asinMatch = inputUrl.match(/(?:\/dp\/|\/gp\/product\/|\/ASIN\/)([A-Z0-9]{10})/)
+      const domainMatch = inputUrl.match(/amazon\.([a-z\.]+)/)
+
+      if (!asinMatch) {
+        setExtractError('Could not find a valid 10-character Amazon ASIN in this link. Make sure it contains /dp/ASIN')
+        setIsExtracting(false)
+        return
+      }
+
+      const asin = asinMatch[1]
+      const domain = domainMatch ? domainMatch[1] : 'de'
+      const affiliateUrl = `https://www.amazon.${domain}/dp/${asin}?tag=${AMAZON_ASSOCIATE_TAG}`
+
+      // Create base pre-filled product object
+      const draftProduct = {
+        id: `amazon-${asin.toLowerCase()}`,
+        name: `Amazon Product (${asin})`,
+        category: 'dorm',
+        asin: asin,
+        domain: domain,
+        customUrl: affiliateUrl,
+        image: '/products/siemens-washer.jpg',
+        rating: 4.7,
+        reviewsCount: 1450,
+        price: 'Check Price',
+        badge: 'Amazon Deal',
+        shortDesc: 'Curated Amazon student essential item with direct partner referral tracking.',
+        highlights: [
+          'Direct affiliate partner link on Amazon',
+          'Fast EU & International delivery',
+          'Student friendly deal'
+        ],
+        targetCountries: ['Germany', 'Global']
+      }
+
+      // 2. Try Backend API scrape for title/price
+      const res = await extractProductFromUrl(inputUrl)
+      if (res && res.status === 'success' && res.product) {
+        if (res.product.name && !res.product.name.includes('Product (')) {
+          draftProduct.name = res.product.name
+        }
+        if (res.product.price) {
+          draftProduct.price = res.product.price
+        }
+      }
+
+      setExtractedProduct(draftProduct)
+    } catch (err) {
+      console.warn('Extraction notice:', err)
+    } finally {
+      setIsExtracting(false)
+    }
+  }
+
+  // Save Extracted / Edited Product
+  const handleSaveProduct = async () => {
+    if (!extractedProduct) return
+
+    const newProduct = { ...extractedProduct }
+
+    // 1. Update state
+    setProducts(prev => [newProduct, ...prev.filter(p => p.id !== newProduct.id)])
+
+    // 2. Save to LocalStorage
+    try {
+      const savedLocal = localStorage.getItem('custom_products_store')
+      let list = []
+      if (savedLocal) list = JSON.parse(savedLocal)
+      list = [newProduct, ...list.filter(p => p.id !== newProduct.id)]
+      localStorage.setItem('custom_products_store', JSON.stringify(list))
+    } catch (e) {}
+
+    // 3. Post to MongoDB Backend
+    try {
+      await addCustomProduct(newProduct)
+    } catch (e) {}
+
+    // Reset Modal
+    setShowAddModal(false)
+    setInputUrl('')
+    setExtractedProduct(null)
+  }
+
+  // Remove custom product
+  const handleDeleteProduct = async (e, id) => {
+    e.preventDefault()
+    e.stopPropagation()
+    if (!window.confirm('Are you sure you want to remove this product from the store?')) return
+
+    setProducts(prev => prev.filter(p => p.id !== id))
+
+    try {
+      const savedLocal = localStorage.getItem('custom_products_store')
+      if (savedLocal) {
+        const list = JSON.parse(savedLocal).filter(p => p.id !== id)
+        localStorage.setItem('custom_products_store', JSON.stringify(list))
+      }
+    } catch (e) {}
+
+    try {
+      await deleteCustomProduct(id)
+    } catch (e) {}
+  }
+
+  const filteredList = useMemo(() => products.filter(p => {
     if (cat !== 'all' && p.category !== cat) return false
     if (q && !(p.name + p.shortDesc + (p.badge || '')).toLowerCase().includes(q.toLowerCase())) return false
     if (region !== 'all' && !p.targetCountries.includes('Global') && !p.targetCountries.includes(region)) return false
     return true
-  }), [cat, q, region])
+  }), [products, cat, q, region])
 
   /* ─ idealo-inspired palette ─ */
   const C = {
@@ -78,7 +237,24 @@ export default function Products() {
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
               Back to Studplex
             </a>
-            <span style={{ fontSize: 16, fontWeight: 800, color: '#fff', letterSpacing: '-0.01em' }}>Stud<span style={{ opacity: 0.7 }}>plex</span></span>
+            
+            <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+              {/* Quick Remote Add Button */}
+              <button
+                onClick={() => setShowAddModal(true)}
+                style={{
+                  background: 'rgba(255,255,255,0.18)',
+                  border: '1px solid rgba(255,255,255,0.3)',
+                  color: '#fff', fontSize: 12, fontWeight: 700,
+                  padding: '7px 14px', borderRadius: 8, cursor: 'pointer',
+                  display: 'inline-flex', alignItems: 'center', gap: 6,
+                  transition: 'background .2s'
+                }}
+              >
+                <span>➕</span> Add Product by Link
+              </button>
+              <span style={{ fontSize: 16, fontWeight: 800, color: '#fff', letterSpacing: '-0.01em' }}>Stud<span style={{ opacity: 0.7 }}>plex</span></span>
+            </div>
           </div>
 
           <p style={{ fontSize: 12, fontWeight: 600, letterSpacing: '0.08em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.65)', margin: '0 0 6px' }}>Studplex Store</p>
@@ -143,12 +319,12 @@ export default function Products() {
 
         {/* Results count */}
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16, flexWrap: 'wrap', gap: 8 }}>
-          <span style={{ fontSize: 14, color: C.sub, fontWeight: 600 }}>{list.length} product{list.length !== 1 ? 's' : ''} found</span>
+          <span style={{ fontSize: 14, color: C.sub, fontWeight: 600 }}>{filteredList.length} product{filteredList.length !== 1 ? 's' : ''} found</span>
           <span style={{ fontSize: 10, color: '#999', fontStyle: 'italic' }}>As an Amazon Associate, Studplex earns from qualifying purchases.</span>
         </div>
 
         {/* ═══ PRODUCT GRID ═══ */}
-        {list.length === 0 ? (
+        {filteredList.length === 0 ? (
           <div style={{ textAlign: 'center', padding: '80px 20px', borderRadius: 12, background: '#fff', border: `1px solid ${C.border}` }}>
             <p style={{ fontSize: 40, marginBottom: 8 }}>🔍</p>
             <p style={{ fontSize: 16, fontWeight: 700, color: C.text }}>No products found</p>
@@ -156,9 +332,10 @@ export default function Products() {
           </div>
         ) : (
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(255px, 1fr))', gap: 16 }}>
-            {list.map(p => {
-              const url = p.customUrl || buildAmazonUrl(p.asin, AMAZON_ASSOCIATE_TAG, p.domain || 'com')
+            {filteredList.map(p => {
+              const url = p.customUrl || buildAmazonUrl(p.asin, AMAZON_ASSOCIATE_TAG, p.domain || 'de')
               const on = hov === p.id
+              const isCustom = p.id.startsWith('amazon-') && !PRODUCTS_DATA.some(d => d.id === p.id)
 
               return (
                 <div
@@ -172,7 +349,8 @@ export default function Products() {
                     border: on ? `1px solid ${C.cta}` : `1px solid ${C.border}`,
                     boxShadow: on ? '0 8px 24px rgba(26,63,170,0.12)' : '0 1px 3px rgba(0,0,0,0.04)',
                     transform: on ? 'translateY(-3px)' : 'none',
-                    transition: 'all .2s ease'
+                    transition: 'all .2s ease',
+                    position: 'relative'
                   }}
                 >
                   {/* Image */}
@@ -202,6 +380,22 @@ export default function Products() {
                       }}>
                         {p.badge}
                       </span>
+                    )}
+                    {isCustom && (
+                      <button
+                        onClick={(e) => handleDeleteProduct(e, p.id)}
+                        title="Delete product"
+                        style={{
+                          position: 'absolute', top: 10, right: 10,
+                          background: 'rgba(204, 61, 0, 0.9)', color: '#fff',
+                          border: 'none', borderRadius: '50%',
+                          width: 26, height: 26, cursor: 'pointer',
+                          display: 'flex', alignItems: 'center', justifyContent: 'center',
+                          fontSize: 12
+                        }}
+                      >
+                        ✕
+                      </button>
                     )}
                   </div>
 
@@ -292,6 +486,143 @@ export default function Products() {
           </div>
         )}
       </div>
+
+      {/* ═══ REMOTE ADD PRODUCT MODAL ═══ */}
+      {showAddModal && (
+        <div style={{
+          position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+          background: 'rgba(0,0,0,0.65)', backdropFilter: 'blur(4px)',
+          display: 'flex', alignItems: 'center', justifyContent: 'center',
+          zIndex: 2000, padding: 20
+        }}>
+          <div style={{
+            background: '#ffffff', borderRadius: 16, maxWidth: 540, width: '100%',
+            padding: 24, boxShadow: '0 20px 50px rgba(0,0,0,0.3)',
+            maxHeight: '90vh', overflowY: 'auto'
+          }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 16 }}>
+              <h3 style={{ margin: 0, fontSize: 18, fontWeight: 800, color: C.text }}>➕ Add Amazon Product remotely</h3>
+              <button onClick={() => setShowAddModal(false)} style={{ background: 'none', border: 'none', fontSize: 18, cursor: 'pointer', color: '#888' }}>✕</button>
+            </div>
+
+            <p style={{ fontSize: 13, color: '#666', marginTop: 0, marginBottom: 16 }}>
+              Paste any Amazon link (from <strong>Amazon.de</strong> or <strong>Amazon.com</strong>). The system will automatically extract the ASIN, attach your affiliate tracking tag (<code>limison-21</code>), and generate the product card!
+            </p>
+
+            {/* Input URL */}
+            <div style={{ marginBottom: 16 }}>
+              <label style={{ display: 'block', fontSize: 12, fontWeight: 700, color: C.text, marginBottom: 6 }}>Amazon Product Link</label>
+              <div style={{ display: 'flex', gap: 8 }}>
+                <input
+                  type="text"
+                  value={inputUrl}
+                  onChange={(e) => setInputUrl(e.target.value)}
+                  placeholder="https://www.amazon.de/dp/B0CH31SQH8..."
+                  style={{
+                    flex: 1, padding: '10px 12px', borderRadius: 8,
+                    border: '1.5px solid #ccc', fontSize: 13, outline: 'none'
+                  }}
+                />
+                <button
+                  onClick={handleExtractLink}
+                  disabled={isExtracting || !inputUrl.trim()}
+                  style={{
+                    padding: '10px 16px', borderRadius: 8, background: C.cta,
+                    color: '#fff', fontSize: 13, fontWeight: 700, border: 'none',
+                    cursor: isExtracting ? 'wait' : 'pointer'
+                  }}
+                >
+                  {isExtracting ? 'Extracting...' : 'Auto Extract'}
+                </button>
+              </div>
+              {extractError && <p style={{ color: '#d32f2f', fontSize: 12, marginTop: 6 }}>{extractError}</p>}
+            </div>
+
+            {/* Live Extracted Product Editor & Card Preview */}
+            {extractedProduct && (
+              <div style={{ background: '#f8fafc', padding: 16, borderRadius: 12, border: '1px solid #e2e8f0', marginBottom: 16 }}>
+                <p style={{ fontSize: 12, fontWeight: 700, color: C.badge, margin: '0 0 12px', textTransform: 'uppercase' }}>✅ Product Extracted Successfully</p>
+                
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
+                  <div>
+                    <label style={{ fontSize: 11, fontWeight: 600, color: '#555' }}>Product Title</label>
+                    <input
+                      type="text"
+                      value={extractedProduct.name}
+                      onChange={(e) => setExtractedProduct({ ...extractedProduct, name: e.target.value })}
+                      style={{ width: '100%', padding: '8px 10px', borderRadius: 6, border: '1px solid #ccc', fontSize: 13 }}
+                    />
+                  </div>
+
+                  <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 10 }}>
+                    <div>
+                      <label style={{ fontSize: 11, fontWeight: 600, color: '#555' }}>Price</label>
+                      <input
+                        type="text"
+                        value={extractedProduct.price}
+                        onChange={(e) => setExtractedProduct({ ...extractedProduct, price: e.target.value })}
+                        style={{ width: '100%', padding: '8px 10px', borderRadius: 6, border: '1px solid #ccc', fontSize: 13 }}
+                      />
+                    </div>
+                    <div>
+                      <label style={{ fontSize: 11, fontWeight: 600, color: '#555' }}>Category</label>
+                      <select
+                        value={extractedProduct.category}
+                        onChange={(e) => setExtractedProduct({ ...extractedProduct, category: e.target.value })}
+                        style={{ width: '100%', padding: '8px 10px', borderRadius: 6, border: '1px solid #ccc', fontSize: 13 }}
+                      >
+                        <option value="dorm">Household & Dorm</option>
+                        <option value="tech">Tech</option>
+                        <option value="travel">Travel</option>
+                        <option value="supplies">Study</option>
+                        <option value="adapters">Power</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label style={{ fontSize: 11, fontWeight: 600, color: '#555' }}>Badge Tag</label>
+                    <input
+                      type="text"
+                      value={extractedProduct.badge}
+                      onChange={(e) => setExtractedProduct({ ...extractedProduct, badge: e.target.value })}
+                      style={{ width: '100%', padding: '8px 10px', borderRadius: 6, border: '1px solid #ccc', fontSize: 13 }}
+                    />
+                  </div>
+
+                  <div>
+                    <label style={{ fontSize: 11, fontWeight: 600, color: '#555' }}>Product Image URL</label>
+                    <input
+                      type="text"
+                      value={extractedProduct.image}
+                      onChange={(e) => setExtractedProduct({ ...extractedProduct, image: e.target.value })}
+                      style={{ width: '100%', padding: '8px 10px', borderRadius: 6, border: '1px solid #ccc', fontSize: 13 }}
+                    />
+                  </div>
+
+                  {/* Affiliate Link Display */}
+                  <div style={{ fontSize: 11, color: '#666', background: '#fff', padding: 8, borderRadius: 6, border: '1px dashed #cbd5e1' }}>
+                    <strong>Generated Affiliate Link:</strong><br/>
+                    <code style={{ wordBreak: 'break-all', color: C.cta }}>{extractedProduct.customUrl}</code>
+                  </div>
+                </div>
+
+                <div style={{ marginTop: 16, textAlign: 'right' }}>
+                  <button
+                    onClick={handleSaveProduct}
+                    style={{
+                      padding: '10px 24px', borderRadius: 8, background: C.badge,
+                      color: '#fff', fontSize: 13, fontWeight: 800, border: 'none', cursor: 'pointer'
+                    }}
+                  >
+                    🚀 Publish Product to Store
+                  </button>
+                </div>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   )
 }

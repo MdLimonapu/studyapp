@@ -44,6 +44,11 @@ if mongo_uri:
         users_col.create_index("email", unique=True)
         articles_col = db["articles"]
         articles_col.create_index("slug", unique=True)
+        products_col = db["products"]
+        try:
+            products_col.create_index("id", unique=True)
+        except Exception:
+            pass
         mongo_client.admin.command('ping')
         print(f"✅ Connected to Cloud MongoDB Atlas successfully (DB: {db_name}).", flush=True)
     except Exception as e:
@@ -1623,6 +1628,119 @@ You must return your response EXACTLY as a JSON object (no markdown code fences,
         return jsonify({"error": f"Failed to generate article: {e}"}), 500
 
 
+@app.route("/api/products", methods=["GET"])
+def get_custom_products():
+    """Get custom added products from MongoDB."""
+    items = []
+    if products_col is not None:
+        try:
+            cursor = products_col.find({}, {"_id": 0})
+            items = list(cursor)
+        except Exception as e:
+            print("DB products fetch error:", e)
+    return jsonify(items)
+
+
+@app.route("/api/products/extract", methods=["POST"])
+def extract_amazon_product():
+    """Extract product details from an Amazon link."""
+    data = request.json or {}
+    url = data.get("url", "").strip()
+    if not url:
+        return jsonify({"error": "Amazon link URL is required"}), 400
+
+    asin_match = re.search(r'(?:/dp/|/gp/product/|/ASIN/)([A-Z0-9]{10})', url)
+    domain_match = re.search(r'amazon\.([a-z\.]+)', url)
+
+    if not asin_match:
+        return jsonify({"error": "Could not find a valid 10-character Amazon ASIN in the link provided."}), 400
+
+    asin = asin_match.group(1)
+    domain = domain_match.group(1) if domain_match else "de"
+    affiliate_tag = "limison-21"
+    
+    if domain == "de":
+        affiliate_url = f"https://www.amazon.de/dp/{asin}?tag={affiliate_tag}"
+    else:
+        affiliate_url = f"https://www.amazon.{domain}/dp/{asin}?tag={affiliate_tag}"
+
+    product = {
+        "id": f"amazon-{asin.lower()}",
+        "name": f"Amazon Product ({asin})",
+        "category": "dorm",
+        "asin": asin,
+        "domain": domain,
+        "customUrl": affiliate_url,
+        "image": "/products/siemens-washer.jpg",
+        "rating": 4.7,
+        "reviewsCount": 1250,
+        "price": "Check Price",
+        "badge": "Amazon Deal",
+        "shortDesc": "Curated Amazon student essential product with partner affiliate link.",
+        "highlights": [
+            "Official partner deal on Amazon",
+            "Fast EU & international delivery",
+            "Student friendly pricing"
+        ],
+        "targetCountries": ["Germany", "Global"]
+    }
+
+    try:
+        ctx = ssl.create_default_context()
+        ctx.check_hostname = False
+        ctx.verify_mode = ssl.CERT_NONE
+        headers = {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36',
+            'Accept-Language': 'en-US,en;q=0.9,de-DE;q=0.8,de;q=0.7'
+        }
+        req = urllib.request.Request(url, headers=headers)
+        with urllib.request.urlopen(req, context=ctx, timeout=5) as resp:
+            html = resp.read().decode('utf-8', errors='ignore')
+            soup = BeautifulSoup(html, 'html.parser')
+
+            title_el = soup.find(id='productTitle')
+            if title_el:
+                product["name"] = title_el.get_text().strip()
+
+            price_el = soup.find('span', {'class': 'a-offscreen'}) or soup.find(id='priceblock_ourprice')
+            if price_el:
+                product["price"] = price_el.get_text().strip()
+    except Exception as e:
+        print(f"Scrape attempt warning for {url}: {e}")
+
+    return jsonify({"status": "success", "product": product})
+
+
+@app.route("/api/products/add", methods=["POST"])
+def add_custom_product():
+    """Add or update a product in MongoDB."""
+    data = request.json or {}
+    product = data.get("product")
+    if not product or not product.get("id"):
+        return jsonify({"error": "Valid product payload is required"}), 400
+
+    if products_col is not None:
+        try:
+            products_col.replace_one({"id": product["id"]}, product, upsert=True)
+            return jsonify({"status": "success", "product": product})
+        except Exception as e:
+            return jsonify({"error": f"Database error: {e}"}), 500
+    return jsonify({"status": "success", "product": product, "notice": "Saved locally"})
+
+
+@app.route("/api/products/<product_id>", methods=["DELETE"])
+def delete_custom_product(product_id):
+    """Delete a custom product from MongoDB."""
+    if products_col is not None:
+        try:
+            products_col.delete_one({"id": product_id})
+            return jsonify({"status": "success", "deleted_id": product_id})
+        except Exception as e:
+            return jsonify({"error": f"Database error: {e}"}), 500
+    return jsonify({"status": "success", "deleted_id": product_id})
+
+
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5001))
     app.run(host="0.0.0.0", port=port, debug=False)
+

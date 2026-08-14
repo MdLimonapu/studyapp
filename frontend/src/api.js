@@ -53,3 +53,39 @@ export async function registerUser(data) {
   return res.json();
 }
 
+export async function fetchCustomProducts() {
+  try {
+    const res = await fetch(`${BASE_URL}/api/products`);
+    if (!res.ok) return [];
+    return await res.json();
+  } catch (e) {
+    return [];
+  }
+}
+
+export async function extractProductFromUrl(url) {
+  const res = await fetch(`${BASE_URL}/api/products/extract`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ url }),
+  });
+  return res.json();
+}
+
+export async function addCustomProduct(product) {
+  const res = await fetch(`${BASE_URL}/api/products/add`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ product }),
+  });
+  return res.json();
+}
+
+export async function deleteCustomProduct(id) {
+  const res = await fetch(`${BASE_URL}/api/products/${encodeURIComponent(id)}`, {
+    method: "DELETE",
+  });
+  return res.json();
+}
+
+
