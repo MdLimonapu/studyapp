@@ -27,18 +27,39 @@ function fixProductImage(p) {
   let img = p.image
   let category = p.category || 'dorm'
 
-  if (name.includes('soundcore') || name.includes('headphone') || name.includes('anker p20i')) {
+  if (name.includes('soundcore') || name.includes('headphone') || name.includes('earbud') || name.includes('anker p20i') || name.includes('audio')) {
     img = '/products/sony-headphones.jpg'
     category = 'tech'
-  } else if (name.includes('govee') || name.includes('bulb') || name.includes('lamp') || name.includes('light')) {
-    img = '/products/epicka-adapter.jpg'
+  } else if (name.includes('govee') || name.includes('bulb') || name.includes('lamp') || name.includes('smart light')) {
+    img = '/products/govee-bulb.jpg'
     category = 'dorm'
   } else if (name.includes('siemens') || img === '/products/siemens-washer.jpg') {
+    img = '/products/siemens-washer.jpg'
+    category = 'dorm'
+  } else if (name.includes('bosch') || name.includes('waschmaschine') || name.includes('washing') || name.includes('washer')) {
     img = '/products/bosch-washer.jpg'
     category = 'dorm'
-  } else if (name.includes('macbook') || name.includes('laptop')) {
+  } else if (name.includes('macbook') || name.includes('laptop') || name.includes('notebook')) {
     img = '/products/macbook-air.jpg'
     category = 'tech'
+  } else if (name.includes('adapter') || name.includes('plug') || name.includes('socket') || name.includes('charger')) {
+    img = '/products/epicka-adapter.jpg'
+    category = 'adapters'
+  } else if (name.includes('powerbank') || name.includes('power bank') || name.includes('battery')) {
+    img = '/products/anker-powerbank.jpg'
+    category = 'adapters'
+  } else if (name.includes('luggage') || name.includes('suitcase') || name.includes('trolley') || name.includes('samsonite') || name.includes('spinner')) {
+    img = '/products/samsonite-luggage.jpg'
+    category = 'travel'
+  } else if (name.includes('backpack') || name.includes('rucksack') || name.includes('matein') || name.includes('bag')) {
+    img = '/products/matein-backpack.jpg'
+    category = 'travel'
+  } else if (name.includes('kindle') || name.includes('e-reader') || name.includes('paperwhite')) {
+    img = '/products/kindle-paperwhite.jpg'
+    category = 'supplies'
+  } else if (name.includes('bed') || name.includes('sheet') || name.includes('pillow') || name.includes('utopia') || name.includes('duvet')) {
+    img = '/products/utopia-bedding.jpg'
+    category = 'dorm'
   }
 
   return {
