@@ -11,6 +11,7 @@ const Contact = lazy(() => import('./pages/Contact'))
 const Privacy = lazy(() => import('./pages/Privacy'))
 const Terms = lazy(() => import('./pages/Terms'))
 const Products = lazy(() => import('./pages/Products'))
+const AdminProducts = lazy(() => import('./pages/AdminProducts'))
 
 import { SignedIn, SignedOut, UserButton, SignInButton, useUser, SignIn } from '@clerk/clerk-react'
 import { fetchProfile, saveProfile, registerUser } from './api'
@@ -280,8 +281,17 @@ export default function App() {
     }
   }, [user, isLoaded])
 
-  // Check if we're on the products/essentials route — render standalone
+  // Check if we're on standalone routes
   const isProductsPage = window.location.pathname === '/products' || window.location.pathname === '/essentials'
+  const isAdminPage = window.location.pathname.startsWith('/admin') || window.location.pathname === '/add-product'
+
+  if (isAdminPage) {
+    return (
+      <Suspense fallback={<div style={{ display: 'flex', justifyContent: 'center', padding: '100px 20px', color: '#666' }}>Loading...</div>}>
+        <AdminProducts />
+      </Suspense>
+    )
+  }
 
   if (isProductsPage) {
     return (
