@@ -69,7 +69,7 @@ export default function AdminProducts() {
     localStorage.removeItem('studplex_admin_auth')
   }
 
-  // Extract link
+  // Extract ANY product link
   const handleExtractLink = async () => {
     if (!inputUrl.trim()) return
     setIsExtracting(true)
@@ -77,49 +77,65 @@ export default function AdminProducts() {
     setSuccessMsg('')
     setDraftProduct(null)
 
-    try {
-      const asinMatch = inputUrl.match(/(?:\/dp\/|\/gp\/product\/|\/ASIN\/)([A-Z0-9]{10})/)
-      const domainMatch = inputUrl.match(/amazon\.([a-z\.]+)/)
+    let url = inputUrl.trim()
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+      url = 'https://' + url
+    }
 
-      if (!asinMatch) {
-        setExtractError('Could not find a valid 10-character Amazon ASIN in this link. Make sure it contains /dp/ASIN')
-        setIsExtracting(false)
-        return
+    try {
+      const asinMatch = url.match(/(?:\/dp\/|\/gp\/product\/|\/ASIN\/)([A-Z0-9]{10})/)
+      const domainMatch = url.match(/amazon\.([a-z\.]+)/)
+
+      let targetUrl = url
+      let asin = 'N/A'
+      let domain = 'de'
+      let badge = 'Featured Deal'
+      let prodId = `item-${Date.now()}`
+
+      if (asinMatch) {
+        asin = asinMatch[1]
+        domain = domainMatch ? domainMatch[1] : 'de'
+        targetUrl = `https://www.amazon.${domain}/dp/${asin}?tag=${AMAZON_ASSOCIATE_TAG}`
+        badge = 'Amazon Deal'
+        prodId = `amazon-${asin.toLowerCase()}`
+      } else {
+        try {
+          const host = new URL(url).hostname.replace('www.', '')
+          const brand = host.split('.')[0]
+          badge = `${brand.charAt(0).toUpperCase() + brand.slice(1)} Deal`
+          prodId = `store-${brand}-${Date.now()}`
+        } catch (e) {}
       }
 
-      const asin = asinMatch[1]
-      const domain = domainMatch ? domainMatch[1] : 'de'
-      const affiliateUrl = `https://www.amazon.${domain}/dp/${asin}?tag=${AMAZON_ASSOCIATE_TAG}`
-
       const template = {
-        id: `amazon-${asin.toLowerCase()}`,
-        name: `Amazon Product (${asin})`,
+        id: prodId,
+        name: 'Featured Student Product',
         category: 'dorm',
         asin: asin,
         domain: domain,
-        customUrl: affiliateUrl,
+        customUrl: targetUrl,
         image: '/products/siemens-washer.jpg',
         rating: 4.7,
         reviewsCount: 1450,
-        price: 'Check Price',
-        badge: 'Amazon Deal',
-        shortDesc: 'Curated Amazon student essential item with direct partner referral tracking.',
+        price: 'See Price',
+        badge: badge,
+        shortDesc: 'Curated essential product for international university students.',
         highlights: [
-          'Direct partner offer on Amazon',
+          'Direct offer link',
           'Fast EU & international delivery',
-          'Student friendly pricing'
+          'Student friendly deal'
         ],
         targetCountries: ['Germany', 'Global']
       }
 
-      const res = await extractProductFromUrl(inputUrl)
+      const res = await extractProductFromUrl(url)
       if (res && res.status === 'success' && res.product) {
-        if (res.product.name && !res.product.name.includes('Product (')) {
-          template.name = res.product.name
-        }
-        if (res.product.price) {
-          template.price = res.product.price
-        }
+        if (res.product.name) template.name = res.product.name
+        if (res.product.price) template.price = res.product.price
+        if (res.product.image) template.image = res.product.image
+        if (res.product.shortDesc) template.shortDesc = res.product.shortDesc
+        if (res.product.badge) template.badge = res.product.badge
+        if (res.product.customUrl) template.customUrl = res.product.customUrl
       }
 
       setDraftProduct(template)
@@ -257,10 +273,10 @@ export default function AdminProducts() {
         {/* ADD PRODUCT BY LINK CARD */}
         <div style={{ background: '#ffffff', borderRadius: 16, padding: 28, border: '1px solid #e4e7eb', boxShadow: '0 4px 12px rgba(0,0,0,0.03)' }}>
           <h2 style={{ fontSize: 18, fontWeight: 800, margin: '0 0 8px', color: '#1a1a2e' }}>
-            ⚡ Paste Amazon Link to Add Product
+            ⚡ Paste Any Product or Web Link to Add
           </h2>
           <p style={{ fontSize: 13, color: '#666', margin: '0 0 16px' }}>
-            Paste any Amazon link (from <strong>Amazon.de</strong> or <strong>Amazon.com</strong>). The tool extracts the ASIN, automatically attaches your affiliate tracking tag (<code>limison-21</code>), and publishes the card to your store!
+            Paste <strong>any product link</strong> (Amazon, MediaMarkt, Saturn, Otto, Digitec, or any store URL). The tool auto-extracts the Title, Image, Price, Description, attaches affiliate tags (for Amazon), and publishes the card directly to your store!
           </p>
 
           <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
@@ -268,7 +284,7 @@ export default function AdminProducts() {
               type="text"
               value={inputUrl}
               onChange={(e) => setInputUrl(e.target.value)}
-              placeholder="https://www.amazon.de/dp/B0CH31SQH8..."
+              placeholder="https://www.amazon.de/dp/... or https://mediamarkt.de/product/..."
               style={{
                 flex: 1, minWidth: 260, padding: '12px 16px', borderRadius: 10,
                 border: '2px solid #cbd5e1', fontSize: 14, outline: 'none'

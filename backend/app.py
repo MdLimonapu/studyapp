@@ -1642,43 +1642,50 @@ def get_custom_products():
 
 
 @app.route("/api/products/extract", methods=["POST"])
-def extract_amazon_product():
-    """Extract product details from an Amazon link."""
+def extract_product_from_link():
+    """Extract product details from ANY website or online store link."""
     data = request.json or {}
     url = data.get("url", "").strip()
     if not url:
-        return jsonify({"error": "Amazon link URL is required"}), 400
+        return jsonify({"error": "Link URL is required"}), 400
 
+    if not url.startswith("http://") and not url.startswith("https://"):
+        url = "https://" + url
+
+    # Check if Amazon link
     asin_match = re.search(r'(?:/dp/|/gp/product/|/ASIN/)([A-Z0-9]{10})', url)
     domain_match = re.search(r'amazon\.([a-z\.]+)', url)
 
-    if not asin_match:
-        return jsonify({"error": "Could not find a valid 10-character Amazon ASIN in the link provided."}), 400
-
-    asin = asin_match.group(1)
-    domain = domain_match.group(1) if domain_match else "de"
     affiliate_tag = "limison-21"
-    
-    if domain == "de":
-        affiliate_url = f"https://www.amazon.de/dp/{asin}?tag={affiliate_tag}"
+    asin = asin_match.group(1) if asin_match else ""
+    domain = domain_match.group(1) if domain_match else "de"
+
+    if asin:
+        target_url = f"https://www.amazon.{domain}/dp/{asin}?tag={affiliate_tag}"
+        prod_id = f"amazon-{asin.lower()}"
+        badge = "Amazon Deal"
     else:
-        affiliate_url = f"https://www.amazon.{domain}/dp/{asin}?tag={affiliate_tag}"
+        target_url = url
+        parsed_host = urllib.parse.urlparse(url).netloc.replace("www.", "")
+        host_brand = parsed_host.split('.')[0].capitalize() if parsed_host else "Store"
+        prod_id = f"item-{re.sub(r'[^a-z0-9]+', '-', parsed_host)}-{int(datetime.datetime.now().timestamp())}"
+        badge = f"{host_brand} Deal"
 
     product = {
-        "id": f"amazon-{asin.lower()}",
-        "name": f"Amazon Product ({asin})",
+        "id": prod_id,
+        "name": "Featured Product",
         "category": "dorm",
-        "asin": asin,
+        "asin": asin or "N/A",
         "domain": domain,
-        "customUrl": affiliate_url,
+        "customUrl": target_url,
         "image": "/products/siemens-washer.jpg",
         "rating": 4.7,
         "reviewsCount": 1250,
-        "price": "Check Price",
-        "badge": "Amazon Deal",
-        "shortDesc": "Curated Amazon student essential product with partner affiliate link.",
+        "price": "See Price",
+        "badge": badge,
+        "shortDesc": "Curated student essential item for international university life.",
         "highlights": [
-            "Official partner deal on Amazon",
+            "Curated deal for students",
             "Fast EU & international delivery",
             "Student friendly pricing"
         ],
@@ -1694,19 +1701,44 @@ def extract_amazon_product():
             'Accept-Language': 'en-US,en;q=0.9,de-DE;q=0.8,de;q=0.7'
         }
         req = urllib.request.Request(url, headers=headers)
-        with urllib.request.urlopen(req, context=ctx, timeout=5) as resp:
+        with urllib.request.urlopen(req, context=ctx, timeout=6) as resp:
             html = resp.read().decode('utf-8', errors='ignore')
             soup = BeautifulSoup(html, 'html.parser')
 
-            title_el = soup.find(id='productTitle')
-            if title_el:
-                product["name"] = title_el.get_text().strip()
+            # Title
+            og_title = soup.find('meta', property='og:title') or soup.find('meta', attrs={'name': 'title'})
+            if og_title and og_title.get('content'):
+                product["name"] = og_title['content'].strip()
+            elif soup.find(id='productTitle'):
+                product["name"] = soup.find(id='productTitle').get_text().strip()
+            elif soup.title and soup.title.string:
+                product["name"] = soup.title.string.strip()
 
-            price_el = soup.find('span', {'class': 'a-offscreen'}) or soup.find(id='priceblock_ourprice')
-            if price_el:
-                product["price"] = price_el.get_text().strip()
+            # Image
+            og_img = soup.find('meta', property='og:image') or soup.find('meta', attrs={'name': 'twitter:image'})
+            if og_img and og_img.get('content'):
+                product["image"] = og_img['content'].strip()
+
+            # Price
+            og_price = soup.find('meta', property='og:price:amount') or soup.find('meta', property='product:price:amount')
+            if og_price and og_price.get('content'):
+                product["price"] = f"€{og_price['content'].strip()}"
+            else:
+                price_el = soup.find('span', {'class': 'a-offscreen'}) or soup.find(id='priceblock_ourprice')
+                if price_el:
+                    product["price"] = price_el.get_text().strip()
+                else:
+                    price_match = re.search(r'([€$£]\s?\d+(?:[\.,]\d{2})?)', html)
+                    if price_match:
+                        product["price"] = price_match.group(1).strip()
+
+            # Description
+            og_desc = soup.find('meta', property='og:description') or soup.find('meta', attrs={'name': 'description'})
+            if og_desc and og_desc.get('content'):
+                product["shortDesc"] = og_desc['content'].strip()[:180]
+
     except Exception as e:
-        print(f"Scrape attempt warning for {url}: {e}")
+        print(f"Universal extraction note for {url}: {e}")
 
     return jsonify({"status": "success", "product": product})
 
