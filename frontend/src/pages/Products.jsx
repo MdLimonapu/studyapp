@@ -21,6 +21,34 @@ const Stars = ({ rating, count }) => (
 /* ─── Fallback ─── */
 const FALLBACK = 'data:image/svg+xml;base64,' + btoa('<svg xmlns="http://www.w3.org/2000/svg" width="300" height="300"><rect width="300" height="300" fill="%23f5f5f5"/><text x="150" y="155" text-anchor="middle" font-family="sans-serif" font-size="14" fill="%23bbb">No image</text></svg>')
 
+/* ─── Auto Image & Category Corrector ─── */
+function fixProductImage(p) {
+  const name = (p.name || '').toLowerCase()
+  let img = p.image
+  let category = p.category || 'dorm'
+
+  if (name.includes('soundcore') || name.includes('headphone') || name.includes('anker p20i')) {
+    img = '/products/sony-headphones.jpg'
+    category = 'tech'
+  } else if (name.includes('govee') || name.includes('bulb') || name.includes('lamp') || name.includes('light')) {
+    img = '/products/epicka-adapter.jpg'
+    category = 'dorm'
+  } else if (name.includes('siemens') || img === '/products/siemens-washer.jpg') {
+    img = '/products/bosch-washer.jpg'
+    category = 'dorm'
+  } else if (name.includes('macbook') || name.includes('laptop')) {
+    img = '/products/macbook-air.jpg'
+    category = 'tech'
+  }
+
+  return {
+    ...p,
+    image: img,
+    category: category,
+    targetCountries: Array.isArray(p.targetCountries) && p.targetCountries.length > 0 ? p.targetCountries : ['Germany', 'Global']
+  }
+}
+
 export default function Products() {
   const [cat, setCat] = useState('all')
   const [q, setQ] = useState('')
@@ -35,12 +63,12 @@ export default function Products() {
         const parsed = JSON.parse(saved)
         if (Array.isArray(parsed) && parsed.length > 0) {
           const existingIds = new Set(PRODUCTS_DATA.map(p => p.id))
-          const uniqueCustom = parsed.filter(p => !existingIds.has(p.id))
-          return [...uniqueCustom, ...PRODUCTS_DATA]
+          const uniqueCustom = parsed.filter(p => !existingIds.has(p.id)).map(fixProductImage)
+          return [...uniqueCustom, ...PRODUCTS_DATA.map(fixProductImage)]
         }
       }
     } catch (e) {}
-    return PRODUCTS_DATA
+    return PRODUCTS_DATA.map(fixProductImage)
   })
 
   // Sync custom products from API backend on mount (place custom items at TOP)
@@ -51,25 +79,19 @@ export default function Products() {
           const customMap = new Map()
           
           // 1. Add remote custom items
-          customItems.forEach(p => customMap.set(p.id, {
-            ...p,
-            targetCountries: p.targetCountries || ['Germany', 'Global']
-          }))
+          customItems.map(fixProductImage).forEach(p => customMap.set(p.id, p))
 
           // 2. Add local custom items
           const savedLocal = localStorage.getItem('custom_products_store')
           if (savedLocal) {
             try {
-              JSON.parse(savedLocal).forEach(p => customMap.set(p.id, {
-                ...p,
-                targetCountries: p.targetCountries || ['Germany', 'Global']
-              }))
+              JSON.parse(savedLocal).map(fixProductImage).forEach(p => customMap.set(p.id, p))
             } catch (e) {}
           }
 
           const customList = Array.from(customMap.values())
           const customIds = new Set(customList.map(c => c.id))
-          const filteredDefaults = PRODUCTS_DATA.filter(d => !customIds.has(d.id))
+          const filteredDefaults = PRODUCTS_DATA.map(fixProductImage).filter(d => !customIds.has(d.id))
 
           return [...customList, ...filteredDefaults]
         })

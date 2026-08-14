@@ -23,7 +23,7 @@ export const PRODUCTS_DATA = [
     asin: 'B0CH31SQH8',
     domain: 'de',
     customUrl: 'https://www.amazon.de/dp/B0CH31SQH8?tag=limison-21&linkCode=ll2&linkId=f76e721ec804841647a55bd66d53f4f2',
-    image: '/products/siemens-washer.jpg',
+    image: '/products/bosch-washer.jpg',
     rating: 4.6,
     reviewsCount: 3850,
     price: '€414.90',
