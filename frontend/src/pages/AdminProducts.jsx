@@ -361,15 +361,46 @@ export default function AdminProducts() {
                       style={{ width: '100%', padding: '10px 12px', borderRadius: 8, border: '1px solid #cbd5e1', fontSize: 13, boxSizing: 'border-box' }}
                     />
                   </div>
-                  <div>
-                    <label style={{ display: 'block', fontSize: 11, fontWeight: 700, color: '#475569', marginBottom: 4 }}>Product Image Path / URL</label>
-                    <input
-                      type="text"
-                      value={draftProduct.image}
-                      onChange={(e) => setDraftProduct({ ...draftProduct, image: e.target.value })}
-                      style={{ width: '100%', padding: '10px 12px', borderRadius: 8, border: '1px solid #cbd5e1', fontSize: 13, boxSizing: 'border-box' }}
-                    />
+                <div>
+                  <label style={{ display: 'block', fontSize: 11, fontWeight: 700, color: '#475569', marginBottom: 4 }}>
+                    Product Image (Select Preset or Paste Image URL)
+                  </label>
+                  <input
+                    type="text"
+                    value={draftProduct.image}
+                    onChange={(e) => setDraftProduct({ ...draftProduct, image: e.target.value })}
+                    style={{ width: '100%', padding: '10px 12px', borderRadius: 8, border: '1px solid #cbd5e1', fontSize: 13, boxSizing: 'border-box', marginBottom: 8 }}
+                  />
+
+                  {/* Preset Image Quick Selector */}
+                  <div style={{ display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                    {[
+                      { label: '🎧 Headphones', src: '/products/sony-headphones.jpg', cat: 'tech' },
+                      { label: '💻 Laptop', src: '/products/macbook-air.jpg', cat: 'tech' },
+                      { label: '🧺 Washer', src: '/products/bosch-washer.jpg', cat: 'dorm' },
+                      { label: '⚡ Adapter', src: '/products/epicka-adapter.jpg', cat: 'adapters' },
+                      { label: '🔋 Powerbank', src: '/products/anker-powerbank.jpg', cat: 'adapters' },
+                      { label: '🧳 Luggage', src: '/products/samsonite-luggage.jpg', cat: 'travel' },
+                      { label: '🎒 Backpack', src: '/products/matein-backpack.jpg', cat: 'travel' },
+                      { label: '📚 Kindle', src: '/products/kindle-paperwhite.jpg', cat: 'supplies' },
+                      { label: '🛌 Bedding', src: '/products/utopia-bedding.jpg', cat: 'dorm' },
+                    ].map(preset => (
+                      <button
+                        key={preset.label}
+                        type="button"
+                        onClick={() => setDraftProduct({ ...draftProduct, image: preset.src, category: preset.cat })}
+                        style={{
+                          padding: '4px 10px', borderRadius: 6, fontSize: 11, fontWeight: 600,
+                          background: draftProduct.image === preset.src ? '#1a3faa' : '#e2e8f0',
+                          color: draftProduct.image === preset.src ? '#ffffff' : '#334155',
+                          border: 'none', cursor: 'pointer', transition: 'all .15s'
+                        }}
+                      >
+                        {preset.label}
+                      </button>
+                    ))}
                   </div>
+                </div>
                 </div>
 
                 <div style={{ fontSize: 11, color: '#475569', background: '#fff', padding: 10, borderRadius: 6, border: '1px dashed #cbd5e1' }}>

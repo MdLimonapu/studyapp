@@ -1740,6 +1740,36 @@ def extract_product_from_link():
     except Exception as e:
         print(f"Universal extraction note for {url}: {e}")
 
+    # Intelligent Image & Category Matching based on product title
+    name_lower = product["name"].lower()
+    if any(k in name_lower for k in ["headphone", "earbud", "headset", "soundcore", "in-ear", "audio"]):
+        product["image"] = "/products/sony-headphones.jpg"
+        product["category"] = "tech"
+    elif any(k in name_lower for k in ["macbook", "laptop", "notebook", "computer", "pc"]):
+        product["image"] = "/products/macbook-air.jpg"
+        product["category"] = "tech"
+    elif any(k in name_lower for k in ["adapter", "plug", "socket"]):
+        product["image"] = "/products/epicka-adapter.jpg"
+        product["category"] = "adapters"
+    elif any(k in name_lower for k in ["powerbank", "power bank", "battery"]):
+        product["image"] = "/products/anker-powerbank.jpg"
+        product["category"] = "adapters"
+    elif any(k in name_lower for k in ["luggage", "suitcase", "trolley", "spinner", "samsonite"]):
+        product["image"] = "/products/samsonite-luggage.jpg"
+        product["category"] = "travel"
+    elif any(k in name_lower for k in ["backpack", "bag", "rucksack", "matein"]):
+        product["image"] = "/products/matein-backpack.jpg"
+        product["category"] = "travel"
+    elif any(k in name_lower for k in ["washer", "waschmaschine", "washing", "siemens", "bosch"]):
+        product["image"] = "/products/bosch-washer.jpg"
+        product["category"] = "dorm"
+    elif any(k in name_lower for k in ["bed", "sheet", "pillow", "utopia"]):
+        product["image"] = "/products/utopia-bedding.jpg"
+        product["category"] = "dorm"
+    elif any(k in name_lower for k in ["kindle", "book", "e-reader", "paperwhite"]):
+        product["image"] = "/products/kindle-paperwhite.jpg"
+        product["category"] = "supplies"
+
     return jsonify({"status": "success", "product": product})
 
 
