@@ -27,7 +27,7 @@ export default function Products() {
   const [region, setRegion] = useState('all')
   const [hov, setHov] = useState(null)
 
-  // Products state (combines PRODUCTS_DATA with custom products synced from DB & local)
+  // Products state (custom items placed FIRST at top, followed by defaults)
   const [products, setProducts] = useState(() => {
     try {
       const saved = localStorage.getItem('custom_products_store')
@@ -36,28 +36,42 @@ export default function Products() {
         if (Array.isArray(parsed) && parsed.length > 0) {
           const existingIds = new Set(PRODUCTS_DATA.map(p => p.id))
           const uniqueCustom = parsed.filter(p => !existingIds.has(p.id))
-          return [...PRODUCTS_DATA, ...uniqueCustom]
+          return [...uniqueCustom, ...PRODUCTS_DATA]
         }
       }
     } catch (e) {}
     return PRODUCTS_DATA
   })
 
-  // Sync custom products from API backend on mount
+  // Sync custom products from API backend on mount (place custom items at TOP)
   useEffect(() => {
     fetchCustomProducts().then(customItems => {
       if (Array.isArray(customItems) && customItems.length > 0) {
         setProducts(prev => {
-          const map = new Map()
-          PRODUCTS_DATA.forEach(p => map.set(p.id, p))
+          const customMap = new Map()
+          
+          // 1. Add remote custom items
+          customItems.forEach(p => customMap.set(p.id, {
+            ...p,
+            targetCountries: p.targetCountries || ['Germany', 'Global']
+          }))
+
+          // 2. Add local custom items
           const savedLocal = localStorage.getItem('custom_products_store')
           if (savedLocal) {
             try {
-              JSON.parse(savedLocal).forEach(p => map.set(p.id, p))
+              JSON.parse(savedLocal).forEach(p => customMap.set(p.id, {
+                ...p,
+                targetCountries: p.targetCountries || ['Germany', 'Global']
+              }))
             } catch (e) {}
           }
-          customItems.forEach(p => map.set(p.id, p))
-          return Array.from(map.values())
+
+          const customList = Array.from(customMap.values())
+          const customIds = new Set(customList.map(c => c.id))
+          const filteredDefaults = PRODUCTS_DATA.filter(d => !customIds.has(d.id))
+
+          return [...customList, ...filteredDefaults]
         })
       }
     }).catch(() => {})
@@ -65,8 +79,9 @@ export default function Products() {
 
   const filteredList = useMemo(() => products.filter(p => {
     if (cat !== 'all' && p.category !== cat) return false
-    if (q && !(p.name + p.shortDesc + (p.badge || '')).toLowerCase().includes(q.toLowerCase())) return false
-    if (region !== 'all' && !p.targetCountries.includes('Global') && !p.targetCountries.includes(region)) return false
+    if (q && !(p.name + (p.shortDesc || '') + (p.badge || '')).toLowerCase().includes(q.toLowerCase())) return false
+    const countries = Array.isArray(p.targetCountries) && p.targetCountries.length > 0 ? p.targetCountries : ['Germany', 'Global']
+    if (region !== 'all' && !countries.includes('Global') && !countries.includes(region)) return false
     return true
   }), [products, cat, q, region])
 
