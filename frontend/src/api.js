@@ -88,4 +88,21 @@ export async function deleteCustomProduct(id) {
   return res.json();
 }
 
+export async function uploadProductImage(file) {
+  const formData = new FormData();
+  formData.append('image', file);
+  const res = await fetch(`${BASE_URL}/api/products/upload-image`, {
+    method: "POST",
+    body: formData,
+  });
+  return res.json();
+}
 
+export async function updateProduct(id, updates) {
+  const res = await fetch(`${BASE_URL}/api/products/update`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ id, updates }),
+  });
+  return res.json();
+}

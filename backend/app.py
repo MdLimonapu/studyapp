@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, Response
 from flask_cors import CORS
 import json, os, re, stripe, datetime
 import urllib.parse
@@ -1800,6 +1800,80 @@ def delete_custom_product(product_id):
         except Exception as e:
             return jsonify({"error": f"Database error: {e}"}), 500
     return jsonify({"status": "success", "deleted_id": product_id})
+
+
+@app.route("/api/products/upload-image", methods=["POST"])
+def upload_product_image():
+    """Upload a product image and store it in MongoDB as base64."""
+    if products_col is None:
+        return jsonify({"error": "Database not available"}), 500
+
+    if 'image' not in request.files and 'image_base64' not in (request.json or {}):
+        return jsonify({"error": "No image provided"}), 400
+
+    import base64
+    image_id = f"img-{int(datetime.datetime.now().timestamp() * 1000)}"
+
+    if 'image' in request.files:
+        file = request.files['image']
+        if file.filename == '':
+            return jsonify({"error": "No file selected"}), 400
+        image_data = base64.b64encode(file.read()).decode('utf-8')
+        content_type = file.content_type or 'image/jpeg'
+    else:
+        data = request.json
+        image_data = data['image_base64']
+        content_type = data.get('content_type', 'image/jpeg')
+
+    try:
+        db = products_col.database
+        images_col = db['product_images']
+        images_col.replace_one(
+            {"image_id": image_id},
+            {"image_id": image_id, "data": image_data, "content_type": content_type},
+            upsert=True
+        )
+        image_url = f"/api/products/image/{image_id}"
+        return jsonify({"status": "success", "image_url": image_url, "image_id": image_id})
+    except Exception as e:
+        return jsonify({"error": f"Upload error: {e}"}), 500
+
+
+@app.route("/api/products/image/<image_id>", methods=["GET"])
+def serve_product_image(image_id):
+    """Serve an uploaded product image from MongoDB."""
+    if products_col is None:
+        return "DB unavailable", 500
+    try:
+        import base64
+        from flask import Response
+        db = products_col.database
+        images_col = db['product_images']
+        doc = images_col.find_one({"image_id": image_id})
+        if not doc:
+            return "Image not found", 404
+        image_bytes = base64.b64decode(doc["data"])
+        return Response(image_bytes, mimetype=doc.get("content_type", "image/jpeg"),
+                       headers={"Cache-Control": "public, max-age=31536000"})
+    except Exception as e:
+        return f"Error: {e}", 500
+
+
+@app.route("/api/products/update", methods=["PUT"])
+def update_product_field():
+    """Update specific fields of an existing product."""
+    data = request.json or {}
+    product_id = data.get("id")
+    updates = data.get("updates", {})
+    if not product_id or not updates:
+        return jsonify({"error": "Product ID and updates required"}), 400
+    if products_col is not None:
+        try:
+            products_col.update_one({"id": product_id}, {"$set": updates})
+            return jsonify({"status": "success", "id": product_id})
+        except Exception as e:
+            return jsonify({"error": f"Database error: {e}"}), 500
+    return jsonify({"status": "success", "id": product_id, "notice": "Local only"})
 
 
 if __name__ == "__main__":
