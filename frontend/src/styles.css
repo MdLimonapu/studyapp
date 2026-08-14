@@ -321,7 +321,7 @@ label,
   margin-bottom: 2px;
 }
 
-input, select, textarea {
+input:not(:where(.admin-panel, .admin-panel *)), select:not(:where(.admin-panel, .admin-panel *)), textarea:not(:where(.admin-panel, .admin-panel *)) {
   width: 100%;
   border-radius: 16px;
   border: 1px solid var(--card-border);
@@ -335,7 +335,7 @@ input, select, textarea {
   transition: all 0.2s;
 }
 
-select {
+select:not(:where(.admin-panel, .admin-panel *)) {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -346,12 +346,12 @@ select {
   padding-right: 48px !important;
 }
 
-:root[data-theme="light"] select {
+:root[data-theme="light"] select:not(:where(.admin-panel, .admin-panel *)) {
   background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%230f172a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
 }
 
-input::placeholder { color: var(--muted); }
-input:focus, select:focus, textarea:focus {
+input:not(:where(.admin-panel, .admin-panel *))::placeholder { color: var(--muted); }
+input:not(:where(.admin-panel, .admin-panel *)):focus, select:not(:where(.admin-panel, .admin-panel *)):focus, textarea:not(:where(.admin-panel, .admin-panel *)):focus {
   border-color: var(--secondary-border);
   background-color: var(--secondary-glow);
 }
@@ -409,7 +409,7 @@ textarea { min-height: 100px; resize: vertical; }
 .suggestion-item span { color: var(--secondary-accent); }
 
 /* BUTTON */
-button:not(.btn-plain):not(.theme-toggle-btn):not(.pill):not(.level-btn):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)) {
+button:not(.btn-plain):not(.theme-toggle-btn):not(.pill):not(.level-btn):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):not(:where(.admin-panel, .admin-panel *)) {
   width: 100%;
   border-radius: 16px;
   border: none;
@@ -423,8 +423,8 @@ button:not(.btn-plain):not(.theme-toggle-btn):not(.pill):not(.level-btn):not(:wh
   transition: all 0.2s;
   margin-top: 8px;
 }
-button:not(.btn-plain):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):hover { opacity: 0.95; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.15); }
-button:not(.btn-plain):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+button:not(.btn-plain):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):not(:where(.admin-panel, .admin-panel *)):hover { opacity: 0.95; transform: translateY(-1px); box-shadow: 0 6px 20px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.15); }
+button:not(.btn-plain):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):not(:where(.admin-panel, .admin-panel *)):disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
 
 .btn-plain {
   width: auto !important;
@@ -2093,7 +2093,7 @@ button:not(.btn-plain):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] 
 }
 
 /* Primary CTA Submit / Accent Buttons */
-:root[data-theme="light"] button:not(.btn-plain):not(.theme-toggle-btn):not(.pill):not(.level-btn):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)) {
+:root[data-theme="light"] button:not(.btn-plain):not(.theme-toggle-btn):not(.pill):not(.level-btn):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):not(:where(.admin-panel, .admin-panel *)) {
   background: #d2f34c !important;
   color: #111827 !important;
   border: 2px solid #111827 !important;
@@ -2104,12 +2104,12 @@ button:not(.btn-plain):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] 
   border-radius: 14px !important;
   transition: transform 0.15s ease, box-shadow 0.15s ease !important;
 }
-:root[data-theme="light"] button:not(.btn-plain):not(.theme-toggle-btn):not(.pill):not(.level-btn):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):hover {
+:root[data-theme="light"] button:not(.btn-plain):not(.theme-toggle-btn):not(.pill):not(.level-btn):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):not(:where(.admin-panel, .admin-panel *)):hover {
   transform: translate(-3px, -3px) !important;
   box-shadow: 0 9px 0px #111827 !important;
   opacity: 1 !important;
 }
-:root[data-theme="light"] button:not(.btn-plain):not(.theme-toggle-btn):not(.pill):not(.level-btn):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):active {
+:root[data-theme="light"] button:not(.btn-plain):not(.theme-toggle-btn):not(.pill):not(.level-btn):not(:where([class*="cl-"], .cl-rootBox *, [class*="cl-"] *)):not(:where(.admin-panel, .admin-panel *)):active {
   transform: translate(0px, 0px) !important;
   box-shadow: 0 3px 0px #111827 !important;
 }
