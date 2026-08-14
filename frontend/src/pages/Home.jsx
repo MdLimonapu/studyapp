@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { useUser } from '@clerk/clerk-react'
 import { fetchCountries, fetchFields, fetchProfile, fetchNews, searchCourses } from '../api'
 import { AppStoreButtons } from '../App'
+import SEO from '../components/SEO'
 
 const FALLBACK_NEWS = [
   {title:"Germany extends student visa processing to 8 weeks for 2026 intake", source:"daad.de", date:"May 2026", summary:"DAAD reports increased demand. Apply early for German student visas.", country:"Germany", link: "https://www.daad.de"},
@@ -269,6 +270,12 @@ export default function Home() {
 
   return (
     <>
+      <SEO
+        title="Studplex — Discover the Right University, Worldwide"
+        description="Studplex helps international students search and compare university programs across 10+ countries using AI-powered matching. Find your ideal degree program today."
+        keywords="university search, international students, study abroad, masters programs, bachelor degrees, PhD programs, AI university matching, studplex, find universities, higher education, study in Germany, study in UK, study in USA, study in Canada, study in Australia, study in Europe"
+        canonical="https://studplex.com/"
+      />
       {showProfilePrompt && (
         <div className="modal-overlay">
           <div className="modal-box">

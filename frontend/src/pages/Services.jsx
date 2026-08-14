@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom'
 import { loadStripe } from '@stripe/stripe-js'
 import { Elements, PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { useUser, useAuth, SignInButton } from '@clerk/clerk-react'
+import SEO from '../components/SEO'
 
 // Initialize Stripe publishable key from environment variables with safe fallback
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || 'pk_test_51Pyourplaceholderkey')
@@ -382,6 +383,12 @@ export default function Services() {
 
   return (
     <div className="services-page" style={{ maxWidth: '1200px', margin: '0 auto', padding: '20px 0' }}>
+      <SEO
+        title="Services & 1-on-1 Study Abroad Counselling | Studplex"
+        description="Book 1-on-1 expert advisory sessions for university shortlisting, SOP & CV reviews, visa interview preparation, and blocked account assistance."
+        keywords="study abroad counselling, SOP review, CV review, student visa assistance, university application help, blocked account guidance"
+        canonical="https://studplex.com/services"
+      />
       {/* Hero Header */}
       <div style={{ textAlign: 'center', marginBottom: '48px' }}>
         <h1 style={{ fontSize: '38px', fontWeight: 800, marginBottom: '12px', color: 'var(--text)' }}>

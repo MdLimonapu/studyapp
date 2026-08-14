@@ -1,5 +1,6 @@
 import { useState, useMemo } from 'react'
 import { PRODUCTS_DATA, PRODUCT_CATEGORIES, AMAZON_ASSOCIATE_TAG, buildAmazonUrl } from '../data/productsData'
+import SEO from '../components/SEO'
 
 /* ─── Stars ─── */
 const Stars = ({ rating, count }) => (
@@ -57,6 +58,12 @@ export default function Products() {
       padding: '0 0 80px',
       fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
     }}>
+      <SEO
+        title="Essentials Store — Student Laptops, Gear & Dorm Accessories | Studplex"
+        description="Curated student essentials: laptops, international power adapters, durable luggage, noise-canceling headphones, and dorm room necessities for studying abroad."
+        keywords="student laptops, travel adapter, student luggage, noise canceling headphones, dorm accessories, study abroad store, student essentials"
+        canonical="https://studplex.com/products"
+      />
 
       {/* ═══ TOP BAR / HEADER ═══ */}
       <div style={{

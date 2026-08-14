@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useUser } from '@clerk/clerk-react'
 import { fetchProfile, saveProfile } from '../api'
+import SEO from '../components/SEO'
 
 const ROADMAPS = {
   'Germany': {
@@ -495,6 +496,12 @@ export default function Roadmap() {
 
   return (
     <section className="grid one-col-gap">
+      <SEO
+        title="Eligibility Checker & Student Visa Roadmap | Studplex"
+        description="Check your academic eligibility, convert GPA, calculate blocked account amounts, and get step-by-step visa guidelines for international university applications."
+        keywords="eligibility checker, gpa converter, blocked account Germany, student visa roadmap, university admission requirements, study in Germany requirements"
+        canonical="https://studplex.com/roadmap"
+      />
       
       {/* HEADER BANNER */}
       <div className="card search-summary">

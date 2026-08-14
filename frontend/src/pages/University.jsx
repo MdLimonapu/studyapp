@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useAuth, SignInButton } from '@clerk/clerk-react'
+import SEO from '../components/SEO'
 
 const countryFlags = {
   'germany': '🇩🇪',
@@ -192,8 +193,22 @@ export default function University() {
     }
   }, [form])
 
+  const seoTitle = form && (form.field || form.country)
+    ? `${form.field ? form.field : 'University Matches'}${form.country ? ` in ${form.country}` : ''} | Studplex`
+    : 'Search & Compare 10,000+ Universities Worldwide | Studplex'
+
+  const seoDescription = form && form.country
+    ? `Find and compare English-taught degree programs, admission requirements, deadlines, and tuition fees at top universities in ${form.country}.`
+    : 'Explore and compare English-taught degree programs, tuition fees, entry requirements, and deadlines at top universities in Germany, UK, USA, Canada, and Australia.'
+
   return (
     <section className="grid one-col-gap">
+      <SEO
+        title={seoTitle}
+        description={seoDescription}
+        keywords="university matches, study in Germany, study in UK, study in USA, study in Canada, study in Australia, tuition fees, university rankings, degree requirements"
+        canonical="https://studplex.com/university"
+      />
 
       {!hasActiveSearch && !isLoading ? (
         <div className="card empty-state" style={{ padding: '60px 40px', textAlign: 'center', maxWidth: '600px', margin: '40px auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>

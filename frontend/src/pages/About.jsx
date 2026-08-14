@@ -1,11 +1,8 @@
 import React, { useEffect, useState } from 'react'
+import SEO from '../components/SEO'
 
 export default function About() {
   const [activePillar, setActivePillar] = useState(0)
-
-  useEffect(() => {
-    document.title = 'About Us | Studplex'
-  }, [])
 
   const pillars = [
     {
@@ -49,6 +46,12 @@ export default function About() {
 
   return (
     <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '40px 20px', animation: 'fadeIn 0.4s ease' }}>
+      <SEO
+        title="About Studplex — AI-Powered Global Higher Education Platform"
+        description="Learn how Studplex is democratizing global education by connecting students around the world with personalized university program recommendations."
+        keywords="about studplex, international education, AI education platform, study abroad mission, university matching engine"
+        canonical="https://studplex.com/about"
+      />
       
       {/* Decorative Blur Blobs for Dark Mode */}
       <div className="about-glow-1" style={{

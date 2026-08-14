@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from 'react'
 import { useUser } from '@clerk/clerk-react'
 import { fetchProfile, saveProfile } from '../api'
+import SEO from '../components/SEO'
 
 const FIELD_OPTIONS = [
   "Artificial Intelligence", "Aerospace Engineering", "Architecture",
@@ -182,6 +183,12 @@ export default function Profile() {
 
   return (
     <div className="pf-layout">
+      <SEO
+        title="My Profile | Studplex"
+        description="Manage your student profile, saved university matches, and document uploads."
+        canonical="https://studplex.com/profile"
+        noindex={true}
+      />
 
       {/* ── Left sidebar ── */}
       <aside className="pf-sidebar">

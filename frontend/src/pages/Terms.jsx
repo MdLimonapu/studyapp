@@ -1,8 +1,14 @@
 import React from 'react'
+import SEO from '../components/SEO'
 
 export default function Terms() {
   return (
     <div className="card form-card text-content-page" style={{ maxWidth: '800px', margin: '40px auto', padding: '40px' }}>
+      <SEO
+        title="Terms of Service | Studplex"
+        description="Terms of Service governing the use of Studplex's platform, university matching services, and store."
+        canonical="https://studplex.com/terms"
+      />
       <h2 style={{ marginBottom: '24px', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '12px' }}>
         Terms of Service
       </h2>

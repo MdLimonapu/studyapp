@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { useUser } from '@clerk/clerk-react'
+import SEO from '../components/SEO'
 
 function validateEmail(email) {
   if (!email) return ''
@@ -102,6 +103,12 @@ export default function Contact() {
 
   return (
     <div style={{ maxWidth: '1400px', margin: '40px auto 0 auto', padding: '0 20px' }}>
+      <SEO
+        title="Contact Us — Studplex Support & Student Advisory"
+        description="Get in touch with the Studplex team for assistance with university matches, application guidance, technical support, or partnership inquiries."
+        keywords="contact studplex, student support, study abroad help, university application support"
+        canonical="https://studplex.com/contact"
+      />
       
       {/* Page Header */}
       <div style={{ marginBottom: '32px', textAlign: 'center' }}>

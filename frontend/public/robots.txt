@@ -1,5 +1,5 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.studplex.com/sitemap.xml
-Sitemap: https://www.studplex.com/news/sitemap.xml
+Sitemap: https://studplex.com/sitemap.xml
+Sitemap: https://news.studplex.com/sitemap.xml

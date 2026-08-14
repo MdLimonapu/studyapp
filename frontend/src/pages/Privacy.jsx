@@ -1,8 +1,14 @@
 import React from 'react'
+import SEO from '../components/SEO'
 
 export default function Privacy() {
   return (
     <div className="card form-card text-content-page" style={{ maxWidth: '800px', margin: '40px auto', padding: '40px' }}>
+      <SEO
+        title="Privacy Policy | Studplex"
+        description="Read Studplex's privacy policy explaining how we collect, protect, and use student data."
+        canonical="https://studplex.com/privacy"
+      />
       <h2 style={{ marginBottom: '24px', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '12px' }}>
         Privacy Policy
       </h2>

@@ -50,9 +50,16 @@ function MobileAuth() {
   )
 }
 
+import SEO from './components/SEO'
+
 function NotFound() {
   return (
     <div className="card empty-state" style={{marginTop: 40}}>
+      <SEO
+        title="Page Not Found — Studplex"
+        description="The page you are looking for does not exist on Studplex."
+        noindex={true}
+      />
       <div className="empty-icon">🔍</div>
       <h3>Page not found</h3>
       <p>The page you're looking for doesn't exist.</p>
