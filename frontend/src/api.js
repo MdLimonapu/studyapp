@@ -63,10 +63,11 @@ export async function fetchCustomProducts() {
     }
     return {
       products: Array.isArray(data.products) ? data.products : [],
+      archived: Array.isArray(data.archived) ? data.archived : [],
       deletedIds: Array.isArray(data.deletedIds) ? data.deletedIds : []
     };
   } catch (e) {
-    return { products: [], deletedIds: [] };
+    return { products: [], archived: [], deletedIds: [] };
   }
 }
 
@@ -84,6 +85,24 @@ export async function addCustomProduct(product) {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ product }),
+  });
+  return res.json();
+}
+
+export async function archiveProduct(product) {
+  const res = await fetch(`${BASE_URL}/api/products/archive`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ product, id: product?.id }),
+  });
+  return res.json();
+}
+
+export async function restoreProduct(product) {
+  const res = await fetch(`${BASE_URL}/api/products/restore`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ product, id: product?.id }),
   });
   return res.json();
 }

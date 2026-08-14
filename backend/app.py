@@ -1630,19 +1630,21 @@ You must return your response EXACTLY as a JSON object (no markdown code fences,
 
 @app.route("/api/products", methods=["GET"])
 def get_custom_products():
-    """Get custom added products and deleted IDs from MongoDB."""
+    """Get custom added products, archived products, and deleted IDs from MongoDB."""
     items = []
+    archived_items = []
     deleted_ids = []
     if products_col is not None:
         try:
             db = products_col.database
             del_col = db["deleted_products"]
-            deleted_ids = [d["id"] for d in del_col.find({}, {"_id": 0, "id": 1})]
+            archived_items = list(del_col.find({}, {"_id": 0}))
+            deleted_ids = [d["id"] for d in archived_items if "id" in d]
             cursor = products_col.find({"id": {"$nin": deleted_ids}}, {"_id": 0})
             items = list(cursor)
         except Exception as e:
             print("DB products fetch error:", e)
-    return jsonify({"products": items, "deletedIds": deleted_ids})
+    return jsonify({"products": items, "archived": archived_items, "deletedIds": deleted_ids})
 
 
 @app.route("/api/products/extract", methods=["POST"])
@@ -1797,18 +1799,64 @@ def add_custom_product():
     return jsonify({"status": "success", "product": product, "notice": "Saved locally"})
 
 
-@app.route("/api/products/<product_id>", methods=["DELETE"])
-def delete_custom_product(product_id):
-    """Delete a custom or default product from MongoDB and mark ID as deleted."""
+@app.route("/api/products/archive", methods=["POST"])
+def archive_product():
+    """Archive a product so it can be restored later."""
+    data = request.json or {}
+    product = data.get("product") or {}
+    product_id = data.get("id") or product.get("id")
+    if not product_id:
+        return jsonify({"error": "Product ID is required"}), 400
+
     if products_col is not None:
         try:
             db = products_col.database
             del_col = db["deleted_products"]
-            del_col.replace_one(
-                {"id": product_id},
-                {"id": product_id, "deleted_at": datetime.datetime.now().isoformat()},
-                upsert=True
-            )
+            existing = products_col.find_one({"id": product_id}, {"_id": 0})
+            archive_doc = product if product.get("name") else (existing or {"id": product_id})
+            archive_doc["archived_at"] = datetime.datetime.now().isoformat()
+            del_col.replace_one({"id": product_id}, archive_doc, upsert=True)
+            products_col.delete_one({"id": product_id})
+            return jsonify({"status": "success", "archived_id": product_id})
+        except Exception as e:
+            return jsonify({"error": f"Database error: {e}"}), 500
+    return jsonify({"status": "success", "archived_id": product_id})
+
+
+@app.route("/api/products/restore", methods=["POST"])
+def restore_product():
+    """Restore an archived product back to active store products."""
+    data = request.json or {}
+    product = data.get("product") or {}
+    product_id = data.get("id") or product.get("id")
+    if not product_id:
+        return jsonify({"error": "Product ID is required"}), 400
+
+    if products_col is not None:
+        try:
+            db = products_col.database
+            del_col = db["deleted_products"]
+            doc = del_col.find_one({"id": product_id}, {"_id": 0})
+            del_col.delete_one({"id": product_id})
+            restore_doc = product if product.get("name") else doc
+            if restore_doc and restore_doc.get("name"):
+                restore_doc.pop("archived_at", None)
+                restore_doc.pop("_id", None)
+                products_col.replace_one({"id": product_id}, restore_doc, upsert=True)
+            return jsonify({"status": "success", "restored_id": product_id})
+        except Exception as e:
+            return jsonify({"error": f"Database error: {e}"}), 500
+    return jsonify({"status": "success", "restored_id": product_id})
+
+
+@app.route("/api/products/<product_id>", methods=["DELETE"])
+def delete_custom_product(product_id):
+    """Delete a custom or default product permanently from MongoDB."""
+    if products_col is not None:
+        try:
+            db = products_col.database
+            del_col = db["deleted_products"]
+            del_col.delete_one({"id": product_id})
             products_col.delete_one({"id": product_id})
             return jsonify({"status": "success", "deleted_id": product_id})
         except Exception as e:

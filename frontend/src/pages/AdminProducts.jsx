@@ -1,7 +1,15 @@
 import { useState, useEffect, useRef, useCallback } from 'react'
 import SEO from '../components/SEO'
 import { PRODUCTS_DATA, PRODUCT_CATEGORIES } from '../data/productsData'
-import { fetchCustomProducts, extractProductFromUrl, addCustomProduct, deleteCustomProduct, uploadProductImage } from '../api'
+import {
+  fetchCustomProducts,
+  extractProductFromUrl,
+  addCustomProduct,
+  archiveProduct,
+  restoreProduct,
+  deleteCustomProduct,
+  uploadProductImage
+} from '../api'
 
 const ADMIN_PIN = '1234'
 
@@ -23,7 +31,11 @@ export default function AdminProducts() {
   const [auth, setAuth] = useState(() => sessionStorage.getItem('sp_admin') === '1')
   const [pinErr, setPinErr] = useState('')
 
+  /* ── Tab state: 'active' | 'archived' ── */
+  const [currentTab, setCurrentTab] = useState('active')
+
   const [products, setProducts] = useState([])
+  const [archivedProducts, setArchivedProducts] = useState([])
   const [loading, setLoading] = useState(true)
   const [search, setSearch] = useState('')
   const [selectedCat, setSelectedCat] = useState('all')
@@ -43,28 +55,61 @@ export default function AdminProducts() {
     try {
       const res = await fetchCustomProducts()
       const custom = Array.isArray(res) ? res : (res?.products || [])
+      const remoteArchived = Array.isArray(res?.archived) ? res.archived : []
       const remoteDeleted = Array.isArray(res?.deletedIds) ? res.deletedIds : []
-      
+
+      // Sync local deleted IDs
       let localDeleted = []
       try {
         localDeleted = JSON.parse(localStorage.getItem('sp_deleted_product_ids') || '[]')
       } catch (e) {}
-      const deletedSet = new Set([...remoteDeleted, ...localDeleted])
+      const allDeletedSet = new Set([
+        ...remoteDeleted,
+        ...localDeleted,
+        ...remoteArchived.map(a => a.id).filter(Boolean)
+      ])
 
-      const map = new Map()
+      // 1. ACTIVE PRODUCTS
+      const activeMap = new Map()
       if (Array.isArray(custom)) {
         custom.forEach(p => {
-          if (!deletedSet.has(p.id)) map.set(p.id, p)
+          if (!allDeletedSet.has(p.id)) activeMap.set(p.id, p)
         })
       }
       PRODUCTS_DATA.forEach(p => {
-        if (!deletedSet.has(p.id) && !map.has(p.id)) {
-          map.set(p.id, p)
+        if (!allDeletedSet.has(p.id) && !activeMap.has(p.id)) {
+          activeMap.set(p.id, p)
         }
       })
-      setProducts(Array.from(map.values()))
+      setProducts(Array.from(activeMap.values()))
+
+      // 2. ARCHIVED PRODUCTS
+      const archivedMap = new Map()
+      remoteArchived.forEach(p => {
+        if (p && p.id) archivedMap.set(p.id, p)
+      })
+      // Also include any default product that is in deleted set but not yet in archivedMap
+      PRODUCTS_DATA.forEach(p => {
+        if (allDeletedSet.has(p.id) && !archivedMap.has(p.id)) {
+          archivedMap.set(p.id, { ...p, isDefault: true })
+        }
+      })
+      // Also check local custom items for deleted ones
+      try {
+        const savedCustom = localStorage.getItem('custom_products_store')
+        if (savedCustom) {
+          JSON.parse(savedCustom).forEach(p => {
+            if (allDeletedSet.has(p.id) && !archivedMap.has(p.id)) {
+              archivedMap.set(p.id, p)
+            }
+          })
+        }
+      } catch (e) {}
+
+      setArchivedProducts(Array.from(archivedMap.values()))
     } catch {
       setProducts([...PRODUCTS_DATA])
+      setArchivedProducts([])
     }
     setLoading(false)
   }, [])
@@ -169,7 +214,6 @@ export default function AdminProducts() {
         setDraft(prev => ({ ...prev, image: fullUrl }))
         setToast({ type: 'success', text: 'Image uploaded to cloud database!' })
       } else {
-        // Fallback local base64 preview
         const reader = new FileReader()
         reader.onload = ev => setDraft(prev => ({ ...prev, image: ev.target.result }))
         reader.readAsDataURL(file)
@@ -196,7 +240,7 @@ export default function AdminProducts() {
       id: draft.id || `prod_${Date.now()}`
     }
     try {
-      // Remove from local deleted set if previously deleted
+      // Remove from local deleted set if previously deleted/archived
       try {
         let localDeleted = JSON.parse(localStorage.getItem('sp_deleted_product_ids') || '[]')
         localDeleted = localDeleted.filter(id => id !== payload.id)
@@ -214,8 +258,8 @@ export default function AdminProducts() {
     setSaving(false)
   }
 
-  const handleDeleteProduct = async p => {
-    if (!window.confirm(`Are you sure you want to delete "${p.name}"?`)) return
+  /* ── Move to Archive ── */
+  const handleArchive = async p => {
     try {
       // 1. Record in local deleted set immediately
       let localDeleted = []
@@ -227,7 +271,7 @@ export default function AdminProducts() {
         localStorage.setItem('sp_deleted_product_ids', JSON.stringify(localDeleted))
       }
 
-      // 2. Remove from custom_products_store
+      // 2. Remove from active local storage
       try {
         const saved = localStorage.getItem('custom_products_store')
         if (saved) {
@@ -237,16 +281,49 @@ export default function AdminProducts() {
         }
       } catch (e) {}
 
-      // 3. Inform API backend
-      await deleteCustomProduct(p.id)
-      setToast({ type: 'success', text: `Deleted "${p.name}"` })
+      // 3. Send archive request with full object to preserve data
+      await archiveProduct(p)
+      setToast({ type: 'success', text: `📦 Moved "${p.name}" to Archive.` })
       await loadData()
     } catch {
-      setToast({ type: 'error', text: 'Failed to delete.' })
+      setToast({ type: 'error', text: 'Failed to archive.' })
     }
   }
 
-  const filteredProducts = products.filter(p => {
+  /* ── Restore from Archive ── */
+  const handleRestore = async p => {
+    try {
+      // 1. Remove from local deleted set
+      try {
+        let localDeleted = JSON.parse(localStorage.getItem('sp_deleted_product_ids') || '[]')
+        localDeleted = localDeleted.filter(id => id !== p.id)
+        localStorage.setItem('sp_deleted_product_ids', JSON.stringify(localDeleted))
+      } catch (e) {}
+
+      // 2. Send restore request to backend
+      await restoreProduct(p)
+      setToast({ type: 'success', text: `🔄 Restored "${p.name}" to active store!` })
+      await loadData()
+    } catch {
+      setToast({ type: 'error', text: 'Failed to restore product.' })
+    }
+  }
+
+  /* ── Permanent Delete ── */
+  const handleDeletePermanently = async p => {
+    if (!window.confirm(`Permanently delete "${p.name}"? This cannot be retrieved.`)) return
+    try {
+      await deleteCustomProduct(p.id)
+      setToast({ type: 'success', text: `Permanently deleted "${p.name}"` })
+      await loadData()
+    } catch {
+      setToast({ type: 'error', text: 'Failed to delete permanently.' })
+    }
+  }
+
+  const currentList = currentTab === 'active' ? products : archivedProducts
+
+  const filteredProducts = currentList.filter(p => {
     if (selectedCat !== 'all' && p.category !== selectedCat) return false
     if (search.trim()) {
       const q = search.toLowerCase()
@@ -305,7 +382,9 @@ export default function AdminProducts() {
           <div className="ap-brand-icon">⚡</div>
           <div>
             <h1 className="ap-brand-title">Studplex Catalog Manager</h1>
-            <span className="ap-brand-meta">{products.length} total products in database</span>
+            <span className="ap-brand-meta">
+              {products.length} active &bull; {archivedProducts.length} in archive
+            </span>
           </div>
         </div>
         <div className="ap-header-right">
@@ -324,6 +403,27 @@ export default function AdminProducts() {
 
       {/* Main Content */}
       <div className="ap-body">
+
+        {/* ── Tabs (Active vs Archive) ── */}
+        <div className="ap-tabs-bar">
+          <button
+            type="button"
+            onClick={() => setCurrentTab('active')}
+            className={`ap-tab-btn ${currentTab === 'active' ? 'ap-tab-active' : ''}`}
+          >
+            <span>🛍️ Active Products</span>
+            <span className="ap-tab-badge">{products.length}</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => setCurrentTab('archived')}
+            className={`ap-tab-btn ${currentTab === 'archived' ? 'ap-tab-active' : ''}`}
+          >
+            <span>📦 Archive / Retrieved ({archivedProducts.length})</span>
+            {archivedProducts.length > 0 && <span className="ap-tab-badge ap-tab-badge-amber">{archivedProducts.length}</span>}
+          </button>
+        </div>
+
         {/* Controls Bar */}
         <div className="ap-controls">
           <div className="ap-search-wrap">
@@ -332,7 +432,7 @@ export default function AdminProducts() {
               type="text"
               value={search}
               onChange={e => setSearch(e.target.value)}
-              placeholder="Search products by name, ASIN or description..."
+              placeholder={`Search ${currentTab === 'active' ? 'active' : 'archived'} products...`}
               className="ap-search-input"
             />
           </div>
@@ -343,20 +443,19 @@ export default function AdminProducts() {
               onChange={e => setSelectedCat(e.target.value)}
               className="ap-select"
             >
-              <option value="all">All Categories ({products.length})</option>
-              {PRODUCT_CATEGORIES.filter(c => c.id !== 'all').map(c => {
-                const count = products.filter(p => p.category === c.id).length
-                return (
-                  <option key={c.id} value={c.id}>
-                    {c.icon} {c.name} ({count})
-                  </option>
-                )
-              })}
+              <option value="all">All Categories</option>
+              {PRODUCT_CATEGORIES.filter(c => c.id !== 'all').map(c => (
+                <option key={c.id} value={c.id}>
+                  {c.icon} {c.name}
+                </option>
+              ))}
             </select>
 
-            <button type="button" onClick={handleOpenAdd} className="ap-btn-primary">
-              <span>+</span> Add Product
-            </button>
+            {currentTab === 'active' && (
+              <button type="button" onClick={handleOpenAdd} className="ap-btn-primary">
+                <span>+</span> Add Product
+              </button>
+            )}
           </div>
         </div>
 
@@ -364,16 +463,22 @@ export default function AdminProducts() {
         {loading ? (
           <div className="ap-empty-state">
             <div className="ap-spinner"></div>
-            <p>Loading database products...</p>
+            <p>Loading catalog products...</p>
           </div>
         ) : filteredProducts.length === 0 ? (
           <div className="ap-empty-state">
-            <div className="ap-empty-icon">📦</div>
-            <h3>No products found</h3>
-            <p>No products match your search or filter query.</p>
-            <button type="button" onClick={handleOpenAdd} className="ap-btn-primary" style={{ marginTop: 12 }}>
-              Add Your First Product
-            </button>
+            <div className="ap-empty-icon">{currentTab === 'active' ? '📦' : '🗄️'}</div>
+            <h3>{currentTab === 'active' ? 'No active products found' : 'Archive is empty'}</h3>
+            <p>
+              {currentTab === 'active'
+                ? 'No active products match your filter.'
+                : 'Deleted products will appear here so you can retrieve them anytime.'}
+            </p>
+            {currentTab === 'active' && (
+              <button type="button" onClick={handleOpenAdd} className="ap-btn-primary" style={{ marginTop: 12 }}>
+                Add New Product
+              </button>
+            )}
           </div>
         ) : (
           <div className="ap-table-wrap">
@@ -384,8 +489,8 @@ export default function AdminProducts() {
                   <th>Product Name</th>
                   <th style={{ width: 140 }}>Category</th>
                   <th style={{ width: 100 }}>Price</th>
-                  <th style={{ width: 130 }}>Badge</th>
-                  <th style={{ width: 160, textAlign: 'right' }}>Actions</th>
+                  <th style={{ width: 130 }}>Status</th>
+                  <th style={{ width: 220, textAlign: 'right' }}>Actions</th>
                 </tr>
               </thead>
               <tbody>
@@ -417,38 +522,64 @@ export default function AdminProducts() {
                       <span className="ap-price-text">{p.price || '—'}</span>
                     </td>
                     <td>
-                      {p.badge ? (
+                      {currentTab === 'archived' ? (
+                        <span className="ap-badge-archived">Archived</span>
+                      ) : p.badge ? (
                         <span className="ap-badge-tag">{p.badge}</span>
                       ) : (
-                        <span style={{ color: '#94a3b8', fontSize: 12 }}>—</span>
+                        <span style={{ color: '#94a3b8', fontSize: 12 }}>Active</span>
                       )}
                     </td>
                     <td>
                       <div className="ap-actions-group">
-                        <button
-                          type="button"
-                          onClick={() => handleOpenEdit(p)}
-                          className="ap-btn-action-edit"
-                        >
-                          Edit
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => handleDeleteProduct(p)}
-                          className="ap-btn-action-del"
-                        >
-                          Delete
-                        </button>
-                        {p.customUrl && (
-                          <a
-                            href={p.customUrl}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="ap-btn-action-link"
-                            title="Open affiliate link"
-                          >
-                            ↗
-                          </a>
+                        {currentTab === 'active' ? (
+                          <>
+                            <button
+                              type="button"
+                              onClick={() => handleOpenEdit(p)}
+                              className="ap-btn-action-edit"
+                            >
+                              Edit
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => handleArchive(p)}
+                              className="ap-btn-action-archive"
+                              title="Move to archive"
+                            >
+                              Archive
+                            </button>
+                            {p.customUrl && (
+                              <a
+                                href={p.customUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="ap-btn-action-link"
+                                title="Open affiliate link"
+                              >
+                                ↗
+                              </a>
+                            )}
+                          </>
+                        ) : (
+                          <>
+                            <button
+                              type="button"
+                              onClick={() => handleRestore(p)}
+                              className="ap-btn-action-restore"
+                              title="Restore to active store"
+                            >
+                              🔄 Retrieve
+                            </button>
+                            <button
+                              type="button"
+                              onClick={() => handleDeletePermanently(p)}
+                              className="ap-btn-action-del"
+                              title="Permanently remove"
+                            >
+                              Delete Forever
+                            </button>
+                          </>
                         )}
                       </div>
                     </td>
@@ -501,7 +632,6 @@ export default function AdminProducts() {
               <div className="ap-form-group">
                 <label className="ap-label">Product Image</label>
                 <div className="ap-img-section">
-                  {/* Uploader Box */}
                   <div
                     className="ap-img-upload-box"
                     onClick={() => fileInputRef.current?.click()}
@@ -530,7 +660,6 @@ export default function AdminProducts() {
                     />
                   </div>
 
-                  {/* URL Input & Shortcuts */}
                   <div className="ap-img-controls">
                     <input
                       type="text"
@@ -843,6 +972,47 @@ function ScopedStyles() {
         gap: 10px;
       }
 
+      /* Tabs Bar */
+      .ap-tabs-bar {
+        display: flex;
+        gap: 8px;
+        margin-bottom: 20px;
+        border-bottom: 1px solid #e2e8f0;
+        padding-bottom: 12px;
+      }
+      .ap-tab-btn {
+        padding: 8px 16px !important;
+        border-radius: 8px !important;
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        background: transparent !important;
+        color: #64748b !important;
+        border: 1px solid transparent !important;
+        gap: 8px !important;
+      }
+      .ap-tab-btn:hover {
+        background: #f1f5f9 !important;
+        color: #0f172a !important;
+      }
+      .ap-tab-active {
+        background: #ffffff !important;
+        color: #0f172a !important;
+        border: 1px solid #e2e8f0 !important;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.04) !important;
+      }
+      .ap-tab-badge {
+        font-size: 11px;
+        background: #f1f5f9;
+        color: #475569;
+        padding: 2px 7px;
+        border-radius: 12px;
+        font-weight: 700;
+      }
+      .ap-tab-badge-amber {
+        background: #fef3c7;
+        color: #d97706;
+      }
+
       /* Buttons Standard */
       .admin-panel button {
         all: unset;
@@ -1071,6 +1241,16 @@ function ScopedStyles() {
         padding: 3px 8px;
         border-radius: 6px;
       }
+      .ap-badge-archived {
+        display: inline-block;
+        font-size: 11px;
+        font-weight: 700;
+        background: #fef3c7;
+        color: #b45309;
+        border: 1px solid #fde68a;
+        padding: 3px 8px;
+        border-radius: 6px;
+      }
       .ap-actions-group {
         display: flex;
         align-items: center;
@@ -1089,6 +1269,33 @@ function ScopedStyles() {
       .ap-btn-action-edit:hover {
         background: #e2e8f0 !important;
         color: #0f172a !important;
+      }
+      .ap-btn-action-archive {
+        padding: 6px 12px !important;
+        border-radius: 6px !important;
+        font-size: 12px !important;
+        font-weight: 600 !important;
+        background: #f8fafc !important;
+        color: #64748b !important;
+        border: 1px solid #e2e8f0 !important;
+      }
+      .ap-btn-action-archive:hover {
+        background: #fee2e2 !important;
+        color: #dc2626 !important;
+        border-color: #fecaca !important;
+      }
+      .ap-btn-action-restore {
+        padding: 6px 12px !important;
+        border-radius: 6px !important;
+        font-size: 12px !important;
+        font-weight: 600 !important;
+        background: #ecfdf5 !important;
+        color: #059669 !important;
+        border: 1px solid #a7f3d0 !important;
+        gap: 4px !important;
+      }
+      .ap-btn-action-restore:hover {
+        background: #d1fae5 !important;
       }
       .ap-btn-action-del {
         padding: 6px 12px !important;
