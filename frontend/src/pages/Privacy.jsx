@@ -7,7 +7,7 @@ export default function Privacy() {
       <SEO
         title="Privacy Policy | Studplex"
         description="Read Studplex's privacy policy explaining how we collect, protect, and use student data."
-        canonical="https://studplex.com/privacy"
+        canonical="https://www.studplex.com/privacy"
       />
       <h2 style={{ marginBottom: '24px', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '12px' }}>
         Privacy Policy

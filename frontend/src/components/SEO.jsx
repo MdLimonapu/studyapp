@@ -10,7 +10,7 @@ export default function SEO({
 }) {
   const location = useLocation()
   const currentPath = location.pathname
-  const canonicalUrl = canonical || `https://studplex.com${currentPath === '/' ? '' : currentPath}`
+  const canonicalUrl = canonical || `https://www.studplex.com${currentPath === '/' ? '' : currentPath}`
 
   useEffect(() => {
     // 1. Title

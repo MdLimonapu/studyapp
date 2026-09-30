@@ -183,7 +183,7 @@ export default function Products() {
         title="Essentials Store — Student Laptops, Gear & Dorm Accessories | Studplex"
         description="Curated student essentials: laptops, international power adapters, durable luggage, noise-canceling headphones, and dorm room necessities for studying abroad."
         keywords="student laptops, travel adapter, student luggage, noise canceling headphones, dorm accessories, study abroad store, student essentials"
-        canonical="https://studplex.com/products"
+        canonical="https://www.studplex.com/products"
       />
 
       {/* ═══ TOP BAR / HEADER ═══ */}

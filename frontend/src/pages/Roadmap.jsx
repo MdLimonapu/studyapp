@@ -500,7 +500,7 @@ export default function Roadmap() {
         title="Eligibility Checker & Student Visa Roadmap | Studplex"
         description="Check your academic eligibility, convert GPA, calculate blocked account amounts, and get step-by-step visa guidelines for international university applications."
         keywords="eligibility checker, gpa converter, blocked account Germany, student visa roadmap, university admission requirements, study in Germany requirements"
-        canonical="https://studplex.com/roadmap"
+        canonical="https://www.studplex.com/roadmap"
       />
       
       {/* HEADER BANNER */}

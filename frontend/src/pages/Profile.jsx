@@ -186,7 +186,7 @@ export default function Profile() {
       <SEO
         title="My Profile | Studplex"
         description="Manage your student profile, saved university matches, and document uploads."
-        canonical="https://studplex.com/profile"
+        canonical="https://www.studplex.com/profile"
         noindex={true}
       />
 

@@ -7,7 +7,7 @@ export default function Terms() {
       <SEO
         title="Terms of Service | Studplex"
         description="Terms of Service governing the use of Studplex's platform, university matching services, and store."
-        canonical="https://studplex.com/terms"
+        canonical="https://www.studplex.com/terms"
       />
       <h2 style={{ marginBottom: '24px', borderBottom: '1px solid rgba(255,255,255,0.08)', paddingBottom: '12px' }}>
         Terms of Service

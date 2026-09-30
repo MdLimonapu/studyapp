@@ -207,7 +207,7 @@ export default function University() {
         title={seoTitle}
         description={seoDescription}
         keywords="university matches, study in Germany, study in UK, study in USA, study in Canada, study in Australia, tuition fees, university rankings, degree requirements"
-        canonical="https://studplex.com/university"
+        canonical="https://www.studplex.com/university"
       />
 
       {!hasActiveSearch && !isLoading ? (

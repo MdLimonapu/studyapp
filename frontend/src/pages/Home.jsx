@@ -274,7 +274,7 @@ export default function Home() {
         title="Studplex — Discover the Right University, Worldwide"
         description="Studplex helps international students search and compare university programs across 10+ countries using AI-powered matching. Find your ideal degree program today."
         keywords="university search, international students, study abroad, masters programs, bachelor degrees, PhD programs, AI university matching, studplex, find universities, higher education, study in Germany, study in UK, study in USA, study in Canada, study in Australia, study in Europe"
-        canonical="https://studplex.com/"
+        canonical="https://www.studplex.com/"
       />
       {showProfilePrompt && (
         <div className="modal-overlay">

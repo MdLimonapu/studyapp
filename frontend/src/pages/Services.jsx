@@ -387,7 +387,7 @@ export default function Services() {
         title="Services & 1-on-1 Study Abroad Counselling | Studplex"
         description="Book 1-on-1 expert advisory sessions for university shortlisting, SOP & CV reviews, visa interview preparation, and blocked account assistance."
         keywords="study abroad counselling, SOP review, CV review, student visa assistance, university application help, blocked account guidance"
-        canonical="https://studplex.com/services"
+        canonical="https://www.studplex.com/services"
       />
       {/* Hero Header */}
       <div style={{ textAlign: 'center', marginBottom: '48px' }}>

@@ -50,7 +50,7 @@ export default function About() {
         title="About Studplex — AI-Powered Global Higher Education Platform"
         description="Learn how Studplex is democratizing global education by connecting students around the world with personalized university program recommendations."
         keywords="about studplex, international education, AI education platform, study abroad mission, university matching engine"
-        canonical="https://studplex.com/about"
+        canonical="https://www.studplex.com/about"
       />
       
       {/* Decorative Blur Blobs for Dark Mode */}

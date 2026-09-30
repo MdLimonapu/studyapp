@@ -1,5 +1,18 @@
 {
   "outputDirectory": "dist",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "studplex.com"
+        }
+      ],
+      "destination": "https://www.studplex.com/:path*",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     { "source": "/news", "destination": "https://news.studplex.com?proxied=true" },
     { "source": "/news/:path*", "destination": "https://news.studplex.com/:path*?proxied=true" },

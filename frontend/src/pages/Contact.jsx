@@ -107,7 +107,7 @@ export default function Contact() {
         title="Contact Us — Studplex Support & Student Advisory"
         description="Get in touch with the Studplex team for assistance with university matches, application guidance, technical support, or partnership inquiries."
         keywords="contact studplex, student support, study abroad help, university application support"
-        canonical="https://studplex.com/contact"
+        canonical="https://www.studplex.com/contact"
       />
       
       {/* Page Header */}
