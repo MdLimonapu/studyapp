@@ -170,11 +170,207 @@ const parseStoredJson = (key, fallback) => {
   }
 }
 
+const FEATURED_UNIVERSITIES = [
+  {
+    university: "Technical University of Munich (TUM)",
+    country: "Germany",
+    city: "Munich",
+    degree: "Master's Degree",
+    course: "M.Sc. Data Engineering & Analytics / Informatics",
+    fee: "€0 / semester (Tuition-Free)",
+    deadline: "May 31",
+    intake: "Winter Intake",
+    duration: "2 Years",
+    language: "English",
+    rating: 3,
+    gpa: "Minimum GPA: 2.8",
+    source: "daad",
+    domain: "tum.de"
+  },
+  {
+    university: "University of Oxford",
+    country: "UK",
+    city: "Oxford",
+    degree: "Master's Degree",
+    course: "M.Sc. in Advanced Computer Science",
+    fee: "£33,970 / year",
+    deadline: "January 15",
+    intake: "Autumn Intake",
+    duration: "1 Year",
+    language: "English",
+    rating: 3,
+    gpa: "Minimum GPA: 3.7",
+    source: "ucas",
+    domain: "ox.ac.uk"
+  },
+  {
+    university: "University of Toronto",
+    country: "Canada",
+    city: "Toronto",
+    degree: "Master's Degree",
+    course: "Master of Science in Applied Computing (MScAC)",
+    fee: "CAD $34,800 / year",
+    deadline: "December 1",
+    intake: "Fall Intake",
+    duration: "16 Months",
+    language: "English",
+    rating: 3,
+    gpa: "Minimum GPA: 3.3",
+    source: "cricos",
+    domain: "utoronto.ca"
+  },
+  {
+    university: "Heidelberg University",
+    country: "Germany",
+    city: "Heidelberg",
+    degree: "Master's Degree",
+    course: "M.Sc. Molecular Biosciences & Biomedicine",
+    fee: "€1,500 / semester",
+    deadline: "July 15",
+    intake: "Winter Intake",
+    duration: "2 Years",
+    language: "English",
+    rating: 3,
+    gpa: "Minimum GPA: 2.7",
+    source: "daad",
+    domain: "uni-heidelberg.de"
+  },
+  {
+    university: "ETH Zurich (Swiss Federal Institute of Technology)",
+    country: "Switzerland",
+    city: "Zurich",
+    degree: "Master's Degree",
+    course: "M.Sc. Robotics, Systems and Control",
+    fee: "CHF 730 / semester",
+    deadline: "December 15",
+    intake: "Autumn Intake",
+    duration: "2 Years",
+    language: "English",
+    rating: 3,
+    gpa: "Minimum GPA: 3.5",
+    source: "daad",
+    domain: "ethz.ch"
+  },
+  {
+    university: "University of Melbourne",
+    country: "Australia",
+    city: "Melbourne",
+    degree: "Master's Degree",
+    course: "Master of Information Technology",
+    fee: "AUD $48,200 / year",
+    deadline: "October 31",
+    intake: "Semester 1 (Feb)",
+    duration: "2 Years",
+    language: "English",
+    rating: 3,
+    gpa: "Minimum GPA: 3.0",
+    source: "cricos",
+    domain: "unimelb.edu.au"
+  },
+  {
+    university: "RWTH Aachen University",
+    country: "Germany",
+    city: "Aachen",
+    degree: "Master's Degree",
+    course: "M.Sc. Automotive Engineering & Mobility",
+    fee: "€0 / semester (Tuition-Free)",
+    deadline: "March 1",
+    intake: "Winter Intake",
+    duration: "2 Years",
+    language: "English",
+    rating: 3,
+    gpa: "Minimum GPA: 2.9",
+    source: "daad",
+    domain: "rwth-aachen.de"
+  },
+  {
+    university: "Imperial College London",
+    country: "UK",
+    city: "London",
+    degree: "Master's Degree",
+    course: "M.Sc. Machine Learning & Data Science",
+    fee: "£36,500 / year",
+    deadline: "March 31",
+    intake: "Autumn Intake",
+    duration: "1 Year",
+    language: "English",
+    rating: 3,
+    gpa: "Minimum GPA: 3.5",
+    source: "ucas",
+    domain: "imperial.ac.uk"
+  },
+  {
+    university: "University of British Columbia (UBC)",
+    country: "Canada",
+    city: "Vancouver",
+    degree: "Master's Degree",
+    course: "Master of Business Analytics (MBAN)",
+    fee: "CAD $39,200 / year",
+    deadline: "January 10",
+    intake: "Fall Intake",
+    duration: "1 Year",
+    language: "English",
+    rating: 3,
+    gpa: "Minimum GPA: 3.2",
+    source: "cricos",
+    domain: "ubc.ca"
+  },
+  {
+    university: "Delft University of Technology (TU Delft)",
+    country: "Netherlands",
+    city: "Delft",
+    degree: "Master's Degree",
+    course: "M.Sc. Aerospace Engineering",
+    fee: "€19,500 / year",
+    deadline: "April 1",
+    intake: "Fall Intake",
+    duration: "2 Years",
+    language: "English",
+    rating: 3,
+    gpa: "Minimum GPA: 3.0",
+    source: "studyinholland",
+    domain: "tudelft.nl"
+  },
+  {
+    university: "Technical University of Berlin (TU Berlin)",
+    country: "Germany",
+    city: "Berlin",
+    degree: "Master's Degree",
+    course: "M.Sc. Computer Science & Software Systems",
+    fee: "€0 / semester (Tuition-Free)",
+    deadline: "June 15",
+    intake: "Winter Intake",
+    duration: "2 Years",
+    language: "English",
+    rating: 3,
+    gpa: "Minimum GPA: 2.8",
+    source: "daad",
+    domain: "tu-berlin.de"
+  },
+  {
+    university: "University of Sydney",
+    country: "Australia",
+    city: "Sydney",
+    degree: "Master's Degree",
+    course: "Master of Data Science",
+    fee: "AUD $49,500 / year",
+    deadline: "November 30",
+    intake: "Semester 1",
+    duration: "1.5 Years",
+    language: "English",
+    rating: 3,
+    gpa: "Minimum GPA: 3.0",
+    source: "cricos",
+    domain: "sydney.edu.au"
+  }
+];
+
 export default function University() {
   const raw    = localStorage.getItem('searchResults')
   const result = parseStoredJson('searchResults', { results: [], related_fields: [], source: null })
   const form   = parseStoredJson('searchForm', {})
   const navigate = useNavigate()
+  const [selectedCountryFilter, setSelectedCountryFilter] = useState('All')
 
   const { isSignedIn } = useAuth()
 
@@ -189,7 +385,7 @@ export default function University() {
       const countryPart = form.country ? ` in ${form.country}` : '';
       document.title = `${fieldPart}${countryPart} | Studplex`;
     } else {
-      document.title = 'University Matches | Studplex';
+      document.title = 'Explore 10,000+ Universities Worldwide | Studplex';
     }
   }, [form])
 
@@ -211,16 +407,180 @@ export default function University() {
       />
 
       {!hasActiveSearch && !isLoading ? (
-        <div className="card empty-state" style={{ padding: '60px 40px', textAlign: 'center', maxWidth: '600px', margin: '40px auto', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
-          <div className="empty-icon" style={{ fontSize: '48px', margin: '0 0 10px 0' }}>🔍</div>
-          <h3 style={{ fontSize: '24px', fontWeight: 800, color: 'var(--text)', margin: 0 }}>Start Your Search</h3>
-          <p style={{ color: 'var(--muted)', fontSize: '15.5px', margin: 0, lineHeight: 1.6, maxWidth: '440px' }}>
-            You haven't searched for any programs yet. Let's find the perfect university matching your background and profile.
-          </p>
-          <button className="btn-accent" style={{ padding: '14px 28px', borderRadius: '12px', fontWeight: 700, border: 'none', cursor: 'pointer', marginTop: '10px', background: 'var(--btn-gradient)', color: 'var(--btn-text)' }} onClick={() => navigate('/')}>
-            Go to Home Page
-          </button>
-        </div>
+        <>
+          <div className="card search-summary">
+            <div className="summary-left">
+              <h1>Explore Top Global Universities & Degree Programs</h1>
+              <p style={{ color: 'var(--muted)', fontSize: '15px', marginTop: '6px' }}>
+                Browse verified degree programs, tuition fees, admission requirements, and deadlines across 10+ countries. Filter by destination or launch an AI match tailored to your profile.
+              </p>
+            </div>
+            <div className="summary-right">
+              <button 
+                className="btn-accent" 
+                style={{ padding: '12px 24px', borderRadius: '12px', fontWeight: 700, border: 'none', cursor: 'pointer', background: 'var(--btn-gradient)', color: 'var(--btn-text)' }} 
+                onClick={() => navigate('/')}
+              >
+                🔍 Custom Match
+              </button>
+            </div>
+          </div>
+
+          <div className="card" style={{ padding: '20px' }}>
+            <h3 style={{ fontSize: '16px', fontWeight: 800, marginBottom: '12px', color: 'var(--text)' }}>Filter by Country</h3>
+            <div className="summary-chips" style={{ flexWrap: 'wrap', gap: '8px' }}>
+              {['All', 'Germany', 'UK', 'Canada', 'Australia', 'Netherlands', 'Switzerland'].map((country) => (
+                <span
+                  key={country}
+                  className={`chip ${selectedCountryFilter === country ? 'active' : ''}`}
+                  onClick={() => setSelectedCountryFilter(country)}
+                  style={{
+                    cursor: 'pointer',
+                    background: selectedCountryFilter === country ? 'var(--accent)' : 'rgba(255,255,255,0.05)',
+                    color: selectedCountryFilter === country ? '#fff' : 'var(--text)',
+                    borderColor: selectedCountryFilter === country ? 'var(--accent)' : 'var(--card-border)'
+                  }}
+                >
+                  {country === 'All' ? '🌍 All Countries' : `${getCountryFlag(country)} ${country}`}
+                </span>
+              ))}
+            </div>
+          </div>
+
+          <div className="results-grid">
+            {FEATURED_UNIVERSITIES
+              .filter(u => selectedCountryFilter === 'All' || u.country.toLowerCase() === selectedCountryFilter.toLowerCase())
+              .map((item, idx) => {
+                const match = getMatchLabel(item.rating)
+                const domainName = item.domain || getUniDomain(item.university, item.city)
+                return (
+                  <div key={idx} className="result-card card">
+                    <div className="rc-top-bar">
+                      <div className="rc-flag-wrap">
+                        <span className="rc-flag">{getCountryFlag(item.country)}</span>
+                        <span className="rc-country-name">{item.country}</span>
+                        {item.city && <span className="rc-city">• 📍 {item.city}</span>}
+                      </div>
+                      <div className={`rc-rating-badge ${match.class}`}>
+                        <span className="rc-stars">{match.stars}</span>
+                        <span className="rc-label">Top Choice</span>
+                      </div>
+                    </div>
+
+                    <div className="rc-body">
+                      <div className="rc-uni-header" style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '8px' }}>
+                        <div className="rc-uni-logo-wrapper" style={{ 
+                          width: '32px', 
+                          height: '32px', 
+                          borderRadius: '8px', 
+                          background: '#ffffff', 
+                          border: '1px solid rgba(255,255,255,0.08)', 
+                          display: 'flex', 
+                          alignItems: 'center', 
+                          justifyContent: 'center', 
+                          overflow: 'hidden', 
+                          flexShrink: 0 
+                        }}>
+                          <img 
+                            src={`https://www.google.com/s2/favicons?domain=${domainName}&sz=64`}
+                            alt={`${item.university} logo`} 
+                            style={{ width: '20px', height: '20px', objectFit: 'contain' }}
+                            onError={(e) => {
+                              e.target.style.display = 'none';
+                              e.target.parentNode.innerHTML = '<span style="font-size: 16px;">🎓</span>';
+                            }}
+                          />
+                        </div>
+                        <h3 className="rc-uni">{item.university}</h3>
+                      </div>
+                      <p className="rc-course">{item.course}</p>
+                    </div>
+
+                    <div className="rc-meta-section">
+                      <div className="rc-meta-pills">
+                        <div className="rc-intake-row">
+                          <span className="rc-intake-icon">🗓️</span>
+                          <span className="rc-intake-value">{item.intake}</span>
+                        </div>
+                        <div className="rc-intake-row">
+                          <span className="rc-intake-icon">⏱️</span>
+                          <span className="rc-intake-value">{item.duration}</span>
+                        </div>
+                        <div className="rc-intake-row">
+                          <span className="rc-intake-icon">🌐</span>
+                          <span className="rc-intake-value">{item.language}</span>
+                        </div>
+                      </div>
+
+                      <div className="rc-details-list">
+                        <div className="rc-detail-item">
+                          <span className="rc-detail-icon">💰</span>
+                          <span className="rc-detail-label">Fee:</span>
+                          <span className="rc-detail-value">{item.fee}</span>
+                        </div>
+                        <div className="rc-detail-item">
+                          <span className="rc-detail-icon">📌</span>
+                          <span className="rc-detail-label">Deadline:</span>
+                          <span className="rc-detail-value">{item.deadline}</span>
+                        </div>
+                        <div className="rc-detail-item">
+                          <span className="rc-detail-icon">🎯</span>
+                          <span className="rc-detail-label">Requirements:</span>
+                          <span className="rc-detail-value">{item.gpa}</span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="rc-cta-btn" style={{ display: 'flex', gap: '8px', marginTop: '16px' }}>
+                      <button 
+                        className="btn-accent" 
+                        style={{ flex: 1, padding: '10px 16px', borderRadius: '10px', fontSize: '13.5px', fontWeight: 700, border: 'none', cursor: 'pointer', background: 'var(--btn-gradient)', color: 'var(--btn-text)' }}
+                        onClick={() => navigate(`/roadmap`)}
+                      >
+                        Check Eligibility
+                      </button>
+                      <button 
+                        className="btn-outline" 
+                        style={{ padding: '10px 14px', borderRadius: '10px', fontSize: '13.5px', fontWeight: 600, cursor: 'pointer' }}
+                        onClick={() => navigate(`/?focus=country&val=${encodeURIComponent(item.country)}`)}
+                      >
+                        Find More
+                      </button>
+                    </div>
+                  </div>
+                )
+              })}
+          </div>
+
+          <div className="card" style={{ padding: '32px', marginTop: '24px', lineHeight: 1.7 }}>
+            <h2 style={{ fontSize: '22px', fontWeight: 800, marginBottom: '16px', color: 'var(--text)' }}>
+              How to Choose the Right University for International Studies
+            </h2>
+            <p style={{ color: 'var(--muted)', fontSize: '15px', marginBottom: '16px' }}>
+              Finding the best degree program abroad depends on several factors: academic GPA, language proficiency (IELTS, TOEFL, Duolingo), tuition costs, and post-graduation work opportunities.
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginTop: '20px' }}>
+              <div style={{ background: 'rgba(255,255,255,0.03)', padding: '20px', borderRadius: '16px', border: '1px solid var(--card-border)' }}>
+                <h3 style={{ fontSize: '17px', fontWeight: 700, color: 'var(--text)', marginBottom: '8px' }}>🇩🇪 Studying in Germany</h3>
+                <p style={{ color: 'var(--muted)', fontSize: '14px', margin: 0 }}>
+                  Most public German universities offer 100% tuition-free education for international students, with hundreds of English-taught Master's degrees in engineering, computer science, and business.
+                </p>
+              </div>
+              <div style={{ background: 'rgba(255,255,255,0.03)', padding: '20px', borderRadius: '16px', border: '1px solid var(--card-border)' }}>
+                <h3 style={{ fontSize: '17px', fontWeight: 700, color: 'var(--text)', marginBottom: '8px' }}>🇬🇧 Studying in the UK</h3>
+                <p style={{ color: 'var(--muted)', fontSize: '14px', margin: 0 }}>
+                  The UK offers fast-track 1-year Master's programs and a 2-year Graduate Route post-study work visa. Top universities include Oxford, Cambridge, Imperial, and Russell Group institutions.
+                </p>
+              </div>
+              <div style={{ background: 'rgba(255,255,255,0.03)', padding: '20px', borderRadius: '16px', border: '1px solid var(--card-border)' }}>
+                <h3 style={{ fontSize: '17px', fontWeight: 700, color: 'var(--text)', marginBottom: '8px' }}>🇨🇦 Studying in Canada</h3>
+                <p style={{ color: 'var(--muted)', fontSize: '14px', margin: 0 }}>
+                  Canadian universities provide high-quality education with Post-Graduation Work Permits (PGWP) of up to 3 years and clear permanent residency immigration pathways for graduates.
+                </p>
+              </div>
+            </div>
+          </div>
+        </>
       ) : (
         <>
           <div className="card search-summary">
